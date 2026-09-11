@@ -27,6 +27,24 @@ services:
       timeout: 5s
       retries: 12
 
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gatalogo-api
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      SERVICE_ROLE: all
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./storage:/service/storage
+
+
   vision-worker:
     # Mantido opcional: SAM 2 + DINOv2 em CPU é intencionalmente lento e não
     # deve disputar recursos com a API durante o uso normal.
