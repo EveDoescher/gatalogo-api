@@ -1,0 +1,23 @@
+fastapi>=0.115
+uvicorn[standard]>=0.34
+python-multipart>=0.0.20
+pydantic>=2.10
+pydantic-settings>=2.7
+google-genai>=2.19.0
+Pillow>=11.0
+numpy>=2.0
+opencv-python-headless>=4.10
+SAM-2 @ git+https://github.com/facebookresearch/sam2.git
+SQLAlchemy[asyncio]>=2.0.41
+asyncpg>=0.30
+pgvector>=0.3.6
+alembic>=1.16
+PyJWT[crypto]>=2.10
+pwdlib[argon2]>=0.3
+google-auth>=2.40
+email-validator>=2.2
+pytest>=8.3
+pytest-asyncio>=0.25
+httpx>=0.28
+# O worker GPU instala SAM 3 e suas dependências CUDA separadamente, seguindo
+# as instruções/licença da Meta e após acesso aos checkpoints ser aprovado.

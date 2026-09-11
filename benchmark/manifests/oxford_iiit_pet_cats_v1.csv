@@ -1,0 +1,145 @@
+sample_id,source,license,source_url,breed,split,expected_is_cat,image_path,trimap_path
+oxpet-abyssinian_62,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Abyssinian,calibration,true,images/Abyssinian_62.jpg,annotations/trimaps/Abyssinian_62.png
+oxpet-abyssinian_164,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Abyssinian,calibration,true,images/Abyssinian_164.jpg,annotations/trimaps/Abyssinian_164.png
+oxpet-abyssinian_9,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Abyssinian,calibration,true,images/Abyssinian_9.jpg,annotations/trimaps/Abyssinian_9.png
+oxpet-abyssinian_136,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Abyssinian,calibration,true,images/Abyssinian_136.jpg,annotations/trimaps/Abyssinian_136.png
+oxpet-abyssinian_95,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Abyssinian,calibration,true,images/Abyssinian_95.jpg,annotations/trimaps/Abyssinian_95.png
+oxpet-abyssinian_135,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Abyssinian,calibration,true,images/Abyssinian_135.jpg,annotations/trimaps/Abyssinian_135.png
+oxpet-abyssinian_177,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Abyssinian,calibration,true,images/Abyssinian_177.jpg,annotations/trimaps/Abyssinian_177.png
+oxpet-abyssinian_18,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Abyssinian,calibration,true,images/Abyssinian_18.jpg,annotations/trimaps/Abyssinian_18.png
+oxpet-abyssinian_172,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Abyssinian,evaluation,true,images/Abyssinian_172.jpg,annotations/trimaps/Abyssinian_172.png
+oxpet-abyssinian_78,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Abyssinian,evaluation,true,images/Abyssinian_78.jpg,annotations/trimaps/Abyssinian_78.png
+oxpet-abyssinian_144,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Abyssinian,evaluation,true,images/Abyssinian_144.jpg,annotations/trimaps/Abyssinian_144.png
+oxpet-abyssinian_143,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Abyssinian,evaluation,true,images/Abyssinian_143.jpg,annotations/trimaps/Abyssinian_143.png
+oxpet-bengal_33,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bengal,calibration,true,images/Bengal_33.jpg,annotations/trimaps/Bengal_33.png
+oxpet-bengal_137,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bengal,calibration,true,images/Bengal_137.jpg,annotations/trimaps/Bengal_137.png
+oxpet-bengal_13,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bengal,calibration,true,images/Bengal_13.jpg,annotations/trimaps/Bengal_13.png
+oxpet-bengal_173,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bengal,calibration,true,images/Bengal_173.jpg,annotations/trimaps/Bengal_173.png
+oxpet-bengal_110,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bengal,calibration,true,images/Bengal_110.jpg,annotations/trimaps/Bengal_110.png
+oxpet-bengal_19,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bengal,calibration,true,images/Bengal_19.jpg,annotations/trimaps/Bengal_19.png
+oxpet-bengal_84,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bengal,calibration,true,images/Bengal_84.jpg,annotations/trimaps/Bengal_84.png
+oxpet-bengal_183,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bengal,calibration,true,images/Bengal_183.jpg,annotations/trimaps/Bengal_183.png
+oxpet-bengal_96,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bengal,evaluation,true,images/Bengal_96.jpg,annotations/trimaps/Bengal_96.png
+oxpet-bengal_18,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bengal,evaluation,true,images/Bengal_18.jpg,annotations/trimaps/Bengal_18.png
+oxpet-bengal_127,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bengal,evaluation,true,images/Bengal_127.jpg,annotations/trimaps/Bengal_127.png
+oxpet-bengal_10,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bengal,evaluation,true,images/Bengal_10.jpg,annotations/trimaps/Bengal_10.png
+oxpet-birman_100,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Birman,calibration,true,images/Birman_100.jpg,annotations/trimaps/Birman_100.png
+oxpet-birman_66,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Birman,calibration,true,images/Birman_66.jpg,annotations/trimaps/Birman_66.png
+oxpet-birman_27,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Birman,calibration,true,images/Birman_27.jpg,annotations/trimaps/Birman_27.png
+oxpet-birman_180,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Birman,calibration,true,images/Birman_180.jpg,annotations/trimaps/Birman_180.png
+oxpet-birman_107,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Birman,calibration,true,images/Birman_107.jpg,annotations/trimaps/Birman_107.png
+oxpet-birman_197,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Birman,calibration,true,images/Birman_197.jpg,annotations/trimaps/Birman_197.png
+oxpet-birman_93,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Birman,calibration,true,images/Birman_93.jpg,annotations/trimaps/Birman_93.png
+oxpet-birman_77,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Birman,calibration,true,images/Birman_77.jpg,annotations/trimaps/Birman_77.png
+oxpet-birman_166,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Birman,evaluation,true,images/Birman_166.jpg,annotations/trimaps/Birman_166.png
+oxpet-birman_35,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Birman,evaluation,true,images/Birman_35.jpg,annotations/trimaps/Birman_35.png
+oxpet-birman_4,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Birman,evaluation,true,images/Birman_4.jpg,annotations/trimaps/Birman_4.png
+oxpet-birman_2,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Birman,evaluation,true,images/Birman_2.jpg,annotations/trimaps/Birman_2.png
+oxpet-bombay_81,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bombay,calibration,true,images/Bombay_81.jpg,annotations/trimaps/Bombay_81.png
+oxpet-bombay_152,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bombay,calibration,true,images/Bombay_152.jpg,annotations/trimaps/Bombay_152.png
+oxpet-bombay_15,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bombay,calibration,true,images/Bombay_15.jpg,annotations/trimaps/Bombay_15.png
+oxpet-bombay_91,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bombay,calibration,true,images/Bombay_91.jpg,annotations/trimaps/Bombay_91.png
+oxpet-bombay_135,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bombay,calibration,true,images/Bombay_135.jpg,annotations/trimaps/Bombay_135.png
+oxpet-bombay_157,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bombay,calibration,true,images/Bombay_157.jpg,annotations/trimaps/Bombay_157.png
+oxpet-bombay_43,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bombay,calibration,true,images/Bombay_43.jpg,annotations/trimaps/Bombay_43.png
+oxpet-bombay_64,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bombay,calibration,true,images/Bombay_64.jpg,annotations/trimaps/Bombay_64.png
+oxpet-bombay_198,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bombay,evaluation,true,images/Bombay_198.jpg,annotations/trimaps/Bombay_198.png
+oxpet-bombay_130,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bombay,evaluation,true,images/Bombay_130.jpg,annotations/trimaps/Bombay_130.png
+oxpet-bombay_127,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bombay,evaluation,true,images/Bombay_127.jpg,annotations/trimaps/Bombay_127.png
+oxpet-bombay_65,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Bombay,evaluation,true,images/Bombay_65.jpg,annotations/trimaps/Bombay_65.png
+oxpet-british_shorthair_156,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,British Shorthair,calibration,true,images/British_Shorthair_156.jpg,annotations/trimaps/British_Shorthair_156.png
+oxpet-british_shorthair_175,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,British Shorthair,calibration,true,images/British_Shorthair_175.jpg,annotations/trimaps/British_Shorthair_175.png
+oxpet-british_shorthair_57,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,British Shorthair,calibration,true,images/British_Shorthair_57.jpg,annotations/trimaps/British_Shorthair_57.png
+oxpet-british_shorthair_140,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,British Shorthair,calibration,true,images/British_Shorthair_140.jpg,annotations/trimaps/British_Shorthair_140.png
+oxpet-british_shorthair_101,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,British Shorthair,calibration,true,images/British_Shorthair_101.jpg,annotations/trimaps/British_Shorthair_101.png
+oxpet-british_shorthair_130,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,British Shorthair,calibration,true,images/British_Shorthair_130.jpg,annotations/trimaps/British_Shorthair_130.png
+oxpet-british_shorthair_17,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,British Shorthair,calibration,true,images/British_Shorthair_17.jpg,annotations/trimaps/British_Shorthair_17.png
+oxpet-british_shorthair_174,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,British Shorthair,calibration,true,images/British_Shorthair_174.jpg,annotations/trimaps/British_Shorthair_174.png
+oxpet-british_shorthair_60,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,British Shorthair,evaluation,true,images/British_Shorthair_60.jpg,annotations/trimaps/British_Shorthair_60.png
+oxpet-british_shorthair_18,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,British Shorthair,evaluation,true,images/British_Shorthair_18.jpg,annotations/trimaps/British_Shorthair_18.png
+oxpet-british_shorthair_122,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,British Shorthair,evaluation,true,images/British_Shorthair_122.jpg,annotations/trimaps/British_Shorthair_122.png
+oxpet-british_shorthair_37,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,British Shorthair,evaluation,true,images/British_Shorthair_37.jpg,annotations/trimaps/British_Shorthair_37.png
+oxpet-egyptian_mau_176,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Egyptian Mau,calibration,true,images/Egyptian_Mau_176.jpg,annotations/trimaps/Egyptian_Mau_176.png
+oxpet-egyptian_mau_23,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Egyptian Mau,calibration,true,images/Egyptian_Mau_23.jpg,annotations/trimaps/Egyptian_Mau_23.png
+oxpet-egyptian_mau_47,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Egyptian Mau,calibration,true,images/Egyptian_Mau_47.jpg,annotations/trimaps/Egyptian_Mau_47.png
+oxpet-egyptian_mau_148,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Egyptian Mau,calibration,true,images/Egyptian_Mau_148.jpg,annotations/trimaps/Egyptian_Mau_148.png
+oxpet-egyptian_mau_171,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Egyptian Mau,calibration,true,images/Egyptian_Mau_171.jpg,annotations/trimaps/Egyptian_Mau_171.png
+oxpet-egyptian_mau_12,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Egyptian Mau,calibration,true,images/Egyptian_Mau_12.jpg,annotations/trimaps/Egyptian_Mau_12.png
+oxpet-egyptian_mau_112,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Egyptian Mau,calibration,true,images/Egyptian_Mau_112.jpg,annotations/trimaps/Egyptian_Mau_112.png
+oxpet-egyptian_mau_16,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Egyptian Mau,calibration,true,images/Egyptian_Mau_16.jpg,annotations/trimaps/Egyptian_Mau_16.png
+oxpet-egyptian_mau_121,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Egyptian Mau,evaluation,true,images/Egyptian_Mau_121.jpg,annotations/trimaps/Egyptian_Mau_121.png
+oxpet-egyptian_mau_6,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Egyptian Mau,evaluation,true,images/Egyptian_Mau_6.jpg,annotations/trimaps/Egyptian_Mau_6.png
+oxpet-egyptian_mau_29,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Egyptian Mau,evaluation,true,images/Egyptian_Mau_29.jpg,annotations/trimaps/Egyptian_Mau_29.png
+oxpet-egyptian_mau_109,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Egyptian Mau,evaluation,true,images/Egyptian_Mau_109.jpg,annotations/trimaps/Egyptian_Mau_109.png
+oxpet-maine_coon_16,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Maine Coon,calibration,true,images/Maine_Coon_16.jpg,annotations/trimaps/Maine_Coon_16.png
+oxpet-maine_coon_18,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Maine Coon,calibration,true,images/Maine_Coon_18.jpg,annotations/trimaps/Maine_Coon_18.png
+oxpet-maine_coon_141,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Maine Coon,calibration,true,images/Maine_Coon_141.jpg,annotations/trimaps/Maine_Coon_141.png
+oxpet-maine_coon_204,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Maine Coon,calibration,true,images/Maine_Coon_204.jpg,annotations/trimaps/Maine_Coon_204.png
+oxpet-maine_coon_170,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Maine Coon,calibration,true,images/Maine_Coon_170.jpg,annotations/trimaps/Maine_Coon_170.png
+oxpet-maine_coon_1,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Maine Coon,calibration,true,images/Maine_Coon_1.jpg,annotations/trimaps/Maine_Coon_1.png
+oxpet-maine_coon_129,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Maine Coon,calibration,true,images/Maine_Coon_129.jpg,annotations/trimaps/Maine_Coon_129.png
+oxpet-maine_coon_30,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Maine Coon,calibration,true,images/Maine_Coon_30.jpg,annotations/trimaps/Maine_Coon_30.png
+oxpet-maine_coon_41,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Maine Coon,evaluation,true,images/Maine_Coon_41.jpg,annotations/trimaps/Maine_Coon_41.png
+oxpet-maine_coon_3,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Maine Coon,evaluation,true,images/Maine_Coon_3.jpg,annotations/trimaps/Maine_Coon_3.png
+oxpet-maine_coon_197,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Maine Coon,evaluation,true,images/Maine_Coon_197.jpg,annotations/trimaps/Maine_Coon_197.png
+oxpet-maine_coon_47,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Maine Coon,evaluation,true,images/Maine_Coon_47.jpg,annotations/trimaps/Maine_Coon_47.png
+oxpet-persian_273,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Persian,calibration,true,images/Persian_273.jpg,annotations/trimaps/Persian_273.png
+oxpet-persian_263,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Persian,calibration,true,images/Persian_263.jpg,annotations/trimaps/Persian_263.png
+oxpet-persian_190,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Persian,calibration,true,images/Persian_190.jpg,annotations/trimaps/Persian_190.png
+oxpet-persian_125,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Persian,calibration,true,images/Persian_125.jpg,annotations/trimaps/Persian_125.png
+oxpet-persian_89,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Persian,calibration,true,images/Persian_89.jpg,annotations/trimaps/Persian_89.png
+oxpet-persian_160,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Persian,calibration,true,images/Persian_160.jpg,annotations/trimaps/Persian_160.png
+oxpet-persian_150,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Persian,calibration,true,images/Persian_150.jpg,annotations/trimaps/Persian_150.png
+oxpet-persian_29,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Persian,calibration,true,images/Persian_29.jpg,annotations/trimaps/Persian_29.png
+oxpet-persian_26,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Persian,evaluation,true,images/Persian_26.jpg,annotations/trimaps/Persian_26.png
+oxpet-persian_183,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Persian,evaluation,true,images/Persian_183.jpg,annotations/trimaps/Persian_183.png
+oxpet-persian_45,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Persian,evaluation,true,images/Persian_45.jpg,annotations/trimaps/Persian_45.png
+oxpet-persian_255,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Persian,evaluation,true,images/Persian_255.jpg,annotations/trimaps/Persian_255.png
+oxpet-ragdoll_168,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Ragdoll,calibration,true,images/Ragdoll_168.jpg,annotations/trimaps/Ragdoll_168.png
+oxpet-ragdoll_81,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Ragdoll,calibration,true,images/Ragdoll_81.jpg,annotations/trimaps/Ragdoll_81.png
+oxpet-ragdoll_49,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Ragdoll,calibration,true,images/Ragdoll_49.jpg,annotations/trimaps/Ragdoll_49.png
+oxpet-ragdoll_95,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Ragdoll,calibration,true,images/Ragdoll_95.jpg,annotations/trimaps/Ragdoll_95.png
+oxpet-ragdoll_41,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Ragdoll,calibration,true,images/Ragdoll_41.jpg,annotations/trimaps/Ragdoll_41.png
+oxpet-ragdoll_77,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Ragdoll,calibration,true,images/Ragdoll_77.jpg,annotations/trimaps/Ragdoll_77.png
+oxpet-ragdoll_133,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Ragdoll,calibration,true,images/Ragdoll_133.jpg,annotations/trimaps/Ragdoll_133.png
+oxpet-ragdoll_135,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Ragdoll,calibration,true,images/Ragdoll_135.jpg,annotations/trimaps/Ragdoll_135.png
+oxpet-ragdoll_34,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Ragdoll,evaluation,true,images/Ragdoll_34.jpg,annotations/trimaps/Ragdoll_34.png
+oxpet-ragdoll_186,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Ragdoll,evaluation,true,images/Ragdoll_186.jpg,annotations/trimaps/Ragdoll_186.png
+oxpet-ragdoll_115,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Ragdoll,evaluation,true,images/Ragdoll_115.jpg,annotations/trimaps/Ragdoll_115.png
+oxpet-ragdoll_205,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Ragdoll,evaluation,true,images/Ragdoll_205.jpg,annotations/trimaps/Ragdoll_205.png
+oxpet-russian_blue_209,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Russian Blue,calibration,true,images/Russian_Blue_209.jpg,annotations/trimaps/Russian_Blue_209.png
+oxpet-russian_blue_63,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Russian Blue,calibration,true,images/Russian_Blue_63.jpg,annotations/trimaps/Russian_Blue_63.png
+oxpet-russian_blue_195,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Russian Blue,calibration,true,images/Russian_Blue_195.jpg,annotations/trimaps/Russian_Blue_195.png
+oxpet-russian_blue_13,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Russian Blue,calibration,true,images/Russian_Blue_13.jpg,annotations/trimaps/Russian_Blue_13.png
+oxpet-russian_blue_21,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Russian Blue,calibration,true,images/Russian_Blue_21.jpg,annotations/trimaps/Russian_Blue_21.png
+oxpet-russian_blue_193,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Russian Blue,calibration,true,images/Russian_Blue_193.jpg,annotations/trimaps/Russian_Blue_193.png
+oxpet-russian_blue_157,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Russian Blue,calibration,true,images/Russian_Blue_157.jpg,annotations/trimaps/Russian_Blue_157.png
+oxpet-russian_blue_82,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Russian Blue,calibration,true,images/Russian_Blue_82.jpg,annotations/trimaps/Russian_Blue_82.png
+oxpet-russian_blue_93,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Russian Blue,evaluation,true,images/Russian_Blue_93.jpg,annotations/trimaps/Russian_Blue_93.png
+oxpet-russian_blue_47,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Russian Blue,evaluation,true,images/Russian_Blue_47.jpg,annotations/trimaps/Russian_Blue_47.png
+oxpet-russian_blue_87,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Russian Blue,evaluation,true,images/Russian_Blue_87.jpg,annotations/trimaps/Russian_Blue_87.png
+oxpet-russian_blue_237,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Russian Blue,evaluation,true,images/Russian_Blue_237.jpg,annotations/trimaps/Russian_Blue_237.png
+oxpet-siamese_5,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Siamese,calibration,true,images/Siamese_5.jpg,annotations/trimaps/Siamese_5.png
+oxpet-siamese_58,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Siamese,calibration,true,images/Siamese_58.jpg,annotations/trimaps/Siamese_58.png
+oxpet-siamese_44,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Siamese,calibration,true,images/Siamese_44.jpg,annotations/trimaps/Siamese_44.png
+oxpet-siamese_138,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Siamese,calibration,true,images/Siamese_138.jpg,annotations/trimaps/Siamese_138.png
+oxpet-siamese_148,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Siamese,calibration,true,images/Siamese_148.jpg,annotations/trimaps/Siamese_148.png
+oxpet-siamese_131,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Siamese,calibration,true,images/Siamese_131.jpg,annotations/trimaps/Siamese_131.png
+oxpet-siamese_25,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Siamese,calibration,true,images/Siamese_25.jpg,annotations/trimaps/Siamese_25.png
+oxpet-siamese_179,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Siamese,calibration,true,images/Siamese_179.jpg,annotations/trimaps/Siamese_179.png
+oxpet-siamese_151,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Siamese,evaluation,true,images/Siamese_151.jpg,annotations/trimaps/Siamese_151.png
+oxpet-siamese_94,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Siamese,evaluation,true,images/Siamese_94.jpg,annotations/trimaps/Siamese_94.png
+oxpet-siamese_87,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Siamese,evaluation,true,images/Siamese_87.jpg,annotations/trimaps/Siamese_87.png
+oxpet-siamese_210,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Siamese,evaluation,true,images/Siamese_210.jpg,annotations/trimaps/Siamese_210.png
+oxpet-sphynx_122,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Sphynx,calibration,true,images/Sphynx_122.jpg,annotations/trimaps/Sphynx_122.png
+oxpet-sphynx_83,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Sphynx,calibration,true,images/Sphynx_83.jpg,annotations/trimaps/Sphynx_83.png
+oxpet-sphynx_94,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Sphynx,calibration,true,images/Sphynx_94.jpg,annotations/trimaps/Sphynx_94.png
+oxpet-sphynx_234,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Sphynx,calibration,true,images/Sphynx_234.jpg,annotations/trimaps/Sphynx_234.png
+oxpet-sphynx_112,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Sphynx,calibration,true,images/Sphynx_112.jpg,annotations/trimaps/Sphynx_112.png
+oxpet-sphynx_111,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Sphynx,calibration,true,images/Sphynx_111.jpg,annotations/trimaps/Sphynx_111.png
+oxpet-sphynx_74,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Sphynx,calibration,true,images/Sphynx_74.jpg,annotations/trimaps/Sphynx_74.png
+oxpet-sphynx_55,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Sphynx,calibration,true,images/Sphynx_55.jpg,annotations/trimaps/Sphynx_55.png
+oxpet-sphynx_155,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Sphynx,evaluation,true,images/Sphynx_155.jpg,annotations/trimaps/Sphynx_155.png
+oxpet-sphynx_237,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Sphynx,evaluation,true,images/Sphynx_237.jpg,annotations/trimaps/Sphynx_237.png
+oxpet-sphynx_180,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Sphynx,evaluation,true,images/Sphynx_180.jpg,annotations/trimaps/Sphynx_180.png
+oxpet-sphynx_145,Oxford-IIIT Pet,CC BY-SA 4.0,https://www.robots.ox.ac.uk/~vgg/data/pets/,Sphynx,evaluation,true,images/Sphynx_145.jpg,annotations/trimaps/Sphynx_145.png

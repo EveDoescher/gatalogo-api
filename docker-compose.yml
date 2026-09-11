@@ -1,0 +1,56 @@
+services:
+  mailpit:
+    image: axllent/mailpit:v1.27
+    container_name: gatalogo-mailpit
+    restart: unless-stopped
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+  postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
+    container_name: gatalogo-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-gatalogo}
+      POSTGRES_USER: ${POSTGRES_USER:-gatalogo}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Defina POSTGRES_PASSWORD no arquivo .env}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - gatalogo_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  vision-worker:
+    # Mantido opcional: SAM 2 + DINOv2 em CPU é intencionalmente lento e não
+    # deve disputar recursos com a API durante o uso normal.
+    profiles: ["vision"]
+    build:
+      context: .
+      dockerfile: Dockerfile.vision
+    container_name: gatalogo-vision-worker
+    restart: unless-stopped
+    env_file: .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      # Código montado no ambiente local: ajustes do worker e benchmark não
+      # exigem reconstruir a imagem grande de PyTorch/SAM 2.
+      - ./app:/service/app:ro
+      - ./scripts:/service/scripts:ro
+      - ./storage:/service/storage
+      - ./.model-cache:/service/.model-cache
+      - ./data:/service/data:ro
+      # Dataset do benchmark, somente leitura. Nao e usado pelo worker normal.
+      - ./benchmark:/service/benchmark:ro
+      - ./outputs:/service/outputs
+
+volumes:
+  gatalogo_postgres_data:
