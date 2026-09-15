@@ -25,7 +25,9 @@ SEXUAL_CONTENT, GRAPHIC_CONTENT ou UNSAFE_CONTENT. Em rejeições, deixe
 coat_type, confidence e pattern_map nulos e color_assignments vazio.
 
 Classifique coat_type como Sólido, Bicolor, Tricolor, Rajado, Tuxedo,
-Escaminha, Colorpoint ou Outro. pattern_map deve conter base_color, pattern,
+Escaminha, Colorpoint ou Outro. Classifique hair_type como Curto, Médio,
+Longo ou Sem pelo (avaliando o comprimento dos pelos nas orelhas, pescoço,
+corpo e cauda). pattern_map deve conter base_color, pattern, hair_type,
 accent_colors e somente regiões claramente visíveis. Regiões UNKNOWN devem
 ficar sem dados; não invente detalhes. Inclua no máximo quatro regiões e só
 marcas inequívocas. Não identifique raça, sexo, idade, saúde ou identidade.

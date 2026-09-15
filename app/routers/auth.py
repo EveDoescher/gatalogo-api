@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import UTC, datetime, timedelta
 import secrets
 import hmac
+import jwt
 from pydantic import BaseModel, EmailStr, Field
 
 from fastapi import APIRouter, Depends, Header, HTTPException, status
@@ -16,7 +17,9 @@ from app.database import get_database_session
 from app.persistence_models import AuthIdentity, EmailOtp, User, UserSession
 from app.schemas import (
     AccountResponse,
+    AppleLoginRequest,
     AuthTokens,
+    DeactivateRequest,
     GoogleLoginRequest,
     LoginRequest,
     PasswordResetConfirmRequest,
@@ -196,6 +199,41 @@ async def google_login(payload: GoogleLoginRequest, session: AsyncSession = Depe
     return tokens
 
 
+@router.post("/apple", response_model=AuthTokens)
+async def apple_login(payload: AppleLoginRequest, session: AsyncSession = Depends(get_database_session)) -> dict[str, object]:
+    try:
+        claims = jwt.decode(payload.id_token, options={"verify_signature": False})
+        iss = claims.get("iss", "")
+        if "appleid.apple.com" not in iss:
+            raise ValueError("Invalid issuer")
+        subject = str(payload.user_identifier or claims.get("sub"))
+        email_claim = claims.get("email") or payload.email
+        if not email_claim:
+            email = f"apple_{subject[:12]}@privaterelay.appleid.com"
+        else:
+            email = normalize_email(str(email_claim))
+    except Exception as error:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token Apple inválido.") from error
+
+    identity = (await session.execute(select(AuthIdentity).where(AuthIdentity.provider == "apple", AuthIdentity.subject == subject))).scalar_one_or_none()
+    user = await session.get(User, identity.user_id) if identity else None
+    if user is None:
+        user = (await session.execute(select(User).where(User.email == email))).scalar_one_or_none()
+        if user is None:
+            user = User(email=email, status="active")
+            session.add(user)
+            await session.flush()
+        session.add(AuthIdentity(user_id=user.id, provider="apple", subject=subject))
+    if user.status == "deactivated":
+        user.status = "active"
+        user.deactivated_at = None
+    if user.status != "active":
+        user.status = "active"
+    tokens = await issue_tokens(session, user=user, device_id=payload.device_id)
+    await session.commit()
+    return tokens
+
+
 @router.post("/refresh", response_model=AuthTokens)
 async def refresh(payload: RefreshRequest, session: AsyncSession = Depends(get_database_session)) -> dict[str, object]:
     result = await session.execute(
@@ -254,6 +292,33 @@ async def confirm_password_reset(payload: PasswordResetConfirmRequest, session: 
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Código inválido ou expirado.")
     user.password_hash = password_hash.hash(payload.password)
     await session.execute(update(UserSession).where(UserSession.user_id == user.id, UserSession.revoked_at.is_(None)).values(revoked_at=utc_now()))
+    await session.commit()
+
+
+@router.post("/deactivate/request", status_code=status.HTTP_202_ACCEPTED)
+async def request_deactivate(
+    user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_database_session),
+) -> dict[str, str]:
+    await create_otp(session, email=user.email, purpose="deactivate_account", user_id=user.id)
+    await session.commit()
+    return {"message": "Enviamos um código de confirmação para seu e-mail."}
+
+
+@router.post("/deactivate/confirm", status_code=status.HTTP_204_NO_CONTENT)
+async def confirm_deactivate(
+    payload: DeactivateRequest,
+    user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_database_session),
+) -> None:
+    await consume_otp(session, email=user.email, purpose="deactivate_account", code=payload.code)
+    user.status = "deactivated"
+    user.deactivated_at = utc_now()
+    await session.execute(
+        update(UserSession)
+        .where(UserSession.user_id == user.id, UserSession.revoked_at.is_(None))
+        .values(revoked_at=utc_now())
+    )
     await session.commit()
 
 

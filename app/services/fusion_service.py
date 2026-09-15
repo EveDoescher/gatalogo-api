@@ -55,9 +55,15 @@ class FusionService:
         )
         primary_color = max(colors, key=lambda color: color.percentage).name
 
+        hair_type = (
+            semantic.hair_type
+            or (semantic.pattern_map.hair_type if semantic.pattern_map else "Curto")
+        )
+
         return CatAnalysisResponse(
             cat_id=cat_id,
             coat_type=semantic.coat_type,
+            hair_type=hair_type,
             primary_color=primary_color,
             colors=colors,
             confidence=semantic.confidence,

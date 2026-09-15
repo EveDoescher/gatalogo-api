@@ -29,6 +29,17 @@ class GoogleLoginRequest(BaseModel):
     device_id: str | None = Field(default=None, max_length=128)
 
 
+class AppleLoginRequest(BaseModel):
+    id_token: str = Field(min_length=20, max_length=8192)
+    device_id: str | None = Field(default=None, max_length=128)
+    user_identifier: str | None = Field(default=None, max_length=256)
+    email: str | None = Field(default=None, max_length=256)
+
+
+class DeactivateRequest(BaseModel):
+    code: str = Field(pattern=r"^\d{6}$")
+
+
 class RefreshRequest(BaseModel):
     refresh_token: str = Field(min_length=32, max_length=1024)
     device_id: str | None = Field(default=None, max_length=128)
