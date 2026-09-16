@@ -175,17 +175,128 @@ class CatPostCreate(BaseModel):
     note: str = ""
     location_name: str | None = None
     photo_base64: str | None = None
+    photo_url: str | None = None
+    is_public: bool = True
 
 
 class CommentCreate(BaseModel):
     text: str
 
 
+OFFICIAL_USER_ID = UUID("00000000-0000-0000-0000-000000000000")
+
+
+async def _ensure_official_tips(session: AsyncSession) -> None:
+    oficial_user = await session.get(User, OFFICIAL_USER_ID)
+    if not oficial_user:
+        oficial_user = User(
+            id=OFFICIAL_USER_ID,
+            email="oficial@gatalogo.app",
+            username="gatalogo_oficial",
+            password_hash=None,
+            status="active",
+        )
+        session.add(oficial_user)
+        await session.flush()
+
+    existing = (
+        await session.execute(
+            select(FeedItem.id).where(FeedItem.user_id == OFFICIAL_USER_ID)
+        )
+    ).scalars().all()
+    if not existing:
+        tip1 = FeedItem(
+            id=UUID("00000000-0000-0000-0000-000000000001"),
+            user_id=OFFICIAL_USER_ID,
+            type="tip",
+            payload={
+                "title": "Boas-vindas ao Gatálogo!",
+                "note": "Você agora faz parte da rede de proteção felina! Fotografe qualquer gato na rua ou em casa para descobrir pelagem, padrão e registrar em sua coleção.",
+                "tip_type": "welcome",
+                "cat_name": "Primeiros Passos",
+                "action_text": "Fotografar Primeiro Gato",
+                "action_route": "camera",
+                "likes": [],
+                "likes_count": 0,
+                "has_liked": False,
+                "comments": [],
+            },
+        )
+        tip2 = FeedItem(
+            id=UUID("00000000-0000-0000-0000-000000000002"),
+            user_id=OFFICIAL_USER_ID,
+            type="tip",
+            payload={
+                "title": "Dica de IA: Enquadramento Preciso",
+                "note": "Para obter a maior precisão no reconhecimento facial e de pelagem do gato, procure boa iluminação e capture o corpo inteiro ou o rosto de frente.",
+                "tip_type": "camera_tip",
+                "cat_name": "Dica de Fotografia",
+                "action_text": "Ver Minha Biblioteca",
+                "action_route": "library",
+                "likes": [],
+                "likes_count": 0,
+                "has_liked": False,
+                "comments": [],
+            },
+        )
+        tip3 = FeedItem(
+            id=UUID("00000000-0000-0000-0000-000000000003"),
+            user_id=OFFICIAL_USER_ID,
+            type="tip",
+            payload={
+                "title": "Rede Comunitária de Resgate",
+                "note": "Se um gato for dado como perdido no seu bairro, um alerta será emitido no mapa. Caso você aviste o felino, envie uma foto e a localização exata pelo chat de resgate!",
+                "tip_type": "rescue_tip",
+                "cat_name": "Alerta e Proteção",
+                "action_text": "Explorar Mapa",
+                "action_route": "map",
+                "likes": [],
+                "likes_count": 0,
+                "has_liked": False,
+                "comments": [],
+            },
+        )
+        session.add_all([tip1, tip2, tip3])
+        await session.flush()
+
+
 @router.get("/feed", response_model=list[FeedItemResponse])
-async def feed(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> list[FeedItemResponse]:
-    ids = await _friend_ids(session, user.id)
-    ids.add(user.id)
-    items = (await session.execute(select(FeedItem, User.username).join(User, User.id == FeedItem.user_id).where(FeedItem.user_id.in_(ids)).order_by(FeedItem.created_at.desc()).limit(100))).all()
+async def feed(
+    limit: int = Query(default=20, ge=1, le=100),
+    cursor: datetime | None = Query(default=None),
+    mode: str = Query(default="all"),
+    user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_database_session),
+) -> list[FeedItemResponse]:
+    await _ensure_official_tips(session)
+
+    query = select(FeedItem, User.username).join(User, User.id == FeedItem.user_id)
+
+    if mode == "friends":
+        friend_ids = await _friend_ids(session, user.id)
+        friend_ids.add(user.id)
+        friend_ids.add(OFFICIAL_USER_ID)
+        query = query.where(FeedItem.user_id.in_(friend_ids))
+    else:
+        friend_ids = await _friend_ids(session, user.id)
+        friend_ids.add(user.id)
+        friend_ids.add(OFFICIAL_USER_ID)
+        query = query.where(
+            or_(
+                FeedItem.user_id.in_(friend_ids),
+                FeedItem.type.in_(["cat_post", "achievement", "tip"]),
+            )
+        )
+
+    if cursor is not None:
+        query = query.where(FeedItem.created_at < cursor)
+
+    items = (
+        await session.execute(
+            query.order_by(FeedItem.created_at.desc()).limit(limit)
+        )
+    ).all()
+
     result = []
     for item, username in items:
         if not username:
@@ -195,22 +306,89 @@ async def feed(user: User = Depends(current_user), session: AsyncSession = Depen
         p["likes_count"] = len(likes)
         p["has_liked"] = str(user.id) in likes
         p["comments"] = list(p.get("comments", []))
-        result.append(FeedItemResponse(id=item.id, username=username, type=item.type, payload=p, created_at=item.created_at))
+        result.append(
+            FeedItemResponse(
+                id=item.id,
+                username=username,
+                type=item.type,
+                payload=p,
+                created_at=item.created_at,
+            )
+        )
     return result
 
 
+@router.post("/posts/photo")
+async def upload_post_photo(
+    file: UploadFile = File(...),
+    user: User = Depends(current_user),
+) -> dict:
+    data = await file.read()
+    if not data:
+        raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY, "Arquivo vazio.")
+    if len(data) > 15 * 1024 * 1024:
+        raise HTTPException(status.HTTP_413_REQUEST_ENTITY_TOO_LARGE, "Arquivo muito grande (máximo 15MB).")
+
+    suffix = Path(file.filename or "photo.jpg").suffix or ".jpg"
+    photo_id = uuid4()
+    key, _ = photo_storage.save_post_photo(
+        post_id=photo_id,
+        data=data,
+        suffix=suffix,
+    )
+    photo_url = f"/social/posts/photo/{photo_id}{suffix}"
+    return {"photo_url": photo_url, "photo_key": key}
+
+
+@router.get("/posts/photo/{filename}")
+async def get_post_photo(
+    filename: str,
+) -> Response:
+    folder = photo_storage.absolute_path("posts")
+    if not folder.exists():
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Foto não encontrada.")
+    matches = list(folder.glob(f"{Path(filename).stem}*"))
+    if not matches:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Foto não encontrada.")
+    photo_file = matches[0]
+    return FileResponse(
+        photo_file,
+        media_type="image/jpeg",
+        headers={"Cache-Control": "public, max-age=604800, immutable"},
+    )
+
+
 @router.post("/posts", response_model=FeedItemResponse, status_code=status.HTTP_201_CREATED)
-async def create_post(payload: CatPostCreate, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> FeedItemResponse:
+async def create_post(
+    payload: CatPostCreate,
+    user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_database_session),
+) -> FeedItemResponse:
     if not user.username:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Escolha um nome de usuário para postar no feed.")
     cat_name = payload.cat_name.strip()
     if not cat_name:
         raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_CONTENT, detail="O nome do gato é obrigatório.")
+
+    photo_url = payload.photo_url
+    if not photo_url and payload.photo_base64:
+        try:
+            import base64
+            raw_bytes = base64.b64decode(payload.photo_base64)
+            if raw_bytes:
+                pid = uuid4()
+                photo_storage.save_post_photo(post_id=pid, data=raw_bytes, suffix=".jpg")
+                photo_url = f"/social/posts/photo/{pid}.jpg"
+        except Exception:
+            pass
+
     item_payload = {
         "cat_name": cat_name,
         "note": payload.note.strip(),
         "location_name": payload.location_name,
-        "photo_base64": payload.photo_base64,
+        "photo_url": photo_url,
+        "photo_base64": payload.photo_base64 if not photo_url else None,
+        "is_public": payload.is_public,
         "likes": [],
         "likes_count": 0,
         "has_liked": False,
