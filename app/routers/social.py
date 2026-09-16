@@ -23,9 +23,15 @@ from app.persistence_models import (
     FriendInvite,
     Friendship,
     ProductState,
+    RemoteCat,
     User,
 )
 from app.routers.auth import current_user
+from app.routers.product import (
+    ACHIEVEMENTS,
+    ACHIEVEMENT_XP,
+    calculate_level,
+)
 from app.schemas import (
     ConversationSummaryResponse,
     ConversationUserResponse,
@@ -33,11 +39,15 @@ from app.schemas import (
     FeedItemResponse,
     FriendInviteCreate,
     FriendInviteResponse,
+    LeaderboardEntry,
     MessageCreate,
     MessageEditRequest,
     MessageReactionRequest,
     MessageResponse,
+    PublicProfileResponse,
     PublicUserResponse,
+    UserSearchResult,
+    UserSuggestion,
 )
 from app.services.realtime_events import (
     publish_committed_events,
@@ -50,15 +60,67 @@ from app.services.websocket_manager import ws_manager
 router = APIRouter(prefix="/social", tags=["social"])
 
 
-def _public(user: User) -> PublicUserResponse:
+def _user_avatar_url(user_id: UUID, preferences: dict | None) -> str | None:
+    avatar_url = (preferences or {}).get("avatar_url") if preferences else None
+    if not avatar_url:
+        return None
+    try:
+        path = photo_storage.absolute_path(photo_storage.profile_key_for(user_id, ".jpg"))
+        if path.parent.is_dir() and any(path.parent.glob("avatar*")):
+            return avatar_url
+    except Exception:
+        pass
+    return None
+
+
+def _public(user: User, preferences: dict | None = None) -> PublicUserResponse:
     if not user.username:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Escolha um nome de usuário para usar recursos sociais.")
-    return PublicUserResponse(id=user.id, username=user.username)
+    avatar_url = _user_avatar_url(user.id, preferences) if preferences is not None else None
+    bio = (preferences or {}).get("bio") if preferences is not None else None
+    return PublicUserResponse(id=user.id, username=user.username, avatar_url=avatar_url, bio=bio)
 
 
 async def _friend_ids(session: AsyncSession, user_id: UUID) -> set[UUID]:
     rows = await session.execute(select(Friendship.friend_id).where(Friendship.user_id == user_id))
     return set(rows.scalars().all())
+
+
+async def _mutual_friends_count(session: AsyncSession, user_id: UUID, other_id: UUID) -> int:
+    my_friends = await _friend_ids(session, user_id)
+    their_friends = await _friend_ids(session, other_id)
+    return len(my_friends.intersection(their_friends))
+
+
+async def _get_friendship_status(session: AsyncSession, current_user_id: UUID, target_id: UUID) -> str:
+    if current_user_id == target_id:
+        return "self"
+    friends = await _friend_ids(session, current_user_id)
+    if target_id in friends:
+        return "friends"
+    pending_sent = (
+        await session.execute(
+            select(FriendInvite.id).where(
+                FriendInvite.sender_id == current_user_id,
+                FriendInvite.recipient_id == target_id,
+                FriendInvite.status == "pending",
+            )
+        )
+    ).scalar_one_or_none()
+    if pending_sent:
+        return "pending_sent"
+    pending_recv = (
+        await session.execute(
+            select(FriendInvite.id).where(
+                FriendInvite.sender_id == target_id,
+                FriendInvite.recipient_id == current_user_id,
+                FriendInvite.status == "pending",
+            )
+        )
+    ).scalar_one_or_none()
+    if pending_recv:
+        return "pending_received"
+    return "none"
 
 
 async def _member_or_403(session: AsyncSession, conversation_id: UUID, user_id: UUID) -> Conversation:
@@ -75,12 +137,282 @@ async def _member_or_403(session: AsyncSession, conversation_id: UUID, user_id: 
     return conv
 
 
+@router.get("/users/search", response_model=list[UserSearchResult])
+async def search_users(
+    q: str = Query(default="", max_length=50),
+    user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_database_session),
+) -> list[UserSearchResult]:
+    query_clean = q.strip().lower().replace("@", "")
+    if not query_clean:
+        return []
+
+    users = (
+        await session.execute(
+            select(User)
+            .where(
+                User.username.ilike(f"%{query_clean}%"),
+                User.status == "active",
+                User.id != user.id,
+            )
+            .limit(20)
+        )
+    ).scalars().all()
+
+    results: list[UserSearchResult] = []
+    my_friends = await _friend_ids(session, user.id)
+
+    for u in users:
+        if not u.username:
+            continue
+        pstate = await session.get(ProductState, u.id)
+        prefs = pstate.preferences if pstate else {}
+        their_friends = await _friend_ids(session, u.id)
+        mutual_count = len(my_friends.intersection(their_friends))
+        f_status = await _get_friendship_status(session, user.id, u.id)
+        results.append(
+            UserSearchResult(
+                id=u.id,
+                username=u.username,
+                avatar_url=_user_avatar_url(u.id, prefs),
+                bio=prefs.get("bio", ""),
+                mutual_friends_count=mutual_count,
+                friendship_status=f_status,
+            )
+        )
+    return results
+
+
+@router.get("/suggestions", response_model=list[UserSuggestion])
+async def user_suggestions(
+    nearby: bool = False,
+    user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_database_session),
+) -> list[UserSuggestion]:
+    my_friends = await _friend_ids(session, user.id)
+    excluded_ids = set(my_friends)
+    excluded_ids.add(user.id)
+    excluded_ids.add(OFFICIAL_USER_ID)
+
+    invites = (
+        await session.execute(
+            select(FriendInvite).where(
+                or_(FriendInvite.sender_id == user.id, FriendInvite.recipient_id == user.id),
+                FriendInvite.status == "pending",
+            )
+        )
+    ).scalars().all()
+    for inv in invites:
+        excluded_ids.add(inv.sender_id)
+        excluded_ids.add(inv.recipient_id)
+
+    fof_counts: dict[UUID, int] = {}
+    for f_id in my_friends:
+        f_friends = await _friend_ids(session, f_id)
+        for fof in f_friends:
+            if fof not in excluded_ids:
+                fof_counts[fof] = fof_counts.get(fof, 0) + 1
+
+    suggestions: list[UserSuggestion] = []
+    sorted_fof = sorted(fof_counts.items(), key=lambda x: x[1], reverse=True)[:10]
+    for target_id, mutual_count in sorted_fof:
+        target_user = await session.get(User, target_id)
+        if target_user and target_user.status == "active" and target_user.username:
+            pstate = await session.get(ProductState, target_id)
+            prefs = pstate.preferences if pstate else {}
+            suggestions.append(
+                UserSuggestion(
+                    id=target_user.id,
+                    username=target_user.username,
+                    avatar_url=_user_avatar_url(target_user.id, prefs),
+                    bio=prefs.get("bio", ""),
+                    mutual_friends_count=mutual_count,
+                    reason=f"{mutual_count} amigo(s) em comum",
+                )
+            )
+            excluded_ids.add(target_id)
+
+    remaining_slots = 10 - len(suggestions)
+    if remaining_slots > 0:
+        candidates = (
+            await session.execute(
+                select(User)
+                .where(
+                    User.status == "active",
+                    User.id.not_in(excluded_ids),
+                    User.username.is_not(None),
+                )
+                .order_by(User.last_seen_at.desc().nulls_last(), User.created_at.desc())
+                .limit(remaining_slots)
+            )
+        ).scalars().all()
+
+        for cand in candidates:
+            if cand.username:
+                pstate = await session.get(ProductState, cand.id)
+                prefs = pstate.preferences if pstate else {}
+                their_friends = await _friend_ids(session, cand.id)
+                m_count = len(my_friends.intersection(their_friends))
+                reason = "Explorador na sua região" if nearby else "Explorador ativo da comunidade"
+                suggestions.append(
+                    UserSuggestion(
+                        id=cand.id,
+                        username=cand.username,
+                        avatar_url=_user_avatar_url(cand.id, prefs),
+                        bio=prefs.get("bio", ""),
+                        mutual_friends_count=m_count,
+                        reason=reason,
+                    )
+                )
+
+    return suggestions
+
+
+@router.get("/profiles/{username}", response_model=PublicProfileResponse)
+async def get_public_profile(
+    username: str,
+    user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_database_session),
+) -> PublicProfileResponse:
+    target_user = (
+        await session.execute(
+            select(User).where(User.username == username.lower(), User.status == "active")
+        )
+    ).scalar_one_or_none()
+    if target_user is None or not target_user.username:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Perfil não encontrado.")
+
+    pstate = await session.get(ProductState, target_user.id)
+    prefs = dict(pstate.preferences or {}) if pstate else {}
+    gamif = prefs.get("gamification", {})
+    achievements_dict = dict(pstate.achievements or {}) if pstate else {}
+
+    xp = gamif.get("xp", 0)
+    level, level_title, _, _, _ = calculate_level(xp)
+    streak = gamif.get("streak", 0)
+    longest_streak = gamif.get("longest_streak", streak)
+
+    cats = (
+        await session.execute(
+            select(RemoteCat).where(
+                RemoteCat.user_id == target_user.id,
+                RemoteCat.deleted_at.is_(None),
+            ).order_by(RemoteCat.created_at.desc())
+        )
+    ).scalars().all()
+    cats_count = len(cats)
+
+    public_cats = []
+    if prefs.get("public_gallery", True):
+        for c in cats[:20]:
+            p = c.payload or {}
+            public_cats.append({
+                "id": str(c.id),
+                "name": p.get("name") or "Gato sem nome",
+                "primary_color": p.get("primary_color") or "indefinida",
+                "coat_type": p.get("coat_type") or "curto",
+                "captured_at": p.get("captured_at"),
+                "is_owned": p.get("is_owned", False),
+                "photo_url": f"/app/cats/{c.id}/photo" if c.id else None,
+            })
+
+    unlocked_achievements = []
+    for ach_id, unlocked_at in achievements_dict.items():
+        if ach_id in ACHIEVEMENTS:
+            title, desc, _ = ACHIEVEMENTS[ach_id]
+            unlocked_achievements.append({
+                "id": ach_id,
+                "title": title,
+                "description": desc,
+                "unlocked_at": unlocked_at,
+                "xp_reward": ACHIEVEMENT_XP.get(ach_id, 50),
+            })
+
+    f_status = await _get_friendship_status(session, user.id, target_user.id)
+    mutual_count = await _mutual_friends_count(session, user.id, target_user.id) if user.id != target_user.id else 0
+
+    return PublicProfileResponse(
+        id=target_user.id,
+        username=target_user.username,
+        bio=prefs.get("bio", ""),
+        avatar_url=_user_avatar_url(target_user.id, prefs),
+        level=level,
+        level_title=level_title,
+        xp=xp,
+        streak=streak,
+        longest_streak=longest_streak,
+        cats_count=cats_count,
+        achievements=unlocked_achievements,
+        friendship_status=f_status,
+        mutual_friends_count=mutual_count,
+        public_cats=public_cats,
+    )
+
+
+@router.get("/leaderboard/weekly", response_model=list[LeaderboardEntry])
+async def weekly_leaderboard(
+    user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_database_session),
+) -> list[LeaderboardEntry]:
+    friend_ids = await _friend_ids(session, user.id)
+    all_user_ids = list(friend_ids)
+    all_user_ids.append(user.id)
+
+    users = (
+        await session.execute(
+            select(User).where(User.id.in_(all_user_ids), User.status == "active")
+        )
+    ).scalars().all()
+
+    entries = []
+    for u in users:
+        if not u.username:
+            continue
+        pstate = await session.get(ProductState, u.id)
+        prefs = pstate.preferences if pstate else {}
+        gamif = prefs.get("gamification", {})
+        xp = gamif.get("xp", 0)
+        level, level_title, _, _, _ = calculate_level(xp)
+        streak = gamif.get("streak", 0)
+
+        entries.append({
+            "user_id": u.id,
+            "username": u.username,
+            "avatar_url": _user_avatar_url(u.id, prefs),
+            "xp": xp,
+            "level": level,
+            "level_title": level_title,
+            "streak": streak,
+            "is_self": (u.id == user.id),
+        })
+
+    entries.sort(key=lambda x: (x["xp"], x["streak"]), reverse=True)
+
+    result = []
+    for idx, e in enumerate(entries, start=1):
+        result.append(
+            LeaderboardEntry(
+                rank=idx,
+                user_id=e["user_id"],
+                username=e["username"],
+                avatar_url=e["avatar_url"],
+                xp=e["xp"],
+                level=e["level"],
+                level_title=e["level_title"],
+                streak=e["streak"],
+                is_self=e["is_self"],
+            )
+        )
+    return result
+
+
 @router.get("/users/{username}", response_model=PublicUserResponse)
 async def find_user(username: str, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> PublicUserResponse:
     target = (await session.execute(select(User).where(User.username == username.lower(), User.status == "active"))).scalar_one_or_none()
     if target is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Usuário não encontrado.")
-    return _public(target)
+    pstate = await session.get(ProductState, target.id)
+    return _public(target, pstate.preferences if pstate else None)
 
 
 @router.post("/invites", response_model=FriendInviteResponse, status_code=status.HTTP_201_CREATED)
@@ -127,8 +459,38 @@ async def list_invites(user: User = Depends(current_user), session: AsyncSession
         sender = await session.get(User, invite.sender_id)
         recipient = await session.get(User, invite.recipient_id)
         if sender and recipient and sender.username and recipient.username:
-            result.append(FriendInviteResponse(id=invite.id, sender=_public(sender), recipient=_public(recipient), status=invite.status, created_at=invite.created_at))
+            s_state = await session.get(ProductState, sender.id)
+            r_state = await session.get(ProductState, recipient.id)
+            result.append(FriendInviteResponse(
+                id=invite.id,
+                sender=_public(sender, s_state.preferences if s_state else None),
+                recipient=_public(recipient, r_state.preferences if r_state else None),
+                status=invite.status,
+                created_at=invite.created_at,
+            ))
     return result
+
+
+@router.delete("/invites/{invite_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def cancel_invite(
+    invite_id: UUID,
+    user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_database_session),
+) -> None:
+    invite = (
+        await session.execute(
+            select(FriendInvite).where(
+                FriendInvite.id == invite_id,
+                FriendInvite.sender_id == user.id,
+            )
+        )
+    ).scalar_one_or_none()
+    if invite is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Convite não encontrado.")
+    if invite.status != "pending":
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Apenas convites pendentes podem ser cancelados.")
+    await session.delete(invite)
+    await session.commit()
 
 
 @router.post("/invites/{invite_id}/{decision}", response_model=FriendInviteResponse)
@@ -153,13 +515,26 @@ async def respond_invite(invite_id: UUID, decision: str, user: User = Depends(cu
     await session.commit()
     await publish_committed_events(session)
     sender = await session.get(User, invite.sender_id)
-    return FriendInviteResponse(id=invite.id, sender=_public(sender), recipient=_public(user), status=invite.status, created_at=invite.created_at)
+    s_state = await session.get(ProductState, sender.id) if sender else None
+    u_state = await session.get(ProductState, user.id)
+    return FriendInviteResponse(
+        id=invite.id,
+        sender=_public(sender, s_state.preferences if s_state else None) if sender else _public(user),
+        recipient=_public(user, u_state.preferences if u_state else None),
+        status=invite.status,
+        created_at=invite.created_at,
+    )
 
 
 @router.get("/friends", response_model=list[PublicUserResponse])
 async def list_friends(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> list[PublicUserResponse]:
     friends = (await session.execute(select(User).join(Friendship, Friendship.friend_id == User.id).where(Friendship.user_id == user.id).order_by(User.username))).scalars().all()
-    return [_public(friend) for friend in friends if friend.username]
+    res = []
+    for friend in friends:
+        if friend.username:
+            f_state = await session.get(ProductState, friend.id)
+            res.append(_public(friend, f_state.preferences if f_state else None))
+    return res
 
 
 @router.delete("/friends/{friend_id}", status_code=status.HTTP_204_NO_CONTENT)
@@ -302,10 +677,14 @@ async def feed(
         if not username:
             continue
         p = dict(item.payload or {})
+        if item.type == "cat_post" and not p.get("is_public", True) and item.user_id not in friend_ids:
+            continue
         likes = list(p.get("likes", []))
         p["likes_count"] = len(likes)
         p["has_liked"] = str(user.id) in likes
         p["comments"] = list(p.get("comments", []))
+        pstate = await session.get(ProductState, item.user_id)
+        p["author_avatar_url"] = _user_avatar_url(item.user_id, pstate.preferences if pstate else None)
         result.append(
             FeedItemResponse(
                 id=item.id,
@@ -533,19 +912,6 @@ def _build_message_response(
         is_deleted=row.is_deleted,
         created_at=row.created_at,
     )
-
-
-def _user_avatar_url(user_id: UUID, preferences: dict | None) -> str | None:
-    avatar_url = (preferences or {}).get("avatar_url") if preferences else None
-    if not avatar_url:
-        return None
-    try:
-        path = photo_storage.absolute_path(photo_storage.profile_key_for(user_id, ".jpg"))
-        if path.parent.is_dir() and any(path.parent.glob("avatar*")):
-            return avatar_url
-    except Exception:
-        pass
-    return None
 
 
 @router.get("/conversations", response_model=list[ConversationSummaryResponse])

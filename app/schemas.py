@@ -79,6 +79,8 @@ class UsernameRequest(BaseModel):
 class PublicUserResponse(BaseModel):
     id: UUID
     username: str
+    avatar_url: str | None = None
+    bio: str | None = None
 
 
 class MissingReportCreate(BaseModel):
@@ -259,3 +261,50 @@ class AvatarResponse(BaseModel):
     coat_map: dict[str, Any] | None = None
     error_message: str | None = None
     updated_at: datetime
+
+
+class UserSearchResult(BaseModel):
+    id: UUID
+    username: str
+    avatar_url: str | None = None
+    bio: str | None = None
+    mutual_friends_count: int = 0
+    friendship_status: str = "none"
+
+
+class UserSuggestion(BaseModel):
+    id: UUID
+    username: str
+    avatar_url: str | None = None
+    bio: str | None = None
+    mutual_friends_count: int = 0
+    reason: str = "Explorador ativo"
+
+
+class PublicProfileResponse(BaseModel):
+    id: UUID
+    username: str
+    bio: str = ""
+    avatar_url: str | None = None
+    level: int = 1
+    level_title: str = "Curioso"
+    xp: int = 0
+    streak: int = 0
+    longest_streak: int = 0
+    cats_count: int = 0
+    achievements: list[dict[str, Any]] = Field(default_factory=list)
+    friendship_status: str = "none"
+    mutual_friends_count: int = 0
+    public_cats: list[dict[str, Any]] = Field(default_factory=list)
+
+
+class LeaderboardEntry(BaseModel):
+    rank: int
+    user_id: UUID
+    username: str
+    avatar_url: str | None = None
+    xp: int = 0
+    level: int = 1
+    level_title: str = "Curioso"
+    streak: int = 0
+    is_self: bool = False
