@@ -119,12 +119,12 @@ async def test_record_gamification_action_progression():
     req = GamificationActionRequest(action="photo")
     res = await record_gamification_action(req, user=user, session=session)
 
-    assert res["earned_xp"] == 50
+    # 50 base XP + 60 XP (daily_photo) + 50 XP (daily_care) = 160 earned_xp
+    assert res["earned_xp"] == 160
     assert res["streak"] == 1
     assert res["level"] == 2  # 160 XP reaches Explorador (>= 100 XP)
     assert res["level_title"] == "Explorador"
     assert res["multiplier"] == 1.0
-    # 50 base XP + 60 XP (daily_photo) + 50 XP (daily_care) = 160 XP
     assert res["new_xp"] == 160
 
     # Verify daily photo mission advanced
@@ -199,4 +199,34 @@ async def test_journey_with_remotecat():
     assert len(res) == len(ACHIEVEMENTS)
     black_cat_ach = next(a for a in res if a["id"] == "black_cat")
     assert black_cat_ach["progress"] == 1
+    assert black_cat_ach["unlocked_at"] is not None
+    assert black_cat_ach["xp_reward"] > 0
+    # Verifies that unlocking achievements awarded XP in gamification state
+    assert state.preferences["gamification"]["xp"] >= black_cat_ach["xp_reward"]
+
+
+@pytest.mark.asyncio
+async def test_care_action_advances_daily_care():
+    user = User(id=uuid4(), username="dana")
+    state = ProductState(user_id=user.id, preferences={}, achievements={})
+
+    session = AsyncMock()
+    session.get = AsyncMock(return_value=state)
+    session.refresh = AsyncMock()
+    session.flush = AsyncMock()
+    session.commit = AsyncMock()
+
+    req = GamificationActionRequest(action="care")
+    res = await record_gamification_action(req, user=user, session=session)
+
+    # 25 base XP + 50 XP (daily_care mission) = 75 earned_xp
+    assert res["earned_xp"] == 75
+    assert "xp" in res
+    assert "new_xp" in res
+    assert res["xp"] == res["new_xp"]
+
+    care_mission = next(m for m in res["daily_missions"] if m["id"] == "daily_care")
+    assert care_mission["progress"] == 1
+    assert care_mission["completed"] is True
+
 

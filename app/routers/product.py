@@ -10,6 +10,7 @@ from fastapi import APIRouter, Depends, File, HTTPException, Query, Response, Up
 from PIL import Image, ImageOps
 from pydantic import BaseModel, Field
 from sqlalchemy import select, func
+from sqlalchemy.orm.attributes import flag_modified
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_database_session
@@ -347,6 +348,27 @@ ACHIEVEMENTS = {
     "owned_pet": ("Meu Companheiro", "Cadastre um gato sob seus cuidados como pet próprio.", 1),
 }
 
+ACHIEVEMENT_XP: dict[str, int] = {
+    "legend_collector": 250,
+    "streak_30": 250,
+    "master_collector": 150,
+    "city_wanderer": 150,
+    "streak_7": 150,
+    "angles_master": 150,
+    "helper": 150,
+    "collector_10": 100,
+    "neighborhood_3": 100,
+    "night_owl": 100,
+    "early_bird": 100,
+    "streak_3": 100,
+    "angles": 100,
+    "portrait": 100,
+    "poster_share": 100,
+    "commentator": 100,
+    "calico": 100,
+    "siamese_pattern": 100,
+}
+
 LEVELS = [
     (1, "Curioso", 0, 100, "Início da jornada felina"),
     (2, "Explorador", 100, 300, "Desbloqueia novos filtros e modos"),
@@ -384,6 +406,7 @@ ACTION_XP = {
     "comment": 15,
     "like": 5,
     "share": 25,
+    "care": 25,
 }
 
 
@@ -423,9 +446,11 @@ def _get_or_init_gamification(state: ProductState) -> dict:
                 "completed": False,
             },
         }
-        prefs["gamification"] = gamif
+        prefs["gamification"] = dict(gamif)
         state.preferences = prefs
+        flag_modified(state, "preferences")
     else:
+        changed = False
         if gamif.get("missions_date") != today_str:
             gamif["missions_date"] = today_str
             gamif["daily_missions"] = [
@@ -433,6 +458,7 @@ def _get_or_init_gamification(state: ProductState) -> dict:
                 {"id": "daily_social", "title": "Interagir em 2 publicações da comunidade", "target": 2, "progress": 0, "xp_reward": 40, "completed": False},
                 {"id": "daily_care", "title": "Verificar área de busca ou atualizar fotos", "target": 1, "progress": 0, "xp_reward": 50, "completed": False},
             ]
+            changed = True
         last_refill = gamif.get("last_freeze_refill")
         if last_refill:
             try:
@@ -440,8 +466,10 @@ def _get_or_init_gamification(state: ProductState) -> dict:
                 if (datetime.now(UTC).date() - refill_date).days >= 7:
                     gamif["freeze_shields"] = min(gamif.get("freeze_shields", 0) + 1, 2)
                     gamif["last_freeze_refill"] = today_str
+                    changed = True
             except Exception:
                 gamif["last_freeze_refill"] = today_str
+                changed = True
         current_week_str = f"{datetime.now(UTC).year}-W{datetime.now(UTC).isocalendar()[1]}"
         if gamif.get("weekly_mission", {}).get("week_str") != current_week_str:
             gamif["weekly_mission"] = {
@@ -453,8 +481,11 @@ def _get_or_init_gamification(state: ProductState) -> dict:
                 "completed": False,
                 "week_str": current_week_str,
             }
-        prefs["gamification"] = gamif
-        state.preferences = prefs
+            changed = True
+        if changed:
+            prefs["gamification"] = dict(gamif)
+            state.preferences = prefs
+            flag_modified(state, "preferences")
     return gamif
 
 
@@ -471,6 +502,7 @@ async def get_gamification(user: User = Depends(current_user), session: AsyncSes
     await session.commit()
     return {
         "xp": xp,
+        "new_xp": xp,
         "level": lvl,
         "level_title": title,
         "level_min_xp": min_xp,
@@ -544,17 +576,19 @@ async def record_gamification_action(
     for m in gamif.get("daily_missions", []):
         if not m.get("completed", False):
             advances = False
-            if m["id"] == "daily_photo" and payload.action == "photo":
+            if m["id"] == "daily_photo" and payload.action in ("photo",):
                 advances = True
             elif m["id"] == "daily_social" and payload.action in ("like", "comment", "post"):
                 advances = True
-            elif m["id"] == "daily_care" and payload.action in ("sighting", "photo", "share"):
+            elif m["id"] == "daily_care" and payload.action in ("sighting", "photo", "share", "care"):
                 advances = True
             if advances:
                 m["progress"] = min(m["progress"] + 1, m["target"])
                 if m["progress"] >= m["target"]:
                     m["completed"] = True
-                    new_xp += m.get("xp_reward", 0)
+                    reward_xp = m.get("xp_reward", 0)
+                    new_xp += reward_xp
+                    earned_xp += reward_xp
                     missions_completed_now.append(m["title"])
 
     wm = gamif.get("weekly_mission")
@@ -563,7 +597,9 @@ async def record_gamification_action(
             wm["progress"] = min(wm["progress"] + 1, wm["target"])
             if wm["progress"] >= wm["target"]:
                 wm["completed"] = True
-                new_xp += wm.get("xp_reward", 0)
+                reward_xp = wm.get("xp_reward", 0)
+                new_xp += reward_xp
+                earned_xp += reward_xp
                 missions_completed_now.append(wm["title"])
 
     bm = gamif.get("bonus_mission")
@@ -572,19 +608,25 @@ async def record_gamification_action(
             bm["progress"] = min(bm["progress"] + 1, bm["target"])
             if bm["progress"] >= bm["target"]:
                 bm["completed"] = True
-                new_xp += bm.get("xp_reward", 0)
+                reward_xp = bm.get("xp_reward", 0)
+                new_xp += reward_xp
+                earned_xp += reward_xp
                 missions_completed_now.append(bm["title"])
 
     gamif["xp"] = new_xp
     new_lvl, new_title, min_xp, target_xp, reward = calculate_level(new_xp)
     level_up = new_lvl > prev_lvl
 
-    state.preferences["gamification"] = gamif
+    prefs = dict(state.preferences or {})
+    prefs["gamification"] = dict(gamif)
+    state.preferences = prefs
+    flag_modified(state, "preferences")
     await session.commit()
 
     return {
         "earned_xp": earned_xp,
         "multiplier": multiplier,
+        "xp": new_xp,
         "new_xp": new_xp,
         "level": new_lvl,
         "level_title": new_title,
@@ -676,19 +718,31 @@ async def journey(user: User = Depends(current_user), session: AsyncSession = De
     }
 
     unlocked = dict(state.achievements)
+    achievements_unlocked_now = 0
     for key, (title, _, target) in ACHIEVEMENTS.items():
         val = progress.get(key, 0)
         if val >= target and key not in unlocked:
             unlocked[key] = datetime.now(UTC).isoformat()
+            ach_xp = ACHIEVEMENT_XP.get(key, 50)
+            gamif["xp"] = gamif.get("xp", 0) + ach_xp
+            achievements_unlocked_now += 1
             notification = AppNotification(
                 user_id=user.id,
                 type="achievement",
-                payload={"achievement_id": key, "title": title},
+                payload={"achievement_id": key, "title": title, "xp_reward": ach_xp},
             )
             session.add(notification)
             await session.flush()
             queue_notification(session, notification)
+
+    if achievements_unlocked_now > 0:
+        prefs = dict(state.preferences or {})
+        prefs["gamification"] = dict(gamif)
+        state.preferences = prefs
+        flag_modified(state, "preferences")
+
     state.achievements = unlocked
+    flag_modified(state, "achievements")
     await session.commit()
     await publish_committed_events(session)
     return [
@@ -699,6 +753,7 @@ async def journey(user: User = Depends(current_user), session: AsyncSession = De
             "target": target,
             "progress": min(progress.get(key, 0), target),
             "unlocked_at": unlocked.get(key),
+            "xp_reward": ACHIEVEMENT_XP.get(key, 50),
         }
         for key, (title, description, target) in ACHIEVEMENTS.items()
     ]
