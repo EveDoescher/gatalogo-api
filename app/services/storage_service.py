@@ -95,6 +95,21 @@ class PrivatePhotoStorage:
         destination.write_bytes(data)
         return key, content_hash
 
+    def chat_photo_key_for(self, conversation_id: UUID, message_id: UUID, suffix: str) -> str:
+        safe_suffix = suffix if suffix.startswith(".") and len(suffix) <= 12 else ".jpg"
+        return str(Path("conversations") / str(conversation_id) / f"{message_id}{safe_suffix}")
+
+    def save_chat_photo(
+        self, *, conversation_id: UUID, message_id: UUID, data: bytes, suffix: str
+    ) -> tuple[str, str]:
+        content_hash = hashlib.sha256(data).hexdigest()
+        base = Path(self.chat_photo_key_for(conversation_id, message_id, suffix))
+        key = base.with_name(f"{base.stem}-{content_hash}{base.suffix}").as_posix()
+        destination = self.absolute_path(key)
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes(data)
+        return key, content_hash
+
     def open(self, key: str) -> Path:
         path = self.absolute_path(key)
         if not path.is_file():

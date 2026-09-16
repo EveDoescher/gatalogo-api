@@ -18,8 +18,18 @@ class ConnectionManager:
     def __init__(self) -> None:
         self._connections: dict[UUID, set[WebSocket]] = {}
         self._notification_cursors: dict[UUID, datetime] = {}
+        self._last_seen: dict[UUID, datetime] = {}
         self._lock = asyncio.Lock()
         self._bridge_task: asyncio.Task[None] | None = None
+
+    def is_online(self, user_id: UUID) -> bool:
+        return bool(self._connections.get(user_id))
+
+    def get_last_seen(self, user_id: UUID) -> datetime | None:
+        return self._last_seen.get(user_id)
+
+    def set_last_seen(self, user_id: UUID, dt: datetime) -> None:
+        self._last_seen[user_id] = dt
 
     async def connect(self, user_id: UUID, websocket: WebSocket) -> None:
         await websocket.accept()
@@ -29,6 +39,7 @@ class ConnectionManager:
                 # Old notifications are loaded from the inbox. The bridge only
                 # wakes the UI for notifications committed after this session.
                 self._notification_cursors[user_id] = datetime.now(UTC)
+                self._last_seen.pop(user_id, None)
             self._connections[user_id].add(websocket)
         logger.info("WebSocket conectado para user %s (total: %d)", user_id, len(self._connections[user_id]))
 
@@ -39,6 +50,7 @@ class ConnectionManager:
                 if not self._connections[user_id]:
                     del self._connections[user_id]
                     self._notification_cursors.pop(user_id, None)
+                    self._last_seen[user_id] = datetime.now(UTC)
         logger.info("WebSocket desconectado para user %s", user_id)
 
     async def send_to_user(self, user_id: UUID, event: str, payload: dict) -> None:

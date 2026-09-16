@@ -150,14 +150,60 @@ class FeedItemResponse(BaseModel):
 
 
 class MessageCreate(BaseModel):
-    body: str = Field(min_length=1, max_length=2000)
+    body: str = Field(default="", max_length=4000)
+    type: str = "text"
+    media_url: str | None = None
+    location_lat: float | None = None
+    location_lng: float | None = None
+    location_title: str | None = None
+    cat_data: dict[str, Any] | None = None
+    reply_to_id: UUID | None = None
+
+
+class MessageReactionRequest(BaseModel):
+    emoji: str = Field(min_length=1, max_length=16)
+
+
+class MessageEditRequest(BaseModel):
+    body: str = Field(min_length=1, max_length=4000)
 
 
 class MessageResponse(BaseModel):
     id: UUID
+    conversation_id: UUID
     sender_id: UUID
     body: str
+    type: str = "text"
+    media_url: str | None = None
+    location_lat: float | None = None
+    location_lng: float | None = None
+    location_title: str | None = None
+    cat_data: dict[str, Any] | None = None
+    read_at: datetime | None = None
+    is_read: bool = False
+    reply_to_id: UUID | None = None
+    reply_to: dict[str, Any] | None = None
+    reactions: dict[str, Any] = Field(default_factory=dict)
+    is_edited: bool = False
+    is_deleted: bool = False
     created_at: datetime
+
+
+class ConversationUserResponse(BaseModel):
+    id: UUID
+    username: str
+    avatar_url: str | None = None
+    is_online: bool = False
+    last_seen_at: datetime | None = None
+
+
+class ConversationSummaryResponse(BaseModel):
+    id: UUID
+    other_user: ConversationUserResponse
+    last_message: MessageResponse | None = None
+    unread_count: int = 0
+    sighting_context: bool = False
+    updated_at: datetime
 
 
 class DeviceTokenRequest(BaseModel):
