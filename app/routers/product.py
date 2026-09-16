@@ -317,29 +317,372 @@ async def conversation_context(conversation_id: UUID, user: User = Depends(curre
 
 
 ACHIEVEMENTS = {
-    "first": ("Primeira descoberta", "Fotografe seu primeiro gato em um passeio.", 1),
-    "angles": ("Um novo olhar", "Adicione fotos complementares a um gato.", 2),
-    "days": ("Olhar atento", "Registre descobertas em três dias diferentes.", 3),
-    "helper": ("Rede de cuidado", "Contribua com um avistamento de um gato desaparecido.", 1),
+    "first": ("Primeira descoberta", "Fotografe seu primeiro gato em um passeio ao ar livre.", 1),
+    "collector_5": ("Olhar Curioso", "Aviste e catalogue 5 gatos diferentes pelo seu bairro.", 5),
+    "collector_10": ("Rastreador de Pegadas", "Catalogue 10 gatos diferentes em sua jornada.", 10),
+    "master_collector": ("Mestre do Gatálogo", "Reúna 20 gatos catalogados na sua coleção.", 20),
+    "legend_collector": ("Enciclopédia Felina", "Alcance a incrível marca de 50 gatos catalogados.", 50),
+    "black_cat": ("Pantera Urbana", "Catalogue um gato com pelagem predominantemente preta.", 1),
+    "orange_tabby": ("Sol Alaranjado", "Catalogue um gato com pelagem ruiva ou laranja.", 1),
+    "calico": ("Mosaico da Sorte", "Catalogue um gato com pelagem tricolor ou cálico.", 1),
+    "siamese_pattern": ("Olhar Royal", "Catalogue um gato com padrão siamês ou colorpoint.", 1),
+    "bicolor": ("Frajola Elegante", "Catalogue um gato bicolor ou frajola.", 1),
+    "neighborhood_3": ("Explorador de Quarteirões", "Registre gatos em pelo menos 3 locais diferentes.", 3),
+    "city_wanderer": ("Andarilho Urbano", "Registre gatos em 5 locais diferentes.", 5),
+    "night_owl": ("Observador Noturno", "Catalogue um gato no período noturno (após 19h).", 1),
+    "early_bird": ("Madrugador", "Catalogue um gato nas primeiras horas da manhã (antes das 8h).", 1),
+    "days": ("Olhar Atento", "Registre descobertas em três dias diferentes.", 3),
+    "streak_3": ("Ritmo Felino", "Mantenha uma sequência de 3 dias de atividade.", 3),
+    "streak_7": ("Semana Guardiã", "Mantenha uma sequência de 7 dias de atividade.", 7),
+    "streak_30": ("Devoção Felina", "Mantenha uma sequência lendária de 30 dias de atividade.", 30),
+    "angles": ("Um Novo Olhar", "Adicione fotos complementares a um gato.", 2),
+    "portrait": ("Retrato Detalhado", "Adicione notas descritivas detalhadas a 3 gatos.", 3),
+    "angles_master": ("Galeria Completa", "Adicione 4 ou mais fotos ao perfil de um mesmo gato.", 4),
+    "helper": ("Rede de Cuidado", "Contribua com um avistamento ou pista de um gato desaparecido.", 1),
+    "guardian_shield": ("Vigilante do Bairro", "Verifique casos de busca ativa para apoiar tutores.", 1),
+    "poster_share": ("Voz da Esperança", "Compartilhe um cartaz de busca para mobilizar a comunidade.", 1),
+    "social_heart": ("Coração Comunitário", "Curta 5 publicações no feed da comunidade.", 5),
+    "commentator": ("Conversa Afiada", "Participe com comentários em 3 publicações.", 3),
+    "first_share": ("Espalhando Carinho", "Compartilhe uma descoberta felina com amigos.", 1),
+    "owned_pet": ("Meu Companheiro", "Cadastre um gato sob seus cuidados como pet próprio.", 1),
 }
+
+LEVELS = [
+    (1, "Curioso", 0, 100, "Início da jornada felina"),
+    (2, "Explorador", 100, 300, "Desbloqueia novos filtros e modos"),
+    (3, "Observador", 300, 650, "Bônus de XP de avistamento +5%"),
+    (4, "Catalogador", 650, 1200, "Badge exclusiva de perfil"),
+    (5, "Guardião", 1200, 2000, "Prioridade em alertas de resgate"),
+    (6, "Protetor", 2000, 3200, "Título honorário de proteção"),
+    (7, "Lenda Felina", 3200, 5000, "Status máximo da comunidade"),
+]
+
+
+def calculate_level(xp: int) -> tuple[int, str, int, int, str]:
+    for lvl, title, min_x, target, reward in LEVELS:
+        if xp < target:
+            return lvl, title, min_x, target, reward
+    return 7, "Lenda Felina", 3200, 5000, "Status máximo da comunidade"
+
+
+def calculate_multiplier(streak: int) -> float:
+    if streak <= 1:
+        return 1.0
+    if streak == 2:
+        return 1.1
+    if streak == 3:
+        return 1.2
+    if streak < 7:
+        return 1.3
+    return 1.5
+
+
+ACTION_XP = {
+    "photo": 50,
+    "sighting": 40,
+    "post": 30,
+    "comment": 15,
+    "like": 5,
+    "share": 25,
+}
+
+
+def _get_or_init_gamification(state: ProductState) -> dict:
+    prefs = dict(state.preferences) if isinstance(state.preferences, dict) else {}
+    gamif = prefs.get("gamification")
+    today_str = datetime.now(UTC).date().isoformat()
+    if not isinstance(gamif, dict):
+        gamif = {
+            "xp": 0,
+            "streak": 0,
+            "longest_streak": 0,
+            "last_action_date": None,
+            "freeze_shields": 1,
+            "last_freeze_refill": today_str,
+            "missions_date": today_str,
+            "daily_missions": [
+                {"id": "daily_photo", "title": "Fotografar ou catalogar 1 gato", "target": 1, "progress": 0, "xp_reward": 60, "completed": False},
+                {"id": "daily_social", "title": "Interagir em 2 publicações da comunidade", "target": 2, "progress": 0, "xp_reward": 40, "completed": False},
+                {"id": "daily_care", "title": "Verificar área de busca ou atualizar fotos", "target": 1, "progress": 0, "xp_reward": 50, "completed": False},
+            ],
+            "weekly_mission": {
+                "id": "weekly_sightings",
+                "title": "Registrar avistamentos em 3 dias diferentes",
+                "target": 3,
+                "progress": 0,
+                "xp_reward": 150,
+                "completed": False,
+                "week_str": f"{datetime.now(UTC).year}-W{datetime.now(UTC).isocalendar()[1]}",
+            },
+            "bonus_mission": {
+                "id": "bonus_share",
+                "title": "Compartilhar uma descoberta ou cartaz de desaparecimento",
+                "target": 1,
+                "progress": 0,
+                "xp_reward": 80,
+                "completed": False,
+            },
+        }
+        prefs["gamification"] = gamif
+        state.preferences = prefs
+    else:
+        if gamif.get("missions_date") != today_str:
+            gamif["missions_date"] = today_str
+            gamif["daily_missions"] = [
+                {"id": "daily_photo", "title": "Fotografar ou catalogar 1 gato", "target": 1, "progress": 0, "xp_reward": 60, "completed": False},
+                {"id": "daily_social", "title": "Interagir em 2 publicações da comunidade", "target": 2, "progress": 0, "xp_reward": 40, "completed": False},
+                {"id": "daily_care", "title": "Verificar área de busca ou atualizar fotos", "target": 1, "progress": 0, "xp_reward": 50, "completed": False},
+            ]
+        last_refill = gamif.get("last_freeze_refill")
+        if last_refill:
+            try:
+                refill_date = datetime.fromisoformat(last_refill).date()
+                if (datetime.now(UTC).date() - refill_date).days >= 7:
+                    gamif["freeze_shields"] = min(gamif.get("freeze_shields", 0) + 1, 2)
+                    gamif["last_freeze_refill"] = today_str
+            except Exception:
+                gamif["last_freeze_refill"] = today_str
+        current_week_str = f"{datetime.now(UTC).year}-W{datetime.now(UTC).isocalendar()[1]}"
+        if gamif.get("weekly_mission", {}).get("week_str") != current_week_str:
+            gamif["weekly_mission"] = {
+                "id": "weekly_sightings",
+                "title": "Registrar avistamentos em 3 dias diferentes",
+                "target": 3,
+                "progress": 0,
+                "xp_reward": 150,
+                "completed": False,
+                "week_str": current_week_str,
+            }
+        prefs["gamification"] = gamif
+        state.preferences = prefs
+    return gamif
+
+
+@router.get("/gamification")
+async def get_gamification(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
+    state = await _state(session, user)
+    gamif = _get_or_init_gamification(state)
+    xp = gamif.get("xp", 0)
+    lvl, title, min_xp, target_xp, reward = calculate_level(xp)
+    streak = gamif.get("streak", 0)
+    multiplier = calculate_multiplier(streak)
+    unlocked_count = len(state.achievements)
+    total_achievements = len(ACHIEVEMENTS)
+    await session.commit()
+    return {
+        "xp": xp,
+        "level": lvl,
+        "level_title": title,
+        "level_min_xp": min_xp,
+        "target_xp": target_xp,
+        "level_reward": reward,
+        "streak": streak,
+        "longest_streak": gamif.get("longest_streak", 0),
+        "multiplier": multiplier,
+        "freeze_shields": gamif.get("freeze_shields", 1),
+        "last_action_date": gamif.get("last_action_date"),
+        "daily_missions": gamif.get("daily_missions", []),
+        "weekly_mission": gamif.get("weekly_mission"),
+        "bonus_mission": gamif.get("bonus_mission"),
+        "unlocked_achievements": unlocked_count,
+        "total_achievements": total_achievements,
+    }
+
+
+class GamificationActionRequest(BaseModel):
+    action: str
+    context_id: str | None = None
+
+
+@router.post("/gamification/action")
+async def record_gamification_action(
+    payload: GamificationActionRequest,
+    user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_database_session),
+) -> dict:
+    state = await _state(session, user)
+    gamif = _get_or_init_gamification(state)
+    today = datetime.now(UTC).date()
+    today_str = today.isoformat()
+
+    last_action = gamif.get("last_action_date")
+    current_streak = gamif.get("streak", 0)
+    freeze_shields = gamif.get("freeze_shields", 1)
+
+    if last_action is None:
+        current_streak = 1
+        gamif["last_action_date"] = today_str
+    elif last_action == today_str:
+        pass
+    else:
+        last_date = datetime.fromisoformat(last_action).date()
+        diff_days = (today - last_date).days
+        if diff_days == 1:
+            current_streak += 1
+            gamif["last_action_date"] = today_str
+        elif diff_days == 2 and freeze_shields > 0:
+            freeze_shields -= 1
+            gamif["freeze_shields"] = freeze_shields
+            current_streak += 1
+            gamif["last_action_date"] = today_str
+        else:
+            current_streak = 1
+            gamif["last_action_date"] = today_str
+
+    gamif["streak"] = current_streak
+    gamif["longest_streak"] = max(gamif.get("longest_streak", 0), current_streak)
+
+    multiplier = calculate_multiplier(current_streak)
+    base_xp = ACTION_XP.get(payload.action, 10)
+    earned_xp = int(base_xp * multiplier)
+
+    prev_xp = gamif.get("xp", 0)
+    prev_lvl, _, _, _, _ = calculate_level(prev_xp)
+    new_xp = prev_xp + earned_xp
+
+    missions_completed_now = []
+    for m in gamif.get("daily_missions", []):
+        if not m.get("completed", False):
+            advances = False
+            if m["id"] == "daily_photo" and payload.action == "photo":
+                advances = True
+            elif m["id"] == "daily_social" and payload.action in ("like", "comment", "post"):
+                advances = True
+            elif m["id"] == "daily_care" and payload.action in ("sighting", "photo", "share"):
+                advances = True
+            if advances:
+                m["progress"] = min(m["progress"] + 1, m["target"])
+                if m["progress"] >= m["target"]:
+                    m["completed"] = True
+                    new_xp += m.get("xp_reward", 0)
+                    missions_completed_now.append(m["title"])
+
+    wm = gamif.get("weekly_mission")
+    if wm and not wm.get("completed", False):
+        if payload.action in ("photo", "sighting"):
+            wm["progress"] = min(wm["progress"] + 1, wm["target"])
+            if wm["progress"] >= wm["target"]:
+                wm["completed"] = True
+                new_xp += wm.get("xp_reward", 0)
+                missions_completed_now.append(wm["title"])
+
+    bm = gamif.get("bonus_mission")
+    if bm and not bm.get("completed", False):
+        if payload.action == "share":
+            bm["progress"] = min(bm["progress"] + 1, bm["target"])
+            if bm["progress"] >= bm["target"]:
+                bm["completed"] = True
+                new_xp += bm.get("xp_reward", 0)
+                missions_completed_now.append(bm["title"])
+
+    gamif["xp"] = new_xp
+    new_lvl, new_title, min_xp, target_xp, reward = calculate_level(new_xp)
+    level_up = new_lvl > prev_lvl
+
+    state.preferences["gamification"] = gamif
+    await session.commit()
+
+    return {
+        "earned_xp": earned_xp,
+        "multiplier": multiplier,
+        "new_xp": new_xp,
+        "level": new_lvl,
+        "level_title": new_title,
+        "level_min_xp": min_xp,
+        "target_xp": target_xp,
+        "level_reward": reward,
+        "level_up": level_up,
+        "streak": current_streak,
+        "longest_streak": gamif.get("longest_streak", current_streak),
+        "freeze_shields": gamif.get("freeze_shields", freeze_shields),
+        "missions_completed": missions_completed_now,
+        "daily_missions": gamif.get("daily_missions", []),
+        "weekly_mission": wm,
+        "bonus_mission": bm,
+    }
 
 
 @router.get("/journey")
 async def journey(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> list[dict]:
     state = await _state(session, user)
+    gamif = _get_or_init_gamification(state)
     cats = (await session.execute(select(RemoteCat).where(RemoteCat.user_id == user.id, RemoteCat.deleted_at.is_(None)))).scalars().all()
     discoveries = [cat for cat in cats if (cat.payload or {}).get("is_owned") not in (True, 1)]
+    owned_cats = [cat for cat in cats if (cat.payload or {}).get("is_owned") in (True, 1)]
     photo_counts = (await session.execute(select(CatPhoto.cat_id, func.count()).where(CatPhoto.cat_id.in_([cat.id for cat in cats]), CatPhoto.kind != "primary", CatPhoto.deleted_at.is_(None)).group_by(CatPhoto.cat_id))).all()
     helper = (await session.execute(select(func.count()).select_from(MatchSuggestion).join(Sighting, Sighting.id == MatchSuggestion.sighting_id).where(Sighting.observer_id == user.id, MatchSuggestion.status == "confirmed"))).scalar_one()
-    progress = {"first": len(discoveries), "angles": max([n for _, n in photo_counts], default=0), "days": len({str((cat.payload or {}).get("captured_at", cat.created_at))[:10] for cat in discoveries}), "helper": helper}
+
+    # Coat colors and types for diversity achievements
+    def _cat_text(cat: RemoteCat) -> str:
+        p = cat.payload or {}
+        return f"{p.get('primary_color', '')} {p.get('coat_type', '')} {cat.name or ''}".lower()
+
+    black_cats = sum(1 for c in discoveries if any(w in _cat_text(c) for w in ("preto", "black", "pantera", "ébano")))
+    orange_cats = sum(1 for c in discoveries if any(w in _cat_text(c) for w in ("laranja", "ruivo", "amarelo", "red", "orange", "ginger")))
+    calico_cats = sum(1 for c in discoveries if any(w in _cat_text(c) for w in ("calico", "cálico", "tricolor", "casco", "tortie")))
+    siamese_cats = sum(1 for c in discoveries if any(w in _cat_text(c) for w in ("siamês", "siames", "colorpoint", "seal", "pointed")))
+    bicolor_cats = sum(1 for c in discoveries if any(w in _cat_text(c) for w in ("bicolor", "frajola", "tuxedo", "preto e branco", "malhado")))
+
+    locations = {str((c.payload or {}).get("location_name")).strip() for c in discoveries if (c.payload or {}).get("location_name")}
+    
+    # Check capture hours
+    night_cats = 0
+    morning_cats = 0
+    for c in discoveries:
+        cap = (c.payload or {}).get("captured_at")
+        if cap:
+            try:
+                dt = datetime.fromisoformat(str(cap))
+                if dt.hour >= 19 or dt.hour < 5:
+                    night_cats += 1
+                elif 5 <= dt.hour < 8:
+                    morning_cats += 1
+            except Exception:
+                pass
+
+    detailed_notes = sum(1 for c in discoveries if len(str((c.payload or {}).get("note") or "")) >= 10)
+    streak_val = max(gamif.get("streak", 0), gamif.get("longest_streak", 0))
+
+    progress = {
+        "first": len(discoveries),
+        "collector_5": len(discoveries),
+        "collector_10": len(discoveries),
+        "master_collector": len(discoveries),
+        "legend_collector": len(discoveries),
+        "black_cat": black_cats,
+        "orange_tabby": orange_cats,
+        "calico": calico_cats,
+        "siamese_pattern": siamese_cats,
+        "bicolor": bicolor_cats,
+        "neighborhood_3": len(locations),
+        "city_wanderer": len(locations),
+        "night_owl": night_cats,
+        "early_bird": morning_cats,
+        "days": len({str((cat.payload or {}).get("captured_at", cat.created_at))[:10] for cat in discoveries}),
+        "streak_3": streak_val,
+        "streak_7": streak_val,
+        "streak_30": streak_val,
+        "angles": max([n for _, n in photo_counts], default=0),
+        "portrait": detailed_notes,
+        "angles_master": max([n for _, n in photo_counts], default=0),
+        "helper": helper,
+        "guardian_shield": helper,
+        "poster_share": 1 if gamif.get("bonus_mission", {}).get("completed") else 0,
+        "social_heart": gamif.get("xp", 0) // 10,
+        "commentator": gamif.get("xp", 0) // 15,
+        "first_share": 1 if gamif.get("bonus_mission", {}).get("completed") else 0,
+        "owned_pet": len(owned_cats),
+    }
+
     unlocked = dict(state.achievements)
-    for key, (_, _, target) in ACHIEVEMENTS.items():
-        if progress[key] >= target and key not in unlocked:
+    for key, (title, _, target) in ACHIEVEMENTS.items():
+        val = progress.get(key, 0)
+        if val >= target and key not in unlocked:
             unlocked[key] = datetime.now(UTC).isoformat()
             notification = AppNotification(
                 user_id=user.id,
                 type="achievement",
-                payload={"achievement_id": key, "title": ACHIEVEMENTS[key][0]},
+                payload={"achievement_id": key, "title": title},
             )
             session.add(notification)
             await session.flush()
@@ -347,7 +690,17 @@ async def journey(user: User = Depends(current_user), session: AsyncSession = De
     state.achievements = unlocked
     await session.commit()
     await publish_committed_events(session)
-    return [{"id": key, "title": title, "description": description, "target": target, "progress": min(progress[key], target), "unlocked_at": unlocked.get(key)} for key, (title, description, target) in ACHIEVEMENTS.items()]
+    return [
+        {
+            "id": key,
+            "title": title,
+            "description": description,
+            "target": target,
+            "progress": min(progress.get(key, 0), target),
+            "unlocked_at": unlocked.get(key),
+        }
+        for key, (title, description, target) in ACHIEVEMENTS.items()
+    ]
 
 
 @router.post("/journey/{achievement_id}/share", status_code=204)
@@ -359,3 +712,4 @@ async def share_achievement(achievement_id: str, user: User = Depends(current_us
     if exists is None:
         session.add(FeedItem(user_id=user.id, type="achievement", payload={"achievement_id": achievement_id, "title": ACHIEVEMENTS[achievement_id][0]}))
     await session.commit()
+
