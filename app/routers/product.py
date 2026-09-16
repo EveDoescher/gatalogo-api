@@ -6,7 +6,7 @@ from io import BytesIO
 from pathlib import Path
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, File, HTTPException, Response, UploadFile
+from fastapi import APIRouter, Depends, File, HTTPException, Query, Response, UploadFile
 from PIL import Image, ImageOps
 from pydantic import BaseModel, Field
 from sqlalchemy import select, func
@@ -138,6 +138,82 @@ async def reports(user: User = Depends(current_user), session: AsyncSession = De
         count = (await session.execute(select(func.count()).select_from(MatchSuggestion).where(MatchSuggestion.missing_report_id == report.id, MatchSuggestion.status.in_(["pending", "confirmed"])))).scalar_one()
         result.append({"id": report.id, "cat_client_id": cat.client_id, "name": (cat.payload or {}).get("name") or "Meu gato", "latitude": report.latitude, "longitude": report.longitude, "radius_meters": report.radius_meters, "status": report.status, "created_at": report.created_at, "resolved_at": report.resolved_at, "clue_count": count})
     return result
+
+
+@router.get("/reports/nearby")
+async def nearby_reports(
+    latitude: float = Query(..., ge=-90, le=90),
+    longitude: float = Query(..., ge=-180, le=180),
+    radius_km: float = Query(default=15.0, ge=0.5, le=100.0),
+    user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_database_session),
+) -> list[dict]:
+    rows = (await session.execute(
+        select(MissingReport, RemoteCat)
+        .join(RemoteCat, RemoteCat.id == MissingReport.cat_id)
+        .where(MissingReport.status == "active")
+        .order_by(MissingReport.created_at.desc())
+    )).all()
+
+    results = []
+    max_meters = radius_km * 1000.0
+    for report, cat in rows:
+        dist = distance_meters(latitude, longitude, report.latitude, report.longitude)
+        effective_radius = max(float(report.radius_meters), max_meters)
+        if dist <= effective_radius:
+            count = (await session.execute(
+                select(func.count())
+                .select_from(MatchSuggestion)
+                .where(MatchSuggestion.missing_report_id == report.id, MatchSuggestion.status.in_(["pending", "confirmed"]))
+            )).scalar_one()
+            results.append({
+                "id": report.id,
+                "cat_client_id": cat.client_id,
+                "name": (cat.payload or {}).get("name") or "Gatinho",
+                "latitude": report.latitude,
+                "longitude": report.longitude,
+                "radius_meters": report.radius_meters,
+                "distance_meters": round(dist / 100) * 100,
+                "is_owner": report.user_id == user.id,
+                "created_at": report.created_at,
+                "clue_count": count,
+                "photo_url": f"/app/reports/{report.id}/photo",
+            })
+    results.sort(key=lambda r: r["distance_meters"])
+    return results
+
+
+@router.get("/reports/{report_id}/photo")
+async def report_photo(
+    report_id: UUID,
+    user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_database_session),
+) -> Response:
+    report = await session.get(MissingReport, report_id)
+    if report is None or report.status != "active":
+        raise HTTPException(404, "Alerta não encontrado ou inativo.")
+    cat = await session.get(RemoteCat, report.cat_id)
+    if cat is None or cat.deleted_at is not None:
+        raise HTTPException(404, "Gato não encontrado.")
+    photo = (await session.execute(
+        select(CatPhoto).where(
+            CatPhoto.cat_id == cat.id,
+            CatPhoto.kind == "primary",
+            CatPhoto.deleted_at.is_(None),
+        )
+    )).scalar_one_or_none()
+    storage_key = photo.storage_key if photo else cat.photo_key
+    if not storage_key:
+        raise HTTPException(404, "Foto não disponível.")
+    try:
+        with Image.open(photo_storage.open(storage_key)) as original:
+            thumbnail = ImageOps.exif_transpose(original).convert("RGB")
+            thumbnail.thumbnail((1200, 1200))
+            output = BytesIO()
+            thumbnail.save(output, format="JPEG", quality=85)
+    except (OSError, ValueError):
+        raise HTTPException(404, "Foto não disponível.")
+    return Response(output.getvalue(), media_type="image/jpeg", headers={"Cache-Control": "public, max-age=300"})
 
 
 async def _clue(session: AsyncSession, user: User, match_id: UUID):

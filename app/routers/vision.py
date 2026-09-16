@@ -157,7 +157,7 @@ async def matches(user: User = Depends(current_user), session: AsyncSession = De
 
 @router.post("/matches/{match_id}/{decision}", response_model=MatchResponse)
 async def decide_match(match_id: UUID, decision: str, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> MatchResponse:
-    if decision not in {"confirm", "dismiss"}:
+    if decision not in {"confirm", "dismiss", "reopen"}:
         raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_CONTENT, detail="Decisão inválida.")
     row = (await session.execute(
         select(MatchSuggestion, MissingReport, Sighting)
@@ -171,9 +171,14 @@ async def decide_match(match_id: UUID, decision: str, user: User = Depends(curre
     match, report, sighting = row
     if match.status == "stale" or report.status != "active":
         raise HTTPException(status_code=409, detail="Esta sugestão não está mais ativa.")
-    if match.status in {"confirmed", "dismissed"}:
-        raise HTTPException(status_code=409, detail="Esta sugestão já recebeu uma decisão.")
-    match.status = "confirmed" if decision == "confirm" else "dismissed"
+    if decision == "reopen":
+        if match.status != "dismissed":
+            raise HTTPException(status_code=409, detail="Apenas pistas descartadas podem ser reabertas.")
+        match.status = "pending"
+    else:
+        if match.status in {"confirmed", "dismissed"}:
+            raise HTTPException(status_code=409, detail="Esta sugestão já recebeu uma decisão.")
+        match.status = "confirmed" if decision == "confirm" else "dismissed"
     conversation_id = None
     if decision == "confirm":
         match.location_revealed_at = datetime.now(UTC)
