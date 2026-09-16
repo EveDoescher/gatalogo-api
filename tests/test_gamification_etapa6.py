@@ -157,3 +157,46 @@ async def test_get_gamification_endpoint():
     assert res["streak"] == 3
     assert res["multiplier"] == 1.2
     assert res["total_achievements"] == 28
+
+
+@pytest.mark.asyncio
+async def test_journey_with_remotecat():
+    from app.routers.product import journey
+    from app.persistence_models import RemoteCat
+
+    user = User(id=uuid4(), username="charlie")
+    state = ProductState(user_id=user.id, preferences={}, achievements={})
+
+    cat1 = RemoteCat(
+        id=uuid4(),
+        user_id=user.id,
+        client_id=uuid4(),
+        payload={"name": "Pantera", "primary_color": "preto", "coat_type": "curto", "is_owned": False, "captured_at": "2026-09-16T20:00:00Z"},
+        deleted_at=None,
+    )
+
+    session = AsyncMock()
+    session.info = {}
+    session.add = MagicMock()
+    session.get = AsyncMock(return_value=state)
+
+    async def mock_execute(stmt):
+        mock_res = MagicMock()
+        stmt_str = str(stmt)
+        if "cats" in stmt_str and "user_id" in stmt_str:
+            mock_res.scalars.return_value.all.return_value = [cat1]
+        elif "cat_photos" in stmt_str:
+            mock_res.all.return_value = []
+        elif "match_suggestions" in stmt_str:
+            mock_res.scalar_one.return_value = 0
+        return mock_res
+
+    session.execute = AsyncMock(side_effect=mock_execute)
+    session.flush = AsyncMock()
+    session.commit = AsyncMock()
+
+    res = await journey(user=user, session=session)
+    assert len(res) == len(ACHIEVEMENTS)
+    black_cat_ach = next(a for a in res if a["id"] == "black_cat")
+    assert black_cat_ach["progress"] == 1
+

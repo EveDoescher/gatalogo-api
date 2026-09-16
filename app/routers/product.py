@@ -94,18 +94,18 @@ async def upload_avatar(file: UploadFile = File(...), user: User = Depends(curre
 
 @router.get("/account/avatar/{target_user_id}")
 async def get_avatar(target_user_id: UUID) -> Response:
-    for ext in [".jpg", ".png", ".jpeg", ".webp"]:
-        try:
-            path = photo_storage.absolute_path(photo_storage.profile_key_for(target_user_id, ext))
-            parent = path.parent
-            if parent.is_dir():
-                matches = list(parent.glob("avatar-*"))
-                if matches:
-                    latest = max(matches, key=lambda p: p.stat().st_mtime)
-                    media_type = "image/png" if latest.suffix == ".png" else "image/jpeg"
-                    return Response(latest.read_bytes(), media_type=media_type, headers={"Cache-Control": "public, max-age=3600"})
-        except Exception:
-            pass
+    try:
+        path = photo_storage.absolute_path(photo_storage.profile_key_for(target_user_id, ".jpg"))
+        parent = path.parent
+        if parent.is_dir():
+            matches = [f for f in parent.glob("avatar*") if f.is_file()]
+            if matches:
+                latest = max(matches, key=lambda p: p.stat().st_mtime)
+                suffix = latest.suffix.lower()
+                media_type = "image/png" if suffix == ".png" else "image/webp" if suffix == ".webp" else "image/jpeg"
+                return Response(latest.read_bytes(), media_type=media_type, headers={"Cache-Control": "public, max-age=3600"})
+    except Exception:
+        pass
     raise HTTPException(404, "Foto de perfil não encontrada.")
 
 
@@ -615,7 +615,8 @@ async def journey(user: User = Depends(current_user), session: AsyncSession = De
     # Coat colors and types for diversity achievements
     def _cat_text(cat: RemoteCat) -> str:
         p = cat.payload or {}
-        return f"{p.get('primary_color', '')} {p.get('coat_type', '')} {cat.name or ''}".lower()
+        name = p.get("name") or p.get("custom_name") or getattr(cat, "name", "") or ""
+        return f"{p.get('primary_color', '')} {p.get('coat_type', '')} {name}".lower()
 
     black_cats = sum(1 for c in discoveries if any(w in _cat_text(c) for w in ("preto", "black", "pantera", "ébano")))
     orange_cats = sum(1 for c in discoveries if any(w in _cat_text(c) for w in ("laranja", "ruivo", "amarelo", "red", "orange", "ginger")))
@@ -658,7 +659,7 @@ async def journey(user: User = Depends(current_user), session: AsyncSession = De
         "city_wanderer": len(locations),
         "night_owl": night_cats,
         "early_bird": morning_cats,
-        "days": len({str((cat.payload or {}).get("captured_at", cat.created_at))[:10] for cat in discoveries}),
+        "days": len({str((cat.payload or {}).get("captured_at") or cat.created_at)[:10] for cat in discoveries}),
         "streak_3": streak_val,
         "streak_7": streak_val,
         "streak_30": streak_val,

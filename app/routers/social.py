@@ -535,23 +535,39 @@ def _build_message_response(
     )
 
 
+def _user_avatar_url(user_id: UUID, preferences: dict | None) -> str | None:
+    avatar_url = (preferences or {}).get("avatar_url") if preferences else None
+    if not avatar_url:
+        return None
+    try:
+        path = photo_storage.absolute_path(photo_storage.profile_key_for(user_id, ".jpg"))
+        if path.parent.is_dir() and any(path.parent.glob("avatar*")):
+            return avatar_url
+    except Exception:
+        pass
+    return None
+
+
 @router.get("/conversations", response_model=list[ConversationSummaryResponse])
-async def list_conversations(
+async def conversations_list(
     user: User = Depends(current_user),
     session: AsyncSession = Depends(get_database_session),
 ) -> list[ConversationSummaryResponse]:
-    my_conv_ids = (await session.execute(
-        select(ConversationMember.conversation_id).where(ConversationMember.user_id == user.id)
+    my_memberships = (await session.execute(
+        select(ConversationMember.conversation_id)
+        .where(ConversationMember.user_id == user.id)
     )).scalars().all()
-    if not my_conv_ids:
+
+    if not my_memberships:
         return []
 
-    convs = (await session.execute(
-        select(Conversation).where(Conversation.id.in_(my_conv_ids))
+    conversations = (await session.execute(
+        select(Conversation)
+        .where(Conversation.id.in_(my_memberships))
     )).scalars().all()
 
     results: list[ConversationSummaryResponse] = []
-    for conv in convs:
+    for conv in conversations:
         other_member = (await session.execute(
             select(User, ProductState.preferences)
             .join(ConversationMember, ConversationMember.user_id == User.id)
@@ -562,9 +578,7 @@ async def list_conversations(
         if not other_member:
             continue
         other_user, preferences = other_member
-        avatar_url = (preferences or {}).get("avatar_url") if preferences else None
-        if not avatar_url:
-            avatar_url = f"/app/account/avatar/{other_user.id}"
+        avatar_url = _user_avatar_url(other_user.id, preferences)
 
         is_online = ws_manager.is_online(other_user.id)
         last_seen = ws_manager.get_last_seen(other_user.id) or other_user.last_seen_at
@@ -625,9 +639,7 @@ async def conversation_details(
     )).first()
 
     other_user, preferences = other_member if other_member else (None, None)
-    avatar_url = (preferences or {}).get("avatar_url") if preferences else None
-    if other_user and not avatar_url:
-        avatar_url = f"/app/account/avatar/{other_user.id}"
+    avatar_url = _user_avatar_url(other_user.id, preferences) if other_user else None
 
     is_online = ws_manager.is_online(other_user.id) if other_user else False
     last_seen = (ws_manager.get_last_seen(other_user.id) or other_user.last_seen_at) if other_user else None

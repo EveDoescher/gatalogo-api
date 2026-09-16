@@ -116,3 +116,21 @@ def test_message_schemas():
     assert resp.is_read is False
     assert resp.is_edited is False
     assert resp.is_deleted is False
+
+
+def test_user_avatar_url_helper(tmp_path):
+    from app.routers.social import _user_avatar_url
+    user_without_avatar = uuid4()
+    # No preferences
+    assert _user_avatar_url(user_without_avatar, None) is None
+    # Preferences with no avatar_url
+    assert _user_avatar_url(user_without_avatar, {}) is None
+    # Preferences with avatar_url, but file does not exist
+    assert _user_avatar_url(user_without_avatar, {"avatar_url": f"/app/account/avatar/{user_without_avatar}"}) is None
+
+    # Now create the actual file
+    user_with_avatar = uuid4()
+    photo_storage.save_profile_photo(user_id=user_with_avatar, data=b"fake_avatar_data", suffix=".jpg")
+    url = _user_avatar_url(user_with_avatar, {"avatar_url": f"/app/account/avatar/{user_with_avatar}"})
+    assert url == f"/app/account/avatar/{user_with_avatar}"
+
