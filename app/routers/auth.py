@@ -19,6 +19,9 @@ from app.schemas import (
     AccountResponse,
     AppleLoginRequest,
     AuthTokens,
+    ChangeEmailRequest,
+    ChangePasswordRequest,
+    ConfirmChangeEmailRequest,
     DeactivateRequest,
     GoogleLoginRequest,
     LoginRequest,
@@ -328,3 +331,46 @@ async def deactivate(user: User = Depends(current_user), session: AsyncSession =
     user.deactivated_at = utc_now()
     await session.execute(update(UserSession).where(UserSession.user_id == user.id, UserSession.revoked_at.is_(None)).values(revoked_at=utc_now()))
     await session.commit()
+
+
+@router.post("/change-password", status_code=status.HTTP_204_NO_CONTENT)
+async def change_password(
+    payload: ChangePasswordRequest,
+    user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_database_session),
+) -> None:
+    if not user.password_hash or not password_hash.verify(payload.current_password, user.password_hash):
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Senha atual incorreta.")
+    user.password_hash = password_hash.hash(payload.new_password)
+    await session.commit()
+
+
+@router.post("/change-email/request", status_code=status.HTTP_202_ACCEPTED)
+async def request_change_email(
+    payload: ChangeEmailRequest,
+    user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_database_session),
+) -> dict[str, str]:
+    normalized = normalize_email(str(payload.new_email))
+    if normalized == user.email:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="O novo e-mail deve ser diferente do atual.")
+    existing = (await session.execute(select(User).where(User.email == normalized, User.id != user.id))).scalar_one_or_none()
+    if existing is not None:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Este e-mail já está em uso.")
+    await create_otp(session, email=normalized, purpose="change_email", user_id=user.id)
+    await session.commit()
+    return {"message": "Código de confirmação enviado para o novo e-mail."}
+
+
+@router.post("/change-email/confirm", status_code=status.HTTP_200_OK)
+async def confirm_change_email(
+    payload: ConfirmChangeEmailRequest,
+    user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_database_session),
+) -> dict[str, str]:
+    normalized = normalize_email(str(payload.new_email))
+    await consume_otp(session, email=normalized, purpose="change_email", code=payload.code)
+    user.email = normalized
+    await session.commit()
+    return {"email": user.email, "message": "E-mail atualizado com sucesso."}
+

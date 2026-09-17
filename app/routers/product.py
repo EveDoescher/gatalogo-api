@@ -5,6 +5,7 @@ from datetime import UTC, datetime
 from io import BytesIO
 from pathlib import Path
 from uuid import UUID
+import uuid
 
 from fastapi import APIRouter, Depends, File, HTTPException, Query, Response, UploadFile
 from PIL import Image, ImageOps
@@ -18,6 +19,7 @@ from app.persistence_models import (User, RemoteCat, CatPhoto, MissingReport, Si
     MatchSuggestion, Conversation, ConversationMember, Friendship, AppNotification,
     FeedItem, ProductState)
 from app.routers.auth import current_user
+from app.schemas import FavoritesSyncRequest, FeedbackRequest
 from app.services.storage_service import photo_storage
 from app.services.recognition_service import distance_meters, create_report_matches
 from app.services.realtime_events import publish_committed_events, queue_notification
@@ -768,4 +770,89 @@ async def share_achievement(achievement_id: str, user: User = Depends(current_us
     if exists is None:
         session.add(FeedItem(user_id=user.id, type="achievement", payload={"achievement_id": achievement_id, "title": ACHIEVEMENTS[achievement_id][0]}))
     await session.commit()
+
+
+@router.get("/account/export")
+async def export_user_data(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
+    state = await _state(session, user)
+    cats = (await session.execute(select(RemoteCat).where(RemoteCat.user_id == user.id, RemoteCat.deleted_at.is_(None)))).scalars().all()
+    reports = (await session.execute(select(MissingReport).where(MissingReport.user_id == user.id))).scalars().all()
+    sightings = (await session.execute(select(Sighting).where(Sighting.observer_id == user.id))).scalars().all()
+
+    return {
+        "exported_at": datetime.now(UTC).isoformat(),
+        "account": {
+            "id": str(user.id),
+            "username": user.username,
+            "email": user.email,
+            "status": user.status,
+            "created_at": user.created_at.isoformat() if user.created_at else None,
+            "preferences": state.preferences,
+            "achievements": state.achievements,
+        },
+        "cats": [
+            {
+                "id": str(c.id),
+                "client_id": str(c.client_id),
+                "name": c.payload.get("name") if c.payload else None,
+                "captured_at": c.payload.get("captured_at") if c.payload else None,
+                "location_name": c.payload.get("location_name") if c.payload else None,
+                "is_owned": c.payload.get("is_owned") if c.payload else False,
+                "analysis": c.analysis,
+            }
+            for c in cats
+        ],
+        "missing_reports": [
+            {
+                "id": str(r.id),
+                "cat_client_id": str(r.cat_client_id),
+                "latitude": r.latitude,
+                "longitude": r.longitude,
+                "radius_meters": r.radius_meters,
+                "status": r.status,
+                "created_at": r.created_at.isoformat() if r.created_at else None,
+            }
+            for r in reports
+        ],
+        "sightings": [
+            {
+                "id": str(s.id),
+                "cat_id": str(s.cat_id),
+                "latitude": s.latitude,
+                "longitude": s.longitude,
+                "note": s.note,
+                "created_at": s.created_at.isoformat() if s.created_at else None,
+            }
+            for s in sightings
+        ],
+    }
+
+
+@router.post("/feedback", status_code=201)
+async def submit_feedback(payload: FeedbackRequest, user: User = Depends(current_user)) -> dict:
+    feedback_id = str(uuid.uuid4())
+    return {
+        "id": feedback_id,
+        "status": "received",
+        "category": payload.category,
+        "message": "Agradecemos o seu feedback! Nossa equipe irá analisá-lo.",
+    }
+
+
+@router.get("/favorites")
+async def get_favorites(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> list[str]:
+    state = await _state(session, user)
+    return list(state.preferences.get("favorites", []))
+
+
+@router.put("/favorites")
+async def update_favorites(payload: FavoritesSyncRequest, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> list[str]:
+    state = await _state(session, user)
+    prefs = dict(state.preferences or {})
+    prefs["favorites"] = list(set(payload.favorites))
+    state.preferences = prefs
+    flag_modified(state, "preferences")
+    await session.commit()
+    return prefs["favorites"]
+
 

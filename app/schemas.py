@@ -308,3 +308,28 @@ class LeaderboardEntry(BaseModel):
     level_title: str = "Curioso"
     streak: int = 0
     is_self: bool = False
+
+
+class ChangePasswordRequest(BaseModel):
+    current_password: str = Field(min_length=1)
+    new_password: str = Field(min_length=12, max_length=256)
+
+
+class ChangeEmailRequest(BaseModel):
+    new_email: EmailStr
+
+
+class ConfirmChangeEmailRequest(BaseModel):
+    new_email: EmailStr
+    code: str = Field(pattern=r"^\d{6}$")
+
+
+class FeedbackRequest(BaseModel):
+    category: str = Field(default="suggestion")
+    subject: str = Field(min_length=1, max_length=128)
+    message: str = Field(min_length=1, max_length=2048)
+
+
+class FavoritesSyncRequest(BaseModel):
+    favorites: list[str] = Field(default_factory=list)
+
