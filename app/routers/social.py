@@ -561,80 +561,6 @@ class CommentCreate(BaseModel):
 OFFICIAL_USER_ID = UUID("00000000-0000-0000-0000-000000000000")
 
 
-async def _ensure_official_tips(session: AsyncSession) -> None:
-    oficial_user = await session.get(User, OFFICIAL_USER_ID)
-    if not oficial_user:
-        oficial_user = User(
-            id=OFFICIAL_USER_ID,
-            email="oficial@gatalogo.app",
-            username="gatalogo_oficial",
-            password_hash=None,
-            status="active",
-        )
-        session.add(oficial_user)
-        await session.flush()
-
-    existing = (
-        await session.execute(
-            select(FeedItem.id).where(FeedItem.user_id == OFFICIAL_USER_ID)
-        )
-    ).scalars().all()
-    if not existing:
-        tip1 = FeedItem(
-            id=UUID("00000000-0000-0000-0000-000000000001"),
-            user_id=OFFICIAL_USER_ID,
-            type="tip",
-            payload={
-                "title": "Boas-vindas ao Gatálogo!",
-                "note": "Você agora faz parte da rede de proteção felina! Fotografe qualquer gato na rua ou em casa para descobrir pelagem, padrão e registrar em sua coleção.",
-                "tip_type": "welcome",
-                "cat_name": "Primeiros Passos",
-                "action_text": "Fotografar Primeiro Gato",
-                "action_route": "camera",
-                "likes": [],
-                "likes_count": 0,
-                "has_liked": False,
-                "comments": [],
-            },
-        )
-        tip2 = FeedItem(
-            id=UUID("00000000-0000-0000-0000-000000000002"),
-            user_id=OFFICIAL_USER_ID,
-            type="tip",
-            payload={
-                "title": "Dica de IA: Enquadramento Preciso",
-                "note": "Para obter a maior precisão no reconhecimento facial e de pelagem do gato, procure boa iluminação e capture o corpo inteiro ou o rosto de frente.",
-                "tip_type": "camera_tip",
-                "cat_name": "Dica de Fotografia",
-                "action_text": "Ver Minha Biblioteca",
-                "action_route": "library",
-                "likes": [],
-                "likes_count": 0,
-                "has_liked": False,
-                "comments": [],
-            },
-        )
-        tip3 = FeedItem(
-            id=UUID("00000000-0000-0000-0000-000000000003"),
-            user_id=OFFICIAL_USER_ID,
-            type="tip",
-            payload={
-                "title": "Rede Comunitária de Resgate",
-                "note": "Se um gato for dado como perdido no seu bairro, um alerta será emitido no mapa. Caso você aviste o felino, envie uma foto e a localização exata pelo chat de resgate!",
-                "tip_type": "rescue_tip",
-                "cat_name": "Alerta e Proteção",
-                "action_text": "Explorar Mapa",
-                "action_route": "map",
-                "likes": [],
-                "likes_count": 0,
-                "has_liked": False,
-                "comments": [],
-            },
-        )
-        session.add_all([tip1, tip2, tip3])
-        await session.flush()
-
-
 @router.get("/feed", response_model=list[FeedItemResponse])
 async def feed(
     limit: int = Query(default=20, ge=1, le=100),
@@ -643,19 +569,17 @@ async def feed(
     user: User = Depends(current_user),
     session: AsyncSession = Depends(get_database_session),
 ) -> list[FeedItemResponse]:
-    await _ensure_official_tips(session)
-
-    query = select(FeedItem, User.username).join(User, User.id == FeedItem.user_id)
+    query = select(FeedItem, User.username).join(User, User.id == FeedItem.user_id).where(
+        FeedItem.user_id != OFFICIAL_USER_ID
+    )
 
     if mode == "friends":
         friend_ids = await _friend_ids(session, user.id)
         friend_ids.add(user.id)
-        friend_ids.add(OFFICIAL_USER_ID)
         query = query.where(FeedItem.user_id.in_(friend_ids))
     else:
         friend_ids = await _friend_ids(session, user.id)
         friend_ids.add(user.id)
-        friend_ids.add(OFFICIAL_USER_ID)
         query = query.where(
             or_(
                 FeedItem.user_id.in_(friend_ids),
