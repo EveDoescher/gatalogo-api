@@ -4,7 +4,7 @@ from datetime import datetime
 from typing import Any, Literal
 from uuid import UUID
 
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, field_validator
 
 
 class RegisterRequest(BaseModel):
@@ -83,11 +83,25 @@ class PublicUserResponse(BaseModel):
     bio: str | None = None
 
 
+class ReportContact(BaseModel):
+    phone: str = Field(min_length=8, max_length=32, pattern=r"^\+?[0-9 ()-]+$")
+    whatsapp: bool = False
+
+    @field_validator("phone")
+    @classmethod
+    def validate_phone(cls, value: str) -> str:
+        if not 8 <= sum(character.isdigit() for character in value) <= 15:
+            raise ValueError("Informe um telefone válido com 8 a 15 dígitos.")
+        return value.strip()
+
+
 class MissingReportCreate(BaseModel):
     cat_client_id: UUID
     latitude: float = Field(ge=-90, le=90)
     longitude: float = Field(ge=-180, le=180)
     radius_meters: int = Field(ge=100, le=50_000)
+    last_seen_address: str | None = Field(default=None, max_length=500)
+    contacts: list[ReportContact] = Field(default_factory=list, max_length=5)
 
 
 class MissingReportResponse(BaseModel):
@@ -98,6 +112,11 @@ class MissingReportResponse(BaseModel):
     radius_meters: int
     status: str
     created_at: datetime
+    last_seen_address: str | None = None
+    contacts: list[ReportContact] = Field(default_factory=list)
+    collar: str | None = None
+    distinguishing_marks: str | None = None
+    microchip: str | None = None
 
 
 class SightingCreate(BaseModel):
@@ -332,4 +351,3 @@ class FeedbackRequest(BaseModel):
 
 class FavoritesSyncRequest(BaseModel):
     favorites: list[str] = Field(default_factory=list)
-

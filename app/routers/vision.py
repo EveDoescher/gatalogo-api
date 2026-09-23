@@ -45,7 +45,19 @@ async def _cat(session: AsyncSession, user: User, client_id: UUID) -> RemoteCat:
 
 
 def _report_response(report: MissingReport, cat: RemoteCat) -> MissingReportResponse:
-    return MissingReportResponse(id=report.id, cat_client_id=cat.client_id, latitude=report.latitude, longitude=report.longitude, radius_meters=report.radius_meters, status=report.status, created_at=report.created_at)
+    details = report.poster_details or {}
+    cat_details = cat.payload or {}
+    return MissingReportResponse(
+        id=report.id, cat_client_id=cat.client_id,
+        latitude=report.latitude, longitude=report.longitude,
+        radius_meters=report.radius_meters, status=report.status,
+        created_at=report.created_at,
+        last_seen_address=details.get("last_seen_address"),
+        contacts=details.get("contacts", []),
+        collar=details.get("collar") or cat_details.get("collar"),
+        distinguishing_marks=details.get("distinguishing_marks") or cat_details.get("distinguishing_marks"),
+        microchip=details.get("microchip") or cat_details.get("microchip"),
+    )
 
 
 @router.post("/cats/{client_id}/enqueue", response_model=VisionJobResponse, status_code=status.HTTP_202_ACCEPTED)
@@ -77,7 +89,18 @@ async def create_report(payload: MissingReportCreate, user: User = Depends(curre
         return _report_response(existing, cat)
     if payload.radius_meters > get_settings().match_max_distance_meters:
         raise HTTPException(status_code=422, detail="Raio excede o limite configurado.")
-    report = MissingReport(user_id=user.id, cat_id=cat.id, latitude=payload.latitude, longitude=payload.longitude, radius_meters=payload.radius_meters)
+    cat_details = cat.payload or {}
+    report = MissingReport(
+        user_id=user.id, cat_id=cat.id, latitude=payload.latitude,
+        longitude=payload.longitude, radius_meters=payload.radius_meters,
+        poster_details={
+            "last_seen_address": (payload.last_seen_address or "").strip() or None,
+            "contacts": [contact.model_dump() for contact in payload.contacts],
+            "collar": cat_details.get("collar"),
+            "distinguishing_marks": cat_details.get("distinguishing_marks"),
+            "microchip": cat_details.get("microchip"),
+        },
+    )
     session.add(report)
     await session.flush()
     # Alertas novos também verificam avistamentos já analisados; não dependem

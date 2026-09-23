@@ -15,6 +15,7 @@ from sqlalchemy.orm.attributes import flag_modified
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_database_session
+from app.routers.vision import _report_response
 from app.persistence_models import (User, RemoteCat, CatPhoto, MissingReport, Sighting,
     MatchSuggestion, Conversation, ConversationMember, Friendship, AppNotification,
     FeedItem, ProductState)
@@ -139,7 +140,7 @@ async def reports(user: User = Depends(current_user), session: AsyncSession = De
     result = []
     for report, cat in rows:
         count = (await session.execute(select(func.count()).select_from(MatchSuggestion).where(MatchSuggestion.missing_report_id == report.id, MatchSuggestion.status.in_(["pending", "confirmed"])))).scalar_one()
-        result.append({"id": report.id, "cat_client_id": cat.client_id, "name": (cat.payload or {}).get("name") or "Meu gato", "latitude": report.latitude, "longitude": report.longitude, "radius_meters": report.radius_meters, "status": report.status, "created_at": report.created_at, "resolved_at": report.resolved_at, "clue_count": count})
+        result.append({"id": report.id, "cat_client_id": cat.client_id, "name": (cat.payload or {}).get("name") or "Meu gato", "latitude": report.latitude, "longitude": report.longitude, "radius_meters": report.radius_meters, "status": report.status, "created_at": report.created_at, "resolved_at": report.resolved_at, "clue_count": count, **_report_response(report, cat).model_dump()})
     return result
 
 
@@ -227,6 +228,7 @@ async def _clue(session: AsyncSession, user: User, match_id: UUID):
 
 
 class ReportArea(BaseModel):
+    last_seen_address: str | None = Field(default=None, max_length=500)
     latitude: float = Field(ge=-90, le=90)
     longitude: float = Field(ge=-180, le=180)
     radius_meters: int = Field(ge=100, le=50_000)
@@ -242,6 +244,7 @@ async def update_report_area(report_id: UUID, payload: ReportArea, user: User = 
     if payload.radius_meters > get_settings().match_max_distance_meters:
         raise HTTPException(422, "Raio excede o limite permitido.")
     report.latitude, report.longitude, report.radius_meters = payload.latitude, payload.longitude, payload.radius_meters
+    report.poster_details = {**(report.poster_details or {}), "last_seen_address": (payload.last_seen_address or "").strip() or None}
     suggestions = (await session.execute(select(MatchSuggestion).where(MatchSuggestion.missing_report_id == report.id, MatchSuggestion.status == "pending"))).scalars().all()
     for suggestion in suggestions:
         suggestion.status = "stale"
