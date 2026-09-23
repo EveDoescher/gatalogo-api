@@ -349,6 +349,9 @@ O campo `evidence` de `/vision/matches` informa os motivos de incerteza.
 
 ### Verificações
 
+Instale as dependências de desenvolvimento com
+`pip install -r requirements-dev.txt` antes de executar a suíte.
+
 ```powershell
 python -m pytest -q
 ```

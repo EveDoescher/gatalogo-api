@@ -4,7 +4,7 @@ from datetime import datetime
 from typing import Any, Literal
 from uuid import UUID
 
-from pydantic import BaseModel, EmailStr, Field, field_validator
+from pydantic import AliasChoices, BaseModel, EmailStr, Field, field_validator
 
 
 class RegisterRequest(BaseModel):
@@ -182,7 +182,9 @@ class MessageCreate(BaseModel):
 
 
 class MessageReactionRequest(BaseModel):
-    emoji: str = Field(min_length=1, max_length=16)
+    reaction: Literal["heart", "paw", "like", "check"] = Field(
+        validation_alias=AliasChoices("reaction", "emoji")
+    )
 
 
 class MessageEditRequest(BaseModel):

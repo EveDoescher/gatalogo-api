@@ -1,4 +1,4 @@
-"""Unit tests for Social Graph & Community Growth (Etapa 7)."""
+"""Tests for the social graph and community discovery."""
 from datetime import UTC, datetime
 from unittest.mock import AsyncMock, MagicMock
 from uuid import uuid4

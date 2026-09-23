@@ -73,7 +73,7 @@ def _user_avatar_url(user_id: UUID, preferences: dict | None) -> str | None:
     return None
 
 
-def _public(user: User, preferences: dict | None = None) -> PublicUserResponse:
+def _public_user_response(user: User, preferences: dict | None = None) -> PublicUserResponse:
     if not user.username:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Escolha um nome de usuário para usar recursos sociais.")
     avatar_url = _user_avatar_url(user.id, preferences) if preferences is not None else None
@@ -412,12 +412,12 @@ async def find_user(username: str, user: User = Depends(current_user), session: 
     if target is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Usuário não encontrado.")
     pstate = await session.get(ProductState, target.id)
-    return _public(target, pstate.preferences if pstate else None)
+    return _public_user_response(target, pstate.preferences if pstate else None)
 
 
 @router.post("/invites", response_model=FriendInviteResponse, status_code=status.HTTP_201_CREATED)
 async def send_invite(payload: FriendInviteCreate, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> FriendInviteResponse:
-    sender = _public(user)
+    sender = _public_user_response(user)
     recipient = (await session.execute(select(User).where(User.username == payload.username.lower(), User.status == "active"))).scalar_one_or_none()
     if recipient is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Usuário não encontrado.")
@@ -448,7 +448,7 @@ async def send_invite(payload: FriendInviteCreate, user: User = Depends(current_
     await session.commit()
     await publish_committed_events(session)
     await session.refresh(invite)
-    return FriendInviteResponse(id=invite.id, sender=sender, recipient=_public(recipient), status=invite.status, created_at=invite.created_at)
+    return FriendInviteResponse(id=invite.id, sender=sender, recipient=_public_user_response(recipient), status=invite.status, created_at=invite.created_at)
 
 
 @router.get("/invites", response_model=list[FriendInviteResponse])
@@ -463,8 +463,8 @@ async def list_invites(user: User = Depends(current_user), session: AsyncSession
             r_state = await session.get(ProductState, recipient.id)
             result.append(FriendInviteResponse(
                 id=invite.id,
-                sender=_public(sender, s_state.preferences if s_state else None),
-                recipient=_public(recipient, r_state.preferences if r_state else None),
+                sender=_public_user_response(sender, s_state.preferences if s_state else None),
+                recipient=_public_user_response(recipient, r_state.preferences if r_state else None),
                 status=invite.status,
                 created_at=invite.created_at,
             ))
@@ -519,8 +519,8 @@ async def respond_invite(invite_id: UUID, decision: str, user: User = Depends(cu
     u_state = await session.get(ProductState, user.id)
     return FriendInviteResponse(
         id=invite.id,
-        sender=_public(sender, s_state.preferences if s_state else None) if sender else _public(user),
-        recipient=_public(user, u_state.preferences if u_state else None),
+        sender=_public_user_response(sender, s_state.preferences if s_state else None) if sender else _public_user_response(user),
+        recipient=_public_user_response(user, u_state.preferences if u_state else None),
         status=invite.status,
         created_at=invite.created_at,
     )
@@ -533,7 +533,7 @@ async def list_friends(user: User = Depends(current_user), session: AsyncSession
     for friend in friends:
         if friend.username:
             f_state = await session.get(ProductState, friend.id)
-            res.append(_public(friend, f_state.preferences if f_state else None))
+            res.append(_public_user_response(friend, f_state.preferences if f_state else None))
     return res
 
 
@@ -1151,19 +1151,19 @@ async def toggle_message_reaction(
         raise HTTPException(404, "Mensagem não encontrada.")
 
     reactions = dict(message.reactions or {})
-    emoji = payload.emoji.strip()
+    reaction = payload.reaction
     user_id_str = str(user.id)
-    users_list = list(reactions.get(emoji, []))
+    users_list = list(reactions.get(reaction, []))
 
     if user_id_str in users_list:
         users_list.remove(user_id_str)
         if not users_list:
-            reactions.pop(emoji, None)
+            reactions.pop(reaction, None)
         else:
-            reactions[emoji] = users_list
+            reactions[reaction] = users_list
     else:
         users_list.append(user_id_str)
-        reactions[emoji] = users_list
+        reactions[reaction] = users_list
 
     message.reactions = reactions
     await session.commit()

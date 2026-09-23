@@ -72,7 +72,6 @@ async def test_change_email_flow():
         status="active",
     )
     session = AsyncMock()
-    # Mock no existing user with new email
     exec_result = MagicMock()
     exec_result.scalar_one_or_none.return_value = None
     session.execute = AsyncMock(return_value=exec_result)
@@ -109,9 +108,8 @@ async def test_export_user_data():
     session = AsyncMock()
 
     mock_state = ProductState(user_id=user_id, preferences={"bio": "Adoro felinos"}, achievements={"first_cat": "2026-09-16T10:00:00Z"})
-    with patch("app.routers.product._state", new_callable=AsyncMock) as mock_get_state:
+    with patch("app.routers.product._get_or_create_product_state", new_callable=AsyncMock) as mock_get_state:
         mock_get_state.return_value = mock_state
-        # Mock cats, reports, sightings execution queries
         cat_exec = MagicMock()
         cat_exec.scalars.return_value.all.return_value = []
         session.execute = AsyncMock(return_value=cat_exec)
@@ -148,7 +146,7 @@ async def test_favorites_sync():
     session = AsyncMock()
     state = ProductState(user_id=user_id, preferences={"favorites": ["cat-1", "cat-2"]})
 
-    with patch("app.routers.product._state", new_callable=AsyncMock) as mock_get_state:
+    with patch("app.routers.product._get_or_create_product_state", new_callable=AsyncMock) as mock_get_state:
         mock_get_state.return_value = state
         favs = await get_favorites(user=user, session=session)
         assert "cat-1" in favs["favorites"]

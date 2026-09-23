@@ -29,7 +29,7 @@ from app.config import get_settings
 router = APIRouter(prefix="/app", tags=["app"])
 
 
-async def _state(session: AsyncSession, user: User) -> ProductState:
+async def _get_or_create_product_state(session: AsyncSession, user: User) -> ProductState:
     await session.flush()
     await session.refresh(user, with_for_update=True)
     state = await session.get(ProductState, user.id)
@@ -47,7 +47,7 @@ class UpdateAccountRequest(BaseModel):
 
 @router.get("/account")
 async def account(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
-    state = await _state(session, user)
+    state = await _get_or_create_product_state(session, user)
     await session.commit()
     return {
         "username": user.username,
@@ -60,7 +60,7 @@ async def account(user: User = Depends(current_user), session: AsyncSession = De
 
 @router.put("/account")
 async def update_account(payload: UpdateAccountRequest, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
-    state = await _state(session, user)
+    state = await _get_or_create_product_state(session, user)
     if payload.username is not None:
         clean = payload.username.strip().lower().replace("@", "")
         if clean and clean != user.username:
@@ -88,7 +88,7 @@ async def upload_avatar(file: UploadFile = File(...), user: User = Depends(curre
         raise HTTPException(400, "Arquivo vazio.")
     suffix = Path(file.filename or "avatar.jpg").suffix or ".jpg"
     photo_storage.save_profile_photo(user_id=user.id, data=data, suffix=suffix)
-    state = await _state(session, user)
+    state = await _get_or_create_product_state(session, user)
     new_prefs = dict(state.preferences)
     new_prefs["avatar_url"] = f"/app/account/avatar/{user.id}"
     state.preferences = new_prefs
@@ -120,7 +120,7 @@ class Preferences(BaseModel):
 
 @router.put("/preferences", status_code=204)
 async def preferences(payload: Preferences, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> None:
-    state = await _state(session, user)
+    state = await _get_or_create_product_state(session, user)
     state.preferences = payload.model_dump()
     await session.commit()
 
@@ -496,7 +496,7 @@ def _get_or_init_gamification(state: ProductState) -> dict:
 
 @router.get("/gamification")
 async def get_gamification(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
-    state = await _state(session, user)
+    state = await _get_or_create_product_state(session, user)
     gamif = _get_or_init_gamification(state)
     xp = gamif.get("xp", 0)
     lvl, title, min_xp, target_xp, reward = calculate_level(xp)
@@ -537,7 +537,7 @@ async def record_gamification_action(
     user: User = Depends(current_user),
     session: AsyncSession = Depends(get_database_session),
 ) -> dict:
-    state = await _state(session, user)
+    state = await _get_or_create_product_state(session, user)
     gamif = _get_or_init_gamification(state)
     today = datetime.now(UTC).date()
     today_str = today.isoformat()
@@ -651,7 +651,7 @@ async def record_gamification_action(
 
 @router.get("/journey")
 async def journey(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> list[dict]:
-    state = await _state(session, user)
+    state = await _get_or_create_product_state(session, user)
     gamif = _get_or_init_gamification(state)
     cats = (await session.execute(select(RemoteCat).where(RemoteCat.user_id == user.id, RemoteCat.deleted_at.is_(None)))).scalars().all()
     discoveries = [cat for cat in cats if (cat.payload or {}).get("is_owned") not in (True, 1)]
@@ -766,7 +766,7 @@ async def journey(user: User = Depends(current_user), session: AsyncSession = De
 
 @router.post("/journey/{achievement_id}/share", status_code=204)
 async def share_achievement(achievement_id: str, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> None:
-    state = await _state(session, user)
+    state = await _get_or_create_product_state(session, user)
     if not user.username or achievement_id not in state.achievements or achievement_id not in ACHIEVEMENTS:
         raise HTTPException(409, "Escolha seu nome de usuário e desbloqueie a conquista antes de compartilhar.")
     exists = (await session.execute(select(FeedItem.id).where(FeedItem.user_id == user.id, FeedItem.type == "achievement", FeedItem.payload["achievement_id"].as_string() == achievement_id))).scalar_one_or_none()
@@ -777,7 +777,7 @@ async def share_achievement(achievement_id: str, user: User = Depends(current_us
 
 @router.get("/account/export")
 async def export_user_data(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
-    state = await _state(session, user)
+    state = await _get_or_create_product_state(session, user)
     cats = (await session.execute(select(RemoteCat).where(RemoteCat.user_id == user.id, RemoteCat.deleted_at.is_(None)))).scalars().all()
     reports = (await session.execute(select(MissingReport).where(MissingReport.user_id == user.id))).scalars().all()
     sightings = (await session.execute(select(Sighting).where(Sighting.observer_id == user.id))).scalars().all()
@@ -844,13 +844,13 @@ async def submit_feedback(payload: FeedbackRequest, user: User = Depends(current
 
 @router.get("/favorites")
 async def get_favorites(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
-    state = await _state(session, user)
+    state = await _get_or_create_product_state(session, user)
     return {"favorites": list(state.preferences.get("favorites", []))}
 
 
 @router.put("/favorites")
 async def update_favorites(payload: FavoritesSyncRequest, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
-    state = await _state(session, user)
+    state = await _get_or_create_product_state(session, user)
     prefs = dict(state.preferences or {})
     prefs["favorites"] = list(set(payload.favorites))
     state.preferences = prefs

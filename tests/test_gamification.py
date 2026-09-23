@@ -1,4 +1,4 @@
-"""Unit tests for Gamification (Etapa 6) - XP, Levels, Streaks, Missions and Achievements."""
+"""Tests for levels, streaks, missions, and achievements."""
 from datetime import UTC, datetime, date
 from uuid import uuid4
 from unittest.mock import AsyncMock, MagicMock
