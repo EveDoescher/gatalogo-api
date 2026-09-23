@@ -151,14 +151,14 @@ async def test_favorites_sync():
     with patch("app.routers.product._state", new_callable=AsyncMock) as mock_get_state:
         mock_get_state.return_value = state
         favs = await get_favorites(user=user, session=session)
-        assert "cat-1" in favs
-        assert "cat-2" in favs
+        assert "cat-1" in favs["favorites"]
+        assert "cat-2" in favs["favorites"]
 
         updated = await update_favorites(
             FavoritesSyncRequest(favorites=["cat-1", "cat-3"]),
             user=user,
             session=session,
         )
-        assert set(updated) == {"cat-1", "cat-3"}
-        assert state.preferences["favorites"] == updated
+        assert set(updated["favorites"]) == {"cat-1", "cat-3"}
+        assert state.preferences["favorites"] == updated["favorites"]
         session.commit.assert_awaited_once()

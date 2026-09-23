@@ -840,19 +840,19 @@ async def submit_feedback(payload: FeedbackRequest, user: User = Depends(current
 
 
 @router.get("/favorites")
-async def get_favorites(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> list[str]:
+async def get_favorites(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
     state = await _state(session, user)
-    return list(state.preferences.get("favorites", []))
+    return {"favorites": list(state.preferences.get("favorites", []))}
 
 
 @router.put("/favorites")
-async def update_favorites(payload: FavoritesSyncRequest, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> list[str]:
+async def update_favorites(payload: FavoritesSyncRequest, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
     state = await _state(session, user)
     prefs = dict(state.preferences or {})
     prefs["favorites"] = list(set(payload.favorites))
     state.preferences = prefs
     flag_modified(state, "preferences")
     await session.commit()
-    return prefs["favorites"]
+    return {"favorites": prefs["favorites"]}
 
 
