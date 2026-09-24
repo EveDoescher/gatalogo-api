@@ -29,6 +29,7 @@ from app.routers.sync import router as sync_router
 from app.routers.social import router as social_router
 from app.routers.vision import router as vision_router
 from app.routers.product import router as product_router
+from app.routers.habitat import router as habitat_router
 from app.routers.websocket import router as websocket_router
 from app.services.storage_service import photo_storage
 from app.services.vision_jobs import enqueue_recognition
@@ -57,6 +58,7 @@ app.include_router(sync_router)
 app.include_router(social_router)
 app.include_router(vision_router)
 app.include_router(product_router)
+app.include_router(habitat_router)
 app.include_router(websocket_router)
 
 
@@ -179,6 +181,8 @@ async def analyze_cat(
         return result
 
     except MissingApiKeyError as error:
+        import traceback
+        traceback.print_exc()
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail={
@@ -188,6 +192,8 @@ async def analyze_cat(
         ) from error
 
     except SegmentationError as error:
+        import traceback
+        traceback.print_exc()
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail={

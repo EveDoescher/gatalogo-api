@@ -44,6 +44,45 @@ class ProductState(Base):
     achievements: Mapped[dict] = mapped_column(JSON, default=dict)
 
 
+class HabitatWallet(Base):
+    __tablename__ = "habitat_wallets"
+
+    user_id: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("users.id", ondelete="CASCADE"), primary_key=True)
+    balance: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    layout_revision: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    selected_cat_ids: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    cat_anchors: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
+    expansion_level: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    layout_rules_version: Mapped[int] = mapped_column(Integer, nullable=False, default=3)
+
+
+class HabitatTransaction(Base):
+    __tablename__ = "habitat_transactions"
+    __table_args__ = (UniqueConstraint("user_id", "event_key", name="uq_habitat_transaction_event"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
+    user_id: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    event_key: Mapped[str] = mapped_column(String(160))
+    category: Mapped[str] = mapped_column(String(32), index=True)
+    amount: Mapped[int] = mapped_column(Integer, nullable=False)
+    photo_hash: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), index=True)
+
+
+class HabitatItem(Base):
+    __tablename__ = "habitat_items"
+    __table_args__ = (UniqueConstraint("user_id", "purchase_key", name="uq_habitat_purchase_key"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
+    user_id: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    sku: Mapped[str] = mapped_column(String(48))
+    purchase_key: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    x: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    y: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    rotation: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
 class AuthIdentity(Base):
     __tablename__ = "auth_identities"
     __table_args__ = (UniqueConstraint("provider", "subject", name="uq_identity_provider_subject"),)

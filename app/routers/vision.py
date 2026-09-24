@@ -31,6 +31,7 @@ from app.schemas import (
     VisionJobResponse,
 )
 from app.services.recognition_service import create_sighting_matches, create_report_matches
+from app.services.habitat_service import grant_reward
 from app.services.realtime_events import publish_committed_events, queue_notification
 from app.services.vision_jobs import enqueue_recognition
 
@@ -147,6 +148,7 @@ async def create_sighting(payload: SightingCreate, user: User = Depends(current_
         session.add(sighting)
         await session.flush()
     await create_sighting_matches(session, sighting=sighting, settings=get_settings())
+    await grant_reward(session, user.id, "sighting", f"sighting:{cat.id}:{datetime.now(UTC).date().isoformat()}")
     await session.commit()
     await publish_committed_events(session)
     return {"id": str(sighting.id), "status": "recorded"}

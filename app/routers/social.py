@@ -55,6 +55,7 @@ from app.services.realtime_events import (
     queue_notification,
 )
 from app.services.storage_service import photo_storage
+from app.services.habitat_service import grant_reward
 from app.services.websocket_manager import ws_manager
 
 router = APIRouter(prefix="/social", tags=["social"])
@@ -700,6 +701,7 @@ async def create_post(
     item = FeedItem(user_id=user.id, type="cat_post", payload=item_payload)
     session.add(item)
     await session.flush()
+    await grant_reward(session, user.id, "post", f"post:{item.id}")
     friend_ids = await _friend_ids(session, user.id)
     for fid in friend_ids:
         queue_event(
@@ -732,6 +734,9 @@ async def toggle_like(item_id: UUID, user: User = Depends(current_user), session
     item_payload["likes_count"] = len(likes)
     item_payload["has_liked"] = liked
     item.payload = item_payload
+
+    if liked and item.user_id != user.id:
+        await grant_reward(session, user.id, "like", f"like:{item.id}:{user.id}")
 
     friend_ids = await _friend_ids(session, user.id)
     target_ids = friend_ids | {item.user_id}
@@ -773,6 +778,9 @@ async def add_comment(item_id: UUID, payload: CommentCreate, user: User = Depend
     comments.append(comment)
     item_payload["comments"] = comments
     item.payload = item_payload
+
+    if item.user_id != user.id:
+        await grant_reward(session, user.id, "comment", f"comment:{comment['id']}")
 
     friend_ids = await _friend_ids(session, user.id)
     target_ids = friend_ids | {item.user_id}

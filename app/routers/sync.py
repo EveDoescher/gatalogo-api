@@ -22,6 +22,7 @@ from app.services.storage_service import photo_storage
 from app.services.vision_jobs import enqueue_recognition
 from app.services.recognition_service import sync_catalog_sighting, refresh_cat_matches
 from app.services.realtime_events import publish_committed_events
+from app.services.habitat_service import grant_reward
 
 router = APIRouter(prefix="/sync", tags=["sync"])
 
@@ -202,6 +203,7 @@ async def upload_photo(
     await session.execute(delete(CatVisualEmbedding).where(CatVisualEmbedding.photo_id == primary.id))
     await enqueue_recognition(session, cat=cat, photo=primary)
     await refresh_cat_matches(session, cat=cat, settings=settings)
+    await grant_reward(session, user.id, "catalog", f"catalog:{cat.id}", photo_hash=photo_hash)
     await session.commit()
     await publish_committed_events(session)
     if old_key and old_key != key:
@@ -296,6 +298,7 @@ async def upload_reference_photo(
     await session.execute(delete(CatVisualEmbedding).where(CatVisualEmbedding.photo_id == photo.id))
     await enqueue_recognition(session, cat=cat, photo=photo)
     await refresh_cat_matches(session, cat=cat, settings=get_settings())
+    await grant_reward(session, user.id, "reference", f"reference:{cat.id}:{kind}")
     await session.commit()
     await publish_committed_events(session)
     if old_key and old_key != key:
