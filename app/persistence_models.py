@@ -44,6 +44,25 @@ class ProductState(Base):
     achievements: Mapped[dict] = mapped_column(JSON, default=dict)
 
 
+class ProgressEvent(Base):
+    """Immutable grants and durable outcomes, serialized by the user's row lock."""
+    __tablename__ = "progress_events"
+    __table_args__ = (UniqueConstraint("user_id", "event_key", name="uq_progress_event"),)
+    id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
+    user_id: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    event_key: Mapped[str] = mapped_column(String(200))
+    kind: Mapped[str] = mapped_column(String(32), index=True)
+    record_id: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
+    state: Mapped[str] = mapped_column(String(24), default="pending")
+    rule_version: Mapped[int] = mapped_column(Integer, default=1)
+    xp: Mapped[int] = mapped_column(Integer, default=0)
+    coins: Mapped[int] = mapped_column(Integer, default=0)
+    photo_hash: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
+    evidence: Mapped[dict] = mapped_column(JSON, default=dict)
+    result: Mapped[dict] = mapped_column(JSON, default=dict)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), index=True)
+
+
 class HabitatWallet(Base):
     __tablename__ = "habitat_wallets"
 
@@ -52,6 +71,7 @@ class HabitatWallet(Base):
     layout_revision: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
     selected_cat_ids: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
     cat_anchors: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
+    care_state: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
     expansion_level: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
     layout_rules_version: Mapped[int] = mapped_column(Integer, nullable=False, default=3)
 
@@ -66,6 +86,7 @@ class HabitatTransaction(Base):
     category: Mapped[str] = mapped_column(String(32), index=True)
     amount: Mapped[int] = mapped_column(Integer, nullable=False)
     photo_hash: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    details: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), index=True)
 
 
@@ -80,6 +101,7 @@ class HabitatItem(Base):
     x: Mapped[int | None] = mapped_column(Integer, nullable=True)
     y: Mapped[int | None] = mapped_column(Integer, nullable=True)
     rotation: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    care_state: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 

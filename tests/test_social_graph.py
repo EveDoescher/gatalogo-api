@@ -111,6 +111,7 @@ async def test_get_public_profile():
     session.execute.side_effect = mock_execute
     session.get = AsyncMock(return_value=target_state)
 
+    session.scalar = AsyncMock(return_value=None)
     profile = await get_public_profile("target_hero", user=viewer, session=session)
     assert profile.username == "target_hero"
     assert profile.bio == "Amante dos bichanos"
@@ -118,11 +119,10 @@ async def test_get_public_profile():
     assert profile.level == 3
     assert profile.level_title == "Observador"
     assert profile.streak == 5
-    assert profile.cats_count == 1
-    assert len(profile.public_cats) == 1
-    assert profile.public_cats[0]["name"] == "Mimi"
-    assert len(profile.achievements) == 1
-    assert profile.achievements[0]["id"] == "first"
+    assert profile.cats_count == 0
+    assert profile.public_cats == []
+    assert profile.achievements == []
+    assert profile.habitat_preview is None
     assert profile.friendship_status == "none"
 
 

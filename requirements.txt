@@ -17,5 +17,6 @@ pwdlib[argon2]>=0.3
 google-auth>=2.40
 email-validator>=2.2
 httpx>=0.28
+tzdata>=2026.1
 # O worker GPU instala SAM 3 e suas dependências CUDA separadamente, seguindo
 # as instruções/licença da Meta e após acesso aos checkpoints ser aprovado.

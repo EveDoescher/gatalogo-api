@@ -22,7 +22,7 @@ from app.services.storage_service import photo_storage
 from app.services.vision_jobs import enqueue_recognition
 from app.services.recognition_service import sync_catalog_sighting, refresh_cat_matches
 from app.services.realtime_events import publish_committed_events
-from app.services.habitat_service import grant_reward
+from app.services.progression import confirm_photo, account as progress_account, identify
 
 router = APIRouter(prefix="/sync", tags=["sync"])
 
@@ -47,6 +47,7 @@ async def _record_change(session: AsyncSession, cat: RemoteCat) -> None:
 
 
 async def _apply_operation(session: AsyncSession, user: User, operation: SyncOperation) -> RemoteCat:
+    await progress_account(session, user.id)
     cat = (await session.execute(select(RemoteCat).where(RemoteCat.user_id == user.id, RemoteCat.client_id == operation.client_id).with_for_update())).scalar_one_or_none()
     if cat is not None and not _incoming_wins(cat, operation):
         return cat
@@ -54,7 +55,7 @@ async def _apply_operation(session: AsyncSession, user: User, operation: SyncOpe
         cat = RemoteCat(
             user_id=user.id,
             client_id=operation.client_id,
-            payload=operation.payload,
+            payload={**operation.payload, "individual_id": None, "identity_revision": 0},
             analysis=operation.analysis,
             client_updated_at=_utc(operation.updated_at),
             updated_by_device=operation.device_id,
@@ -62,11 +63,17 @@ async def _apply_operation(session: AsyncSession, user: User, operation: SyncOpe
         )
         session.add(cat)
     else:
-        cat.payload = operation.payload
-        cat.analysis = operation.analysis
+        previous_identity = cat.payload.get("individual_id")
+        revision = cat.payload.get("identity_revision", 0)
+        cat.payload = {**operation.payload, "individual_id": previous_identity, "identity_revision": revision}
+        if cat.analysis is None:
+            cat.analysis = operation.analysis
         cat.client_updated_at = _utc(operation.updated_at)
         cat.updated_by_device = operation.device_id
         cat.deleted_at = _utc(operation.deleted_at) if operation.deleted_at else None
+    await session.flush()
+    if operation.deleted_at is None:
+        await identify(session, cat, operation.payload.get("individual_id") or cat.client_id)
     await session.flush()
     await _record_change(session, cat)
     await sync_catalog_sighting(session, cat=cat, settings=get_settings())
@@ -110,11 +117,28 @@ async def _to_record(session: AsyncSession, cat: RemoteCat) -> SyncCatRecord:
     )
 
 
+def _ordered_operations(operations):
+    """A queued known-cat photo may arrive before its offline-created anchor."""
+    pending = list(operations)
+    ordered = []
+    while pending:
+        ids = {str(op.client_id) for op in pending}
+        ready = [op for op in pending if op.deleted_at is not None or
+                 not op.payload.get("individual_id") or
+                 str(op.payload["individual_id"]) == str(op.client_id) or
+                 str(op.payload["individual_id"]) not in ids]
+        if not ready:
+            raise HTTPException(422, "As identificações formam um ciclo. Marque um dos registros como indivíduo separado.")
+        ordered.extend(ready)
+        pending = [op for op in pending if op not in ready]
+    return ordered
+
+
 @router.post("/push")
 async def push(payload: SyncPushRequest, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict[str, int]:
     applied = 0
     photos_to_delete: list[str] = []
-    for operation in payload.operations:
+    for operation in _ordered_operations(payload.operations):
         cat = await _apply_operation(session, user, operation)
         if cat.client_updated_at == _utc(operation.updated_at):
             applied += 1
@@ -203,7 +227,6 @@ async def upload_photo(
     await session.execute(delete(CatVisualEmbedding).where(CatVisualEmbedding.photo_id == primary.id))
     await enqueue_recognition(session, cat=cat, photo=primary)
     await refresh_cat_matches(session, cat=cat, settings=settings)
-    await grant_reward(session, user.id, "catalog", f"catalog:{cat.id}", photo_hash=photo_hash)
     await session.commit()
     await publish_committed_events(session)
     if old_key and old_key != key:
@@ -241,12 +264,14 @@ async def _analyze_reference_photo(
             incoming = (await AnalysisService(get_settings()).analyze(
                 cat_id=str(client_id), image_bytes=image_bytes
             )).model_dump(mode="json")
+            await progress_account(session, user_id)
             await session.refresh(cat, with_for_update=True)
             await session.refresh(photo, with_for_update=True)
             if cat.deleted_at is not None or photo.deleted_at is not None or photo.content_hash != hashlib.sha256(image_bytes).hexdigest():
                 return
             photo.analysis = incoming
             photo.status = "ready"
+            await confirm_photo(session, cat, photo, incoming, reference=True)
             await rebuild_analysis_from_photos(session, cat)
             await _record_change(session, cat)
         except Exception:
@@ -258,6 +283,7 @@ async def _analyze_reference_photo(
             photo.status = "failed"
             await _record_change(session, cat)
         await session.commit()
+        await publish_committed_events(session)
 
 
 @router.put("/cats/{client_id}/reference-photos/{kind}", status_code=status.HTTP_202_ACCEPTED)
@@ -298,7 +324,6 @@ async def upload_reference_photo(
     await session.execute(delete(CatVisualEmbedding).where(CatVisualEmbedding.photo_id == photo.id))
     await enqueue_recognition(session, cat=cat, photo=photo)
     await refresh_cat_matches(session, cat=cat, settings=get_settings())
-    await grant_reward(session, user.id, "reference", f"reference:{cat.id}:{kind}")
     await session.commit()
     await publish_committed_events(session)
     if old_key and old_key != key:

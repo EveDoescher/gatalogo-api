@@ -120,6 +120,7 @@ class MissingReportResponse(BaseModel):
 
 
 class SightingCreate(BaseModel):
+    client_event_id: str | None = Field(default=None, max_length=80)
     observed_at: datetime | None = None
     cat_client_id: UUID
     latitude: float = Field(ge=-90, le=90)
@@ -317,6 +318,8 @@ class PublicProfileResponse(BaseModel):
     friendship_status: str = "none"
     mutual_friends_count: int = 0
     public_cats: list[dict[str, Any]] = Field(default_factory=list)
+    habitat_preview: dict[str, Any] | None = None
+    audiences: dict[str, str] = Field(default_factory=dict)
 
 
 class LeaderboardEntry(BaseModel):

@@ -9,7 +9,10 @@ import uuid
 
 from fastapi import APIRouter, Depends, File, HTTPException, Query, Response, UploadFile
 from PIL import Image, ImageOps
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
+from typing import Literal
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+from app.services import progression as progress
 from sqlalchemy import select, func
 from sqlalchemy.orm.attributes import flag_modified
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -43,6 +46,7 @@ async def _get_or_create_product_state(session: AsyncSession, user: User) -> Pro
 class UpdateAccountRequest(BaseModel):
     username: str | None = None
     bio: str | None = None
+    avatar_preset: Literal['bapinho', 'bapinha'] | None = None
 
 
 @router.get("/account")
@@ -72,6 +76,9 @@ async def update_account(payload: UpdateAccountRequest, user: User = Depends(cur
         new_prefs = dict(state.preferences)
         new_prefs["bio"] = payload.bio.strip()
         state.preferences = new_prefs
+    if payload.avatar_preset is not None:
+        state.preferences = {**state.preferences,
+            'avatar_url': f'/app/account/avatar/preset/{payload.avatar_preset}'}
     await session.commit()
     return {
         "username": user.username,
@@ -90,10 +97,17 @@ async def upload_avatar(file: UploadFile = File(...), user: User = Depends(curre
     photo_storage.save_profile_photo(user_id=user.id, data=data, suffix=suffix)
     state = await _get_or_create_product_state(session, user)
     new_prefs = dict(state.preferences)
-    new_prefs["avatar_url"] = f"/app/account/avatar/{user.id}"
+    new_prefs["avatar_url"] = f"/app/account/avatar/{user.id}?v={uuid.uuid4().hex}"
     state.preferences = new_prefs
     await session.commit()
     return {"avatar_url": new_prefs["avatar_url"]}
+
+
+@router.get('/account/avatar/preset/{preset}')
+async def get_avatar_preset(preset: Literal['bapinho', 'bapinha']) -> Response:
+    path = Path(__file__).resolve().parents[1] / 'assets' / 'avatars' / f'{preset}.png'
+    return Response(path.read_bytes(), media_type='image/png',
+                    headers={'Cache-Control': 'public, max-age=86400'})
 
 
 @router.get("/account/avatar/{target_user_id}")
@@ -116,12 +130,25 @@ async def get_avatar(target_user_id: UUID) -> Response:
 class Preferences(BaseModel):
     social_notifications: bool = True
     sighting_notifications: bool = True
+    gallery_audience: Literal["private", "friends", "public"] = "friends"
+    medals_audience: Literal["private", "friends", "public"] = "friends"
+    habitat_audience: Literal["private", "friends", "public"] = "friends"
+    timezone: str = "America/Sao_Paulo"
+
+    @field_validator("timezone")
+    @classmethod
+    def valid_timezone(cls, value):
+        try:
+            ZoneInfo(value)
+        except (ZoneInfoNotFoundError, ValueError):
+            raise ValueError("Fuso horário inválido.")
+        return value
 
 
 @router.put("/preferences", status_code=204)
 async def preferences(payload: Preferences, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> None:
     state = await _get_or_create_product_state(session, user)
-    state.preferences = payload.model_dump()
+    state.preferences = {**(state.preferences or {}), **payload.model_dump(exclude_unset=True)}
     await session.commit()
 
 
@@ -376,10 +403,10 @@ ACHIEVEMENT_XP: dict[str, int] = {
 
 LEVELS = [
     (1, "Curioso", 0, 100, "Início da jornada felina"),
-    (2, "Explorador", 100, 300, "Desbloqueia novos filtros e modos"),
-    (3, "Observador", 300, 650, "Bônus de XP de avistamento +5%"),
+    (2, "Explorador", 100, 300, "Flores para o Habitat"),
+    (3, "Observador", 300, 650, "Selo de observador"),
     (4, "Catalogador", 650, 1200, "Badge exclusiva de perfil"),
-    (5, "Guardião", 1200, 2000, "Prioridade em alertas de resgate"),
+    (5, "Guardião", 1200, 2000, "Selo de guardião"),
     (6, "Protetor", 2000, 3200, "Título honorário de proteção"),
     (7, "Lenda Felina", 3200, 5000, "Status máximo da comunidade"),
 ]
@@ -393,137 +420,14 @@ def calculate_level(xp: int) -> tuple[int, str, int, int, str]:
 
 
 def calculate_multiplier(streak: int) -> float:
-    if streak <= 1:
-        return 1.0
-    if streak == 2:
-        return 1.1
-    if streak == 3:
-        return 1.2
-    if streak < 7:
-        return 1.3
-    return 1.5
-
-
-ACTION_XP = {
-    "photo": 50,
-    "sighting": 40,
-    "post": 30,
-    "comment": 15,
-    "like": 5,
-    "share": 25,
-    "care": 25,
-}
-
-
-def _get_or_init_gamification(state: ProductState) -> dict:
-    prefs = dict(state.preferences) if isinstance(state.preferences, dict) else {}
-    gamif = prefs.get("gamification")
-    today_str = datetime.now(UTC).date().isoformat()
-    if not isinstance(gamif, dict):
-        gamif = {
-            "xp": 0,
-            "streak": 0,
-            "longest_streak": 0,
-            "last_action_date": None,
-            "freeze_shields": 1,
-            "last_freeze_refill": today_str,
-            "missions_date": today_str,
-            "daily_missions": [
-                {"id": "daily_photo", "title": "Fotografar ou catalogar 1 gato", "target": 1, "progress": 0, "xp_reward": 60, "completed": False},
-                {"id": "daily_social", "title": "Interagir em 2 publicações da comunidade", "target": 2, "progress": 0, "xp_reward": 40, "completed": False},
-                {"id": "daily_care", "title": "Verificar área de busca ou atualizar fotos", "target": 1, "progress": 0, "xp_reward": 50, "completed": False},
-            ],
-            "weekly_mission": {
-                "id": "weekly_sightings",
-                "title": "Registrar avistamentos em 3 dias diferentes",
-                "target": 3,
-                "progress": 0,
-                "xp_reward": 150,
-                "completed": False,
-                "week_str": f"{datetime.now(UTC).year}-W{datetime.now(UTC).isocalendar()[1]}",
-            },
-            "bonus_mission": {
-                "id": "bonus_share",
-                "title": "Compartilhar uma descoberta ou cartaz de desaparecimento",
-                "target": 1,
-                "progress": 0,
-                "xp_reward": 80,
-                "completed": False,
-            },
-        }
-        prefs["gamification"] = dict(gamif)
-        state.preferences = prefs
-        flag_modified(state, "preferences")
-    else:
-        changed = False
-        if gamif.get("missions_date") != today_str:
-            gamif["missions_date"] = today_str
-            gamif["daily_missions"] = [
-                {"id": "daily_photo", "title": "Fotografar ou catalogar 1 gato", "target": 1, "progress": 0, "xp_reward": 60, "completed": False},
-                {"id": "daily_social", "title": "Interagir em 2 publicações da comunidade", "target": 2, "progress": 0, "xp_reward": 40, "completed": False},
-                {"id": "daily_care", "title": "Verificar área de busca ou atualizar fotos", "target": 1, "progress": 0, "xp_reward": 50, "completed": False},
-            ]
-            changed = True
-        last_refill = gamif.get("last_freeze_refill")
-        if last_refill:
-            try:
-                refill_date = datetime.fromisoformat(last_refill).date()
-                if (datetime.now(UTC).date() - refill_date).days >= 7:
-                    gamif["freeze_shields"] = min(gamif.get("freeze_shields", 0) + 1, 2)
-                    gamif["last_freeze_refill"] = today_str
-                    changed = True
-            except Exception:
-                gamif["last_freeze_refill"] = today_str
-                changed = True
-        current_week_str = f"{datetime.now(UTC).year}-W{datetime.now(UTC).isocalendar()[1]}"
-        if gamif.get("weekly_mission", {}).get("week_str") != current_week_str:
-            gamif["weekly_mission"] = {
-                "id": "weekly_sightings",
-                "title": "Registrar avistamentos em 3 dias diferentes",
-                "target": 3,
-                "progress": 0,
-                "xp_reward": 150,
-                "completed": False,
-                "week_str": current_week_str,
-            }
-            changed = True
-        if changed:
-            prefs["gamification"] = dict(gamif)
-            state.preferences = prefs
-            flag_modified(state, "preferences")
-    return gamif
+    return 1.0
 
 
 @router.get("/gamification")
 async def get_gamification(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
-    state = await _get_or_create_product_state(session, user)
-    gamif = _get_or_init_gamification(state)
-    xp = gamif.get("xp", 0)
-    lvl, title, min_xp, target_xp, reward = calculate_level(xp)
-    streak = gamif.get("streak", 0)
-    multiplier = calculate_multiplier(streak)
-    unlocked_count = len(state.achievements)
-    total_achievements = len(ACHIEVEMENTS)
+    result = await progress.snapshot(session, user.id)
     await session.commit()
-    return {
-        "xp": xp,
-        "new_xp": xp,
-        "level": lvl,
-        "level_title": title,
-        "level_min_xp": min_xp,
-        "target_xp": target_xp,
-        "level_reward": reward,
-        "streak": streak,
-        "longest_streak": gamif.get("longest_streak", 0),
-        "multiplier": multiplier,
-        "freeze_shields": gamif.get("freeze_shields", 1),
-        "last_action_date": gamif.get("last_action_date"),
-        "daily_missions": gamif.get("daily_missions", []),
-        "weekly_mission": gamif.get("weekly_mission"),
-        "bonus_mission": gamif.get("bonus_mission"),
-        "unlocked_achievements": unlocked_count,
-        "total_achievements": total_achievements,
-    }
+    return result
 
 
 class GamificationActionRequest(BaseModel):
@@ -532,246 +436,37 @@ class GamificationActionRequest(BaseModel):
 
 
 @router.post("/gamification/action")
-async def record_gamification_action(
-    payload: GamificationActionRequest,
-    user: User = Depends(current_user),
-    session: AsyncSession = Depends(get_database_session),
-) -> dict:
-    state = await _get_or_create_product_state(session, user)
-    gamif = _get_or_init_gamification(state)
-    today = datetime.now(UTC).date()
-    today_str = today.isoformat()
-
-    last_action = gamif.get("last_action_date")
-    current_streak = gamif.get("streak", 0)
-    freeze_shields = gamif.get("freeze_shields", 1)
-
-    if last_action is None:
-        current_streak = 1
-        gamif["last_action_date"] = today_str
-    elif last_action == today_str:
-        pass
-    else:
-        last_date = datetime.fromisoformat(last_action).date()
-        diff_days = (today - last_date).days
-        if diff_days == 1:
-            current_streak += 1
-            gamif["last_action_date"] = today_str
-        elif diff_days == 2 and freeze_shields > 0:
-            freeze_shields -= 1
-            gamif["freeze_shields"] = freeze_shields
-            current_streak += 1
-            gamif["last_action_date"] = today_str
-        else:
-            current_streak = 1
-            gamif["last_action_date"] = today_str
-
-    gamif["streak"] = current_streak
-    gamif["longest_streak"] = max(gamif.get("longest_streak", 0), current_streak)
-
-    multiplier = calculate_multiplier(current_streak)
-    base_xp = ACTION_XP.get(payload.action, 10)
-    earned_xp = int(base_xp * multiplier)
-
-    prev_xp = gamif.get("xp", 0)
-    prev_lvl, _, _, _, _ = calculate_level(prev_xp)
-    new_xp = prev_xp + earned_xp
-
-    missions_completed_now = []
-    for m in gamif.get("daily_missions", []):
-        if not m.get("completed", False):
-            advances = False
-            if m["id"] == "daily_photo" and payload.action in ("photo",):
-                advances = True
-            elif m["id"] == "daily_social" and payload.action in ("like", "comment", "post"):
-                advances = True
-            elif m["id"] == "daily_care" and payload.action in ("sighting", "photo", "share", "care"):
-                advances = True
-            if advances:
-                m["progress"] = min(m["progress"] + 1, m["target"])
-                if m["progress"] >= m["target"]:
-                    m["completed"] = True
-                    reward_xp = m.get("xp_reward", 0)
-                    new_xp += reward_xp
-                    earned_xp += reward_xp
-                    missions_completed_now.append(m["title"])
-
-    wm = gamif.get("weekly_mission")
-    if wm and not wm.get("completed", False):
-        if payload.action in ("photo", "sighting"):
-            wm["progress"] = min(wm["progress"] + 1, wm["target"])
-            if wm["progress"] >= wm["target"]:
-                wm["completed"] = True
-                reward_xp = wm.get("xp_reward", 0)
-                new_xp += reward_xp
-                earned_xp += reward_xp
-                missions_completed_now.append(wm["title"])
-
-    bm = gamif.get("bonus_mission")
-    if bm and not bm.get("completed", False):
-        if payload.action == "share":
-            bm["progress"] = min(bm["progress"] + 1, bm["target"])
-            if bm["progress"] >= bm["target"]:
-                bm["completed"] = True
-                reward_xp = bm.get("xp_reward", 0)
-                new_xp += reward_xp
-                earned_xp += reward_xp
-                missions_completed_now.append(bm["title"])
-
-    gamif["xp"] = new_xp
-    new_lvl, new_title, min_xp, target_xp, reward = calculate_level(new_xp)
-    level_up = new_lvl > prev_lvl
-
-    prefs = dict(state.preferences or {})
-    prefs["gamification"] = dict(gamif)
-    state.preferences = prefs
-    flag_modified(state, "preferences")
+async def record_gamification_action(payload: GamificationActionRequest, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
+    # Compatibility for old clients: an unverified action can never mint XP.
+    result = await progress.snapshot(session, user.id)
     await session.commit()
-
-    return {
-        "earned_xp": earned_xp,
-        "multiplier": multiplier,
-        "xp": new_xp,
-        "new_xp": new_xp,
-        "level": new_lvl,
-        "level_title": new_title,
-        "level_min_xp": min_xp,
-        "target_xp": target_xp,
-        "level_reward": reward,
-        "level_up": level_up,
-        "streak": current_streak,
-        "longest_streak": gamif.get("longest_streak", current_streak),
-        "freeze_shields": gamif.get("freeze_shields", freeze_shields),
-        "missions_completed": missions_completed_now,
-        "daily_missions": gamif.get("daily_missions", []),
-        "weekly_mission": wm,
-        "bonus_mission": bm,
-    }
+    return {**result, "earned_xp": 0, "level_up": False, "missions_completed": []}
 
 
 @router.get("/journey")
 async def journey(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> list[dict]:
-    state = await _get_or_create_product_state(session, user)
-    gamif = _get_or_init_gamification(state)
-    cats = (await session.execute(select(RemoteCat).where(RemoteCat.user_id == user.id, RemoteCat.deleted_at.is_(None)))).scalars().all()
-    discoveries = [cat for cat in cats if (cat.payload or {}).get("is_owned") not in (True, 1)]
-    owned_cats = [cat for cat in cats if (cat.payload or {}).get("is_owned") in (True, 1)]
-    photo_counts = (await session.execute(select(CatPhoto.cat_id, func.count()).where(CatPhoto.cat_id.in_([cat.id for cat in cats]), CatPhoto.kind != "primary", CatPhoto.deleted_at.is_(None)).group_by(CatPhoto.cat_id))).all()
-    helper = (await session.execute(select(func.count()).select_from(MatchSuggestion).join(Sighting, Sighting.id == MatchSuggestion.sighting_id).where(Sighting.observer_id == user.id, MatchSuggestion.status == "confirmed"))).scalar_one()
-
-    # Coat colors and types for diversity achievements
-    def _cat_text(cat: RemoteCat) -> str:
-        p = cat.payload or {}
-        name = p.get("name") or p.get("custom_name") or getattr(cat, "name", "") or ""
-        return f"{p.get('primary_color', '')} {p.get('coat_type', '')} {name}".lower()
-
-    black_cats = sum(1 for c in discoveries if any(w in _cat_text(c) for w in ("preto", "black", "pantera", "ébano")))
-    orange_cats = sum(1 for c in discoveries if any(w in _cat_text(c) for w in ("laranja", "ruivo", "amarelo", "red", "orange", "ginger")))
-    calico_cats = sum(1 for c in discoveries if any(w in _cat_text(c) for w in ("calico", "cálico", "tricolor", "casco", "tortie")))
-    siamese_cats = sum(1 for c in discoveries if any(w in _cat_text(c) for w in ("siamês", "siames", "colorpoint", "seal", "pointed")))
-    bicolor_cats = sum(1 for c in discoveries if any(w in _cat_text(c) for w in ("bicolor", "frajola", "tuxedo", "preto e branco", "malhado")))
-
-    locations = {str((c.payload or {}).get("location_name")).strip() for c in discoveries if (c.payload or {}).get("location_name")}
-    
-    # Check capture hours
-    night_cats = 0
-    morning_cats = 0
-    for c in discoveries:
-        cap = (c.payload or {}).get("captured_at")
-        if cap:
-            try:
-                dt = datetime.fromisoformat(str(cap))
-                if dt.hour >= 19 or dt.hour < 5:
-                    night_cats += 1
-                elif 5 <= dt.hour < 8:
-                    morning_cats += 1
-            except Exception:
-                pass
-
-    detailed_notes = sum(1 for c in discoveries if len(str((c.payload or {}).get("note") or "")) >= 10)
-    streak_val = max(gamif.get("streak", 0), gamif.get("longest_streak", 0))
-
-    progress = {
-        "first": len(discoveries),
-        "collector_5": len(discoveries),
-        "collector_10": len(discoveries),
-        "master_collector": len(discoveries),
-        "legend_collector": len(discoveries),
-        "black_cat": black_cats,
-        "orange_tabby": orange_cats,
-        "calico": calico_cats,
-        "siamese_pattern": siamese_cats,
-        "bicolor": bicolor_cats,
-        "neighborhood_3": len(locations),
-        "city_wanderer": len(locations),
-        "night_owl": night_cats,
-        "early_bird": morning_cats,
-        "days": len({str((cat.payload or {}).get("captured_at") or cat.created_at)[:10] for cat in discoveries}),
-        "streak_3": streak_val,
-        "streak_7": streak_val,
-        "streak_30": streak_val,
-        "angles": max([n for _, n in photo_counts], default=0),
-        "portrait": detailed_notes,
-        "angles_master": max([n for _, n in photo_counts], default=0),
-        "helper": helper,
-        "guardian_shield": helper,
-        "poster_share": 1 if gamif.get("bonus_mission", {}).get("completed") else 0,
-        "social_heart": gamif.get("xp", 0) // 10,
-        "commentator": gamif.get("xp", 0) // 15,
-        "first_share": 1 if gamif.get("bonus_mission", {}).get("completed") else 0,
-        "owned_pet": len(owned_cats),
-    }
-
-    unlocked = dict(state.achievements)
-    achievements_unlocked_now = 0
-    for key, (title, _, target) in ACHIEVEMENTS.items():
-        val = progress.get(key, 0)
-        if val >= target and key not in unlocked:
-            unlocked[key] = datetime.now(UTC).isoformat()
-            ach_xp = ACHIEVEMENT_XP.get(key, 50)
-            gamif["xp"] = gamif.get("xp", 0) + ach_xp
-            achievements_unlocked_now += 1
-            notification = AppNotification(
-                user_id=user.id,
-                type="achievement",
-                payload={"achievement_id": key, "title": title, "xp_reward": ach_xp},
-            )
-            session.add(notification)
-            await session.flush()
-            queue_notification(session, notification)
-
-    if achievements_unlocked_now > 0:
-        prefs = dict(state.preferences or {})
-        prefs["gamification"] = dict(gamif)
-        state.preferences = prefs
-        flag_modified(state, "preferences")
-
-    state.achievements = unlocked
-    flag_modified(state, "achievements")
+    result = await progress.snapshot(session, user.id)
+    state = await session.get(ProductState, user.id)
+    rows = [{**c, "unlocked": c["completed"], "unlocked_at": (state.achievements or {}).get(c["id"])} for c in result["challenges"]]
+    active = {c["id"] for c in rows}
+    for key, when in (state.achievements or {}).items():
+        if key not in active:
+            title, desc, target = ACHIEVEMENTS.get(key, (key, "Conquista preservada no seu histórico.", 1))
+            rows.append(dict(id=key, title=title, description=desc, progress=target, target=target,
+                             unlocked=True, completed=True, unlocked_at=when, archived=True, xp_reward=0))
     await session.commit()
-    await publish_committed_events(session)
-    return [
-        {
-            "id": key,
-            "title": title,
-            "description": description,
-            "target": target,
-            "progress": min(progress.get(key, 0), target),
-            "unlocked_at": unlocked.get(key),
-            "xp_reward": ACHIEVEMENT_XP.get(key, 50),
-        }
-        for key, (title, description, target) in ACHIEVEMENTS.items()
-    ]
+    return rows
 
 
 @router.post("/journey/{achievement_id}/share", status_code=204)
 async def share_achievement(achievement_id: str, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> None:
     state = await _get_or_create_product_state(session, user)
-    if not user.username or achievement_id not in state.achievements or achievement_id not in ACHIEVEMENTS:
+    definitions = {**ACHIEVEMENTS, **{c[0]: (c[1], c[2], c[3]) for c in progress.CHALLENGES}}
+    if not user.username or achievement_id not in state.achievements or achievement_id not in definitions:
         raise HTTPException(409, "Escolha seu nome de usuário e desbloqueie a conquista antes de compartilhar.")
     exists = (await session.execute(select(FeedItem.id).where(FeedItem.user_id == user.id, FeedItem.type == "achievement", FeedItem.payload["achievement_id"].as_string() == achievement_id))).scalar_one_or_none()
     if exists is None:
-        session.add(FeedItem(user_id=user.id, type="achievement", payload={"achievement_id": achievement_id, "title": ACHIEVEMENTS[achievement_id][0]}))
+        session.add(FeedItem(user_id=user.id, type="achievement", payload={"achievement_id": achievement_id, "title": definitions[achievement_id][0]}))
     await session.commit()
 
 

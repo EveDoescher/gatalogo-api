@@ -9,6 +9,8 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 
 class Settings(BaseSettings):
+    progression_rewards_enabled: bool = True
+    progression_rollout_percent: int = Field(default=0, ge=0, le=100)
     gemini_api_key: str | None = None
     gemini_model: str = "gemini-3.5-flash-lite"
     max_image_mb: int = 10

@@ -10,7 +10,6 @@ from app.routers.product import (
     LEVELS,
     calculate_level,
     calculate_multiplier,
-    _get_or_init_gamification,
     record_gamification_action,
     get_gamification,
     GamificationActionRequest,
@@ -51,14 +50,9 @@ def test_level_calculation():
     assert title == "Lenda Felina"
 
 
-def test_multiplier_progression():
-    assert calculate_multiplier(0) == 1.0
-    assert calculate_multiplier(1) == 1.0
-    assert calculate_multiplier(2) == 1.1
-    assert calculate_multiplier(3) == 1.2
-    assert calculate_multiplier(5) == 1.3
-    assert calculate_multiplier(7) == 1.5
-    assert calculate_multiplier(30) == 1.5
+def test_multiplier_does_not_reward_streak_pressure():
+    for days in (0, 1, 2, 3, 5, 7, 30):
+        assert calculate_multiplier(days) == 1.0
 
 
 def test_achievements_count_and_keys():
@@ -94,139 +88,27 @@ def test_achievements_count_and_keys():
     assert "owned_pet" in ACHIEVEMENTS
 
 
-def test_gamification_init():
-    state = ProductState(user_id=uuid4(), preferences={}, achievements={})
-    gamif = _get_or_init_gamification(state)
-    assert gamif["xp"] == 0
-    assert gamif["streak"] == 0
-    assert gamif["freeze_shields"] == 1
-    assert len(gamif["daily_missions"]) == 3
-    assert gamif["weekly_mission"]["target"] == 3
-
+from test_progression import account
 
 @pytest.mark.asyncio
-async def test_record_gamification_action_progression():
-    user = User(id=uuid4(), username="alice")
-    state = ProductState(user_id=user.id, preferences={}, achievements={})
-
-    session = AsyncMock()
-    session.get = AsyncMock(return_value=state)
-    session.refresh = AsyncMock()
-    session.flush = AsyncMock()
-    session.commit = AsyncMock()
-
-    # 1. Action: Photo
-    req = GamificationActionRequest(action="photo")
-    res = await record_gamification_action(req, user=user, session=session)
-
-    # 50 base XP + 60 XP (daily_photo) + 50 XP (daily_care) = 160 earned_xp
-    assert res["earned_xp"] == 160
-    assert res["streak"] == 1
-    assert res["level"] == 2  # 160 XP reaches Explorador (>= 100 XP)
-    assert res["level_title"] == "Explorador"
-    assert res["multiplier"] == 1.0
-    assert res["new_xp"] == 160
-
-    # Verify daily photo mission advanced
-    photo_mission = next(m for m in res["daily_missions"] if m["id"] == "daily_photo")
-    assert photo_mission["progress"] == 1
-    assert photo_mission["completed"] is True
-
-    # 2. Action: Share (Bonus mission)
-    req2 = GamificationActionRequest(action="share")
-    res2 = await record_gamification_action(req2, user=user, session=session)
-    assert res2["bonus_mission"]["completed"] is True
-    assert res2["new_xp"] > res["new_xp"]
-
+async def test_unverified_actions_never_mint_rewards(account):
+    session, user = account
+    for action in ("photo", "share", "care", "like", "sighting"):
+        result = await record_gamification_action(GamificationActionRequest(action=action), user=user, session=session)
+        assert result["earned_xp"] == result["xp"] == result["balance"] == 0
+        assert len(result["daily_missions"]) == 1
+        assert len(result["weekly_missions"]) == 2
 
 @pytest.mark.asyncio
-async def test_get_gamification_endpoint():
-    user = User(id=uuid4(), username="bob")
-    state = ProductState(user_id=user.id, preferences={"gamification": {"xp": 350, "streak": 3, "freeze_shields": 1}}, achievements={})
-
-    session = AsyncMock()
-    session.get = AsyncMock(return_value=state)
-    session.refresh = AsyncMock()
-    session.flush = AsyncMock()
-    session.commit = AsyncMock()
-
-    res = await get_gamification(user=user, session=session)
-    assert res["xp"] == 350
-    assert res["level"] == 3
-    assert res["level_title"] == "Observador"
-    assert res["streak"] == 3
-    assert res["multiplier"] == 1.2
-    assert res["total_achievements"] == 28
-
-
-@pytest.mark.asyncio
-async def test_journey_with_remotecat():
+async def test_legacy_progress_and_achievements_are_preserved(account):
     from app.routers.product import journey
-    from app.persistence_models import RemoteCat
-
-    user = User(id=uuid4(), username="charlie")
-    state = ProductState(user_id=user.id, preferences={}, achievements={})
-
-    cat1 = RemoteCat(
-        id=uuid4(),
-        user_id=user.id,
-        client_id=uuid4(),
-        payload={"name": "Pantera", "primary_color": "preto", "coat_type": "curto", "is_owned": False, "captured_at": "2026-09-16T20:00:00Z"},
-        deleted_at=None,
-    )
-
-    session = AsyncMock()
-    session.info = {}
-    session.add = MagicMock()
-    session.get = AsyncMock(return_value=state)
-
-    async def mock_execute(stmt):
-        mock_res = MagicMock()
-        stmt_str = str(stmt)
-        if "cats" in stmt_str and "user_id" in stmt_str:
-            mock_res.scalars.return_value.all.return_value = [cat1]
-        elif "cat_photos" in stmt_str:
-            mock_res.all.return_value = []
-        elif "match_suggestions" in stmt_str:
-            mock_res.scalar_one.return_value = 0
-        return mock_res
-
-    session.execute = AsyncMock(side_effect=mock_execute)
-    session.flush = AsyncMock()
-    session.commit = AsyncMock()
-
-    res = await journey(user=user, session=session)
-    assert len(res) == len(ACHIEVEMENTS)
-    black_cat_ach = next(a for a in res if a["id"] == "black_cat")
-    assert black_cat_ach["progress"] == 1
-    assert black_cat_ach["unlocked_at"] is not None
-    assert black_cat_ach["xp_reward"] > 0
-    # Verifies that unlocking achievements awarded XP in gamification state
-    assert state.preferences["gamification"]["xp"] >= black_cat_ach["xp_reward"]
-
-
-@pytest.mark.asyncio
-async def test_care_action_advances_daily_care():
-    user = User(id=uuid4(), username="dana")
-    state = ProductState(user_id=user.id, preferences={}, achievements={})
-
-    session = AsyncMock()
-    session.get = AsyncMock(return_value=state)
-    session.refresh = AsyncMock()
-    session.flush = AsyncMock()
-    session.commit = AsyncMock()
-
-    req = GamificationActionRequest(action="care")
-    res = await record_gamification_action(req, user=user, session=session)
-
-    # 25 base XP + 50 XP (daily_care mission) = 75 earned_xp
-    assert res["earned_xp"] == 75
-    assert "xp" in res
-    assert "new_xp" in res
-    assert res["xp"] == res["new_xp"]
-
-    care_mission = next(m for m in res["daily_missions"] if m["id"] == "daily_care")
-    assert care_mission["progress"] == 1
-    assert care_mission["completed"] is True
-
-
+    session, user = account
+    session.add(ProductState(user_id=user.id, preferences={"gamification": {"xp": 350, "streak": 3}},
+                             achievements={"night_owl": "2026-09-10", "first": "2026-09-10"}))
+    await session.flush()
+    summary = await get_gamification(user=user, session=session)
+    assert (summary["xp"], summary["level"], summary["multiplier"]) == (350, 3, 1.0)
+    rows = await journey(user=user, session=session)
+    assert next(r for r in rows if r["id"] == "night_owl")["archived"]
+    assert next(r for r in rows if r["id"] == "first")["completed"]
+    assert (await get_gamification(user=user, session=session))["xp"] == 350

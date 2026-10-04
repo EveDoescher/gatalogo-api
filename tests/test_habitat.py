@@ -1,6 +1,6 @@
 """Habitat wallet, purchase and layout contract tests."""
 
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from uuid import uuid4
 
 import pytest
@@ -11,7 +11,40 @@ from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from app.persistence_models import HabitatItem, HabitatTransaction, HabitatWallet, RemoteCat, User
 from app.routers.habitat import ExpansionRequest, LayoutRequest, PlacementRequest, PurchaseRequest, expand_yard, get_habitat, purchase, save_layout
-from app.services.habitat_service import grant_reward, item_cells, normalize_legacy_layout, validate_placements, yard_cells
+from app.services.habitat_service import SHOP, REWARDS, can_cross_bridge, grant_reward, item_cells, normalize_legacy_layout, validate_placements, walkable_cells, yard_cells
+from app.services.habitat_interactions import care_summary, interact
+
+
+@pytest.mark.asyncio
+async def test_cottage_costs_five_catalogs_and_retries_never_charge_twice(account):
+    session, user = account
+    for index in range(5):
+        await grant_reward(session, user.id, "catalog", f"catalog:{index}", photo_hash=f"photo:{index}")
+    await session.commit()
+    request = PurchaseRequest(sku="green_cottage", idempotency_key=uuid4())
+    first = await purchase(request, user=user, session=session)
+    retry = await purchase(request, user=user, session=session)
+    assert first == retry
+    assert first["balance"] == 5
+    assert SHOP["large_cottage"]["price"] == 6 * REWARDS["catalog"]
+    ledger = (await session.execute(select(HabitatTransaction).where(HabitatTransaction.category == "purchase"))).scalars().all()
+    assert len(ledger) == 1 and ledger[0].amount == -120
+
+
+@pytest.mark.asyncio
+async def test_new_decorations_keep_ownership_limits_and_rotated_collision(account):
+    session, user = account
+    await get_habitat(user=user, session=session)
+    wallet = await session.get(HabitatWallet, user.id)
+    wallet.balance = 200
+    await session.commit()
+    for _ in range(SHOP["garden_planter"]["max_owned"]):
+        await purchase(PurchaseRequest(sku="garden_planter", idempotency_key=uuid4()), user=user, session=session)
+    with pytest.raises(HTTPException):
+        await purchase(PurchaseRequest(sku="garden_planter", idempotency_key=uuid4()), user=user, session=session)
+    for rotation in range(4):
+        assert len(item_cells("solar_cottage", 1, 1, rotation)) == 9
+        assert len(item_cells("wood_platform", 1, 1, rotation)) == 4
 
 
 @pytest_asyncio.fixture
@@ -27,6 +60,138 @@ async def account():
         await session.commit()
         yield session, user
     await engine.dispose()
+
+
+async def _place_pet_and_bowl(session, user):
+    await get_habitat(user=user, session=session)
+    cat = RemoteCat(user_id=user.id, client_id=uuid4(), payload={"is_owned": True, "name": "Lua"},
+                    client_updated_at=datetime.now(UTC), updated_by_device="test")
+    bowl = HabitatItem(id=uuid4(), user_id=user.id, sku="food_bowl", x=4, y=3, rotation=0)
+    session.add_all([cat, bowl])
+    wallet = await session.get(HabitatWallet, user.id)
+    wallet.selected_cat_ids = [str(cat.client_id)]
+    wallet.cat_anchors = {str(cat.client_id): [3, 3]}
+    await session.commit()
+    return cat, bowl, wallet
+
+
+@pytest.mark.asyncio
+async def test_feeding_has_daily_allowance_and_idempotent_consumption(account):
+    session, user = account
+    cat, bowl, wallet = await _place_pet_and_bowl(session, user)
+    now = datetime(2026, 9, 24, 12, tzinfo=UTC)
+    key = uuid4()
+    for _ in range(2):
+        await interact(session, user.id, "feed", cat.client_id, key, bowl.id, now=now)
+    assert care_summary(wallet.care_state, 3, now)["free_portions"] == 2
+    assert wallet.care_state["cats"][str(cat.client_id)]["affinity"] == 5
+    with pytest.raises(ValueError, match="hoje"):
+        await interact(session, user.id, "feed", cat.client_id, uuid4(), bowl.id, now=now)
+    with pytest.raises(ValueError, match="outro destino"):
+        await interact(session, user.id, "treat", cat.client_id, key, bowl.id, now=now)
+    tomorrow = now + timedelta(days=1)
+    assert care_summary(wallet.care_state, 3, tomorrow)["free_portions"] == 3
+    await interact(session, user.id, "feed", cat.client_id, uuid4(), bowl.id, now=tomorrow)
+    assert wallet.care_state["cats"][str(cat.client_id)]["affinity"] == 10
+    assert wallet.balance == 0
+
+
+@pytest.mark.asyncio
+async def test_treats_charge_once_and_reject_insufficient_balance_or_foreign_cats(account):
+    session, user = account
+    cat, bowl, wallet = await _place_pet_and_bowl(session, user)
+    key = uuid4()
+    with pytest.raises(ValueError, match="insuficientes"):
+        await interact(session, user.id, "treat", cat.client_id, key, bowl.id)
+    wallet.balance = 4
+    await interact(session, user.id, "treat", cat.client_id, key, bowl.id)
+    await interact(session, user.id, "treat", cat.client_id, key, bowl.id)
+    assert wallet.balance == 0
+    assert wallet.care_state["cats"][str(cat.client_id)]["affinity"] == 3
+    with pytest.raises(ValueError, match="seus gatos"):
+        await interact(session, user.id, "pet", uuid4(), uuid4())
+    assert len((await session.execute(select(HabitatTransaction).where(HabitatTransaction.category == "treat"))).scalars().all()) == 1
+
+
+@pytest.mark.asyncio
+async def test_feeding_requires_an_accessible_owned_bowl(account):
+    session, user = account
+    cat, bowl, _ = await _place_pet_and_bowl(session, user)
+    with pytest.raises(ValueError, match="potinho"):
+        await interact(session, user.id, "feed", cat.client_id, uuid4(), uuid4())
+    for x, y in ((3, 3), (5, 3), (4, 2), (4, 4)):
+        session.add(HabitatItem(user_id=user.id, sku="small_rock", x=x, y=y, rotation=0))
+    await session.flush()
+    with pytest.raises(ValueError, match="caminho livre"):
+        await interact(session, user.id, "feed", cat.client_id, uuid4(), bowl.id)
+
+
+@pytest.mark.asyncio
+async def test_affinity_gift_is_once_and_absence_never_reduces_affinity(account):
+    session, user = account
+    cat, _, wallet = await _place_pet_and_bowl(session, user)
+    now = datetime(2026, 9, 24, tzinfo=UTC)
+    wallet.care_state = {"cats": {str(cat.client_id): {"affinity": 19}}}
+    await interact(session, user.id, "pet", cat.client_id, uuid4(), now=now)
+    await interact(session, user.id, "pet", cat.client_id, uuid4(), now=now + timedelta(days=40))
+    gifts = (await session.execute(select(HabitatItem).where(HabitatItem.sku == "friendship_garden"))).scalars().all()
+    assert len(gifts) == 1
+    assert wallet.care_state["cats"][str(cat.client_id)]["affinity"] == 21
+
+
+@pytest.mark.asyncio
+async def test_plants_grow_by_server_clock_and_watering_cannot_be_spammed(account):
+    session, user = account
+    plant = HabitatItem(id=uuid4(), user_id=user.id, sku="leaf_garden", x=1, y=1, rotation=0)
+    session.add(plant)
+    await session.commit()
+    now = datetime(2026, 9, 24, 12, tzinfo=UTC)
+    key = uuid4()
+    await interact(session, user.id, "water", plant.id, key, now=now)
+    await interact(session, user.id, "water", plant.id, key, now=now)
+    assert datetime.fromisoformat(plant.care_state["grow_at"]) == now + timedelta(hours=12)
+    with pytest.raises(ValueError, match="seis horas"):
+        await interact(session, user.id, "water", plant.id, uuid4(), now=now + timedelta(hours=5))
+    await interact(session, user.id, "water", plant.id, uuid4(), now=now + timedelta(hours=6))
+    assert datetime.fromisoformat(plant.care_state["grow_at"]) == now + timedelta(hours=6)
+    with pytest.raises(ValueError, match="já cresceu"):
+        await interact(session, user.id, "water", plant.id, uuid4(), now=now + timedelta(hours=7))
+
+
+def test_water_layers_block_walks_and_bridges_obey_their_rotated_entrances():
+    owner = uuid4()
+    water = [HabitatItem(id=uuid4(), user_id=owner, sku="water_tile", x=x, y=y, rotation=0)
+             for x in (2, 3) for y in (2, 3)]
+    bridge = HabitatItem(id=uuid4(), user_id=owner, sku="wood_bridge", x=2, y=2, rotation=0)
+    def placements(items):
+        return [{"item_id": str(item.id), "x": item.x, "y": item.y, "rotation": item.rotation} for item in items]
+    assert (2, 2) not in walkable_cells(water, 0)
+    validate_placements(water + [bridge], placements(water + [bridge]))
+    assert (2, 2) in walkable_cells(water + [bridge], 0)
+    assert can_cross_bridge((1, 2), (2, 2), [bridge])
+    assert not can_cross_bridge((2, 1), (2, 2), [bridge])
+    bridge.rotation = 1
+    assert not can_cross_bridge((1, 2), (2, 2), [bridge])
+    assert can_cross_bridge((2, 1), (2, 2), [bridge])
+    with pytest.raises(ValueError, match="inteiramente"):
+        validate_placements(water + [bridge], placements(water[1:] + [bridge]))
+    path = HabitatItem(id=uuid4(), user_id=owner, sku="pebble_path", x=2, y=2, rotation=0)
+    with pytest.raises(ValueError, match="lago"):
+        validate_placements(water + [path], placements(water + [path]))
+
+
+@pytest.mark.asyncio
+async def test_water_batch_purchase_is_atomic_and_replay_safe(account):
+    session, user = account
+    await get_habitat(user=user, session=session)
+    wallet = await session.get(HabitatWallet, user.id)
+    wallet.balance = 25
+    await session.commit()
+    request = PurchaseRequest(sku="water_tile", quantity=5, idempotency_key=uuid4())
+    first = await purchase(request, user=user, session=session)
+    retry = await purchase(request, user=user, session=session)
+    assert first == retry
+    assert first["balance"] == 0 and len(first["items"]) == 5
 
 
 @pytest.mark.asyncio
@@ -71,7 +236,7 @@ async def test_purchase_is_atomic_idempotent_and_checks_balance(account):
 
 
 @pytest.mark.asyncio
-async def test_old_catalog_and_guest_sync_are_backfilled_once(account):
+async def test_old_catalog_never_receives_retroactive_rewards(account):
     session, user = account
     cat = RemoteCat(user_id=user.id, client_id=uuid4(), payload={"is_owned": True, "name": "Lua"},
                     analysis={"primary_color": "Branco"}, photo_key="private/photo", photo_hash="old-photo",
@@ -80,7 +245,7 @@ async def test_old_catalog_and_guest_sync_are_backfilled_once(account):
     await session.commit()
     first = await get_habitat(user=user, session=session)
     second = await get_habitat(user=user, session=session)
-    assert first["balance"] == second["balance"] == 25
+    assert first["balance"] == second["balance"] == 0
     assert first["cats"][0]["name"] == "Lua"
 
 
@@ -141,7 +306,8 @@ async def test_three_expansions_charge_once_and_unlock_irregular_cells(account):
         request = ExpansionRequest(expected_level=level, idempotency_key=uuid4())
         first = await expand_yard(request, user=user, session=session)
         retry = await expand_yard(request, user=user, session=session)
-        assert first == retry
+        assert {key: value for key, value in first.items() if key != "care"} == {key: value for key, value in retry.items() if key != "care"}
+        assert first["care"]["free_portions"] == retry["care"]["free_portions"]
         assert first["expansion_level"] == level + 1
         assert first["cat_capacity"] == level + 4
         assert first["balance"] == 600 - sum((80, 180, 320)[:level + 1])

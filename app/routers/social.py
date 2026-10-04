@@ -55,7 +55,10 @@ from app.services.realtime_events import (
     queue_notification,
 )
 from app.services.storage_service import photo_storage
-from app.services.habitat_service import grant_reward
+from app.services import progression as progress
+from app.services.audience import permits, can_read_post
+from app.persistence_models import MissingReport, HabitatWallet, ProgressEvent
+import hashlib
 from app.services.websocket_manager import ws_manager
 
 router = APIRouter(prefix="/social", tags=["social"])
@@ -65,6 +68,8 @@ def _user_avatar_url(user_id: UUID, preferences: dict | None) -> str | None:
     avatar_url = (preferences or {}).get("avatar_url") if preferences else None
     if not avatar_url:
         return None
+    if avatar_url in ('/app/account/avatar/preset/bapinho', '/app/account/avatar/preset/bapinha'):
+        return avatar_url
     try:
         path = photo_storage.absolute_path(photo_storage.profile_key_for(user_id, ".jpg"))
         if path.parent.is_dir() and any(path.parent.glob("avatar*")):
@@ -274,6 +279,7 @@ async def get_public_profile(
     username: str,
     user: User = Depends(current_user),
     session: AsyncSession = Depends(get_database_session),
+    view_as_friend: bool = False,
 ) -> PublicProfileResponse:
     target_user = (
         await session.execute(
@@ -289,7 +295,7 @@ async def get_public_profile(
     achievements_dict = dict(pstate.achievements or {}) if pstate else {}
 
     xp = gamif.get("xp", 0)
-    level, level_title, _, _, _ = calculate_level(xp)
+    level, level_title, _, _ = progress.level_for(xp, gamif.get("highest_level", 1))
     streak = gamif.get("streak", 0)
     longest_streak = gamif.get("longest_streak", streak)
 
@@ -304,7 +310,8 @@ async def get_public_profile(
     cats_count = len(cats)
 
     public_cats = []
-    if prefs.get("public_gallery", True):
+    gallery_visible = await permits(session, user.id, target_user.id, "gallery", as_friend=view_as_friend and user.id == target_user.id)
+    if gallery_visible:
         for c in cats[:20]:
             p = c.payload or {}
             public_cats.append({
@@ -314,13 +321,15 @@ async def get_public_profile(
                 "coat_type": p.get("coat_type") or "curto",
                 "captured_at": p.get("captured_at"),
                 "is_owned": p.get("is_owned", False),
-                "photo_url": f"/app/cats/{c.id}/photo" if c.id else None,
+                "photo_url": f"/social/gallery/{c.id}/photo" if c.id else None,
             })
 
     unlocked_achievements = []
-    for ach_id, unlocked_at in achievements_dict.items():
-        if ach_id in ACHIEVEMENTS:
-            title, desc, _ = ACHIEVEMENTS[ach_id]
+    medals_visible = await permits(session, user.id, target_user.id, "medals", as_friend=view_as_friend and user.id == target_user.id)
+    definitions = {**ACHIEVEMENTS, **{c[0]: (c[1], c[2], c[3]) for c in progress.CHALLENGES}}
+    for ach_id, unlocked_at in (achievements_dict.items() if medals_visible else []):
+        if ach_id in definitions:
+            title, desc, _ = definitions[ach_id]
             unlocked_achievements.append({
                 "id": ach_id,
                 "title": title,
@@ -342,11 +351,13 @@ async def get_public_profile(
         xp=xp,
         streak=streak,
         longest_streak=longest_streak,
-        cats_count=cats_count,
+        cats_count=cats_count if gallery_visible else 0,
         achievements=unlocked_achievements,
         friendship_status=f_status,
         mutual_friends_count=mutual_count,
         public_cats=public_cats,
+        habitat_preview=await _habitat_preview(session, user.id, target_user.id, view_as_friend),
+        audiences={k: prefs.get(f"{k}_audience", "friends") for k in ("gallery", "medals", "habitat")},
     )
 
 
@@ -562,6 +573,91 @@ class CommentCreate(BaseModel):
 OFFICIAL_USER_ID = UUID("00000000-0000-0000-0000-000000000000")
 
 
+async def _habitat_preview(session, viewer_id, owner_id, as_friend=False):
+    if not await permits(session, viewer_id, owner_id, "habitat", as_friend=as_friend and viewer_id == owner_id):
+        return None
+    wallet = await session.get(HabitatWallet, owner_id)
+    if wallet is None:
+        return {"cats_count": 0, "expansion_level": 0}
+    return {"cats_count": len(wallet.selected_cat_ids or []), "expansion_level": wallet.expansion_level}
+
+
+@router.get("/reports")
+async def community_reports(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)):
+    rows = (await session.execute(select(MissingReport, RemoteCat, User.username)
+        .join(RemoteCat, RemoteCat.id == MissingReport.cat_id)
+        .join(User, User.id == MissingReport.user_id)
+        .where(MissingReport.status == "active", RemoteCat.deleted_at.is_(None))
+        .order_by(MissingReport.created_at.desc()).limit(50))).all()
+    return [{"id": str(report.id), "name": cat.payload.get("name") or "Gato desaparecido",
+             "author": username or "Tutor", "is_owner": report.user_id == user.id,
+             "status": report.status, "photo_url": f"/app/reports/{report.id}/photo"}
+            for report, cat, username in rows]
+
+
+@router.get("/reports/{report_id}")
+async def community_report(report_id: UUID, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)):
+    report = await session.get(MissingReport, report_id)
+    cat = await session.get(RemoteCat, report.cat_id) if report else None
+    if cat is None or cat.deleted_at is not None:
+        raise HTTPException(404, "Busca não disponível.")
+    owner = await session.get(User, report.user_id)
+    details = report.poster_details or {}
+    return {"id": str(report.id), "status": report.status, "is_owner": user.id == report.user_id,
+        "name": cat.payload.get("name") or "Gato desaparecido", "author": owner.username or "Tutor",
+        "description": details.get("description"), "contacts": details.get("contacts", []) if report.status == "active" else [],
+        "photo_url": f"/app/reports/{report.id}/photo" if report.status == "active" else None,
+        "message": "As pistas são avaliadas pelo tutor. As localizações dos colaboradores são privadas."}
+
+
+@router.get("/gallery/{cat_id}/photo")
+async def gallery_photo(cat_id: UUID, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)):
+    cat = await session.get(RemoteCat, cat_id)
+    if cat is None or cat.deleted_at is not None or not cat.photo_key or not await permits(session, user.id, cat.user_id, "gallery"):
+        raise HTTPException(404, "Foto não disponível.")
+    from io import BytesIO
+    from PIL import Image, ImageOps
+    with Image.open(photo_storage.open(cat.photo_key)) as source:
+        image = ImageOps.exif_transpose(source).convert("RGB")
+        image.thumbnail((1200, 1200))
+        output = BytesIO()
+        image.save(output, format="JPEG", quality=85)
+    return Response(output.getvalue(), media_type="image/jpeg", headers={"Cache-Control": "private, no-store"})
+
+
+@router.post("/reports/{report_id}/repost", response_model=FeedItemResponse)
+async def repost_report(report_id: UUID, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)):
+    await progress.account(session, user.id)
+    report = await session.get(MissingReport, report_id, with_for_update=True)
+    if report is None or report.status != "active":
+        raise HTTPException(409, "Este cartaz não está mais ativo.")
+    if report.user_id == user.id:
+        raise HTTPException(422, "O repost é para ajudar o cartaz de outra pessoa.")
+    previous = await session.scalar(select(ProgressEvent).where(ProgressEvent.user_id == user.id,
+        ProgressEvent.event_key == f"repost:{report.id}"))
+    if previous:
+        item = await session.get(FeedItem, UUID(previous.record_id))
+    else:
+        cat = await session.get(RemoteCat, report.cat_id)
+        owner = await session.get(User, report.user_id)
+        item = FeedItem(user_id=user.id, type="poster_repost", payload={
+            "report_id": str(report.id), "original_author": owner.username or "Tutor",
+            "cat_name": cat.payload.get("name") or "Gato desaparecido",
+            "note": "Ajude esta busca. Uma pista útil pode fazer a diferença.",
+            "photo_url": f"/app/reports/{report.id}/photo", "is_public": True,
+            "report_status": "active", "likes": [], "comments": []})
+        session.add(item)
+        await session.flush()
+        event = await progress.grant(session, user.id, f"repost:{report.id}", "repost",
+            record_id=str(item.id), evidence={"report_id": str(report.id), "original_author_id": str(report.user_id)})
+        await progress.finish(session, event)
+    await session.commit()
+    await publish_committed_events(session)
+    await session.refresh(item)
+    return FeedItemResponse(id=item.id, username=user.username or "Amigo", type=item.type,
+                            payload=item.payload, created_at=item.created_at)
+
+
 @router.get("/feed", response_model=list[FeedItemResponse])
 async def feed(
     limit: int = Query(default=20, ge=1, le=100),
@@ -570,10 +666,15 @@ async def feed(
     user: User = Depends(current_user),
     session: AsyncSession = Depends(get_database_session),
 ) -> list[FeedItemResponse]:
+    parts = mode.split(":", 1)
+    mode = parts[0]
+    content_type = parts[1] if len(parts) > 1 else "all"
     query = select(FeedItem, User.username).join(User, User.id == FeedItem.user_id).where(
         FeedItem.user_id != OFFICIAL_USER_ID
     )
 
+    if content_type in {"cat_post", "achievement", "poster_repost"}:
+        query = query.where(FeedItem.type == content_type)
     if mode == "friends":
         friend_ids = await _friend_ids(session, user.id)
         friend_ids.add(user.id)
@@ -584,7 +685,7 @@ async def feed(
         query = query.where(
             or_(
                 FeedItem.user_id.in_(friend_ids),
-                FeedItem.type.in_(["cat_post", "achievement", "tip"]),
+                FeedItem.type.in_(["cat_post", "achievement", "tip", "poster_repost"]),
             )
         )
 
@@ -602,8 +703,12 @@ async def feed(
         if not username:
             continue
         p = dict(item.payload or {})
-        if item.type == "cat_post" and not p.get("is_public", True) and item.user_id not in friend_ids:
+        if not await can_read_post(session, item, user.id):
             continue
+        if item.type == "poster_repost":
+            report = await session.get(MissingReport, UUID(p["report_id"]))
+            p["report_status"] = report.status if report else "closed"
+            p["can_repost"] = report is not None and report.status == "active" and report.user_id != user.id
         likes = list(p.get("likes", []))
         p["likes_count"] = len(likes)
         p["has_liked"] = str(user.id) in likes
@@ -626,6 +731,7 @@ async def feed(
 async def upload_post_photo(
     file: UploadFile = File(...),
     user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_database_session),
 ) -> dict:
     data = await file.read()
     if not data:
@@ -641,25 +747,42 @@ async def upload_post_photo(
         suffix=suffix,
     )
     photo_url = f"/social/posts/photo/{photo_id}{suffix}"
+    session.add(ProgressEvent(user_id=user.id, event_key=f"media:{photo_id}", kind="media_upload",
+        state="confirmed", xp=0, coins=0, evidence={"photo_url": photo_url}, result={}))
+    await session.commit()
     return {"photo_url": photo_url, "photo_key": key}
 
 
 @router.get("/posts/photo/{filename}")
-async def get_post_photo(
-    filename: str,
-) -> Response:
-    folder = photo_storage.absolute_path("posts")
-    if not folder.exists():
-        raise HTTPException(status.HTTP_404_NOT_FOUND, "Foto não encontrada.")
-    matches = list(folder.glob(f"{Path(filename).stem}*"))
-    if not matches:
-        raise HTTPException(status.HTTP_404_NOT_FOUND, "Foto não encontrada.")
-    photo_file = matches[0]
-    return FileResponse(
-        photo_file,
-        media_type="image/jpeg",
-        headers={"Cache-Control": "public, max-age=604800, immutable"},
-    )
+async def get_post_photo(filename: str, user: User = Depends(current_user),
+                         session: AsyncSession = Depends(get_database_session)) -> Response:
+    if Path(filename).name != filename:
+        raise HTTPException(404, "Foto não encontrada.")
+    try:
+        photo_id = UUID(Path(filename).stem)
+    except ValueError:
+        raise HTTPException(404, "Foto não encontrada.")
+    url = f"/social/posts/photo/{filename}"
+    upload = await session.scalar(select(ProgressEvent).where(ProgressEvent.user_id == user.id,
+        ProgressEvent.event_key == f"media:{photo_id}"))
+    posts = (await session.scalars(select(FeedItem).where(FeedItem.payload["photo_url"].as_string() == url))).all()
+    allowed = upload is not None
+    for post in posts:
+        allowed = allowed or await can_read_post(session, post, user.id)
+    if not allowed:
+        raise HTTPException(404, "Foto não disponível.")
+    files = list(photo_storage.absolute_path("posts").glob(f"{photo_id}-*{Path(filename).suffix}"))
+    if not files:
+        raise HTTPException(404, "Foto não encontrada.")
+    photo_file = files[0]
+    from io import BytesIO
+    from PIL import Image, ImageOps
+    with Image.open(photo_file) as source:
+        image = ImageOps.exif_transpose(source).convert("RGB")
+        image.thumbnail((1600, 1600))
+        output = BytesIO()
+        image.save(output, format="JPEG", quality=85)
+    return Response(output.getvalue(), media_type="image/jpeg", headers={"Cache-Control": "private, no-store"})
 
 
 @router.post("/posts", response_model=FeedItemResponse, status_code=status.HTTP_201_CREATED)
@@ -668,6 +791,7 @@ async def create_post(
     user: User = Depends(current_user),
     session: AsyncSession = Depends(get_database_session),
 ) -> FeedItemResponse:
+    await progress.account(session, user.id)
     if not user.username:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Escolha um nome de usuário para postar no feed.")
     cat_name = payload.cat_name.strip()
@@ -675,6 +799,11 @@ async def create_post(
         raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_CONTENT, detail="O nome do gato é obrigatório.")
 
     photo_url = payload.photo_url
+    if photo_url:
+        owned_upload = await session.scalar(select(ProgressEvent).where(ProgressEvent.user_id == user.id,
+            ProgressEvent.kind == "media_upload", ProgressEvent.evidence["photo_url"].as_string() == photo_url))
+        if owned_upload is None:
+            raise HTTPException(422, "Envie uma foto da sua conta para esta publicação.")
     if not photo_url and payload.photo_base64:
         try:
             import base64
@@ -701,7 +830,11 @@ async def create_post(
     item = FeedItem(user_id=user.id, type="cat_post", payload=item_payload)
     session.add(item)
     await session.flush()
-    await grant_reward(session, user.id, "post", f"post:{item.id}")
+    fingerprint = hashlib.sha256((payload.note.strip().casefold() + "|" + cat_name.casefold()).encode()).hexdigest()
+    event = await progress.grant(session, user.id, f"post:{fingerprint}", "post", record_id=str(item.id),
+        evidence={"eligible": len(payload.note.strip()) >= 8, "post_id": str(item.id)})
+    if not event.result:
+        await progress.finish(session, event)
     friend_ids = await _friend_ids(session, user.id)
     for fid in friend_ids:
         queue_event(
@@ -718,8 +851,9 @@ async def create_post(
 
 @router.post("/feed/{item_id}/like")
 async def toggle_like(item_id: UUID, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
-    item = await session.get(FeedItem, item_id)
-    if item is None:
+    await progress.account(session, user.id)
+    item = await session.get(FeedItem, item_id, with_for_update=True)
+    if item is None or not await can_read_post(session, item, user.id):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Item do feed não encontrado.")
     item_payload = dict(item.payload or {})
     likes = list(item_payload.get("likes", []))
@@ -735,8 +869,6 @@ async def toggle_like(item_id: UUID, user: User = Depends(current_user), session
     item_payload["has_liked"] = liked
     item.payload = item_payload
 
-    if liked and item.user_id != user.id:
-        await grant_reward(session, user.id, "like", f"like:{item.id}:{user.id}")
 
     friend_ids = await _friend_ids(session, user.id)
     target_ids = friend_ids | {item.user_id}
@@ -760,8 +892,9 @@ async def toggle_like(item_id: UUID, user: User = Depends(current_user), session
 
 @router.post("/feed/{item_id}/comments")
 async def add_comment(item_id: UUID, payload: CommentCreate, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> list[dict]:
-    item = await session.get(FeedItem, item_id)
-    if item is None:
+    await progress.account(session, user.id)
+    item = await session.get(FeedItem, item_id, with_for_update=True)
+    if item is None or not await can_read_post(session, item, user.id):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Item do feed não encontrado.")
     text = payload.text.strip()
     if not text:
@@ -780,7 +913,11 @@ async def add_comment(item_id: UUID, payload: CommentCreate, user: User = Depend
     item.payload = item_payload
 
     if item.user_id != user.id:
-        await grant_reward(session, user.id, "comment", f"comment:{comment['id']}")
+        fingerprint = hashlib.sha256(text.casefold().encode()).hexdigest()
+        event = await progress.grant(session, user.id, f"comment:{fingerprint}", "comment", record_id=str(item.id),
+            evidence={"eligible": len(text) >= 8, "post_id": str(item.id)})
+        if not event.result:
+            await progress.finish(session, event)
 
     friend_ids = await _friend_ids(session, user.id)
     target_ids = friend_ids | {item.user_id}

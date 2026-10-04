@@ -367,3 +367,34 @@ Treinar ou calibrar a partir de identidades inferidas pelo próprio modelo
 produziria uma avaliação circular.
 
 Referência do extrator: [DINOv2, implementação oficial](https://github.com/facebookresearch/dinov2).
+
+## Habitat
+
+Antes de iniciar a versão com cuidados, aplique `alembic upgrade head`.
+A migração `20260924_10` adiciona afinidade e porções na carteira, crescimento
+nos itens e o destino das ações no histórico de transações.
+
+O catálogo em `app/services/habitat_service.py` é a fonte dos preços e limites.
+Depois de alterá-lo, gere o catálogo offline no app com
+`python tool/export_habitat_catalog.py`. Catalogar concede 25 moedas; as
+casinhas custam de 120 a 150, e as expansões continuam em 80, 180 e 320.
+
+`POST /app/habitat/interactions` recebe `action` (`pet`, `feed`, `treat` ou
+`water`), `target_id`, `idempotency_key` e, para comida, `bowl_id`. Repetir a
+mesma chave e destino não cobra nem concede afinidade novamente; mudar o
+destino com a mesma chave retorna conflito. As mutações usam o bloqueio da
+carteira e são confirmadas na mesma transação.
+
+- Carinho: +1 afinidade; porção diária: +5; petisco de 4 moedas: +3.
+- Cada cuidado vale uma vez por gato por dia UTC. Há 3 a 6 porções gratuitas
+  por dia, conforme a expansão. Ausência não reduz afinidade.
+- Aos 20 pontos, a conta recebe Flores da amizade uma única vez.
+- A primeira rega inicia 12 horas de crescimento. Uma segunda após 6 horas
+  conclui o crescimento; o relógio válido é o do servidor.
+- Água bloqueia passagem; pontes liberam suas células, com entrada pelas
+  extremidades. Pontes e nenúfares exigem água em toda a área ocupada.
+
+Os testes em `tests/test_habitat.py` cobrem economia, repetição de ações,
+propriedade, navegação, crescimento e compatibilidade usando banco em memória.
+O movimento e as animações ficam no cliente; a API salva apenas os pontos
+iniciais dos gatos e o layout validado.
