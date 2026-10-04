@@ -86,7 +86,3 @@ async def rebuild_analysis_from_photos(session: AsyncSession, cat: RemoteCat) ->
         if photo.kind != "primary":
             merged = merge_coat_evidence(merged, photo.analysis)
     cat.analysis = merged
-
-
-async def get_avatar(session: AsyncSession, cat_id) -> CatAvatar | None:
-    return (await session.execute(select(CatAvatar).where(CatAvatar.cat_id == cat_id))).scalar_one_or_none()

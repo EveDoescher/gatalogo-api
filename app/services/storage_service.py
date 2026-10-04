@@ -45,24 +45,12 @@ class PrivatePhotoStorage:
         return resolved
 
     def save(self, *, user_id: UUID, cat_id: UUID, data: bytes, suffix: str) -> tuple[str, str]:
-        content_hash = hashlib.sha256(data).hexdigest()
-        base = Path(self.key_for(user_id, cat_id, suffix))
-        key = base.with_name(f"{base.stem}-{content_hash}{base.suffix}").as_posix()
-        destination = self.absolute_path(key)
-        destination.parent.mkdir(parents=True, exist_ok=True)
-        destination.write_bytes(data)
-        return key, content_hash
+        return self._save_hashed_photo(self.key_for(user_id, cat_id, suffix), data)
 
     def save_reference(
         self, *, user_id: UUID, cat_id: UUID, kind: str, data: bytes, suffix: str
     ) -> tuple[str, str]:
-        content_hash = hashlib.sha256(data).hexdigest()
-        base = Path(self.reference_key_for(user_id, cat_id, kind, suffix))
-        key = base.with_name(f"{base.stem}-{content_hash}{base.suffix}").as_posix()
-        destination = self.absolute_path(key)
-        destination.parent.mkdir(parents=True, exist_ok=True)
-        destination.write_bytes(data)
-        return key, content_hash
+        return self._save_hashed_photo(self.reference_key_for(user_id, cat_id, kind, suffix), data)
 
     def save_avatar_asset(
         self,
@@ -75,9 +63,7 @@ class PrivatePhotoStorage:
         suffix: str,
     ) -> tuple[str, str]:
         key = self.avatar_key_for(user_id, cat_id, version, name, suffix)
-        destination = self.absolute_path(key)
-        destination.parent.mkdir(parents=True, exist_ok=True)
-        destination.write_bytes(data)
+        self._write(key, data)
         return key, hashlib.sha256(data).hexdigest()
 
     def profile_key_for(self, user_id: UUID, suffix: str) -> str:
@@ -87,13 +73,37 @@ class PrivatePhotoStorage:
     def save_profile_photo(
         self, *, user_id: UUID, data: bytes, suffix: str
     ) -> tuple[str, str]:
+        return self._save_hashed_photo(self.profile_key_for(user_id, suffix), data)
+
+    def chat_photo_key_for(self, conversation_id: UUID, message_id: UUID, suffix: str) -> str:
+        safe_suffix = suffix if suffix.startswith(".") and len(suffix) <= 12 else ".jpg"
+        return str(Path("conversations") / str(conversation_id) / f"{message_id}{safe_suffix}")
+
+    def save_chat_photo(
+        self, *, conversation_id: UUID, message_id: UUID, data: bytes, suffix: str
+    ) -> tuple[str, str]:
+        return self._save_hashed_photo(self.chat_photo_key_for(conversation_id, message_id, suffix), data)
+
+    def post_photo_key_for(self, post_id: UUID, suffix: str) -> str:
+        safe_suffix = suffix if suffix.startswith(".") and len(suffix) <= 12 else ".jpg"
+        return str(Path("posts") / f"{post_id}{safe_suffix}")
+
+    def save_post_photo(
+        self, *, post_id: UUID, data: bytes, suffix: str
+    ) -> tuple[str, str]:
+        return self._save_hashed_photo(self.post_photo_key_for(post_id, suffix), data)
+
+    def _save_hashed_photo(self, base_key: str, data: bytes) -> tuple[str, str]:
         content_hash = hashlib.sha256(data).hexdigest()
-        base = Path(self.profile_key_for(user_id, suffix))
+        base = Path(base_key)
         key = base.with_name(f"{base.stem}-{content_hash}{base.suffix}").as_posix()
+        self._write(key, data)
+        return key, content_hash
+
+    def _write(self, key: str, data: bytes) -> None:
         destination = self.absolute_path(key)
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_bytes(data)
-        return key, content_hash
 
     def open(self, key: str) -> Path:
         path = self.absolute_path(key)

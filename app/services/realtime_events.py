@@ -6,6 +6,7 @@ prompt for a connected client to refresh its already-authorized data.
 from __future__ import annotations
 
 from collections.abc import Mapping
+import logging
 from uuid import UUID
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -16,6 +17,7 @@ from app.services.fcm_service import fcm_sender
 
 
 _PENDING_EVENTS_KEY = "gatalogo_realtime_events"
+logger = logging.getLogger(__name__)
 
 
 def queue_event(
@@ -47,12 +49,19 @@ async def publish_committed_events(session: AsyncSession) -> None:
     """Publish events queued by the transaction after a successful commit."""
     pending = session.info.pop(_PENDING_EVENTS_KEY, [])
     for user_id, event, data in pending:
-        await ws_manager.send_to_user(user_id, event, data)
+        try:
+            await ws_manager.send_to_user(user_id, event, data)
+        except Exception:
+            # The transaction is already committed; clients can refresh via HTTP.
+            logger.exception("Could not deliver committed WebSocket event")
         if event == "new_notification":
             notification_id = data.get("notification_id")
             if isinstance(notification_id, str):
-                await fcm_sender.send_notification(
-                    user_id=user_id,
-                    notification_id=notification_id,
-                    notification_type=str(data.get("notification_type", "notification")),
-                )
+                try:
+                    await fcm_sender.send_notification(
+                        user_id=user_id,
+                        notification_id=notification_id,
+                        notification_type=str(data.get("notification_type", "notification")),
+                    )
+                except Exception:
+                    logger.exception("Could not deliver committed push notification")

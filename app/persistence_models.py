@@ -34,6 +34,7 @@ class User(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
     deactivated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    last_seen_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
 
 class ProductState(Base):
@@ -41,6 +42,67 @@ class ProductState(Base):
     user_id: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("users.id", ondelete="CASCADE"), primary_key=True)
     preferences: Mapped[dict] = mapped_column(JSON, default=dict)
     achievements: Mapped[dict] = mapped_column(JSON, default=dict)
+
+
+class ProgressEvent(Base):
+    """Immutable grants and durable outcomes, serialized by the user's row lock."""
+    __tablename__ = "progress_events"
+    __table_args__ = (UniqueConstraint("user_id", "event_key", name="uq_progress_event"),)
+    id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
+    user_id: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    event_key: Mapped[str] = mapped_column(String(200))
+    kind: Mapped[str] = mapped_column(String(32), index=True)
+    record_id: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
+    state: Mapped[str] = mapped_column(String(24), default="pending")
+    rule_version: Mapped[int] = mapped_column(Integer, default=1)
+    xp: Mapped[int] = mapped_column(Integer, default=0)
+    coins: Mapped[int] = mapped_column(Integer, default=0)
+    photo_hash: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
+    evidence: Mapped[dict] = mapped_column(JSON, default=dict)
+    result: Mapped[dict] = mapped_column(JSON, default=dict)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), index=True)
+
+
+class HabitatWallet(Base):
+    __tablename__ = "habitat_wallets"
+
+    user_id: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("users.id", ondelete="CASCADE"), primary_key=True)
+    balance: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    layout_revision: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    selected_cat_ids: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    cat_anchors: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
+    care_state: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
+    expansion_level: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    layout_rules_version: Mapped[int] = mapped_column(Integer, nullable=False, default=3)
+
+
+class HabitatTransaction(Base):
+    __tablename__ = "habitat_transactions"
+    __table_args__ = (UniqueConstraint("user_id", "event_key", name="uq_habitat_transaction_event"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
+    user_id: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    event_key: Mapped[str] = mapped_column(String(160))
+    category: Mapped[str] = mapped_column(String(32), index=True)
+    amount: Mapped[int] = mapped_column(Integer, nullable=False)
+    photo_hash: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    details: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), index=True)
+
+
+class HabitatItem(Base):
+    __tablename__ = "habitat_items"
+    __table_args__ = (UniqueConstraint("user_id", "purchase_key", name="uq_habitat_purchase_key"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
+    user_id: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    sku: Mapped[str] = mapped_column(String(48))
+    purchase_key: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    x: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    y: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    rotation: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    care_state: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
 class AuthIdentity(Base):
@@ -185,6 +247,7 @@ class MissingReport(Base):
     latitude: Mapped[float] = mapped_column(Float)
     longitude: Mapped[float] = mapped_column(Float)
     radius_meters: Mapped[int] = mapped_column(Integer)
+    poster_details: Mapped[dict | None] = mapped_column(JSON, nullable=True)
     status: Mapped[str] = mapped_column(String(24), default="active", index=True)
     resolved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
@@ -273,8 +336,20 @@ class ConversationMessage(Base):
     id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
     conversation_id: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("conversations.id", ondelete="CASCADE"), index=True)
     sender_id: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("users.id", ondelete="CASCADE"), index=True)
-    body: Mapped[str] = mapped_column(Text)
+    body: Mapped[str] = mapped_column(Text, default="")
+    type: Mapped[str] = mapped_column(String(24), default="text")
+    media_url: Mapped[str | None] = mapped_column(String(512), nullable=True)
+    location_lat: Mapped[float | None] = mapped_column(Float, nullable=True)
+    location_lng: Mapped[float | None] = mapped_column(Float, nullable=True)
+    location_title: Mapped[str | None] = mapped_column(String(256), nullable=True)
+    cat_data: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    read_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    reply_to_id: Mapped[uuid.UUID | None] = mapped_column(Uuid, ForeignKey("conversation_messages.id", ondelete="SET NULL"), nullable=True)
+    reactions: Mapped[dict | None] = mapped_column(JSON, default=dict, nullable=True)
+    is_edited: Mapped[bool] = mapped_column(Boolean, default=False)
+    is_deleted: Mapped[bool] = mapped_column(Boolean, default=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True, onupdate=func.now())
 
 
 class DeviceToken(Base):

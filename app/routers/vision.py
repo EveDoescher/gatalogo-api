@@ -21,6 +21,7 @@ from app.persistence_models import (
     Sighting,
     User,
     VisionJob,
+    ProgressEvent,
 )
 from app.routers.auth import current_user
 from app.schemas import (
@@ -31,6 +32,7 @@ from app.schemas import (
     VisionJobResponse,
 )
 from app.services.recognition_service import create_sighting_matches, create_report_matches
+from app.services import progression as progress
 from app.services.realtime_events import publish_committed_events, queue_notification
 from app.services.vision_jobs import enqueue_recognition
 
@@ -45,7 +47,19 @@ async def _cat(session: AsyncSession, user: User, client_id: UUID) -> RemoteCat:
 
 
 def _report_response(report: MissingReport, cat: RemoteCat) -> MissingReportResponse:
-    return MissingReportResponse(id=report.id, cat_client_id=cat.client_id, latitude=report.latitude, longitude=report.longitude, radius_meters=report.radius_meters, status=report.status, created_at=report.created_at)
+    details = report.poster_details or {}
+    cat_details = cat.payload or {}
+    return MissingReportResponse(
+        id=report.id, cat_client_id=cat.client_id,
+        latitude=report.latitude, longitude=report.longitude,
+        radius_meters=report.radius_meters, status=report.status,
+        created_at=report.created_at,
+        last_seen_address=details.get("last_seen_address"),
+        contacts=details.get("contacts", []),
+        collar=details.get("collar") or cat_details.get("collar"),
+        distinguishing_marks=details.get("distinguishing_marks") or cat_details.get("distinguishing_marks"),
+        microchip=details.get("microchip") or cat_details.get("microchip"),
+    )
 
 
 @router.post("/cats/{client_id}/enqueue", response_model=VisionJobResponse, status_code=status.HTTP_202_ACCEPTED)
@@ -68,6 +82,7 @@ async def cat_jobs(client_id: UUID, user: User = Depends(current_user), session:
 
 @router.post("/missing-reports", response_model=MissingReportResponse, status_code=status.HTTP_201_CREATED)
 async def create_report(payload: MissingReportCreate, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> MissingReportResponse:
+    await progress.account(session, user.id)
     cat = await _cat(session, user, payload.cat_client_id)
     await session.refresh(cat, with_for_update=True)
     if (cat.payload or {}).get("is_owned") not in (True, 1):
@@ -77,7 +92,18 @@ async def create_report(payload: MissingReportCreate, user: User = Depends(curre
         return _report_response(existing, cat)
     if payload.radius_meters > get_settings().match_max_distance_meters:
         raise HTTPException(status_code=422, detail="Raio excede o limite configurado.")
-    report = MissingReport(user_id=user.id, cat_id=cat.id, latitude=payload.latitude, longitude=payload.longitude, radius_meters=payload.radius_meters)
+    cat_details = cat.payload or {}
+    report = MissingReport(
+        user_id=user.id, cat_id=cat.id, latitude=payload.latitude,
+        longitude=payload.longitude, radius_meters=payload.radius_meters,
+        poster_details={
+            "last_seen_address": (payload.last_seen_address or "").strip() or None,
+            "contacts": [contact.model_dump() for contact in payload.contacts],
+            "collar": cat_details.get("collar"),
+            "distinguishing_marks": cat_details.get("distinguishing_marks"),
+            "microchip": cat_details.get("microchip"),
+        },
+    )
     session.add(report)
     await session.flush()
     # Alertas novos também verificam avistamentos já analisados; não dependem
@@ -106,6 +132,15 @@ async def resolve_report(report_id: UUID, user: User = Depends(current_user), se
 
 @router.post("/sightings", status_code=status.HTTP_201_CREATED)
 async def create_sighting(payload: SightingCreate, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict[str, str]:
+    await progress.account(session, user.id)
+    if payload.client_event_id:
+        previous = await session.scalar(select(ProgressEvent).where(ProgressEvent.user_id == user.id,
+            ProgressEvent.event_key == f"sighting:{payload.client_event_id}"))
+        if previous:
+            expected = {"cat": str(payload.cat_client_id), "latitude": payload.latitude, "longitude": payload.longitude}
+            if previous.evidence != expected:
+                raise HTTPException(409, "Esta chave já pertence a outro avistamento.")
+            return {"id": previous.record_id, "status": "recorded"}
     cat = await _cat(session, user, payload.cat_client_id)
     await session.refresh(cat, with_for_update=True)
     observed_at = payload.observed_at
@@ -124,6 +159,10 @@ async def create_sighting(payload: SightingCreate, user: User = Depends(current_
         session.add(sighting)
         await session.flush()
     await create_sighting_matches(session, sighting=sighting, settings=get_settings())
+    if payload.client_event_id:
+        session.add(ProgressEvent(user_id=user.id, event_key=f"sighting:{payload.client_event_id}",
+            kind="sighting", state="confirmed", record_id=str(sighting.id), xp=0, coins=0,
+            evidence={"cat": str(payload.cat_client_id), "latitude": payload.latitude, "longitude": payload.longitude}, result={}))
     await session.commit()
     await publish_committed_events(session)
     return {"id": str(sighting.id), "status": "recorded"}
@@ -157,30 +196,44 @@ async def matches(user: User = Depends(current_user), session: AsyncSession = De
 
 @router.post("/matches/{match_id}/{decision}", response_model=MatchResponse)
 async def decide_match(match_id: UUID, decision: str, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> MatchResponse:
-    if decision not in {"confirm", "dismiss"}:
+    if decision not in {"confirm", "dismiss", "reopen"}:
         raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_CONTENT, detail="Decisão inválida.")
-    row = (await session.execute(
-        select(MatchSuggestion, MissingReport, Sighting)
+    query = (select(MatchSuggestion, MissingReport, Sighting)
         .join(MissingReport, MissingReport.id == MatchSuggestion.missing_report_id)
         .join(Sighting, Sighting.id == MatchSuggestion.sighting_id)
-        .where(MatchSuggestion.id == match_id, MissingReport.user_id == user.id)
-        .with_for_update()
-    )).one_or_none()
+        .where(MatchSuggestion.id == match_id, MissingReport.user_id == user.id))
+    initial = (await session.execute(query)).one_or_none()
+    if initial is None:
+        raise HTTPException(status_code=404, detail="Correspondência não encontrada.")
+    # Same order as queued sightings: account first, then case/record locks.
+    await progress.account(session, initial[2].observer_id)
+    row = (await session.execute(query.with_for_update().execution_options(populate_existing=True))).one_or_none()
     if row is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Correspondência não encontrada.")
+        raise HTTPException(status_code=404, detail="Correspondência não encontrada.")
     match, report, sighting = row
     if match.status == "stale" or report.status != "active":
         raise HTTPException(status_code=409, detail="Esta sugestão não está mais ativa.")
-    if match.status in {"confirmed", "dismissed"}:
-        raise HTTPException(status_code=409, detail="Esta sugestão já recebeu uma decisão.")
-    match.status = "confirmed" if decision == "confirm" else "dismissed"
+    if decision == "reopen":
+        if match.status != "dismissed":
+            raise HTTPException(status_code=409, detail="Apenas pistas descartadas podem ser reabertas.")
+        match.status = "pending"
+    else:
+        if match.status in {"confirmed", "dismissed"}:
+            raise HTTPException(status_code=409, detail="Esta sugestão já recebeu uma decisão.")
+        match.status = "confirmed" if decision == "confirm" else "dismissed"
     conversation_id = None
     if decision == "confirm":
+        if sighting.observer_id != report.user_id:
+            event = await progress.grant(session, sighting.observer_id,
+                f"clue:{report.id}:{sighting.observer_id}", "clue", record_id=str(match.id),
+                evidence={"report_id": str(report.id), "sighting_id": str(sighting.id), "confirmed_by": str(user.id)})
+            if not event.result:
+                await progress.finish(session, event)
         match.location_revealed_at = datetime.now(UTC)
         notification = AppNotification(
             user_id=sighting.observer_id,
             type="match_confirmed",
-            payload={"match_id": str(match.id)},
+            payload={"match_id": str(match.id), "report_id": str(report.id)},
         )
         session.add(notification)
         await session.flush()

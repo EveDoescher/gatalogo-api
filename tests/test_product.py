@@ -139,7 +139,10 @@ async def test_achievements_are_durable_private_and_shared_explicitly_once(db):
     await product.share_achievement("first", user, db)
     await product.share_achievement("first", user, db)
     assert len((await db.execute(select(FeedItem))).scalars().all()) == 1
-    assert len((await db.execute(select(AppNotification).where(AppNotification.type == "achievement"))).scalars().all()) == 1
+    notices = (await db.execute(select(AppNotification).where(AppNotification.type == "achievement"))).scalars().all()
+    achievement_ids = [notice.payload["achievement_id"] for notice in notices]
+    assert achievement_ids.count("first") == 1
+    assert len(achievement_ids) == len(set(achievement_ids))
 
 
 @pytest.mark.asyncio

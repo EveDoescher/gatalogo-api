@@ -4,7 +4,7 @@ from datetime import datetime
 from typing import Any, Literal
 from uuid import UUID
 
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import AliasChoices, BaseModel, EmailStr, Field, field_validator
 
 
 class RegisterRequest(BaseModel):
@@ -27,6 +27,17 @@ class LoginRequest(BaseModel):
 class GoogleLoginRequest(BaseModel):
     id_token: str = Field(min_length=20, max_length=8192)
     device_id: str | None = Field(default=None, max_length=128)
+
+
+class AppleLoginRequest(BaseModel):
+    id_token: str = Field(min_length=20, max_length=8192)
+    device_id: str | None = Field(default=None, max_length=128)
+    user_identifier: str | None = Field(default=None, max_length=256)
+    email: str | None = Field(default=None, max_length=256)
+
+
+class DeactivateRequest(BaseModel):
+    code: str = Field(pattern=r"^\d{6}$")
 
 
 class RefreshRequest(BaseModel):
@@ -68,6 +79,20 @@ class UsernameRequest(BaseModel):
 class PublicUserResponse(BaseModel):
     id: UUID
     username: str
+    avatar_url: str | None = None
+    bio: str | None = None
+
+
+class ReportContact(BaseModel):
+    phone: str = Field(min_length=8, max_length=32, pattern=r"^\+?[0-9 ()-]+$")
+    whatsapp: bool = False
+
+    @field_validator("phone")
+    @classmethod
+    def validate_phone(cls, value: str) -> str:
+        if not 8 <= sum(character.isdigit() for character in value) <= 15:
+            raise ValueError("Informe um telefone válido com 8 a 15 dígitos.")
+        return value.strip()
 
 
 class MissingReportCreate(BaseModel):
@@ -75,6 +100,8 @@ class MissingReportCreate(BaseModel):
     latitude: float = Field(ge=-90, le=90)
     longitude: float = Field(ge=-180, le=180)
     radius_meters: int = Field(ge=100, le=50_000)
+    last_seen_address: str | None = Field(default=None, max_length=500)
+    contacts: list[ReportContact] = Field(default_factory=list, max_length=5)
 
 
 class MissingReportResponse(BaseModel):
@@ -85,9 +112,15 @@ class MissingReportResponse(BaseModel):
     radius_meters: int
     status: str
     created_at: datetime
+    last_seen_address: str | None = None
+    contacts: list[ReportContact] = Field(default_factory=list)
+    collar: str | None = None
+    distinguishing_marks: str | None = None
+    microchip: str | None = None
 
 
 class SightingCreate(BaseModel):
+    client_event_id: str | None = Field(default=None, max_length=80)
     observed_at: datetime | None = None
     cat_client_id: UUID
     latitude: float = Field(ge=-90, le=90)
@@ -139,14 +172,62 @@ class FeedItemResponse(BaseModel):
 
 
 class MessageCreate(BaseModel):
-    body: str = Field(min_length=1, max_length=2000)
+    body: str = Field(default="", max_length=4000)
+    type: str = "text"
+    media_url: str | None = None
+    location_lat: float | None = None
+    location_lng: float | None = None
+    location_title: str | None = None
+    cat_data: dict[str, Any] | None = None
+    reply_to_id: UUID | None = None
+
+
+class MessageReactionRequest(BaseModel):
+    reaction: Literal["heart", "paw", "like", "check"] = Field(
+        validation_alias=AliasChoices("reaction", "emoji")
+    )
+
+
+class MessageEditRequest(BaseModel):
+    body: str = Field(min_length=1, max_length=4000)
 
 
 class MessageResponse(BaseModel):
     id: UUID
+    conversation_id: UUID
     sender_id: UUID
     body: str
+    type: str = "text"
+    media_url: str | None = None
+    location_lat: float | None = None
+    location_lng: float | None = None
+    location_title: str | None = None
+    cat_data: dict[str, Any] | None = None
+    read_at: datetime | None = None
+    is_read: bool = False
+    reply_to_id: UUID | None = None
+    reply_to: dict[str, Any] | None = None
+    reactions: dict[str, Any] = Field(default_factory=dict)
+    is_edited: bool = False
+    is_deleted: bool = False
     created_at: datetime
+
+
+class ConversationUserResponse(BaseModel):
+    id: UUID
+    username: str
+    avatar_url: str | None = None
+    is_online: bool = False
+    last_seen_at: datetime | None = None
+
+
+class ConversationSummaryResponse(BaseModel):
+    id: UUID
+    other_user: ConversationUserResponse
+    last_message: MessageResponse | None = None
+    unread_count: int = 0
+    sighting_context: bool = False
+    updated_at: datetime
 
 
 class DeviceTokenRequest(BaseModel):
@@ -202,3 +283,76 @@ class AvatarResponse(BaseModel):
     coat_map: dict[str, Any] | None = None
     error_message: str | None = None
     updated_at: datetime
+
+
+class UserSearchResult(BaseModel):
+    id: UUID
+    username: str
+    avatar_url: str | None = None
+    bio: str | None = None
+    mutual_friends_count: int = 0
+    friendship_status: str = "none"
+
+
+class UserSuggestion(BaseModel):
+    id: UUID
+    username: str
+    avatar_url: str | None = None
+    bio: str | None = None
+    mutual_friends_count: int = 0
+    reason: str = "Explorador ativo"
+
+
+class PublicProfileResponse(BaseModel):
+    id: UUID
+    username: str
+    bio: str = ""
+    avatar_url: str | None = None
+    level: int = 1
+    level_title: str = "Curioso"
+    xp: int = 0
+    streak: int = 0
+    longest_streak: int = 0
+    cats_count: int = 0
+    achievements: list[dict[str, Any]] = Field(default_factory=list)
+    friendship_status: str = "none"
+    mutual_friends_count: int = 0
+    public_cats: list[dict[str, Any]] = Field(default_factory=list)
+    habitat_preview: dict[str, Any] | None = None
+    audiences: dict[str, str] = Field(default_factory=dict)
+
+
+class LeaderboardEntry(BaseModel):
+    rank: int
+    user_id: UUID
+    username: str
+    avatar_url: str | None = None
+    xp: int = 0
+    level: int = 1
+    level_title: str = "Curioso"
+    streak: int = 0
+    is_self: bool = False
+
+
+class ChangePasswordRequest(BaseModel):
+    current_password: str = Field(min_length=1)
+    new_password: str = Field(min_length=12, max_length=256)
+
+
+class ChangeEmailRequest(BaseModel):
+    new_email: EmailStr
+
+
+class ConfirmChangeEmailRequest(BaseModel):
+    new_email: EmailStr
+    code: str = Field(pattern=r"^\d{6}$")
+
+
+class FeedbackRequest(BaseModel):
+    category: str = Field(default="suggestion")
+    subject: str = Field(min_length=1, max_length=128)
+    message: str = Field(min_length=1, max_length=2048)
+
+
+class FavoritesSyncRequest(BaseModel):
+    favorites: list[str] = Field(default_factory=list)

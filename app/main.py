@@ -29,10 +29,14 @@ from app.routers.sync import router as sync_router
 from app.routers.social import router as social_router
 from app.routers.vision import router as vision_router
 from app.routers.product import router as product_router
+from app.routers.habitat import router as habitat_router
 from app.routers.websocket import router as websocket_router
 from app.services.storage_service import photo_storage
 from app.services.vision_jobs import enqueue_recognition
 from app.services.analysis_service import AnalysisService
+from app.services.progression import confirm_photo, reject_photo, account as progress_account
+from app.routers.progression import router as progression_router
+from app.services.realtime_events import publish_committed_events
 from app.database import get_session_factory
 from app.services.websocket_manager import ws_manager
 
@@ -57,6 +61,8 @@ app.include_router(sync_router)
 app.include_router(social_router)
 app.include_router(vision_router)
 app.include_router(product_router)
+app.include_router(progression_router)
+app.include_router(habitat_router)
 app.include_router(websocket_router)
 
 
@@ -122,6 +128,7 @@ async def analyze_cat(
             client_id = UUID(cat_id)
         except ValueError as error:
             raise InvalidImageError("O identificador do gato é inválido.") from error
+        await progress_account(session, user.id)
         cat = (
             await session.execute(
                 select(RemoteCat).where(
@@ -130,17 +137,8 @@ async def analyze_cat(
                 )
             )
         ).scalar_one_or_none()
-        if cat is None:
-            from datetime import UTC, datetime
-            cat = RemoteCat(
-                user_id=user.id,
-                client_id=client_id,
-                payload={"status": "completed"},
-                client_updated_at=datetime.now(UTC),
-                updated_by_device="analysis-api",
-            )
-            session.add(cat)
-            await session.flush()
+        if cat is None or cat.deleted_at is not None:
+            raise HTTPException(409, "Sincronize o registro antes de solicitar a análise.")
         photo_key, photo_hash = photo_storage.save(
             user_id=user.id,
             cat_id=cat.id,
@@ -175,10 +173,14 @@ async def analyze_cat(
         await session.flush()
         await enqueue_recognition(session, cat=cat, photo=primary)
         session.add(SyncChange(user_id=user.id, cat_id=cat.id))
+        await confirm_photo(session, cat, primary, result.model_dump(mode="json"))
         await session.commit()
+        await publish_committed_events(session)
         return result
 
     except MissingApiKeyError as error:
+        import traceback
+        traceback.print_exc()
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail={
@@ -188,6 +190,8 @@ async def analyze_cat(
         ) from error
 
     except SegmentationError as error:
+        import traceback
+        traceback.print_exc()
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail={
@@ -215,6 +219,7 @@ async def analyze_cat(
         ) from error
 
     except RejectedImageError as error:
+        await reject_photo(session, user.id, cat_id, image_bytes, error.message)
         raise HTTPException(
             status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
             detail={

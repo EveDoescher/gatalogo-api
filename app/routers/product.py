@@ -5,18 +5,25 @@ from datetime import UTC, datetime
 from io import BytesIO
 from pathlib import Path
 from uuid import UUID
+import uuid
 
-from fastapi import APIRouter, Depends, File, HTTPException, Response, UploadFile
+from fastapi import APIRouter, Depends, File, HTTPException, Query, Response, UploadFile
 from PIL import Image, ImageOps
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
+from typing import Literal
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+from app.services import progression as progress
 from sqlalchemy import select, func
+from sqlalchemy.orm.attributes import flag_modified
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_database_session
+from app.routers.vision import _report_response
 from app.persistence_models import (User, RemoteCat, CatPhoto, MissingReport, Sighting,
     MatchSuggestion, Conversation, ConversationMember, Friendship, AppNotification,
     FeedItem, ProductState)
 from app.routers.auth import current_user
+from app.schemas import FavoritesSyncRequest, FeedbackRequest
 from app.services.storage_service import photo_storage
 from app.services.recognition_service import distance_meters, create_report_matches
 from app.services.realtime_events import publish_committed_events, queue_notification
@@ -25,7 +32,7 @@ from app.config import get_settings
 router = APIRouter(prefix="/app", tags=["app"])
 
 
-async def _state(session: AsyncSession, user: User) -> ProductState:
+async def _get_or_create_product_state(session: AsyncSession, user: User) -> ProductState:
     await session.flush()
     await session.refresh(user, with_for_update=True)
     state = await session.get(ProductState, user.id)
@@ -39,11 +46,12 @@ async def _state(session: AsyncSession, user: User) -> ProductState:
 class UpdateAccountRequest(BaseModel):
     username: str | None = None
     bio: str | None = None
+    avatar_preset: Literal['bapinho', 'bapinha'] | None = None
 
 
 @router.get("/account")
 async def account(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
-    state = await _state(session, user)
+    state = await _get_or_create_product_state(session, user)
     await session.commit()
     return {
         "username": user.username,
@@ -56,7 +64,7 @@ async def account(user: User = Depends(current_user), session: AsyncSession = De
 
 @router.put("/account")
 async def update_account(payload: UpdateAccountRequest, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
-    state = await _state(session, user)
+    state = await _get_or_create_product_state(session, user)
     if payload.username is not None:
         clean = payload.username.strip().lower().replace("@", "")
         if clean and clean != user.username:
@@ -68,6 +76,9 @@ async def update_account(payload: UpdateAccountRequest, user: User = Depends(cur
         new_prefs = dict(state.preferences)
         new_prefs["bio"] = payload.bio.strip()
         state.preferences = new_prefs
+    if payload.avatar_preset is not None:
+        state.preferences = {**state.preferences,
+            'avatar_url': f'/app/account/avatar/preset/{payload.avatar_preset}'}
     await session.commit()
     return {
         "username": user.username,
@@ -84,40 +95,60 @@ async def upload_avatar(file: UploadFile = File(...), user: User = Depends(curre
         raise HTTPException(400, "Arquivo vazio.")
     suffix = Path(file.filename or "avatar.jpg").suffix or ".jpg"
     photo_storage.save_profile_photo(user_id=user.id, data=data, suffix=suffix)
-    state = await _state(session, user)
+    state = await _get_or_create_product_state(session, user)
     new_prefs = dict(state.preferences)
-    new_prefs["avatar_url"] = f"/app/account/avatar/{user.id}"
+    new_prefs["avatar_url"] = f"/app/account/avatar/{user.id}?v={uuid.uuid4().hex}"
     state.preferences = new_prefs
     await session.commit()
     return {"avatar_url": new_prefs["avatar_url"]}
 
 
+@router.get('/account/avatar/preset/{preset}')
+async def get_avatar_preset(preset: Literal['bapinho', 'bapinha']) -> Response:
+    path = Path(__file__).resolve().parents[1] / 'assets' / 'avatars' / f'{preset}.png'
+    return Response(path.read_bytes(), media_type='image/png',
+                    headers={'Cache-Control': 'public, max-age=86400'})
+
+
 @router.get("/account/avatar/{target_user_id}")
 async def get_avatar(target_user_id: UUID) -> Response:
-    for ext in [".jpg", ".png", ".jpeg", ".webp"]:
-        try:
-            path = photo_storage.absolute_path(photo_storage.profile_key_for(target_user_id, ext))
-            parent = path.parent
-            if parent.is_dir():
-                matches = list(parent.glob("avatar-*"))
-                if matches:
-                    latest = max(matches, key=lambda p: p.stat().st_mtime)
-                    media_type = "image/png" if latest.suffix == ".png" else "image/jpeg"
-                    return Response(latest.read_bytes(), media_type=media_type, headers={"Cache-Control": "public, max-age=3600"})
-        except Exception:
-            pass
+    try:
+        path = photo_storage.absolute_path(photo_storage.profile_key_for(target_user_id, ".jpg"))
+        parent = path.parent
+        if parent.is_dir():
+            matches = [f for f in parent.glob("avatar*") if f.is_file()]
+            if matches:
+                latest = max(matches, key=lambda p: p.stat().st_mtime)
+                suffix = latest.suffix.lower()
+                media_type = "image/png" if suffix == ".png" else "image/webp" if suffix == ".webp" else "image/jpeg"
+                return Response(latest.read_bytes(), media_type=media_type, headers={"Cache-Control": "public, max-age=3600"})
+    except Exception:
+        pass
     raise HTTPException(404, "Foto de perfil não encontrada.")
 
 
 class Preferences(BaseModel):
     social_notifications: bool = True
     sighting_notifications: bool = True
+    gallery_audience: Literal["private", "friends", "public"] = "friends"
+    medals_audience: Literal["private", "friends", "public"] = "friends"
+    habitat_audience: Literal["private", "friends", "public"] = "friends"
+    timezone: str = "America/Sao_Paulo"
+
+    @field_validator("timezone")
+    @classmethod
+    def valid_timezone(cls, value):
+        try:
+            ZoneInfo(value)
+        except (ZoneInfoNotFoundError, ValueError):
+            raise ValueError("Fuso horário inválido.")
+        return value
 
 
 @router.put("/preferences", status_code=204)
 async def preferences(payload: Preferences, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> None:
-    state = await _state(session, user)
-    state.preferences = payload.model_dump()
+    state = await _get_or_create_product_state(session, user)
+    state.preferences = {**(state.preferences or {}), **payload.model_dump(exclude_unset=True)}
     await session.commit()
 
 
@@ -136,8 +167,84 @@ async def reports(user: User = Depends(current_user), session: AsyncSession = De
     result = []
     for report, cat in rows:
         count = (await session.execute(select(func.count()).select_from(MatchSuggestion).where(MatchSuggestion.missing_report_id == report.id, MatchSuggestion.status.in_(["pending", "confirmed"])))).scalar_one()
-        result.append({"id": report.id, "cat_client_id": cat.client_id, "name": (cat.payload or {}).get("name") or "Meu gato", "latitude": report.latitude, "longitude": report.longitude, "radius_meters": report.radius_meters, "status": report.status, "created_at": report.created_at, "resolved_at": report.resolved_at, "clue_count": count})
+        result.append({"id": report.id, "cat_client_id": cat.client_id, "name": (cat.payload or {}).get("name") or "Meu gato", "latitude": report.latitude, "longitude": report.longitude, "radius_meters": report.radius_meters, "status": report.status, "created_at": report.created_at, "resolved_at": report.resolved_at, "clue_count": count, **_report_response(report, cat).model_dump()})
     return result
+
+
+@router.get("/reports/nearby")
+async def nearby_reports(
+    latitude: float = Query(..., ge=-90, le=90),
+    longitude: float = Query(..., ge=-180, le=180),
+    radius_km: float = Query(default=15.0, ge=0.5, le=100.0),
+    user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_database_session),
+) -> list[dict]:
+    rows = (await session.execute(
+        select(MissingReport, RemoteCat)
+        .join(RemoteCat, RemoteCat.id == MissingReport.cat_id)
+        .where(MissingReport.status == "active")
+        .order_by(MissingReport.created_at.desc())
+    )).all()
+
+    results = []
+    max_meters = radius_km * 1000.0
+    for report, cat in rows:
+        dist = distance_meters(latitude, longitude, report.latitude, report.longitude)
+        effective_radius = max(float(report.radius_meters), max_meters)
+        if dist <= effective_radius:
+            count = (await session.execute(
+                select(func.count())
+                .select_from(MatchSuggestion)
+                .where(MatchSuggestion.missing_report_id == report.id, MatchSuggestion.status.in_(["pending", "confirmed"]))
+            )).scalar_one()
+            results.append({
+                "id": report.id,
+                "cat_client_id": cat.client_id,
+                "name": (cat.payload or {}).get("name") or "Gatinho",
+                "latitude": report.latitude,
+                "longitude": report.longitude,
+                "radius_meters": report.radius_meters,
+                "distance_meters": round(dist / 100) * 100,
+                "is_owner": report.user_id == user.id,
+                "created_at": report.created_at,
+                "clue_count": count,
+                "photo_url": f"/app/reports/{report.id}/photo",
+            })
+    results.sort(key=lambda r: r["distance_meters"])
+    return results
+
+
+@router.get("/reports/{report_id}/photo")
+async def report_photo(
+    report_id: UUID,
+    user: User = Depends(current_user),
+    session: AsyncSession = Depends(get_database_session),
+) -> Response:
+    report = await session.get(MissingReport, report_id)
+    if report is None or report.status != "active":
+        raise HTTPException(404, "Alerta não encontrado ou inativo.")
+    cat = await session.get(RemoteCat, report.cat_id)
+    if cat is None or cat.deleted_at is not None:
+        raise HTTPException(404, "Gato não encontrado.")
+    photo = (await session.execute(
+        select(CatPhoto).where(
+            CatPhoto.cat_id == cat.id,
+            CatPhoto.kind == "primary",
+            CatPhoto.deleted_at.is_(None),
+        )
+    )).scalar_one_or_none()
+    storage_key = photo.storage_key if photo else cat.photo_key
+    if not storage_key:
+        raise HTTPException(404, "Foto não disponível.")
+    try:
+        with Image.open(photo_storage.open(storage_key)) as original:
+            thumbnail = ImageOps.exif_transpose(original).convert("RGB")
+            thumbnail.thumbnail((1200, 1200))
+            output = BytesIO()
+            thumbnail.save(output, format="JPEG", quality=85)
+    except (OSError, ValueError):
+        raise HTTPException(404, "Foto não disponível.")
+    return Response(output.getvalue(), media_type="image/jpeg", headers={"Cache-Control": "public, max-age=300"})
 
 
 async def _clue(session: AsyncSession, user: User, match_id: UUID):
@@ -148,6 +255,7 @@ async def _clue(session: AsyncSession, user: User, match_id: UUID):
 
 
 class ReportArea(BaseModel):
+    last_seen_address: str | None = Field(default=None, max_length=500)
     latitude: float = Field(ge=-90, le=90)
     longitude: float = Field(ge=-180, le=180)
     radius_meters: int = Field(ge=100, le=50_000)
@@ -163,6 +271,7 @@ async def update_report_area(report_id: UUID, payload: ReportArea, user: User = 
     if payload.radius_meters > get_settings().match_max_distance_meters:
         raise HTTPException(422, "Raio excede o limite permitido.")
     report.latitude, report.longitude, report.radius_meters = payload.latitude, payload.longitude, payload.radius_meters
+    report.poster_details = {**(report.poster_details or {}), "last_seen_address": (payload.last_seen_address or "").strip() or None}
     suggestions = (await session.execute(select(MatchSuggestion).where(MatchSuggestion.missing_report_id == report.id, MatchSuggestion.status == "pending"))).scalars().all()
     for suggestion in suggestions:
         suggestion.status = "stale"
@@ -241,45 +350,207 @@ async def conversation_context(conversation_id: UUID, user: User = Depends(curre
 
 
 ACHIEVEMENTS = {
-    "first": ("Primeira descoberta", "Fotografe seu primeiro gato em um passeio.", 1),
-    "angles": ("Um novo olhar", "Adicione fotos complementares a um gato.", 2),
-    "days": ("Olhar atento", "Registre descobertas em três dias diferentes.", 3),
-    "helper": ("Rede de cuidado", "Contribua com um avistamento de um gato desaparecido.", 1),
+    "first": ("Primeira descoberta", "Fotografe seu primeiro gato em um passeio ao ar livre.", 1),
+    "collector_5": ("Olhar Curioso", "Aviste e catalogue 5 gatos diferentes pelo seu bairro.", 5),
+    "collector_10": ("Rastreador de Pegadas", "Catalogue 10 gatos diferentes em sua jornada.", 10),
+    "master_collector": ("Mestre do Gatálogo", "Reúna 20 gatos catalogados na sua coleção.", 20),
+    "legend_collector": ("Enciclopédia Felina", "Alcance a incrível marca de 50 gatos catalogados.", 50),
+    "black_cat": ("Pantera Urbana", "Catalogue um gato com pelagem predominantemente preta.", 1),
+    "orange_tabby": ("Sol Alaranjado", "Catalogue um gato com pelagem ruiva ou laranja.", 1),
+    "calico": ("Mosaico da Sorte", "Catalogue um gato com pelagem tricolor ou cálico.", 1),
+    "siamese_pattern": ("Olhar Royal", "Catalogue um gato com padrão siamês ou colorpoint.", 1),
+    "bicolor": ("Frajola Elegante", "Catalogue um gato bicolor ou frajola.", 1),
+    "neighborhood_3": ("Explorador de Quarteirões", "Registre gatos em pelo menos 3 locais diferentes.", 3),
+    "city_wanderer": ("Andarilho Urbano", "Registre gatos em 5 locais diferentes.", 5),
+    "night_owl": ("Observador Noturno", "Catalogue um gato no período noturno (após 19h).", 1),
+    "early_bird": ("Madrugador", "Catalogue um gato nas primeiras horas da manhã (antes das 8h).", 1),
+    "days": ("Olhar Atento", "Registre descobertas em três dias diferentes.", 3),
+    "streak_3": ("Ritmo Felino", "Mantenha uma sequência de 3 dias de atividade.", 3),
+    "streak_7": ("Semana Guardiã", "Mantenha uma sequência de 7 dias de atividade.", 7),
+    "streak_30": ("Devoção Felina", "Mantenha uma sequência lendária de 30 dias de atividade.", 30),
+    "angles": ("Um Novo Olhar", "Adicione fotos complementares a um gato.", 2),
+    "portrait": ("Retrato Detalhado", "Adicione notas descritivas detalhadas a 3 gatos.", 3),
+    "angles_master": ("Galeria Completa", "Adicione 4 ou mais fotos ao perfil de um mesmo gato.", 4),
+    "helper": ("Rede de Cuidado", "Contribua com um avistamento ou pista de um gato desaparecido.", 1),
+    "guardian_shield": ("Vigilante do Bairro", "Verifique casos de busca ativa para apoiar tutores.", 1),
+    "poster_share": ("Voz da Esperança", "Compartilhe um cartaz de busca para mobilizar a comunidade.", 1),
+    "social_heart": ("Coração Comunitário", "Curta 5 publicações no feed da comunidade.", 5),
+    "commentator": ("Conversa Afiada", "Participe com comentários em 3 publicações.", 3),
+    "first_share": ("Espalhando Carinho", "Compartilhe uma descoberta felina com amigos.", 1),
+    "owned_pet": ("Meu Companheiro", "Cadastre um gato sob seus cuidados como pet próprio.", 1),
 }
+
+ACHIEVEMENT_XP: dict[str, int] = {
+    "legend_collector": 250,
+    "streak_30": 250,
+    "master_collector": 150,
+    "city_wanderer": 150,
+    "streak_7": 150,
+    "angles_master": 150,
+    "helper": 150,
+    "collector_10": 100,
+    "neighborhood_3": 100,
+    "night_owl": 100,
+    "early_bird": 100,
+    "streak_3": 100,
+    "angles": 100,
+    "portrait": 100,
+    "poster_share": 100,
+    "commentator": 100,
+    "calico": 100,
+    "siamese_pattern": 100,
+}
+
+LEVELS = [
+    (1, "Curioso", 0, 100, "Início da jornada felina"),
+    (2, "Explorador", 100, 300, "Flores para o Habitat"),
+    (3, "Observador", 300, 650, "Selo de observador"),
+    (4, "Catalogador", 650, 1200, "Badge exclusiva de perfil"),
+    (5, "Guardião", 1200, 2000, "Selo de guardião"),
+    (6, "Protetor", 2000, 3200, "Título honorário de proteção"),
+    (7, "Lenda Felina", 3200, 5000, "Status máximo da comunidade"),
+]
+
+
+def calculate_level(xp: int) -> tuple[int, str, int, int, str]:
+    for lvl, title, min_x, target, reward in LEVELS:
+        if xp < target:
+            return lvl, title, min_x, target, reward
+    return 7, "Lenda Felina", 3200, 5000, "Status máximo da comunidade"
+
+
+def calculate_multiplier(streak: int) -> float:
+    return 1.0
+
+
+@router.get("/gamification")
+async def get_gamification(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
+    result = await progress.snapshot(session, user.id)
+    await session.commit()
+    return result
+
+
+class GamificationActionRequest(BaseModel):
+    action: str
+    context_id: str | None = None
+
+
+@router.post("/gamification/action")
+async def record_gamification_action(payload: GamificationActionRequest, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
+    # Compatibility for old clients: an unverified action can never mint XP.
+    result = await progress.snapshot(session, user.id)
+    await session.commit()
+    return {**result, "earned_xp": 0, "level_up": False, "missions_completed": []}
 
 
 @router.get("/journey")
 async def journey(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> list[dict]:
-    state = await _state(session, user)
-    cats = (await session.execute(select(RemoteCat).where(RemoteCat.user_id == user.id, RemoteCat.deleted_at.is_(None)))).scalars().all()
-    discoveries = [cat for cat in cats if (cat.payload or {}).get("is_owned") not in (True, 1)]
-    photo_counts = (await session.execute(select(CatPhoto.cat_id, func.count()).where(CatPhoto.cat_id.in_([cat.id for cat in cats]), CatPhoto.kind != "primary", CatPhoto.deleted_at.is_(None)).group_by(CatPhoto.cat_id))).all()
-    helper = (await session.execute(select(func.count()).select_from(MatchSuggestion).join(Sighting, Sighting.id == MatchSuggestion.sighting_id).where(Sighting.observer_id == user.id, MatchSuggestion.status == "confirmed"))).scalar_one()
-    progress = {"first": len(discoveries), "angles": max([n for _, n in photo_counts], default=0), "days": len({str((cat.payload or {}).get("captured_at", cat.created_at))[:10] for cat in discoveries}), "helper": helper}
-    unlocked = dict(state.achievements)
-    for key, (_, _, target) in ACHIEVEMENTS.items():
-        if progress[key] >= target and key not in unlocked:
-            unlocked[key] = datetime.now(UTC).isoformat()
-            notification = AppNotification(
-                user_id=user.id,
-                type="achievement",
-                payload={"achievement_id": key, "title": ACHIEVEMENTS[key][0]},
-            )
-            session.add(notification)
-            await session.flush()
-            queue_notification(session, notification)
-    state.achievements = unlocked
+    result = await progress.snapshot(session, user.id)
+    state = await session.get(ProductState, user.id)
+    rows = [{**c, "unlocked": c["completed"], "unlocked_at": (state.achievements or {}).get(c["id"])} for c in result["challenges"]]
+    active = {c["id"] for c in rows}
+    for key, when in (state.achievements or {}).items():
+        if key not in active:
+            title, desc, target = ACHIEVEMENTS.get(key, (key, "Conquista preservada no seu histórico.", 1))
+            rows.append(dict(id=key, title=title, description=desc, progress=target, target=target,
+                             unlocked=True, completed=True, unlocked_at=when, archived=True, xp_reward=0))
     await session.commit()
-    await publish_committed_events(session)
-    return [{"id": key, "title": title, "description": description, "target": target, "progress": min(progress[key], target), "unlocked_at": unlocked.get(key)} for key, (title, description, target) in ACHIEVEMENTS.items()]
+    return rows
 
 
 @router.post("/journey/{achievement_id}/share", status_code=204)
 async def share_achievement(achievement_id: str, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> None:
-    state = await _state(session, user)
-    if not user.username or achievement_id not in state.achievements or achievement_id not in ACHIEVEMENTS:
+    state = await _get_or_create_product_state(session, user)
+    definitions = {**ACHIEVEMENTS, **{c[0]: (c[1], c[2], c[3]) for c in progress.CHALLENGES}}
+    if not user.username or achievement_id not in state.achievements or achievement_id not in definitions:
         raise HTTPException(409, "Escolha seu nome de usuário e desbloqueie a conquista antes de compartilhar.")
     exists = (await session.execute(select(FeedItem.id).where(FeedItem.user_id == user.id, FeedItem.type == "achievement", FeedItem.payload["achievement_id"].as_string() == achievement_id))).scalar_one_or_none()
     if exists is None:
-        session.add(FeedItem(user_id=user.id, type="achievement", payload={"achievement_id": achievement_id, "title": ACHIEVEMENTS[achievement_id][0]}))
+        session.add(FeedItem(user_id=user.id, type="achievement", payload={"achievement_id": achievement_id, "title": definitions[achievement_id][0]}))
     await session.commit()
+
+
+@router.get("/account/export")
+async def export_user_data(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
+    state = await _get_or_create_product_state(session, user)
+    cats = (await session.execute(select(RemoteCat).where(RemoteCat.user_id == user.id, RemoteCat.deleted_at.is_(None)))).scalars().all()
+    reports = (await session.execute(select(MissingReport).where(MissingReport.user_id == user.id))).scalars().all()
+    sightings = (await session.execute(select(Sighting).where(Sighting.observer_id == user.id))).scalars().all()
+
+    return {
+        "exported_at": datetime.now(UTC).isoformat(),
+        "account": {
+            "id": str(user.id),
+            "username": user.username,
+            "email": user.email,
+            "status": user.status,
+            "created_at": user.created_at.isoformat() if user.created_at else None,
+            "preferences": state.preferences,
+            "achievements": state.achievements,
+        },
+        "cats": [
+            {
+                "id": str(c.id),
+                "client_id": str(c.client_id),
+                "name": c.payload.get("name") if c.payload else None,
+                "captured_at": c.payload.get("captured_at") if c.payload else None,
+                "location_name": c.payload.get("location_name") if c.payload else None,
+                "is_owned": c.payload.get("is_owned") if c.payload else False,
+                "analysis": c.analysis,
+            }
+            for c in cats
+        ],
+        "missing_reports": [
+            {
+                "id": str(r.id),
+                "cat_client_id": str(r.cat_client_id),
+                "latitude": r.latitude,
+                "longitude": r.longitude,
+                "radius_meters": r.radius_meters,
+                "status": r.status,
+                "created_at": r.created_at.isoformat() if r.created_at else None,
+            }
+            for r in reports
+        ],
+        "sightings": [
+            {
+                "id": str(s.id),
+                "cat_id": str(s.cat_id),
+                "latitude": s.latitude,
+                "longitude": s.longitude,
+                "note": s.note,
+                "created_at": s.created_at.isoformat() if s.created_at else None,
+            }
+            for s in sightings
+        ],
+    }
+
+
+@router.post("/feedback", status_code=201)
+async def submit_feedback(payload: FeedbackRequest, user: User = Depends(current_user)) -> dict:
+    feedback_id = str(uuid.uuid4())
+    return {
+        "id": feedback_id,
+        "status": "received",
+        "category": payload.category,
+        "message": "Agradecemos o seu feedback! Nossa equipe irá analisá-lo.",
+    }
+
+
+@router.get("/favorites")
+async def get_favorites(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
+    state = await _get_or_create_product_state(session, user)
+    return {"favorites": list(state.preferences.get("favorites", []))}
+
+
+@router.put("/favorites")
+async def update_favorites(payload: FavoritesSyncRequest, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
+    state = await _get_or_create_product_state(session, user)
+    prefs = dict(state.preferences or {})
+    prefs["favorites"] = list(set(payload.favorites))
+    state.preferences = prefs
+    flag_modified(state, "preferences")
+    await session.commit()
+    return {"favorites": prefs["favorites"]}
+
+

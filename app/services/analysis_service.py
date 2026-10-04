@@ -247,6 +247,7 @@ class AnalysisService:
                     "message": "Classificação local de pelagem sólida.",
                 },
                 "coat_type": "Sólido",
+                "hair_type": "Curto",
                 "color_assignments": [
                     {"cluster_index": index, "name": color_name}
                     for index in range(len(measured_colors))
@@ -255,6 +256,7 @@ class AnalysisService:
                 "pattern_map": PatternMap(
                     base_color=color_name,
                     pattern="Sólido",
+                    hair_type="Curto",
                     accent_colors=[],
                     regions=[],
                 ),

@@ -19,6 +19,14 @@ CoatType = Literal[
     "Outro",
 ]
 
+HairType = Literal[
+    "Curto",
+    "Médio",
+    "Longo",
+    "Sem pelo",
+    "Outro",
+]
+
 CoatColorName = Literal[
     "Preto",
     "Branco",
@@ -163,6 +171,8 @@ class PatternMap(BaseModel):
 
     pattern: CoatType
 
+    hair_type: HairType = "Curto"
+
     # Cores relevantes além da base.
     accent_colors: list[CoatColorName] = Field(
         default_factory=list,
@@ -178,6 +188,7 @@ class GeminiCoatAnalysis(BaseModel):
     validation: ValidationResult
 
     coat_type: CoatType | None = None
+    hair_type: HairType | None = None
     color_assignments: list[SemanticColorAssignment] = Field(
         default_factory=list,
     )
@@ -222,6 +233,7 @@ class CatAnalysisResponse(BaseModel):
     cat_id: str
 
     coat_type: CoatType
+    hair_type: HairType = "Curto"
     primary_color: CoatColorName
 
     colors: list[CoatColor]
