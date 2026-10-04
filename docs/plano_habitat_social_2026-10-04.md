@@ -1,6 +1,6 @@
 # Plano da API — Habitat e Social
 
-Data: 04/10/2026. Branch: `codex/habitat-social-improvements`, base `main` em `94e9827`. Esta rodada cria o plano; não implementa funcionalidades.
+Data: 04/10/2026. Branch: `feature/habitat-social-improvements`, base `main` em `94e9827`. Esta rodada cria o plano; não implementa funcionalidades.
 
 Plano completo e critérios visuais: [plano do Gatálogo](../../catlogue/docs/plano_habitat_social_2026-10-04.md), mantido no repositório irmão `catlogue`. Se os checkouts não forem irmãos, consultar `docs/plano_habitat_social_2026-10-04.md` na mesma branch do repositório `gatalogo`.
 
