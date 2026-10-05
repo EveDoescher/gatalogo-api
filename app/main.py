@@ -24,6 +24,7 @@ from app.exceptions import (
 from app.models.analysis import CatAnalysisResponse
 from app.database import get_database_session
 from app.persistence_models import CatPhoto, RemoteCat, SyncChange, User
+from app.routers.public_search import router as public_search_router
 from app.routers.auth import current_user, router as auth_router
 from app.routers.sync import router as sync_router
 from app.routers.social import router as social_router
@@ -56,6 +57,7 @@ app = FastAPI(
     version="0.7.0",
     lifespan=lifespan,
 )
+app.include_router(public_search_router)
 app.include_router(auth_router)
 app.include_router(sync_router)
 app.include_router(social_router)

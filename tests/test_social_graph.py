@@ -126,45 +126,30 @@ async def test_get_public_profile():
     assert profile.friendship_status == "none"
 
 
+from test_progression import account
+
 @pytest.mark.asyncio
-async def test_weekly_leaderboard():
-    alice = User(id=uuid4(), username="alice", status="active")
-    bob = User(id=uuid4(), username="bob", status="active")
-
-    session = AsyncMock()
-
-    # Friends query
-    async def mock_execute(stmt):
-        mock_res = MagicMock()
-        stmt_str = str(stmt)
-        if "friendships.friend_id" in stmt_str:
-            mock_res.scalars.return_value.all.return_value = [bob.id]
-        elif "users.id IN" in stmt_str:
-            mock_res.scalars.return_value.all.return_value = [alice, bob]
-        return mock_res
-
-    session.execute.side_effect = mock_execute
-
-    state_alice = ProductState(user_id=alice.id, preferences={"gamification": {"xp": 600, "streak": 7}})
-    state_bob = ProductState(user_id=bob.id, preferences={"gamification": {"xp": 200, "streak": 2}})
-
-    async def mock_get(model, pk):
-        if pk == alice.id:
-            return state_alice
-        if pk == bob.id:
-            return state_bob
-        return None
-
-    session.get.side_effect = mock_get
-
-    lb = await weekly_leaderboard(user=alice, session=session)
-    assert len(lb) == 2
-    assert lb[0].username == "alice"
-    assert lb[0].rank == 1
-    assert lb[0].is_self is True
-    assert lb[1].username == "bob"
-    assert lb[1].rank == 2
-    assert lb[1].is_self is False
+async def test_weekly_leaderboard(account, monkeypatch):
+    from app.services import progression as p
+    from app.routers import social
+    session, alice = account
+    alice.username = "alice"
+    bob = User(email="ranking@test.local", username="bob", status="active")
+    session.add(bob)
+    await session.flush()
+    state, _ = await p.account(session,alice.id)
+    state.preferences = {**state.preferences,"gamification":{"xp":99999}}
+    monkeypatch.setattr(social,"_friend_ids",AsyncMock(return_value={bob.id}))
+    await p.grant(session,bob.id,"rank-photo","discovery",record_id="bob-cat",evidence={"individual_id":"bob-cat"})
+    lb = await weekly_leaderboard(user=alice,session=session)
+    assert [row.username for row in lb] == ["bob","alice"]
+    assert [row.score for row in lb] == [1,0]
+    assert lb[1].is_self and lb[0].reset_at and lb[0].server_now
+    missions = await weekly_leaderboard(user=alice,session=session,criterion="missions")
+    assert [row.rank for row in missions] == [1,1]
+    assert all(row.score == 0 for row in missions)
+    medals = await weekly_leaderboard(user=alice,session=session,criterion="milestones")
+    assert all(row.period == "all" and row.reset_at is None for row in medals)
 
 
 @pytest.mark.asyncio

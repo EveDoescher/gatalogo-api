@@ -46,7 +46,7 @@ async def test_photo_result_replay_and_hash_duplicate(account):
     assert duplicate.state == "ineligible"
     assert (await p.snapshot(db, user.id))["xp"] == first["xp"]
     assert event.xp == 50 and event.coins == 25
-    assert len(first["daily_missions"]) == 1 and len(first["weekly_missions"]) == 2
+    assert len(first["daily_missions"]) == 3 and len(first["weekly_missions"]) == 3
 
 
 @pytest.mark.asyncio
@@ -101,7 +101,7 @@ def test_weekly_days_count_distinct_local_dates():
     events = [SimpleNamespace(kind="discovery", record_id=str(i), event_key=str(i), evidence={
         "eligible": True, "local_day": "2026-09-27", "local_week": "2026-09-21"}) for i in range(3)]
     missions, _, _ = p.projections(events, {"timezone": "America/Sao_Paulo"}, when)
-    assert missions[1]["progress"] == 1
+    assert next(m for m in missions if m["id"] == "weekly_days")["progress"] == 1
 
 
 async def saved_cat(db, user, **payload):
@@ -141,7 +141,7 @@ async def test_attribute_review_does_not_repeat_base_or_bonus(account):
     for _ in range(2):
         result = await review(event.id, body, user=user, session=db)
         assert result["state"] == "confirmed"
-    assert (await p.snapshot(db, user.id))["xp"] == before["xp"]
+    assert (await p.snapshot(db, user.id))["xp"] == before["xp"] + 20  # initial review, awarded once
     assert cat.analysis["primary_color"] == "Branco"
 
 @pytest.mark.asyncio
@@ -162,11 +162,11 @@ async def test_clue_only_pays_once_after_tutor_confirmation(account):
     with pytest.raises(HTTPException):
         await decide_match(match.id, "confirm", user=observer, session=db)
     await decide_match(match.id, "confirm", user=tutor, session=db)
-    assert (await p.snapshot(db, observer.id))["xp"] == 100
-    assert (await p.snapshot(db, observer.id))["balance"] == 50
+    assert (await p.snapshot(db, observer.id))["xp"] == 400
+    assert (await p.snapshot(db, observer.id))["balance"] == 200
     with pytest.raises(HTTPException):
         await decide_match(match.id, "confirm", user=tutor, session=db)
-    assert (await p.snapshot(db, observer.id))["xp"] == 100
+    assert (await p.snapshot(db, observer.id))["xp"] == 400
 
 @pytest.mark.asyncio
 async def test_repost_is_linked_idempotent_and_closed_case_cannot_pay(account):
@@ -185,7 +185,7 @@ async def test_repost_is_linked_idempotent_and_closed_case_cannot_pay(account):
     second = await repost_report(report.id, user=reader, session=db)
     assert first.id == second.id
     assert first.payload["report_id"] == str(report.id)
-    assert (await p.snapshot(db, reader.id))["balance"] == 2
+    assert (await p.snapshot(db, reader.id))["balance"] == 17  # action + daily + optional initial
     report.status = "resolved"; await db.flush()
     with pytest.raises(HTTPException):
         await repost_report(report.id, user=reader, session=db)
@@ -231,7 +231,7 @@ async def test_rollout_disabled_never_replays_old_actions_when_enabled(account, 
     monkeypatch.setattr(p.get_settings(), "progression_rollout_percent", 0)
     args = photo(user)
     event = await p.confirm_photo(db, *args)
-    assert event.state == "ineligible" and event.xp == event.coins == 0
+    assert event.state == "recorded" and event.xp == event.coins == 0
     monkeypatch.setattr(p.get_settings(), "progression_rollout_percent", 100)
     repeated = await p.confirm_photo(db, *args)
     assert repeated.id == event.id and repeated.xp == 0

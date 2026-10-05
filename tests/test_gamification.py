@@ -96,8 +96,8 @@ async def test_unverified_actions_never_mint_rewards(account):
     for action in ("photo", "share", "care", "like", "sighting"):
         result = await record_gamification_action(GamificationActionRequest(action=action), user=user, session=session)
         assert result["earned_xp"] == result["xp"] == result["balance"] == 0
-        assert len(result["daily_missions"]) == 1
-        assert len(result["weekly_missions"]) == 2
+        assert len(result["daily_missions"]) == 3
+        assert len(result["weekly_missions"]) == 3
 
 @pytest.mark.asyncio
 async def test_legacy_progress_and_achievements_are_preserved(account):

@@ -20,6 +20,11 @@ def test_cat_post_create_schema():
     assert post.photo_base64 is None
 
 
+def test_text_post_does_not_require_a_cat_or_photo():
+    post = CatPostCreate(note="Uma conversa sobre nossos gatinhos.")
+    assert post.cat_name == "" and post.photo_url is None
+
+
 def test_post_photo_storage():
     storage = photo_storage
     post_id = uuid4()

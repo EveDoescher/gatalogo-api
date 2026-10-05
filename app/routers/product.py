@@ -12,7 +12,7 @@ from PIL import Image, ImageOps
 from pydantic import BaseModel, Field, field_validator
 from typing import Literal
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
-from app.services import progression as progress
+from app.services import progression as progress, milestones
 from sqlalchemy import select, func
 from sqlalchemy.orm.attributes import flag_modified
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -349,36 +349,7 @@ async def conversation_context(conversation_id: UUID, user: User = Depends(curre
     return {"username": other.username if other else None, "sighting_context": conversation.match_suggestion_id is not None}
 
 
-ACHIEVEMENTS = {
-    "first": ("Primeira descoberta", "Fotografe seu primeiro gato em um passeio ao ar livre.", 1),
-    "collector_5": ("Olhar Curioso", "Aviste e catalogue 5 gatos diferentes pelo seu bairro.", 5),
-    "collector_10": ("Rastreador de Pegadas", "Catalogue 10 gatos diferentes em sua jornada.", 10),
-    "master_collector": ("Mestre do Gatálogo", "Reúna 20 gatos catalogados na sua coleção.", 20),
-    "legend_collector": ("Enciclopédia Felina", "Alcance a incrível marca de 50 gatos catalogados.", 50),
-    "black_cat": ("Pantera Urbana", "Catalogue um gato com pelagem predominantemente preta.", 1),
-    "orange_tabby": ("Sol Alaranjado", "Catalogue um gato com pelagem ruiva ou laranja.", 1),
-    "calico": ("Mosaico da Sorte", "Catalogue um gato com pelagem tricolor ou cálico.", 1),
-    "siamese_pattern": ("Olhar Royal", "Catalogue um gato com padrão siamês ou colorpoint.", 1),
-    "bicolor": ("Frajola Elegante", "Catalogue um gato bicolor ou frajola.", 1),
-    "neighborhood_3": ("Explorador de Quarteirões", "Registre gatos em pelo menos 3 locais diferentes.", 3),
-    "city_wanderer": ("Andarilho Urbano", "Registre gatos em 5 locais diferentes.", 5),
-    "night_owl": ("Observador Noturno", "Catalogue um gato no período noturno (após 19h).", 1),
-    "early_bird": ("Madrugador", "Catalogue um gato nas primeiras horas da manhã (antes das 8h).", 1),
-    "days": ("Olhar Atento", "Registre descobertas em três dias diferentes.", 3),
-    "streak_3": ("Ritmo Felino", "Mantenha uma sequência de 3 dias de atividade.", 3),
-    "streak_7": ("Semana Guardiã", "Mantenha uma sequência de 7 dias de atividade.", 7),
-    "streak_30": ("Devoção Felina", "Mantenha uma sequência lendária de 30 dias de atividade.", 30),
-    "angles": ("Um Novo Olhar", "Adicione fotos complementares a um gato.", 2),
-    "portrait": ("Retrato Detalhado", "Adicione notas descritivas detalhadas a 3 gatos.", 3),
-    "angles_master": ("Galeria Completa", "Adicione 4 ou mais fotos ao perfil de um mesmo gato.", 4),
-    "helper": ("Rede de Cuidado", "Contribua com um avistamento ou pista de um gato desaparecido.", 1),
-    "guardian_shield": ("Vigilante do Bairro", "Verifique casos de busca ativa para apoiar tutores.", 1),
-    "poster_share": ("Voz da Esperança", "Compartilhe um cartaz de busca para mobilizar a comunidade.", 1),
-    "social_heart": ("Coração Comunitário", "Curta 5 publicações no feed da comunidade.", 5),
-    "commentator": ("Conversa Afiada", "Participe com comentários em 3 publicações.", 3),
-    "first_share": ("Espalhando Carinho", "Compartilhe uma descoberta felina com amigos.", 1),
-    "owned_pet": ("Meu Companheiro", "Cadastre um gato sob seus cuidados como pet próprio.", 1),
-}
+ACHIEVEMENTS = milestones.LEGACY_ACHIEVEMENTS
 
 ACHIEVEMENT_XP: dict[str, int] = {
     "legend_collector": 250,
@@ -403,7 +374,7 @@ ACHIEVEMENT_XP: dict[str, int] = {
 
 LEVELS = [
     (1, "Curioso", 0, 100, "Início da jornada felina"),
-    (2, "Explorador", 100, 300, "Flores para o Habitat"),
+    (2, "Explorador", 100, 300, "Flores para o Quintal"),
     (3, "Observador", 300, 650, "Selo de observador"),
     (4, "Catalogador", 650, 1200, "Badge exclusiva de perfil"),
     (5, "Guardião", 1200, 2000, "Selo de guardião"),
@@ -447,15 +418,22 @@ async def record_gamification_action(payload: GamificationActionRequest, user: U
 async def journey(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> list[dict]:
     result = await progress.snapshot(session, user.id)
     state = await session.get(ProductState, user.id)
-    rows = [{**c, "unlocked": c["completed"], "unlocked_at": (state.achievements or {}).get(c["id"])} for c in result["challenges"]]
-    active = {c["id"] for c in rows}
-    for key, when in (state.achievements or {}).items():
-        if key not in active:
-            title, desc, target = ACHIEVEMENTS.get(key, (key, "Conquista preservada no seu histórico.", 1))
-            rows.append(dict(id=key, title=title, description=desc, progress=target, target=target,
-                             unlocked=True, completed=True, unlocked_at=when, archived=True, xp_reward=0))
+    rows = result["achievements"]
     await session.commit()
     return rows
+
+
+class MedalHighlights(BaseModel):
+    ids: list[str] = Field(max_length=5)
+
+
+@router.put("/journey/highlights", status_code=204)
+async def highlight_medals(payload: MedalHighlights, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)):
+    state, _ = await progress.account(session, user.id)
+    if len(set(payload.ids)) != len(payload.ids) or any(mid not in (state.achievements or {}) for mid in payload.ids):
+        raise HTTPException(422, "Escolha até cinco medalhas que você já conquistou.")
+    state.preferences = {**state.preferences, "highlighted_medals": payload.ids}
+    await session.commit()
 
 
 @router.post("/journey/{achievement_id}/share", status_code=204)

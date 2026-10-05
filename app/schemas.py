@@ -95,6 +95,24 @@ class ReportContact(BaseModel):
         return value.strip()
 
 
+class PosterOptions(BaseModel):
+    address: bool = True
+    date: bool = True
+    collar: bool = True
+    distinguishing_marks: bool = True
+    microchip: bool = True
+    qr_code: bool = True
+
+
+class PosterContact(ReportContact):
+    included: bool = True
+
+
+class MissingPosterUpdate(BaseModel):
+    contacts: list[PosterContact] = Field(default_factory=list, max_length=5)
+    options: PosterOptions = Field(default_factory=PosterOptions)
+
+
 class MissingReportCreate(BaseModel):
     cat_client_id: UUID
     latitude: float = Field(ge=-90, le=90)
@@ -114,6 +132,8 @@ class MissingReportResponse(BaseModel):
     created_at: datetime
     last_seen_address: str | None = None
     contacts: list[ReportContact] = Field(default_factory=list)
+    poster_contacts: list[PosterContact] = Field(default_factory=list)
+    poster_options: PosterOptions = Field(default_factory=PosterOptions)
     collar: str | None = None
     distinguishing_marks: str | None = None
     microchip: str | None = None
@@ -323,6 +343,12 @@ class PublicProfileResponse(BaseModel):
 
 
 class LeaderboardEntry(BaseModel):
+    score: int = 0
+    criterion: str = "cats"
+    period: str = "weekly"
+    period_start: str | None = None
+    server_now: str | None = None
+    reset_at: str | None = None
     rank: int
     user_id: UUID
     username: str

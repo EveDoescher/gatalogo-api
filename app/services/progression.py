@@ -18,18 +18,15 @@ from app.services.habitat_service import wallet_for, SHOP
 from app.services.realtime_events import queue_notification
 from app.config import get_settings
 
+from app.services import milestones
+
 log = logging.getLogger(__name__)
-RULE_VERSION = 1
+RULE_VERSION = 2
 REWARDS = {"discovery": (50, 25), "complement": (5, 3), "clue": (100, 50),
-           "repost": (5, 2), "post": (10, 3), "comment": (3, 1)}
+           "repost": (5, 2), "post": (10, 3), "comment": (3, 1), "care": (0, 0), "review": (0, 0), "encounter": (0, 0)}
 LIMITS = {"post": 1, "comment": 3, "repost": 2, "complement": 2}
-CHALLENGES = (
-    ("first", "Primeira descoberta", "Confirme um indivíduo no álbum.", 1, 20, 5),
-    ("collector_5", "Olhar curioso", "Conheça cinco indivíduos diferentes.", 5, 50, 15),
-    ("days", "Histórias em três dias", "Faça registros válidos em três dias diferentes.", 3, 30, 10),
-    ("colors", "Cores do álbum", "Confirme três cores diferentes nas suas descobertas.", 3, 30, 10),
-    ("angles", "Um novo olhar", "Adicione duas fotos complementares úteis.", 2, 20, 5),
-)
+CHALLENGES = tuple((mid, title, desc, target, xp, coins)
+                   for mid, title, desc, metric, target, xp, coins, points in milestones.ACHIEVEMENTS)
 LEVELS = ((1, "Curioso", 0, 100), (2, "Explorador", 100, 300), (3, "Observador", 300, 650),
           (4, "Catalogador", 650, 1200), (5, "Guardião", 1200, 2000),
           (6, "Protetor", 2000, 3200), (7, "Lenda Felina", 3200, 5000))
@@ -73,6 +70,14 @@ async def account(session, user_id):
         prefs["gamification"] = old
         state.preferences = prefs
         await session.flush()
+    prefs = dict(state.preferences or {})
+    today = milestones.calendar()["day"]
+    offers = dict(prefs.get("milestone_daily_offers", {}))
+    if today not in offers:
+        offers[today] = "care" if wallet.selected_cat_ids else "album"
+        prefs["milestone_daily_offers"] = dict(sorted(offers.items())[-35:])
+    prefs["preserved_achievements"] = dict(state.achievements or {})
+    state.preferences = prefs
     return state, wallet
 
 
@@ -82,33 +87,8 @@ async def events_for(session, user_id):
 
 
 def projections(events, prefs, now=None):
-    now = (now or datetime.now(UTC)).astimezone(zone(prefs))
-    day = now.date().isoformat()
-    week = (now.date() - timedelta(days=now.weekday())).isoformat()
-    valid = [e for e in events if (e.evidence or {}).get("eligible") and e.kind in REWARDS]
-    discoveries = {e.evidence.get("individual_id", e.record_id) for e in valid if e.kind == "discovery"}
-    photos = [e for e in valid if e.kind in {"discovery", "complement"}]
-    days = {e.evidence.get("local_day") for e in photos}
-    colors = {e.evidence.get("attributes", {}).get("primary_color") for e in photos
-              if e.evidence.get("attributes_confirmed")}
-    colors.discard(None)
-    completed_keys = {e.event_key for e in events if e.kind in {"mission", "challenge"}}
-    def mission(mid, title, target, value, reward, period):
-        key = f"mission:{mid}:{period}"
-        return dict(id=mid, event_key=key, title=title, target=target, progress=min(value, target),
-                    xp_reward=reward, coin_reward=0, completed=key in completed_keys, period=period)
-    week_photos = [e for e in photos if e.evidence.get("local_week") == week]
-    missions = [mission("daily_record", "Guarde uma nova história", 1,
-                        sum(e.evidence.get("local_day") == day for e in photos), 10, day),
-                mission("weekly_days", "Registre em três dias diferentes", 3,
-                        len({e.evidence.get("local_day") for e in week_photos}), 30, week),
-                mission("weekly_details", "Complete duas histórias com novas fotos", 2,
-                        sum(e.kind == "complement" for e in week_photos), 20, week)]
-    counts = [len(discoveries), len(discoveries), len(days), len(colors), sum(e.kind == "complement" for e in valid)]
-    challenges = [dict(id=c[0], title=c[1], description=c[2], target=c[3], progress=min(n, c[3]),
-                       xp_reward=c[4], coin_reward=c[5], completed=f"challenge:{c[0]}" in completed_keys,
-                       next_piece=max(0, c[3]-n)) for c, n in zip(CHALLENGES, counts)]
-    return missions, challenges, len(discoveries)
+    view = milestones.project(events, prefs, now)
+    return view["daily_missions"] + view["weekly_missions"] + view["initial_missions"], view["achievements"], view["confirmed_individuals"]
 
 
 async def snapshot(session, user_id):
@@ -116,17 +96,22 @@ async def snapshot(session, user_id):
     gamif = state.preferences.get("gamification", {})
     xp = int(gamif.get("xp", 0))
     level, title, minimum, target = level_for(xp, gamif.get("highest_level", 1))
-    missions, challenges, count = projections(await events_for(session, user_id), state.preferences)
+    events = await events_for(session, user_id)
+    view = milestones.project(events, state.preferences)
+    count = view["confirmed_individuals"]
     owned = set((await session.scalars(select(HabitatItem.sku).where(HabitatItem.user_id == user_id))).all())
     goal = next(((sku, item) for sku, item in sorted(SHOP.items(), key=lambda pair: pair[1]["price"])
                  if item["price"] > 0 and sku not in owned), None)
     return dict(xp=xp, new_xp=xp, balance=wallet.balance, level=level, level_title=title,
                 level_min_xp=minimum, target_xp=target, level_reward="Selo e título do álbum",
                 streak=gamif.get("longest_streak", gamif.get("streak", 0)), multiplier=1.0,
-                freeze_shields=0, daily_missions=missions[:1], weekly_missions=missions[1:],
-                weekly_mission=missions[1], bonus_mission=missions[2], challenges=challenges,
-                confirmed_individuals=count, rule_version=RULE_VERSION,
-                unlocked_achievements=len(state.achievements or {}), total_achievements=len(CHALLENGES),
+                freeze_shields=0, **view,
+                weekly_mission=view["weekly_missions"][0], bonus_mission=view["weekly_missions"][1],
+                revision=len(events), as_of=datetime.now(UTC).isoformat(), rewards_enabled=enabled(user_id),
+                ranking_scores=milestones.scores(events, state.preferences),
+                highlighted_medals=state.preferences.get("highlighted_medals", []),
+                rule_version=RULE_VERSION,
+                unlocked_achievements=len(state.achievements or {}), total_achievements=len(view["achievements"]),
                 next_habitat_goal={"title": goal[1]["name"], "price": goal[1]["price"], "balance": wallet.balance,
                                    "sku": goal[0]} if goal else None)
 
@@ -145,27 +130,28 @@ async def grant(session, user_id, key, kind, *, record_id=None, evidence=None, p
     if previous is not None:
         return previous
     evidence = dict(evidence or {})
-    local = datetime.now(UTC).astimezone(zone(state.preferences))
+    local = datetime.now(UTC).astimezone(milestones.CALENDAR)
     evidence.setdefault("local_day", local.date().isoformat())
     evidence.setdefault("local_week", (local.date()-timedelta(days=local.weekday())).isoformat())
     eligible = evidence.get("eligible", True)
     all_events = await events_for(session, user_id)
-    if kind in LIMITS:
-        eligible = eligible and sum(e.kind == kind and e.evidence.get("eligible") and
-                    e.evidence.get("local_day") == evidence["local_day"] for e in all_events) < LIMITS[kind]
     if photo_hash and kind in {"discovery", "complement"}:
         eligible = eligible and not any(e.photo_hash == photo_hash and e.kind in {"discovery", "complement", "legacy"}
                                         for e in all_events)
+    evidence["activity_valid"] = bool(eligible)
+    capped = kind in LIMITS and sum(e.kind == kind and e.evidence.get("eligible") and
+        not e.evidence.get("base_reward_capped") and e.evidence.get("local_day") == evidence["local_day"] for e in all_events) >= LIMITS[kind]
+    evidence["base_reward_capped"] = capped
     if kind != "correction" and not enabled(user_id):
         eligible = False
         evidence["reason"] = "Novas recompensas ainda não estão ativas nesta conta."
     evidence["eligible"] = bool(eligible)
-    base_xp, base_coins = REWARDS.get(kind, (0, 0))
+    base_xp, base_coins = (0, 0) if capped else REWARDS.get(kind, (0, 0))
     xp = (base_xp if xp is None else xp) if eligible else 0
     coins = (base_coins if coins is None else coins) if eligible else 0
     event = ProgressEvent(user_id=user_id, event_key=key, kind=kind, record_id=record_id,
-        state=("needs_review" if evidence.get("attributes_confirmed") is False else "confirmed") if eligible else "ineligible",
-        xp=xp, coins=coins, photo_hash=photo_hash, evidence=evidence, result={})
+        state=("needs_review" if evidence.get("attributes_confirmed") is False else "confirmed") if eligible else ("recorded" if evidence["activity_valid"] else "ineligible"),
+        xp=xp, coins=coins, photo_hash=photo_hash, evidence=evidence, rule_version=RULE_VERSION, result={})
     session.add(event)
     await session.flush()
     if xp or coins:
@@ -191,12 +177,12 @@ async def finish(session, event):
     for m in missions + challenges:
         if m["progress"] < m["target"] or m["completed"]:
             continue
-        kind = "mission" if "event_key" in m else "challenge"
+        kind = "achievement" if m["type"] == "achievement" else "mission"
         key = m.get("event_key", f"challenge:{m['id']}")
         bonus = await grant(session, event.user_id, key, kind, record_id=event.record_id,
-                            evidence={"source_event_id": str(event.id)}, xp=m["xp_reward"], coins=m.get("coin_reward", 0))
-        bonuses.append({"id": m["id"], "title": m["title"], "xp": bonus.xp, "coins": bonus.coins})
-        if kind == "challenge":
+                            evidence={"source_event_id": str(event.id), "objective_type": m["type"], "ranking_points": m["ranking_points"]}, xp=m["xp_reward"], coins=m.get("coin_reward", 0))
+        bonuses.append({"id": m["id"], "title": m["title"], "type": m["type"], "description": m["description"], "xp": bonus.xp, "coins": bonus.coins, "event_id": str(bonus.id)})
+        if kind == "achievement" and bonus.state == "confirmed":
             state.achievements = {**(state.achievements or {}), m["id"]: datetime.now(UTC).isoformat()}
     unlocked = list((event.result or {}).get("unlocked_items", []))
     gamif = dict(state.preferences.get("gamification", {}))
@@ -214,12 +200,14 @@ async def finish(session, event):
     await session.flush()
     summary = await snapshot(session, event.user_id)
     event.result = {**(event.result or {}), "summary": summary, "bonuses": bonuses, "unlocked_items": unlocked}
+    if event.kind in {"care", "review", "encounter"} and not bonuses:
+        return event
     existing_notice = await session.scalar(select(AppNotification).where(
         AppNotification.user_id == event.user_id, AppNotification.type == "progress_result",
         AppNotification.payload["event_id"].as_string() == str(event.id)))
     if existing_notice is None and event.kind != "clue":
         notice = AppNotification(user_id=event.user_id, type="progress_result",
-            payload={"event_id": str(event.id), "cat_client_id": event.record_id})
+            payload={"event_id": str(event.id), "cat_client_id": event.record_id, "record_type": event.kind})
         session.add(notice)
         await session.flush()
         queue_notification(session, notice)
@@ -243,9 +231,20 @@ async def confirm_photo(session, cat, photo, analysis, *, reference=False):
     events = await events_for(session, cat.user_id)
     individual = str((cat.payload or {}).get("individual_id") or cat.client_id)
     owned = (cat.payload or {}).get("is_owned") in (True, 1)
-    seen = any(e.kind in {"discovery", "legacy"} and (e.kind == "legacy" or e.evidence.get("eligible")) and
+    if cat.payload.get("identity_state") == "pending" and not reference:
+        event = await grant(session, cat.user_id, f"pending:{cat.client_id}:{photo.content_hash}", "pending_identity",
+            record_id=str(cat.client_id), evidence={"eligible": False, "photo_valid": True,
+                "attributes": {k: analysis.get(k) for k in ("primary_color", "coat_type", "hair_type")},
+                "attributes_confirmed": float(analysis.get("confidence", 0)) >= .7 and not analysis.get("warnings"),
+                "validated_by": "server_analysis", "reason": "Foto salva. Confirme se é um gato novo ou conhecido."}, photo_hash=photo.content_hash)
+        event.state = "pending"
+        await finish(session, event)
+        return event
+    seen = any(e.kind in {"discovery", "legacy"} and (e.kind == "legacy" or e.evidence.get("eligible") or e.evidence.get("activity_valid")) and
                e.evidence.get("individual_id", e.record_id) == individual for e in events)
     kind = "complement" if reference or seen or individual != str(cat.client_id) else "discovery"
+    if kind == "complement" and not reference and cat.payload.get("identity_state") == "confirmed" and cat.payload.get("contribution_type") == "encounter":
+        kind = "encounter"
     key = f"reference:{cat.client_id}:{photo.kind}" if reference else f"photo:{cat.client_id}:{photo.content_hash}"
     uncertain = float(analysis.get("confidence", 0)) < .7 or bool(analysis.get("warnings"))
     attrs = {k: analysis.get(k) for k in ("primary_color", "coat_type", "hair_type")}
@@ -258,12 +257,13 @@ async def confirm_photo(session, cat, photo, analysis, *, reference=False):
     return event
 
 
-async def identify(session, cat, chosen):
+async def identify(session, cat, chosen, contribution_type=None):
     """Apply online and queued identity choices through the same audited path."""
     from fastapi import HTTPException
     old = str(cat.payload.get("individual_id") or cat.client_id)
     chosen = str(chosen or cat.client_id)
-    if old == chosen:
+    pending_identity = cat.payload.get("identity_state") == "pending"
+    if old == chosen and not pending_identity:
         return chosen
     if chosen != str(cat.client_id):
         try:
@@ -275,12 +275,24 @@ async def identify(session, cat, chosen):
         if target is None:
             raise HTTPException(422, "O gato conhecido precisa estar no seu catálogo.")
         chosen = str(target.payload.get("individual_id") or target.client_id)
-    if old == chosen:
+    if old == chosen and not pending_identity:
         return chosen
     revision = int(cat.payload.get("identity_revision", 0)) + 1
-    cat.payload = {**cat.payload, "individual_id": chosen, "identity_revision": revision}
+    cat.payload = {**cat.payload, "individual_id": chosen, "identity_revision": revision, "identity_state": "confirmed", "contribution_type": contribution_type or cat.payload.get("contribution_type", "encounter" if pending_identity else "angle")}
+    all_events = await events_for(session, cat.user_id)
+    pending = [e for e in all_events if e.record_id == str(cat.client_id) and e.kind == "pending_identity" and e.state == "pending"]
+    for prior in pending:
+        already = any(e.kind == "discovery" and (e.evidence.get("eligible") or e.evidence.get("activity_valid")) and
+                      (e.evidence.get("individual_id") or e.record_id) == chosen for e in all_events)
+        kind = "discovery" if chosen == str(cat.client_id) and not already and not cat.payload.get("is_owned") else "complement" if contribution_type in {"angle", "detail", "clearer"} else "encounter"
+        new = await grant(session, cat.user_id, f"identity-confirm:{prior.id}", kind, record_id=str(cat.client_id),
+            photo_hash=prior.photo_hash, evidence={**prior.evidence, "eligible": not cat.payload.get("is_owned") or kind == "complement",
+                "individual_id": chosen, "contribution_type": contribution_type, "reason": None})
+        prior.state = "resolved"
+        await finish(session, new)
+        all_events.append(new)
     rows = [e for e in await events_for(session, cat.user_id)
-            if e.record_id == str(cat.client_id) and e.kind in ("discovery", "complement")]
+            if e.record_id == str(cat.client_id) and e.kind in ("discovery", "complement") and not pending_identity]
     for index, event in enumerate(rows):
         if not event.evidence.get("eligible"):
             continue

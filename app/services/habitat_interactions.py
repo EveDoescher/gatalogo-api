@@ -7,6 +7,7 @@ from uuid import UUID
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.services.habitat_pricing import effective_price
 from app.persistence_models import HabitatItem, HabitatTransaction, RemoteCat
 from app.services.habitat_service import can_cross_bridge, item_cells, walkable_cells, wallet_for
 
@@ -18,8 +19,8 @@ GROWING_SKUS = {"leaf_garden", "bamboo_garden"}
 def care_summary(state: dict, capacity: int, now: datetime) -> dict:
     day = now.date().isoformat()
     used = state.get("food_used", 0) if state.get("food_day") == day else 0
-    return {"cats": state.get("cats", {}), "free_portions": max(0, capacity - used),
-            "treat_price": TREAT_PRICE, "day": day, "server_now": now.isoformat(),
+    return {"cats": state.get("cats", {}), "free_portions": max(0, capacity - used) + state.get("bonus_portions", 0), "bonus_portions": state.get("bonus_portions", 0),
+            "treat_price": effective_price(TREAT_PRICE), "day": day, "server_now": now.isoformat(),
             "gift_threshold": AFFINITY_GIFT_THRESHOLD}
 
 
@@ -70,7 +71,7 @@ async def interact(session: AsyncSession, user_id: UUID, action: str, target_id:
         cat = await session.scalar(select(RemoteCat).where(
             RemoteCat.user_id == user_id, RemoteCat.client_id == target_id, RemoteCat.deleted_at.is_(None)))
         if cat is None or not (cat.payload or {}).get("is_owned") or str(target_id) not in (wallet.selected_cat_ids or []):
-            raise ValueError("Escolha um dos seus gatos que estão no Habitat.")
+            raise ValueError("Escolha um dos seus gatos que estão no Quintal.")
         cats = state.setdefault("cats", {})
         cat_state = cats.setdefault(str(target_id), {"affinity": 0})
         if cat_state.get(f"{action}_day") == day:
@@ -88,13 +89,16 @@ async def interact(session: AsyncSession, user_id: UUID, action: str, target_id:
             if action == "feed":
                 if state.get("food_day") != day:
                     state.update(food_day=day, food_used=0)
-                if state.get("food_used", 0) >= 3 + wallet.expansion_level:
+                if state.get("food_used", 0) >= 3 + wallet.expansion_level and state.get("bonus_portions", 0) <= 0:
                     raise ValueError("As porções gratuitas de hoje acabaram.")
-                state["food_used"] = state.get("food_used", 0) + 1
+                if state.get("food_used", 0) < 3 + wallet.expansion_level:
+                    state["food_used"] = state.get("food_used", 0) + 1
+                else:
+                    state["bonus_portions"] -= 1
             else:
-                if wallet.balance < TREAT_PRICE:
+                if wallet.balance < effective_price(TREAT_PRICE):
                     raise ValueError("Moedas insuficientes para o petisco.")
-                amount = -TREAT_PRICE
+                amount = -effective_price(TREAT_PRICE)
         cat_state[f"{action}_day"] = day
         cat_state["affinity"] = min(100, cat_state.get("affinity", 0) + {"pet": 1, "feed": 5, "treat": 3}[action])
         if cat_state["affinity"] >= AFFINITY_GIFT_THRESHOLD and not state.get("gift_claimed"):

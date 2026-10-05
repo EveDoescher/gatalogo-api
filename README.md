@@ -368,7 +368,7 @@ produziria uma avaliação circular.
 
 Referência do extrator: [DINOv2, implementação oficial](https://github.com/facebookresearch/dinov2).
 
-## Habitat
+## Quintal
 
 Antes de iniciar a versão com cuidados, aplique `alembic upgrade head`.
 A migração `20260924_10` adiciona afinidade e porções na carteira, crescimento
@@ -398,3 +398,23 @@ Os testes em `tests/test_habitat.py` cobrem economia, repetição de ações,
 propriedade, navegação, crescimento e compatibilidade usando banco em memória.
 O movimento e as animações ficam no cliente; a API salva apenas os pontos
 iniciais dos gatos e o layout validado.
+
+
+### Loja gratuita e encontros do Quintal
+
+`HABITAT_FREE_SHOP` está ligado por padrão nesta rodada de testes e zera
+compras elegíveis, expansões e petiscos. `false` restaura os preços base;
+recompensas exclusivas continuam indisponíveis para compra em ambos os modos.
+Chance, janela, limite e pesos de satisfação estão em `.env.example`.
+
+Contratos novos: `POST /app/habitat/encounters`,
+`POST /app/habitat/gifts/{id}/deliver` e `POST /app/habitat/gifts/{id}/claim`.
+O snapshot contém satisfação e presente pendente. A entrega é recuperável;
+a notificação não resgata o prêmio. Carteira travada e transação por presente
+impedem duplicação. Porções extras persistem e são usadas após a cota diária.
+Não há nova migração: estado limitado usa a carteira existente.
+
+`POST /social/posts` aceita texto sem gato/foto, até 2000 caracteres, e
+`request_id` opcional. A mesma chave e conteúdo retornam o mesmo post;
+conteúdo diferente com a mesma chave retorna conflito. Foto por URL exige
+upload pertencente ao autor. Ver `docs/plano_habitat_social_2026-10-04.md`.

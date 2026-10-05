@@ -26,6 +26,7 @@ def _copy_for(notification_type: str) -> tuple[str, str]:
         "message": ("Nova mensagem", "Você recebeu uma mensagem no Gatálogo."),
         "friend_invite": ("Novo convite", "Alguém quer ser seu amigo no Gatálogo."),
         "friend_accepted": ("Novo amigo", "Seu convite foi aceito."),
+        "habitat_gift": ("Presente no Quintal", "Um visitante deixou um presente do lado de fora do seu quintal."),
         "achievement": ("Nova conquista", "Uma conquista foi liberada no Gatálogo."),
     }.get(notification_type, ("Novidade no Gatálogo", "Há uma atualização para você conferir."))
 

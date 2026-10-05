@@ -73,7 +73,11 @@ async def _apply_operation(session: AsyncSession, user: User, operation: SyncOpe
         cat.deleted_at = _utc(operation.deleted_at) if operation.deleted_at else None
     await session.flush()
     if operation.deleted_at is None:
-        await identify(session, cat, operation.payload.get("individual_id") or cat.client_id)
+        if operation.payload.get("individual_id") == "pending":
+            if not cat.payload.get("individual_id"):
+                cat.payload = {**cat.payload, "identity_state": "pending"}
+        else:
+            await identify(session, cat, operation.payload.get("individual_id") or cat.client_id)
     await session.flush()
     await _record_change(session, cat)
     await sync_catalog_sighting(session, cat=cat, settings=get_settings())

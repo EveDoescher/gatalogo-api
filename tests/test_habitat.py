@@ -1,4 +1,4 @@
-"""Habitat wallet, purchase and layout contract tests."""
+"""Quintal wallet, purchase and layout contract tests."""
 
 from datetime import UTC, datetime, timedelta
 from uuid import uuid4
@@ -32,6 +32,27 @@ async def test_cottage_costs_five_catalogs_and_retries_never_charge_twice(accoun
 
 
 @pytest.mark.asyncio
+async def test_free_shop_preserves_wallet_limits_and_reward_exclusivity(account, monkeypatch):
+    from app.config import get_settings
+    from app.routers.habitat import get_shop
+    monkeypatch.setattr(get_settings(), "habitat_free_shop", True)
+    session, user = account
+    request = PurchaseRequest(sku="green_cottage", idempotency_key=uuid4())
+    first = await purchase(request, user=user, session=session)
+    assert first == await purchase(request, user=user, session=session)
+    assert first["balance"] == 0
+    shop = await get_shop()
+    cottage = next(item for item in shop["items"] if item["sku"] == "green_cottage")
+    assert cottage["price"] == 0 and cottage["base_price"] == 120 and cottage["purchasable"]
+    with pytest.raises(HTTPException):
+        await purchase(PurchaseRequest(sku="friendship_garden", idempotency_key=uuid4()), user=user, session=session)
+    with pytest.raises(HTTPException):
+        await purchase(PurchaseRequest(sku="green_cottage", idempotency_key=uuid4()), user=user, session=session)
+    expanded = await expand_yard(ExpansionRequest(expected_level=0, idempotency_key=uuid4()), user=user, session=session)
+    assert expanded["balance"] == 0 and expanded["expansion_level"] == 1
+
+
+@pytest.mark.asyncio
 async def test_new_decorations_keep_ownership_limits_and_rotated_collision(account):
     session, user = account
     await get_habitat(user=user, session=session)
@@ -45,6 +66,12 @@ async def test_new_decorations_keep_ownership_limits_and_rotated_collision(accou
     for rotation in range(4):
         assert len(item_cells("solar_cottage", 1, 1, rotation)) == 9
         assert len(item_cells("wood_platform", 1, 1, rotation)) == 4
+
+
+@pytest.fixture(autouse=True)
+def regular_prices(monkeypatch):
+    from app.config import get_settings
+    monkeypatch.setattr(get_settings(), "habitat_free_shop", False)
 
 
 @pytest_asyncio.fixture

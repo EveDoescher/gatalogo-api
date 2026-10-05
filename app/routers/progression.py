@@ -48,7 +48,7 @@ async def summary(user: User = Depends(current_user), session: AsyncSession = De
 async def history(limit: int = Query(50, ge=1, le=200), cursor: UUID | None = None,
                   user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)):
     query = select(ProgressEvent).where(ProgressEvent.user_id == user.id,
-        ProgressEvent.kind.in_(tuple(progress.REWARDS)))
+        ProgressEvent.kind.in_((*progress.REWARDS, "pending_identity")))
     if cursor:
         before = await session.get(ProgressEvent, cursor)
         if before is None or before.user_id != user.id:
@@ -72,7 +72,7 @@ async def result(event_id: UUID, user: User = Depends(current_user), session: As
 async def record_result(client_id: UUID, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)):
     cat = await _cat(session, user.id, client_id)
     event = await session.scalar(select(ProgressEvent).where(ProgressEvent.user_id == user.id,
-        ProgressEvent.record_id == str(client_id), ProgressEvent.kind.in_(("discovery", "complement")))
+        ProgressEvent.record_id == str(client_id), ProgressEvent.kind.in_(("discovery", "complement", "encounter", "pending_identity")))
         .order_by(ProgressEvent.created_at.desc()).limit(1))
     if event:
         return progress.result_for(event)
@@ -110,7 +110,10 @@ async def review(event_id: UUID, payload: AttributeReview, user: User = Depends(
     cat.analysis = {**(cat.analysis or {}), **payload.model_dump()}
     session.add(SyncChange(user_id=user.id, cat_id=cat.id))
     # The base grant is immutable; only newly completed objectives can pay here.
+    reviewed = await progress.grant(session, user.id, f"review:{event.id}", "review", record_id=event.record_id,
+        evidence={"source_event_id": str(event.id)})
     await progress.finish(session, event)
+    await progress.finish(session, reviewed)
     await session.commit()
     await publish_committed_events(session)
     return progress.result_for(event)
@@ -134,16 +137,18 @@ async def suggestions(client_id: UUID, user: User = Depends(current_user), sessi
 
 class IdentityChoice(BaseModel):
     individual_id: UUID
+    contribution_type: Literal["angle", "detail", "clearer", "encounter"] = "encounter"
 
 
 @router.put("/records/{client_id}/identity")
 async def identity(client_id: UUID, payload: IdentityChoice, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)):
     await progress.account(session, user.id)
     cat = await _cat(session, user.id, client_id)
-    chosen = await progress.identify(session, cat, payload.individual_id)
+    chosen = await progress.identify(session, cat, payload.individual_id, payload.contribution_type)
     session.add(SyncChange(user_id=user.id, cat_id=cat.id))
     result = {"individual_id": chosen, "summary": await progress.snapshot(session, user.id)}
     await session.commit()
+    await publish_committed_events(session)
     return result
 
 

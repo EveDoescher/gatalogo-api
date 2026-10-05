@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Literal
+
 from datetime import UTC, datetime
 from uuid import UUID, uuid4
 
@@ -7,7 +9,7 @@ from pathlib import Path
 
 from fastapi import APIRouter, Depends, File, Header, HTTPException, Query, Response, UploadFile, status
 from fastapi.responses import FileResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from sqlalchemy import func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -59,6 +61,7 @@ from app.services import progression as progress
 from app.services.audience import permits, can_read_post
 from app.persistence_models import MissingReport, HabitatWallet, ProgressEvent
 import hashlib
+import json
 from app.services.websocket_manager import ws_manager
 
 router = APIRouter(prefix="/social", tags=["social"])
@@ -307,6 +310,15 @@ async def get_public_profile(
             ).order_by(RemoteCat.created_at.desc())
         )
     ).scalars().all()
+    groups = {}
+    for cat in cats:
+        payload = cat.payload or {}
+        if payload.get("identity_state") == "pending":
+            continue
+        key = str(payload.get("individual_id") or cat.client_id)
+        if key not in groups or str(cat.client_id) == key:
+            groups[key] = cat
+    cats = list(groups.values())
     cats_count = len(cats)
 
     public_cats = []
@@ -327,15 +339,25 @@ async def get_public_profile(
     unlocked_achievements = []
     medals_visible = await permits(session, user.id, target_user.id, "medals", as_friend=view_as_friend and user.id == target_user.id)
     definitions = {**ACHIEVEMENTS, **{c[0]: (c[1], c[2], c[3]) for c in progress.CHALLENGES}}
+    from app.services import milestones
+    medal_rules = {c[0]: c for c in milestones.ACHIEVEMENTS}
+    highlights = prefs.get("highlighted_medals", [])
+    receipts = {r["id"]: r for r in milestones.project(await progress.events_for(session, target_user.id), {**prefs, "preserved_achievements": achievements_dict})["achievements"]} if medals_visible and highlights else {}
     for ach_id, unlocked_at in (achievements_dict.items() if medals_visible else []):
-        if ach_id in definitions:
+        if ach_id in definitions and (highlights is None or ach_id in highlights):
             title, desc, _ = definitions[ach_id]
             unlocked_achievements.append({
                 "id": ach_id,
                 "title": title,
                 "description": desc,
                 "unlocked_at": unlocked_at,
-                "xp_reward": ACHIEVEMENT_XP.get(ach_id, 50),
+                "xp_reward": medal_rules[ach_id][5] if ach_id in medal_rules else 0,
+                "coin_reward": medal_rules[ach_id][6] if ach_id in medal_rules else 0,
+                "ranking_points": medal_rules[ach_id][7] if ach_id in medal_rules else 0,
+                "xp_received": receipts.get(ach_id, {}).get("xp_received"),
+                "coin_received": receipts.get(ach_id, {}).get("coin_received"),
+                "legacy_reward_unknown": receipts.get(ach_id, {}).get("legacy_reward_unknown", True),
+                "type": "achievement", "completed": True, "unlocked": True,
             })
 
     f_status = await _get_friendship_status(session, user.id, target_user.id)
@@ -365,6 +387,8 @@ async def get_public_profile(
 async def weekly_leaderboard(
     user: User = Depends(current_user),
     session: AsyncSession = Depends(get_database_session),
+    criterion: Literal["cats", "missions", "milestones"] = "cats",
+    period: Literal["weekly", "all"] = "weekly",
 ) -> list[LeaderboardEntry]:
     friend_ids = await _friend_ids(session, user.id)
     all_user_ids = list(friend_ids)
@@ -376,46 +400,40 @@ async def weekly_leaderboard(
         )
     ).scalars().all()
 
+    from app.services import milestones
+    from app.persistence_models import ProgressEvent
+    states = {row.user_id: row for row in (await session.scalars(select(ProductState).where(ProductState.user_id.in_(all_user_ids)))).all()}
+    grouped = {uid: [] for uid in all_user_ids}
+    for event in (await session.scalars(select(ProgressEvent).where(ProgressEvent.user_id.in_(all_user_ids)))).all():
+        grouped[event.user_id].append(event)
+    clock = milestones.calendar()
+    effective_period = "all" if criterion == "milestones" else "weekly" if criterion == "missions" else period
     entries = []
     for u in users:
         if not u.username:
             continue
-        pstate = await session.get(ProductState, u.id)
-        prefs = pstate.preferences if pstate else {}
+        state = states.get(u.id)
+        prefs = dict(state.preferences or {}) if state else {}
+        prefs["preserved_achievements"] = dict(state.achievements or {}) if state else {}
+        scores = milestones.scores(grouped[u.id], prefs)
+        key = "cats_all" if criterion == "cats" and effective_period == "all" else "cats_weekly" if criterion == "cats" else criterion
         gamif = prefs.get("gamification", {})
-        xp = gamif.get("xp", 0)
-        level, level_title, _, _, _ = calculate_level(xp)
-        streak = gamif.get("streak", 0)
-
-        entries.append({
-            "user_id": u.id,
-            "username": u.username,
-            "avatar_url": _user_avatar_url(u.id, prefs),
-            "xp": xp,
-            "level": level,
-            "level_title": level_title,
-            "streak": streak,
-            "is_self": (u.id == user.id),
-        })
-
-    entries.sort(key=lambda x: (x["xp"], x["streak"]), reverse=True)
-
+        level, title, _, _ = progress.level_for(gamif.get("xp", 0), gamif.get("highest_level", 1))
+        entries.append(dict(user_id=u.id, username=u.username, avatar_url=_user_avatar_url(u.id, prefs),
+            xp=gamif.get("xp", 0), level=level, level_title=title, streak=0, is_self=u.id == user.id,
+            score=scores[key], criterion=criterion, period=effective_period,
+            server_now=clock["server_now"], period_start=clock["week"] if effective_period == "weekly" else None,
+            reset_at=clock["weekly_reset_at"] if effective_period == "weekly" else None))
+    entries.sort(key=lambda row: (-row["score"], str(row["user_id"])))
+    previous_score, position = None, 0
     result = []
-    for idx, e in enumerate(entries, start=1):
-        result.append(
-            LeaderboardEntry(
-                rank=idx,
-                user_id=e["user_id"],
-                username=e["username"],
-                avatar_url=e["avatar_url"],
-                xp=e["xp"],
-                level=e["level"],
-                level_title=e["level_title"],
-                streak=e["streak"],
-                is_self=e["is_self"],
-            )
-        )
+    for index, entry in enumerate(entries, 1):
+        if entry["score"] != previous_score:
+            position = index
+        previous_score = entry["score"]
+        result.append(LeaderboardEntry(rank=position, **entry))
     return result
+
 
 
 @router.get("/users/{username}", response_model=PublicUserResponse)
@@ -558,8 +576,9 @@ async def remove_friend(friend_id: UUID, user: User = Depends(current_user), ses
 
 
 class CatPostCreate(BaseModel):
-    cat_name: str
-    note: str = ""
+    cat_name: str = Field(default="", max_length=100)
+    request_id: UUID | None = None
+    note: str = Field(default="", max_length=2000)
     location_name: str | None = None
     photo_base64: str | None = None
     photo_url: str | None = None
@@ -602,10 +621,11 @@ async def community_report(report_id: UUID, user: User = Depends(current_user), 
     if cat is None or cat.deleted_at is not None:
         raise HTTPException(404, "Busca não disponível.")
     owner = await session.get(User, report.user_id)
+    from app.services.missing_posters import public_poster_details
     details = report.poster_details or {}
-    return {"id": str(report.id), "status": report.status, "is_owner": user.id == report.user_id,
+    return {**public_poster_details(report, cat), "id": str(report.id), "status": report.status, "is_owner": user.id == report.user_id,
         "name": cat.payload.get("name") or "Gato desaparecido", "author": owner.username or "Tutor",
-        "description": details.get("description"), "contacts": details.get("contacts", []) if report.status == "active" else [],
+        "description": details.get("description"),
         "photo_url": f"/app/reports/{report.id}/photo" if report.status == "active" else None,
         "message": "As pistas são avaliadas pelo tutor. As localizações dos colaboradores são privadas."}
 
@@ -627,12 +647,23 @@ async def gallery_photo(cat_id: UUID, user: User = Depends(current_user), sessio
 
 @router.post("/reports/{report_id}/repost", response_model=FeedItemResponse)
 async def repost_report(report_id: UUID, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)):
+    return await _share_report(report_id, user, session, owner_publication=False)
+
+
+@router.post("/reports/{report_id}/publish", response_model=FeedItemResponse)
+async def publish_report(report_id: UUID, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)):
+    return await _share_report(report_id, user, session, owner_publication=True)
+
+
+async def _share_report(report_id, user, session, *, owner_publication):
     await progress.account(session, user.id)
     report = await session.get(MissingReport, report_id, with_for_update=True)
     if report is None or report.status != "active":
         raise HTTPException(409, "Este cartaz não está mais ativo.")
-    if report.user_id == user.id:
-        raise HTTPException(422, "O repost é para ajudar o cartaz de outra pessoa.")
+    if owner_publication and report.user_id != user.id:
+        raise HTTPException(404, "Alerta não encontrado.")
+    if not owner_publication and report.user_id == user.id:
+        raise HTTPException(422, "Use a publicação do seu cartaz para divulgar sua busca.")
     previous = await session.scalar(select(ProgressEvent).where(ProgressEvent.user_id == user.id,
         ProgressEvent.event_key == f"repost:{report.id}"))
     if previous:
@@ -648,7 +679,7 @@ async def repost_report(report_id: UUID, user: User = Depends(current_user), ses
             "report_status": "active", "likes": [], "comments": []})
         session.add(item)
         await session.flush()
-        event = await progress.grant(session, user.id, f"repost:{report.id}", "repost",
+        event = await progress.grant(session, user.id, f"repost:{report.id}", "post" if owner_publication else "repost",
             record_id=str(item.id), evidence={"report_id": str(report.id), "original_author_id": str(report.user_id)})
         await progress.finish(session, event)
     await session.commit()
@@ -795,8 +826,22 @@ async def create_post(
     if not user.username:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Escolha um nome de usuário para postar no feed.")
     cat_name = payload.cat_name.strip()
-    if not cat_name:
-        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_CONTENT, detail="O nome do gato é obrigatório.")
+    if not payload.note.strip() and not payload.photo_url and not payload.photo_base64:
+        raise HTTPException(422, "Escreva algo ou adicione uma foto.")
+    request_content = hashlib.sha256(json.dumps({
+        "cat_name": cat_name, "note": payload.note.strip(),
+        "location_name": payload.location_name, "photo_url": payload.photo_url,
+        "photo_base64": payload.photo_base64, "is_public": payload.is_public,
+    }, sort_keys=True).encode()).hexdigest()
+    if payload.request_id:
+        await session.scalar(select(User).where(User.id == user.id).with_for_update())
+        previous = await session.scalar(select(FeedItem).where(FeedItem.user_id == user.id,
+            FeedItem.payload["request_id"].as_string() == str(payload.request_id)))
+        if previous is not None:
+            if previous.payload.get("request_content") != request_content:
+                raise HTTPException(409, "Esta tentativa já publicou outro conteúdo. Inicie uma nova publicação.")
+            return FeedItemResponse(id=previous.id, username=user.username, type=previous.type,
+                payload=previous.payload or {}, created_at=previous.created_at)
 
     photo_url = payload.photo_url
     if photo_url:
@@ -807,16 +852,20 @@ async def create_post(
     if not photo_url and payload.photo_base64:
         try:
             import base64
-            raw_bytes = base64.b64decode(payload.photo_base64)
+            raw_bytes = base64.b64decode(payload.photo_base64, validate=True)
             if raw_bytes:
                 pid = uuid4()
                 photo_storage.save_post_photo(post_id=pid, data=raw_bytes, suffix=".jpg")
                 photo_url = f"/social/posts/photo/{pid}.jpg"
-        except Exception:
-            pass
+        except Exception as error:
+            raise HTTPException(422, "Não foi possível processar a foto. Envie-a novamente.") from error
+    if not photo_url and not payload.note.strip():
+        raise HTTPException(422, "Escreva algo ou adicione uma foto válida.")
 
     item_payload = {
         "cat_name": cat_name,
+        "request_id": str(payload.request_id) if payload.request_id else None,
+        "request_content": request_content,
         "note": payload.note.strip(),
         "location_name": payload.location_name,
         "photo_url": photo_url,

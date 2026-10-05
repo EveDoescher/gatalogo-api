@@ -1,4 +1,4 @@
-"""Server-owned Habitat catalog and coin accounting."""
+"""Server-owned Quintal catalog and coin accounting."""
 
 from __future__ import annotations
 
@@ -147,7 +147,7 @@ async def grant_reward(
     photo_hash: str | None = None,
 ) -> int:
     if category not in REWARDS:
-        raise ValueError(f"Unknown Habitat reward: {category}")
+        raise ValueError(f"Unknown Quintal reward: {category}")
     wallet = await wallet_for(session, user_id)
     existing = await session.scalar(select(HabitatTransaction.id).where(HabitatTransaction.user_id == user_id, HabitatTransaction.event_key == event_key))
     if existing is not None:

@@ -27,6 +27,7 @@ from app.routers.auth import current_user
 from app.schemas import (
     MatchResponse,
     MissingReportCreate,
+    MissingPosterUpdate,
     MissingReportResponse,
     SightingCreate,
     VisionJobResponse,
@@ -56,6 +57,8 @@ def _report_response(report: MissingReport, cat: RemoteCat) -> MissingReportResp
         created_at=report.created_at,
         last_seen_address=details.get("last_seen_address"),
         contacts=details.get("contacts", []),
+        poster_contacts=details.get("poster_contacts", details.get("contacts", [])),
+        poster_options=details.get("poster_options", {}),
         collar=details.get("collar") or cat_details.get("collar"),
         distinguishing_marks=details.get("distinguishing_marks") or cat_details.get("distinguishing_marks"),
         microchip=details.get("microchip") or cat_details.get("microchip"),
@@ -119,6 +122,25 @@ async def create_report(payload: MissingReportCreate, user: User = Depends(curre
 async def reports(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> list[MissingReportResponse]:
     rows = (await session.execute(select(MissingReport, RemoteCat).join(RemoteCat, RemoteCat.id == MissingReport.cat_id).where(MissingReport.user_id == user.id).order_by(MissingReport.created_at.desc()))).all()
     return [_report_response(report, cat) for report, cat in rows]
+
+
+@router.put("/missing-reports/{report_id}/poster", response_model=MissingReportResponse)
+async def update_poster(report_id: UUID, payload: MissingPosterUpdate, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> MissingReportResponse:
+    report = (await session.execute(select(MissingReport).where(MissingReport.id == report_id, MissingReport.user_id == user.id).with_for_update())).scalar_one_or_none()
+    if report is None:
+        raise HTTPException(404, "Alerta não encontrado.")
+    if report.status != "active":
+        raise HTTPException(409, "Este alerta já foi encerrado.")
+    cat = await session.get(RemoteCat, report.cat_id)
+    if cat is None or cat.deleted_at is not None:
+        raise HTTPException(404, "Gato não disponível.")
+    contacts = [contact.model_dump() for contact in payload.contacts]
+    report.poster_details = {**(report.poster_details or {}),
+        "poster_options": payload.options.model_dump(), "poster_contacts": contacts,
+        "contacts": [{"phone": c["phone"], "whatsapp": c["whatsapp"]} for c in contacts if c["included"]]}
+    await session.commit()
+    await session.refresh(report)
+    return _report_response(report, cat)
 
 
 @router.post("/missing-reports/{report_id}/resolve", status_code=status.HTTP_204_NO_CONTENT)
