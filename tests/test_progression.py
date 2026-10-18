@@ -9,6 +9,8 @@ from app.persistence_models import (User, ProductState, ProgressEvent, HabitatWa
     HabitatItem, HabitatTransaction, AppNotification, Friendship, RemoteCat, SyncChange, FeedItem, MissingReport, Sighting, MatchSuggestion, Conversation, ConversationMember)
 from app.services import progression as p
 from app.services.audience import permits
+from app.quintal_models import (QuintalFacility, QuintalResource, QuintalTask,
+    QuintalPlot, QuintalCounter, QuintalResident, QuintalCatCare, QuintalPreference, QuintalSession)
 
 
 @pytest_asyncio.fixture
@@ -16,6 +18,8 @@ async def account(monkeypatch):
     monkeypatch.setattr(p.get_settings(), "progression_rollout_percent", 100)
     engine = create_async_engine("sqlite+aiosqlite://")
     tables = [User, ProductState, ProgressEvent, HabitatWallet, HabitatItem, HabitatTransaction, AppNotification, Friendship, RemoteCat, SyncChange, FeedItem, MissingReport, Sighting, MatchSuggestion, Conversation, ConversationMember]
+    tables += [QuintalFacility, QuintalResource, QuintalTask, QuintalPlot,
+               QuintalCounter, QuintalResident, QuintalCatCare, QuintalPreference, QuintalSession]
     async with engine.begin() as conn:
         for model in tables:
             await conn.run_sync(model.__table__.create)

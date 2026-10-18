@@ -128,6 +128,7 @@ async def get_avatar(target_user_id: UUID) -> Response:
 
 
 class Preferences(BaseModel):
+    quintal_notifications: bool = True
     social_notifications: bool = True
     sighting_notifications: bool = True
     gallery_audience: Literal["private", "friends", "public"] = "friends"

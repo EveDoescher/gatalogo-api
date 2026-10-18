@@ -31,6 +31,7 @@ from app.routers.social import router as social_router
 from app.routers.vision import router as vision_router
 from app.routers.product import router as product_router
 from app.routers.habitat import router as habitat_router
+from app.routers.quintal import router as quintal_router
 from app.routers.websocket import router as websocket_router
 from app.services.storage_service import photo_storage
 from app.services.vision_jobs import enqueue_recognition
@@ -40,14 +41,18 @@ from app.routers.progression import router as progression_router
 from app.services.realtime_events import publish_committed_events
 from app.database import get_session_factory
 from app.services.websocket_manager import ws_manager
+from app.services.quintal_scheduler import QuintalScheduler
 
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     await ws_manager.start_notification_bridge(get_session_factory())
+    quintal_scheduler = QuintalScheduler(get_session_factory())
+    quintal_scheduler.start()
     try:
         yield
     finally:
+        await quintal_scheduler.stop()
         await ws_manager.stop_notification_bridge()
 
 
@@ -65,6 +70,7 @@ app.include_router(vision_router)
 app.include_router(product_router)
 app.include_router(progression_router)
 app.include_router(habitat_router)
+app.include_router(quintal_router)
 app.include_router(websocket_router)
 
 

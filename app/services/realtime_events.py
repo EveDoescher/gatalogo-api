@@ -54,7 +54,7 @@ async def publish_committed_events(session: AsyncSession) -> None:
         except Exception:
             # The transaction is already committed; clients can refresh via HTTP.
             logger.exception("Could not deliver committed WebSocket event")
-        if event == "new_notification":
+        if event == "new_notification" and data.get('notification_type') != 'quintal_ready':
             notification_id = data.get("notification_id")
             if isinstance(notification_id, str):
                 try:

@@ -10,6 +10,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 class Settings(BaseSettings):
     habitat_free_shop: bool = True
+    habitat_instant_build: bool = True
     habitat_visit_window_minutes: int = Field(default=20, ge=1)
     habitat_gifts_per_day: int = Field(default=3, ge=0)
     habitat_gift_base_chance: float = Field(default=.10, ge=0, le=1)

@@ -46,6 +46,10 @@ ACHIEVEMENTS = (
     ("album_10", "Álbum vivo", "Acrescente dez complementos úteis.", "complements", 10, 800, 350, 60),
     ("care_10", "Laços de cuidado", "Cuide do quintal em dez dias diferentes.", "care_days", 10, 500, 250, 40),
     ("helper", "Rede de cuidado", "Tenha uma pista reconhecida por um tutor.", "clues", 1, 300, 150, 30),
+    ("garden_50", "Colheitas com carinho", "Complete cinquenta colheitas da horta.", "quintal_harvest", 50, 400, 200, 30),
+    ("favorite_recipe", "O sabor favorito", "Descubra a primeira receita favorita de um gato.", "quintal_favorite", 1, 500, 250, 40),
+    ("quintal_spaces", "Um quintal cheio de vida", "Conclua cinco construções ou ampliações.", "quintal_facility", 5, 400, 200, 30),
+    ("quintal_bond", "Uma amizade para sempre", "Alcance duzentos pontos de vínculo com um gato.", "quintal_bond", 200, 800, 400, 60),
 )
 
 
@@ -61,7 +65,7 @@ def calendar(now=None):
 
 def valid_events(events):
     return [e for e in events if ((e.evidence or {}).get("eligible") or (e.evidence or {}).get("activity_valid")) and e.kind in
-            {"discovery", "complement", "care", "post", "comment", "repost", "clue", "review", "encounter"}]
+            {"discovery", "complement", "care", "post", "comment", "repost", "clue", "review", "encounter", "quintal"}]
 
 
 def counters(events):
@@ -71,14 +75,43 @@ def counters(events):
     colors = {e.evidence.get("attributes", {}).get("primary_color") for e in photos
               if e.evidence.get("attributes_confirmed")}
     colors.discard(None)
-    return {"individuals": len(identities), "photos": len(photos),
+    production = [e for e in valid if e.kind == "quintal"]
+    activity = [e for e in production if e.evidence.get("metric") in {"quintal_meal", "quintal_water_cat", "quintal_play"}]
+    care_days = [e for e in production if e.evidence.get("metric") == "quintal_care_day"]
+    totals = {}
+    for event in production:
+        metric = event.evidence.get("metric")
+        if metric == "quintal_bond": totals[metric] = max(totals.get(metric, 0), int(event.evidence.get("value", 0)))
+        elif metric: totals[metric] = totals.get(metric, 0) + int(event.evidence.get("quantity", 1))
+    return {**totals, "individuals": len(identities), "photos": len(photos),
             "complements": sum(e.kind == "complement" for e in valid),
             "photo_days": len({e.evidence.get("local_day") for e in photos}),
-            "care": sum(e.kind == "care" for e in valid),
-            "care_days": len({e.evidence.get("local_day") for e in valid if e.kind == "care"}),
+            "care": sum(e.kind == "care" for e in valid) + sum(int(e.evidence.get("quantity", 1)) for e in activity),
+            "care_days": len({e.evidence.get("local_day") for e in [*[e for e in valid if e.kind == "care"], *activity, *care_days] if e.evidence.get("local_day")}),
             "clues": sum(e.kind == "clue" for e in valid),
             "community": sum(e.kind in {"post", "repost", "comment"} for e in valid),
             "reviews": sum(e.kind == "review" for e in valid)}
+
+
+# Small, optional alternatives. Reuse confirmed activity dates, not login time.
+# Collection-only choices never require a new crop or another session that day.
+ROUTINE_OPTIONS = (
+    ("cats", "care", "Fazer carinho em um gato", "start_care"),
+    ("garden", "quintal_harvest", "Colher um canteiro pronto", "start_harvest"),
+    ("kitchen", "quintal_cook", "Concluir um lote de ração", "start_cook"),
+    ("coop", "quintal_egg", "Recolher ovos prontos", "quintal_collect_eggs"),
+    ("pasture", "quintal_milk_collection", "Ordenhar uma vaca pronta", "quintal_collect_milk"),
+    ("pier", "quintal_fish", "Completar uma captura válida", "start_fish"),
+)
+
+
+def routine_activity(events, spaces):
+    metrics = {metric for space, metric, _, _ in ROUTINE_OPTIONS if space in spaces}
+    return [e for e in valid_events(events)
+            if (e.evidence or {}).get("local_day") and not e.evidence.get("historical_undated")
+            and ((e.kind == "care" and "care" in metrics) or
+                 (e.kind == "quintal" and e.evidence.get("metric") in metrics
+                  and int(e.evidence.get("quantity", 0)) > 0))]
 
 
 def project(events, prefs, now=None):
@@ -89,13 +122,18 @@ def project(events, prefs, now=None):
     def objective(mid, title, desc, metric, target, xp, coins, kind, bucket, points=0):
         rows = valid if kind in {"initial", "achievement"} else [e for e in valid
             if e.evidence.get("local_day" if kind == "daily" else "local_week") == bucket]
-        value = counters(rows).get(metric, 0)
+        if metric in {"quintal_routine", "quintal_routine_days"}:
+            activity = routine_activity(rows, prefs.get("quintal_routine_spaces", []))
+            value = len({e.evidence["local_day"] for e in activity}) if metric.endswith("_days") else len(activity)
+        else:
+            value = counters(rows).get(metric, 0)
         key = f"challenge:{mid}" if kind == "achievement" else f"mission:{mid}:{bucket}"
         paid = complete.get(key)
         reset = period["daily_reset_at" if kind == "daily" else "weekly_reset_at"] if kind in {"daily", "weekly"} else None
-        unit = {"individuals": "gatos diferentes", "photos": "fotos válidas", "complements": "complementos úteis",
+        unit = {"quintal_routine": "atividades à escolha", "quintal_routine_days": "dias de atividade", "individuals": "gatos diferentes", "photos": "fotos válidas", "complements": "complementos úteis",
                 "photo_days": "dias com registros", "care": "cuidados", "care_days": "dias de cuidado",
-                "community": "contribuições", "colors": "cores confirmadas", "clues": "pistas reconhecidas", "reviews": "revisões"}[metric]
+                "community": "contribuições", "colors": "cores confirmadas", "clues": "pistas reconhecidas", "reviews": "revisões",
+                "quintal_cat_set": "cantinhos completos", "quintal_water_cat": "abastecimentos", "quintal_harvest": "colheitas", "quintal_cook": "lotes preparados", "quintal_meal": "refeições", "quintal_fish": "capturas", "quintal_facility": "instalações concluídas", "quintal_favorite": "receitas favoritas", "quintal_bond": "pontos de vínculo"}[metric]
         return dict(id=mid, instance_id=key, event_key=key, title=title, description=desc, metric=metric,
                     unit=unit, target=target, progress=target if paid else min(value, target), type=kind,
                     xp_reward=getattr(paid, "xp", xp) if paid and not paid.evidence.get("migration") else xp,
@@ -105,14 +143,14 @@ def project(events, prefs, now=None):
                     reward_received=paid is not None, xp_received=getattr(paid, "xp", 0) if paid and not paid.evidence.get("migration") else None,
                     coin_received=getattr(paid, "coins", 0) if paid and not paid.evidence.get("migration") else None,
                     legacy_reward_unknown=bool(paid and paid.evidence.get("migration")), period=bucket, reset_at=reset, ranking_points=points,
-                    destination={"care": "habitat", "care_days": "habitat", "community": "social", "clues": "missing",
+                    destination="habitat" if metric.startswith("quintal_") else {"care": "habitat", "care_days": "habitat", "community": "social", "clues": "missing",
                                  "reviews": "collection"}.get(metric, "capture"),
                     status="completed" if paid else "in_progress" if value else "available")
     daily = [objective("daily_record", "Guarde uma nova história", "Descubra um gato ou acrescente uma foto útil a uma ficha.",
                 "photos", 1, 20, 10, "daily", period["day"], 10)]
     offer = prefs.get("milestone_daily_offers", {}).get(period["day"], "album")
     if offer == "care":
-        daily.append(objective("daily_care", "Um momento de cuidado", "Faça um carinho, alimente um gato ou regue um canteiro no habitat.",
+        daily.append(objective("daily_care", "Um momento de cuidado", "Faça carinho, brinque ou cuide dos potes de um gato no Quintal.",
                      "care", 1, 15, 10, "daily", period["day"], 10))
     else:
         daily.append(objective("daily_album", "Mais um detalhe", "Acrescente um complemento útil; outro ângulo ajuda a reconhecer o gato.",
@@ -125,13 +163,39 @@ def project(events, prefs, now=None):
                     "complements", 4, 120, 60, "weekly", period["week"], 30),
               objective("weekly_discover", "Novos encontros", "Confirme três gatos diferentes nesta semana.",
                     "individuals", 3, 150, 75, "weekly", period["week"], 30)]
+    spaces = prefs.get("quintal_routine_spaces", [])
+    alternatives = [dict(space=space, metric=metric, title=label, tutorial_anchor=anchor)
+                    for space, metric, label, anchor in ROUTINE_OPTIONS if space in spaces]
+    for kind, mid, title, desc, metric, target, xp, coins, bucket, output in (
+        ("daily", "daily_quintal_routine", "Uma pausa no Quintal",
+         "Se couber na sua visita, escolha uma das atividades abaixo. Uma só basta; produtos precisam estar prontos.",
+         "quintal_routine", 1, 10, 5, period["day"], daily),
+        ("weekly", "weekly_quintal_routine", "No seu ritmo",
+         "Escolha uma atividade em dois dias desta semana. Não precisam ser seguidos, nem usar espaços diferentes.",
+         "quintal_routine_days", 2, 30, 15, period["week"], weekly),
+    ):
+        if alternatives or f"mission:{mid}:{bucket}" in complete:
+            row = objective(mid, title, desc, metric, target, xp, coins, kind, bucket)
+            row.update(optional=True, group="quintal_routine", alternatives=alternatives,
+                       tutorial_anchor=mid, visit_hint="Uma atividade nesta visita" if kind == "daily"
+                       else "Duas visitas em dias diferentes", selection_mode="any")
+            output.append(row)
     initial = [objective("start_record", "Seu primeiro encontro", "Registre uma foto e confirme a identidade do gato.", "photos", 1, 25, 15, "initial", "once"),
                objective("start_details", "Conheça melhor seu gato", "Acrescente uma foto com detalhes ou outro ângulo.", "complements", 1, 25, 15, "initial", "once"),
                objective("start_review", "Seu olhar também conta", "Revise as características sugeridas pela IA na tela de resultado.", "reviews", 1, 20, 10, "initial", "once"),
                objective("start_care", "Um lar para cuidar", "Coloque um gato próprio no quintal e realize um cuidado válido.", "care", 1, 25, 15, "initial", "once"),
                objective("start_community", "Encontre sua comunidade", "Contribua com uma publicação, comentário ou cartaz. Esta etapa é opcional.", "community", 1, 20, 10, "initial", "once")]
+    initial.extend([
+        objective("start_bowls", "Um cantinho só seu", "Coloque um gato junto com seus potes de comida e água.", "quintal_cat_set", 1, 15, 10, "initial", "once"),
+        objective("start_water", "Água fresquinha", "Abasteça o pote de água do seu gato.", "quintal_water_cat", 1, 10, 5, "initial", "once"),
+        objective("start_harvest", "Primeira colheita", "Abra a horta, plante e colha um canteiro.", "quintal_harvest", 1, 20, 10, "initial", "once"),
+        objective("start_cook", "Feito com carinho", "Prepare seu primeiro lote de ração na cozinha.", "quintal_cook", 1, 20, 10, "initial", "once"),
+        objective("start_meal", "Conhecendo os gostos", "Tenha uma refeição consumida por um gato.", "quintal_meal", 1, 15, 10, "initial", "once"),
+        objective("start_fish", "Primeira pescaria", "Conserte o píer e complete uma captura válida.", "quintal_fish", 1, 20, 10, "initial", "once"),
+    ])
     for index, row in enumerate(initial):
         row.update(optional=index == 4, tutorial_anchor=row["id"], prerequisite=initial[index-1]["id"] if index else None)
+    initial[5]["prerequisite"] = "start_care"
     achievements = [objective(mid, title, desc, metric, target, xp, coins, "achievement", "lifetime", points)
                     for mid, title, desc, metric, target, xp, coins, points in ACHIEVEMENTS]
     for mid, date in prefs.get("preserved_achievements", {}).items():

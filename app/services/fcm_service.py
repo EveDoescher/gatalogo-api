@@ -13,7 +13,7 @@ from sqlalchemy import delete, select
 
 from app.config import get_settings
 from app.database import get_session_factory
-from app.persistence_models import DeviceToken
+from app.persistence_models import DeviceToken, ProductState
 
 logger = logging.getLogger(__name__)
 _SCOPE = "https://www.googleapis.com/auth/firebase.messaging"
@@ -27,11 +27,14 @@ def _copy_for(notification_type: str) -> tuple[str, str]:
         "friend_invite": ("Novo convite", "Alguém quer ser seu amigo no Gatálogo."),
         "friend_accepted": ("Novo amigo", "Seu convite foi aceito."),
         "habitat_gift": ("Presente no Quintal", "Um visitante deixou um presente do lado de fora do seu quintal."),
+        "quintal_ready": ("Seu Quintal está pronto", "Há uma produção ou melhoria pronta para você conferir."),
         "achievement": ("Nova conquista", "Uma conquista foi liberada no Gatálogo."),
     }.get(notification_type, ("Novidade no Gatálogo", "Há uma atualização para você conferir."))
 
 
 def _enabled_for_device(preferences: dict, notification_type: str) -> bool:
+    if notification_type in {"quintal_ready", "habitat_gift"}:
+        return preferences.get("quintal_notifications", True) is not False
     if notification_type in {"possible_match", "match_confirmed"}:
         return preferences.get("sighting_notifications", True) is not False
     if notification_type in {"message", "friend_invite", "friend_accepted"}:
@@ -66,13 +69,18 @@ class FcmSender:
         project_id = settings.fcm_project_id or self._credentials.project_id
         return self._credentials.token, project_id
 
-    async def send_notification(self, *, user_id: UUID, notification_id: str, notification_type: str) -> None:
+    async def send_notification(self, *, user_id: UUID, notification_id: str, notification_type: str, delivered=None) -> dict:
+        delivered = set(delivered or [])
+        report = {'delivered': list(delivered), 'retry': False}
         credentials = await asyncio.to_thread(self._access_token)
         if credentials is None:
-            return
+            return {**report, 'retry': True}
         access_token, project_id = credentials
         title, body = _copy_for(notification_type)
         async with get_session_factory()() as session:
+            state = await session.get(ProductState, user_id)
+            if state is not None and not _enabled_for_device(state.preferences or {}, notification_type):
+                return report
             devices = (
                 await session.execute(select(DeviceToken).where(DeviceToken.user_id == user_id))
             ).scalars().all()
@@ -80,9 +88,10 @@ class FcmSender:
                 (device.id, device.token)
                 for device in devices
                 if _enabled_for_device(device.preferences or {}, notification_type)
+                and str(device.id) not in delivered
             ]
         if not tokens:
-            return
+            return report
         url = f"https://fcm.googleapis.com/v1/projects/{project_id}/messages:send"
         headers = {"Authorization": f"Bearer {access_token}"}
         invalid_device_ids = []
@@ -95,23 +104,33 @@ class FcmSender:
                         "data": {"notification_id": notification_id},
                         "android": {
                             "priority": "HIGH",
-                            "notification": {"channel_id": "gatalogo_alerts"},
+                            "notification": {"channel_id": "gatalogo_alerts", "tag": notification_id},
                         },
-                        "apns": {"payload": {"aps": {"sound": "default"}}},
+                        "apns": {"headers": {"apns-collapse-id": notification_id}, "payload": {"aps": {"sound": "default"}}},
                     }
                 }
                 try:
                     response = await client.post(url, headers=headers, json=message)
-                    if response.status_code in {400, 404}:
+                    try:
+                        error_codes = {d.get('errorCode') for d in response.json().get('error', {}).get('details', []) if isinstance(d, dict)}
+                    except (ValueError, AttributeError):
+                        error_codes = set()
+                    if 'UNREGISTERED' in error_codes:
                         invalid_device_ids.append(device_id)
+                        report['delivered'].append(str(device_id))
                     elif response.is_error:
+                        report['retry'] = True
                         logger.warning("FCM respondeu %s para um dispositivo.", response.status_code)
+                    else:
+                        report['delivered'].append(str(device_id))
                 except httpx.HTTPError:
+                    report['retry'] = True
                     logger.warning("Não foi possível enviar uma notificação FCM.")
         if invalid_device_ids:
             async with get_session_factory()() as session:
                 await session.execute(delete(DeviceToken).where(DeviceToken.id.in_(invalid_device_ids)))
                 await session.commit()
+        return report
 
 
 fcm_sender = FcmSender()

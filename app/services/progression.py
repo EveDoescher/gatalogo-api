@@ -18,6 +18,7 @@ from app.services.habitat_service import wallet_for, SHOP
 from app.services.realtime_events import queue_notification
 from app.config import get_settings
 
+from app.quintal_models import QuintalFacility
 from app.services import milestones
 
 log = logging.getLogger(__name__)
@@ -76,6 +77,11 @@ async def account(session, user_id):
     if today not in offers:
         offers[today] = "care" if wallet.selected_cat_ids else "album"
         prefs["milestone_daily_offers"] = dict(sorted(offers.items())[-35:])
+    # These offers derive only from server-owned unlocks, never client preferences.
+    facilities = list((await session.scalars(select(QuintalFacility).where(
+        QuintalFacility.user_id == user_id, QuintalFacility.level > 0))).all())
+    prefs["quintal_routine_spaces"] = sorted({row.kind for row in facilities} |
+                                            ({"cats"} if wallet.selected_cat_ids else set()))
     prefs["preserved_achievements"] = dict(state.achievements or {})
     state.preferences = prefs
     return state, wallet
@@ -200,7 +206,7 @@ async def finish(session, event):
     await session.flush()
     summary = await snapshot(session, event.user_id)
     event.result = {**(event.result or {}), "summary": summary, "bonuses": bonuses, "unlocked_items": unlocked}
-    if event.kind in {"care", "review", "encounter"} and not bonuses:
+    if event.kind in {"care", "review", "encounter", "quintal"} and not bonuses:
         return event
     existing_notice = await session.scalar(select(AppNotification).where(
         AppNotification.user_id == event.user_id, AppNotification.type == "progress_result",

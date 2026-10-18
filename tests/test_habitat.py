@@ -13,6 +13,37 @@ from app.persistence_models import HabitatItem, HabitatTransaction, HabitatWalle
 from app.routers.habitat import ExpansionRequest, LayoutRequest, PlacementRequest, PurchaseRequest, expand_yard, get_habitat, purchase, save_layout
 from app.services.habitat_service import SHOP, REWARDS, can_cross_bridge, grant_reward, item_cells, normalize_legacy_layout, validate_placements, walkable_cells, yard_cells
 from app.services.habitat_interactions import care_summary, interact
+from app.quintal_models import (QuintalFacility, QuintalResource, QuintalTask,
+    QuintalPlot, QuintalCounter, QuintalResident, QuintalCatCare, QuintalPreference, QuintalSession)
+
+
+@pytest.mark.asyncio
+async def test_snapshot_exposes_current_coat_evidence_without_changing_analysis(account):
+    session, user = account
+    analysis = {"primary_color": "Branco", "coat_type": "Bicolor",
+                "colors": [{"name": "Branco", "percentage": 70}, {"name": "Marrom", "percentage": 30}],
+                "pattern_map": {"accent_colors": ["Marrom"]}}
+    cat = RemoteCat(user_id=user.id, client_id=uuid4(),
+                    payload={"is_owned": True, "name": "Canela"}, analysis=analysis,
+                    client_updated_at=datetime.now(UTC), updated_by_device="test")
+    session.add(cat)
+    await session.commit()
+    snapshot = await get_habitat(user=user, session=session)
+    pet = next(p for p in snapshot["cats"] if p["id"] == str(cat.client_id))
+    assert pet["primary_color"] == "Branco"
+    assert pet["coat_type"] == "Bicolor"
+    assert pet["coat_colors"] == ["Branco", "Marrom"]
+    assert cat.analysis == analysis
+    # A correction is visible on the next snapshot, without a separate skin save.
+    cat.analysis = {"primary_color": "Laranja", "coat_type": "Sólido", "colors": None}
+    await session.commit()
+    pet = (await get_habitat(user=user, session=session))["cats"][0]
+    assert pet["primary_color"] == "Laranja" and pet["coat_type"] == "Sólido"
+    assert pet["coat_colors"] == []
+    cat.analysis = None
+    await session.commit()
+    pet = (await get_habitat(user=user, session=session))["cats"][0]
+    assert pet["coat_type"] is None and pet["coat_colors"] == []
 
 
 @pytest.mark.asyncio
@@ -80,6 +111,9 @@ async def account():
     async with engine.begin() as connection:
         for table in (User.__table__, RemoteCat.__table__, HabitatWallet.__table__, HabitatTransaction.__table__, HabitatItem.__table__):
             await connection.run_sync(table.create)
+        for model in (QuintalFacility, QuintalResource, QuintalTask, QuintalPlot,
+                      QuintalCounter, QuintalResident, QuintalCatCare, QuintalPreference, QuintalSession):
+            await connection.run_sync(model.__table__.create)
     factory = async_sessionmaker(engine, expire_on_commit=False)
     async with factory() as session:
         user = User(email=f"{uuid4()}@test.local", status="active")

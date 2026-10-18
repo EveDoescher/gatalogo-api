@@ -182,7 +182,7 @@ async def test_habitat_endpoint_advances_care_missions_once_and_rejects_invalid_
     care = next(m for m in first["daily_missions"] if m["id"] == "daily_care")
     assert care["completed"] and care["reward_received"]
     assert first["initial_missions"][3]["completed"]
-    assert first["xp"] == 40 and first["balance"] == 25
+    assert first["xp"] == 50 and first["balance"] == 30  # includes optional daily routine
     await habitat.interaction(payload, user=user, session=db)
     replay = await p.snapshot(db, user.id)
     assert all(first[k] == replay[k] for k in ("xp", "balance", "revision"))

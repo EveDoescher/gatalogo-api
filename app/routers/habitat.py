@@ -48,6 +48,7 @@ class LayoutRequest(BaseModel):
     placements: list[PlacementRequest] = Field(max_length=1024)
     selected_cat_ids: list[UUID] = Field(max_length=6)
     cat_anchors: dict[str, list[int]] | None = None
+    production_rules_version: int = Field(default=0, ge=0, le=1)
 
 
 class HabitatActionRequest(BaseModel):
@@ -74,7 +75,17 @@ async def interaction(payload: InteractionRequest, user: User = Depends(current_
     event = await progress.grant(session, user.id, f"care:{payload.idempotency_key}", "care",
         record_id=str(payload.target_id), evidence={"action": payload.action, "validated_by": "habitat_interaction"})
     await progress.finish(session, event)
+    from app.services.quintal_rewards import record_progress_rewards
+    await record_progress_rewards(session, event)
+    # Return the same authoritative care projection used by the cat sheet.
+    # A legacy-only snapshot leaves the newer affinity cached until polling.
+    from app.services.quintal_production import projection
+    from app.services.quintal_progress import publish_progress
+    production = await projection(session, user.id)
+    production_progress = await publish_progress(session, user.id)
     result = await _snapshot(session, user.id)
+    result["production"] = production
+    result["production_progress"] = production_progress
     await session.commit()
     await publish_committed_events(session)
     return result
@@ -86,13 +97,20 @@ def _shop() -> list[dict]:
 
 async def _snapshot(session: AsyncSession, user_id: UUID) -> dict:
     wallet = await wallet_for(session, user_id)
+    from app.services.habitat_interactions import migrate_calendar
+    wallet.care_state = migrate_calendar(wallet.care_state or {}, datetime.now(UTC))
     items = (await session.execute(select(HabitatItem).where(HabitatItem.user_id == user_id).order_by(HabitatItem.created_at, HabitatItem.id))).scalars().all()
     cats = (await session.execute(select(RemoteCat).where(RemoteCat.user_id == user_id, RemoteCat.deleted_at.is_(None)))).scalars().all()
     pets = [
         {
             "id": str(cat.client_id),
             "name": (cat.payload or {}).get("name") or "Meu gato",
-            "primary_color": (cat.analysis or {}).get("primary_color"),
+            "primary_color": (cat.analysis or {}).get("primary_color") or ((cat.analysis or {}).get("pattern_map") or {}).get("base_color"),
+            "coat_type": (cat.analysis or {}).get("coat_type") or ((cat.analysis or {}).get("pattern_map") or {}).get("pattern"),
+            "coat_colors": list(dict.fromkeys([
+                *(c["name"] for c in ((cat.analysis or {}).get("colors") or []) if isinstance(c, dict) and isinstance(c.get("name"), str)),
+                *(c for c in (((cat.analysis or {}).get("pattern_map") or {}).get("accent_colors") or []) if isinstance(c, str)),
+            ])),
         }
         for cat in cats if (cat.payload or {}).get("is_owned")
     ]
@@ -247,6 +265,13 @@ async def save_layout(payload: LayoutRequest, user: User = Depends(current_user)
         item.rotation = entry.rotation if entry else 0
     wallet.selected_cat_ids = [str(cat_id) for cat_id in payload.selected_cat_ids]
     wallet.cat_anchors = anchors
+    if payload.production_rules_version == 1 or (wallet.care_state or {}).get("production_cats"):
+        from app.services.quintal_production import validate_bowls
+        try:
+            await validate_bowls(session, wallet, items)
+        except ValueError as error:
+            await session.rollback()
+            raise HTTPException(422, str(error)) from error
     wallet.layout_revision += 1
     result = await _snapshot(session, user.id)
     await session.commit()
