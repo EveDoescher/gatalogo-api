@@ -18,15 +18,19 @@ def fish_position(state, seconds):
 def validate_trace(kind, state, trace):
     if not isinstance(trace, list) or not 16 <= len(trace) <= 200: raise ValueError("Interação insuficiente.")
     previous, inside, inputs = -1, 0., set()
-    total_motion, last_position = 0., None
+    total_motion, last_position, last_y = 0., None, None
     for point in trace:
         if not isinstance(point, dict): raise ValueError("Interação inválida.")
         t, position = point.get("t"), point.get("position")
         if type(t) not in (float, int) or type(position) not in (float, int) or not math.isfinite(t) or not math.isfinite(position) or not 0 <= position <= 1 or t <= previous or t - previous > 2.1:
             raise ValueError("Sequência de interação inválida.")
+        y = point.get("y", .5) if kind == "play" else .5
+        if type(y) not in (int, float) or not math.isfinite(y) or not 0 <= y <= 1:
+            raise ValueError("Posição vertical inválida.")
         if last_position is not None:
-            total_motion += abs(position - last_position)
-        inputs.add(round(position, 1))
+            total_motion += math.hypot(position - last_position, y - last_y)
+        last_y = y
+        inputs.add((round(position, 1), round(y, 1)))
         if kind == "fish" and previous >= 0 and abs(position - fish_position(state, t)) <= state["zone"] / 2:
             inside += t - previous
         previous, last_position = t, position

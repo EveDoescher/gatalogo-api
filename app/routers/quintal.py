@@ -43,8 +43,8 @@ class OperationRequest(BaseModel):
             trace = value["trace"]
             if not isinstance(trace, list) or not 16 <= len(trace) <= 200: raise ValueError("Interação inválida.")
             for point in trace:
-                if not isinstance(point, dict) or set(point) != {"t", "position"}: raise ValueError("Interação inválida.")
-                for key, limit in (("t", 30), ("position", 1)):
+                if not isinstance(point, dict) or set(point) not in ({"t", "position"}, {"t", "position", "y"}): raise ValueError("Interação inválida.")
+                for key, limit in (("t", 30), ("position", 1), *(([("y", 1)]) if "y" in point else [])):
                     if type(point[key]) not in (int, float) or not math.isfinite(point[key]) or not 0 <= point[key] <= limit: raise ValueError("Interação inválida.")
         return value
 

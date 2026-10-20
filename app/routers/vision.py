@@ -3,8 +3,8 @@ from __future__ import annotations
 from datetime import UTC, datetime
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException, status
-from sqlalchemy import select
+from fastapi import APIRouter, Depends, HTTPException, Query, status
+from sqlalchemy import select, or_, and_
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import get_settings
@@ -273,6 +273,14 @@ async def decide_match(match_id: UUID, decision: str, user: User = Depends(curre
 
 
 @router.get("/notifications")
-async def notifications(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> list[dict]:
-    items = (await session.execute(select(AppNotification).where(AppNotification.user_id == user.id).order_by(AppNotification.created_at.desc()).limit(100))).scalars().all()
+async def notifications(limit: int = Query(default=20, ge=1, le=100),
+                        cursor: datetime | None = Query(default=None),
+                        cursor_id: UUID | None = Query(default=None),
+                        user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> list[dict]:
+    query = select(AppNotification).where(AppNotification.user_id == user.id)
+    if cursor is not None:
+        query = query.where(or_(AppNotification.created_at < cursor,
+            and_(AppNotification.created_at == cursor, AppNotification.id < cursor_id))
+            if cursor_id is not None else AppNotification.created_at < cursor)
+    items = (await session.scalars(query.order_by(AppNotification.created_at.desc(), AppNotification.id.desc()).limit(limit))).all()
     return [{"id": str(item.id), "type": item.type, "payload": item.payload, "read_at": item.read_at, "created_at": item.created_at} for item in items]

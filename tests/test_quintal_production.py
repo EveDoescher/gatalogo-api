@@ -700,3 +700,71 @@ async def test_invalid_or_locked_fruit_trade_cannot_spend(account, payload, orch
     await session.rollback(); await session.refresh(user); await session.refresh(wallet)
     stock = (await p.projection(session, user.id, NOW))['stock']
     assert stock['apple'] == stock['pear'] == 3 and wallet.balance == 1000
+
+
+@pytest.mark.asyncio
+async def test_market_quantity_scales_ingredients_output_and_deadline(account):
+    session, user, wallet = account
+    session.add(QuintalFacility(user_id=user.id, kind='market', level=1))
+    await p.stock(session, user.id, {'milk': 3, 'wheat': 10})
+    await session.commit()
+    with pytest.raises(ValueError, match='insuficientes'):
+        await op(session, user, 'order', 'beef', {'payment': 'products', 'quantity': 4})
+    assert (await p.projection(session, user.id, NOW))['stock']['milk'] == 3
+    assert not await p.rows(session, QuintalTask, user.id)
+    await p.stock(session, user.id, {'milk': 1})
+    result = await op(session, user, 'order', 'beef', {'payment': 'products', 'quantity': 4})
+    task = await session.get(QuintalTask, p.UUID(result['task_id']))
+    assert task.inputs == {'milk': 4, 'wheat': 4}
+    assert task.outputs == {'beef': 4}
+    assert p.utc(task.ready_at) - p.utc(task.started_at) == timedelta(hours=4)
+    assert (await p.projection(session, user.id, NOW))['stock']['milk'] == 0
+
+
+@pytest.mark.asyncio
+async def test_pair_reuses_legacy_bowls_and_recovers_lost_references(account):
+    session, user, wallet = account
+    cat = uuid4()
+    wallet.selected_cat_ids = [str(cat)]
+    first = HabitatItem(id=uuid4(), user_id=user.id, sku='food_bowl', purchase_key='legacy-food')
+    second = HabitatItem(id=uuid4(), user_id=user.id, sku='water_bowl', purchase_key='legacy-water')
+    session.add_all([first, second])
+    await session.flush()
+    care = await p.ensure_pair(session, wallet, cat)
+    assert care.state['food_bowl'] == str(first.id)
+    assert care.state['water_bowl'] == str(second.id)
+    care.state = {'affinity': 9}
+    await session.flush()
+    for _ in range(3):
+        await p.ensure_pair(session, wallet, cat)
+    assert len(await p.rows(session, HabitatItem, user.id)) == 2
+    assert care.state['affinity'] == 9
+    assert care.state['food_bowl'] == str(first.id)
+
+
+def test_play_accepts_vertical_motion_and_rejects_invalid_y():
+    trace = [{'t': float(i), 'position': .5, 'y': [.1, .5, .9][i % 3]} for i in range(21)]
+    assert validate_trace('play', {}, trace)
+    trace[3]['y'] = float('nan')
+    with pytest.raises(ValueError, match='vertical'):
+        validate_trace('play', {}, trace)
+
+
+@pytest.mark.asyncio
+async def test_notifications_cursor_preserves_timestamp_ties_and_owner(account):
+    from app.persistence_models import AppNotification
+    from app.routers.vision import notifications
+    session, user, wallet = account
+    connection = await session.connection()
+    await connection.run_sync(AppNotification.__table__.create)
+    other = User(id=uuid4(), email='other-inbox@test.local', status='active')
+    session.add(other)
+    await session.flush()
+    ids = [uuid4() for _ in range(5)]
+    session.add_all([AppNotification(id=id, user_id=user.id, type='achievement', payload={}, created_at=NOW) for id in ids])
+    session.add(AppNotification(user_id=other.id, type='message', payload={}, created_at=NOW))
+    await session.commit()
+    first = await notifications(limit=2, cursor=None, cursor_id=None, user=user, session=session)
+    second = await notifications(limit=2, cursor=first[-1]['created_at'], cursor_id=p.UUID(first[-1]['id']), user=user, session=session)
+    third = await notifications(limit=2, cursor=second[-1]['created_at'], cursor_id=p.UUID(second[-1]['id']), user=user, session=session)
+    assert [row['id'] for row in first + second + third] == sorted(map(str,ids), reverse=True)

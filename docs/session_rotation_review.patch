@@ -1,0 +1,153 @@
+--- a/app/persistence_models.py
++++ b/app/persistence_models.py
+@@ -137,6 +137,8 @@
+     user_id: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("users.id", ondelete="CASCADE"), index=True)
+     device_id: Mapped[str | None] = mapped_column(String(128), nullable=True)
+     refresh_token_hash: Mapped[str] = mapped_column(String(64), unique=True)
++    previous_refresh_token_hash: Mapped[str | None] = mapped_column(String(64), nullable=True, unique=True)
++    previous_refresh_valid_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+     expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
+     revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+--- a/app/services/auth_service.py
++++ b/app/services/auth_service.py
+@@ -12,7 +12,7 @@
+ import jwt
+ from fastapi import HTTPException, status
+ from pwdlib import PasswordHash
+-from sqlalchemy import select, update
++from sqlalchemy import select, update, or_
+ from sqlalchemy.ext.asyncio import AsyncSession
+ 
+ from app.config import Settings, get_settings
+@@ -131,6 +131,12 @@
+     )
+     session.add(db_session)
+     await session.flush()
++    return session_tokens(user, db_session, refresh, settings=settings)
++
++
++def session_tokens(user, db_session, refresh, *, settings=None):
++    settings = settings or get_settings()
++    now = utc_now()
+     access = jwt.encode(
+         {
+             "sub": str(user.id),
+@@ -150,6 +156,45 @@
+         "user_id": user.id,
+         "email": user.email,
+     }
++
++
++def _aware(value):
++    return value.replace(tzinfo=UTC) if value.tzinfo is None else value.astimezone(UTC)
++
++
++def _next_refresh(raw, session_id, settings):
++    return hmac.new(settings.jwt_secret.encode(),
++                    f"device-refresh:{session_id}:{raw}".encode(), hashlib.sha384).hexdigest()
++
++
++async def rotate_device_session(session, raw, device_id, *, now=None, settings=None):
++    settings = settings or get_settings()
++    now = now or utc_now()
++    digest = hash_refresh_token(raw)
++    row = await session.scalar(select(UserSession).where(or_(
++        UserSession.refresh_token_hash == digest,
++        UserSession.previous_refresh_token_hash == digest,
++    )).with_for_update().execution_options(populate_existing=True))
++    if row is None or row.revoked_at is not None or _aware(row.expires_at) <= now:
++        raise invalid_credentials()
++    if row.device_id and device_id != row.device_id:
++        raise invalid_credentials()
++    user = await session.get(User, row.user_id)
++    if user is None or user.status != 'active':
++        raise invalid_credentials()
++    refresh = _next_refresh(raw, row.id, settings)
++    if digest == row.previous_refresh_token_hash:
++        if row.previous_refresh_valid_until is None or _aware(row.previous_refresh_valid_until) < now:
++            raise invalid_credentials()
++        if not hmac.compare_digest(hash_refresh_token(refresh), row.refresh_token_hash):
++            raise invalid_credentials()
++    else:
++        row.previous_refresh_token_hash = digest
++        row.previous_refresh_valid_until = now + timedelta(seconds=60)
++        row.refresh_token_hash = hash_refresh_token(refresh)
++        row.expires_at = now + timedelta(days=settings.refresh_token_days)
++    await session.flush()
++    return session_tokens(user, row, refresh, settings=settings)
+ 
+ 
+ async def authenticated_user(token: str, session: AsyncSession) -> User:
+--- a/app/routers/auth.py
++++ b/app/routers/auth.py
+@@ -39,6 +39,7 @@
+     hash_refresh_token,
+     invalid_credentials,
+     issue_tokens,
++    rotate_device_session,
+     normalize_email,
+     password_hash,
+     utc_now,
+@@ -239,17 +240,7 @@
+ 
+ @router.post("/refresh", response_model=AuthTokens)
+ async def refresh(payload: RefreshRequest, session: AsyncSession = Depends(get_database_session)) -> dict[str, object]:
+-    result = await session.execute(
+-        select(UserSession).where(UserSession.refresh_token_hash == hash_refresh_token(payload.refresh_token)).with_for_update()
+-    )
+-    old_session = result.scalar_one_or_none()
+-    if old_session is None or old_session.revoked_at is not None or old_session.expires_at <= utc_now():
+-        raise invalid_credentials()
+-    user = await session.get(User, old_session.user_id)
+-    if user is None or user.status != "active":
+-        raise invalid_credentials()
+-    old_session.revoked_at = utc_now()
+-    tokens = await issue_tokens(session, user=user, device_id=payload.device_id or old_session.device_id)
++    tokens = await rotate_device_session(session, payload.refresh_token, payload.device_id)
+     await session.commit()
+     return tokens
+ 
+--- /dev/null
++++ b/tests/test_device_session_rotation.py
+@@ -0,0 +1,40 @@
++import pytest, pytest_asyncio, jwt
++from datetime import UTC, datetime, timedelta
++from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
++from fastapi import HTTPException
++from app.persistence_models import User, UserSession
++from app.config import Settings
++from app.services.auth_service import issue_tokens, rotate_device_session
++
++@pytest_asyncio.fixture
++async def account():
++    engine=create_async_engine('sqlite+aiosqlite:///:memory:')
++    async with engine.begin() as connection:
++        for model in (User,UserSession): await connection.run_sync(model.__table__.create)
++    async with async_sessionmaker(engine,expire_on_commit=False)() as db:
++        user=User(email='rotation@test.invalid',status='active');db.add(user);await db.flush()
++        settings=Settings(jwt_secret='test-secret-'*8)
++        initial=await issue_tokens(db,user=user,device_id='device-a',settings=settings)
++        await db.commit()
++        yield db,settings,initial
++    await engine.dispose()
++
++@pytest.mark.asyncio
++async def test_lost_response_retry_preserves_session_and_token(account):
++    db,settings,initial=account
++    now=datetime.now(UTC)
++    first=await rotate_device_session(db,initial['refresh_token'],'device-a',now=now,settings=settings)
++    await db.commit()
++    retry=await rotate_device_session(db,initial['refresh_token'],'device-a',now=now+timedelta(seconds=10),settings=settings)
++    assert retry['refresh_token']==first['refresh_token']!=initial['refresh_token']
++    claims=lambda token:jwt.decode(token,settings.jwt_secret,algorithms=['HS256'],issuer=settings.jwt_issuer)
++    assert claims(initial['access_token'])['sid']==claims(first['access_token'])['sid']
++    with pytest.raises(HTTPException): await rotate_device_session(db,initial['refresh_token'],'device-a',now=now+timedelta(seconds=61),settings=settings)
++
++@pytest.mark.asyncio
++async def test_device_mismatch_and_logout_are_rejected(account):
++    db,settings,initial=account
++    with pytest.raises(HTTPException): await rotate_device_session(db,initial['refresh_token'],'different-device',settings=settings)
++    row=await db.scalar(__import__('sqlalchemy').select(UserSession))
++    row.revoked_at=datetime.now(UTC);await db.commit()
++    with pytest.raises(HTTPException): await rotate_device_session(db,initial['refresh_token'],'device-a',settings=settings)

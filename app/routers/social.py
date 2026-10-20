@@ -10,7 +10,7 @@ from pathlib import Path
 from fastapi import APIRouter, Depends, File, Header, HTTPException, Query, Response, UploadFile, status
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
-from sqlalchemy import func, or_, select
+from sqlalchemy import func, or_, and_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_database_session
@@ -693,6 +693,7 @@ async def _share_report(report_id, user, session, *, owner_publication):
 async def feed(
     limit: int = Query(default=20, ge=1, le=100),
     cursor: datetime | None = Query(default=None),
+    cursor_id: UUID | None = Query(default=None),
     mode: str = Query(default="all"),
     user: User = Depends(current_user),
     session: AsyncSession = Depends(get_database_session),
@@ -701,7 +702,7 @@ async def feed(
     mode = parts[0]
     content_type = parts[1] if len(parts) > 1 else "all"
     query = select(FeedItem, User.username).join(User, User.id == FeedItem.user_id).where(
-        FeedItem.user_id != OFFICIAL_USER_ID
+        FeedItem.user_id != OFFICIAL_USER_ID, User.username.is_not(None)
     )
 
     if content_type in {"cat_post", "achievement", "poster_repost"}:
@@ -721,40 +722,50 @@ async def feed(
         )
 
     if cursor is not None:
-        query = query.where(FeedItem.created_at < cursor)
+        query = query.where(or_(FeedItem.created_at < cursor,
+            and_(FeedItem.created_at == cursor, FeedItem.id < cursor_id))
+            if cursor_id is not None else FeedItem.created_at < cursor)
 
-    items = (
-        await session.execute(
-            query.order_by(FeedItem.created_at.desc()).limit(limit)
-        )
-    ).all()
-
+    # Filtered/private rows must not make a partial page look like end of feed.
     result = []
-    for item, username in items:
-        if not username:
-            continue
-        p = dict(item.payload or {})
-        if not await can_read_post(session, item, user.id):
-            continue
-        if item.type == "poster_repost":
-            report = await session.get(MissingReport, UUID(p["report_id"]))
-            p["report_status"] = report.status if report else "closed"
-            p["can_repost"] = report is not None and report.status == "active" and report.user_id != user.id
-        likes = list(p.get("likes", []))
-        p["likes_count"] = len(likes)
-        p["has_liked"] = str(user.id) in likes
-        p["comments"] = list(p.get("comments", []))
-        pstate = await session.get(ProductState, item.user_id)
-        p["author_avatar_url"] = _user_avatar_url(item.user_id, pstate.preferences if pstate else None)
-        result.append(
-            FeedItemResponse(
-                id=item.id,
-                username=username,
-                type=item.type,
-                payload=p,
-                created_at=item.created_at,
+    scan = query
+    chunk_size = max(limit, 20)
+    while len(result) < limit:
+        items = (await session.execute(
+            scan.order_by(FeedItem.created_at.desc(), FeedItem.id.desc()).limit(chunk_size)
+        )).all()
+        if not items:
+            break
+        for item, username in items:
+            if not username or not await can_read_post(session, item, user.id):
+                continue
+            p = dict(item.payload or {})
+            if item.type == "poster_repost":
+                report = await session.get(MissingReport, UUID(p["report_id"]))
+                p["report_status"] = report.status if report else "closed"
+                p["can_repost"] = report is not None and report.status == "active" and report.user_id != user.id
+            likes = list(p.get("likes", []))
+            p["likes_count"] = len(likes)
+            p["has_liked"] = str(user.id) in likes
+            p["comments"] = list(p.get("comments", []))
+            pstate = await session.get(ProductState, item.user_id)
+            p["author_avatar_url"] = _user_avatar_url(item.user_id, pstate.preferences if pstate else None)
+            result.append(
+                FeedItemResponse(
+                    id=item.id,
+                    username=username,
+                    type=item.type,
+                    payload=p,
+                    created_at=item.created_at,
+                )
             )
-        )
+            if len(result) == limit:
+                break
+        if len(items) < chunk_size:
+            break
+        last = items[-1][0]
+        scan = query.where(or_(FeedItem.created_at < last.created_at,
+            and_(FeedItem.created_at == last.created_at, FeedItem.id < last.id)))
     return result
 
 

@@ -284,8 +284,23 @@ async def ensure_pair(session, wallet, cat_id):
     used = {c.state.get("color_index") for c in await rows(session, QuintalCatCare, wallet.user_id) if c.cat_id != cat_id and str(c.cat_id) in (wallet.selected_cat_ids or [])}
     if state.get("color_index") is None or state["color_index"] in used:
         state["color_index"] = next((index for index in range(6) if index not in used), 0)
+    items = await rows(session, HabitatItem, wallet.user_id)
+    other_refs = {c.state.get(role) for c in await rows(session, QuintalCatCare, wallet.user_id)
+                  if c.cat_id != cat_id for role in ("food_bowl", "water_bowl")}
     for role, sku in (("food_bowl", "food_bowl"), ("water_bowl", "water_bowl")):
-        item = await session.get(HabitatItem, UUID(state[role])) if state.get(role) else None
+        item = next((i for i in items if str(i.id) == state.get(role) and i.sku == sku
+                     and str(i.id) not in other_refs), None)
+        if item is None:
+            item = next((i for i in items if i.sku == sku and str(i.id) not in other_refs and
+                         ((i.care_state or {}).get("cat_id") == str(cat_id) or
+                          i.purchase_key == f"pair:{cat_id}:{role[:4]}")), None)
+        if item is None:
+            item = next((i for i in items if i.sku == sku and str(i.id) not in other_refs
+                         and not (i.care_state or {}).get("cat_id")), None)
+        if item is not None:
+            state[role] = str(item.id)
+            if item.x is None or item.y is None:
+                state["assisted"] = str(cat_id) in (wallet.selected_cat_ids or [])
         if item is None:
             item = HabitatItem(id=uuid4(), user_id=wallet.user_id, sku=sku, purchase_key=f"pair:{cat_id}:{role[:4]}", care_state={"cat_id": str(cat_id), "role": role})
             session.add(item)
@@ -477,6 +492,10 @@ async def operation(session, user_id, action, target, data, key, now=None, rng=N
             if not definition or lv.get("market", 0) < 1 or wallet.expansion_level < definition[5]: raise ValueError("Encomenda não liberada.")
             if any(t.kind == "order" and t.status in ("active", "ready") for t in tasks): raise ValueError("Colete a encomenda anterior primeiro.")
             if data.get("payment") not in ("coins", "products"): raise ValueError("Escolha moedas ou produtos.")
+            quantity = data.get("quantity", definition[4])
+            if type(quantity) is not int or not definition[4] <= quantity <= 100 or quantity % definition[4]:
+                raise ValueError(f"Escolha de {definition[4]} a 100 unidades, em lotes de {definition[4]}.")
+            batches = quantity // definition[4]
             inputs = {}
             if data["payment"] == "products":
                 option = next((o for o in order_product_options(target)
@@ -484,12 +503,12 @@ async def operation(session, user_id, action, target, data, key, now=None, rng=N
                 if option is None: raise ValueError("Troca de produtos inválida.")
                 if option.get("facility") and lv.get(option["facility"], 0) < option["level"]:
                     raise ValueError("Recupere o pomar para trocar suas frutas.")
-                inputs = option["products"]
+                inputs = {k: v * batches for k, v in option["products"].items()}
             elif data.get("product_option") is not None:
                 raise ValueError("Escolha moedas ou uma troca de produtos.")
-            price = effective_price(definition[1]) if data["payment"] == "coins" else 0
+            price = effective_price(definition[1]) * batches if data["payment"] == "coins" else 0
             if wallet.balance < price: raise ValueError("Moedas insuficientes.")
-            seconds, outputs = definition[3], {target: definition[4]}
+            seconds, outputs = definition[3] * batches, {target: quantity}
         await stock(session, user_id, {k: -v for k, v in inputs.items()})
         start = max(now, utc(active[-1].ready_at)) if active else now
         task = QuintalTask(id=uuid4(), user_id=user_id, kind=action, target=target, status="active", started_at=start, ready_at=start + timedelta(seconds=seconds), inputs=inputs, outputs=outputs)
