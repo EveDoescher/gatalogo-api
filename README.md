@@ -1,6 +1,6 @@
 # Gatálogo AI API
 
-API FastAPI responsável pela análise de pelagem das fotos enviadas pelo aplicativo **Gatálogo**.
+API FastAPI do aplicativo **Gatálogo**: conta e autenticação, sincronização do catálogo, análise visual, relatos de desaparecimento, recursos sociais, progressão e Quintal.
 
 ## O que já está pronto
 
@@ -22,30 +22,26 @@ API FastAPI responsável pela análise de pelagem das fotos enviadas pelo aplica
 ```text
 gatalogo-ai-api/
 ├── app/
-│   ├── __init__.py
+│   ├── main.py               # Registro de rotas e ciclo de vida
+│   ├── dependencies.py       # Dependências HTTP compartilhadas
 │   ├── config.py
-│   ├── exceptions.py
-│   ├── main.py
-│   ├── models/
-│   │   ├── __init__.py
-│   │   └── analysis.py
+│   ├── database.py
+│   ├── persistence_models.py
+│   ├── quintal_models.py
+│   ├── schemas.py
+│   ├── routers/              # Conta, catálogo, social, visão e Quintal
+│   ├── services/             # Regras, persistência e integrações
+│   ├── models/               # Contratos de análise visual
 │   ├── prompts/
-│   │   ├── __init__.py
-│   │   └── coat_analysis.py
-│   └── services/
-│       ├── __init__.py
-│       └── analysis_service.py
+│   └── assets/
+├── alembic/                  # Histórico de migrações
+├── tests/
+├── scripts/                  # Ferramentas, workers e auditoria
 ├── benchmark/
-│   ├── manifests/
-│   └── README.md
-├── scripts/
-│   ├── prepare_oxford_pet_benchmark.py
-│   └── evaluate_oxford_pet_segmentation.py
-├── .env
-├── .env.example
-├── .gitignore
+├── docs/
 ├── requirements.txt
-└── README.md
+├── requirements-dev.txt
+└── ruff.toml
 ```
 
 ## 1. Criar o ambiente virtual
@@ -418,3 +414,20 @@ Não há nova migração: estado limitado usa a carteira existente.
 `request_id` opcional. A mesma chave e conteúdo retornam o mesmo post;
 conteúdo diferente com a mesma chave retorna conflito. Foto por URL exige
 upload pertencente ao autor. Ver `docs/plano_habitat_social_2026-10-04.md`.
+
+## Qualidade e arquitetura
+
+O inventário completo das fontes está em [docs/quality_inventory.md](docs/quality_inventory.md).
+A revisão, alterações e riscos pendentes estão em [docs/quality_review.md](docs/quality_review.md).
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+.\.venv\Scripts\python.exe -m ruff check .
+.\.venv\Scripts\python.exe -m pytest -q
+python scripts/audit_quality.py . --output docs/quality_inventory.md
+```
+
+As dependências HTTP compartilhadas ficam em `app/dependencies.py`. Autorização de
+conversas e apresentação de relatos ficam em `app/services/conversations.py` e
+`app/services/report_presenter.py`, sem importar módulos de rotas. Os aliases
+anteriores de autenticação e apresentação são mantidos por compatibilidade.

@@ -6,7 +6,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 from app.database import Base
 from app.config import get_settings
-from app.persistence_models import User, HabitatWallet, HabitatItem, HabitatTransaction
+from app.persistence_models import User, HabitatWallet, HabitatItem
 from app.quintal_models import QuintalCatCare
 from app.services import quintal_production as production, progression
 from app.services.quintal_progress import publish_progress

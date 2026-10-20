@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import hashlib
-import shutil
 from pathlib import Path
 from uuid import UUID
 

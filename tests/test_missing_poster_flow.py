@@ -1,7 +1,7 @@
 from uuid import uuid4
 import pytest
 from fastapi import HTTPException
-from app.persistence_models import MissingReport, RemoteCat, User
+from app.persistence_models import MissingReport, User
 from app.schemas import MissingPosterUpdate, PosterContact, PosterOptions
 from app.routers import vision, social
 from app.services.missing_posters import public_poster_details
@@ -82,3 +82,6 @@ async def test_public_qr_page_redacts_hidden_data_and_revokes_photo_after_closur
     assert "Busca encerrada" in html and "<img" not in html and "<script>" not in html
     with pytest.raises(HTTPException):
         await public_photo(report.id, db)
+
+# Imported pytest fixtures are discovered through module globals.
+__all__ = ['account']

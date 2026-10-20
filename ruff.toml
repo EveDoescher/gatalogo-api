@@ -1,0 +1,3 @@
+# Start with correctness rules; avoid a repository-wide formatting rewrite.
+[lint]
+select = ["F"]

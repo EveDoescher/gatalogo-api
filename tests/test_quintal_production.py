@@ -1,6 +1,5 @@
 from datetime import UTC, datetime, timedelta
 from uuid import uuid4
-import math
 import pytest
 import pytest_asyncio
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker

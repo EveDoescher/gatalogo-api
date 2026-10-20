@@ -66,3 +66,6 @@ async def test_photo_replaces_preset_and_has_fresh_cache_key(account_db, monkeyp
     switched_back = await product.update_account(
         product.UpdateAccountRequest(avatar_preset="bapinho"), user, db)
     assert switched_back["avatar_url"].endswith("/preset/bapinho")
+
+# Imported pytest fixtures are discovered through module globals.
+__all__ = ['account_db']

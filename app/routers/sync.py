@@ -14,7 +14,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.config import get_settings
 from app.database import get_database_session, get_session_factory
 from app.persistence_models import CatAvatar, CatPhoto, CatVisualEmbedding, RemoteCat, SyncChange, User
-from app.routers.auth import current_user
+from app.dependencies import current_user
 from app.schemas import ReferencePhotoResponse, SyncCatRecord, SyncOperation, SyncPullResponse, SyncPushRequest
 from app.services.analysis_service import AnalysisService
 from app.services.avatar_generation_service import rebuild_analysis_from_photos

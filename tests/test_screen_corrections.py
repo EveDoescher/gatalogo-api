@@ -81,3 +81,6 @@ async def test_feed_excludes_legacy_fake_posts_and_keeps_real_posts(db):
     for mode in ["all", "friends"]:
         result = await social.feed(limit=20, cursor=None, mode=mode, user=user, session=db)
         assert [post.id for post in result] == [real.id]
+
+# Imported pytest fixtures are discovered through module globals.
+__all__ = ['db']

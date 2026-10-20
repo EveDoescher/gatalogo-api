@@ -7,8 +7,8 @@ from sqlalchemy import select, or_, and_
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_database_session
-from app.persistence_models import User, ProgressEvent, RemoteCat, CatVisualEmbedding, CatPhoto, SyncChange
-from app.routers.auth import current_user
+from app.persistence_models import User, ProgressEvent, RemoteCat, CatVisualEmbedding, SyncChange
+from app.dependencies import current_user
 from app.services import progression as progress
 from app.services.realtime_events import publish_committed_events
 

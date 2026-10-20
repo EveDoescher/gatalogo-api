@@ -104,7 +104,6 @@ async def snapshot(session, user_id):
     level, title, minimum, target = level_for(xp, gamif.get("highest_level", 1))
     events = await events_for(session, user_id)
     view = milestones.project(events, state.preferences)
-    count = view["confirmed_individuals"]
     owned = set((await session.scalars(select(HabitatItem.sku).where(HabitatItem.user_id == user_id))).all())
     goal = next(((sku, item) for sku, item in sorted(SHOP.items(), key=lambda pair: pair[1]["price"])
                  if item["price"] > 0 and sku not in owned), None)

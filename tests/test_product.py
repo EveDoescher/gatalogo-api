@@ -10,11 +10,11 @@ from sqlalchemy import select
 
 from test_recognition_database import db, setup_pair, SETTINGS
 from app.persistence_models import (AppNotification, EmailOtp, Friendship, MatchSuggestion,
-    ProductState, User, UserSession, RemoteCat, CatPhoto, FeedItem)
+    User, UserSession, RemoteCat, FeedItem)
 from app.routers import product, vision, social, auth
 from app.schemas import MissingReportCreate, MessageCreate
 from app.schemas import SightingCreate
-from app.services.auth_service import hash_otp, consume_otp, hash_refresh_token, password_hash
+from app.services.auth_service import hash_otp, consume_otp, password_hash
 from app.services.recognition_service import sync_catalog_sighting
 
 
@@ -162,7 +162,7 @@ async def test_wrong_otp_attempts_persist_and_reset_grant_is_single_use(db, monk
             await consume_otp(db, email=user.email, purpose="reset_password", code="000000")
         await db.refresh(otp)
         assert otp.attempts == expected
-    tokens = await auth.issue_tokens(db, user=user, device_id="test")
+    await auth.issue_tokens(db, user=user, device_id="test")
     grant = await auth.verify_reset_code(auth.ResetCodeRequest(email=user.email, code="123456"), db)
     request = auth.NewPasswordRequest(reset_token=grant["reset_token"], password="new-password-123")
     await auth.complete_reset(request, db)
@@ -171,3 +171,6 @@ async def test_wrong_otp_attempts_persist_and_reset_grant_is_single_use(db, monk
     assert all(item.revoked_at is not None for item in sessions)
     with pytest.raises(HTTPException):
         await auth.complete_reset(request, db)
+
+# Imported pytest fixtures are discovered through module globals.
+__all__ = ['db']

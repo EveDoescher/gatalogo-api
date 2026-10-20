@@ -6,7 +6,7 @@ from uuid import UUID, uuid4
 from zoneinfo import ZoneInfo
 from sqlalchemy import select
 from app.quintal_models import (QuintalFacility, QuintalResource, QuintalTask, QuintalPlot,
-    QuintalCounter, QuintalResident, QuintalCatCare, QuintalPreference, QuintalSession)
+    QuintalCounter, QuintalResident, QuintalCatCare, QuintalPreference)
 from app.persistence_models import HabitatItem, HabitatTransaction, RemoteCat
 from app.services.habitat_service import wallet_for, walkable_cells, item_cells, validate_placements
 from app.services.habitat_interactions import reachable

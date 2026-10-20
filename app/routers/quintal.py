@@ -7,7 +7,7 @@ import math
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.database import get_database_session
 from app.persistence_models import User
-from app.routers.auth import current_user
+from app.dependencies import current_user
 from app.services.quintal_production import operation, projection
 from app.services.quintal_games import session_operation
 from app.services import progression as progress

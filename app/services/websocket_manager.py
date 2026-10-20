@@ -5,7 +5,7 @@ import json
 import logging
 from datetime import UTC, datetime
 from uuid import UUID
-from fastapi import WebSocket, WebSocketDisconnect
+from fastapi import WebSocket
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import async_sessionmaker
 

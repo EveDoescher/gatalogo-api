@@ -129,3 +129,6 @@ async def test_paused_rewards_keep_optional_progress_without_paying(account, mon
     assert view["xp"] == view["balance"] == 0
     assert not [e for e in await p.events_for(db, user.id)
                 if e.event_key.startswith("mission:daily_quintal_routine:")]
+
+# Imported pytest fixtures are discovered through module globals.
+__all__ = ['account']

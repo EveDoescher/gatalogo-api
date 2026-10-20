@@ -1,10 +1,9 @@
-import json
 from datetime import UTC, datetime
 from uuid import uuid4
 
 import pytest
 
-from app.schemas import MessageCreate, MessageResponse, ConversationSummaryResponse
+from app.schemas import MessageCreate, MessageResponse
 from app.services.storage_service import photo_storage
 from app.services.websocket_manager import ConnectionManager
 

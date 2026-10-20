@@ -16,9 +16,9 @@ from app.services.realtime_events import publish_committed_events
 from app.config import get_settings
 from app.services.habitat_pricing import effective_price, shop_item
 from app.database import get_database_session
-from app.persistence_models import FeedItem, HabitatItem, HabitatTransaction, MissingReport, RemoteCat, User
-from app.routers.auth import current_user
-from app.services.habitat_service import BATCH_SKUS, DAILY_LIMITS, EXPANSION_PRICES, REWARDS, SHOP, grant_reward, normalize_legacy_layout, validate_placements, wallet_for, walkable_cells, yard_cells
+from app.persistence_models import HabitatItem, HabitatTransaction, RemoteCat, User
+from app.dependencies import current_user
+from app.services.habitat_service import BATCH_SKUS, DAILY_LIMITS, EXPANSION_PRICES, REWARDS, SHOP, normalize_legacy_layout, validate_placements, wallet_for, walkable_cells, yard_cells
 from app.services.habitat_interactions import care_summary, interact
 
 

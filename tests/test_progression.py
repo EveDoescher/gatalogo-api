@@ -92,7 +92,7 @@ async def test_opening_preserves_balances_without_paying_again(account):
 @pytest.mark.asyncio
 async def test_profile_defaults_and_independent_audience(account):
     db, owner = account
-    friend, stranger = uuid4(), uuid4()
+    stranger = uuid4()
     state, _ = await p.account(db, owner.id)
     assert not await permits(db, stranger, owner.id, "gallery")
     state.preferences = {**state.preferences, "gallery_audience": "public", "medals_audience": "private"}

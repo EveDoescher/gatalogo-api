@@ -65,8 +65,6 @@ import pytest
 from uuid import uuid4
 from test_progression import account, photo, saved_cat
 from app.services import progression as p
-from sqlalchemy import select
-from app.persistence_models import ProgressEvent, User
 
 
 @pytest.mark.asyncio
@@ -213,3 +211,6 @@ async def test_post_endpoint_advances_community_missions_and_replay_does_not_pay
     assert replay.id == post.id
     second = await p.snapshot(db, user.id)
     assert all(first[k] == second[k] for k in ("xp", "balance", "revision"))
+
+# Imported pytest fixtures are discovered through module globals.
+__all__ = ['account']

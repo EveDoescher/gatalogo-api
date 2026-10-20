@@ -23,7 +23,7 @@ from app.persistence_models import (
     VisionJob,
     ProgressEvent,
 )
-from app.routers.auth import current_user
+from app.dependencies import current_user
 from app.schemas import (
     MatchResponse,
     MissingReportCreate,
@@ -37,6 +37,8 @@ from app.services import progression as progress
 from app.services.realtime_events import publish_committed_events, queue_notification
 from app.services.vision_jobs import enqueue_recognition
 
+from app.services.report_presenter import report_response as _report_response
+
 router = APIRouter(prefix="/vision", tags=["vision"])
 
 
@@ -47,22 +49,6 @@ async def _cat(session: AsyncSession, user: User, client_id: UUID) -> RemoteCat:
     return cat
 
 
-def _report_response(report: MissingReport, cat: RemoteCat) -> MissingReportResponse:
-    details = report.poster_details or {}
-    cat_details = cat.payload or {}
-    return MissingReportResponse(
-        id=report.id, cat_client_id=cat.client_id,
-        latitude=report.latitude, longitude=report.longitude,
-        radius_meters=report.radius_meters, status=report.status,
-        created_at=report.created_at,
-        last_seen_address=details.get("last_seen_address"),
-        contacts=details.get("contacts", []),
-        poster_contacts=details.get("poster_contacts", details.get("contacts", [])),
-        poster_options=details.get("poster_options", {}),
-        collar=details.get("collar") or cat_details.get("collar"),
-        distinguishing_marks=details.get("distinguishing_marks") or cat_details.get("distinguishing_marks"),
-        microchip=details.get("microchip") or cat_details.get("microchip"),
-    )
 
 
 @router.post("/cats/{client_id}/enqueue", response_model=VisionJobResponse, status_code=status.HTTP_202_ACCEPTED)

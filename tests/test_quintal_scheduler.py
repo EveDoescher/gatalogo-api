@@ -11,7 +11,6 @@ from app.persistence_models import User, HabitatWallet, AppNotification
 from app.quintal_models import QuintalFacility, QuintalTask, QuintalPlot, QuintalResource
 from app.services import quintal_scheduler as scheduler
 from app.services.fcm_service import _enabled_for_device, _copy_for
-from app.routers.quintal import router  # Register related model metadata.
 
 
 @pytest.mark.asyncio

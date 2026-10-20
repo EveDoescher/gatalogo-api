@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-from datetime import UTC, datetime, timedelta
+from datetime import timedelta
 import secrets
-import hmac
 import jwt
 from pydantic import BaseModel, EmailStr, Field
 
@@ -33,7 +32,6 @@ from app.schemas import (
     VerifyOtpRequest,
 )
 from app.services.auth_service import (
-    authenticated_user,
     consume_otp,
     create_otp,
     hash_refresh_token,
@@ -43,6 +41,8 @@ from app.services.auth_service import (
     password_hash,
     utc_now,
 )
+
+from app.dependencies import current_user as current_user
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -92,13 +92,6 @@ async def complete_reset(payload: NewPasswordRequest, session: AsyncSession = De
 
 
 
-async def current_user(
-    authorization: str | None = Header(default=None),
-    session: AsyncSession = Depends(get_database_session),
-) -> User:
-    if not authorization or not authorization.startswith("Bearer "):
-        raise invalid_credentials()
-    return await authenticated_user(authorization.removeprefix("Bearer "), session)
 
 
 @router.put("/username", response_model=AccountResponse)

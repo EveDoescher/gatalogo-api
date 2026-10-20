@@ -1,5 +1,4 @@
 """Confirmed progression and privacy migration; never replay old rewards."""
-from datetime import UTC, datetime
 from uuid import UUID, uuid4
 from alembic import op
 import sqlalchemy as sa

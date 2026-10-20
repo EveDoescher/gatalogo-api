@@ -18,16 +18,18 @@ from sqlalchemy.orm.attributes import flag_modified
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_database_session
-from app.routers.vision import _report_response
+from app.services.report_presenter import report_response as _report_response
 from app.persistence_models import (User, RemoteCat, CatPhoto, MissingReport, Sighting,
     MatchSuggestion, Conversation, ConversationMember, Friendship, AppNotification,
     FeedItem, ProductState)
-from app.routers.auth import current_user
+from app.dependencies import current_user
 from app.schemas import FavoritesSyncRequest, FeedbackRequest
 from app.services.storage_service import photo_storage
 from app.services.recognition_service import distance_meters, create_report_matches
-from app.services.realtime_events import publish_committed_events, queue_notification
+from app.services.realtime_events import publish_committed_events
 from app.config import get_settings
+
+from app.services.conversations import member_or_403 as _member_or_403
 
 router = APIRouter(prefix="/app", tags=["app"])
 
@@ -343,7 +345,6 @@ async def start_conversation(friend_id: UUID, user: User = Depends(current_user)
 
 @router.get("/conversations/{conversation_id}")
 async def conversation_context(conversation_id: UUID, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
-    from app.routers.social import _member_or_403
     await _member_or_403(session, conversation_id, user.id)
     conversation = await session.get(Conversation, conversation_id)
     other = (await session.execute(select(User).join(ConversationMember, ConversationMember.user_id == User.id).where(ConversationMember.conversation_id == conversation_id, User.id != user.id))).scalar_one_or_none()
@@ -418,7 +419,6 @@ async def record_gamification_action(payload: GamificationActionRequest, user: U
 @router.get("/journey")
 async def journey(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> list[dict]:
     result = await progress.snapshot(session, user.id)
-    state = await session.get(ProductState, user.id)
     rows = result["achievements"]
     await session.commit()
     return rows

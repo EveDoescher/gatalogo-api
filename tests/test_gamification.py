@@ -1,7 +1,4 @@
 """Tests for levels, streaks, missions, and achievements."""
-from datetime import UTC, datetime, date
-from uuid import uuid4
-from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
@@ -14,7 +11,7 @@ from app.routers.product import (
     get_gamification,
     GamificationActionRequest,
 )
-from app.persistence_models import ProductState, User
+from app.persistence_models import ProductState
 
 
 def test_level_calculation():
@@ -112,3 +109,6 @@ async def test_legacy_progress_and_achievements_are_preserved(account):
     assert next(r for r in rows if r["id"] == "night_owl")["archived"]
     assert next(r for r in rows if r["id"] == "first")["completed"]
     assert (await get_gamification(user=user, session=session))["xp"] == 350
+
+# Imported pytest fixtures are discovered through module globals.
+__all__ = ['account']

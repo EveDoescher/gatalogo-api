@@ -151,7 +151,6 @@ async def test_jobs_are_bound_to_photo_content(db):
 @pytest.mark.parametrize("matching_fails", [False, True])
 async def test_worker_commits_evidence_atomically(db, tmp_path, monkeypatch, matching_fails):
     from sqlalchemy.ext.asyncio import async_sessionmaker
-    from app.persistence_models import VisionJob
     from app.services import vision_worker
     from app.services.storage_service import PrivatePhotoStorage
     from app.services.vision_jobs import enqueue_recognition

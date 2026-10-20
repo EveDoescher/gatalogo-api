@@ -25,17 +25,6 @@ class SegmentationError(AnalysisError):
 class ColorAnalysisError(AnalysisError):
     """A paleta local não pôde ser extraída da máscara do gato."""
 
-class AnalysisError(Exception):
-    """Erro base da análise de pelagem."""
-
-
-class MissingApiKeyError(AnalysisError):
-    """A chave da Gemini API não foi configurada."""
-
-
-class InvalidImageError(AnalysisError):
-    """O arquivo recebido não pôde ser validado como imagem."""
-
 
 class RejectedImageError(AnalysisError):
     """A imagem foi rejeitada pelas regras de negócio."""
@@ -44,7 +33,3 @@ class RejectedImageError(AnalysisError):
         self.reason = reason
         self.message = message
         super().__init__(message)
-
-
-class GeminiAnalysisError(AnalysisError):
-    """A chamada ao Gemini falhou ou retornou um resultado inválido."""

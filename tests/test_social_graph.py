@@ -1,11 +1,10 @@
 """Tests for the social graph and community discovery."""
-from datetime import UTC, datetime
 from unittest.mock import AsyncMock, MagicMock
 from uuid import uuid4
 
 import pytest
 
-from app.persistence_models import FriendInvite, Friendship, ProductState, RemoteCat, User
+from app.persistence_models import FriendInvite, ProductState, RemoteCat, User
 from app.routers.social import (
     cancel_invite,
     get_public_profile,
@@ -177,3 +176,6 @@ async def test_user_suggestions():
     assert len(suggs) == 1
     assert suggs[0].username == "cat_lover"
     assert "região" in suggs[0].reason
+
+# Imported pytest fixtures are discovered through module globals.
+__all__ = ['account']
