@@ -468,3 +468,7 @@ irmão `catlogue`; outro local pode ser informado por `FLUTTER_PROJECT_ROOT`.
 O banco descartável usa tmpfs limitado a 1 GiB; essa configuração não é aplicada
 ao PostgreSQL de uso. Os processos Flutter usam SQLite persistente entre as duas
 fases do cenário, dentro de `build/`, sem compilar Android ou iniciar emulador.
+
+
+O mapa dos fluxos, medições de consultas e oportunidades de melhoria interna está
+em [docs/performance_flows.md](docs/performance_flows.md).

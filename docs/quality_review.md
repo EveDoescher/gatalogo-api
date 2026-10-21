@@ -146,3 +146,14 @@ As árvores instaladas ficam em `.tmp/web-verified-lock.json` e
 O perfil existente é CPU. CUDA, inferência real, smartphone e entrega SMTP/FCM
 exigem validação operacional própria; não foram apresentados como aprovados por
 mocks ou imports. Não houve build Android, emulador, deploy ou merge na main.
+
+
+## Mapeamento de fluxos e mecanismos — 21/10/2026
+
+Fluxos, medições e oportunidades priorizadas estão em
+[performance_flows.md](performance_flows.md). Leituras em lote substituem buscas
+por gato; a API também libera a conexão de autenticação antes da análise principal.
+As consultas, contratos, dados visíveis e regras foram comparados com o caminho
+anterior. Nenhuma alteração em páginas, widgets, modelos de IA ou parâmetros
+de imagem. Resultado desta rodada: **324 testes completos + 10 complementares; sem falhas ou ignorados; Ruff e OpenAPI aprovados**.
+As contagens de consultas/conexões não são medições de latência em smartphone.

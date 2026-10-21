@@ -2,7 +2,7 @@
 
 Gerado por `scripts/audit_quality.py` na API. Candidatos exigem revisão; ausência de referência não prova inutilidade.
 
-Arquivos versionados ou novos (respeitando .gitignore): 208. Fontes Python/Dart: 164.
+Arquivos versionados ou novos (respeitando .gitignore): 211. Fontes Python/Dart: 166.
 
 ## Distribuição das fontes
 
@@ -10,14 +10,14 @@ Arquivos versionados ou novos (respeitando .gitignore): 208. Fontes Python/Dart:
 |---|---:|---:|
 | alembic | 1 | 55 |
 | alembic/versions | 14 | 617 |
-| app | 10 | 1342 |
+| app | 10 | 1346 |
 | app/models | 3 | 297 |
 | app/prompts | 2 | 34 |
-| app/routers | 16 | 3455 |
-| app/services | 55 | 7814 |
+| app/routers | 16 | 3431 |
+| app/services | 56 | 7883 |
 | app/services/quintal_commands | 8 | 735 |
 | scripts | 14 | 1901 |
-| tests | 41 | 6034 |
+| tests | 42 | 6356 |
 
 ## Fontes com mais de 500 linhas
 
@@ -76,7 +76,7 @@ Inclui componentes acessíveis somente por testes ou ferramentas. Confirmar ante
 | `app/database.py` | 35 |
 | `app/dependencies.py` | 17 |
 | `app/exceptions.py` | 35 |
-| `app/main.py` | 261 |
+| `app/main.py` | 265 |
 | `app/models/__init__.py` | 0 |
 | `app/models/analysis.py` | 251 |
 | `app/models/vision.py` | 46 |
@@ -97,7 +97,7 @@ Inclui componentes acessíveis somente por testes ou ferramentas. Confirmar ante
 | `app/routers/social_feed.py` | 167 |
 | `app/routers/social_friendships.py` | 294 |
 | `app/routers/social_profiles.py` | 475 |
-| `app/routers/sync.py` | 355 |
+| `app/routers/sync.py` | 331 |
 | `app/routers/vision.py` | 273 |
 | `app/routers/websocket.py` | 115 |
 | `app/schemas.py` | 384 |
@@ -109,6 +109,7 @@ Inclui componentes acessíveis somente por testes ou ferramentas. Confirmar ante
 | `app/services/avatar_generation_service.py` | 88 |
 | `app/services/avatar_service.py` | 250 |
 | `app/services/catalog_changes.py` | 10 |
+| `app/services/catalog_sync_queries.py` | 69 |
 | `app/services/chat_commands.py` | 276 |
 | `app/services/chat_presenter.py` | 47 |
 | `app/services/chat_queries.py` | 234 |
@@ -219,4 +220,5 @@ Inclui componentes acessíveis somente por testes ou ferramentas. Confirmar ante
 | `tests/test_social_graph.py` | 181 |
 | `tests/test_social_posts.py` | 61 |
 | `tests/test_storage_service.py` | 42 |
+| `tests/test_sync_query_performance.py` | 322 |
 | `tests/test_websocket_manager.py` | 52 |

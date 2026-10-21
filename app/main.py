@@ -125,12 +125,16 @@ async def analyze_cat(
     session: AsyncSession = Depends(get_database_session),
 ) -> CatAnalysisResponse:
     settings = get_settings()
+    user_id = user.id
 
     try:
         image_bytes = await _read_image_with_limit(
             image,
             max_bytes=settings.max_image_bytes,
         )
+        # Authentication only read rows. Release that connection before CPU/network
+        # analysis; capture the ID first because rollback expires ORM attributes.
+        await session.rollback()
         service = AnalysisService(settings)
         result = await service.analyze(
             cat_id=cat_id,
@@ -141,12 +145,12 @@ async def analyze_cat(
             client_id = UUID(cat_id)
         except ValueError as error:
             raise InvalidImageError("O identificador do gato é inválido.") from error
-        await progress_account(session, user.id)
+        await progress_account(session, user_id)
         cat = (
             await session.execute(
                 select(RemoteCat)
                 .where(
-                    RemoteCat.user_id == user.id,
+                    RemoteCat.user_id == user_id,
                     RemoteCat.client_id == client_id,
                 )
                 .with_for_update()
@@ -155,7 +159,7 @@ async def analyze_cat(
         if cat is None or cat.deleted_at is not None:
             raise HTTPException(409, "Sincronize o registro antes de solicitar a análise.")
         photo_key, photo_hash = photo_storage.save(
-            user_id=user.id,
+            user_id=user_id,
             cat_id=cat.id,
             data=image_bytes,
             suffix=".jpg",
@@ -192,7 +196,7 @@ async def analyze_cat(
         cat.payload = {**(cat.payload or {}), "status": "completed"}
         await session.flush()
         await enqueue_recognition(session, cat=cat, photo=primary)
-        session.add(SyncChange(user_id=user.id, cat_id=cat.id))
+        session.add(SyncChange(user_id=user_id, cat_id=cat.id))
         await confirm_photo(session, cat, primary, result.model_dump(mode="json"))
         await session.commit()
         await publish_committed_events(session)
@@ -239,7 +243,7 @@ async def analyze_cat(
         ) from error
 
     except RejectedImageError as error:
-        await reject_photo(session, user.id, cat_id, image_bytes, error.message)
+        await reject_photo(session, user_id, cat_id, image_bytes, error.message)
         raise HTTPException(
             status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
             detail={

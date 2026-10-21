@@ -13,7 +13,7 @@ from app.config import get_settings
 from app.database import get_database_session
 from app.persistence_models import CatAvatar, CatPhoto, CatVisualEmbedding, RemoteCat, SyncChange, User
 from app.dependencies import current_user
-from app.schemas import ReferencePhotoResponse, SyncCatRecord, SyncOperation, SyncPullResponse, SyncPushRequest
+from app.schemas import SyncCatRecord, SyncOperation, SyncPullResponse, SyncPushRequest
 from app.services.avatar_generation_service import rebuild_analysis_from_photos
 from app.services.storage_service import photo_storage
 from app.services.vision_jobs import enqueue_recognition, enqueue_reference_analysis
@@ -21,6 +21,7 @@ from app.services.recognition_service import sync_catalog_sighting, refresh_cat_
 from app.services.realtime_events import publish_committed_events
 from app.services.progression import account as progress_account, identify
 
+from app.services.catalog_sync_queries import sync_records
 from app.services.catalog_changes import record_change as _record_change
 
 router = APIRouter(prefix="/sync", tags=["sync"])
@@ -84,35 +85,7 @@ async def _last_revision(session: AsyncSession, cat_id: UUID) -> int:
 
 
 async def _to_record(session: AsyncSession, cat: RemoteCat) -> SyncCatRecord:
-    revision = await _last_revision(session, cat.id)
-    photos = (await session.execute(
-        select(CatPhoto).where(
-            CatPhoto.cat_id == cat.id,
-            CatPhoto.kind.in_(("front", "left", "right", "back")),
-            CatPhoto.deleted_at.is_(None),
-        )
-    )).scalars().all()
-    return SyncCatRecord(
-        client_id=cat.client_id,
-        updated_at=cat.client_updated_at,
-        device_id=cat.updated_by_device,
-        deleted_at=cat.deleted_at,
-        payload=cat.payload or {},
-        analysis=cat.analysis,
-        photo_available=bool(cat.photo_key and cat.deleted_at is None),
-        photo_url=f"/sync/cats/{cat.client_id}/photo" if cat.photo_key and cat.deleted_at is None else None,
-        reference_photos=[
-            ReferencePhotoResponse(
-                kind=photo.kind,
-                status=photo.status,
-                photo_url=f"/sync/cats/{cat.client_id}/reference-photos/{photo.kind}",
-                updated_at=photo.updated_at,
-            )
-            for photo in photos
-        ],
-        avatar=None,
-        revision=revision,
-    )
+    return (await sync_records(session, [cat]))[0]
 
 
 def _ordered_operations(operations):
@@ -173,11 +146,14 @@ async def pull(
     latest: dict[UUID, SyncChange] = {}
     for change in changes:
         latest[change.cat_id] = change
-    records: list[SyncCatRecord] = []
-    for change in latest.values():
-        cat = await session.get(RemoteCat, change.cat_id)
-        if cat is not None:
-            records.append(await _to_record(session, cat))
+    cats_by_id = {
+        cat.id: cat for cat in await session.scalars(
+            select(RemoteCat).where(RemoteCat.id.in_(latest))
+        )
+    } if latest else {}
+    cats = [cats_by_id[change.cat_id] for change in latest.values()
+            if change.cat_id in cats_by_id]
+    records = await sync_records(session, cats)
     next_cursor = changes[-1].revision if changes else cursor
     return SyncPullResponse(changes=records, next_cursor=next_cursor)
 
