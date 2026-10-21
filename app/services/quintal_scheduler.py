@@ -8,7 +8,7 @@ from sqlalchemy import select
 from app.persistence_models import User
 from app.quintal_models import QuintalFacility
 from app.services import progression
-from app.services.quintal_production import projection
+from app.services.quintal_projection import projection
 from app.services.quintal_progress import publish_progress
 from app.services.quintal_notifications import notify_ready
 from app.services.realtime_events import publish_committed_events

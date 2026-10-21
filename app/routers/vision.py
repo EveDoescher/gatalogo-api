@@ -1,4 +1,5 @@
 from __future__ import annotations
+from app.services.vision_jobs import REFERENCE_ANALYSIS_PREFIX
 
 from datetime import UTC, datetime
 from uuid import UUID
@@ -65,7 +66,7 @@ async def enqueue_cat(client_id: UUID, user: User = Depends(current_user), sessi
 @router.get("/cats/{client_id}/jobs", response_model=list[VisionJobResponse])
 async def cat_jobs(client_id: UUID, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> list[VisionJobResponse]:
     cat = await _cat(session, user, client_id)
-    jobs = (await session.execute(select(VisionJob).where(VisionJob.cat_id == cat.id).order_by(VisionJob.created_at.desc()))).scalars().all()
+    jobs = (await session.execute(select(VisionJob).where(VisionJob.cat_id == cat.id, ~VisionJob.kind.startswith(REFERENCE_ANALYSIS_PREFIX)).order_by(VisionJob.created_at.desc()))).scalars().all()
     return [VisionJobResponse(id=job.id, status=job.status, error_message=job.error_message, created_at=job.created_at, completed_at=job.completed_at) for job in jobs]
 
 

@@ -9,7 +9,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 
 from app.persistence_models import FeedItem, User, ProgressEvent
-from app.routers import social
+from app.routers import social_feed as social
 
 
 @pytest_asyncio.fixture

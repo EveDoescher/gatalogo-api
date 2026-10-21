@@ -130,7 +130,7 @@ from test_progression import account
 @pytest.mark.asyncio
 async def test_weekly_leaderboard(account, monkeypatch):
     from app.services import progression as p
-    from app.routers import social
+    from app.routers import social_profiles as social
     session, alice = account
     alice.username = "alice"
     bob = User(email="ranking@test.local", username="bob", status="active")

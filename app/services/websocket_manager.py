@@ -5,7 +5,7 @@ import json
 import logging
 from datetime import UTC, datetime
 from uuid import UUID
-from fastapi import WebSocket
+from fastapi import WebSocket, WebSocketDisconnect
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import async_sessionmaker
 
@@ -67,8 +67,11 @@ class ConnectionManager:
         for ws in sockets:
             try:
                 await ws.send_text(message)
-            except Exception as error:
-                logger.warning("Erro enviando WebSocket para %s: %s", user_id, error)
+            except (WebSocketDisconnect, OSError, RuntimeError):
+                logger.debug("WebSocket closed while sending to %s", user_id)
+                dead_sockets.append(ws)
+            except Exception:
+                logger.exception("Unexpected WebSocket send failure for %s", user_id)
                 dead_sockets.append(ws)
 
         if dead_sockets:
@@ -93,7 +96,11 @@ class ConnectionManager:
         for uid, ws in all_sockets:
             try:
                 await ws.send_text(message)
+            except (WebSocketDisconnect, OSError, RuntimeError):
+                logger.debug("WebSocket closed during broadcast to %s", uid)
+                await self.disconnect(uid, ws)
             except Exception:
+                logger.exception("Unexpected WebSocket broadcast failure for %s", uid)
                 await self.disconnect(uid, ws)
 
     async def start_notification_bridge(

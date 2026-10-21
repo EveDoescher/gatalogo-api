@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from datetime import UTC, datetime
 from uuid import UUID, uuid4
 from typing import Literal
 
@@ -19,8 +18,10 @@ from app.database import get_database_session
 from app.persistence_models import HabitatItem, HabitatTransaction, RemoteCat, User
 from app.dependencies import current_user
 from app.services.habitat_service import BATCH_SKUS, DAILY_LIMITS, EXPANSION_PRICES, REWARDS, SHOP, normalize_legacy_layout, validate_placements, wallet_for, walkable_cells, yard_cells
-from app.services.habitat_interactions import care_summary, interact
+from app.services.habitat_interactions import interact
 
+
+from app.services.habitat_presenter import habitat_snapshot as _snapshot, item_response as _item_response
 
 router = APIRouter(prefix="/app/habitat", tags=["habitat"])
 
@@ -79,7 +80,7 @@ async def interaction(payload: InteractionRequest, user: User = Depends(current_
     await record_progress_rewards(session, event)
     # Return the same authoritative care projection used by the cat sheet.
     # A legacy-only snapshot leaves the newer affinity cached until polling.
-    from app.services.quintal_production import projection
+    from app.services.quintal_projection import projection
     from app.services.quintal_progress import publish_progress
     production = await projection(session, user.id)
     production_progress = await publish_progress(session, user.id)
@@ -95,44 +96,6 @@ def _shop() -> list[dict]:
     return [shop_item(sku, definition) for sku, definition in SHOP.items()]
 
 
-async def _snapshot(session: AsyncSession, user_id: UUID) -> dict:
-    wallet = await wallet_for(session, user_id)
-    from app.services.habitat_interactions import migrate_calendar
-    wallet.care_state = migrate_calendar(wallet.care_state or {}, datetime.now(UTC))
-    items = (await session.execute(select(HabitatItem).where(HabitatItem.user_id == user_id).order_by(HabitatItem.created_at, HabitatItem.id))).scalars().all()
-    cats = (await session.execute(select(RemoteCat).where(RemoteCat.user_id == user_id, RemoteCat.deleted_at.is_(None)))).scalars().all()
-    pets = [
-        {
-            "id": str(cat.client_id),
-            "name": (cat.payload or {}).get("name") or "Meu gato",
-            "primary_color": (cat.analysis or {}).get("primary_color") or ((cat.analysis or {}).get("pattern_map") or {}).get("base_color"),
-            "coat_type": (cat.analysis or {}).get("coat_type") or ((cat.analysis or {}).get("pattern_map") or {}).get("pattern"),
-            "coat_colors": list(dict.fromkeys([
-                *(c["name"] for c in ((cat.analysis or {}).get("colors") or []) if isinstance(c, dict) and isinstance(c.get("name"), str)),
-                *(c for c in (((cat.analysis or {}).get("pattern_map") or {}).get("accent_colors") or []) if isinstance(c, str)),
-            ])),
-        }
-        for cat in cats if (cat.payload or {}).get("is_owned")
-    ]
-    return {
-        "satisfaction": encounters.satisfaction(wallet, items, datetime.now(UTC)),
-        "pending_gift": (wallet.care_state or {}).get("pending_gift"),
-        "balance": wallet.balance,
-        "revision": wallet.layout_revision,
-        "layout_rules_version": wallet.layout_rules_version,
-        "selected_cat_ids": wallet.selected_cat_ids or [],
-        "cat_anchors": wallet.cat_anchors or {},
-        "expansion_level": wallet.expansion_level,
-        "cat_capacity": 3 + wallet.expansion_level,
-        "decoration_capacity": 24 + 8 * wallet.expansion_level,
-        "buildable_cells": [list(cell) for cell in sorted(yard_cells(wallet.expansion_level))],
-        "next_expansion_price": effective_price(EXPANSION_PRICES[wallet.expansion_level]) if wallet.expansion_level < 3 else None,
-        "items": [_item_response(item) for item in items],
-        "care": care_summary(wallet.care_state or {}, 3 + wallet.expansion_level, datetime.now(UTC)),
-        "cats": pets,
-        "shop_version": 5,
-        "free_shop": get_settings().habitat_free_shop,
-    }
 
 
 @router.get("")
@@ -189,8 +152,6 @@ async def purchase(payload: PurchaseRequest, user: User = Depends(current_user),
     return {"item": serialized[0], "items": serialized, "balance": wallet.balance}
 
 
-def _item_response(item: HabitatItem) -> dict:
-    return {"id": str(item.id), "sku": item.sku, "x": item.x, "y": item.y, "rotation": item.rotation, "care_state": item.care_state or {}}
 
 
 @router.post("/expansions")
@@ -266,7 +227,7 @@ async def save_layout(payload: LayoutRequest, user: User = Depends(current_user)
     wallet.selected_cat_ids = [str(cat_id) for cat_id in payload.selected_cat_ids]
     wallet.cat_anchors = anchors
     if payload.production_rules_version == 1 or (wallet.care_state or {}).get("production_cats"):
-        from app.services.quintal_production import validate_bowls
+        from app.services.quintal_care import validate_bowls
         try:
             await validate_bowls(session, wallet, items)
         except ValueError as error:

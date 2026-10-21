@@ -18,6 +18,7 @@ from sqlalchemy import case, delete, or_, select, update
 from app.config import Settings, get_settings
 from app.database import get_session_factory
 from app.persistence_models import CatPhoto, CatVisualEmbedding, RemoteCat, VisionJob
+from app.services.vision_jobs import REFERENCE_ANALYSIS_PREFIX
 from app.services.recognition_service import refresh_cat_matches, is_solid_analysis
 from app.services.realtime_events import publish_committed_events
 from app.services.recognition_features import foreground_quality, local_features, model_version, perceptual_hash, prepare_embedding_image
@@ -134,7 +135,7 @@ class Sam2DinoWorker:
         factory = get_session_factory()
         async with factory() as session:
             job = await session.get(VisionJob, job_id)
-            if job is None or job.status not in {"pending", "running"}:
+            if job is None or job.kind.startswith(REFERENCE_ANALYSIS_PREFIX) or job.status not in {"pending", "running"}:
                 return
             claim_started_at = job.started_at
             cat = await session.get(RemoteCat, job.cat_id)
@@ -196,6 +197,7 @@ class Sam2DinoWorker:
                 cutoff = datetime.now(UTC) - timedelta(seconds=self.settings.vision_job_lease_seconds)
                 await session.execute(update(VisionJob).where(
                     VisionJob.status == "running",
+                    ~VisionJob.kind.startswith(REFERENCE_ANALYSIS_PREFIX),
                     or_(
                         VisionJob.started_at.is_(None),
                         VisionJob.started_at < cutoff,
@@ -207,7 +209,7 @@ class Sam2DinoWorker:
                     completed_at=case((VisionJob.attempts + 1 >= self.settings.vision_job_max_attempts, datetime.now(UTC)), else_=None),
                 ))
                 job = (await session.execute(
-                    select(VisionJob).where(VisionJob.status == "pending").order_by(VisionJob.created_at).with_for_update(skip_locked=True).limit(1)
+                    select(VisionJob).where(VisionJob.status == "pending", ~VisionJob.kind.startswith(REFERENCE_ANALYSIS_PREFIX)).order_by(VisionJob.created_at).with_for_update(skip_locked=True).limit(1)
                 )).scalar_one_or_none()
                 if job is not None:
                     job.status, job.started_at = "running", datetime.now(UTC)

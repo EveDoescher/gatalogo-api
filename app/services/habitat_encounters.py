@@ -34,7 +34,8 @@ def satisfaction(wallet, items, now):
         recent = settings.habitat_satisfaction_care * sum(care.get(f"{action}_day") == today for action in ("pet", "feed"))
         production = (wallet.care_state or {}).get("production_cats", {}).get(cat)
         if production and not production.get("assisted"):
-            from app.services.quintal_production import utc, play_care_bonus
+            from app.services.quintal_clock import utc
+            from app.services.quintal_care import play_care_bonus
             def decay(at, value, hours):
                 return max(0, 1 - max(0, (now - utc(at)).total_seconds()) / (hours * 3600)) * value if at else 0
             recent = decay(production.get("last_meal_at"), production.get("meal_satisfaction") or 0, 24) + play_care_bonus(production, now)

@@ -193,7 +193,7 @@ async def test_habitat_endpoint_advances_care_missions_once_and_rejects_invalid_
 
 @pytest.mark.asyncio
 async def test_post_endpoint_advances_community_missions_and_replay_does_not_pay_again(account, monkeypatch):
-    from app.routers import social
+    from app.routers import social_feed as social
 
     async def no_publish(session):
         session.info.clear()

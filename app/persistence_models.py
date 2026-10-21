@@ -202,7 +202,7 @@ class CatAvatar(Base):
 
 
 class VisionJob(Base):
-    """Trabalho persistente consumido pelo worker GPU, nunca pelo processo web."""
+    """Trabalho persistente: reconhecimento GPU ou análise de referência por tipo."""
 
     __tablename__ = "vision_jobs"
 

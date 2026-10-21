@@ -1,12 +1,14 @@
 """Public, revocable landing pages for deliberately shared search posters."""
 from html import escape
 from uuid import UUID
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Response
 from fastapi.responses import HTMLResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.database import get_database_session
 from app.persistence_models import MissingReport, RemoteCat
 from app.services.missing_posters import public_poster_details
+
+from app.services.report_media import report_photo_bytes
 
 router = APIRouter(prefix="/public/busca", tags=["public-search"])
 HEADERS = {"Cache-Control": "no-store", "X-Robots-Tag": "noindex, nofollow", "Referrer-Policy": "no-referrer",
@@ -54,7 +56,7 @@ async def public_photo(report_id: UUID, session: AsyncSession = Depends(get_data
     report, _ = await _public_report(report_id, session)
     if report.status != "active":
         raise HTTPException(404, "Busca encerrada.")
-    from app.routers.product import report_photo
-    response = await report_photo(report_id, user=None, session=session)
+    data = await report_photo_bytes(session, report_id)
+    response = Response(data, media_type="image/jpeg")
     response.headers.update(HEADERS)
     return response

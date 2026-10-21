@@ -2,7 +2,7 @@
 
 Gerado por `scripts/audit_quality.py` na API. Candidatos exigem revisão; ausência de referência não prova inutilidade.
 
-Arquivos versionados ou novos (respeitando .gitignore): 167. Fontes Python/Dart: 130.
+Arquivos versionados ou novos (respeitando .gitignore): 186. Fontes Python/Dart: 149.
 
 ## Distribuição das fontes
 
@@ -10,31 +10,39 @@ Arquivos versionados ou novos (respeitando .gitignore): 167. Fontes Python/Dart:
 |---|---:|---:|
 | alembic | 1 | 55 |
 | alembic/versions | 14 | 617 |
-| app | 9 | 1315 |
+| app | 9 | 1319 |
 | app/models | 3 | 297 |
 | app/prompts | 2 | 34 |
-| app/routers | 11 | 3808 |
-| app/services | 39 | 5520 |
+| app/routers | 16 | 4330 |
+| app/services | 51 | 6639 |
 | scripts | 13 | 1827 |
-| tests | 38 | 5409 |
+| tests | 40 | 5809 |
 
 ## Fontes com mais de 500 linhas
 
 | Arquivo | Linhas |
 |---|---:|
-| `app/routers/social.py` | 1475 |
 | `tests/test_quintal_production.py` | 769 |
-| `app/services/quintal_production.py` | 654 |
-| `app/routers/product.py` | 535 |
+| `app/routers/social_feed.py` | 665 |
+| `app/routers/social_chat.py` | 567 |
+| `app/routers/product.py` | 502 |
 
 ## Dependências entre rotas Python
 
-- `app/routers/public_search.py:57` → `app.routers.product`
-- `app/routers/quintal.py:57` → `app.routers.habitat`
-- `app/routers/quintal.py:72` → `app.routers.habitat`
+- `app/routers/social.py:8` → `app.routers.social_profiles`
+- `app/routers/social.py:15` → `app.routers.social_profiles`
+- `app/routers/social.py:16` → `app.routers.social_friendships`
+- `app/routers/social.py:24` → `app.routers.social_friendships`
+- `app/routers/social.py:25` → `app.routers.social_feed`
+- `app/routers/social.py:42` → `app.routers.social_feed`
+- `app/routers/social.py:43` → `app.routers.social_devices`
+- `app/routers/social.py:44` → `app.routers.social_devices`
+- `app/routers/social.py:45` → `app.routers.social_chat`
+- `app/routers/social.py:58` → `app.routers.social_chat`
 
 ## Corpos de funções Python idênticos
 
+- app/services/reference_analysis.py:145 (stop); app/services/quintal_scheduler.py:75 (stop)
 
 ## Dart fora do grafo de lib/main.dart
 
@@ -69,7 +77,7 @@ Inclui componentes acessíveis somente por testes ou ferramentas. Confirmar ante
 | `app/database.py` | 35 |
 | `app/dependencies.py` | 17 |
 | `app/exceptions.py` | 35 |
-| `app/main.py` | 250 |
+| `app/main.py` | 254 |
 | `app/models/__init__.py` | 0 |
 | `app/models/analysis.py` | 251 |
 | `app/models/vision.py` | 46 |
@@ -79,15 +87,20 @@ Inclui componentes acessíveis somente por testes ou ferramentas. Confirmar ante
 | `app/quintal_models.py` | 76 |
 | `app/routers/__init__.py` | 0 |
 | `app/routers/auth.py` | 369 |
-| `app/routers/habitat.py` | 327 |
-| `app/routers/product.py` | 535 |
+| `app/routers/habitat.py` | 288 |
+| `app/routers/product.py` | 502 |
 | `app/routers/progression.py` | 165 |
-| `app/routers/public_search.py` | 60 |
-| `app/routers/quintal.py` | 79 |
-| `app/routers/social.py` | 1475 |
-| `app/routers/sync.py` | 394 |
-| `app/routers/vision.py` | 272 |
-| `app/routers/websocket.py` | 132 |
+| `app/routers/public_search.py` | 62 |
+| `app/routers/quintal.py` | 80 |
+| `app/routers/social.py` | 80 |
+| `app/routers/social_chat.py` | 567 |
+| `app/routers/social_devices.py` | 48 |
+| `app/routers/social_feed.py` | 665 |
+| `app/routers/social_friendships.py` | 294 |
+| `app/routers/social_profiles.py` | 475 |
+| `app/routers/sync.py` | 347 |
+| `app/routers/vision.py` | 273 |
+| `app/routers/websocket.py` | 115 |
 | `app/schemas.py` | 384 |
 | `app/services/__init__.py` | 0 |
 | `app/services/analysis_cache.py` | 49 |
@@ -96,13 +109,16 @@ Inclui componentes acessíveis somente por testes ou ferramentas. Confirmar ante
 | `app/services/auth_service.py` | 205 |
 | `app/services/avatar_generation_service.py` | 88 |
 | `app/services/avatar_service.py` | 250 |
+| `app/services/catalog_changes.py` | 10 |
+| `app/services/chat_presenter.py` | 47 |
 | `app/services/color_service.py` | 224 |
-| `app/services/conversations.py` | 55 |
+| `app/services/conversations.py` | 108 |
 | `app/services/dense_features.py` | 111 |
 | `app/services/fcm_service.py` | 136 |
 | `app/services/fusion_service.py` | 73 |
-| `app/services/habitat_encounters.py` | 115 |
-| `app/services/habitat_interactions.py` | 145 |
+| `app/services/habitat_encounters.py` | 116 |
+| `app/services/habitat_interactions.py` | 146 |
+| `app/services/habitat_presenter.py` | 117 |
 | `app/services/habitat_pricing.py` | 16 |
 | `app/services/habitat_service.py` | 256 |
 | `app/services/milestones.py` | 226 |
@@ -110,24 +126,33 @@ Inclui componentes acessíveis somente por testes ou ferramentas. Confirmar ante
 | `app/services/preprocessing_service.py` | 83 |
 | `app/services/progression.py` | 333 |
 | `app/services/quality_service.py` | 43 |
+| `app/services/quintal_care.py` | 302 |
 | `app/services/quintal_catalog.py` | 69 |
-| `app/services/quintal_games.py` | 108 |
+| `app/services/quintal_clock.py` | 22 |
+| `app/services/quintal_games.py` | 110 |
+| `app/services/quintal_inventory.py` | 100 |
 | `app/services/quintal_notifications.py` | 40 |
-| `app/services/quintal_production.py` | 654 |
-| `app/services/quintal_progress.py` | 58 |
+| `app/services/quintal_production.py` | 281 |
+| `app/services/quintal_progress.py` | 59 |
+| `app/services/quintal_projection.py` | 295 |
 | `app/services/quintal_push.py` | 89 |
 | `app/services/quintal_return.py` | 53 |
 | `app/services/quintal_rewards.py` | 57 |
 | `app/services/quintal_scheduler.py` | 80 |
-| `app/services/realtime_events.py` | 67 |
+| `app/services/quintal_simulation.py` | 174 |
+| `app/services/realtime_events.py` | 78 |
 | `app/services/recognition_features.py` | 127 |
 | `app/services/recognition_service.py` | 264 |
+| `app/services/reference_analysis.py` | 150 |
+| `app/services/report_media.py` | 50 |
 | `app/services/report_presenter.py` | 26 |
 | `app/services/segmentation_service.py` | 351 |
+| `app/services/social_graph.py` | 55 |
+| `app/services/social_presenter.py` | 70 |
 | `app/services/storage_service.py` | 121 |
-| `app/services/vision_jobs.py` | 28 |
-| `app/services/vision_worker.py` | 227 |
-| `app/services/websocket_manager.py` | 162 |
+| `app/services/vision_jobs.py` | 50 |
+| `app/services/vision_worker.py` | 229 |
+| `app/services/websocket_manager.py` | 169 |
 | `scripts/audit_quality.py` | 159 |
 | `scripts/compare_cats.py` | 67 |
 | `scripts/evaluate_oxford_pet_segmentation.py` | 196 |
@@ -147,6 +172,7 @@ Inclui componentes acessíveis somente por testes ou ferramentas. Confirmar ante
 | `tests/test_benchmark_helpers.py` | 69 |
 | `tests/test_chat_rescue.py` | 135 |
 | `tests/test_color_and_fusion.py` | 104 |
+| `tests/test_conversation_events.py` | 149 |
 | `tests/test_dense_features.py` | 100 |
 | `tests/test_exceptions.py` | 30 |
 | `tests/test_feed_models.py` | 70 |
@@ -173,6 +199,7 @@ Inclui componentes acessíveis somente por testes ou ferramentas. Confirmar ante
 | `tests/test_realtime_events.py` | 29 |
 | `tests/test_recognition.py` | 195 |
 | `tests/test_recognition_database.py` | 238 |
+| `tests/test_reference_analysis.py` | 251 |
 | `tests/test_screen_corrections.py` | 86 |
 | `tests/test_segmentation_service.py` | 150 |
 | `tests/test_social_graph.py` | 181 |

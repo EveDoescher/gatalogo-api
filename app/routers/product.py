@@ -2,13 +2,11 @@
 from __future__ import annotations
 
 from datetime import UTC, datetime
-from io import BytesIO
 from pathlib import Path
 from uuid import UUID
 import uuid
 
 from fastapi import APIRouter, Depends, File, HTTPException, Query, Response, UploadFile
-from PIL import Image, ImageOps
 from pydantic import BaseModel, Field, field_validator
 from typing import Literal
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
@@ -19,7 +17,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_database_session
 from app.services.report_presenter import report_response as _report_response
-from app.persistence_models import (User, RemoteCat, CatPhoto, MissingReport, Sighting,
+from app.persistence_models import (User, RemoteCat, MissingReport, Sighting,
     MatchSuggestion, Conversation, ConversationMember, Friendship, AppNotification,
     FeedItem, ProductState)
 from app.dependencies import current_user
@@ -30,6 +28,8 @@ from app.services.realtime_events import publish_committed_events
 from app.config import get_settings
 
 from app.services.conversations import member_or_403 as _member_or_403
+
+from app.services.report_media import report_photo_bytes, photo_thumbnail_bytes
 
 router = APIRouter(prefix="/app", tags=["app"])
 
@@ -223,32 +223,8 @@ async def report_photo(
     user: User = Depends(current_user),
     session: AsyncSession = Depends(get_database_session),
 ) -> Response:
-    report = await session.get(MissingReport, report_id)
-    if report is None or report.status != "active":
-        raise HTTPException(404, "Alerta não encontrado ou inativo.")
-    cat = await session.get(RemoteCat, report.cat_id)
-    if cat is None or cat.deleted_at is not None:
-        raise HTTPException(404, "Gato não encontrado.")
-    photo = (await session.execute(
-        select(CatPhoto).where(
-            CatPhoto.cat_id == cat.id,
-            CatPhoto.kind == "primary",
-            CatPhoto.deleted_at.is_(None),
-        )
-    )).scalar_one_or_none()
-    storage_key = photo.storage_key if photo else cat.photo_key
-    if not storage_key:
-        raise HTTPException(404, "Foto não disponível.")
-    try:
-        with Image.open(photo_storage.open(storage_key)) as original:
-            thumbnail = ImageOps.exif_transpose(original).convert("RGB")
-            thumbnail.thumbnail((1200, 1200))
-            output = BytesIO()
-            thumbnail.save(output, format="JPEG", quality=85)
-    except (OSError, ValueError):
-        raise HTTPException(404, "Foto não disponível.")
-    return Response(output.getvalue(), media_type="image/jpeg", headers={"Cache-Control": "public, max-age=300"})
-
+    data = await report_photo_bytes(session, report_id)
+    return Response(data, media_type="image/jpeg", headers={"Cache-Control": "public, max-age=300"})
 
 async def _clue(session: AsyncSession, user: User, match_id: UUID):
     row = (await session.execute(select(MatchSuggestion, MissingReport, Sighting).join(MissingReport, MissingReport.id == MatchSuggestion.missing_report_id).join(Sighting, Sighting.id == MatchSuggestion.sighting_id).where(MatchSuggestion.id == match_id, MissingReport.user_id == user.id))).one_or_none()
@@ -312,16 +288,7 @@ async def clue_photo(match_id: UUID, user: User = Depends(current_user), session
     cat = await session.get(RemoteCat, sighting.cat_id)
     if match.status == "stale" or cat is None or cat.deleted_at is not None or not cat.photo_key:
         raise HTTPException(404, "Foto não disponível.")
-    # Re-encode to strip EXIF/GPS and avoid leaking a private original.
-    try:
-        with Image.open(photo_storage.open(cat.photo_key)) as original:
-            thumbnail = ImageOps.exif_transpose(original).convert("RGB")
-            thumbnail.thumbnail((1200, 1200))
-            output = BytesIO()
-            thumbnail.save(output, format="JPEG", quality=85)
-    except (OSError, ValueError):
-        raise HTTPException(404, "Foto não disponível.")
-    return Response(output.getvalue(), media_type="image/jpeg", headers={"Cache-Control": "private, no-store"})
+    return Response(photo_thumbnail_bytes(cat.photo_key), media_type="image/jpeg", headers={"Cache-Control": "private, no-store"})
 
 
 @router.post("/friends/{friend_id}/conversation")

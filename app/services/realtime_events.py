@@ -3,6 +3,7 @@
 Database notifications remain the source of truth.  WebSocket events are only a
 prompt for a connected client to refresh its already-authorized data.
 """
+
 from __future__ import annotations
 
 from collections.abc import Mapping
@@ -45,6 +46,11 @@ def queue_notification(session: AsyncSession, notification: AppNotification) -> 
     )
 
 
+def discard_pending_events(session: AsyncSession) -> None:
+    """Discard hints staged by work which has been rolled back."""
+    session.info.pop(_PENDING_EVENTS_KEY, None)
+
+
 async def publish_committed_events(session: AsyncSession) -> None:
     """Publish events queued by the transaction after a successful commit."""
     pending = session.info.pop(_PENDING_EVENTS_KEY, [])
@@ -54,14 +60,19 @@ async def publish_committed_events(session: AsyncSession) -> None:
         except Exception:
             # The transaction is already committed; clients can refresh via HTTP.
             logger.exception("Could not deliver committed WebSocket event")
-        if event == "new_notification" and data.get('notification_type') != 'quintal_ready':
+        if (
+            event == "new_notification"
+            and data.get("notification_type") != "quintal_ready"
+        ):
             notification_id = data.get("notification_id")
             if isinstance(notification_id, str):
                 try:
                     await fcm_sender.send_notification(
                         user_id=user_id,
                         notification_id=notification_id,
-                        notification_type=str(data.get("notification_type", "notification")),
+                        notification_type=str(
+                            data.get("notification_type", "notification")
+                        ),
                     )
                 except Exception:
                     logger.exception("Could not deliver committed push notification")

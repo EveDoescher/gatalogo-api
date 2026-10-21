@@ -452,3 +452,6 @@ Para selecionar cenários, passe os argumentos do pytest após o script:
 ```powershell
 .\.venv\Scripts\python.exe scripts/run_integration_checks.py tests/test_quintal_postgres.py
 ```
+
+A organização dos domínios, a responsabilidade por transações e a retomada de
+análise de referência estão em [docs/architecture_refactoring.md](docs/architecture_refactoring.md).

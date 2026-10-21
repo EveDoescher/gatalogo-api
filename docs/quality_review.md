@@ -84,3 +84,27 @@ SMTP fica desabilitado: a disponibilidade do Mailpit não é evidência de teste
 A suíte padrão continua opt-in para essas integrações; o comando documentado no
 README habilita as flags e fornece os pré-requisitos automaticamente. Os demais
 itens de arquitetura mapeados acima permanecem explícitos.
+
+
+## Refatoração arquitetural — 21/10/2026
+
+O mapa inicial acima é histórico. A execução e as pendências atuais estão em
+[architecture_refactoring.md](architecture_refactoring.md).
+
+Foram extraídos apresentadores de habitat/mídia, domínios sociais, regras de
+produção e análise de referência persistente. HTTP e WebSocket compartilham
+recibos e autorização de conversa. O OpenAPI integral permaneceu idêntico.
+Validação da etapa:
+
+- Rodada completa integrada: **295 aprovados, zero ignorados e zero falhas**.
+- Complemento final de fila, WebSocket e produto: **26 aprovados, zero ignorados e zero falhas**, incluindo os testes adicionados após a rodada completa.
+- Entrega/limpeza WebSocket: **13 aprovados** na verificação final focada.
+- Ruff do repositório inteiro: **sem apontamentos**.
+- OpenAPI antes/depois: **idêntico**, 122 endpoints HTTP.
+- Comparação AST das regras de produção: **22 corpos de função idênticos**.
+- Os dois ambientes PostgreSQL/API descartáveis foram removidos pelo executor. A API de uso respondeu `ok`; PostgreSQL e Mailpit originais permaneceram saudáveis.
+
+Logs locais: `.tmp/integration-abb3538bf34f/pytest.log`,
+`.tmp/integration-bf3497674c11/pytest.log` e `.tmp/architecture-events-tests.log`.
+As próximas fronteiras maiores e a limitação de validação GPU/Gemini real
+continuam explícitas no documento de arquitetura.

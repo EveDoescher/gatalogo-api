@@ -8,12 +8,15 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.database import get_database_session
 from app.persistence_models import User
 from app.dependencies import current_user
-from app.services.quintal_production import operation, projection
+from app.services.quintal_production import operation
+from app.services.quintal_projection import projection
 from app.services.quintal_games import session_operation
 from app.services import progression as progress
 from app.services.quintal_progress import publish_progress
 from app.services.realtime_events import publish_committed_events
 from app.services.quintal_notifications import notify_ready
+
+from app.services.habitat_presenter import habitat_snapshot
 
 router = APIRouter(prefix="/app/quintal", tags=["quintal"])
 
@@ -54,8 +57,7 @@ async def get_production(user: User = Depends(current_user), session: AsyncSessi
     result = await projection(session, user.id)
     rewards = await publish_progress(session, user.id)
     await notify_ready(session, user.id, result)
-    from app.routers.habitat import _snapshot
-    habitat = await _snapshot(session, user.id)
+    habitat = await habitat_snapshot(session, user.id)
     await session.commit()
     await publish_committed_events(session)
     return {"production": result, "habitat": habitat, "progress": rewards}
@@ -69,8 +71,7 @@ async def mutate(payload: OperationRequest, user: User = Depends(current_user), 
         result = await projection(session, user.id)
         rewards = await publish_progress(session, user.id)
         await notify_ready(session, user.id, result)
-        from app.routers.habitat import _snapshot
-        habitat = await _snapshot(session, user.id)
+        habitat = await habitat_snapshot(session, user.id)
         await session.commit()
         await publish_committed_events(session)
         return {"outcome": outcome, "production": result, "habitat": habitat, "progress": rewards}

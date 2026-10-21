@@ -120,7 +120,8 @@ async def interact(session: AsyncSession, user_id: UUID, action: str, target_id:
         if action == "pet":
             # Migrate before changing the legacy affinity, so the first care
             # and its replay cannot become two distinct production bonuses.
-            from app.services.quintal_production import cat_care, bond, reconcile
+            from app.services.quintal_care import cat_care, bond
+            from app.services.quintal_simulation import reconcile
             care = await cat_care(session, wallet, target_id)
             production_state = deepcopy(care.state)
             production_state.setdefault("assisted", not bool(production_state.get("food_bowl") and production_state.get("water_bowl")))

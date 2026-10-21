@@ -43,6 +43,7 @@ from app.services.realtime_events import publish_committed_events
 from app.database import get_session_factory
 from app.services.websocket_manager import ws_manager
 from app.services.quintal_scheduler import QuintalScheduler
+from app.services.reference_analysis import ReferenceAnalysisWorker
 
 
 @asynccontextmanager
@@ -50,9 +51,12 @@ async def lifespan(_: FastAPI):
     await ws_manager.start_notification_bridge(get_session_factory())
     quintal_scheduler = QuintalScheduler(get_session_factory())
     quintal_scheduler.start()
+    reference_worker = ReferenceAnalysisWorker(get_session_factory())
+    reference_worker.start()
     try:
         yield
     finally:
+        await reference_worker.stop()
         await quintal_scheduler.stop()
         await ws_manager.stop_notification_bridge()
 

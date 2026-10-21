@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-import asyncio
-import hashlib
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from uuid import UUID
@@ -12,17 +10,18 @@ from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import get_settings
-from app.database import get_database_session, get_session_factory
+from app.database import get_database_session
 from app.persistence_models import CatAvatar, CatPhoto, CatVisualEmbedding, RemoteCat, SyncChange, User
 from app.dependencies import current_user
 from app.schemas import ReferencePhotoResponse, SyncCatRecord, SyncOperation, SyncPullResponse, SyncPushRequest
-from app.services.analysis_service import AnalysisService
 from app.services.avatar_generation_service import rebuild_analysis_from_photos
 from app.services.storage_service import photo_storage
-from app.services.vision_jobs import enqueue_recognition
+from app.services.vision_jobs import enqueue_recognition, enqueue_reference_analysis
 from app.services.recognition_service import sync_catalog_sighting, refresh_cat_matches
 from app.services.realtime_events import publish_committed_events
-from app.services.progression import confirm_photo, account as progress_account, identify
+from app.services.progression import account as progress_account, identify
+
+from app.services.catalog_changes import record_change as _record_change
 
 router = APIRouter(prefix="/sync", tags=["sync"])
 
@@ -39,11 +38,6 @@ def _incoming_wins(existing: RemoteCat, operation: SyncOperation) -> bool:
     if incoming != current:
         return incoming > current
     return operation.device_id > existing.updated_by_device
-
-
-async def _record_change(session: AsyncSession, cat: RemoteCat) -> None:
-    session.add(SyncChange(user_id=cat.user_id, cat_id=cat.id))
-    await session.flush()
 
 
 async def _apply_operation(session: AsyncSession, user: User, operation: SyncOperation) -> RemoteCat:
@@ -249,47 +243,6 @@ async def download_photo(client_id: UUID, user: User = Depends(current_user), se
     return FileResponse(path, media_type=cat.photo_content_type or "image/jpeg", filename=f"{client_id}{path.suffix}")
 
 
-async def _analyze_reference_photo(
-    *, user_id, client_id: UUID, kind: str, image_bytes: bytes
-) -> None:
-    """Best-effort background work; a failed reference can never block the cat."""
-    async with get_session_factory()() as session:
-        cat = (await session.execute(
-            select(RemoteCat).where(RemoteCat.user_id == user_id, RemoteCat.client_id == client_id)
-        )).scalar_one_or_none()
-        photo = (await session.execute(
-            select(CatPhoto).join(RemoteCat, CatPhoto.cat_id == RemoteCat.id).where(
-                RemoteCat.user_id == user_id, RemoteCat.client_id == client_id, CatPhoto.kind == kind
-            )
-        )).scalar_one_or_none()
-        if cat is None or photo is None or photo.deleted_at is not None:
-            return
-        try:
-            incoming = (await AnalysisService(get_settings()).analyze(
-                cat_id=str(client_id), image_bytes=image_bytes
-            )).model_dump(mode="json")
-            await progress_account(session, user_id)
-            await session.refresh(cat, with_for_update=True)
-            await session.refresh(photo, with_for_update=True)
-            if cat.deleted_at is not None or photo.deleted_at is not None or photo.content_hash != hashlib.sha256(image_bytes).hexdigest():
-                return
-            photo.analysis = incoming
-            photo.status = "ready"
-            await confirm_photo(session, cat, photo, incoming, reference=True)
-            await rebuild_analysis_from_photos(session, cat)
-            await _record_change(session, cat)
-        except Exception:
-            await session.rollback()
-            await session.refresh(cat)
-            await session.refresh(photo)
-            if photo.deleted_at is not None or photo.content_hash != hashlib.sha256(image_bytes).hexdigest():
-                return
-            photo.status = "failed"
-            await _record_change(session, cat)
-        await session.commit()
-        await publish_committed_events(session)
-
-
 @router.put("/cats/{client_id}/reference-photos/{kind}", status_code=status.HTTP_202_ACCEPTED)
 async def upload_reference_photo(
     client_id: UUID,
@@ -327,12 +280,12 @@ async def upload_reference_photo(
     await session.flush()
     await session.execute(delete(CatVisualEmbedding).where(CatVisualEmbedding.photo_id == photo.id))
     await enqueue_recognition(session, cat=cat, photo=photo)
+    await enqueue_reference_analysis(session, cat=cat, photo=photo)
     await refresh_cat_matches(session, cat=cat, settings=get_settings())
     await session.commit()
     await publish_committed_events(session)
     if old_key and old_key != key:
         photo_storage.delete(old_key)
-    asyncio.create_task(_analyze_reference_photo(user_id=user.id, client_id=client_id, kind=kind, image_bytes=data))
     return {"status": "analyzing"}
 
 

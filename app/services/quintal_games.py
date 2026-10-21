@@ -10,7 +10,9 @@ from sqlalchemy import select
 from app.quintal_models import QuintalSession
 from app.persistence_models import HabitatTransaction
 from app.services.habitat_service import wallet_for
-from app.services.quintal_production import utc, iso, day, levels, counter, stock, owned_cat, cat_care, bond, play_care_bonus
+from app.services.quintal_clock import utc, iso, day
+from app.services.quintal_inventory import levels, counter, stock
+from app.services.quintal_care import owned_cat, cat_care, bond, play_care_bonus
 
 def fish_position(state, seconds):
     return .5 + .28 * math.sin(seconds * state["speed"] + state["phase"]) + .1 * math.sin(seconds * .7)

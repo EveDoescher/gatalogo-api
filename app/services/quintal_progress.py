@@ -1,5 +1,6 @@
 """Project production counters into existing milestones, with zero base XP."""
-from app.services.quintal_production import rows, utc, CALENDAR, PROGRESS_METRICS
+from app.services.quintal_inventory import rows, PROGRESS_METRICS
+from app.services.quintal_clock import utc, CALENDAR
 from app.persistence_models import HabitatTransaction
 from sqlalchemy import select
 from app.quintal_models import QuintalCounter
