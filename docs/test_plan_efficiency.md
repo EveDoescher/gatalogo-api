@@ -2,6 +2,8 @@
 
 Data: 21/10/2026. API e Flutter, branch `code-quality-cleanup`.
 
+Revisão documental: comparação oficial/refatorada, acessibilidade, reidentificação, amostragem justificada e rastreabilidade. Os 74 cenários e as 28 famílias de mutação originais foram preservados; novos IDs são aditivos.
+
 **Status: especificação para revisão. Nenhum cenário desta campanha foi executado nesta etapa.** Não foram implementados instrumentação, geradores de carga ou mutantes. Referências a testes existentes são pontos de partida, não certificação de cobertura integral dos casos propostos.
 
 Objetivo: medir e melhorar mecanismos mantendo telas, textos, navegação, animações, regras, autorização, qualidade das imagens e resultado funcional. Após a revisão: preparar fixtures, medir baseline, analisar resultados, mudar uma causa por vez e repetir os mesmos casos.
@@ -49,14 +51,62 @@ Não executar produto cartesiano completo. Combinar bordas com conta/concorrênc
 
 ### Método e critérios
 
-1. Fixar SHAs API/Flutter, dependências, schema, configuração não secreta, hardware/recursos Docker, processos/workers, modelos e seed. Definir snapshot inicial e efeitos esperados antes da rodada. Baseline será o código atual, não tempos presumidos de versões antigas.
-2. Separar processo/modelo/cache frio de operação aquecida. HTTP determinístico: proposta de 20 aquecimentos, 1.000 amostras por célula e 3 rodadas baseline/candidato alternadas. Cold start/móvel: 30 repetições quando viável. IA real: piloto de 20 por classe/caminho, orçamento explícito e expansão posterior. Não anunciar P99 confiável com amostra pequena.
+1. Fixar SHAs API/Flutter, dependências, schema, configuração não secreta, hardware/recursos Docker, processos/workers, modelos e seed. Definir snapshot inicial e efeitos esperados antes da rodada. A primeira campanha compara `main` com `code-quality-cleanup` conforme seção 2.1, sem alterar `main`. Depois, o par de SHAs refatorado aceito vira baseline das otimizações futuras.
+2. Separar processo/modelo/cache frio de operação aquecida. Os números iniciais da versão anterior (20 aquecimentos/1.000 amostras HTTP, 30 repetições móveis e piloto IA de 20) permanecem como referências de planejamento, **não como tamanho suficiente ou regra universal**. Dimensionar e justificar cada execução pela seção 2.2; nenhum percentil extremo é confiável apenas por atingir esses números.
 3. Usar relógio monotônico por processo e IDs sintéticos de correlação. Medir cliente, auth, DB, storage, IA, commit, jobs e UI separadamente. Não subtrair relógios de máquinas diferentes sem sincronização nem somar spans paralelos como se fossem sequenciais.
 4. Guardar amostras brutas, n, unidade, P50/P95/P99 quando apropriado, máximo, throughput, status e erros/timeouts/cancelamentos. Incluir duração dos erros; timeout é observação censurada, não amostra descartável nem sucesso no limite. Declarar método de percentil e dispersão/intervalos entre rodadas.
 5. Carga fechada por concorrência e aberta por taxa de chegada. Registrar demanda oferecida/aceita/concluída, fila e atraso do próprio gerador para não esconder saturação. Gerador em processo separado, monitorado.
 6. Validar contrato e estado em cada rodada. Exposição, perda de dados ou débito duplicado reprova a mudança mesmo se mais rápida. Não normalizar ordem, campos desconhecidos ou erros relevantes. IDs/datas não determinísticos só com regra registrada e comparação semântica adicional.
 7. Não existem SLOs novos aprovados. Primeira rodada caracteriza baseline. Proposta de alerta para investigação: P95 >10% pior ou tráfego/memória >5% pior, repetidos em 3 rodadas e acima do ruído observado. Não é aprovação automática nem requisito do produto. Integridade/segurança têm tolerância zero.
 8. Interromper ensaio por OOM/reinício inesperado, disco de testes >80%, 5xx/timeouts >5% por 60 s ou backlog sem recuperação por 2 min. Registrar interrupção e recuperar apenas serviços da campanha. Limites protegem o ensaio; não prometem capacidade.
+
+### 2.1 Campanha BR — comparação entre branches
+
+Comparar duas versões completas e identificadas: **A oficial = API main + Flutter main**; **B refatorada = API code-quality-cleanup + Flutter code-quality-cleanup**. Avaliar latência, recursos, SQL, throughput e integridade com os mesmos cenários aplicáveis. Não fazer checkout, merge, reset, alteração ou push em `main`; usar cópias isoladas em commits fixos. Nenhuma cópia será criada nesta etapa documental.
+
+Referências locais verificadas em leitura nesta revisão, não execução nem validação de que os remotos permanecem nestes commits:
+
+| Projeto | main local — candidato A | code-quality-cleanup antes desta revisão documental — candidato B |
+|---|---|---|
+| API | `eced9c3873bc45c56343ce5d46dae6c1843f2a51` | `2324e290e1684b3b44bb7717460e884089a78c5e` |
+| Flutter | `0ed31b211f31873d6f905116a0f0ccc5588e01c1` | `88e150fca6e4794d1bf70832a932600c90f32489` |
+
+No preparo, resolver novamente cada ref, verificar se `main` ainda representa a versão oficial anterior e registrar **quatro SHAs completos**, commits do plano/executor e estado limpo das cópias. Se a ref mudou, revisar a escolha explicitamente; não chamar uma versão posterior de baseline histórico. Não registrar nome móvel de branch como única identificação. Documentação pode avançar sem alterar o código medido; registrar os SHAs de fonte e documento separadamente.
+
+- **Dados/configuração:** seed e manifesto idênticos, mesmos IDs/datas, storage/fotos/hashes, histórico e volumes. Restaurar snapshot inicial antes de cada rodada; caches privados por versão, vazios ou preenchidos pelo mesmo procedimento. Não compartilhar banco vivo nem cache mutável entre A/B. Se schemas diferirem, produzir estado lógico equivalente usando fixtures versionadas, registrar schema/migrações de cada lado e comprovar equivalência; não migrar dados reais.
+- **Execução:** mesmo host/aparelho/OS/CPU/RAM/limites, DB/driver, rede/proxy, processos/workers, versões de modelo, condições térmicas e carga externa. Alternar ordem A→B/B→A em blocos pareados; não rodar A e B simultaneamente disputando hardware. Separar frio/quente e repetir em sessões independentes conforme 2.2.
+- **Dependências:** configuração comum onde suportada, preservando parâmetros de resultado. Registrar locks/runtimes de cada branch. Se dependências/modelos exigidos diferirem, a comparação principal é do pacote entregue e o efeito inclui essa diferença; não atribuir tudo à arquitetura. Um braço controlado com dependências comuns só é permitido se compatível, como experimento adicional identificado, sem editar `main`.
+- **Instrumentação equivalente:** harness externo versionado comum, observação SQL/pool/CPU igual e overhead avaliado. A versão oficial pode não conter os testes/helpers novos; adaptar o executor externo ao contrato de cada versão e comparar o mesmo efeito observável, sem copiar implementação refatorada para A. Testes exclusivos de um mecanismo novo ficam como diagnóstico B, não comparação inexistente.
+- **Atribuição:** comparação principal mede o conjunto completo A vs B. Quando os contratos permitirem, executar braços API A/B com cliente fixo e Flutter A/B com API fixa para localizar origem de diferenças. Registrar compatibilidade e quatro SHAs em cada braço; incompatibilidade é bloqueio, não zero ou regressão automaticamente.
+- **Decisão:** preservar os casos e investigar diferenças funcionais/segurança em vez de normalizá-las. Mostrar valores A/B, diferenças absolutas/relativas, incerteza e custo por operação. SQL esperado em DB-01/02 e pool em DB-05 descrevem B; **não exigir essas contagens otimizadas de A**. Ambos passam pelo mesmo oráculo funcional independente. Bug histórico identificado é achado, não autorização para perpetuá-lo ou alterar funcionalidades nesta etapa.
+- **Transição:** após revisão dos resultados, congelar o par B aceito como baseline OPT-0 para futuras otimizações. Não substituir retrospectivamente o relatório A/B. Cada candidato posterior aponta para OPT-0 (ou nova baseline aprovada com cadeia de versões), sem usar `main` móvel.
+
+| ID / prioridade / ambiente | Preparação e ação | Métricas e resultado esperado |
+|---|---|---|
+| BR-01 P0 E1/E2 | Resolver refs, preparar A/B isolados com fixtures/snapshots equivalentes e harness comum. | Quatro SHAs, hashes/configuração/schema e manifesto; qualquer diferença impeditiva bloqueia a comparação correspondente. |
+| BR-02 P1 E2 | Repetir LAT/LOAD/DB/RSC aplicáveis em blocos pareados nas duas versões. | Latência, CPU/RAM/IO/pool, SQL, throughput/erros sob mesma demanda; contagens específicas de B são medidas, não requisitos impostos a A. |
+| BR-03 P0 E1/E2/E4 | Repetir DATA/RES/SEC e percursos UX/ACC nas duas versões, incluindo perda de resposta e conta. | Diffs de estado/contrato/visibilidade; classificar regressão, problema preexistente ou inconclusivo com evidência de cada lado. |
+| BR-04 P1 E2/E4 | Quando compatível, fixar cliente para variar API e fixar API para variar Flutter. | Separar contribuição de cada projeto; registrar incompatibilidades e limites de atribuição, sem confundir braço controlado com pacote entregue. |
+| BR-05 P0 documental | Revisar comparação A/B, congelar SHAs B e vincular campanha OPT-0. | Baseline futura explícita, relatório histórico preservado e nenhuma modificação em main. |
+
+### 2.2 Amostragem, repetições e incerteza
+
+Antes da coleta principal, registrar métrica primária, unidade independente, precisão desejada ou menor diferença de interesse, orçamento/teto, regras de exclusão, aquecimento e parada. Esses objetivos serão aprovados com a campanha; não escolher n, limiar ou método depois de ver qual favorece uma branch. Piloto dimensiona variância/correlação/custo, não comprova melhoria. Se o orçamento não permitir precisão necessária, reduzir a conclusão ou declarar inconclusivo.
+
+| Experimento | Unidade e dimensionamento proposto | Repetições, aquecimento e limites |
+|---|---|---|
+| Endpoint rápido/SQL | Milhares de requests por célula são viáveis. Piloto de 100–200 requests estima distribuição/correlação e custo. Definir n por precisão do IC do percentil/diferença, não só por média. Para proporção independente, aproximação conservadora n≈z²p(1−p)/e² orienta planejamento; validar condições, usar p=0,5 sem estimativa e não aplicar a percentis. | Começar com 3 blocos A/B independentes, expandir conforme dispersão e precisão fixadas. 20 warmups são partida; pré-definir estabilidade de janelas de latência/CPU e verificar carga de modelo/cache. Se não estabilizar até teto, classificar frio/não estacionário. |
+| Carga/soak | Unidade é janela/bloco em patamar, não cada request independente. Duração suficiente para estabilizar e observar fila; 3 min/patamar e soak de 60 min dos cenários são pontos iniciais, ajustados após piloto. | Repetir patamares sustentáveis em sessões independentes e alternar A/B. Bootstrap por blocos/janelas com comprimento estimado pela autocorrelação; sem IC ingênuo de requests correlacionados. |
+| Cold start/móvel/energia | Unidade é inicialização/sessão pareada no aparelho. Piloto mede dispersão térmica/cache; 30 inícios ou sessões de 15 min são orçamento inicial, não poder estatístico garantido. Dimensionar pela diferença relevante e variação entre sessões. | Alternar A/B, restaurar condições iniciais e repouso; se população alvo inclui vários aparelhos, medir estratos de hardware. Milhares de frames do mesmo percurso não são milhares de usuários independentes. |
+| IA real: custo/latência | Unidade é foto/caminho ou sessão de inferência, estratificada por qualidade/ângulo/cache. Piloto de até 20 por estrato viável estima custo/tempo; ampliar conjunto até precisão/orçamento pré-fixados. | Processamento determinístico: 1 resultado de qualidade por foto, repetições só para tempo; componente estocástico: iniciar com 3 repetições/foto e aumentar se variância entre chamadas dominar. Não usar repetição da mesma foto para inflar diversidade. Separar warmup de modelos e cache miss de hit. |
+| Reidentificação/classificação | Unidade primária é indivíduo/sessão fotográfica; pares compartilham gatos e não são independentes. Piloto de identidades para verificar rótulos/viabilidade; n final por IC/risco alvo e suporte por estrato. | Particionar por indivíduo e sessão (seção REID). Bootstrap hierárquico/por identidade para precision/recall/F1/diferenças, preservando a estrutura de pares. Não apresentar todos os pares combinatórios como n independente. |
+| Segurança/integridade/ACC/mutação | Matriz de estados, bordas e interleavings, não distribuição de latências. Cobrir cada combinação crítica definida e repetir cada agenda determinística nas duas versões. | Para corridas, começar com 3 agendas controladas por barreira e ampliar por estados não cobertos; stress aleatório com seed é complemento. Zero falhas não prova ausência; reportar agendas/variações e lacunas, não IC artificial de sucesso universal. |
+
+**Percentis:** a cauda acima de P99 contém em expectativa apenas 0,01n observações: com 1.000 requests são cerca de 10, com 10.000 cerca de 100. Isso explica por que 1.000 não basta para garantir estabilidade. Planejar IC não paramétrico por estatísticas de ordem/binomial quando independente; em série temporal usar blocos/sessões. P99 só recebe interpretação comparativa se IC e suporte de cauda atendem precisão pré-declarada e se mantêm entre rodadas; senão marcar exploratório/não estimável e apresentar distribuição/P50/P95 com as mesmas ressalvas. Não extrapolar P99 de piloto IA ou de 30 cold starts.
+
+**Intervalos:** registrar nível (proposta: 95%), método, n independente/efetivo e seed do reamostrador. Para proporções independentes usar Wilson ou exato quando apropriado; para F1/pares dependentes e diferenças A/B, bootstrap por identidade/sessão/bloco pareado. Para zero erros independentes em n ensaios, limite superior unilateral de 95% é 1−0,05^(1/n)≈3/n: zero em 300 não demonstra taxa <0,1%; seriam necessários aproximadamente 2.995 independentes para esse limite. Em gatos/pares correlacionados, não aplicar essa conta diretamente: informar IC por clusters e insuficiência do conjunto.
+
+**Variabilidade e parada:** discriminar entre requests, rodadas, fotos, indivíduos, aparelhos e chamadas do provedor; mostrar amostras por estrato e agregados ponderados com pesos declarados. Caches e erros permanecem estratos próprios. Escolher orçamento fixo ou regra sequencial com correção estatística previamente definida; não parar ao primeiro p-valor favorável nem fazer bootstrap repetido até “passar”. Se vários cenários/limiares forem explorados, identificar exploração e validar hipótese selecionada em dados/rodada independentes. IC estreito não elimina viés de seleção do dataset ou hardware.
 
 ## 3. Cenários para revisão
 
@@ -109,6 +159,48 @@ Todos têm estado **PLANEJADO**. Cada linha herda protocolo/fixtures e define pr
 | IMG-05 P0 E2/E3 | Sem gato/múltiplos/escura/borrada, bytes/pixels nas bordas, arquivo inválido. | Tempo/recurso até recusa; mesmos códigos/mensagens e ausência de efeito parcial. Aceitação segue regra atual, não rótulo inventado. |
 | IMG-06 P1 E3 | Conjunto real rotulado antes/depois de mudança interna, modelo/prompt/seed registrados. | Detecção/IoU quando há ground truth, aceitação e atributos; revisar discrepâncias. Dataset Oxford existente não fornece rótulos de cor/padrão. |
 | IMG-07 P0 E2 | Disco/permissão indisponível no storage próprio; arquivo muda entre claim e leitura. | Erro/órfãos/referência DB/hash/cleanup; não aceitar resultado para bytes diferentes ou sucesso sem persistência correspondente. |
+
+### REID — reidentificação visual do mesmo indivíduo
+
+Extensão de IMG, sem substituir IMG-01 a IMG-07. Separar quatro tarefas e seus rótulos: **detecção** localiza gato(s) na foto; **segmentação** delimita pixels do animal; **atributos** classificam cor/pelagem/características; **reidentificação** compara fotografias para recuperar candidatos ao mesmo indivíduo. Boa máscara ou atributos semelhantes não comprovam identidade. A qualidade de cada etapa deve ser avaliada isoladamente e no pipeline completo.
+
+Alvos observados: `services/recognition_service.py:compare_embeddings`, `recognition_features.py`, `dense_features.py`, `config.py` e rotas de decisão de pistas em `routers/vision.py`. O mecanismo atual usa similaridade cosseno, versão/região/qualidade/ângulo, evidências locais/densas e independência de fotos; retorna `identity_confirmed=False`, score não calibrado e pode restringir sugestões ou operar em shadow mode. Registrar configuração efetiva, não só defaults. **Similaridade não é probabilidade e uma sugestão não é identificação confirmada.** Ground truth experimental também não confirma uma pista real nem modifica o estado do app.
+
+#### Dataset F-REID a preparar, sem coleta ou execução nesta etapa
+
+- Fotografias consentidas/licenciadas de indivíduos com identidade estabelecida independentemente do algoritmo: histórico do tutor com sessões distintas e revisão do vínculo entre fotos. Dois revisores para vínculos ambíguos; discordância vira rótulo incerto excluído da avaliação supervisionada principal e quantificado à parte. Aceite/clique do usuário ou sugestão do próprio modelo não basta como verdade de referência.
+- Manifesto versionado e privado quando necessário: ID pseudônimo do gato, foto/hash/origem/permissão, sessão/data aproximada, câmera, luz, ângulo/lado (incluindo desconhecido), distância/escala, nitidez/oclusão, pelagem e evidência/confiança do rótulo. Não publicar localização/contato ou fotos sem autorização.
+- Positivos: mesmo indivíduo em capturas independentes e sessões distintas. Negativos: indivíduos diferentes, incluindo **negativos difíceis** de pelagem/porte semelhantes, sólidos e pouco distintivos. Variar luz natural/artificial/baixa, frente/perfil/lados opostos/costas, perto/longe e resolução/desfoque/oclusão. Transformações sintéticas são stress separado e não novos indivíduos nem substitutos da diversidade natural.
+- Separar desenvolvimento/calibração/teste final **por identidade**; indivíduos do teste não participam de tuning. Dentro de cada partição, galeria e consultas usam fotos/sessões diferentes do mesmo gato. Em open set, incluir gatos de consulta ausentes da galeria. Se houver treinamento, manter identidades de avaliação fora dele quando verificável; origem desconhecida do pré-treino é limitação declarada.
+- Hash e similaridade perceptual auditam duplicatas/near-duplicates e frames da mesma rajada. Nada disso atravessa partições ou conta como evidência positiva independente. Duplicatas permanecem apenas no caso específico de robustez REID-06.
+- Congelar manifesto, IDs dos pares e composição da galeria antes do teste final; balancear contribuição por gato/sessão, incluir estratos raros e declarar quantidade real de indivíduos/fotos/positivos/negativos por estrato. Dimensionamento conforme 2.2: conjunto pequeno é piloto, não benchmark definitivo. All-pairs não aumenta o n independente.
+
+#### Métricas e política de limiares
+
+- **Verificação de pares:** rótulo positivo = mesmo gato; decisão positiva = par ultrapassa o limiar de recuperação avaliado, ainda candidato. Publicar TP/FP/TN/FN; precision=TP/(TP+FP), recall=TP/(TP+FN), F1=2PR/(P+R), FPR=FP/(FP+TN), FNR=FN/(FN+TP), contagens absolutas e denominadores. Denominador zero é não estimável, não 0/100% por conveniência.
+- **Pipeline de sugestões:** medir separadamente recall da recuperação visual, cobertura/rejeição por qualidade/ângulo/modelo, taxa de candidatos restritos e recall/FP das sugestões elegíveis após todas as regras. Um mesmo indivíduo bloqueado por preflight/segmentação ou filtro conta como falha/abstenção ponta a ponta, discriminada por etapa; não calcular “acerto” apenas nos pares fáceis que sobreviveram. Negação por política/privacidade não autoriza afrouxá-la para melhorar recall.
+- **Busca em galeria:** Recall@1/@5 quando a galeria permite, posição do verdadeiro indivíduo e taxa de falsa sugestão por consulta sem correspondente (open set). Deduplicar por indivíduo ao ranquear, registrar tamanho da galeria; FP por par e falsa sugestão por consulta são denominadores diferentes.
+- Reportar macro por indivíduo e por estrato, além de agregado com pesos declarados; precision depende da prevalência de positivos. Conjunto balanceado/hard negatives é diagnóstico, sem promessa de precision operacional. Se prevalência real desconhecida, mostrar sensibilidade a prevalências explicitadas como hipóteses.
+- Limiar atual congelado é a comparação principal A/B. Em calibração, varrer scores observados/grade registrada cobrindo o domínio admitido por cada parâmetro, incluir fronteiras e gerar curvas precision-recall/ROC e tabela de falsos positivos/negativos. Avaliar score bruto e política completa separadamente; cosseno tem domínio matemático diferente da faixa aceita por determinado setting. Não desabilitar corroboradores nem usar o teste final para escolher limiar.
+- Escolher ponto operacional **antes de abrir o teste final**, conforme custo/risco de falso positivo e recall mínimo a aprovar; F1 máximo isolado não define segurança. Congelar limiar/modelo/política e reavaliar holdout com IC por identidade/sessão. Qualquer sugestão de mudança fica como hipótese futura, sem alterar configuração nesta etapa.
+- Comparar A/B nos mesmos indivíduos/pares/galerias, com IC da diferença por clusters e orçamento real. Se A não suportar uma etapa, marcar inaplicável e avaliar o efeito ponta a ponta comum; não importar algoritmo B para A. Não converter score em confiança percentual sem calibração independente demonstrada.
+
+| ID / prioridade / ambiente | Preparação e ação | Métricas e resultado esperado |
+|---|---|---|
+| REID-01 P0 E3 | Auditar identidades/consentimento, splits por gato/sessão e duplicatas do F-REID antes de inferir. | Suporte por estrato, discordâncias e vazamento entre partições; avaliação principal só com rótulos independentes e rastreáveis. |
+| REID-02 P1 E3 | Mesmo gato em luz, ângulo/lado, distância e sessões distintos, com galeria fixa. | Recall/FNR/Recall@k por variação e etapa; mostrar pares filtrados como abstenção/falha ponta a ponta, sem escondê-los. |
+| REID-03 P0 E3 | Gatos diferentes com pelagem semelhante, sólidos e pouco distintivos; negativos fáceis separados. | FP/FPR/precision e IC; avaliar restrições/evidências sem confundir atributo ou score alto com identidade. |
+| REID-04 P1 E3 | Baixa qualidade/oclusão e detecção/segmentação problemática; medir componente e pipeline. | Cobertura, abstenção, FN e custo por etapa; decompor erro sem remover os casos da métrica final. |
+| REID-05 P0 E3 | Calibração de limiar e depois holdout bloqueado, threshold atual e candidato hipotético registrados. | Matrizes/curvas/IC e custo FP/FN; nenhuma escolha baseada no teste final ou ajuste no app nesta fase. |
+| REID-06 P0 E2/E3 | Imagem repetida/recomprimida/crop, região/versão incompatível, ângulo oposto e apenas uma evidência independente. | Near-duplicates não viram múltipla confirmação; preservar restrições, `identity_confirmed=False` e ausência de probabilidade inventada. |
+| REID-07 P0 E3 | Consultas com/sem indivíduo na galeria, tamanhos crescentes e múltiplas fotos por indivíduo. | Recall@k, falsa sugestão por consulta open set, latência/memória; registrar efeito de galeria maior e dependência dos pares. |
+| REID-08 P0 E2/E3 | Candidato restrito/não restrito, shadow on/off no ambiente próprio e decisões humanas de confirmar/rejeitar. | Separar recuperação/sugestão/notificação/decisão explícita; score não confirma pista, não concede identidade/recompensa por si só e não publica candidato privado. |
+
+### ACC — acessibilidade Flutter
+
+Categoria própria, distinta de UX técnico. **Definição única de cenários, ferramentas, critérios e evidências no [roteiro Flutter — ACC](https://github.com/EveDoescher/gatalogo/blob/code-quality-cleanup/docs/test_plan_efficiency.md#acc--acessibilidade-flutter)**, para não duplicar a matriz. IDs globais reservados: ACC-01 contraste, ACC-02 fontes, ACC-03 toque, ACC-04 leitor de tela, ACC-05 semântica, ACC-06 movimento, ACC-07 resoluções, ACC-08 tarefas/erros. Ambientes E1/E4, P0/P1 definidos lá. Fonte de verdade dos demais cenários permanece neste plano; protocolo estatístico e modelo de resultados são compartilhados.
+
+A/B deve registrar problemas de acessibilidade preexistentes e regressões separadamente. Uma não conformidade é achado para decisão posterior; a inclusão da categoria não autoriza mudar telas, rótulos ou animações nesta etapa. Os oito IDs herdam o ciclo de rastreabilidade da seção 8.
 
 ### DATA — mutação de dados e integridade
 
@@ -267,6 +359,8 @@ Testes condicionais precisam de flags/pré-requisitos. Skip é não executado, n
 
 ## 7. Ordem sugerida
 
+0. Preparar BR-01 e desenho amostral 2.2; congelar quatro SHAs, fixtures, precisão/orçamento e harness. Aplicar etapas 1–6 a A/B quando pertinentes, concluir BR-05 e só então comparar futuras otimizações com a baseline refatorada aceita. REID exige manifesto rotulado e partições auditadas; ACC exige matriz Flutter e dispositivo para validação assistiva real.
+
 1. Correção: SEC-01/02/03/05/07, DATA-02/03/04/05/06/07 e RES-03. Falha impede aprovar otimização dependente do mecanismo.
 2. Baseline barato: DB-01/02/03/05, LAT-03/04/05/06, IMG-02/03, DLV-05, RES-07. Sem IA paga.
 3. Mutação dirigida: começar MUT-01/05/07/10/11/12/15/19/21/25/27, revisar sobreviventes e completar demais famílias.
@@ -279,6 +373,19 @@ Testes condicionais precisam de flags/pré-requisitos. Skip é não executado, n
 
 Usar [test_results_template.md](test_results_template.md). Revisão pode escolher IDs, cargas, orçamento e disponibilidade de aparelho. Estado: PLANEJADO → PREPARADO → EXECUTADO com APROVADO/FALHOU/INCONCLUSIVO; BLOQUEADO quando faltar pré-requisito, com motivo. MUT usa classificações próprias.
 
+Rastrear **hipótese → cenário/variante → código nos SHAs → teste/script versionado → execução → evidência → resultado → problema → correção → revalidação**. IDs estáveis de campanha/HIP/RUN/PROB/FIX/REV ligam tabelas do modelo; relações são muitos-para-muitos, sem apagar rodadas falhas. Registrar símbolo/caminho/linhas no SHA (linhas do workspace atual não são âncora suficiente), node ID do teste ou comando/script, commit/hash do executor e arquivos de evidência com hash. Executor ainda não implementado deve constar como planejado, não caminho fictício existente.
+
+Problema identificado recebe descrição/impacto/reprodução/hipótese e evidências. Após autorização de implementação, ligar diff/commit da correção e comparação antes/depois a reexecuções com o mesmo cenário/dados, novos SHAs e testes de regressão. Resultado inconclusivo, correção rejeitada ou revalidação que falha ficam preservados. Nenhum problema/correção/resultado foi produzido nesta revisão documental.
+
 Guardar campanha/caso/rodada, configuração sanitizada, fixtures/seeds/hashes, amostras, traces/SQL, logs e diffs de estado. Arquivos grandes/sensíveis fora do Git; referências e resumo sanitizado em docs. Campos vazios não significam zero ou sucesso.
 
 Comparação final deve mostrar contrato, segurança/integridade, latência, recursos e limitações juntos. Menos SQL/bytes/CPU só será chamado de ganho de experiência quando medido no nível correspondente.
+
+## 9. Referências metodológicas
+
+- [Flutter — Accessibility testing](https://docs.flutter.dev/ui/accessibility/accessibility-testing): inspeção automatizada e validação assistiva no dispositivo, detalhadas no roteiro ACC.
+- [W3C — WCAG 2.2](https://www.w3.org/TR/WCAG22/): critérios de acessibilidade de referência, sem alegação de certificação automática do app nativo.
+- [NIST — intervalos para proporções](https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm): fundamentos para incerteza binomial; pares correlacionados exigem tratamento por clusters descrito em 2.2.
+- [scikit-learn — avaliação de modelos](https://scikit-learn.org/stable/modules/model_evaluation.html): definições de métricas classificatórias e curvas; não exige adicionar dependência ao projeto.
+
+Os dimensionamentos/ICs devem ser justificados por experimento; as fontes não estabelecem os tamanhos iniciais deste plano como suficientes para este produto.
