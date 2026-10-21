@@ -1,0 +1,262 @@
+[
+  {
+    "family": "MUT-01",
+    "minimal_change": "`routers/sync.py:pull`: retirar filtro user_id.",
+    "expected_oracle": "SEC-02/DB-02: B não aparece no pull A.",
+    "state": "PARTIAL_EXECUTED",
+    "classification": "KILLED",
+    "elapsed_seconds": 13.796330700002727,
+    "baseline_evidence": [
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json"
+    ],
+    "executor": "scripts/campaign/mutation_cases.py"
+  },
+  {
+    "family": "MUT-02",
+    "minimal_change": "`_incoming_wins`: permitir edição viva sobre tombstone.",
+    "expected_oracle": "DATA-05: excluído não ressuscita.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-03",
+    "minimal_change": "Mesmo alvo: inverter desempate device_id ou trocar > por >= no timestamp.",
+    "expected_oracle": "DATA-05: datas iguais e IDs nas duas ordens, vencedor e writes exatos.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-04",
+    "minimal_change": "`catalog_sync_queries.py`: incluir referência excluída ou kind primário.",
+    "expected_oracle": "DB-02/IMG-03: JSON integral exclui ambos da lista complementar.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-05",
+    "minimal_change": "Pull avança cursor pela maior revisão apresentada, não última consumida.",
+    "expected_oracle": "DB-02/F-HIST: próxima página não perde alteração intermediária.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-06",
+    "minimal_change": "`main.py:analyze_cat`: retirar rollback de leitura pré-IA.",
+    "expected_oracle": "DB-05: conexão do fluxo continua retida, ainda que JSON seja igual.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-07",
+    "minimal_change": "`reference_analysis._finish`: ignorar comparação de attempt.",
+    "expected_oracle": "DATA-06/RES-04: tentativa velha não sobrescreve nova.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-08",
+    "minimal_change": "`_current` ou `_read_image`: ignorar hash alterado.",
+    "expected_oracle": "IMG-07/DATA-06: bytes substituídos não validam resultado antigo.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-09",
+    "minimal_change": "Worker ignora deleted_at de cat/photo.",
+    "expected_oracle": "DATA-06: delete entre claim/finish impede escrita/recompensa.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-10",
+    "minimal_change": "`_finish`: retirar savepoint ou descarte de eventos na falha de progressão.",
+    "expected_oracle": "DATA-02: análise/recompensa revertidas, evento de sucesso ausente.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-11",
+    "minimal_change": "`quintal_production.operation`: ignorar recibo idempotente.",
+    "expected_oracle": "DATA-03/LOAD-03: um efeito após retry/perda de resposta.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-12",
+    "minimal_change": "Mesmo alvo aceita chave com fingerprint diferente.",
+    "expected_oracle": "DATA-04: conflito sem segundo efeito.",
+    "state": "PARTIAL_EXECUTED",
+    "classification": "KILLED",
+    "elapsed_seconds": 15.533035300002666,
+    "baseline_evidence": [
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json"
+    ],
+    "executor": "scripts/campaign/mutation_cases.py"
+  },
+  {
+    "family": "MUT-13",
+    "minimal_change": "Mesmo alvo busca recibo sem user_id.",
+    "expected_oracle": "DATA-04/SEC-02: resultado A não é devolvido a B.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-14",
+    "minimal_change": "Handler de prazo em `quintal_commands/` aceita coleta antes da hora.",
+    "expected_oracle": "DATA-07: −1 ms/0/+1 ms e relógio cliente falso.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-15",
+    "minimal_change": "`auth_service.consume_otp`: retirar commit de tentativas erradas ou validação de expiração.",
+    "expected_oracle": "SEC-07: limite efetivo entre requests, expirado rejeitado.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-16",
+    "minimal_change": "`authenticated_user`: ignorar revogação/status/vínculo da sessão.",
+    "expected_oracle": "SEC-01: acesso negado sem efeito.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-17",
+    "minimal_change": "Conversa/evento WS ignora verificação de membro.",
+    "expected_oracle": "SEC-03: C não emite typing/read nem lê mídia.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-18",
+    "minimal_change": "`storage_service.absolute_path`: retirar validação de raiz.",
+    "expected_oracle": "SEC-05: sentinela externa não acessada/alterada.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-19",
+    "minimal_change": "Flutter coordinator retira checagem de owner após await.",
+    "expected_oracle": "RES-03: snapshot A não aplicado em B.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-20",
+    "minimal_change": "`sqliteIdBatches`: pular/sobrepor borda ou não deduplicar.",
+    "expected_oracle": "DB-01: 499/500/501/repetidos/ausentes, igualdade e contagem.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-21",
+    "minimal_change": "Flutter sync marca synced/cursor antes da aplicação concluir.",
+    "expected_oracle": "DB-07/RES-02: interrupção/reinício recupera tudo.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-22",
+    "minimal_change": "`NotificationStore`: retirar guarda generation/disposed ou readIds.",
+    "expected_oracle": "RES-03/DLV-05: resposta antiga não reaparece/desfaz leitura.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-23",
+    "minimal_change": "Retirar single-flight de refresh ou sync.",
+    "expected_oracle": "RES-07: N gatilhos compartilham operação, retry após erro funciona.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-24",
+    "minimal_change": "`ConversationController`: retirar reconciliação de eco otimista.",
+    "expected_oracle": "DATA-08/LAT-05: uma mensagem nas duas ordens HTTP/WS, rascunho em erro.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-25",
+    "minimal_change": "`HabitatService`: chave nova ao repetir intenção persistida após reinício.",
+    "expected_oracle": "DATA-03/cliente live: uma chave/intenção/débito com resposta perdida.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-26",
+    "minimal_change": "FCM ignora delivered anterior ou preferência.",
+    "expected_oracle": "DLV-04: só devices pendentes/habilitados recebem retry.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-27",
+    "minimal_change": "Publicar evento antes do commit.",
+    "expected_oracle": "DATA-02: observador externo não recebe sucesso de transação abortada.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  },
+  {
+    "family": "MUT-28",
+    "minimal_change": "`AuthenticatedApiClient`: retirar limite retried nos 401.",
+    "expected_oracle": "LAT-03/SEC-07: refresh/reenvio limitados, fluxo encerra.",
+    "state": "PENDING",
+    "classification": null,
+    "elapsed_seconds": null,
+    "executor": "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
+  }
+]

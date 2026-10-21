@@ -2,6 +2,8 @@
 
 Data: 21/10/2026. API e Flutter, branch `code-quality-cleanup`.
 
+Execução posterior ao planejamento aprovado: [preparação, matriz e resultados da primeira campanha-piloto](campaigns/2026-10-21-pilot/README.md). Os estados abaixo descrevem o plano original; a matriz do relatório registra o andamento real sem sobrescrever o planejamento.
+
 Revisão documental: comparação oficial/refatorada, acessibilidade, reidentificação, amostragem justificada e rastreabilidade. Os 74 cenários e as 28 famílias de mutação originais foram preservados; novos IDs são aditivos.
 
 **Status: especificação para revisão. Nenhum cenário desta campanha foi executado nesta etapa.** Não foram implementados instrumentação, geradores de carga ou mutantes. Referências a testes existentes são pontos de partida, não certificação de cobertura integral dos casos propostos.

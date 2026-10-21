@@ -1,0 +1,1398 @@
+{
+  "api": {
+    "attempts\\pilot-02\\results\\01-A\\probe.json": {
+      "label": "01-A",
+      "cases": [
+        {
+          "scenario": "SEC-01",
+          "variant": "missing",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "invalid-signature",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "expired",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "catalog-account-boundary",
+          "status": "PASS",
+          "observed": {
+            "status": 200,
+            "visible_A": 40,
+            "foreign_visible": false
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "reverse-catalog-boundary",
+          "status": "PASS",
+          "observed": {
+            "visible_B": 1
+          }
+        },
+        {
+          "scenario": "DB-02",
+          "variant": "snapshot-contract",
+          "status": "PASS",
+          "observed": {
+            "selects_including_auth": 123
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "private-photo",
+          "status": "PASS",
+          "observed": {
+            "status": 404
+          }
+        },
+        {
+          "scenario": "LAT-04",
+          "variant": "repeated-read-integrity",
+          "status": "PASS",
+          "observed": {
+            "warmup": 5,
+            "measured": 30
+          }
+        },
+        {
+          "scenario": "LAT-03",
+          "variant": "controlled-503",
+          "status": "PASS",
+          "observed": {
+            "status": 503,
+            "detail": {
+              "code": "MISSING_API_KEY",
+              "message": "controlled unavailable"
+            }
+          }
+        },
+        {
+          "scenario": "DB-05",
+          "variant": "primary-inference",
+          "status": "FAIL",
+          "observed": {
+            "connections_during_substituted_IA": [
+              1
+            ]
+          }
+        },
+        {
+          "scenario": "DATA-03",
+          "variant": "parallel-and-reconnect-replay",
+          "status": "PASS",
+          "observed": {
+            "balance": 88,
+            "tasks": 1,
+            "receipts": 1,
+            "elapsed_ms": 951.0068999952637
+          }
+        },
+        {
+          "scenario": "DATA-04",
+          "variant": "fingerprint-and-account",
+          "status": "PASS",
+          "observed": {
+            "fingerprint_rejected": true,
+            "balances": [
+              88,
+              88
+            ]
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "revoked",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        }
+      ],
+      "lat04": {
+        "n": 30,
+        "p50_ms_exploratory": 1409.557400002086,
+        "p95_ms_exploratory": 3121.47399999958,
+        "max_ms": 3314.370100000815,
+        "p99": null,
+        "uncertainty": "pilot only; no confidence or P99 claim"
+      },
+      "resources_start": {
+        "process_cpu_seconds": 4.796875,
+        "pid": 24200,
+        "rss_bytes": 123371520,
+        "peak_rss_bytes": 123375616,
+        "handles": 202
+      },
+      "resources_end": {
+        "process_cpu_seconds": 15.1875,
+        "pid": 24200,
+        "rss_bytes": 132399104,
+        "peak_rss_bytes": 132407296,
+        "handles": 204
+      },
+      "infrastructure_error": false,
+      "select_counts_including_auth": [
+        123
+      ]
+    },
+    "attempts\\pilot-02\\results\\02-B\\probe.json": {
+      "label": "02-B",
+      "cases": [
+        {
+          "scenario": "SEC-01",
+          "variant": "missing",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "invalid-signature",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "expired",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "catalog-account-boundary",
+          "status": "PASS",
+          "observed": {
+            "status": 200,
+            "visible_A": 40,
+            "foreign_visible": false
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "reverse-catalog-boundary",
+          "status": "PASS",
+          "observed": {
+            "visible_B": 1
+          }
+        },
+        {
+          "scenario": "DB-02",
+          "variant": "snapshot-contract",
+          "status": "PASS",
+          "observed": {
+            "selects_including_auth": 6
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "private-photo",
+          "status": "PASS",
+          "observed": {
+            "status": 404
+          }
+        },
+        {
+          "scenario": "LAT-04",
+          "variant": "repeated-read-integrity",
+          "status": "PASS",
+          "observed": {
+            "warmup": 5,
+            "measured": 30
+          }
+        },
+        {
+          "scenario": "LAT-03",
+          "variant": "controlled-503",
+          "status": "PASS",
+          "observed": {
+            "status": 503,
+            "detail": {
+              "code": "MISSING_API_KEY",
+              "message": "controlled unavailable"
+            }
+          }
+        },
+        {
+          "scenario": "DB-05",
+          "variant": "primary-inference",
+          "status": "PASS",
+          "observed": {
+            "connections_during_substituted_IA": [
+              0
+            ]
+          }
+        },
+        {
+          "scenario": "DATA-03",
+          "variant": "parallel-and-reconnect-replay",
+          "status": "PASS",
+          "observed": {
+            "balance": 88,
+            "tasks": 1,
+            "receipts": 1,
+            "elapsed_ms": 439.5278999945731
+          }
+        },
+        {
+          "scenario": "DATA-04",
+          "variant": "fingerprint-and-account",
+          "status": "PASS",
+          "observed": {
+            "fingerprint_rejected": true,
+            "balances": [
+              88,
+              88
+            ]
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "revoked",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        }
+      ],
+      "lat04": {
+        "n": 30,
+        "p50_ms_exploratory": 48.497000003408175,
+        "p95_ms_exploratory": 220.2023000063491,
+        "max_ms": 236.77150000003166,
+        "p99": null,
+        "uncertainty": "pilot only; no confidence or P99 claim"
+      },
+      "resources_start": {
+        "process_cpu_seconds": 3.984375,
+        "pid": 18180,
+        "rss_bytes": 124207104,
+        "peak_rss_bytes": 124211200,
+        "handles": 202
+      },
+      "resources_end": {
+        "process_cpu_seconds": 6.34375,
+        "pid": 18180,
+        "rss_bytes": 131624960,
+        "peak_rss_bytes": 131633152,
+        "handles": 204
+      },
+      "infrastructure_error": false,
+      "select_counts_including_auth": [
+        6
+      ]
+    },
+    "attempts\\pilot-02\\results\\03-B\\probe.json": {
+      "label": "03-B",
+      "cases": [
+        {
+          "scenario": "SEC-01",
+          "variant": "missing",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "invalid-signature",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "expired",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "catalog-account-boundary",
+          "status": "PASS",
+          "observed": {
+            "status": 200,
+            "visible_A": 40,
+            "foreign_visible": false
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "reverse-catalog-boundary",
+          "status": "PASS",
+          "observed": {
+            "visible_B": 1
+          }
+        },
+        {
+          "scenario": "DB-02",
+          "variant": "snapshot-contract",
+          "status": "PASS",
+          "observed": {
+            "selects_including_auth": 6
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "private-photo",
+          "status": "PASS",
+          "observed": {
+            "status": 404
+          }
+        },
+        {
+          "scenario": "LAT-04",
+          "variant": "repeated-read-integrity",
+          "status": "PASS",
+          "observed": {
+            "warmup": 5,
+            "measured": 30
+          }
+        },
+        {
+          "scenario": "LAT-03",
+          "variant": "controlled-503",
+          "status": "PASS",
+          "observed": {
+            "status": 503,
+            "detail": {
+              "code": "MISSING_API_KEY",
+              "message": "controlled unavailable"
+            }
+          }
+        },
+        {
+          "scenario": "DB-05",
+          "variant": "primary-inference",
+          "status": "PASS",
+          "observed": {
+            "connections_during_substituted_IA": [
+              0
+            ]
+          }
+        },
+        {
+          "scenario": "DATA-03",
+          "variant": "parallel-and-reconnect-replay",
+          "status": "PASS",
+          "observed": {
+            "balance": 88,
+            "tasks": 1,
+            "receipts": 1,
+            "elapsed_ms": 725.3175000005285
+          }
+        },
+        {
+          "scenario": "DATA-04",
+          "variant": "fingerprint-and-account",
+          "status": "PASS",
+          "observed": {
+            "fingerprint_rejected": true,
+            "balances": [
+              88,
+              88
+            ]
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "revoked",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        }
+      ],
+      "lat04": {
+        "n": 30,
+        "p50_ms_exploratory": 54.00289999670349,
+        "p95_ms_exploratory": 117.54089999885764,
+        "max_ms": 121.19940000411589,
+        "p99": null,
+        "uncertainty": "pilot only; no confidence or P99 claim"
+      },
+      "resources_start": {
+        "process_cpu_seconds": 3.703125,
+        "pid": 22808,
+        "rss_bytes": 123924480,
+        "peak_rss_bytes": 123928576,
+        "handles": 202
+      },
+      "resources_end": {
+        "process_cpu_seconds": 6.234375,
+        "pid": 22808,
+        "rss_bytes": 132042752,
+        "peak_rss_bytes": 132050944,
+        "handles": 204
+      },
+      "infrastructure_error": false,
+      "select_counts_including_auth": [
+        6
+      ]
+    },
+    "attempts\\pilot-02\\results\\04-A\\probe.json": {
+      "label": "04-A",
+      "cases": [
+        {
+          "scenario": "SEC-01",
+          "variant": "missing",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "invalid-signature",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "expired",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "catalog-account-boundary",
+          "status": "PASS",
+          "observed": {
+            "status": 200,
+            "visible_A": 40,
+            "foreign_visible": false
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "reverse-catalog-boundary",
+          "status": "PASS",
+          "observed": {
+            "visible_B": 1
+          }
+        },
+        {
+          "scenario": "DB-02",
+          "variant": "snapshot-contract",
+          "status": "PASS",
+          "observed": {
+            "selects_including_auth": 123
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "private-photo",
+          "status": "PASS",
+          "observed": {
+            "status": 404
+          }
+        },
+        {
+          "scenario": "LAT-04",
+          "variant": "repeated-read-integrity",
+          "status": "PASS",
+          "observed": {
+            "warmup": 5,
+            "measured": 30
+          }
+        },
+        {
+          "scenario": "LAT-03",
+          "variant": "controlled-503",
+          "status": "PASS",
+          "observed": {
+            "status": 503,
+            "detail": {
+              "code": "MISSING_API_KEY",
+              "message": "controlled unavailable"
+            }
+          }
+        },
+        {
+          "scenario": "DB-05",
+          "variant": "primary-inference",
+          "status": "FAIL",
+          "observed": {
+            "connections_during_substituted_IA": [
+              1
+            ]
+          }
+        },
+        {
+          "scenario": "DATA-03",
+          "variant": "parallel-and-reconnect-replay",
+          "status": "PASS",
+          "observed": {
+            "balance": 88,
+            "tasks": 1,
+            "receipts": 1,
+            "elapsed_ms": 385.3181000013137
+          }
+        },
+        {
+          "scenario": "DATA-04",
+          "variant": "fingerprint-and-account",
+          "status": "PASS",
+          "observed": {
+            "fingerprint_rejected": true,
+            "balances": [
+              88,
+              88
+            ]
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "revoked",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        }
+      ],
+      "lat04": {
+        "n": 30,
+        "p50_ms_exploratory": 323.68399999541,
+        "p95_ms_exploratory": 574.9734999990324,
+        "max_ms": 621.6260000001057,
+        "p99": null,
+        "uncertainty": "pilot only; no confidence or P99 claim"
+      },
+      "resources_start": {
+        "process_cpu_seconds": 3.84375,
+        "pid": 18828,
+        "rss_bytes": 123129856,
+        "peak_rss_bytes": 123133952,
+        "handles": 202
+      },
+      "resources_end": {
+        "process_cpu_seconds": 12.4375,
+        "pid": 18828,
+        "rss_bytes": 132497408,
+        "peak_rss_bytes": 132505600,
+        "handles": 204
+      },
+      "infrastructure_error": false,
+      "select_counts_including_auth": [
+        123
+      ]
+    },
+    "attempts\\pilot-03\\results\\01-A\\probe.json": {
+      "label": "01-A",
+      "cases": [
+        {
+          "scenario": "SEC-01",
+          "variant": "missing",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "invalid-signature",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "expired",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "catalog-account-boundary",
+          "status": "PASS",
+          "observed": {
+            "status": 200,
+            "visible_A": 40,
+            "foreign_visible": false
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "reverse-catalog-boundary",
+          "status": "PASS",
+          "observed": {
+            "visible_B": 1
+          }
+        },
+        {
+          "scenario": "DB-02",
+          "variant": "snapshot-contract",
+          "status": "PASS",
+          "observed": {
+            "selects_including_auth": 123
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "private-photo",
+          "status": "PASS",
+          "observed": {
+            "status": 404
+          }
+        },
+        {
+          "scenario": "LAT-04",
+          "variant": "repeated-read-integrity",
+          "status": "PASS",
+          "observed": {
+            "warmup": 5,
+            "measured": 30
+          }
+        },
+        {
+          "scenario": "LAT-03",
+          "variant": "controlled-503",
+          "status": "PASS",
+          "observed": {
+            "status": 503,
+            "detail": {
+              "code": "MISSING_API_KEY",
+              "message": "controlled unavailable"
+            }
+          }
+        },
+        {
+          "scenario": "DB-05",
+          "variant": "primary-inference",
+          "status": "FAIL",
+          "observed": {
+            "connections_during_substituted_IA": [
+              1
+            ]
+          }
+        },
+        {
+          "scenario": "DATA-03",
+          "variant": "parallel-and-reconnect-replay",
+          "status": "PASS",
+          "observed": {
+            "balance": 88,
+            "tasks": 1,
+            "receipts": 1,
+            "elapsed_ms": 611.4346000031219
+          }
+        },
+        {
+          "scenario": "DATA-04",
+          "variant": "fingerprint-and-account",
+          "status": "PASS",
+          "observed": {
+            "fingerprint_rejected": true,
+            "balances": [
+              88,
+              88
+            ]
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "revoked",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        }
+      ],
+      "lat04": {
+        "n": 30,
+        "p50_ms_exploratory": 582.6897000006284,
+        "p95_ms_exploratory": 2922.479299995757,
+        "max_ms": 3073.0578000002424,
+        "p99": null,
+        "uncertainty": "pilot only; no confidence or P99 claim"
+      },
+      "resources_start": {
+        "process_cpu_seconds": 4.359375,
+        "pid": 25576,
+        "rss_bytes": 123441152,
+        "peak_rss_bytes": 123445248,
+        "handles": 202
+      },
+      "resources_end": {
+        "process_cpu_seconds": 13.71875,
+        "pid": 25576,
+        "rss_bytes": 132550656,
+        "peak_rss_bytes": 132558848,
+        "handles": 204
+      },
+      "infrastructure_error": false,
+      "select_counts_including_auth": [
+        123
+      ]
+    },
+    "attempts\\pilot-03\\results\\02-B\\probe.json": {
+      "label": "02-B",
+      "cases": [
+        {
+          "scenario": "SEC-01",
+          "variant": "missing",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "invalid-signature",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "expired",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "catalog-account-boundary",
+          "status": "PASS",
+          "observed": {
+            "status": 200,
+            "visible_A": 40,
+            "foreign_visible": false
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "reverse-catalog-boundary",
+          "status": "PASS",
+          "observed": {
+            "visible_B": 1
+          }
+        },
+        {
+          "scenario": "DB-02",
+          "variant": "snapshot-contract",
+          "status": "PASS",
+          "observed": {
+            "selects_including_auth": 6
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "private-photo",
+          "status": "PASS",
+          "observed": {
+            "status": 404
+          }
+        },
+        {
+          "scenario": "LAT-04",
+          "variant": "repeated-read-integrity",
+          "status": "PASS",
+          "observed": {
+            "warmup": 5,
+            "measured": 30
+          }
+        },
+        {
+          "scenario": "LAT-03",
+          "variant": "controlled-503",
+          "status": "PASS",
+          "observed": {
+            "status": 503,
+            "detail": {
+              "code": "MISSING_API_KEY",
+              "message": "controlled unavailable"
+            }
+          }
+        },
+        {
+          "scenario": "DB-05",
+          "variant": "primary-inference",
+          "status": "PASS",
+          "observed": {
+            "connections_during_substituted_IA": [
+              0
+            ]
+          }
+        },
+        {
+          "scenario": "DATA-03",
+          "variant": "parallel-and-reconnect-replay",
+          "status": "PASS",
+          "observed": {
+            "balance": 88,
+            "tasks": 1,
+            "receipts": 1,
+            "elapsed_ms": 716.7556999993394
+          }
+        },
+        {
+          "scenario": "DATA-04",
+          "variant": "fingerprint-and-account",
+          "status": "PASS",
+          "observed": {
+            "fingerprint_rejected": true,
+            "balances": [
+              88,
+              88
+            ]
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "revoked",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        }
+      ],
+      "lat04": {
+        "n": 30,
+        "p50_ms_exploratory": 30.559300001186784,
+        "p95_ms_exploratory": 60.567799999262206,
+        "max_ms": 60.97099999897182,
+        "p99": null,
+        "uncertainty": "pilot only; no confidence or P99 claim"
+      },
+      "resources_start": {
+        "process_cpu_seconds": 4.484375,
+        "pid": 19248,
+        "rss_bytes": 123957248,
+        "peak_rss_bytes": 123961344,
+        "handles": 202
+      },
+      "resources_end": {
+        "process_cpu_seconds": 6.71875,
+        "pid": 19248,
+        "rss_bytes": 131792896,
+        "peak_rss_bytes": 131801088,
+        "handles": 204
+      },
+      "infrastructure_error": false,
+      "select_counts_including_auth": [
+        6
+      ]
+    },
+    "attempts\\pilot-03\\results\\03-B\\probe.json": {
+      "label": "03-B",
+      "cases": [
+        {
+          "scenario": "SEC-01",
+          "variant": "missing",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "invalid-signature",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "expired",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "catalog-account-boundary",
+          "status": "PASS",
+          "observed": {
+            "status": 200,
+            "visible_A": 40,
+            "foreign_visible": false
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "reverse-catalog-boundary",
+          "status": "PASS",
+          "observed": {
+            "visible_B": 1
+          }
+        },
+        {
+          "scenario": "DB-02",
+          "variant": "snapshot-contract",
+          "status": "PASS",
+          "observed": {
+            "selects_including_auth": 6
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "private-photo",
+          "status": "PASS",
+          "observed": {
+            "status": 404
+          }
+        },
+        {
+          "scenario": "LAT-04",
+          "variant": "repeated-read-integrity",
+          "status": "PASS",
+          "observed": {
+            "warmup": 5,
+            "measured": 30
+          }
+        },
+        {
+          "scenario": "LAT-03",
+          "variant": "controlled-503",
+          "status": "PASS",
+          "observed": {
+            "status": 503,
+            "detail": {
+              "code": "MISSING_API_KEY",
+              "message": "controlled unavailable"
+            }
+          }
+        },
+        {
+          "scenario": "DB-05",
+          "variant": "primary-inference",
+          "status": "PASS",
+          "observed": {
+            "connections_during_substituted_IA": [
+              0
+            ]
+          }
+        },
+        {
+          "scenario": "DATA-03",
+          "variant": "parallel-and-reconnect-replay",
+          "status": "PASS",
+          "observed": {
+            "balance": 88,
+            "tasks": 1,
+            "receipts": 1,
+            "elapsed_ms": 374.0533000018331
+          }
+        },
+        {
+          "scenario": "DATA-04",
+          "variant": "fingerprint-and-account",
+          "status": "PASS",
+          "observed": {
+            "fingerprint_rejected": true,
+            "balances": [
+              88,
+              88
+            ]
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "revoked",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        }
+      ],
+      "lat04": {
+        "n": 30,
+        "p50_ms_exploratory": 37.677200001780875,
+        "p95_ms_exploratory": 100.21029999916209,
+        "max_ms": 105.100400003721,
+        "p99": null,
+        "uncertainty": "pilot only; no confidence or P99 claim"
+      },
+      "resources_start": {
+        "process_cpu_seconds": 4.25,
+        "pid": 26640,
+        "rss_bytes": 124305408,
+        "peak_rss_bytes": 124309504,
+        "handles": 205
+      },
+      "resources_end": {
+        "process_cpu_seconds": 6.359375,
+        "pid": 26640,
+        "rss_bytes": 131960832,
+        "peak_rss_bytes": 131969024,
+        "handles": 207
+      },
+      "infrastructure_error": false,
+      "select_counts_including_auth": [
+        6
+      ]
+    },
+    "attempts\\pilot-03\\results\\04-A\\probe.json": {
+      "label": "04-A",
+      "cases": [
+        {
+          "scenario": "SEC-01",
+          "variant": "missing",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "invalid-signature",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "expired",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "catalog-account-boundary",
+          "status": "PASS",
+          "observed": {
+            "status": 200,
+            "visible_A": 40,
+            "foreign_visible": false
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "reverse-catalog-boundary",
+          "status": "PASS",
+          "observed": {
+            "visible_B": 1
+          }
+        },
+        {
+          "scenario": "DB-02",
+          "variant": "snapshot-contract",
+          "status": "PASS",
+          "observed": {
+            "selects_including_auth": 123
+          }
+        },
+        {
+          "scenario": "SEC-02",
+          "variant": "private-photo",
+          "status": "PASS",
+          "observed": {
+            "status": 404
+          }
+        },
+        {
+          "scenario": "LAT-04",
+          "variant": "repeated-read-integrity",
+          "status": "PASS",
+          "observed": {
+            "warmup": 5,
+            "measured": 30
+          }
+        },
+        {
+          "scenario": "LAT-03",
+          "variant": "controlled-503",
+          "status": "PASS",
+          "observed": {
+            "status": 503,
+            "detail": {
+              "code": "MISSING_API_KEY",
+              "message": "controlled unavailable"
+            }
+          }
+        },
+        {
+          "scenario": "DB-05",
+          "variant": "primary-inference",
+          "status": "FAIL",
+          "observed": {
+            "connections_during_substituted_IA": [
+              1
+            ]
+          }
+        },
+        {
+          "scenario": "DATA-03",
+          "variant": "parallel-and-reconnect-replay",
+          "status": "PASS",
+          "observed": {
+            "balance": 88,
+            "tasks": 1,
+            "receipts": 1,
+            "elapsed_ms": 761.0764999990351
+          }
+        },
+        {
+          "scenario": "DATA-04",
+          "variant": "fingerprint-and-account",
+          "status": "PASS",
+          "observed": {
+            "fingerprint_rejected": true,
+            "balances": [
+              88,
+              88
+            ]
+          }
+        },
+        {
+          "scenario": "SEC-01",
+          "variant": "revoked",
+          "status": "PASS",
+          "observed": {
+            "status": 401
+          }
+        }
+      ],
+      "lat04": {
+        "n": 30,
+        "p50_ms_exploratory": 803.3514999988256,
+        "p95_ms_exploratory": 3747.3606999992626,
+        "max_ms": 6344.819700003427,
+        "p99": null,
+        "uncertainty": "pilot only; no confidence or P99 claim"
+      },
+      "resources_start": {
+        "process_cpu_seconds": 5.96875,
+        "pid": 27520,
+        "rss_bytes": 123514880,
+        "peak_rss_bytes": 123518976,
+        "handles": 202
+      },
+      "resources_end": {
+        "process_cpu_seconds": 17.53125,
+        "pid": 27520,
+        "rss_bytes": 132431872,
+        "peak_rss_bytes": 132440064,
+        "handles": 202
+      },
+      "infrastructure_error": false,
+      "select_counts_including_auth": [
+        123
+      ]
+    },
+    "results\\01-A\\probe.json": {
+      "label": "01-A",
+      "cases": [],
+      "lat04": {
+        "n": 0
+      },
+      "resources_start": {
+        "process_cpu_seconds": 6.859375,
+        "pid": 27068,
+        "rss_bytes": 124985344,
+        "peak_rss_bytes": 127008768,
+        "handles": 202
+      },
+      "resources_end": {
+        "process_cpu_seconds": 7.25,
+        "pid": 27068,
+        "rss_bytes": 127836160,
+        "peak_rss_bytes": 127840256,
+        "handles": 204
+      },
+      "infrastructure_error": true,
+      "select_counts_including_auth": []
+    },
+    "results\\02-B\\probe.json": {
+      "label": "02-B",
+      "cases": [],
+      "lat04": {
+        "n": 0
+      },
+      "resources_start": {
+        "process_cpu_seconds": 6.015625,
+        "pid": 18124,
+        "rss_bytes": 123981824,
+        "peak_rss_bytes": 123985920,
+        "handles": 205
+      },
+      "resources_end": {
+        "process_cpu_seconds": 6.375,
+        "pid": 18124,
+        "rss_bytes": 127442944,
+        "peak_rss_bytes": 127447040,
+        "handles": 207
+      },
+      "infrastructure_error": true,
+      "select_counts_including_auth": []
+    },
+    "results\\03-B\\probe.json": {
+      "label": "03-B",
+      "cases": [],
+      "lat04": {
+        "n": 0
+      },
+      "resources_start": {
+        "process_cpu_seconds": 6.078125,
+        "pid": 25628,
+        "rss_bytes": 124215296,
+        "peak_rss_bytes": 124219392,
+        "handles": 205
+      },
+      "resources_end": {
+        "process_cpu_seconds": 6.390625,
+        "pid": 25628,
+        "rss_bytes": 127676416,
+        "peak_rss_bytes": 127680512,
+        "handles": 207
+      },
+      "infrastructure_error": true,
+      "select_counts_including_auth": []
+    },
+    "results\\04-A\\probe.json": {
+      "label": "04-A",
+      "cases": [],
+      "lat04": {
+        "n": 0
+      },
+      "resources_start": {
+        "process_cpu_seconds": 6.109375,
+        "pid": 19140,
+        "rss_bytes": 123555840,
+        "peak_rss_bytes": 123559936,
+        "handles": 205
+      },
+      "resources_end": {
+        "process_cpu_seconds": 6.390625,
+        "pid": 19140,
+        "rss_bytes": 126980096,
+        "peak_rss_bytes": 126984192,
+        "handles": 207
+      },
+      "infrastructure_error": true,
+      "select_counts_including_auth": []
+    }
+  },
+  "flutter": {
+    "attempts\\pilot-02\\flutter_results\\01-A\\samples.json": {
+      "n": 20,
+      "query_counts": [
+        43
+      ],
+      "median_us_exploratory": 57889,
+      "resources": {
+        "rss_bytes": 153485312,
+        "peak_rss_bytes": 155029504
+      }
+    },
+    "attempts\\pilot-02\\flutter_results\\02-B\\samples.json": {
+      "n": 20,
+      "query_counts": [
+        3
+      ],
+      "median_us_exploratory": 10977,
+      "resources": {
+        "rss_bytes": 152555520,
+        "peak_rss_bytes": 152989696
+      }
+    },
+    "attempts\\pilot-02\\flutter_results\\03-B\\samples.json": {
+      "n": 20,
+      "query_counts": [
+        3
+      ],
+      "median_us_exploratory": 12282,
+      "resources": {
+        "rss_bytes": 151461888,
+        "peak_rss_bytes": 153042944
+      }
+    },
+    "attempts\\pilot-02\\flutter_results\\04-A\\samples.json": {
+      "n": 20,
+      "query_counts": [
+        43
+      ],
+      "median_us_exploratory": 60020,
+      "resources": {
+        "rss_bytes": 153473024,
+        "peak_rss_bytes": 155111424
+      }
+    }
+  },
+  "mutants": {
+    "attempts\\pilot-02\\results\\MUT-01\\classification.json": {
+      "mutant": "MUT-01",
+      "classification": "KILLED",
+      "expected_scenario": "SEC-02",
+      "elapsed_seconds": 13.796330700002727,
+      "failed_cases": [
+        {
+          "scenario": "SEC-02",
+          "variant": "reverse-catalog-boundary",
+          "status": "FAIL",
+          "observed": {
+            "visible_B": 40
+          }
+        }
+      ],
+      "baseline_evidence": [
+        "attempts\\pilot-02\\results\\02-B\\probe.json",
+        "attempts\\pilot-02\\results\\03-B\\probe.json"
+      ],
+      "line_exercised": "behavioral path verified by baseline and failed scenario"
+    },
+    "attempts\\pilot-02\\results\\MUT-12\\classification.json": {
+      "mutant": "MUT-12",
+      "classification": "KILLED",
+      "expected_scenario": "DATA-04",
+      "elapsed_seconds": 15.533035300002666,
+      "failed_cases": [
+        {
+          "scenario": "DATA-04",
+          "variant": "fingerprint-and-account",
+          "status": "FAIL",
+          "observed": {
+            "fingerprint_rejected": false,
+            "balances": [
+              88,
+              88
+            ]
+          }
+        }
+      ],
+      "baseline_evidence": [
+        "attempts\\pilot-02\\results\\02-B\\probe.json",
+        "attempts\\pilot-02\\results\\03-B\\probe.json"
+      ],
+      "line_exercised": "behavioral path verified by baseline and failed scenario"
+    }
+  }
+}

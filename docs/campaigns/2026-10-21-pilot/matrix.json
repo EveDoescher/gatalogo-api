@@ -1,0 +1,698 @@
+[
+  {
+    "scenario": "BR-01",
+    "state": "PREPARED",
+    "runs": [
+      "manifest.json"
+    ],
+    "scope": "Resolver refs, preparar A/B isolados com fixtures/snapshots equivalentes e harness comum.",
+    "limitation": "Frozen four SHAs; component probes only, no full mobile/API package comparison yet"
+  },
+  {
+    "scenario": "BR-02",
+    "state": "PARTIAL_EXECUTED",
+    "runs": [
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json",
+      "results\\01-A\\probe.json",
+      "results\\02-B\\probe.json",
+      "results\\03-B\\probe.json",
+      "results\\04-A\\probe.json"
+    ],
+    "scope": "Repetir LAT/LOAD/DB/RSC aplicáveis em blocos pareados nas duas versões.",
+    "limitation": "Common external ASGI client and separate desktop SQLite component probes; not full mobile/API bundle comparison"
+  },
+  {
+    "scenario": "BR-03",
+    "state": "PARTIAL_EXECUTED",
+    "runs": [
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json",
+      "results\\01-A\\probe.json",
+      "results\\02-B\\probe.json",
+      "results\\03-B\\probe.json",
+      "results\\04-A\\probe.json"
+    ],
+    "scope": "Repetir DATA/RES/SEC e percursos UX/ACC nas duas versões, incluindo perda de resposta e conta.",
+    "limitation": "Common external ASGI client and separate desktop SQLite component probes; not full mobile/API bundle comparison"
+  },
+  {
+    "scenario": "BR-04",
+    "state": "PARTIAL_EXECUTED",
+    "runs": [
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json",
+      "results\\01-A\\probe.json",
+      "results\\02-B\\probe.json",
+      "results\\03-B\\probe.json",
+      "results\\04-A\\probe.json"
+    ],
+    "scope": "Quando compatível, fixar cliente para variar API e fixar API para variar Flutter.",
+    "limitation": "Common external ASGI client and separate desktop SQLite component probes; not full mobile/API bundle comparison"
+  },
+  {
+    "scenario": "BR-05",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Revisar comparação A/B, congelar SHAs B e vincular campanha OPT-0."
+  },
+  {
+    "scenario": "LAT-01",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "F-AC/F-CAT; abrir 0/40/501 gatos, cache vazio/cheio, online/offline."
+  },
+  {
+    "scenario": "LAT-02",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Foto válida: confirmação até análise inicial e, separadamente, fim do reconhecimento; cache hit/miss."
+  },
+  {
+    "scenario": "LAT-03",
+    "state": "PARTIAL_EXECUTED",
+    "runs": [
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json"
+    ],
+    "scope": "Foto rejeitada, 503 controlado, 401 com refresh bem/malsucedido."
+  },
+  {
+    "scenario": "LAT-04",
+    "state": "PARTIAL_EXECUTED",
+    "runs": [
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json"
+    ],
+    "scope": "Sync com 0/1/40/501 dirty, pull vazio/multipágina e histórico crescente."
+  },
+  {
+    "scenario": "LAT-05",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "F-SOC; abrir lista/conversa, enviar texto/foto; atrasar detalhes e mensagens alternadamente."
+  },
+  {
+    "scenario": "LAT-06",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "F-YARD; abrir cache e executar build/plant/cook/collect."
+  },
+  {
+    "scenario": "LAT-07",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Feed/inbox: paginação, filtros e timestamps iguais."
+  },
+  {
+    "scenario": "LAT-08",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Análise lenta em paralelo com health, pull e conversa sob carga fixa."
+  },
+  {
+    "scenario": "LOAD-01",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Leituras por contas distintas, concorrência 1/5/10/25/50; patamares de 3 min aquecidos."
+  },
+  {
+    "scenario": "LOAD-02",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Taxa aberta inicial 1/5/10/25 req/s, 3 min/patamar; mix 40% pull, 20% inbox, 20% feed, 20% Quintal com contas separadas."
+  },
+  {
+    "scenario": "LOAD-03",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "2/10/25 requests com barreira: mesma operação/chave; depois comandos distintos disputando saldo de uma compra."
+  },
+  {
+    "scenario": "LOAD-04",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "1/10/50 jobs de referência, 1/2 consumidores e inferência controlada; lote real menor separado."
+  },
+  {
+    "scenario": "LOAD-05",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "1/10/50 sockets, consumidores lentos, mensagens e reconexão parcial."
+  },
+  {
+    "scenario": "LOAD-06",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Rajada de 30 s sobre carga sustentável medida; 5 min para drenar; soak de 60 min sustentável."
+  },
+  {
+    "scenario": "DB-01",
+    "state": "PARTIAL_EXECUTED",
+    "runs": [
+      "attempts\\pilot-02\\flutter_results\\01-A\\samples.json",
+      "attempts\\pilot-02\\flutter_results\\02-B\\samples.json",
+      "attempts\\pilot-02\\flutter_results\\03-B\\samples.json",
+      "attempts\\pilot-02\\flutter_results\\04-A\\samples.json"
+    ],
+    "scope": "F-CAT nas bordas de 500, com G/B; snapshot real do coordinator."
+  },
+  {
+    "scenario": "DB-02",
+    "state": "PARTIAL_EXECUTED",
+    "runs": [
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json"
+    ],
+    "scope": "F-HIST, limit 1/200/500, página fria/repetida."
+  },
+  {
+    "scenario": "DB-03",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "1/20/100 conversas e feed com autores repetidos/distintos."
+  },
+  {
+    "scenario": "DB-04",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Consultas críticas em volumes crescentes, estatísticas atualizadas."
+  },
+  {
+    "scenario": "DB-05",
+    "state": "PARTIAL_EXECUTED",
+    "runs": [
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json"
+    ],
+    "scope": "Análise principal/referência/reconhecimento pausados na inferência; requests leves paralelos."
+  },
+  {
+    "scenario": "DB-06",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Upload/substituição/delete concorrem com finish de worker; compras/coleta simultâneas."
+  },
+  {
+    "scenario": "DB-07",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Abertura SQLite concorrente, falha temporária ao abrir, falha entre aplicar página e salvar cursor."
+  },
+  {
+    "scenario": "IMG-01",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Câmera/galeria, formatos/EXIF/resoluções do manifesto."
+  },
+  {
+    "scenario": "IMG-02",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Analisar, editar metadado que deixe dirty, sync e reiniciar."
+  },
+  {
+    "scenario": "IMG-03",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Referência igual, conteúdo novo no mesmo ângulo, só status alterado e tombstone; reabrir offline."
+  },
+  {
+    "scenario": "IMG-04",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Fotos fixas, processo frio/quente, caches semântico/segmentação vazios/cheios e caminho com/sem provedor."
+  },
+  {
+    "scenario": "IMG-05",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Sem gato/múltiplos/escura/borrada, bytes/pixels nas bordas, arquivo inválido."
+  },
+  {
+    "scenario": "IMG-06",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Conjunto real rotulado antes/depois de mudança interna, modelo/prompt/seed registrados."
+  },
+  {
+    "scenario": "IMG-07",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Disco/permissão indisponível no storage próprio; arquivo muda entre claim e leitura."
+  },
+  {
+    "scenario": "REID-01",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "Auditar identidades/consentimento, splits por gato/sessão e duplicatas do F-REID antes de inferir."
+  },
+  {
+    "scenario": "REID-02",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "Mesmo gato em luz, ângulo/lado, distância e sessões distintos, com galeria fixa."
+  },
+  {
+    "scenario": "REID-03",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "Gatos diferentes com pelagem semelhante, sólidos e pouco distintivos; negativos fáceis separados."
+  },
+  {
+    "scenario": "REID-04",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "Baixa qualidade/oclusão e detecção/segmentação problemática; medir componente e pipeline."
+  },
+  {
+    "scenario": "REID-05",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "Calibração de limiar e depois holdout bloqueado, threshold atual e candidato hipotético registrados."
+  },
+  {
+    "scenario": "REID-06",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "Imagem repetida/recomprimida/crop, região/versão incompatível, ângulo oposto e apenas uma evidência independente."
+  },
+  {
+    "scenario": "REID-07",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "Consultas com/sem indivíduo na galeria, tamanhos crescentes e múltiplas fotos por indivíduo."
+  },
+  {
+    "scenario": "REID-08",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "Candidato restrito/não restrito, shadow on/off no ambiente próprio e decisões humanas de confirmar/rejeitar."
+  },
+  {
+    "scenario": "DATA-01",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Análise determinística; snapshots após metadados, persistência e job."
+  },
+  {
+    "scenario": "DATA-02",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Falha após arquivo salvo, durante progressão e antes de commit; observar em outra sessão."
+  },
+  {
+    "scenario": "DATA-03",
+    "state": "PARTIAL_EXECUTED",
+    "runs": [
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json"
+    ],
+    "scope": "Replay serial/paralelo da chave Quintal; resposta perdida após commit e reinício."
+  },
+  {
+    "scenario": "DATA-04",
+    "state": "PARTIAL_EXECUTED",
+    "runs": [
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json"
+    ],
+    "scope": "Mesma chave com action/target/data diferente; mesma chave em A e B."
+  },
+  {
+    "scenario": "DATA-05",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Datas antiga/nova/igual, device IDs em ordens inversas, tombstone seguido de edição, análise já existente."
+  },
+  {
+    "scenario": "DATA-06",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Finish após substituir/deletar foto/gato; lease expira e tentativa nova termina antes da antiga."
+  },
+  {
+    "scenario": "DATA-07",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Coleta dupla, saldo exato/insuficiente, estoque mínimo, prazo −1 ms/0/+1 ms, cliente adiantado."
+  },
+  {
+    "scenario": "DATA-08",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Leitura seguida de resposta atrasada; eco WS/HTTP nas duas ordens, evento duplicado e timestamps iguais."
+  },
+  {
+    "scenario": "DATA-09",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Criar/alterar/resolver busca, repetir avistamento e confirmar/rejeitar pista."
+  },
+  {
+    "scenario": "RES-01",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Capturar/editar offline, fechar/reabrir e recuperar rede."
+  },
+  {
+    "scenario": "RES-02",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Cortar upload no meio, resposta antes de commit e depois de commit em casos distintos com barreiras."
+  },
+  {
+    "scenario": "RES-03",
+    "state": "PARTIAL_EXECUTED",
+    "runs": [
+      "flutter_results\\RES-03\\test.jsonl",
+      "attempts\\pilot-02\\flutter_results\\RES-03\\test.jsonl"
+    ],
+    "scope": "Pausar resposta A de catálogo/análise/chat/inbox/Quintal; trocar para B/logout/dispose; liberar A.",
+    "limitation": "B chat/inbox account guards only; catalog/analysis/Quintal late responses pending"
+  },
+  {
+    "scenario": "RES-04",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Encerrar worker próprio após claim, expirar lease e iniciar consumidor; resultado antigo tardio em caso separado."
+  },
+  {
+    "scenario": "RES-05",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Queda/retorno de DB/storage próprios; Gemini lento/503/JSON inválido; SMTP/FCM indisponível separadamente."
+  },
+  {
+    "scenario": "RES-06",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "WS cai, fallback de 30 s, WS volta; eventos antes/depois."
+  },
+  {
+    "scenario": "RES-07",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Muitos gatilhos simultâneos sync/refresh; primeira operação falha, seguinte funciona."
+  },
+  {
+    "scenario": "RES-08",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "SQLite/cache/storage próprios corrompidos/indisponíveis e interrupção durante página."
+  },
+  {
+    "scenario": "SEC-01",
+    "state": "PARTIAL_EXECUTED",
+    "runs": [
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json"
+    ],
+    "scope": "Sem token, assinatura/issuer/type inválidos, expirado/revogado, sessão de outro user, conta inativa; HTTP e abertura WS."
+  },
+  {
+    "scenario": "SEC-02",
+    "state": "PARTIAL_EXECUTED",
+    "runs": [
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json"
+    ],
+    "scope": "A tenta ler/alterar/excluir mídia, análise, pistas, conversa/anexo, favoritos e Quintal de B sem permissão."
+  },
+  {
+    "scenario": "SEC-03",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "C fora da conversa manda typing/read WS e acessa mídia; JSON/tipo/UUID inválidos."
+  },
+  {
+    "scenario": "SEC-04",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Público/amigo/estranho no feed/galeria/pistas, preferência muda durante paginação; busca pública ativa/resolvida."
+  },
+  {
+    "scenario": "SEC-05",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "`../`, caminho absoluto, barras Windows/POSIX, nomes/sufixos incomuns em storage/rotas de arquivo."
+  },
+  {
+    "scenario": "SEC-06",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Foto excedente/MIME falso/pixels excessivos/multipart inválido e campos/paginação fora do limite."
+  },
+  {
+    "scenario": "SEC-07",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "OTP errado até limite, expiração exata/reuso/purpose/email trocados, reenvio <60 s; refresh/logout/replay de token antigo."
+  },
+  {
+    "scenario": "SEC-08",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Erros de auth/upload/WS/IA, logs com canários, export A com B no banco."
+  },
+  {
+    "scenario": "SEC-09",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Inventário de dependências/lockfiles, configuração release/CORS/docs expostas."
+  },
+  {
+    "scenario": "SEC-10",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Abrir WS válido, revogar sessão/expirar token e tentar ações/novas conexões."
+  },
+  {
+    "scenario": "UX-01",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Frio/quente, logado/deslogado, cache vazio/cheio, online/offline; iniciar e abrir coleção."
+  },
+  {
+    "scenario": "UX-02",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "40/501 gatos, mídia carregada/não carregada, scroll/filtros/detalhes repetíveis."
+  },
+  {
+    "scenario": "UX-03",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Quintal nas três densidades, pan/zoom/seleção/construção/efeitos."
+  },
+  {
+    "scenario": "UX-04",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Câmera/galeria, preflight, permissão negada e GPS lento/ausente."
+  },
+  {
+    "scenario": "UX-05",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Chat com histórico/teclado/foto e rede ruim; inbox com rajada de eventos."
+  },
+  {
+    "scenario": "UX-06",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Capturas determinísticas e percursos foto→detalhes, offline→retomada, compra→coleta."
+  },
+  {
+    "scenario": "UX-07",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Background/foreground/lock durante upload/produção; 20 ciclos de entrar/sair."
+  },
+  {
+    "scenario": "RSC-01",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Iniciar API/worker, lote fixo frio/quente e repouso."
+  },
+  {
+    "scenario": "RSC-02",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "100 ciclos de sync/foto/conversa/erro, 3 rodadas com repouso sem reiniciar."
+  },
+  {
+    "scenario": "RSC-03",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Substituir/excluir fotos, repetir downloads/status e reabrir offline."
+  },
+  {
+    "scenario": "RSC-04",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "30 ciclos câmera/detalhes/chat/Quintal; heap antes/depois de repouso/GC observado."
+  },
+  {
+    "scenario": "RSC-05",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Sessões pareadas de 15 min coleção/chat/Quintal, brilho/rádio/condição térmica fixos, sem carregar quando viável."
+  },
+  {
+    "scenario": "RSC-06",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "LOAD-04/LAT-08 com limites CPU/RAM e concorrência constantes."
+  },
+  {
+    "scenario": "DLV-01",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "Registrar/recuperar conta sintética, SMTP habilitado em Mailpit próprio; receber e usar OTP."
+  },
+  {
+    "scenario": "DLV-02",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "SMTP lento/recusa/queda, falha antes/depois de envio e repetição respeitando cooldown."
+  },
+  {
+    "scenario": "DLV-03",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "App foreground/background/encerrado, permissão concedida/negada, token real de teste."
+  },
+  {
+    "scenario": "DLV-04",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "Devices com preferências diferentes, UNREGISTERED, erro transitório e sucesso parcial/retry."
+  },
+  {
+    "scenario": "DLV-05",
+    "state": "PENDING",
+    "runs": [],
+    "scope": "Mesmo notification_id via WS/push nas duas ordens; refresh/loadMore/markRead concorrentes e troca de conta."
+  },
+  {
+    "scenario": "DLV-06",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "Reconectar push worker e repetir evento confirmado; ausência de credencial em caso separado."
+  },
+  {
+    "scenario": "ACC-01",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "Telas/estados suportados, tema(s) existentes, texto sobre imagens e overlays, foco/seleção/erro."
+  },
+  {
+    "scenario": "ACC-02",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "Escala de fonte 1,0/1,3/2,0 e máximo suportado pelo OS, viewport pequeno, texto longo/teclado."
+  },
+  {
+    "scenario": "ACC-03",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "Botões de ícone, fechar modal, itens de coleção/chat, ações/seleção do Quintal, proximidade de controles."
+  },
+  {
+    "scenario": "ACC-04",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "TalkBack/VoiceOver: entrar, escolher foto, localizar gato, ouvir análise, enviar mensagem, ler notificação e operar uma ação do Quintal."
+  },
+  {
+    "scenario": "ACC-05",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "Inspecionar ícones, imagens informativas/decorativas, tabs, contadores, mensagens e ações desenhadas na cena."
+  },
+  {
+    "scenario": "ACC-06",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "Preferência de redução de movimento ativa/inativa, entrada/saída de telas, celebração e cena Quintal."
+  },
+  {
+    "scenario": "ACC-07",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "Viewports lógicos 320×568, 360×800, 412×915 e tablet 800×1280 como amostra de classes; orientação suportada, safe areas e teclado."
+  },
+  {
+    "scenario": "ACC-08",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "runs": [],
+    "scope": "Offline, imagem rejeitada, sessão expirada, saldo insuficiente e carregamento durante tarefa assistiva."
+  }
+]

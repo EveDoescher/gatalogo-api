@@ -34,6 +34,9 @@ def build(run, destination):
     evidence = []
     evidence_paths = [run / "manifest.json", run / "executor_manifest.json", run / "fixtures" / "manifest.json"]
     evidence_paths += list(run.glob("attempts/*/executor_manifest.json"))
+    evidence_paths += list(run.glob("**/flutter_results/*/test.jsonl"))
+    evidence_paths += list(run.glob("sources/B/api/.tmp/integration-*/pytest.log"))
+    evidence_paths += list(run.glob("harness-tests*.log"))
     for path in sorted(run.glob("**/results/*/probe.json")):
         # Avoid traversing any future embedded copies of reports in source archives.
         if "sources" in path.relative_to(run).parts:
@@ -95,7 +98,10 @@ def build(run, destination):
     for entry in registry:
         result = next((v for v in mutants.values() if v["mutant"] == entry["family"]), None)
         if result:
-            entry.update(state="PARTIAL_EXECUTED", classification=result["classification"])
+            entry.update(state="PARTIAL_EXECUTED", classification=result["classification"],
+                         elapsed_seconds=result["elapsed_seconds"], baseline_evidence=result["baseline_evidence"])
+        else:
+            entry["elapsed_seconds"] = None
         entry["executor"] = "scripts/campaign/mutation_cases.py" if entry["family"] in ("MUT-01", "MUT-12") else "PENDING_IMPLEMENTATION: use approved oracle, baseline gate and one copy per mutant"
     for index, path in enumerate(dict.fromkeys(evidence_paths), 1):
         if path.exists():

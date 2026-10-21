@@ -1,0 +1,1365 @@
+{
+  "changes": [
+    {
+      "client_id": "18d9b86b-7b90-513a-b84e-daea1281cb92",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 0",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/18d9b86b-7b90-513a-b84e-daea1281cb92/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/18d9b86b-7b90-513a-b84e-daea1281cb92/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 1
+    },
+    {
+      "client_id": "981300ec-1378-5e75-813b-880ba8b09ee1",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 1",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/981300ec-1378-5e75-813b-880ba8b09ee1/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/981300ec-1378-5e75-813b-880ba8b09ee1/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 2
+    },
+    {
+      "client_id": "1fd0dc11-e4e4-5b57-a95a-76705e8e9077",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 2",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/1fd0dc11-e4e4-5b57-a95a-76705e8e9077/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/1fd0dc11-e4e4-5b57-a95a-76705e8e9077/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 3
+    },
+    {
+      "client_id": "2d3bdd83-96b0-5809-9d8b-f2bc4f28552c",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 3",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/2d3bdd83-96b0-5809-9d8b-f2bc4f28552c/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/2d3bdd83-96b0-5809-9d8b-f2bc4f28552c/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 4
+    },
+    {
+      "client_id": "2a9f1e51-431c-51a5-ade8-431ef266506f",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 4",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/2a9f1e51-431c-51a5-ade8-431ef266506f/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/2a9f1e51-431c-51a5-ade8-431ef266506f/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 5
+    },
+    {
+      "client_id": "b3e95fc7-1e66-5b3d-a73d-6ef8744afe6b",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 5",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/b3e95fc7-1e66-5b3d-a73d-6ef8744afe6b/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/b3e95fc7-1e66-5b3d-a73d-6ef8744afe6b/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 6
+    },
+    {
+      "client_id": "1b5df200-2c98-5b76-a824-6b8665f589cd",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 6",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/1b5df200-2c98-5b76-a824-6b8665f589cd/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/1b5df200-2c98-5b76-a824-6b8665f589cd/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 7
+    },
+    {
+      "client_id": "289f7602-1974-5efb-98e3-bd6a81d4cbe7",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 7",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/289f7602-1974-5efb-98e3-bd6a81d4cbe7/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/289f7602-1974-5efb-98e3-bd6a81d4cbe7/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 8
+    },
+    {
+      "client_id": "af74f6d1-6cf4-58d1-9853-856bb9e841e4",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 8",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/af74f6d1-6cf4-58d1-9853-856bb9e841e4/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/af74f6d1-6cf4-58d1-9853-856bb9e841e4/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 9
+    },
+    {
+      "client_id": "3f6c39e6-16e9-5914-b1f0-08f37603ac19",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 9",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/3f6c39e6-16e9-5914-b1f0-08f37603ac19/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/3f6c39e6-16e9-5914-b1f0-08f37603ac19/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 10
+    },
+    {
+      "client_id": "425c14d1-81dd-5b74-b34d-1e9121f5fe82",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 10",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/425c14d1-81dd-5b74-b34d-1e9121f5fe82/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/425c14d1-81dd-5b74-b34d-1e9121f5fe82/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 11
+    },
+    {
+      "client_id": "7f2ca37d-43f2-57d0-83ff-aeca0b73e717",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 11",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/7f2ca37d-43f2-57d0-83ff-aeca0b73e717/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/7f2ca37d-43f2-57d0-83ff-aeca0b73e717/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 12
+    },
+    {
+      "client_id": "8156a97e-28cc-5980-8650-28d6758937a3",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 12",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/8156a97e-28cc-5980-8650-28d6758937a3/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/8156a97e-28cc-5980-8650-28d6758937a3/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 13
+    },
+    {
+      "client_id": "202ba0da-f3fb-5c1d-b5c9-e8f42536e8f8",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 13",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/202ba0da-f3fb-5c1d-b5c9-e8f42536e8f8/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/202ba0da-f3fb-5c1d-b5c9-e8f42536e8f8/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 14
+    },
+    {
+      "client_id": "5af2ae1b-2b42-58c9-b0ef-02d842ca4060",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 14",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/5af2ae1b-2b42-58c9-b0ef-02d842ca4060/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/5af2ae1b-2b42-58c9-b0ef-02d842ca4060/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 15
+    },
+    {
+      "client_id": "8a6717fe-268f-5b74-a61a-1650399bf977",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 15",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/8a6717fe-268f-5b74-a61a-1650399bf977/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/8a6717fe-268f-5b74-a61a-1650399bf977/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 16
+    },
+    {
+      "client_id": "e76b9752-0d1d-51e4-8f3a-17f5af5ac79d",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 16",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/e76b9752-0d1d-51e4-8f3a-17f5af5ac79d/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/e76b9752-0d1d-51e4-8f3a-17f5af5ac79d/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 17
+    },
+    {
+      "client_id": "15efdd6e-79fb-5a81-8852-a93d4ffe1f14",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 17",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/15efdd6e-79fb-5a81-8852-a93d4ffe1f14/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/15efdd6e-79fb-5a81-8852-a93d4ffe1f14/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 18
+    },
+    {
+      "client_id": "eeadf280-4c92-5fe9-803c-4d0d70eaba61",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 18",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/eeadf280-4c92-5fe9-803c-4d0d70eaba61/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/eeadf280-4c92-5fe9-803c-4d0d70eaba61/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 19
+    },
+    {
+      "client_id": "1f359253-0ad3-5c8b-b0a7-bebcd3a26748",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 19",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/1f359253-0ad3-5c8b-b0a7-bebcd3a26748/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/1f359253-0ad3-5c8b-b0a7-bebcd3a26748/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 20
+    },
+    {
+      "client_id": "7c3c8749-7e12-58cb-b22b-f2f6f3363dbf",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 20",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/7c3c8749-7e12-58cb-b22b-f2f6f3363dbf/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/7c3c8749-7e12-58cb-b22b-f2f6f3363dbf/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 21
+    },
+    {
+      "client_id": "2d0af0bb-75da-5f93-8789-2afb5174ba80",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 21",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/2d0af0bb-75da-5f93-8789-2afb5174ba80/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/2d0af0bb-75da-5f93-8789-2afb5174ba80/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 22
+    },
+    {
+      "client_id": "d53baca8-80cd-541a-ad50-2f1cd5893cde",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 22",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/d53baca8-80cd-541a-ad50-2f1cd5893cde/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/d53baca8-80cd-541a-ad50-2f1cd5893cde/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 23
+    },
+    {
+      "client_id": "3638b90a-4071-5e82-ab38-398ba9b13dd2",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 23",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/3638b90a-4071-5e82-ab38-398ba9b13dd2/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/3638b90a-4071-5e82-ab38-398ba9b13dd2/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 24
+    },
+    {
+      "client_id": "181a54f0-0dc5-5ef1-a673-232f5c7ea30d",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 24",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/181a54f0-0dc5-5ef1-a673-232f5c7ea30d/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/181a54f0-0dc5-5ef1-a673-232f5c7ea30d/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 25
+    },
+    {
+      "client_id": "ef98c9e1-eb15-5bb4-bb97-30af4e8f04d1",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 25",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/ef98c9e1-eb15-5bb4-bb97-30af4e8f04d1/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/ef98c9e1-eb15-5bb4-bb97-30af4e8f04d1/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 26
+    },
+    {
+      "client_id": "7311b62d-3f9e-5212-8287-da263be71cbe",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 26",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/7311b62d-3f9e-5212-8287-da263be71cbe/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/7311b62d-3f9e-5212-8287-da263be71cbe/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 27
+    },
+    {
+      "client_id": "a8d30d04-9345-5298-b0b0-57a0a20db10d",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 27",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/a8d30d04-9345-5298-b0b0-57a0a20db10d/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/a8d30d04-9345-5298-b0b0-57a0a20db10d/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 28
+    },
+    {
+      "client_id": "c25c7e71-4944-544a-9dc1-0af45c22a3bb",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 28",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/c25c7e71-4944-544a-9dc1-0af45c22a3bb/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/c25c7e71-4944-544a-9dc1-0af45c22a3bb/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 29
+    },
+    {
+      "client_id": "6aa6f8f1-b4b5-51a3-a8c0-2cf55570803e",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 29",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/6aa6f8f1-b4b5-51a3-a8c0-2cf55570803e/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/6aa6f8f1-b4b5-51a3-a8c0-2cf55570803e/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 30
+    },
+    {
+      "client_id": "3e592887-fa68-57c7-962f-dd0cb7135355",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 30",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/3e592887-fa68-57c7-962f-dd0cb7135355/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/3e592887-fa68-57c7-962f-dd0cb7135355/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 31
+    },
+    {
+      "client_id": "b38e367b-6e84-57b4-8e51-1bc32914b006",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 31",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/b38e367b-6e84-57b4-8e51-1bc32914b006/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/b38e367b-6e84-57b4-8e51-1bc32914b006/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 32
+    },
+    {
+      "client_id": "aff3cf32-7b73-5d95-b39c-7ef0584ddae0",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 32",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/aff3cf32-7b73-5d95-b39c-7ef0584ddae0/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/aff3cf32-7b73-5d95-b39c-7ef0584ddae0/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 33
+    },
+    {
+      "client_id": "f36419b9-4f5a-5922-a825-76b308fe2b7b",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 33",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/f36419b9-4f5a-5922-a825-76b308fe2b7b/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/f36419b9-4f5a-5922-a825-76b308fe2b7b/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 34
+    },
+    {
+      "client_id": "a9288801-9a76-54e8-ab2c-b5f0a678fee6",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 34",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/a9288801-9a76-54e8-ab2c-b5f0a678fee6/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/a9288801-9a76-54e8-ab2c-b5f0a678fee6/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 35
+    },
+    {
+      "client_id": "205d3443-e797-5ba0-a318-66a25184ad6c",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 35",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/205d3443-e797-5ba0-a318-66a25184ad6c/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/205d3443-e797-5ba0-a318-66a25184ad6c/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 36
+    },
+    {
+      "client_id": "840c7188-6c15-5b62-976e-5921c1f8395e",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 36",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/840c7188-6c15-5b62-976e-5921c1f8395e/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/840c7188-6c15-5b62-976e-5921c1f8395e/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 37
+    },
+    {
+      "client_id": "93546193-8cf3-58ce-986e-99d78be5eb9e",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 37",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/93546193-8cf3-58ce-986e-99d78be5eb9e/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/93546193-8cf3-58ce-986e-99d78be5eb9e/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 38
+    },
+    {
+      "client_id": "0847becc-c001-5d34-b75d-a2811a2c3052",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": null,
+      "payload": {
+        "name": "Synthetic 38",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/0847becc-c001-5d34-b75d-a2811a2c3052/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/0847becc-c001-5d34-b75d-a2811a2c3052/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 39
+    },
+    {
+      "client_id": "7a978c39-04d6-5b38-bf6a-09444980e368",
+      "updated_at": "2026-10-21T12:00:00Z",
+      "device_id": "a1",
+      "deleted_at": "2026-10-21T12:00:00Z",
+      "payload": {
+        "name": "Synthetic 39",
+        "unknown": [
+          1,
+          2
+        ]
+      },
+      "analysis": {
+        "coat_type": "Fixture only"
+      },
+      "photo_available": false,
+      "photo_url": null,
+      "reference_photos": [
+        {
+          "kind": "front",
+          "status": "ready",
+          "photo_url": "/sync/cats/7a978c39-04d6-5b38-bf6a-09444980e368/reference-photos/front",
+          "updated_at": "2026-10-21T12:00:00Z"
+        },
+        {
+          "kind": "left",
+          "status": "ready",
+          "photo_url": "/sync/cats/7a978c39-04d6-5b38-bf6a-09444980e368/reference-photos/left",
+          "updated_at": "2026-10-21T12:00:00Z"
+        }
+      ],
+      "avatar": null,
+      "revision": 40
+    }
+  ],
+  "next_cursor": 40
+}
