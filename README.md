@@ -431,3 +431,24 @@ As dependências HTTP compartilhadas ficam em `app/dependencies.py`. Autorizaç�
 conversas e apresentação de relatos ficam em `app/services/conversations.py` e
 `app/services/report_presenter.py`, sem importar módulos de rotas. Os aliases
 anteriores de autenticação e apresentação são mantidos por compatibilidade.
+
+### Integração com PostgreSQL e cliente Flutter
+
+Com Docker ativo e o repositório Flutter na pasta irmã `catlogue`, execute:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/run_integration_checks.py
+```
+
+O executor cria um PostgreSQL temporário com pgvector/PostGIS e uma API em porta
+local exclusiva, aplica as migrações nesse banco e habilita os testes de
+reconhecimento, concorrência, HTTP real e reinício do Flutter. As credenciais são
+exclusivas da execução. SMTP fica desabilitado; essa suíte não verifica entrega
+de e-mail pelo Mailpit. Os serviços temporários são encerrados ao final e os
+logs ficam em `.tmp/integration-<id>/`.
+
+Para selecionar cenários, passe os argumentos do pytest após o script:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/run_integration_checks.py tests/test_quintal_postgres.py
+```

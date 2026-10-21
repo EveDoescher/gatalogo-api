@@ -50,6 +50,37 @@ A remoção de dois imports da migração `20260927_11` não modifica suas opera
 - Comparação AST com a main: **123 assinaturas e declarações de endpoints inalteradas**.
 - Estrutura e descrição do README atualizadas para o escopo real da API.
 - Patch de sessão: verificação de aplicação sem aplicá-lo.
-- Sem teste de deploy, migração real, GPU, entrega de push ou carga concorrente em PostgreSQL nesta revisão.
+- A etapa inicial não executou integrações externas; a atualização de 21/10 abaixo registra migrações e concorrência PostgreSQL no ambiente descartável. Deploy, migração no banco de uso, GPU e entrega real de push/e-mail continuam fora desta validação.
 
 O arquivo `quality_inventory.md` contém a distribuição, módulos grandes, dependências entre rotas e lista completa das fontes. Pendências acima permanecem explícitas; não se afirma que toda a dívida arquitetural foi eliminada.
+
+## Complemento de integração — 21/10/2026
+
+O ambiente isolado executou **286 testes aprovados, zero ignorados e zero falhas**,
+incluindo os 37 cenários condicionais da etapa anterior. Foram aplicadas todas as
+migrações no banco descartável, exercitadas transações concorrentes e chamadas
+HTTP reais, e executados dois processos Flutter com SQLite persistente, perda de
+resposta após commit, replay e troca de conta.
+
+A execução inicial com todas as flags expôs três falhas, tratadas neste complemento:
+
+- Corrigida emissão de notificação para candidato visual restrito: a persistência
+  agora respeita `notification_eligible`. O candidato permanece registrado para
+  revisão; evidência suficiente pode promovê-lo depois e notificar uma única vez.
+  O teste verifica ausência de aviso/evento enquanto restrito e a transição sem duplicação.
+- Atualizado o teste de conquista: cadastro sincronizado não equivale a descoberta
+  confirmada. O cenário agora exige confirmação de análise pelo servidor, valida
+  persistência da conquista após exclusão do registro e uma única notificação de resultado.
+- Atualizado o fluxo do cliente Flutter para selecionar produto, quantidade,
+  pagamento e confirmar antes de simular a perda de resposta. O replay após reinício
+  reproduz exatamente o pedido original e reutiliza a chave de idempotência.
+
+O executor `scripts/run_integration_checks.py` cria banco/API temporários e encerra
+os processos e o contêiner ao final. Usa segredo JWT e credenciais próprios da
+execução, sem alterar flags globais ou migrar o banco de uso. Seu modo de seleção
+foi validado separadamente com os **4 testes de concorrência PostgreSQL aprovados**.
+SMTP fica desabilitado: a disponibilidade do Mailpit não é evidência de teste de entrega.
+
+A suíte padrão continua opt-in para essas integrações; o comando documentado no
+README habilita as flags e fornece os pré-requisitos automaticamente. Os demais
+itens de arquitetura mapeados acima permanecem explícitos.

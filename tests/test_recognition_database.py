@@ -92,11 +92,25 @@ async def test_target_processed_after_sighting_runs_reverse_search(db):
 
 @pytest.mark.asyncio
 async def test_solid_candidates_stay_private(db):
-    _, report, sighting = await setup_pair(db, solid=True)
+    cats, report, sighting = await setup_pair(db, solid=True)
     await create_report_matches(db, report=report, settings=SETTINGS)
     match = (await db.execute(select(MatchSuggestion))).scalar_one()
     assert match.restricted
+    assert not match.evidence["notification_eligible"]
     assert not (await db.execute(select(AppNotification))).scalars().all()
+    assert not db.info.get("gatalogo_realtime_events")
+
+    # Corroborated evidence can promote a private candidate and notify once.
+    for cat in cats:
+        cat.analysis = {"coat_type": "Rajado"}
+    await create_report_matches(db, report=report, settings=SETTINGS)
+    await create_report_matches(db, report=report, settings=SETTINGS)
+    assert not match.restricted
+    assert match.evidence["notification_eligible"]
+    notices = (await db.scalars(select(AppNotification))).all()
+    assert len(notices) == 1
+    assert notices[0].user_id == report.user_id
+    assert notices[0].payload["match_id"] == str(match.id)
 
 
 @pytest.mark.asyncio

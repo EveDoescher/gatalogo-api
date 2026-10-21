@@ -185,6 +185,7 @@ async def create_sighting_matches(session: AsyncSession, *, sighting: Sighting,
             continue
         notify = (
             existing is None or existing.status == "stale"
+            or existing.restricted
             or bool((existing.evidence or {}).get("shadow_mode"))
         )
         if existing is None:
@@ -193,12 +194,12 @@ async def create_sighting_matches(session: AsyncSession, *, sighting: Sighting,
             created += 1
         existing.similarity, existing.restricted = result["similarity"], result["restricted"]
         existing.evidence, existing.status = result["evidence"], "pending"
-        if notify and not settings.match_shadow_mode:
+        if notify and result["evidence"]["notification_eligible"]:
             previous = (await session.execute(select(AppNotification.id).where(
                 AppNotification.user_id == report.user_id, AppNotification.type == "possible_match",
                 AppNotification.payload["match_id"].as_string() == str(existing.id)))).scalar_one_or_none()
             if previous is None:
-                message = "Um gato com evidências visuais compatíveis foi encontrado na região. Confira as fotos." if not result["restricted"] else "Uma pista visual compatível foi avistada na sua região. Confira as fotos."
+                message = "Um gato com evidências visuais compatíveis foi encontrado na região. Confira as fotos."
                 notification = AppNotification(
                     user_id=report.user_id,
                     type="possible_match",

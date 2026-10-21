@@ -2,7 +2,7 @@
 
 Gerado por `scripts/audit_quality.py` na API. Candidatos exigem revisão; ausência de referência não prova inutilidade.
 
-Arquivos versionados ou novos (respeitando .gitignore): 166. Fontes Python/Dart: 129.
+Arquivos versionados ou novos (respeitando .gitignore): 167. Fontes Python/Dart: 130.
 
 ## Distribuição das fontes
 
@@ -14,9 +14,9 @@ Arquivos versionados ou novos (respeitando .gitignore): 166. Fontes Python/Dart:
 | app/models | 3 | 297 |
 | app/prompts | 2 | 34 |
 | app/routers | 11 | 3808 |
-| app/services | 39 | 5519 |
-| scripts | 12 | 1618 |
-| tests | 38 | 5384 |
+| app/services | 39 | 5520 |
+| scripts | 13 | 1827 |
+| tests | 38 | 5409 |
 
 ## Fontes com mais de 500 linhas
 
@@ -121,7 +121,7 @@ Inclui componentes acessíveis somente por testes ou ferramentas. Confirmar ante
 | `app/services/quintal_scheduler.py` | 80 |
 | `app/services/realtime_events.py` | 67 |
 | `app/services/recognition_features.py` | 127 |
-| `app/services/recognition_service.py` | 263 |
+| `app/services/recognition_service.py` | 264 |
 | `app/services/report_presenter.py` | 26 |
 | `app/services/segmentation_service.py` | 351 |
 | `app/services/storage_service.py` | 121 |
@@ -138,6 +138,7 @@ Inclui componentes acessíveis somente por testes ou ferramentas. Confirmar ante
 | `scripts/prepare_oxford_pet_benchmark.py` | 167 |
 | `scripts/reid_benchmark.py` | 213 |
 | `scripts/reindex_recognition.py` | 32 |
+| `scripts/run_integration_checks.py` | 209 |
 | `scripts/run_own_cats_calibration.py` | 194 |
 | `scripts/simulate_quintal_balance.py` | 243 |
 | `tests/conftest.py` | 13 |
@@ -157,7 +158,7 @@ Inclui componentes acessíveis somente por testes ou ferramentas. Confirmar ante
 | `tests/test_milestones_v2.py` | 216 |
 | `tests/test_missing_poster_flow.py` | 87 |
 | `tests/test_preprocessing_quality.py` | 94 |
-| `tests/test_product.py` | 176 |
+| `tests/test_product.py` | 187 |
 | `tests/test_progression.py` | 292 |
 | `tests/test_progression_migration.py` | 40 |
 | `tests/test_quintal_activity_calendar.py` | 69 |
@@ -171,7 +172,7 @@ Inclui componentes acessíveis somente por testes ou ferramentas. Confirmar ante
 | `tests/test_quintal_scheduler.py` | 60 |
 | `tests/test_realtime_events.py` | 29 |
 | `tests/test_recognition.py` | 195 |
-| `tests/test_recognition_database.py` | 224 |
+| `tests/test_recognition_database.py` | 238 |
 | `tests/test_screen_corrections.py` | 86 |
 | `tests/test_segmentation_service.py` | 150 |
 | `tests/test_social_graph.py` | 181 |

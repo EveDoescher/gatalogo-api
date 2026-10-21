@@ -10,7 +10,7 @@ from sqlalchemy import select
 
 from test_recognition_database import db, setup_pair, SETTINGS
 from app.persistence_models import (AppNotification, EmailOtp, Friendship, MatchSuggestion,
-    User, UserSession, RemoteCat, FeedItem)
+    User, UserSession, RemoteCat, FeedItem, CatPhoto, ProgressEvent)
 from app.routers import product, vision, social, auth
 from app.schemas import MissingReportCreate, MessageCreate
 from app.schemas import SightingCreate
@@ -126,10 +126,19 @@ async def test_conversations_require_friendship_and_notify_only_recipient(db):
 
 
 @pytest.mark.asyncio
-async def test_achievements_are_durable_private_and_shared_explicitly_once(db):
+async def test_achievements_are_durable_private_and_shared_explicitly_once(db, monkeypatch):
     cats, _, _ = await setup_pair(db)
     user = await db.get(User, cats[0].user_id)
     user.username = f"u{uuid4().hex[:12]}"
+    from app.services import progression
+    monkeypatch.setattr(progression.get_settings(), "progression_rollout_percent", 100)
+    unconfirmed = await product.journey(user, db)
+    assert next(item for item in unconfirmed if item["id"] == "first")["unlocked_at"] is None
+    photo = await db.scalar(select(CatPhoto).where(
+        CatPhoto.cat_id == cats[0].id, CatPhoto.kind == "primary"))
+    event = await progression.confirm_photo(db, cats[0], photo, {
+        "confidence": .95, "coat_type": "Rajado", "primary_color": "Cinza", "hair_type": "Curto",
+    })
     first = await product.journey(user, db)
     assert next(item for item in first if item["id"] == "first")["unlocked_at"]
     assert not (await db.execute(select(FeedItem))).scalars().all()
@@ -139,10 +148,12 @@ async def test_achievements_are_durable_private_and_shared_explicitly_once(db):
     await product.share_achievement("first", user, db)
     await product.share_achievement("first", user, db)
     assert len((await db.execute(select(FeedItem))).scalars().all()) == 1
-    notices = (await db.execute(select(AppNotification).where(AppNotification.type == "achievement"))).scalars().all()
-    achievement_ids = [notice.payload["achievement_id"] for notice in notices]
-    assert achievement_ids.count("first") == 1
-    assert len(achievement_ids) == len(set(achievement_ids))
+    grants = (await db.scalars(select(ProgressEvent).where(
+        ProgressEvent.user_id == user.id, ProgressEvent.event_key == "challenge:first"))).all()
+    assert len(grants) == 1
+    notices = (await db.scalars(select(AppNotification).where(
+        AppNotification.user_id == user.id, AppNotification.type == "progress_result"))).all()
+    assert [notice.payload["event_id"] for notice in notices].count(str(event.id)) == 1
 
 
 @pytest.mark.asyncio
