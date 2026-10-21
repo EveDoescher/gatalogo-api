@@ -1,5 +1,5 @@
 from datetime import UTC, datetime, timedelta
-from uuid import uuid4
+from uuid import UUID, uuid4
 import pytest
 import pytest_asyncio
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
@@ -713,7 +713,7 @@ async def test_market_quantity_scales_ingredients_output_and_deadline(account):
     assert not await p.rows(session, QuintalTask, user.id)
     await p.stock(session, user.id, {'milk': 1})
     result = await op(session, user, 'order', 'beef', {'payment': 'products', 'quantity': 4})
-    task = await session.get(QuintalTask, p.UUID(result['task_id']))
+    task = await session.get(QuintalTask, UUID(result['task_id']))
     assert task.inputs == {'milk': 4, 'wheat': 4}
     assert task.outputs == {'beef': 4}
     assert p.utc(task.ready_at) - p.utc(task.started_at) == timedelta(hours=4)
@@ -764,6 +764,6 @@ async def test_notifications_cursor_preserves_timestamp_ties_and_owner(account):
     session.add(AppNotification(user_id=other.id, type='message', payload={}, created_at=NOW))
     await session.commit()
     first = await notifications(limit=2, cursor=None, cursor_id=None, user=user, session=session)
-    second = await notifications(limit=2, cursor=first[-1]['created_at'], cursor_id=p.UUID(first[-1]['id']), user=user, session=session)
-    third = await notifications(limit=2, cursor=second[-1]['created_at'], cursor_id=p.UUID(second[-1]['id']), user=user, session=session)
+    second = await notifications(limit=2, cursor=first[-1]['created_at'], cursor_id=UUID(first[-1]['id']), user=user, session=session)
+    third = await notifications(limit=2, cursor=second[-1]['created_at'], cursor_id=UUID(second[-1]['id']), user=user, session=session)
     assert [row['id'] for row in first + second + third] == sorted(map(str,ids), reverse=True)

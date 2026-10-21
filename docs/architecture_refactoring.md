@@ -1,5 +1,8 @@
 # Refatoração arquitetural — 21/10/2026
 
+> Estado atual: veja [architecture_completion.md](architecture_completion.md).
+> As pendências abaixo registram a etapa anterior, não o estado final desta rodada.
+
 Branch: `code-quality-cleanup`, derivada da main sincronizada na etapa anterior.
 Este documento registra a execução do mapa de qualidade, do menor para o maior risco.
 
@@ -55,7 +58,7 @@ isolamento do worker GPU e consumidores concorrentes em PostgreSQL.
 As tabelas dos testes de fila PostgreSQL vivem em schemas descartáveis exclusivos;
 o banco e a API de uso não são migrados.
 
-## Dívida que continua explícita
+## Pendências históricas da primeira etapa
 
 - O coordenador de comandos de produção e alguns handlers de feed/chat ainda são extensos. Extrair handlers menores exige manter a transação externa única; não criar commits em cada operação extraída.
 - Locks de dependências reproduzíveis CPU/GPU e digest de imagens ainda precisam de resolução e validação nas imagens alvo. O freeze do ambiente Windows não é um lock Linux/GPU válido.

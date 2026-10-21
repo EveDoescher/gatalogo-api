@@ -1,3 +1,4 @@
+from app.services import social_feed_commands
 from types import SimpleNamespace
 from unittest.mock import AsyncMock
 from uuid import uuid4
@@ -18,10 +19,10 @@ async def post_account(monkeypatch):
     async with engine.begin() as connection:
         for model in (User, FeedItem, ProgressEvent):
             await connection.run_sync(model.__table__.create)
-    monkeypatch.setattr(social.progress, 'account', AsyncMock())
-    monkeypatch.setattr(social.progress, 'grant', AsyncMock(return_value=SimpleNamespace(result=True)))
-    monkeypatch.setattr(social, '_friend_ids', AsyncMock(return_value=[]))
-    monkeypatch.setattr(social, 'publish_committed_events', AsyncMock())
+    monkeypatch.setattr(social_feed_commands.progress, 'account', AsyncMock())
+    monkeypatch.setattr(social_feed_commands.progress, 'grant', AsyncMock(return_value=SimpleNamespace(result=True)))
+    monkeypatch.setattr(social_feed_commands, '_friend_ids', AsyncMock(return_value=[]))
+    monkeypatch.setattr(social_feed_commands, 'publish_committed_events', AsyncMock())
     async with async_sessionmaker(engine, expire_on_commit=False)() as session:
         user = User(id=uuid4(), email='posts@test.local', username='writer', status='active')
         session.add(user)

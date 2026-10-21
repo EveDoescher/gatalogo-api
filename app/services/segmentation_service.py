@@ -1,8 +1,11 @@
 from dataclasses import dataclass
 from functools import lru_cache
+import hashlib
+import json
 from pathlib import Path
 from threading import Lock
 from typing import Any, Protocol
+import zlib
 
 import cv2
 import numpy as np
@@ -10,6 +13,7 @@ import numpy as np
 from app.config import Settings
 from app.exceptions import SegmentationError
 from app.models.vision import SegmentationResult
+from app.services.analysis_cache import AnalysisCache
 
 
 _inference_lock = Lock()
@@ -127,35 +131,69 @@ class SegmentationService:
         detector: CatDetector | None = None,
         refiner: MaskRefiner | None = None,
         fallback_detector: CatDetector | None = None,
+        cache: AnalysisCache | None = None,
     ) -> None:
         self.settings = settings
-        detector_was_created = detector is None
-        self.detector = detector or TorchvisionCatDetector(settings)
-        self.refiner = refiner or Sam2MaskRefiner(settings)
-        if fallback_detector is not None:
-            self.fallback_detector = fallback_detector
-        elif detector_was_created and (
-            0 < settings.detector_fallback_confidence
-            < settings.detector_confidence
-        ):
-            fallback_settings = settings.model_copy(
+        has_fallback_threshold = (
+            0 < settings.detector_fallback_confidence < settings.detector_confidence
+        )
+        if detector is None and fallback_detector is None and has_fallback_threshold:
+            single_pass_settings = settings.model_copy(
                 update={
                     "detector_confidence": settings.detector_fallback_confidence,
                 }
             )
-            self.fallback_detector = TorchvisionCatDetector(fallback_settings)
-        else:
+            self.detector = TorchvisionCatDetector(single_pass_settings)
             self.fallback_detector = None
+        else:
+            self.detector = detector or TorchvisionCatDetector(settings)
+            self.fallback_detector = fallback_detector
+
+        self.refiner = refiner or Sam2MaskRefiner(settings)
+        self.cache = (
+            cache
+            if cache is not None
+            else (
+                AnalysisCache(settings.analysis_cache_dir)
+                if detector is None and refiner is None and fallback_detector is None
+                else None
+            )
+        )
 
     def segment_cat(self, image: np.ndarray) -> SegmentationResult:
-        detections = self.detector.detect(image)
+        cache_key = self._cache_key(image) if self.cache is not None else None
+        if cache_key is not None:
+            cached = self._read_cached(cache_key, image)
+            if cached is not None:
+                return cached
+
+        raw_detections = self.detector.detect(image)
+        detections = [
+            item
+            for item in raw_detections
+            if item.confidence >= self.settings.detector_confidence
+        ]
         detector_fallback_used = False
         if not detections:
             if self.fallback_detector is not None:
                 detections = self.fallback_detector.detect(image)
                 detector_fallback_used = bool(detections)
+            elif (
+                0
+                < self.settings.detector_fallback_confidence
+                < self.settings.detector_confidence
+            ):
+                detections = [
+                    item
+                    for item in raw_detections
+                    if item.confidence >= self.settings.detector_fallback_confidence
+                ]
+                detector_fallback_used = bool(detections)
             if not detections:
-                return self._empty_result()
+                empty = self._empty_result()
+                if cache_key is not None:
+                    self._write_cached(cache_key, empty)
+                return empty
 
         warnings: list[str] = []
         if detector_fallback_used:
@@ -174,7 +212,7 @@ class SegmentationService:
 
         ambiguous_multiple_cats = self._has_ambiguous_primary(detections)
         if ambiguous_multiple_cats:
-            return SegmentationResult(
+            ambiguous = SegmentationResult(
                 cat_count=len(detections),
                 detector_confidence=round(primary.confidence, 4),
                 mask=None,
@@ -184,6 +222,9 @@ class SegmentationService:
                 detector_fallback_used=detector_fallback_used,
                 warnings=tuple(warnings),
             )
+            if cache_key is not None:
+                self._write_cached(cache_key, ambiguous)
+            return ambiguous
 
         if len(detections) > 1:
             warnings.append(
@@ -199,7 +240,7 @@ class SegmentationService:
             )
 
         bbox = self._bbox(mask)
-        return SegmentationResult(
+        result = SegmentationResult(
             cat_count=len(detections),
             detector_confidence=round(primary.confidence, 4),
             mask=(mask.astype(np.uint8) * 255),
@@ -208,6 +249,77 @@ class SegmentationService:
             detector_fallback_used=detector_fallback_used,
             warnings=tuple(warnings),
         )
+        if cache_key is not None:
+            self._write_cached(cache_key, result)
+        return result
+
+    def _cache_key(self, image: np.ndarray) -> str:
+        digest = hashlib.sha256()
+        digest.update(
+            (
+                f"seg-v1:{image.shape}:{self.settings.detector_confidence}:"
+                f"{self.settings.detector_fallback_confidence}:"
+                f"{self.settings.secondary_cat_max_area_ratio}:"
+                f"{self.settings.cat_crop_padding_ratio}:"
+                f"{self.settings.sam2_config}:{self.settings.sam2_checkpoint}\0"
+            ).encode("utf-8")
+        )
+        digest.update(np.ascontiguousarray(image).tobytes())
+        return digest.hexdigest()
+
+    def _read_cached(
+        self,
+        cache_key: str,
+        image: np.ndarray,
+    ) -> SegmentationResult | None:
+        if self.cache is None:
+            return None
+        row = self.cache.get_segmentation(cache_key)
+        if row is None:
+            return None
+        try:
+            meta = json.loads(row[0])
+            mask_blob = row[1]
+            bbox = tuple(meta["bbox"]) if meta.get("bbox") is not None else None
+            mask_u8: np.ndarray | None = None
+            cat_crop: np.ndarray | None = None
+            if mask_blob is not None and bbox is not None:
+                height, width = image.shape[:2]
+                bits = np.frombuffer(zlib.decompress(mask_blob), dtype=np.uint8)
+                unpacked = np.unpackbits(bits)[: height * width].reshape((height, width))
+                mask_u8 = (unpacked.astype(np.uint8)) * 255
+                cat_crop = self._crop(image, bbox)
+            return SegmentationResult(
+                cat_count=int(meta["cat_count"]),
+                detector_confidence=meta["detector_confidence"],
+                mask=mask_u8,
+                bbox=bbox,
+                cat_crop=cat_crop,
+                ambiguous_multiple_cats=bool(meta["ambiguous_multiple_cats"]),
+                detector_fallback_used=bool(meta["detector_fallback_used"]),
+                warnings=tuple(meta["warnings"]),
+            )
+        except Exception:
+            return None
+
+    def _write_cached(self, cache_key: str, result: SegmentationResult) -> None:
+        if self.cache is None:
+            return
+        mask_blob: bytes | None = None
+        if result.mask is not None:
+            packed = np.packbits((result.mask > 0).reshape(-1))
+            mask_blob = zlib.compress(packed.tobytes(), level=6)
+        metadata = json.dumps(
+            {
+                "cat_count": result.cat_count,
+                "detector_confidence": result.detector_confidence,
+                "bbox": list(result.bbox) if result.bbox is not None else None,
+                "ambiguous_multiple_cats": result.ambiguous_multiple_cats,
+                "detector_fallback_used": result.detector_fallback_used,
+                "warnings": list(result.warnings),
+            }
+        )
+        self.cache.set_segmentation(cache_key, metadata, mask_blob)
 
     def _has_ambiguous_primary(
         self,

@@ -286,10 +286,14 @@ async def test_live_game_result_uses_real_server_elapsed_time_and_replays_once(l
 async def test_flutter_process_restart_after_socket_loss_and_account_switch(live):
     import json
     import subprocess
+    import shutil
     from pathlib import Path
 
-    root = Path(__file__).resolve().parents[2] / 'catlogue'
-    flutter = Path(os.getenv('FLUTTER_BIN', r'C:\flutter\bin\flutter.bat'))
+    root = Path(os.getenv('FLUTTER_PROJECT_ROOT', str(Path(__file__).resolve().parents[2] / 'catlogue')))
+    executable = os.getenv('FLUTTER_BIN') or shutil.which('flutter')
+    assert executable, 'Flutter must be on PATH or configured with FLUTTER_BIN'
+    flutter = Path(executable)
+    launcher = ['cmd.exe', '/d', '/c', str(flutter)] if os.name == 'nt' else [str(flutter)]
     assert flutter.is_file() and (root / 'test/quintal_live_client_test.dart').is_file()
     storage = root / 'build' / ('quintal-live-client-' + uuid4().hex)
     storage.mkdir(parents=True)
@@ -337,11 +341,11 @@ async def test_flutter_process_restart_after_socket_loss_and_account_switch(live
                            'other':{'id':str(live.other_uid),'token':live.other.headers['authorization'].removeprefix('Bearer ')}}
                 env = {**os.environ,'QUINTAL_LIVE_CLIENT':json.dumps(options)}
                 result = await asyncio.to_thread(subprocess.run,
-                    ['cmd.exe','/d','/c',str(flutter),'test','--no-pub',
+                    [*launcher,'test','--no-pub',
                      f'--dart-define=API_BASE_URL=http://127.0.0.1:{port}',
                      'test/quintal_live_client_test.dart'],
                     cwd=root,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,
-                    timeout=420,creationflags=subprocess.CREATE_NO_WINDOW)
+                    timeout=420,creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
                 log = root / 'build' / f'quintal-live-client-{phase}.log'
                 log.write_bytes(result.stdout)
                 assert result.returncode == 0, f'Flutter {phase} failed; inspect {log.name}'

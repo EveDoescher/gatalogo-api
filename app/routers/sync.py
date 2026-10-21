@@ -196,6 +196,7 @@ async def upload_photo(
     await image.close()
     if len(data) > settings.max_image_bytes:
         raise HTTPException(status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE, detail="Imagem excede o tamanho permitido.")
+    await progress_account(session, user.id)
     cat = (await session.execute(select(RemoteCat).where(RemoteCat.user_id == user.id, RemoteCat.client_id == client_id).with_for_update())).scalar_one_or_none()
     if cat is None or cat.deleted_at is not None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Gato não encontrado.")
@@ -209,6 +210,7 @@ async def upload_photo(
     cat.photo_hash = photo_hash
     cat.photo_content_type = image.content_type or "image/jpeg"
     primary = (await session.execute(select(CatPhoto).where(CatPhoto.cat_id == cat.id, CatPhoto.kind == "primary").with_for_update())).scalar_one_or_none()
+    content_changed = primary is None or primary.content_hash != photo_hash or primary.deleted_at is not None
     if primary is None:
         primary = CatPhoto(cat_id=cat.id, kind="primary", storage_key=key, content_hash=photo_hash, content_type=cat.photo_content_type, status="ready")
         session.add(primary)
@@ -217,14 +219,18 @@ async def upload_photo(
         primary.content_hash = photo_hash
         primary.content_type = cat.photo_content_type
         primary.deleted_at = None
-        primary.analysis = None
+        if content_changed:
+            primary.analysis = None
     cat.client_updated_at = _utc(updated_at)
     cat.updated_by_device = device_id
     await _record_change(session, cat)
     await session.flush()
-    await session.execute(delete(CatVisualEmbedding).where(CatVisualEmbedding.photo_id == primary.id))
-    await enqueue_recognition(session, cat=cat, photo=primary)
-    await refresh_cat_matches(session, cat=cat, settings=settings)
+    if content_changed:
+        await session.execute(delete(CatVisualEmbedding).where(CatVisualEmbedding.photo_id == primary.id))
+    if cat.analysis is not None or (cat.payload or {}).get("status") != "pending_analysis":
+        await enqueue_recognition(session, cat=cat, photo=primary)
+    if content_changed:
+        await refresh_cat_matches(session, cat=cat, settings=settings)
     await session.commit()
     await publish_committed_events(session)
     if old_key and old_key != key:
@@ -257,6 +263,7 @@ async def upload_reference_photo(
     await image.close()
     if len(data) > get_settings().max_image_bytes:
         raise HTTPException(status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE, detail="Imagem excede o tamanho permitido.")
+    await progress_account(session, user.id)
     cat = (await session.execute(
         select(RemoteCat).where(RemoteCat.user_id == user.id, RemoteCat.client_id == client_id, RemoteCat.deleted_at.is_(None)).with_for_update()
     )).scalar_one_or_none()
@@ -303,6 +310,7 @@ async def download_reference_photo(client_id: UUID, kind: str, user: User = Depe
 
 @router.delete("/cats/{client_id}/reference-photos/{kind}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_reference_photo(client_id: UUID, kind: str, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> None:
+    await progress_account(session, user.id)
     cat = (await session.execute(select(RemoteCat).where(RemoteCat.user_id == user.id, RemoteCat.client_id == client_id, RemoteCat.deleted_at.is_(None)).with_for_update())).scalar_one_or_none()
     photo = (await session.execute(select(CatPhoto).join(RemoteCat, CatPhoto.cat_id == RemoteCat.id).where(RemoteCat.user_id == user.id, RemoteCat.client_id == client_id, CatPhoto.kind == kind, CatPhoto.deleted_at.is_(None)).with_for_update())).scalar_one_or_none()
     if cat is None or photo is None:

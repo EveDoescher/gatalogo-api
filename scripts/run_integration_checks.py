@@ -2,6 +2,7 @@
 
 Requires Docker, the project's Python environment, and the sibling Flutter repo.
 Reuses the image of gatalogo-postgres, or builds Dockerfile.postgres if absent.
+The disposable database uses a bounded tmpfs to avoid host-volume fsync latency.
 Never migrates the user's database. Optional arguments select pytest scenarios.
 """
 
@@ -63,6 +64,8 @@ def main(pytest_args=None):
             "--detach",
             "--name",
             name,
+            "--tmpfs",
+            "/var/lib/postgresql/data:rw,size=1g",
             "--label",
             "gatalogo.purpose=quality-integration",
             "-p",
@@ -78,7 +81,7 @@ def main(pytest_args=None):
             stdout=subprocess.DEVNULL,
         )
         created = True
-        for _ in range(60):
+        for _ in range(180):
             ready = subprocess.run(
                 [
                     "docker",
@@ -99,7 +102,9 @@ def main(pytest_args=None):
                 break
             time.sleep(1)
         else:
-            raise RuntimeError("Disposable PostgreSQL did not become ready")
+            with (logs / "postgres.log").open("w", encoding="utf-8") as output:
+                subprocess.run(["docker", "logs", name], stdout=output, stderr=subprocess.STDOUT)
+            raise RuntimeError(f"Disposable PostgreSQL did not become ready; see {logs / 'postgres.log'}")
         address = subprocess.check_output(
             ["docker", "port", name, "5432/tcp"], text=True
         ).strip()

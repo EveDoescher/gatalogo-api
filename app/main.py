@@ -144,10 +144,12 @@ async def analyze_cat(
         await progress_account(session, user.id)
         cat = (
             await session.execute(
-                select(RemoteCat).where(
+                select(RemoteCat)
+                .where(
                     RemoteCat.user_id == user.id,
                     RemoteCat.client_id == client_id,
                 )
+                .with_for_update()
             )
         ).scalar_one_or_none()
         if cat is None or cat.deleted_at is not None:
@@ -161,9 +163,13 @@ async def analyze_cat(
         cat.photo_key = photo_key
         cat.photo_hash = photo_hash
         cat.photo_content_type = image.content_type or "image/jpeg"
-        primary = (await session.execute(
-            select(CatPhoto).where(CatPhoto.cat_id == cat.id, CatPhoto.kind == "primary")
-        )).scalar_one_or_none()
+        primary = (
+            await session.execute(
+                select(CatPhoto)
+                .where(CatPhoto.cat_id == cat.id, CatPhoto.kind == "primary")
+                .with_for_update()
+            )
+        ).scalar_one_or_none()
         if primary is None:
             primary = CatPhoto(
                 cat_id=cat.id,
@@ -179,6 +185,7 @@ async def analyze_cat(
             primary.storage_key = photo_key
             primary.content_hash = photo_hash
             primary.content_type = cat.photo_content_type
+            primary.status = "ready"
             primary.deleted_at = None
             primary.analysis = result.model_dump(mode="json")
         cat.analysis = result.model_dump(mode="json")

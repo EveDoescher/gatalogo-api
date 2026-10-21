@@ -455,3 +455,16 @@ Para selecionar cenários, passe os argumentos do pytest após o script:
 
 A organização dos domínios, a responsabilidade por transações e a retomada de
 análise de referência estão em [docs/architecture_refactoring.md](docs/architecture_refactoring.md).
+
+
+## Conclusão da refatoração arquitetural
+
+O mapa de pendências e a validação desta rodada estão em
+[docs/architecture_completion.md](docs/architecture_completion.md).
+Os perfis de execução e locks estão em [requirements/README.md](requirements/README.md).
+
+O executor encontra Flutter no PATH (ou `FLUTTER_BIN`). Por padrão usa o checkout
+irmão `catlogue`; outro local pode ser informado por `FLUTTER_PROJECT_ROOT`.
+O banco descartável usa tmpfs limitado a 1 GiB; essa configuração não é aplicada
+ao PostgreSQL de uso. Os processos Flutter usam SQLite persistente entre as duas
+fases do cenário, dentro de `build/`, sem compilar Android ou iniciar emulador.

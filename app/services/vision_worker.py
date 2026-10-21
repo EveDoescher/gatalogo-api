@@ -17,7 +17,7 @@ from sqlalchemy import case, delete, or_, select, update
 
 from app.config import Settings, get_settings
 from app.database import get_session_factory
-from app.persistence_models import CatPhoto, CatVisualEmbedding, RemoteCat, VisionJob
+from app.persistence_models import CatPhoto, CatVisualEmbedding, RemoteCat, User, VisionJob
 from app.services.vision_jobs import REFERENCE_ANALYSIS_PREFIX
 from app.services.recognition_service import refresh_cat_matches, is_solid_analysis
 from app.services.realtime_events import publish_committed_events
@@ -150,18 +150,22 @@ class Sam2DinoWorker:
                     job.status, job.completed_at = "superseded", datetime.now(UTC)
                     await session.commit()
                     return
-                with photo_storage.open(photo.storage_key).open("rb") as source:
+                owner_id, storage_key = job.user_id, photo.storage_key
+                # This phase only read rows. Release its connection before file/CPU work;
+                # the persisted claim is fenced and all rows are reread below.
+                await session.rollback()
+                with photo_storage.open(storage_key).open("rb") as source:
                     data = source.read(self.settings.max_image_bytes + 1)
                 if hashlib.sha256(data).hexdigest() != expected_hash:
                     raise ValueError("O conteúdo da foto mudou durante o processamento.")
                 evidence = await asyncio.to_thread(self.extract_bytes, data)
+                # Preserve established progression lock order (users -> cats -> photos -> jobs)
+                await session.execute(select(User.id).where(User.id == owner_id).with_for_update())
+                await session.refresh(cat, with_for_update=True)
+                await session.refresh(photo, with_for_update=True)
                 await session.refresh(job, with_for_update=True)
                 if job.started_at != claim_started_at or job.status not in {"pending", "running"}:
                     return
-                # Lock and reread after CPU work: an upload may have replaced or
-                # deleted this photo while inference was running.
-                await session.refresh(cat, with_for_update=True)
-                await session.refresh(photo, with_for_update=True)
                 if cat.deleted_at is not None or photo.deleted_at is not None or photo.content_hash != expected_hash:
                     job.status, job.completed_at = "superseded", datetime.now(UTC)
                     await session.commit()
@@ -208,12 +212,30 @@ class Sam2DinoWorker:
                     error_message="O worker excedeu o prazo de processamento.",
                     completed_at=case((VisionJob.attempts + 1 >= self.settings.vision_job_max_attempts, datetime.now(UTC)), else_=None),
                 ))
-                job = (await session.execute(
-                    select(VisionJob).where(VisionJob.status == "pending", ~VisionJob.kind.startswith(REFERENCE_ANALYSIS_PREFIX)).order_by(VisionJob.created_at).with_for_update(skip_locked=True).limit(1)
-                )).scalar_one_or_none()
-                if job is not None:
-                    job.status, job.started_at = "running", datetime.now(UTC)
-                    job_id = job.id
+                priority_analysis_active = await session.scalar(
+                    select(VisionJob.id)
+                    .where(
+                        VisionJob.kind.startswith(REFERENCE_ANALYSIS_PREFIX),
+                        VisionJob.status.in_(("pending", "running")),
+                    )
+                    .limit(1)
+                )
+                if priority_analysis_active is None:
+                    job = (await session.execute(
+                        select(VisionJob)
+                        .outerjoin(CatPhoto, CatPhoto.id == VisionJob.photo_id)
+                        .where(
+                            VisionJob.status == "pending",
+                            ~VisionJob.kind.startswith(REFERENCE_ANALYSIS_PREFIX),
+                            or_(CatPhoto.id.is_(None), CatPhoto.status != "analyzing"),
+                        )
+                        .order_by(VisionJob.created_at)
+                        .with_for_update(of=VisionJob, skip_locked=True)
+                        .limit(1)
+                    )).scalar_one_or_none()
+                    if job is not None:
+                        job.status, job.started_at = "running", datetime.now(UTC)
+                        job_id = job.id
                 await session.commit()
             if job_id is None:
                 await asyncio.sleep(self.settings.vision_worker_poll_seconds)

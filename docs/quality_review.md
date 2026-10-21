@@ -108,3 +108,41 @@ Logs locais: `.tmp/integration-abb3538bf34f/pytest.log`,
 `.tmp/integration-bf3497674c11/pytest.log` e `.tmp/architecture-events-tests.log`.
 As próximas fronteiras maiores e a limitação de validação GPU/Gemini real
 continuam explícitas no documento de arquitetura.
+
+
+## Conclusão da rodada — 21/10/2026
+
+Todas as linhas do mapa anterior foram revisadas e classificadas em
+[architecture_completion.md](architecture_completion.md). Concluídos os comandos
+por domínio do Quintal, serviços de consultas/comandos sociais, contratos
+compartilhados, claims persistentes curtos e locks Linux CPU com imagens validadas.
+
+A revisão específica de recursos removeu a conexão mantida durante a inferência
+de referências e também liberou a transação de leitura do reconhecimento antes
+do processamento. Retomada por lease, tentativa crescente e releitura impedem
+aplicação de resultado atrasado. Savepoints preservam foto/progressão e descartam
+eventos revertidos. Testes verificam zero conexões ocupadas durante a inferência.
+Cache de segmentação e detector de passagem única evitam recomputação; os testes
+comparam máscara/resultado e contagem de chamadas, sem inventar ganho de throughput.
+
+Validação final:
+
+- Regressão integrada completa: **318 aprovados, zero ignorados, zero falhas**.
+- Complemento final de workers e HTTP/cliente live: **33 aprovados, zero ignorados e zero falhas**.
+- Ruff do repositório inteiro e guardas estáticas: aprovados.
+- OpenAPI integral idêntico: **122 endpoints HTTP**; hash no documento de conclusão.
+- Locks verificados dentro das duas imagens finais: **71 dependências** por imagem,
+  Linux x86_64/Python 3.12.15, nenhuma ausente, commit SAM-2 conferido.
+- Builds e smoke tests finais dos dois Dockerfiles CPU aprovados, incluindo imports da aplicação, SAM/Torch/OpenCV, operação tensorial CPU, contratos e pip check.
+- Os bancos/APIs da regressão completa e do complemento foram removidos; nenhuma migração no banco de uso.
+
+Logs locais: `.tmp/integration-04526fcc5a39/pytest.log`,
+`.tmp/integration-f6a98d052555/pytest.log`, `.tmp/architecture-complete-complement.log`,
+`.tmp/architecture-worker-release-build.log`, `.tmp/architecture-worker-release-smoke.log`,
+`.tmp/architecture-web-final-build.log`, `.tmp/architecture-web-final-smoke.log`.
+As árvores instaladas ficam em `.tmp/web-verified-lock.json` e
+`.tmp/worker-verified-lock.json`; fonte e CI não dependem desses artefatos locais.
+
+O perfil existente é CPU. CUDA, inferência real, smartphone e entrega SMTP/FCM
+exigem validação operacional própria; não foram apresentados como aprovados por
+mocks ou imports. Não houve build Android, emulador, deploy ou merge na main.

@@ -1,3 +1,4 @@
+from app.services import social_feed_commands
 from datetime import UTC, datetime
 from types import SimpleNamespace
 from app.services import milestones as m
@@ -197,7 +198,7 @@ async def test_post_endpoint_advances_community_missions_and_replay_does_not_pay
 
     async def no_publish(session):
         session.info.clear()
-    monkeypatch.setattr(social, "publish_committed_events", no_publish)
+    monkeypatch.setattr(social_feed_commands, "publish_committed_events", no_publish)
     db, user = account
     user.username = "milestone_integration"
     payload = social.CatPostCreate(cat_name="Lua", note="Uma historia do nosso gato no quintal.", request_id=uuid4())

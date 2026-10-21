@@ -3,7 +3,7 @@
 import asyncio
 import hashlib
 import os
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from types import SimpleNamespace
 from unittest.mock import AsyncMock
 from uuid import uuid4
@@ -156,7 +156,7 @@ async def test_replacement_before_processing_never_invokes_analysis(queue):
 
 
 @pytest.mark.asyncio
-async def test_cancellation_rolls_back_claim_and_next_process_resumes(queue):
+async def test_cancellation_releases_persisted_claim_and_next_process_resumes(queue):
     entered = asyncio.Event()
 
     async def blocked(**kwargs):
@@ -172,7 +172,7 @@ async def test_cancellation_rolls_back_claim_and_next_process_resumes(queue):
         await task
     async with queue.factory() as session:
         job = await session.get(VisionJob, queue.job_id)
-        assert job.status == "pending" and job.attempts == 0
+        assert job.status == "pending" and job.attempts == 1
     assert await worker.process_next(
         queue.factory,
         settings=queue.settings,
@@ -249,3 +249,107 @@ async def test_gpu_worker_rejects_reference_analysis_job(queue, monkeypatch):
     async with queue.factory() as session:
         assert (await session.get(VisionJob, queue.job_id)).status == "pending"
         assert (await session.get(CatPhoto, queue.photo_id)).analysis is None
+
+
+@pytest.mark.asyncio
+async def test_inference_releases_database_connection(queue):
+    engine = queue.factory.kw["bind"]
+
+    async def analyzer(**kwargs):
+        assert engine.pool.checkedout() == 0
+        return {"coat_type": "Rajado"}
+
+    await worker.process_next(queue.factory, settings=queue.settings, analyzer=analyzer)
+
+
+@pytest.mark.asyncio
+async def test_expired_claim_is_recovered_and_late_result_cannot_overwrite(queue):
+    entered, release = asyncio.Event(), asyncio.Event()
+
+    async def slow(**kwargs):
+        entered.set()
+        await release.wait()
+        return {"result": "obsolete"}
+
+    task = asyncio.create_task(
+        worker.process_next(queue.factory, settings=queue.settings, analyzer=slow)
+    )
+    try:
+        await asyncio.wait_for(entered.wait(), 10)
+        async with queue.factory() as session:
+            job = await session.get(VisionJob, queue.job_id)
+            job.started_at = datetime.now(UTC) - timedelta(seconds=60)
+            await session.commit()
+        assert await worker.process_next(
+            queue.factory,
+            settings=queue.settings,
+            analyzer=AsyncMock(return_value={"result": "current"}),
+        )
+        release.set()
+        await task
+        async with queue.factory() as session:
+            assert (await session.get(VisionJob, queue.job_id)).attempts == 2
+            assert (await session.get(CatPhoto, queue.photo_id)).analysis == {
+                "result": "current"
+            }
+        worker.confirm_photo.assert_awaited_once()
+    finally:
+        task.cancel()
+        await asyncio.gather(task, return_exceptions=True)
+
+
+@pytest.mark.asyncio
+async def test_terminal_progression_failure_marks_photo_after_savepoint_rollback(queue):
+    async def partial_progression(session, cat, photo, incoming, **kwargs):
+        cat.payload = {"partial": "must be rolled back"}
+        raise ValueError("progression unavailable")
+
+    worker.confirm_photo.side_effect = partial_progression
+    for _ in range(queue.settings.vision_job_max_attempts):
+        await worker.process_next(
+            queue.factory,
+            settings=queue.settings,
+            analyzer=AsyncMock(return_value={"coat_type": "Rajado"}),
+        )
+    async with queue.factory() as session:
+        assert (await session.get(VisionJob, queue.job_id)).status == "failed"
+        photo = await session.get(CatPhoto, queue.photo_id)
+        assert photo.status == "failed" and photo.analysis is None
+        assert (await session.get(RemoteCat, queue.cat_id)).payload == {}
+
+
+@pytest.mark.asyncio
+async def test_expired_final_attempt_fails_without_another_inference(queue):
+    async with queue.factory() as session:
+        job = await session.get(VisionJob, queue.job_id)
+        job.status, job.attempts = "running", queue.settings.vision_job_max_attempts
+        job.started_at = datetime.now(UTC) - timedelta(seconds=60)
+        await session.commit()
+    analyzer = AsyncMock()
+    await worker.process_next(queue.factory, settings=queue.settings, analyzer=analyzer)
+    analyzer.assert_not_awaited()
+    async with queue.factory() as session:
+        assert (await session.get(VisionJob, queue.job_id)).status == "failed"
+        assert (await session.get(CatPhoto, queue.photo_id)).status == "failed"
+
+
+@pytest.mark.asyncio
+async def test_recognition_inference_also_releases_database_connection(
+    queue, monkeypatch
+):
+    from app.services import vision_worker
+
+    monkeypatch.setattr(vision_worker, "get_session_factory", lambda: queue.factory)
+    gpu = object.__new__(vision_worker.Sam2DinoWorker)
+    gpu.settings = queue.settings
+
+    def inspect_connection(data):
+        assert queue.factory.kw["bind"].pool.checkedout() == 0
+        raise ValueError("inference inspected without database connection")
+
+    gpu.extract_bytes = inspect_connection
+    await gpu.process(queue.gpu_id)
+    async with queue.factory() as session:
+        job = await session.get(VisionJob, queue.gpu_id)
+        assert job.error_message == "inference inspected without database connection"
+        assert job.status == "pending" and job.attempts == 1
