@@ -1,0 +1,16 @@
+[
+  {
+    "archive": "20261021T194312Z-953aa74e-20261021T202010843770Z.tar.gz",
+    "sha256": "1fb938142a7cf0996ba8566935e6295c3ab8747cee655442709310ffe4420127",
+    "created_at": "2026-10-21T20:20:17.715754+00:00",
+    "verified_members": 143,
+    "originals_removed": false
+  },
+  {
+    "archive": "20261021T194312Z-953aa74e-20261022T023241972666Z.tar.gz",
+    "sha256": "5067aba9826db114fc8c99f6188252e1679aade53b3e61ac915123c06f96abf5",
+    "created_at": "2026-10-22T02:33:09.694030+00:00",
+    "verified_members": 451,
+    "originals_removed": false
+  }
+]

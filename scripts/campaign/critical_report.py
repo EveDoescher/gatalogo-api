@@ -49,7 +49,7 @@ def map_case(name):
     if "concurrent_collection" in name:
         scenarios += ["DATA-03", "DATA-04", "DATA-07", "SEC-02"]
     if "SEC02" in name:
-        code = ["app/routers/sync.py", "app/routers/cats.py"]
+        code = ["app/routers/sync.py", "app/services/storage_service.py"]
     elif "SEC03" in name:
         code = ["app/services/conversations.py"]
     elif "SEC05" in name:

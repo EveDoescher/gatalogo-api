@@ -391,3 +391,13 @@ Comparação final deve mostrar contrato, segurança/integridade, latência, rec
 - [scikit-learn — avaliação de modelos](https://scikit-learn.org/stable/modules/model_evaluation.html): definições de métricas classificatórias e curvas; não exige adicionar dependência ao projeto.
 
 Os dimensionamentos/ICs devem ser justificados por experimento; as fontes não estabelecem os tamanhos iniciais deste plano como suficientes para este produto.
+
+
+### Continuação da campanha crítica — 21/10/2026
+
+[Resultados, limitações e próximos casos](campaigns/2026-10-21-critical/README.md),
+[matriz cumulativa](campaigns/2026-10-21-critical/matrix.md) e
+[rastreabilidade por variante](campaigns/2026-10-21-critical/traceability.json).
+Preserva o piloto, corrige BR-04 para pendente e mantém todos os cenários parciais
+até a execução de suas variantes integrais. As definições de cobertura deste plano
+não foram reduzidas pelos subconjuntos executados.

@@ -1,0 +1,934 @@
+{
+  "attempts/security-01/critical_runs/baseline/summary.json": {
+    "run": "baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 55.76519670001289,
+    "cases": [
+      {
+        "name": "test_SEC02_private_photo_positive_control[primary]",
+        "seconds": 2.342,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_private_photo_positive_control[front]",
+        "seconds": 1.51,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_pull_filters_both_owners",
+        "seconds": 1.007,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC03_stranger_friend_cannot_emit_or_mark_read[typing]",
+        "seconds": 1.872,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC03_stranger_friend_cannot_emit_or_mark_read[read]",
+        "seconds": 1.125,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[../sentinel.txt]",
+        "seconds": 0.013,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[..\\\\sentinel.txt]",
+        "seconds": 0.015,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[users/../../sentinel.txt]",
+        "seconds": 0.012,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[absolute]",
+        "seconds": 0.017,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC07_failed_attempts_survive_request_rollback",
+        "seconds": 1.273,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC07_expiry_purpose_email_and_reuse",
+        "seconds": 1.176,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC07_resend_cooldown_invalidates_previous",
+        "seconds": 0.935,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[-1-z-False-False]",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[1-a-False-True]",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[0-z-False-True]",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[0-a-False-False]",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[1-z-True-False]",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA07_collect_boundary_and_replay",
+        "seconds": 1.959,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA03_DATA04_concurrent_intent_and_cross_account",
+        "seconds": 2.165,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB02_history_pagination_and_latest_revision",
+        "seconds": 17.323,
+        "status": "PASS"
+      },
+      {
+        "name": "test_progression_failure_rolls_back_photo_and_staged_events[postgres]",
+        "seconds": 0.625,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expired_claim_is_recovered_and_late_result_cannot_overwrite[postgres]",
+        "seconds": 0.506,
+        "status": "PASS"
+      },
+      {
+        "name": "test_replacement_before_processing_never_invokes_analysis[postgres]",
+        "seconds": 0.483,
+        "status": "PASS"
+      },
+      {
+        "name": "test_cancellation_releases_persisted_claim_and_next_process_resumes[postgres]",
+        "seconds": 1.378,
+        "status": "PASS"
+      },
+      {
+        "name": "test_postgres_claim_skips_busy_job_and_rereads_replaced_photo[postgres]",
+        "seconds": 1.188,
+        "status": "PASS"
+      },
+      {
+        "name": "test_failures_retry_then_mark_only_current_photo_failed[postgres]",
+        "seconds": 0.75,
+        "status": "PASS"
+      },
+      {
+        "name": "test_terminal_progression_failure_marks_photo_after_savepoint_rollback[postgres]",
+        "seconds": 0.796,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expired_final_attempt_fails_without_another_inference[postgres]",
+        "seconds": 2.964,
+        "status": "PASS"
+      },
+      {
+        "name": "test_concurrent_collection_and_cross_account_access",
+        "seconds": 3.206,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py",
+      "<target>\\tests\\test_reference_analysis.py::test_progression_failure_rolls_back_photo_and_staged_events[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_expired_claim_is_recovered_and_late_result_cannot_overwrite[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_replacement_before_processing_never_invokes_analysis[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_cancellation_releases_persisted_claim_and_next_process_resumes[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_postgres_claim_skips_busy_job_and_rereads_replaced_photo[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_failures_retry_then_mark_only_current_photo_failed[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_terminal_progression_failure_marks_photo_after_savepoint_rollback[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_expired_final_attempt_fails_without_another_inference[postgres]",
+      "<target>\\tests\\test_quintal_postgres.py::test_concurrent_collection_and_cross_account_access"
+    ]
+  },
+  "attempts/security-01/critical_runs/MUT-01/summary.json": {
+    "run": "MUT-01",
+    "exit_code": 1,
+    "elapsed_seconds": 17.5898703999992,
+    "cases": [
+      {
+        "name": "test_SEC02_pull_filters_both_owners",
+        "seconds": 3.8,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py::test_SEC02_pull_filters_both_owners"
+    ]
+  },
+  "attempts/security-01/critical_runs/MUT-02/summary.json": {
+    "run": "MUT-02",
+    "exit_code": 1,
+    "elapsed_seconds": 13.85560880000412,
+    "cases": [
+      {
+        "name": "test_DATA05_conflict_and_tombstone[-1-z-False-False]",
+        "seconds": 0.086,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[1-a-False-True]",
+        "seconds": 0.007,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[0-z-False-True]",
+        "seconds": 0.006,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[0-a-False-False]",
+        "seconds": 0.004,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[1-z-True-False]",
+        "seconds": 0.005,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py::test_DATA05_conflict_and_tombstone"
+    ]
+  },
+  "attempts/security-01/critical_runs/MUT-03/summary.json": {
+    "run": "MUT-03",
+    "exit_code": 1,
+    "elapsed_seconds": 17.059424299994134,
+    "cases": [
+      {
+        "name": "test_DATA05_conflict_and_tombstone[-1-z-False-False]",
+        "seconds": 0.06,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[1-a-False-True]",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[0-z-False-True]",
+        "seconds": 0.004,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[0-a-False-False]",
+        "seconds": 0.008,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[1-z-True-False]",
+        "seconds": 0.002,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py::test_DATA05_conflict_and_tombstone"
+    ]
+  },
+  "attempts/security-01/critical_runs/MUT-05/summary.json": {
+    "run": "MUT-05",
+    "exit_code": 1,
+    "elapsed_seconds": 16.455303599999752,
+    "cases": [
+      {
+        "name": "test_DB02_history_pagination_and_latest_revision",
+        "seconds": 3.274,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py::test_DB02_history_pagination_and_latest_revision"
+    ]
+  },
+  "attempts/security-01/critical_runs/MUT-07/summary.json": {
+    "run": "MUT-07",
+    "exit_code": 0,
+    "elapsed_seconds": 9.481148999999277,
+    "cases": [
+      {
+        "name": "test_expired_claim_is_recovered_and_late_result_cannot_overwrite[postgres]",
+        "seconds": 0.991,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<target>\\tests\\test_reference_analysis.py::test_expired_claim_is_recovered_and_late_result_cannot_overwrite[postgres]"
+    ]
+  },
+  "attempts/security-01/critical_runs/MUT-10-events/summary.json": {
+    "run": "MUT-10-events",
+    "exit_code": 1,
+    "elapsed_seconds": 12.640448999998625,
+    "cases": [
+      {
+        "name": "test_progression_failure_rolls_back_photo_and_staged_events[postgres]",
+        "seconds": 2.269,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<target>\\tests\\test_reference_analysis.py::test_progression_failure_rolls_back_photo_and_staged_events[postgres]"
+    ]
+  },
+  "attempts/security-01/critical_runs/MUT-10-savepoint/summary.json": {
+    "run": "MUT-10-savepoint",
+    "exit_code": 1,
+    "elapsed_seconds": 9.8144331999938,
+    "cases": [
+      {
+        "name": "test_progression_failure_rolls_back_photo_and_staged_events[postgres]",
+        "seconds": 0.807,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<target>\\tests\\test_reference_analysis.py::test_progression_failure_rolls_back_photo_and_staged_events[postgres]"
+    ]
+  },
+  "attempts/security-01/critical_runs/MUT-11/summary.json": {
+    "run": "MUT-11",
+    "exit_code": 1,
+    "elapsed_seconds": 17.83455580000009,
+    "cases": [
+      {
+        "name": "test_DATA03_DATA04_concurrent_intent_and_cross_account",
+        "seconds": 3.028,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py::test_DATA03_DATA04_concurrent_intent_and_cross_account"
+    ]
+  },
+  "attempts/security-01/critical_runs/MUT-12/summary.json": {
+    "run": "MUT-12",
+    "exit_code": 1,
+    "elapsed_seconds": 15.263060500001302,
+    "cases": [
+      {
+        "name": "test_DATA03_DATA04_concurrent_intent_and_cross_account",
+        "seconds": 2.296,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py::test_DATA03_DATA04_concurrent_intent_and_cross_account"
+    ]
+  },
+  "attempts/security-01/critical_runs/MUT-13/summary.json": {
+    "run": "MUT-13",
+    "exit_code": 1,
+    "elapsed_seconds": 14.315462200000184,
+    "cases": [
+      {
+        "name": "test_DATA03_DATA04_concurrent_intent_and_cross_account",
+        "seconds": 1.976,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py::test_DATA03_DATA04_concurrent_intent_and_cross_account"
+    ]
+  },
+  "attempts/security-01/critical_runs/MUT-14/summary.json": {
+    "run": "MUT-14",
+    "exit_code": 1,
+    "elapsed_seconds": 20.755614599998808,
+    "cases": [
+      {
+        "name": "test_DATA07_collect_boundary_and_replay",
+        "seconds": 2.627,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py::test_DATA07_collect_boundary_and_replay"
+    ]
+  },
+  "attempts/security-01/critical_runs/MUT-15/summary.json": {
+    "run": "MUT-15",
+    "exit_code": 1,
+    "elapsed_seconds": 18.36878030000662,
+    "cases": [
+      {
+        "name": "test_SEC07_failed_attempts_survive_request_rollback",
+        "seconds": 3.409,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py::test_SEC07_failed_attempts_survive_request_rollback"
+    ]
+  },
+  "attempts/security-01/critical_runs/MUT-17/summary.json": {
+    "run": "MUT-17",
+    "exit_code": 1,
+    "elapsed_seconds": 16.223165800009156,
+    "cases": [
+      {
+        "name": "test_SEC03_stranger_friend_cannot_emit_or_mark_read[typing]",
+        "seconds": 2.124,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_SEC03_stranger_friend_cannot_emit_or_mark_read[read]",
+        "seconds": 1.692,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py::test_SEC03_stranger_friend_cannot_emit_or_mark_read"
+    ]
+  },
+  "attempts/security-01/critical_runs/MUT-18/summary.json": {
+    "run": "MUT-18",
+    "exit_code": 1,
+    "elapsed_seconds": 17.034824600006687,
+    "cases": [
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[../sentinel.txt]",
+        "seconds": 0.079,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[..\\\\sentinel.txt]",
+        "seconds": 0.017,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[users/../../sentinel.txt]",
+        "seconds": 0.024,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[absolute]",
+        "seconds": 0.024,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py::test_SEC05_storage_escape_never_reads_or_deletes"
+    ]
+  },
+  "attempts/security-02/critical_runs/baseline/summary.json": {
+    "run": "baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 65.17333449999569,
+    "cases": [
+      {
+        "name": "test_SEC02_private_photo_positive_control[primary]",
+        "seconds": 1.584,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_private_photo_positive_control[front]",
+        "seconds": 1.531,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_pull_filters_both_owners",
+        "seconds": 1.474,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC03_stranger_friend_cannot_emit_or_mark_read[typing]",
+        "seconds": 1.367,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC03_stranger_friend_cannot_emit_or_mark_read[read]",
+        "seconds": 1.203,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[../sentinel.txt]",
+        "seconds": 0.014,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[..\\\\sentinel.txt]",
+        "seconds": 0.013,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[users/../../sentinel.txt]",
+        "seconds": 0.014,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[absolute]",
+        "seconds": 0.014,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC07_failed_attempts_survive_request_rollback",
+        "seconds": 2.062,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC07_expiry_purpose_email_and_reuse",
+        "seconds": 1.327,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC07_resend_cooldown_invalidates_previous",
+        "seconds": 1.279,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC07_refresh_and_logout_revoke_previous_credentials",
+        "seconds": 1.599,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DATA06_old_finish_while_new_attempt_is_running",
+        "seconds": 1.604,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA06_delete_or_replace_between_claim_and_finish[cat-delete]",
+        "seconds": 2.123,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA06_delete_or_replace_between_claim_and_finish[photo-delete]",
+        "seconds": 1.3,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA06_delete_or_replace_between_claim_and_finish[replace-hash]",
+        "seconds": 1.584,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[-1-z-False-False]",
+        "seconds": 0.004,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[1-a-False-True]",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[0-z-False-True]",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[0-a-False-False]",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[1-z-True-False]",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA07_collect_boundary_and_replay",
+        "seconds": 2.293,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA03_DATA04_concurrent_intent_and_cross_account",
+        "seconds": 1.741,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB02_history_pagination_and_latest_revision",
+        "seconds": 17.811,
+        "status": "PASS"
+      },
+      {
+        "name": "test_progression_failure_rolls_back_photo_and_staged_events[postgres]",
+        "seconds": 1.349,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expired_claim_is_recovered_and_late_result_cannot_overwrite[postgres]",
+        "seconds": 1.137,
+        "status": "PASS"
+      },
+      {
+        "name": "test_replacement_before_processing_never_invokes_analysis[postgres]",
+        "seconds": 0.695,
+        "status": "PASS"
+      },
+      {
+        "name": "test_cancellation_releases_persisted_claim_and_next_process_resumes[postgres]",
+        "seconds": 1.604,
+        "status": "PASS"
+      },
+      {
+        "name": "test_postgres_claim_skips_busy_job_and_rereads_replaced_photo[postgres]",
+        "seconds": 1.23,
+        "status": "PASS"
+      },
+      {
+        "name": "test_failures_retry_then_mark_only_current_photo_failed[postgres]",
+        "seconds": 0.727,
+        "status": "PASS"
+      },
+      {
+        "name": "test_terminal_progression_failure_marks_photo_after_savepoint_rollback[postgres]",
+        "seconds": 0.805,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expired_final_attempt_fails_without_another_inference[postgres]",
+        "seconds": 0.813,
+        "status": "PASS"
+      },
+      {
+        "name": "test_concurrent_collection_and_cross_account_access",
+        "seconds": 2.168,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py",
+      "<target>\\tests\\test_reference_analysis.py::test_progression_failure_rolls_back_photo_and_staged_events[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_expired_claim_is_recovered_and_late_result_cannot_overwrite[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_replacement_before_processing_never_invokes_analysis[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_cancellation_releases_persisted_claim_and_next_process_resumes[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_postgres_claim_skips_busy_job_and_rereads_replaced_photo[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_failures_retry_then_mark_only_current_photo_failed[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_terminal_progression_failure_marks_photo_after_savepoint_rollback[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_expired_final_attempt_fails_without_another_inference[postgres]",
+      "<target>\\tests\\test_quintal_postgres.py::test_concurrent_collection_and_cross_account_access"
+    ]
+  },
+  "attempts/security-03/critical_runs/baseline/summary.json": {
+    "run": "baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 65.62124269999913,
+    "cases": [
+      {
+        "name": "test_SEC02_private_photo_positive_control[primary]",
+        "seconds": 1.176,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_private_photo_positive_control[front]",
+        "seconds": 1.302,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_pull_filters_both_owners",
+        "seconds": 2.317,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC03_stranger_friend_cannot_emit_or_mark_read[typing]",
+        "seconds": 1.677,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC03_stranger_friend_cannot_emit_or_mark_read[read]",
+        "seconds": 4.034,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[../sentinel.txt]",
+        "seconds": 0.024,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[..\\\\sentinel.txt]",
+        "seconds": 0.026,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[users/../../sentinel.txt]",
+        "seconds": 0.049,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[absolute]",
+        "seconds": 0.027,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC07_failed_attempts_survive_request_rollback",
+        "seconds": 3.114,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC07_expiry_purpose_email_and_reuse",
+        "seconds": 2.785,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC07_resend_cooldown_invalidates_previous",
+        "seconds": 1.205,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC07_refresh_and_logout_revoke_previous_credentials",
+        "seconds": 1.835,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA06_old_finish_while_new_attempt_is_running",
+        "seconds": 2.194,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA06_delete_or_replace_between_claim_and_finish[cat-delete]",
+        "seconds": 3.045,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA06_delete_or_replace_between_claim_and_finish[photo-delete]",
+        "seconds": 1.476,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA06_delete_or_replace_between_claim_and_finish[replace-hash]",
+        "seconds": 1.518,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[-1-z-False-False]",
+        "seconds": 0.004,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[1-a-False-True]",
+        "seconds": 0.004,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[0-z-False-True]",
+        "seconds": 0.004,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[0-a-False-False]",
+        "seconds": 0.004,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[1-z-True-False]",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA07_collect_boundary_and_replay",
+        "seconds": 2.135,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA03_DATA04_concurrent_intent_and_cross_account",
+        "seconds": 1.808,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB02_history_pagination_and_latest_revision",
+        "seconds": 15.135,
+        "status": "PASS"
+      },
+      {
+        "name": "test_progression_failure_rolls_back_photo_and_staged_events[postgres]",
+        "seconds": 0.553,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expired_claim_is_recovered_and_late_result_cannot_overwrite[postgres]",
+        "seconds": 0.741,
+        "status": "PASS"
+      },
+      {
+        "name": "test_replacement_before_processing_never_invokes_analysis[postgres]",
+        "seconds": 0.836,
+        "status": "PASS"
+      },
+      {
+        "name": "test_cancellation_releases_persisted_claim_and_next_process_resumes[postgres]",
+        "seconds": 0.979,
+        "status": "PASS"
+      },
+      {
+        "name": "test_postgres_claim_skips_busy_job_and_rereads_replaced_photo[postgres]",
+        "seconds": 0.585,
+        "status": "PASS"
+      },
+      {
+        "name": "test_failures_retry_then_mark_only_current_photo_failed[postgres]",
+        "seconds": 0.666,
+        "status": "PASS"
+      },
+      {
+        "name": "test_terminal_progression_failure_marks_photo_after_savepoint_rollback[postgres]",
+        "seconds": 0.866,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expired_final_attempt_fails_without_another_inference[postgres]",
+        "seconds": 0.922,
+        "status": "PASS"
+      },
+      {
+        "name": "test_concurrent_collection_and_cross_account_access",
+        "seconds": 2.476,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py",
+      "<target>\\tests\\test_reference_analysis.py::test_progression_failure_rolls_back_photo_and_staged_events[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_expired_claim_is_recovered_and_late_result_cannot_overwrite[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_replacement_before_processing_never_invokes_analysis[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_cancellation_releases_persisted_claim_and_next_process_resumes[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_postgres_claim_skips_busy_job_and_rereads_replaced_photo[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_failures_retry_then_mark_only_current_photo_failed[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_terminal_progression_failure_marks_photo_after_savepoint_rollback[postgres]",
+      "<target>\\tests\\test_reference_analysis.py::test_expired_final_attempt_fails_without_another_inference[postgres]",
+      "<target>\\tests\\test_quintal_postgres.py::test_concurrent_collection_and_cross_account_access"
+    ]
+  },
+  "attempts/security-03/critical_runs/MUT-07/summary.json": {
+    "run": "MUT-07",
+    "exit_code": 1,
+    "elapsed_seconds": 23.7876333000022,
+    "cases": [
+      {
+        "name": "test_DATA06_old_finish_while_new_attempt_is_running",
+        "seconds": 3.404,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py::test_DATA06_old_finish_while_new_attempt_is_running"
+    ]
+  },
+  "attempts/security-03/critical_runs/MUT-08/summary.json": {
+    "run": "MUT-08",
+    "exit_code": 1,
+    "elapsed_seconds": 21.836346500000218,
+    "cases": [
+      {
+        "name": "test_DATA06_delete_or_replace_between_claim_and_finish[cat-delete]",
+        "seconds": 3.85,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA06_delete_or_replace_between_claim_and_finish[photo-delete]",
+        "seconds": 1.506,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA06_delete_or_replace_between_claim_and_finish[replace-hash]",
+        "seconds": 1.153,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py::test_DATA06_delete_or_replace_between_claim_and_finish"
+    ]
+  },
+  "attempts/security-03/critical_runs/MUT-09/summary.json": {
+    "run": "MUT-09",
+    "exit_code": 1,
+    "elapsed_seconds": 20.075503400003072,
+    "cases": [
+      {
+        "name": "test_DATA06_delete_or_replace_between_claim_and_finish[cat-delete]",
+        "seconds": 3.687,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DATA06_delete_or_replace_between_claim_and_finish[photo-delete]",
+        "seconds": 1.19,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA06_delete_or_replace_between_claim_and_finish[replace-hash]",
+        "seconds": 1.084,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py::test_DATA06_delete_or_replace_between_claim_and_finish"
+    ]
+  },
+  "attempts/security-03/critical_runs/MUT-16/summary.json": {
+    "run": "MUT-16",
+    "exit_code": 1,
+    "elapsed_seconds": 27.655134899992845,
+    "cases": [
+      {
+        "name": "test_SEC07_refresh_and_logout_revoke_previous_credentials",
+        "seconds": 4.807,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py::test_SEC07_refresh_and_logout_revoke_previous_credentials"
+    ]
+  },
+  "attempts/database-01/critical_runs/baseline/summary.json": {
+    "run": "baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 36.55140810000012,
+    "cases": [
+      {
+        "name": "test_DB02_history_pagination_and_latest_revision[10-limits0]",
+        "seconds": 25.17,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB02_history_pagination_and_latest_revision[100-limits1]",
+        "seconds": 3.291,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py::test_DB02_history_pagination_and_latest_revision"
+    ]
+  },
+  "attempts/database-01/critical_runs/MUT-05/summary.json": {
+    "run": "MUT-05",
+    "exit_code": 1,
+    "elapsed_seconds": 22.838237700008904,
+    "cases": [
+      {
+        "name": "test_DB02_history_pagination_and_latest_revision[10-limits0]",
+        "seconds": 3.461,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB02_history_pagination_and_latest_revision[100-limits1]",
+        "seconds": 2.472,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\security_cases.py::test_DB02_history_pagination_and_latest_revision"
+    ]
+  }
+}

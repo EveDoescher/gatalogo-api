@@ -1,0 +1,144 @@
+[
+  {
+    "id": "ACC-F01",
+    "kind": "product_observation",
+    "state": "OPEN_RECOMMENDATION_ONLY",
+    "scenarios": [
+      "ACC-01"
+    ],
+    "hypothesis": "Foreground/background combinations in AuthPage have insufficient contrast.",
+    "test": "ACC login width=320/412 scale=1/2",
+    "result": "SDK textContrast fails four cells: Entrar 2.55 vs 4.5; subtitle 3.02 vs 4.5 at scale1; create-account text also flagged.",
+    "code": [
+      "lib/pages/auth_page.dart",
+      "lib/theme/app_theme.dart"
+    ],
+    "recommendation": "Review composed colors per state and typography; propose a palette adjustment for approval before any visible change.",
+    "correction_commit": null,
+    "revalidation": "Pending product decision; four current failure observations preserved.",
+    "code_commit": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "evidence": [
+      "observations.json",
+      "traceability.json",
+      "flutter_results.json",
+      "mutation_history.json"
+    ]
+  },
+  {
+    "id": "ACC-F02",
+    "kind": "product_observation",
+    "state": "OPEN_RECOMMENDATION_ONLY",
+    "scenarios": [
+      "ACC-03"
+    ],
+    "hypothesis": "Fixed button heights and text-only gesture bounds create small semantic targets.",
+    "test": "Android/iOS guidelines across four login cells",
+    "result": "Google target height42; forgot-password height16 at scale1 /31 at scale2; create-account26 at scale1. Android minimum48, iOS44.",
+    "code": [
+      "lib/pages/auth_page.dart"
+    ],
+    "recommendation": "Review layout constraints and invisible hit-area expansion while retaining visual geometry; verify no neighbor overlap before proposing product changes.",
+    "correction_commit": null,
+    "revalidation": "Pending; guidelines and semantic bounds recorded, no physical usability or hit overlap test.",
+    "code_commit": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "evidence": [
+      "observations.json",
+      "traceability.json",
+      "flutter_results.json",
+      "mutation_history.json"
+    ]
+  },
+  {
+    "id": "ACC-F03",
+    "kind": "product_observation",
+    "state": "OPEN_RECOMMENDATION_ONLY",
+    "scenarios": [
+      "ACC-02",
+      "ACC-07"
+    ],
+    "hypothesis": "Fixed42 button height constrains text at larger font scaling.",
+    "test": "RenderParagraph.didExceedMaxLines with real AppTheme and bundled fonts",
+    "result": "Continuar com Google clipped at scale2 in320/412x800; no detected clipping at scale1 after font correction. No layout exception captured.",
+    "code": [
+      "lib/pages/auth_page.dart"
+    ],
+    "recommendation": "Evaluate minimum rather than fixed height/adaptive layout in a separate approved proposal; validate scrolling, focus and complete flow before changing appearance.",
+    "correction_commit": null,
+    "revalidation": "Pending; initial viewport only, no screenshot/device claim.",
+    "code_commit": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "evidence": [
+      "observations.json",
+      "traceability.json",
+      "flutter_results.json",
+      "mutation_history.json"
+    ]
+  },
+  {
+    "id": "HARNESS-F01",
+    "kind": "oracle_gap",
+    "state": "CORRECTED_REVALIDATED",
+    "scenarios": [
+      "DATA-06"
+    ],
+    "hypothesis": "Completed replacement status hides missing attempt fencing.",
+    "test": "test_DATA06_old_finish_while_new_attempt_is_running",
+    "before": "MUT-07 SURVIVED security-01; old test finished newer job before checking late old result.",
+    "result": "security-03 baseline PASS and MUT-07 KILLED at intermediate running state.",
+    "correction_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "product_change": false,
+    "code_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+    "evidence": [
+      "observations.json",
+      "traceability.json",
+      "api_results.json",
+      "mutation_history.json"
+    ]
+  },
+  {
+    "id": "HARNESS-F02",
+    "kind": "fixture_error",
+    "state": "CORRECTED_REVALIDATED",
+    "scenarios": [
+      "SEC-07"
+    ],
+    "hypothesis": "Synthetic special-use .invalid email is rejected by response EmailStr validation.",
+    "test": "test_SEC07_refresh_and_logout_revoke_previous_credentials",
+    "before": "security-02 33PASS/1FAIL; four mutations blocked, never killed.",
+    "result": "example.com synthetic addresses plus AuthTokens validation; security-03 all34PASS; MUT-16 KILLED. No SMTP was used.",
+    "correction_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "product_change": false,
+    "code_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+    "evidence": [
+      "observations.json",
+      "traceability.json",
+      "api_results.json",
+      "mutation_history.json"
+    ]
+  },
+  {
+    "id": "HARNESS-F03",
+    "kind": "audit_lifecycle_error",
+    "state": "CORRECTED_REVALIDATED",
+    "scenarios": [
+      "ACC-01",
+      "ACC-02",
+      "ACC-03",
+      "ACC-05",
+      "ACC-06",
+      "ACC-07"
+    ],
+    "hypothesis": "Semantics handles/debug platform override survived until framework invariant verification; theme/fonts differed.",
+    "test": "eight explicit audit cells",
+    "before": "accessibility-01/02 eight errors each; not eight product failures.",
+    "result": "finally cleanup before invariant check; real theme and pending bundled fonts; accessibility-03 four hold PASS and four login failures with findings ACC-F01/02/03.",
+    "correction_commit": "fb1768b007db19423d8d695ce682ec4f36096cb4",
+    "product_change": false,
+    "code_commit": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "evidence": [
+      "observations.json",
+      "traceability.json",
+      "flutter_results.json",
+      "mutation_history.json"
+    ]
+  }
+]

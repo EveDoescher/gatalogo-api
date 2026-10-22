@@ -1,0 +1,29 @@
+{
+  "state": "PREPARED_NOT_EXECUTED",
+  "execution_authorized_by_this_file": false,
+  "purpose": "Confirm latency differences only after host stability and pilot review; not a load or mobile claim",
+  "source_policy": "Freeze four full SHAs; verify app/lib contents and dependency/image hashes; no main changes",
+  "fixtures": {"seed": 2102026, "catalog": [40], "history_revisions_per_cat": [1, 10], "reset_each_block": true},
+  "design": {
+    "transport": "Choose and register ASGI or TCP before collection; never pool both",
+    "order": ["A", "B", "B", "A"],
+    "initial_independent_blocks": 3,
+    "requests_per_cell_initial_budget": 1000,
+    "sizing_basis": "Initial affordable budget for P95 CI estimation, not guaranteed precision; use pilot autocorrelation and clustered intervals",
+    "primary_metric": "P95 latency at concurrency one, errors and integrity reported alongside",
+    "precision_target_to_review": "95% paired-block CI relative half-width <=10% of baseline P95",
+    "stopping": "Pre-register final n/blocks after stability pilot, or a sequential method with valid repeated-look control; do not stop on favorable result",
+    "p99": "Disabled unless effective tail sample and order-statistic/block interval achieve a separately preregistered precision target",
+    "warmup": "Pilot up to 100 requests; require three stable predeclared windows before warm measurements; otherwise classify cold/nonstationary"
+  },
+  "preconditions": [
+    "No Flutter compilation, migration, mutation or other campaign on the host at the same time",
+    "Record CPU/RAM/IO background activity and Windows power/thermal conditions; dedicated window preferable",
+    "Restore schema/data/private cache identically, fix PostgreSQL image and worker counts",
+    "Measure instrumentation overhead equivalently; oracle outside timed span, validate response after measurement",
+    "Abort on OOM/restart, disk >80%, error/timeout >5% for 60 seconds or unrecovered backlog",
+    "Budget/time assessed before running; a 1000-request cell may be expensive on the observed official version"
+  ],
+  "pending_implementation": ["stationarity/preflight collector", "block-bootstrap and CI computation", "longer-sample executor with wall-clock budget"],
+  "interpretation": "The current critical DB history trace includes oracle time and cannot substitute for this protocol"
+}

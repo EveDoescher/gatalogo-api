@@ -1,0 +1,299 @@
+{
+  "accessibility-01": {
+    "cases": [
+      {
+        "name": "care response is ignored after account switch",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care response is ignored after disposal",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care retries reuse persisted keys after restart and award only confirmed affinity",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "placement respects occupied cells, item footprint and scene capacity",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "purchase retry reuses the saved idempotency key",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "directional footprints rotate while cottages remain fixed",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "bed collision cells follow its long axis in all four orientations",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "offline cache and draft migrate bed axes without losing placed items",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "irregular expansions, separate path layer and stock-limited painting",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "later placement survives an earlier synchronization response",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=320.0 scale=1.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=320.0 scale=2.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=412.0 scale=1.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=412.0 scale=2.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC hold scale=1.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC hold scale=1.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC hold scale=2.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC hold scale=2.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      }
+    ],
+    "result": {
+      "exit_code": 1,
+      "source_sha": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+      "scope": "desktop accessibility and HabitatService unit tests; no device"
+    }
+  },
+  "accessibility-02": {
+    "cases": [
+      {
+        "name": "care response is ignored after account switch",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care response is ignored after disposal",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care retries reuse persisted keys after restart and award only confirmed affinity",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "placement respects occupied cells, item footprint and scene capacity",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "purchase retry reuses the saved idempotency key",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "directional footprints rotate while cottages remain fixed",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "bed collision cells follow its long axis in all four orientations",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "offline cache and draft migrate bed axes without losing placed items",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "irregular expansions, separate path layer and stock-limited painting",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "later placement survives an earlier synchronization response",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=320.0 scale=1.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=320.0 scale=2.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=412.0 scale=1.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=412.0 scale=2.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC hold scale=1.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC hold scale=1.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC hold scale=2.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC hold scale=2.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      }
+    ],
+    "result": {
+      "exit_code": 1,
+      "source_sha": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+      "scope": "desktop accessibility and HabitatService unit tests; no device"
+    }
+  },
+  "accessibility-03": {
+    "cases": [
+      {
+        "name": "care response is ignored after account switch",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care response is ignored after disposal",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care retries reuse persisted keys after restart and award only confirmed affinity",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "placement respects occupied cells, item footprint and scene capacity",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "purchase retry reuses the saved idempotency key",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "directional footprints rotate while cottages remain fixed",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "bed collision cells follow its long axis in all four orientations",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "offline cache and draft migrate bed axes without losing placed items",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "irregular expansions, separate path layer and stock-limited painting",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "later placement survives an earlier synchronization response",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=320.0 scale=1.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=320.0 scale=2.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=412.0 scale=1.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=412.0 scale=2.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC hold scale=1.0 reduced=false",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ACC hold scale=1.0 reduced=true",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ACC hold scale=2.0 reduced=false",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ACC hold scale=2.0 reduced=true",
+        "result": "success",
+        "skipped": false
+      }
+    ],
+    "result": {
+      "exit_code": 1,
+      "source_sha": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+      "scope": "desktop accessibility and HabitatService unit tests; no device"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "harness": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/test_quality_campaign_harness.py -q",
+    "result": "7 passed",
+    "seconds": 3.07
+  },
+  "ruff": {
+    "command": ".venv/Scripts/python.exe -m ruff check scripts/quality_campaign.py scripts/campaign tests/test_quality_campaign_harness.py",
+    "result": "All checks passed"
+  },
+  "flutter_analyzer": {
+    "command": "flutter analyze --no-pub tool/campaign_accessibility_test.dart",
+    "result": "No issues found",
+    "reported_seconds": 14.4
+  },
+  "note": "Recorded terminal output of validation after executor changes; not performance samples."
+}

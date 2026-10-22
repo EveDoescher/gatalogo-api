@@ -1,0 +1,1446 @@
+{
+  "local_campaign": "C:\\Users\\Evelynn_Doescher\\Documents\\Projetos\\flutter\\gatalogo-ai-api\\.tmp\\quality-campaign\\20261021T194312Z-953aa74e",
+  "files": {
+    "attempts/security-01/critical_runs/baseline/summary.json": {
+      "sha256": "2a9b877612421949508c04a08e242d8676a734a7f1a4d2571ad8698f19c8a3b0",
+      "bytes": 5349,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-01/summary.json": {
+      "sha256": "449f7745d65154ae84277551bd9967632d8c40d6b42109b41ceda3f9648f1e4b",
+      "bytes": 318,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-02/summary.json": {
+      "sha256": "636bef3842d642ae6201f476071caa428324ed5b316a7433f8c346303a4a2b84",
+      "bytes": 870,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-03/summary.json": {
+      "sha256": "0577b40230a375b76b8ba41e894214cccc6a8c52a0f6055042d8dba48f67fbf5",
+      "bytes": 870,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-05/summary.json": {
+      "sha256": "a895b26f57b8425087332896cd0841d9bd2a8ee0b3b11157b288ac83bb64f01f",
+      "bytes": 348,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-07/summary.json": {
+      "sha256": "96a48c716d3064961e78cf74e9679e908db1ef191d69a70bcee3173cb8a3758b",
+      "bytes": 412,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-10-events/summary.json": {
+      "sha256": "38e7f469ee753d50807c29439334413e56c66f8dd3969a815bba8696257203b2",
+      "bytes": 410,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-10-savepoint/summary.json": {
+      "sha256": "858d9c963722e9b31e06e7e6fcc373b1792f8e6e2ebba8a18023eb9af6ef2fe0",
+      "bytes": 410,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-11/summary.json": {
+      "sha256": "1895f019a1a0d701e03d164de9a1e6d0b247de2f751774c8f538722426128650",
+      "bytes": 359,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-12/summary.json": {
+      "sha256": "7dad6841798818018ff8f65dc6e437ba7a4e5a559464d83634e3fa5422fe0ccf",
+      "bytes": 360,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-13/summary.json": {
+      "sha256": "134d2f4e17c503edb1e50a37427ae27ca68cb7902f98aada33710b85bb19b1f1",
+      "bytes": 360,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-14/summary.json": {
+      "sha256": "33ff1e6a2d66e79f270cb69e24fe922010d87963a9de83f21534d4ebd655d486",
+      "bytes": 330,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-15/summary.json": {
+      "sha256": "bc44509f401012dc1b33d4cb31c331b44383114988e9ef9b538ebfb7f5703d1c",
+      "bytes": 353,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-17/summary.json": {
+      "sha256": "f77638822d46b251b0585eaf4a3ba3718b060b971d436de157bc37a9b8ec25ab",
+      "bytes": 502,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-18/summary.json": {
+      "sha256": "a8dd0b927a518acf09a72538eccfd15c270c95920b720b5d8566a575f1c97920",
+      "bytes": 814,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-01/classification.json": {
+      "sha256": "35b97cb2967c704723fcfef8b511aa00c05197a913dedb04505825f49f41d826",
+      "bytes": 508,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-01/mutation.diff": {
+      "sha256": "ea7af626df06ecce04a7914fc808cad656ae6283a69e3db72e8b515c39695e81",
+      "bytes": 652,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-02/classification.json": {
+      "sha256": "48152fe64bffc751631eeaabe7578f9f614440ad0e7f2f556943e39d98c8400d",
+      "bytes": 525,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-02/mutation.diff": {
+      "sha256": "a9ef6d6aa75da54f9105764cb0006b3efe875c37da28cf84cac940b7fbbe01aa",
+      "bytes": 535,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-03/classification.json": {
+      "sha256": "c94273bd89ed49a85dcab174530a38c2887d137401067754b0a700206e49fc46",
+      "bytes": 660,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-03/mutation.diff": {
+      "sha256": "9b7bc024113cca1fe8f8fe6647887ec3f35dc82d0073b41d19a759fc69aaf5ca",
+      "bytes": 392,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-05/classification.json": {
+      "sha256": "4c76ad454d39925c4b3ea53fa3a638520c28a8f281cd6e265dd971663fde23f7",
+      "bytes": 538,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-05/mutation.diff": {
+      "sha256": "192dd0dbcf8b9d37a152c2e98681fa5d2f6b51bdb67df0ed50b144c49f9759e7",
+      "bytes": 450,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-07/classification.json": {
+      "sha256": "07d24099c1ca342e0c3ca59fbc2a09ef5517c1f3bf86279dd953524679651334",
+      "bytes": 436,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-07/mutation.diff": {
+      "sha256": "5f5e5f092d6bd83b9e03cf23928ed138fc98e844e028384b13db63a401b22847",
+      "bytes": 650,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-10-events/classification.json": {
+      "sha256": "4f21e2bff559b7020958cc2b62ec2aa15c3f76c7d4eec4319652359e5a41485d",
+      "bytes": 592,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-10-events/mutation.diff": {
+      "sha256": "66165fa52141bb5c73d4fb9b56e906dc5a3e6796e0e54394c9d417eb0a5b1e87",
+      "bytes": 554,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-10-savepoint/classification.json": {
+      "sha256": "4388e08cdfc8e08e7790fe7baa551bb39683656e3acb48d83a518704aaa6702e",
+      "bytes": 592,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-10-savepoint/mutation.diff": {
+      "sha256": "f8cba0e2a664b6d3453bbbd5742d0de1be774f2a24a982094985f853c44413c4",
+      "bytes": 458,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-11/classification.json": {
+      "sha256": "15f218acca9c3e908da4100ed702803fd7fc4e5177d73bbe0bf7d6453d1127f4",
+      "bytes": 564,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-11/mutation.diff": {
+      "sha256": "4ac5a2a0cab629d65979247d869466c917648833c65b4a6e298369210c399fc6",
+      "bytes": 394,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-12/classification.json": {
+      "sha256": "f2121404aadeabf6e83eaaadb46448cd47b266e5f4f119f48f5d00da0bee7f2d",
+      "bytes": 565,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-12/mutation.diff": {
+      "sha256": "cb8ea0a15ceaf630928bf2ddc7e69610cd6e69f9923872c04c8932dbf9c0dfcf",
+      "bytes": 428,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-13/classification.json": {
+      "sha256": "59a0b83bb8fbae81b5212431a27a6f4f373b0982303535a6880acf9a5eb0b02e",
+      "bytes": 565,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-13/mutation.diff": {
+      "sha256": "c7f34671847e51177ec24101634f19402332974ce0cf5f3365265fff7b8da629",
+      "bytes": 398,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-14/classification.json": {
+      "sha256": "b0c597cea25d573a43035f6e2724e04cb9fd13cb8fafde9e05fbd73e63f77980",
+      "bytes": 535,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-14/mutation.diff": {
+      "sha256": "28a7686c44d623f82f83f10217548e914f98f158ada82248212d2138f062d916",
+      "bytes": 512,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-15/classification.json": {
+      "sha256": "ddd728269fb1af5a92ce52068a16d68cfb7b69b3d30ecb04136f5a2f52d8e18e",
+      "bytes": 552,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-15/mutation.diff": {
+      "sha256": "8bd836f31dadaa958cb7aa39f957c258e3f541fbad8d7d1b2e4c5fcffb0724ef",
+      "bytes": 537,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-17/classification.json": {
+      "sha256": "ed0d9113b2986e87010cef68028f2ded2427e98d4fa79286c3f310da930f98eb",
+      "bytes": 702,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-17/mutation.diff": {
+      "sha256": "95a1249425b9d2023bbbdaffb5d56429a81583565866037c44fa9720ea6c773e",
+      "bytes": 351,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-18/classification.json": {
+      "sha256": "764c30b779aa5a07ff7de858dc9dd98de77fd05edaeedd395bd9d35045d3e2dc",
+      "bytes": 1016,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/MUT-18/mutation.diff": {
+      "sha256": "c0d03177ba9a85b9ca7db4cd6bbcf82e82d58f5e478554994344b3c1d1183ee5",
+      "bytes": 506,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/baseline/observations/DATA07-boundary.json": {
+      "sha256": "8d157afed1a6838206bf7f91d77c28b2df55a5786c2cc94495ed64cd266e83f4",
+      "bytes": 161,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/baseline/observations/DB02-history.json": {
+      "sha256": "64eab07fee9effd89751931d1725356097791f41015569c220150eee1e2968fb",
+      "bytes": 79556,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/baseline/observations/SEC02-front.json": {
+      "sha256": "b0c7bc2797d50b8620a823a3db67070cc7acad4443ffa0235f4c6982026b270c",
+      "bytes": 248,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/baseline/observations/SEC02-primary.json": {
+      "sha256": "b0c7bc2797d50b8620a823a3db67070cc7acad4443ffa0235f4c6982026b270c",
+      "bytes": 248,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/baseline/observations/SEC03-read.json": {
+      "sha256": "c4304902b18f8ae9b1bd7a902b341c79a96c642ce5efd5bebfbcafe644c54282",
+      "bytes": 140,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/baseline/observations/SEC03-typing.json": {
+      "sha256": "c4304902b18f8ae9b1bd7a902b341c79a96c642ce5efd5bebfbcafe644c54282",
+      "bytes": 140,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/baseline/observations/SEC07-attempts.json": {
+      "sha256": "068fd33fd94f883cc9426a7a150afa9e08a7a4f41e7a5684a7106462dc68861e",
+      "bytes": 99,
+      "local_only": false
+    },
+    "attempts/security-01/api_attempt.json": {
+      "sha256": "7ff251539ea1c4e6ca510ea0b1b43e12f111efc00cc247a0537770f2d650a257",
+      "bytes": 58,
+      "local_only": false
+    },
+    "attempts/security-01/api_attempt_result.json": {
+      "sha256": "706062f25f92d6c19a74b30a35cf249f5466074d4f9323e9f6c30c5e20199bee",
+      "bytes": 78,
+      "local_only": false
+    },
+    "attempts/security-01/executor_manifest.json": {
+      "sha256": "2ee47213f9c18860f7d7339b699fa35c530e1797cd4324311205a9245ac37187",
+      "bytes": 4227,
+      "local_only": false
+    },
+    "attempts/security-01/executors/api_probe.py": {
+      "sha256": "747492cda96e55ad010313a4e7be0346477e25672421f6c57f94c717fa6009de",
+      "bytes": 15379,
+      "local_only": false
+    },
+    "attempts/security-01/executors/archive_evidence.py": {
+      "sha256": "e2ab276dad0ebebc9cf1b4d474bc443d68cd3193d19e2d128468b55fe91c3a9a",
+      "bytes": 2220,
+      "local_only": false
+    },
+    "attempts/security-01/executors/critical_suite.py": {
+      "sha256": "98c19ff8bb940124f4bbe4d30e4c95639b4a57e376896768d9b76a0de7c2bc11",
+      "bytes": 8614,
+      "local_only": false
+    },
+    "attempts/security-01/executors/fault_proxy.py": {
+      "sha256": "2e3593526fa104d69ffae3801323088b40826cfbf1635aadcacdb50daf24d046",
+      "bytes": 3295,
+      "local_only": false
+    },
+    "attempts/security-01/executors/fixtures.py": {
+      "sha256": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+      "bytes": 4230,
+      "local_only": false
+    },
+    "attempts/security-01/executors/integration_runner.py": {
+      "sha256": "8b466b8cd70f37a981d007aae909bed2abfd822bc443fed7614d536025a937f5",
+      "bytes": 7698,
+      "local_only": false
+    },
+    "attempts/security-01/executors/measurements.py": {
+      "sha256": "90e8f0946abc010437d25b6191c60a26c5382343ba1cd94bb77ede7c5ef2031f",
+      "bytes": 2320,
+      "local_only": false
+    },
+    "attempts/security-01/executors/mutation_cases.py": {
+      "sha256": "ad4b9621a64a92e8e55ce27ab8298a9590bdda60147cae9b7c7d14a1293ff71d",
+      "bytes": 3278,
+      "local_only": false
+    },
+    "attempts/security-01/executors/pilot_cases.py": {
+      "sha256": "a04df3402e66114651409ae61f6a74b1a987e69374cda594cd85d604cc410e6f",
+      "bytes": 1506,
+      "local_only": false
+    },
+    "attempts/security-01/executors/quality_campaign.py": {
+      "sha256": "1e0718e88f3aec5efee27e4d7e3fd191935867c62dfa208d4cae0a2acc15b1f6",
+      "bytes": 11973,
+      "local_only": false
+    },
+    "attempts/security-01/executors/report.py": {
+      "sha256": "3e52f5f0daf7e909197be52ef262d6345066d02aacb8feec685da5e9c050dfce",
+      "bytes": 8877,
+      "local_only": false
+    },
+    "attempts/security-01/executors/security_cases.py": {
+      "sha256": "5a4e86740b1d491d71b9e6927e779a7681166f7f7f31fd77c1d09ecb03459b7b",
+      "bytes": 19421,
+      "local_only": false
+    },
+    "attempts/security-01/executors/verify_sources.py": {
+      "sha256": "bcdc9a4e65787789cec1e005530b4592c68c5f9dfe920d1f88c5d7ff266dfce3",
+      "bytes": 2827,
+      "local_only": false
+    },
+    "attempts/security-01/critical_runs/baseline/junit.xml": {
+      "sha256": "62a3ddf86653e889b60d7caec2905185e6fa5fb7db79cf78a2e952c39d8b0d69",
+      "bytes": 4540,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/baseline/pytest.log": {
+      "sha256": "f5e96fcebea72a70aae90ff75c91ff541a0adbd99d52c0681a6514b004444e9c",
+      "bytes": 102,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-01/junit.xml": {
+      "sha256": "02a4499ec227fb4e3882c9d0c039cc924996bdc8ef4403b60649ac9a034708ee",
+      "bytes": 2031,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-01/pytest.log": {
+      "sha256": "e033deb5d8203ef734322584183b19c390906621b67406467c9480d74994a812",
+      "bytes": 1834,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-02/junit.xml": {
+      "sha256": "a6c4602d01db534b38fed09db4a657b2c10752ee02cd3e8b9b5a43521a004503",
+      "bytes": 2446,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-02/pytest.log": {
+      "sha256": "832ab6d3292aafaccfc48793dfe2d59aa30c8b6441eebd7d1a8d50110fb38d0b",
+      "bytes": 1557,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-03/junit.xml": {
+      "sha256": "a75b74e0100013ac7c48be25fcc4da607f582014e4f37338fa9cf50d61dbd019",
+      "bytes": 3925,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-03/pytest.log": {
+      "sha256": "e0874a7b5af2bd5136442c4e21ba9a9266a0768ea5cda2b88805c461c163c0d2",
+      "bytes": 2840,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-05/junit.xml": {
+      "sha256": "65859c70b64072f214070bb373eb98f866eb322da90cecd7d29f62be1cb185b2",
+      "bytes": 3532,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-05/pytest.log": {
+      "sha256": "569fdefba4ac31641e854365208a3bfd7f630359520bb2e3d74831ebcc28cbc0",
+      "bytes": 3226,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-07/junit.xml": {
+      "sha256": "6243b4b51a6238210873cad1ef471f1381686d8431030ac93ccef83a5fd5220f",
+      "bytes": 400,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-07/pytest.log": {
+      "sha256": "8afba5f492ec2064e9f39b97d367cb1e0024cb254a26785c0fe7e7c981964570",
+      "bytes": 100,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-10-events/junit.xml": {
+      "sha256": "8c627c71b0e4fbb77bff625f700f1e424c7b1e321cd8a64646cb9ac1f2783fb0",
+      "bytes": 2574,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-10-events/pytest.log": {
+      "sha256": "6c26d1d46f6e5244cb45606d2bf82643e87698c55615e34b76bee70ca9224834",
+      "bytes": 3324,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-10-savepoint/junit.xml": {
+      "sha256": "661fda4ebfb82529200c871fb0e2ed45f7d29034db0f5a7246fd6cd17e109e8f",
+      "bytes": 1974,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-10-savepoint/pytest.log": {
+      "sha256": "70580a1704edd5ecdc6b20ce50ad228983564cfb274d7d03586e818c63d4ff3f",
+      "bytes": 2890,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-11/junit.xml": {
+      "sha256": "eed1fa057c7d996c1d25a40116a118f39ba3125329a0ad387206298dd3585a94",
+      "bytes": 4354,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-11/pytest.log": {
+      "sha256": "de7449d1c44ea986b5a15aa4b99a399ec581e89ed07e0128f460b74b49317b4a",
+      "bytes": 4268,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-12/junit.xml": {
+      "sha256": "bf63e4e156b6732797271bfa65f6225ec5c546043c927c5a0dea854cd477808b",
+      "bytes": 1527,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-12/pytest.log": {
+      "sha256": "d8a47e7e42d143c3e13d066c10c9cac37aeba96e55c396e6b350c8e743230f6e",
+      "bytes": 1496,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-13/junit.xml": {
+      "sha256": "b6efff85b4f7ec29e703db4dcef541f40e93ed92f0df0ba57935801a952c14c4",
+      "bytes": 1959,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-13/pytest.log": {
+      "sha256": "1835e581a8433352e82bde0c798279e806665144063c22581367437d69ee9069",
+      "bytes": 1836,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-14/junit.xml": {
+      "sha256": "d70445f1bd8406243c95680c3ac7f3cabce37cbd6917019425c635f549c0464f",
+      "bytes": 1704,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-14/pytest.log": {
+      "sha256": "794f75e2d7577efd8776c8707b923b1f6ac52d0e99117c3b75777d2911b76d7d",
+      "bytes": 1673,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-15/junit.xml": {
+      "sha256": "2cc6820b10ae838d933538cc6b3768f820333da6dab0d1fefecc6b4570eec525",
+      "bytes": 1819,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-15/pytest.log": {
+      "sha256": "da300295b96fe3ccffe8983322cf19654263b1cc19a49b8909a6fd0f53178ad0",
+      "bytes": 1699,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-17/junit.xml": {
+      "sha256": "f2e0ab7c4a2909d638400c9eb51637dad04fb5f9470f2b21e146d99eaa310a9c",
+      "bytes": 4378,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-17/pytest.log": {
+      "sha256": "5a37352ccebaf129ebde1a63cc8ba6de7c522469ba9f42e28f49693da9868e6a",
+      "bytes": 4287,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-18/junit.xml": {
+      "sha256": "07517b4df75dfe38767c019b0ab3e998b0392d0a61ad71026f1c6dd4a7e14719",
+      "bytes": 5641,
+      "local_only": true
+    },
+    "attempts/security-01/critical_runs/MUT-18/pytest.log": {
+      "sha256": "b55f0fbb205eac95b672c041fa124812365040b48cd2441a08a7db611c74bf72",
+      "bytes": 5604,
+      "local_only": true
+    },
+    "attempts/security-02/critical_runs/baseline/summary.json": {
+      "sha256": "c9fd16ddb86eb533633a64b4eee35288d53f9738eddbe6d0b4791927e01419f3",
+      "bytes": 6073,
+      "local_only": false
+    },
+    "attempts/security-02/critical_runs/baseline/observations/DATA06-attempt-fence.json": {
+      "sha256": "80988a1b34ecff39b2b4cbf36a1fb1164079f4b050bfaa6f16313cefdf5a69bd",
+      "bytes": 122,
+      "local_only": false
+    },
+    "attempts/security-02/critical_runs/baseline/observations/DATA06-cat-delete.json": {
+      "sha256": "b32777ae7811931fd45fd8dae0888f2944f861b01f0fd89fabefa7de8a7e94ad",
+      "bytes": 91,
+      "local_only": false
+    },
+    "attempts/security-02/critical_runs/baseline/observations/DATA06-photo-delete.json": {
+      "sha256": "25288ed6a1b574eb2f6f8d724e4c3c2b348e7fb1c12e72b3000714d79ab7318c",
+      "bytes": 93,
+      "local_only": false
+    },
+    "attempts/security-02/critical_runs/baseline/observations/DATA06-replace-hash.json": {
+      "sha256": "1432607deb88471be35e255ec90f56224100888b695baa029595ce29b660a650",
+      "bytes": 93,
+      "local_only": false
+    },
+    "attempts/security-02/critical_runs/baseline/observations/DATA07-boundary.json": {
+      "sha256": "8d157afed1a6838206bf7f91d77c28b2df55a5786c2cc94495ed64cd266e83f4",
+      "bytes": 161,
+      "local_only": false
+    },
+    "attempts/security-02/critical_runs/baseline/observations/DB02-history.json": {
+      "sha256": "731a50885937efb7c48cdecb77bc0d6a43d245223b868dd45fb5ccdd8b31d7bc",
+      "bytes": 79564,
+      "local_only": false
+    },
+    "attempts/security-02/critical_runs/baseline/observations/SEC02-front.json": {
+      "sha256": "b0c7bc2797d50b8620a823a3db67070cc7acad4443ffa0235f4c6982026b270c",
+      "bytes": 248,
+      "local_only": false
+    },
+    "attempts/security-02/critical_runs/baseline/observations/SEC02-primary.json": {
+      "sha256": "b0c7bc2797d50b8620a823a3db67070cc7acad4443ffa0235f4c6982026b270c",
+      "bytes": 248,
+      "local_only": false
+    },
+    "attempts/security-02/critical_runs/baseline/observations/SEC03-read.json": {
+      "sha256": "c4304902b18f8ae9b1bd7a902b341c79a96c642ce5efd5bebfbcafe644c54282",
+      "bytes": 140,
+      "local_only": false
+    },
+    "attempts/security-02/critical_runs/baseline/observations/SEC03-typing.json": {
+      "sha256": "c4304902b18f8ae9b1bd7a902b341c79a96c642ce5efd5bebfbcafe644c54282",
+      "bytes": 140,
+      "local_only": false
+    },
+    "attempts/security-02/critical_runs/baseline/observations/SEC07-attempts.json": {
+      "sha256": "068fd33fd94f883cc9426a7a150afa9e08a7a4f41e7a5684a7106462dc68861e",
+      "bytes": 99,
+      "local_only": false
+    },
+    "attempts/security-02/api_attempt.json": {
+      "sha256": "5572aa46980647f08d30372e46d304d81462c1a9ce1bf72b3c3f2f16bb708c7b",
+      "bytes": 58,
+      "local_only": false
+    },
+    "attempts/security-02/api_attempt_result.json": {
+      "sha256": "82068630ee703710be67340c1b72b87cb22e461893f47c71fea3b71616b167f3",
+      "bytes": 78,
+      "local_only": false
+    },
+    "attempts/security-02/executor_manifest.json": {
+      "sha256": "3cd645c83a5e7a3e2b8b77a461b6c7cef64a131b8f17df015eb40a442d33ac42",
+      "bytes": 4227,
+      "local_only": false
+    },
+    "attempts/security-02/executors/api_probe.py": {
+      "sha256": "747492cda96e55ad010313a4e7be0346477e25672421f6c57f94c717fa6009de",
+      "bytes": 15379,
+      "local_only": false
+    },
+    "attempts/security-02/executors/archive_evidence.py": {
+      "sha256": "e2ab276dad0ebebc9cf1b4d474bc443d68cd3193d19e2d128468b55fe91c3a9a",
+      "bytes": 2220,
+      "local_only": false
+    },
+    "attempts/security-02/executors/critical_suite.py": {
+      "sha256": "121b856a5c68d5d3776fc84110a773d9c8933c0aa0a1312ebaef156747325248",
+      "bytes": 9452,
+      "local_only": false
+    },
+    "attempts/security-02/executors/fault_proxy.py": {
+      "sha256": "2e3593526fa104d69ffae3801323088b40826cfbf1635aadcacdb50daf24d046",
+      "bytes": 3295,
+      "local_only": false
+    },
+    "attempts/security-02/executors/fixtures.py": {
+      "sha256": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+      "bytes": 4230,
+      "local_only": false
+    },
+    "attempts/security-02/executors/integration_runner.py": {
+      "sha256": "8b466b8cd70f37a981d007aae909bed2abfd822bc443fed7614d536025a937f5",
+      "bytes": 7698,
+      "local_only": false
+    },
+    "attempts/security-02/executors/measurements.py": {
+      "sha256": "90e8f0946abc010437d25b6191c60a26c5382343ba1cd94bb77ede7c5ef2031f",
+      "bytes": 2320,
+      "local_only": false
+    },
+    "attempts/security-02/executors/mutation_cases.py": {
+      "sha256": "ad4b9621a64a92e8e55ce27ab8298a9590bdda60147cae9b7c7d14a1293ff71d",
+      "bytes": 3278,
+      "local_only": false
+    },
+    "attempts/security-02/executors/pilot_cases.py": {
+      "sha256": "a04df3402e66114651409ae61f6a74b1a987e69374cda594cd85d604cc410e6f",
+      "bytes": 1506,
+      "local_only": false
+    },
+    "attempts/security-02/executors/quality_campaign.py": {
+      "sha256": "1e0718e88f3aec5efee27e4d7e3fd191935867c62dfa208d4cae0a2acc15b1f6",
+      "bytes": 11973,
+      "local_only": false
+    },
+    "attempts/security-02/executors/report.py": {
+      "sha256": "3e52f5f0daf7e909197be52ef262d6345066d02aacb8feec685da5e9c050dfce",
+      "bytes": 8877,
+      "local_only": false
+    },
+    "attempts/security-02/executors/security_cases.py": {
+      "sha256": "0ed957c7536b56df245fafc149b2e325d2ae998edbe54113ec7228cbf7771d73",
+      "bytes": 24503,
+      "local_only": false
+    },
+    "attempts/security-02/executors/verify_sources.py": {
+      "sha256": "bcdc9a4e65787789cec1e005530b4592c68c5f9dfe920d1f88c5d7ff266dfce3",
+      "bytes": 2827,
+      "local_only": false
+    },
+    "attempts/security-02/critical_runs/baseline/junit.xml": {
+      "sha256": "8daddd898b953281d3bd11e826dcc6f40024e505e8c8feed7d3e4f25be52fbda",
+      "bytes": 13409,
+      "local_only": true
+    },
+    "attempts/security-02/critical_runs/baseline/pytest.log": {
+      "sha256": "d39c3aae94a7e760d6ece7d192026911d7e75e32bd48a49368cceb1eadfa9b74",
+      "bytes": 7876,
+      "local_only": true
+    },
+    "attempts/security-03/critical_runs/baseline/summary.json": {
+      "sha256": "a7d0fa1dd0ff208b12ee3071cf261515d790a5dfa32a6d782dbb23a38d47a1a8",
+      "bytes": 6076,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/MUT-07/summary.json": {
+      "sha256": "68660397fea6ee2c22db820271cfdb8c8a05c0aadce0baea90818aa63c16ec7d",
+      "bytes": 352,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/MUT-08/summary.json": {
+      "sha256": "ce473bd6cc3a33b9cc0fee5e7871f2df3c99a048005f77570e6cd17087890295",
+      "bytes": 673,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/MUT-09/summary.json": {
+      "sha256": "da47fd6af41f08fd0eb8f981499f8542c59b53a7669d1a8a1735f724c4a88d27",
+      "bytes": 673,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/MUT-16/summary.json": {
+      "sha256": "6314521e7c11b53c2fb88689485060026de9ecd6df36faa78e857873fca358fe",
+      "bytes": 366,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/MUT-07/classification.json": {
+      "sha256": "14c8558d8b4bf2fd41c11511a553c71ee317490127b477fc94b10562629de386",
+      "bytes": 557,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/MUT-07/mutation.diff": {
+      "sha256": "5f5e5f092d6bd83b9e03cf23928ed138fc98e844e028384b13db63a401b22847",
+      "bytes": 650,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/MUT-08/classification.json": {
+      "sha256": "b41aa3a2dfa0d7b7bd8f58c0d12f0a430aa6139f1571ac73f1cd0d0693d589b2",
+      "bytes": 579,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/MUT-08/mutation.diff": {
+      "sha256": "68550ec5c90df02b0d09e4386034ad05b3a7d1f594d8201d79619f5e96d142c3",
+      "bytes": 290,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/MUT-09/classification.json": {
+      "sha256": "bced5148bf33af10fdd6a718fa69d1e2798da5b8528b187f73b220f4a17e6b53",
+      "bytes": 577,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/MUT-09/mutation.diff": {
+      "sha256": "b24eb942bb7e05b94e43c198076001bf92356ea9c66019b18ead7de69e07d1d9",
+      "bytes": 360,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/MUT-16/classification.json": {
+      "sha256": "f17ae9534c4f7109ea35f2e757dbd05138aea34ec6c401497384eaeb6f0b6623",
+      "bytes": 565,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/MUT-16/mutation.diff": {
+      "sha256": "5be9532ce20e2d5f9422b7743ae928d51d16b5cd2dce422f36f14de26ca1767a",
+      "bytes": 349,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/baseline/observations/DATA06-attempt-fence.json": {
+      "sha256": "80988a1b34ecff39b2b4cbf36a1fb1164079f4b050bfaa6f16313cefdf5a69bd",
+      "bytes": 122,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/baseline/observations/DATA06-cat-delete.json": {
+      "sha256": "b32777ae7811931fd45fd8dae0888f2944f861b01f0fd89fabefa7de8a7e94ad",
+      "bytes": 91,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/baseline/observations/DATA06-photo-delete.json": {
+      "sha256": "25288ed6a1b574eb2f6f8d724e4c3c2b348e7fb1c12e72b3000714d79ab7318c",
+      "bytes": 93,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/baseline/observations/DATA06-replace-hash.json": {
+      "sha256": "1432607deb88471be35e255ec90f56224100888b695baa029595ce29b660a650",
+      "bytes": 93,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/baseline/observations/DATA07-boundary.json": {
+      "sha256": "8d157afed1a6838206bf7f91d77c28b2df55a5786c2cc94495ed64cd266e83f4",
+      "bytes": 161,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/baseline/observations/DB02-history.json": {
+      "sha256": "8a82eec9f076cbf0d928cbf98d7b8a55bf552ba1b160d094a628667894fb2253",
+      "bytes": 79625,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/baseline/observations/SEC02-front.json": {
+      "sha256": "b0c7bc2797d50b8620a823a3db67070cc7acad4443ffa0235f4c6982026b270c",
+      "bytes": 248,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/baseline/observations/SEC02-primary.json": {
+      "sha256": "b0c7bc2797d50b8620a823a3db67070cc7acad4443ffa0235f4c6982026b270c",
+      "bytes": 248,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/baseline/observations/SEC03-read.json": {
+      "sha256": "c4304902b18f8ae9b1bd7a902b341c79a96c642ce5efd5bebfbcafe644c54282",
+      "bytes": 140,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/baseline/observations/SEC03-typing.json": {
+      "sha256": "c4304902b18f8ae9b1bd7a902b341c79a96c642ce5efd5bebfbcafe644c54282",
+      "bytes": 140,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/baseline/observations/SEC07-attempts.json": {
+      "sha256": "068fd33fd94f883cc9426a7a150afa9e08a7a4f41e7a5684a7106462dc68861e",
+      "bytes": 99,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/baseline/observations/SEC07-refresh.json": {
+      "sha256": "d9b8df36cb686c9fbc470cd70d53993e050e2f93a6a8c5b56b2715c175f5db91",
+      "bytes": 170,
+      "local_only": false
+    },
+    "attempts/security-03/api_attempt.json": {
+      "sha256": "cb842c9980171086be61caf3397c78e3bc2396bcfd4eff7bbfa55b2aad5003d1",
+      "bytes": 58,
+      "local_only": false
+    },
+    "attempts/security-03/api_attempt_result.json": {
+      "sha256": "9b416c9620cc50c2441b86d19f6a912dddcc000d616ab5736ddccffc6a21415c",
+      "bytes": 78,
+      "local_only": false
+    },
+    "attempts/security-03/executor_manifest.json": {
+      "sha256": "82969cb777b52a7eb9d8d7f5941e4ad177de89a77fb77b3108b4a1cbe4809fde",
+      "bytes": 4336,
+      "local_only": false
+    },
+    "attempts/security-03/executors/api_probe.py": {
+      "sha256": "747492cda96e55ad010313a4e7be0346477e25672421f6c57f94c717fa6009de",
+      "bytes": 15379,
+      "local_only": false
+    },
+    "attempts/security-03/executors/archive_evidence.py": {
+      "sha256": "e2ab276dad0ebebc9cf1b4d474bc443d68cd3193d19e2d128468b55fe91c3a9a",
+      "bytes": 2220,
+      "local_only": false
+    },
+    "attempts/security-03/executors/critical_suite.py": {
+      "sha256": "121b856a5c68d5d3776fc84110a773d9c8933c0aa0a1312ebaef156747325248",
+      "bytes": 9452,
+      "local_only": false
+    },
+    "attempts/security-03/executors/fault_proxy.py": {
+      "sha256": "2e3593526fa104d69ffae3801323088b40826cfbf1635aadcacdb50daf24d046",
+      "bytes": 3295,
+      "local_only": false
+    },
+    "attempts/security-03/executors/fixtures.py": {
+      "sha256": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+      "bytes": 4230,
+      "local_only": false
+    },
+    "attempts/security-03/executors/integration_runner.py": {
+      "sha256": "8b466b8cd70f37a981d007aae909bed2abfd822bc443fed7614d536025a937f5",
+      "bytes": 7698,
+      "local_only": false
+    },
+    "attempts/security-03/executors/measurements.py": {
+      "sha256": "90e8f0946abc010437d25b6191c60a26c5382343ba1cd94bb77ede7c5ef2031f",
+      "bytes": 2320,
+      "local_only": false
+    },
+    "attempts/security-03/executors/mutation_cases.py": {
+      "sha256": "ad4b9621a64a92e8e55ce27ab8298a9590bdda60147cae9b7c7d14a1293ff71d",
+      "bytes": 3278,
+      "local_only": false
+    },
+    "attempts/security-03/executors/pilot_cases.py": {
+      "sha256": "a04df3402e66114651409ae61f6a74b1a987e69374cda594cd85d604cc410e6f",
+      "bytes": 1506,
+      "local_only": false
+    },
+    "attempts/security-03/executors/quality_campaign.py": {
+      "sha256": "62ccd5d07d9feb63fba469b1fc2e7b00042279d35656bc033a6115da34a6cc79",
+      "bytes": 14035,
+      "local_only": false
+    },
+    "attempts/security-03/executors/report.py": {
+      "sha256": "0dd59e54a1227157150eb2fbd55e187882e36e38174918be514f5d517750a096",
+      "bytes": 9069,
+      "local_only": false
+    },
+    "attempts/security-03/executors/security_cases.py": {
+      "sha256": "52bc555897d1f6c0b3917d242bea65d40383e6b3087b453436be13b0f49f99d8",
+      "bytes": 25061,
+      "local_only": false
+    },
+    "attempts/security-03/executors/verify_sources.py": {
+      "sha256": "bcdc9a4e65787789cec1e005530b4592c68c5f9dfe920d1f88c5d7ff266dfce3",
+      "bytes": 2827,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/baseline/junit.xml": {
+      "sha256": "188032a9625dc1e5f9a73c68a18d03b206feb89061feaa3055ce4b685abdaa5f",
+      "bytes": 5305,
+      "local_only": true
+    },
+    "attempts/security-03/critical_runs/baseline/pytest.log": {
+      "sha256": "594838358c7ba7ebc783929036a5359ee7680709f9c3946918dee465cc08606e",
+      "bytes": 102,
+      "local_only": true
+    },
+    "attempts/security-03/critical_runs/MUT-07/junit.xml": {
+      "sha256": "6d1720fae25e5b1a6b2c645eb4e53827bc19b21bc2fc46cf2fb27769778d1a39",
+      "bytes": 2021,
+      "local_only": true
+    },
+    "attempts/security-03/critical_runs/MUT-07/pytest.log": {
+      "sha256": "30acd69c8c14d091fc87b7570a624b3af3a06cb130ac90deb53faa30f86f45cd",
+      "bytes": 1840,
+      "local_only": true
+    },
+    "attempts/security-03/critical_runs/MUT-08/junit.xml": {
+      "sha256": "9f715b37add1e17f42b72c35717b6916459f79310da3023b57337f8bc097318d",
+      "bytes": 2522,
+      "local_only": true
+    },
+    "attempts/security-03/critical_runs/MUT-08/pytest.log": {
+      "sha256": "2c6b1de2050aedcb7df372ed2a6e0bc1371e485ce55ddccd39afdc257f75d2f2",
+      "bytes": 2035,
+      "local_only": true
+    },
+    "attempts/security-03/critical_runs/MUT-09/junit.xml": {
+      "sha256": "088f7012a55aad64d50c41b761f9391854650cec7c8449e3f1c111189963cd49",
+      "bytes": 2520,
+      "local_only": true
+    },
+    "attempts/security-03/critical_runs/MUT-09/pytest.log": {
+      "sha256": "35e0b9154021efa735e1a135df226dcfc253ad29042ff0305d1b9cabb6c508cc",
+      "bytes": 2031,
+      "local_only": true
+    },
+    "attempts/security-03/critical_runs/MUT-16/junit.xml": {
+      "sha256": "e0a73f78491247a49b97e656f2ff4cef0e4d72c28f34606819a3c8ee6158fc2e",
+      "bytes": 1679,
+      "local_only": true
+    },
+    "attempts/security-03/critical_runs/MUT-16/pytest.log": {
+      "sha256": "4a4c990eb2fb3aa870636ac2c0bc835f3e9f9f173463877c3eac3cfdf8361d05",
+      "bytes": 1599,
+      "local_only": true
+    },
+    "attempts/security-03/critical_runs/MUT-09/observations/DATA06-photo-delete.json": {
+      "sha256": "25288ed6a1b574eb2f6f8d724e4c3c2b348e7fb1c12e72b3000714d79ab7318c",
+      "bytes": 93,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/MUT-09/observations/DATA06-replace-hash.json": {
+      "sha256": "1432607deb88471be35e255ec90f56224100888b695baa029595ce29b660a650",
+      "bytes": 93,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/MUT-08/observations/DATA06-cat-delete.json": {
+      "sha256": "b32777ae7811931fd45fd8dae0888f2944f861b01f0fd89fabefa7de8a7e94ad",
+      "bytes": 91,
+      "local_only": false
+    },
+    "attempts/security-03/critical_runs/MUT-08/observations/DATA06-photo-delete.json": {
+      "sha256": "25288ed6a1b574eb2f6f8d724e4c3c2b348e7fb1c12e72b3000714d79ab7318c",
+      "bytes": 93,
+      "local_only": false
+    },
+    "attempts/database-01/critical_runs/baseline/summary.json": {
+      "sha256": "e689936e09888cbbecbfe1179b3e6957519449d6639b492d29e75e0943f80ae4",
+      "bytes": 505,
+      "local_only": false
+    },
+    "attempts/database-01/critical_runs/MUT-05/summary.json": {
+      "sha256": "689bd7bf6bc3ab674b597171af169c6b66ae3befe57b38222fb380ea4493f401",
+      "bytes": 504,
+      "local_only": false
+    },
+    "attempts/database-01/critical_runs/MUT-05/classification.json": {
+      "sha256": "593cbb777b761dfaa9461a9eed34fa1663040c393551b05950d923797499802a",
+      "bytes": 694,
+      "local_only": false
+    },
+    "attempts/database-01/critical_runs/MUT-05/mutation.diff": {
+      "sha256": "192dd0dbcf8b9d37a152c2e98681fa5d2f6b51bdb67df0ed50b144c49f9759e7",
+      "bytes": 450,
+      "local_only": false
+    },
+    "attempts/database-01/critical_runs/baseline/observations/DB02-history-10.json": {
+      "sha256": "6c021abdb326693a6d9d1e3c4358b41b331668e6ed5d81539243c5854ec43cd6",
+      "bytes": 83607,
+      "local_only": false
+    },
+    "attempts/database-01/critical_runs/baseline/observations/DB02-history-100.json": {
+      "sha256": "206ca61daa454d325a18ef7c0f4c81d53b2699f35869dc9ce7f7ed5d64b34d7a",
+      "bytes": 10524,
+      "local_only": false
+    },
+    "attempts/database-01/api_attempt.json": {
+      "sha256": "3584f58b9b1d525a72f39858866ecc29b8c0c77e2bb21bc07d33c33724fb3a83",
+      "bytes": 58,
+      "local_only": false
+    },
+    "attempts/database-01/api_attempt_result.json": {
+      "sha256": "ea024f74a94428ea8f09faedf5cd71642778b4e634c0d0486157a2600b69d400",
+      "bytes": 78,
+      "local_only": false
+    },
+    "attempts/database-01/executor_manifest.json": {
+      "sha256": "5849ff91501552241a17186ff120895645f8a89b7e7ed264b4a6a417e1f0b9d6",
+      "bytes": 4336,
+      "local_only": false
+    },
+    "attempts/database-01/executors/api_probe.py": {
+      "sha256": "747492cda96e55ad010313a4e7be0346477e25672421f6c57f94c717fa6009de",
+      "bytes": 15379,
+      "local_only": false
+    },
+    "attempts/database-01/executors/archive_evidence.py": {
+      "sha256": "e2ab276dad0ebebc9cf1b4d474bc443d68cd3193d19e2d128468b55fe91c3a9a",
+      "bytes": 2220,
+      "local_only": false
+    },
+    "attempts/database-01/executors/critical_suite.py": {
+      "sha256": "f19f9aeb26e9f21e8af0eed6d5bf838be6059275acaea3b5e3448dce31d0cb45",
+      "bytes": 9780,
+      "local_only": false
+    },
+    "attempts/database-01/executors/fault_proxy.py": {
+      "sha256": "2e3593526fa104d69ffae3801323088b40826cfbf1635aadcacdb50daf24d046",
+      "bytes": 3295,
+      "local_only": false
+    },
+    "attempts/database-01/executors/fixtures.py": {
+      "sha256": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+      "bytes": 4230,
+      "local_only": false
+    },
+    "attempts/database-01/executors/integration_runner.py": {
+      "sha256": "8b466b8cd70f37a981d007aae909bed2abfd822bc443fed7614d536025a937f5",
+      "bytes": 7698,
+      "local_only": false
+    },
+    "attempts/database-01/executors/measurements.py": {
+      "sha256": "90e8f0946abc010437d25b6191c60a26c5382343ba1cd94bb77ede7c5ef2031f",
+      "bytes": 2320,
+      "local_only": false
+    },
+    "attempts/database-01/executors/mutation_cases.py": {
+      "sha256": "ad4b9621a64a92e8e55ce27ab8298a9590bdda60147cae9b7c7d14a1293ff71d",
+      "bytes": 3278,
+      "local_only": false
+    },
+    "attempts/database-01/executors/pilot_cases.py": {
+      "sha256": "a04df3402e66114651409ae61f6a74b1a987e69374cda594cd85d604cc410e6f",
+      "bytes": 1506,
+      "local_only": false
+    },
+    "attempts/database-01/executors/quality_campaign.py": {
+      "sha256": "62ccd5d07d9feb63fba469b1fc2e7b00042279d35656bc033a6115da34a6cc79",
+      "bytes": 14035,
+      "local_only": false
+    },
+    "attempts/database-01/executors/report.py": {
+      "sha256": "0dd59e54a1227157150eb2fbd55e187882e36e38174918be514f5d517750a096",
+      "bytes": 9069,
+      "local_only": false
+    },
+    "attempts/database-01/executors/security_cases.py": {
+      "sha256": "29740245f414e7645404dce0e627c6a09087978b2478f265d928bf05737bc656",
+      "bytes": 25772,
+      "local_only": false
+    },
+    "attempts/database-01/executors/verify_sources.py": {
+      "sha256": "bcdc9a4e65787789cec1e005530b4592c68c5f9dfe920d1f88c5d7ff266dfce3",
+      "bytes": 2827,
+      "local_only": false
+    },
+    "attempts/database-01/critical_runs/baseline/junit.xml": {
+      "sha256": "aa4262a5f7ed0887b95f89621c91b3f808ef171f46b93b3c537c7b3f597da667",
+      "bytes": 556,
+      "local_only": true
+    },
+    "attempts/database-01/critical_runs/baseline/pytest.log": {
+      "sha256": "19283291ccc0efa57153f1987c30a4d02dc2a7b905fb9940801bfd25d7a0f4bb",
+      "bytes": 101,
+      "local_only": true
+    },
+    "attempts/database-01/critical_runs/MUT-05/junit.xml": {
+      "sha256": "38fbfadb2f40e962cfedfbe12570ec426813e2793d7eabdbd75c41dabd1b374c",
+      "bytes": 7175,
+      "local_only": true
+    },
+    "attempts/database-01/critical_runs/MUT-05/pytest.log": {
+      "sha256": "7ea4f54bf6cf9bf3f766a19f383ccc0339116f3303169b49af2d28f721011d8d",
+      "bytes": 6548,
+      "local_only": true
+    },
+    "attempts/accessibility-01/accessibility/observations/hold-1.0-false.json": {
+      "sha256": "9fcf66d3c0cc64a84b0c2517944d326ffded55f7969d6ffa42da1856fe9c2375",
+      "bytes": 552,
+      "local_only": false
+    },
+    "attempts/accessibility-01/accessibility/observations/hold-1.0-true.json": {
+      "sha256": "36b85f9a1212d0efc202afb64cba206beecb388a8c235d7e58b92cb8e0ce3415",
+      "bytes": 550,
+      "local_only": false
+    },
+    "attempts/accessibility-01/accessibility/observations/hold-2.0-false.json": {
+      "sha256": "954984546f565b1ea633937f50a5a01a4be24e92347fb949b4728d5c66b2f1ec",
+      "bytes": 553,
+      "local_only": false
+    },
+    "attempts/accessibility-01/accessibility/observations/hold-2.0-true.json": {
+      "sha256": "94320f9119fc9882fa659877536a62e748867dfa02c30950c4d84e6bc5a5a325",
+      "bytes": 551,
+      "local_only": false
+    },
+    "attempts/accessibility-01/accessibility/observations/login-320.0-1.0.json": {
+      "sha256": "b1745aa3f4e97c9c18ba1680766956844721c5e010f40e67b611960cdce382a9",
+      "bytes": 3573,
+      "local_only": false
+    },
+    "attempts/accessibility-01/accessibility/observations/login-320.0-2.0.json": {
+      "sha256": "760302c40ba409d492163c94fbf4f0d2463384dc092b72c96578c354a6828619",
+      "bytes": 2962,
+      "local_only": false
+    },
+    "attempts/accessibility-01/accessibility/observations/login-412.0-1.0.json": {
+      "sha256": "087f2a35fa3ad00efde7579acb0767ba002c06811d8ab3d15a4be251e11073f8",
+      "bytes": 4088,
+      "local_only": false
+    },
+    "attempts/accessibility-01/accessibility/observations/login-412.0-2.0.json": {
+      "sha256": "00b17bda87ec1b1e0ff5671b309a2b1ab8951643396939b957cc128c1d23a3cd",
+      "bytes": 2964,
+      "local_only": false
+    },
+    "attempts/accessibility-01/executor_manifest.json": {
+      "sha256": "264d805caa2129ad6ba591ee15e7bb84e52c994a22f3f03c4feb2fe20fa17c0d",
+      "bytes": 4336,
+      "local_only": false
+    },
+    "attempts/accessibility-01/accessibility/result.json": {
+      "sha256": "a741960ed9624428251caeec071c783af78439ea84c373b0b41d84bc47e76438",
+      "bytes": 163,
+      "local_only": false
+    },
+    "attempts/accessibility-01/accessibility/tests.jsonl": {
+      "sha256": "aaa89213970d4fc75913762a73fa9d84136bd0482eeffc8ffeaea5b7430b2b61",
+      "bytes": 28524,
+      "local_only": true
+    },
+    "attempts/accessibility-01/executors/api_probe.py": {
+      "sha256": "747492cda96e55ad010313a4e7be0346477e25672421f6c57f94c717fa6009de",
+      "bytes": 15379,
+      "local_only": false
+    },
+    "attempts/accessibility-01/executors/archive_evidence.py": {
+      "sha256": "e2ab276dad0ebebc9cf1b4d474bc443d68cd3193d19e2d128468b55fe91c3a9a",
+      "bytes": 2220,
+      "local_only": false
+    },
+    "attempts/accessibility-01/executors/campaign_accessibility_test.dart": {
+      "sha256": "c6dcc4451ee5a172207b4786b2c253c0abafdbebab49c6a9a2c3b8df85573d56",
+      "bytes": 7393,
+      "local_only": false
+    },
+    "attempts/accessibility-01/executors/critical_suite.py": {
+      "sha256": "121b856a5c68d5d3776fc84110a773d9c8933c0aa0a1312ebaef156747325248",
+      "bytes": 9452,
+      "local_only": false
+    },
+    "attempts/accessibility-01/executors/fault_proxy.py": {
+      "sha256": "2e3593526fa104d69ffae3801323088b40826cfbf1635aadcacdb50daf24d046",
+      "bytes": 3295,
+      "local_only": false
+    },
+    "attempts/accessibility-01/executors/fixtures.py": {
+      "sha256": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+      "bytes": 4230,
+      "local_only": false
+    },
+    "attempts/accessibility-01/executors/flutter_probe_test.dart": {
+      "sha256": "35348cb8f491b64fe298dbea78379f3129fecdc132a61352ec5a6fe11ababef6",
+      "bytes": 5715,
+      "local_only": false
+    },
+    "attempts/accessibility-01/executors/integration_runner.py": {
+      "sha256": "8b466b8cd70f37a981d007aae909bed2abfd822bc443fed7614d536025a937f5",
+      "bytes": 7698,
+      "local_only": false
+    },
+    "attempts/accessibility-01/executors/measurements.py": {
+      "sha256": "90e8f0946abc010437d25b6191c60a26c5382343ba1cd94bb77ede7c5ef2031f",
+      "bytes": 2320,
+      "local_only": false
+    },
+    "attempts/accessibility-01/executors/mutation_cases.py": {
+      "sha256": "ad4b9621a64a92e8e55ce27ab8298a9590bdda60147cae9b7c7d14a1293ff71d",
+      "bytes": 3278,
+      "local_only": false
+    },
+    "attempts/accessibility-01/executors/pilot_cases.py": {
+      "sha256": "a04df3402e66114651409ae61f6a74b1a987e69374cda594cd85d604cc410e6f",
+      "bytes": 1506,
+      "local_only": false
+    },
+    "attempts/accessibility-01/executors/quality_campaign.py": {
+      "sha256": "62ccd5d07d9feb63fba469b1fc2e7b00042279d35656bc033a6115da34a6cc79",
+      "bytes": 14035,
+      "local_only": false
+    },
+    "attempts/accessibility-01/executors/report.py": {
+      "sha256": "0dd59e54a1227157150eb2fbd55e187882e36e38174918be514f5d517750a096",
+      "bytes": 9069,
+      "local_only": false
+    },
+    "attempts/accessibility-01/executors/security_cases.py": {
+      "sha256": "52bc555897d1f6c0b3917d242bea65d40383e6b3087b453436be13b0f49f99d8",
+      "bytes": 25061,
+      "local_only": false
+    },
+    "attempts/accessibility-01/executors/verify_sources.py": {
+      "sha256": "bcdc9a4e65787789cec1e005530b4592c68c5f9dfe920d1f88c5d7ff266dfce3",
+      "bytes": 2827,
+      "local_only": false
+    },
+    "attempts/accessibility-02/accessibility/observations/hold-1.0-false.json": {
+      "sha256": "eee9416927549fd70f15148fdf6b1565d3e5eeb3b1e2de854b2ea3d1e3b4a0fe",
+      "bytes": 552,
+      "local_only": false
+    },
+    "attempts/accessibility-02/accessibility/observations/hold-1.0-true.json": {
+      "sha256": "78a5876d9d859c75469bcbe3b8938240308df057becca09786243a30935db90f",
+      "bytes": 550,
+      "local_only": false
+    },
+    "attempts/accessibility-02/accessibility/observations/hold-2.0-false.json": {
+      "sha256": "ac78e581112772a624c0b7b64c35f29411af591e120e4f77a24fd9973ec3a47d",
+      "bytes": 553,
+      "local_only": false
+    },
+    "attempts/accessibility-02/accessibility/observations/hold-2.0-true.json": {
+      "sha256": "5a62dbac56867b85fcaab1958ae9e097e601611e0256421e62643b53aa627bbb",
+      "bytes": 551,
+      "local_only": false
+    },
+    "attempts/accessibility-02/accessibility/observations/login-320.0-1.0.json": {
+      "sha256": "d57846e0417e7197c7c6de660f7343c77316d0d1ca686445e6db654a63a3ac95",
+      "bytes": 4088,
+      "local_only": false
+    },
+    "attempts/accessibility-02/accessibility/observations/login-320.0-2.0.json": {
+      "sha256": "40215d68588f15823d15f3476a0e3434f729595889e61f0ff5e39a4517fa3549",
+      "bytes": 3251,
+      "local_only": false
+    },
+    "attempts/accessibility-02/accessibility/observations/login-412.0-1.0.json": {
+      "sha256": "24cb9109932c846f2bd63b2d5d0d6283157f7fd5bfcba1e2e28fc7f2bfa4b76c",
+      "bytes": 4088,
+      "local_only": false
+    },
+    "attempts/accessibility-02/accessibility/observations/login-412.0-2.0.json": {
+      "sha256": "7c0c17b87b77e055f78861f00e07c25a02c7f78d4ef45bea70ad08b612c21020",
+      "bytes": 3253,
+      "local_only": false
+    },
+    "attempts/accessibility-02/executor_manifest.json": {
+      "sha256": "3b01da15fdb13839dd525d88db2f7531f7ce84c59a55b56435ef8142a34abea3",
+      "bytes": 4336,
+      "local_only": false
+    },
+    "attempts/accessibility-02/accessibility/result.json": {
+      "sha256": "a741960ed9624428251caeec071c783af78439ea84c373b0b41d84bc47e76438",
+      "bytes": 163,
+      "local_only": false
+    },
+    "attempts/accessibility-02/accessibility/tests.jsonl": {
+      "sha256": "efe17f0e601ad253b74405621eabb7817db2f96b5e2fbe43535269755e75b893",
+      "bytes": 32981,
+      "local_only": true
+    },
+    "attempts/accessibility-02/executors/api_probe.py": {
+      "sha256": "747492cda96e55ad010313a4e7be0346477e25672421f6c57f94c717fa6009de",
+      "bytes": 15379,
+      "local_only": false
+    },
+    "attempts/accessibility-02/executors/archive_evidence.py": {
+      "sha256": "e2ab276dad0ebebc9cf1b4d474bc443d68cd3193d19e2d128468b55fe91c3a9a",
+      "bytes": 2220,
+      "local_only": false
+    },
+    "attempts/accessibility-02/executors/campaign_accessibility_test.dart": {
+      "sha256": "bf354c4132cdeda1302f1aad68bd3adcd21a1d446d6813a529b9b1eecc6315cd",
+      "bytes": 8179,
+      "local_only": false
+    },
+    "attempts/accessibility-02/executors/critical_suite.py": {
+      "sha256": "f19f9aeb26e9f21e8af0eed6d5bf838be6059275acaea3b5e3448dce31d0cb45",
+      "bytes": 9780,
+      "local_only": false
+    },
+    "attempts/accessibility-02/executors/fault_proxy.py": {
+      "sha256": "2e3593526fa104d69ffae3801323088b40826cfbf1635aadcacdb50daf24d046",
+      "bytes": 3295,
+      "local_only": false
+    },
+    "attempts/accessibility-02/executors/fixtures.py": {
+      "sha256": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+      "bytes": 4230,
+      "local_only": false
+    },
+    "attempts/accessibility-02/executors/flutter_probe_test.dart": {
+      "sha256": "35348cb8f491b64fe298dbea78379f3129fecdc132a61352ec5a6fe11ababef6",
+      "bytes": 5715,
+      "local_only": false
+    },
+    "attempts/accessibility-02/executors/integration_runner.py": {
+      "sha256": "8b466b8cd70f37a981d007aae909bed2abfd822bc443fed7614d536025a937f5",
+      "bytes": 7698,
+      "local_only": false
+    },
+    "attempts/accessibility-02/executors/measurements.py": {
+      "sha256": "90e8f0946abc010437d25b6191c60a26c5382343ba1cd94bb77ede7c5ef2031f",
+      "bytes": 2320,
+      "local_only": false
+    },
+    "attempts/accessibility-02/executors/mutation_cases.py": {
+      "sha256": "ad4b9621a64a92e8e55ce27ab8298a9590bdda60147cae9b7c7d14a1293ff71d",
+      "bytes": 3278,
+      "local_only": false
+    },
+    "attempts/accessibility-02/executors/pilot_cases.py": {
+      "sha256": "a04df3402e66114651409ae61f6a74b1a987e69374cda594cd85d604cc410e6f",
+      "bytes": 1506,
+      "local_only": false
+    },
+    "attempts/accessibility-02/executors/quality_campaign.py": {
+      "sha256": "39fd4d47f7ed16f5535c12fc839f1b95cfc0c734b3fe56fbcc33a9b64caa7b6a",
+      "bytes": 14426,
+      "local_only": false
+    },
+    "attempts/accessibility-02/executors/report.py": {
+      "sha256": "0dd59e54a1227157150eb2fbd55e187882e36e38174918be514f5d517750a096",
+      "bytes": 9069,
+      "local_only": false
+    },
+    "attempts/accessibility-02/executors/security_cases.py": {
+      "sha256": "29740245f414e7645404dce0e627c6a09087978b2478f265d928bf05737bc656",
+      "bytes": 25772,
+      "local_only": false
+    },
+    "attempts/accessibility-02/executors/verify_sources.py": {
+      "sha256": "bcdc9a4e65787789cec1e005530b4592c68c5f9dfe920d1f88c5d7ff266dfce3",
+      "bytes": 2827,
+      "local_only": false
+    },
+    "attempts/accessibility-03/accessibility/observations/hold-1.0-false.json": {
+      "sha256": "eee9416927549fd70f15148fdf6b1565d3e5eeb3b1e2de854b2ea3d1e3b4a0fe",
+      "bytes": 552,
+      "local_only": false
+    },
+    "attempts/accessibility-03/accessibility/observations/hold-1.0-true.json": {
+      "sha256": "78a5876d9d859c75469bcbe3b8938240308df057becca09786243a30935db90f",
+      "bytes": 550,
+      "local_only": false
+    },
+    "attempts/accessibility-03/accessibility/observations/hold-2.0-false.json": {
+      "sha256": "ac78e581112772a624c0b7b64c35f29411af591e120e4f77a24fd9973ec3a47d",
+      "bytes": 553,
+      "local_only": false
+    },
+    "attempts/accessibility-03/accessibility/observations/hold-2.0-true.json": {
+      "sha256": "5a62dbac56867b85fcaab1958ae9e097e601611e0256421e62643b53aa627bbb",
+      "bytes": 551,
+      "local_only": false
+    },
+    "attempts/accessibility-03/accessibility/observations/login-320.0-1.0.json": {
+      "sha256": "d57846e0417e7197c7c6de660f7343c77316d0d1ca686445e6db654a63a3ac95",
+      "bytes": 4088,
+      "local_only": false
+    },
+    "attempts/accessibility-03/accessibility/observations/login-320.0-2.0.json": {
+      "sha256": "40215d68588f15823d15f3476a0e3434f729595889e61f0ff5e39a4517fa3549",
+      "bytes": 3251,
+      "local_only": false
+    },
+    "attempts/accessibility-03/accessibility/observations/login-412.0-1.0.json": {
+      "sha256": "24cb9109932c846f2bd63b2d5d0d6283157f7fd5bfcba1e2e28fc7f2bfa4b76c",
+      "bytes": 4088,
+      "local_only": false
+    },
+    "attempts/accessibility-03/accessibility/observations/login-412.0-2.0.json": {
+      "sha256": "7c0c17b87b77e055f78861f00e07c25a02c7f78d4ef45bea70ad08b612c21020",
+      "bytes": 3253,
+      "local_only": false
+    },
+    "attempts/accessibility-03/executor_manifest.json": {
+      "sha256": "32f5aa46af8907473a6a5b9f1899b5977dc8a1111ef704b1912dee761813e5cf",
+      "bytes": 4336,
+      "local_only": false
+    },
+    "attempts/accessibility-03/accessibility/result.json": {
+      "sha256": "a741960ed9624428251caeec071c783af78439ea84c373b0b41d84bc47e76438",
+      "bytes": 163,
+      "local_only": false
+    },
+    "attempts/accessibility-03/accessibility/tests.jsonl": {
+      "sha256": "f46f7b01cb3fe1521aaa100667a4f3f71e649ccf504dd76831533bcd52820fce",
+      "bytes": 26490,
+      "local_only": true
+    },
+    "attempts/accessibility-03/executors/api_probe.py": {
+      "sha256": "747492cda96e55ad010313a4e7be0346477e25672421f6c57f94c717fa6009de",
+      "bytes": 15379,
+      "local_only": false
+    },
+    "attempts/accessibility-03/executors/archive_evidence.py": {
+      "sha256": "e2ab276dad0ebebc9cf1b4d474bc443d68cd3193d19e2d128468b55fe91c3a9a",
+      "bytes": 2220,
+      "local_only": false
+    },
+    "attempts/accessibility-03/executors/campaign_accessibility_test.dart": {
+      "sha256": "a11d4b0fb8293e2c62c1e285ed9a66e8f0de7d6dcb825f0f48524f8dab9c88c2",
+      "bytes": 8393,
+      "local_only": false
+    },
+    "attempts/accessibility-03/executors/critical_suite.py": {
+      "sha256": "f19f9aeb26e9f21e8af0eed6d5bf838be6059275acaea3b5e3448dce31d0cb45",
+      "bytes": 9780,
+      "local_only": false
+    },
+    "attempts/accessibility-03/executors/fault_proxy.py": {
+      "sha256": "2e3593526fa104d69ffae3801323088b40826cfbf1635aadcacdb50daf24d046",
+      "bytes": 3295,
+      "local_only": false
+    },
+    "attempts/accessibility-03/executors/fixtures.py": {
+      "sha256": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+      "bytes": 4230,
+      "local_only": false
+    },
+    "attempts/accessibility-03/executors/flutter_probe_test.dart": {
+      "sha256": "35348cb8f491b64fe298dbea78379f3129fecdc132a61352ec5a6fe11ababef6",
+      "bytes": 5715,
+      "local_only": false
+    },
+    "attempts/accessibility-03/executors/integration_runner.py": {
+      "sha256": "8b466b8cd70f37a981d007aae909bed2abfd822bc443fed7614d536025a937f5",
+      "bytes": 7698,
+      "local_only": false
+    },
+    "attempts/accessibility-03/executors/measurements.py": {
+      "sha256": "90e8f0946abc010437d25b6191c60a26c5382343ba1cd94bb77ede7c5ef2031f",
+      "bytes": 2320,
+      "local_only": false
+    },
+    "attempts/accessibility-03/executors/mutation_cases.py": {
+      "sha256": "ad4b9621a64a92e8e55ce27ab8298a9590bdda60147cae9b7c7d14a1293ff71d",
+      "bytes": 3278,
+      "local_only": false
+    },
+    "attempts/accessibility-03/executors/pilot_cases.py": {
+      "sha256": "a04df3402e66114651409ae61f6a74b1a987e69374cda594cd85d604cc410e6f",
+      "bytes": 1506,
+      "local_only": false
+    },
+    "attempts/accessibility-03/executors/quality_campaign.py": {
+      "sha256": "39fd4d47f7ed16f5535c12fc839f1b95cfc0c734b3fe56fbcc33a9b64caa7b6a",
+      "bytes": 14426,
+      "local_only": false
+    },
+    "attempts/accessibility-03/executors/report.py": {
+      "sha256": "0dd59e54a1227157150eb2fbd55e187882e36e38174918be514f5d517750a096",
+      "bytes": 9069,
+      "local_only": false
+    },
+    "attempts/accessibility-03/executors/security_cases.py": {
+      "sha256": "29740245f414e7645404dce0e627c6a09087978b2478f265d928bf05737bc656",
+      "bytes": 25772,
+      "local_only": false
+    },
+    "attempts/accessibility-03/executors/verify_sources.py": {
+      "sha256": "66d0c0a37dfb5a3827de95412298319ab99f0faf4669e99f102bcda532344710",
+      "bytes": 3144,
+      "local_only": false
+    },
+    "manifest.json": {
+      "sha256": "ffd745238f2c7f0b9b6f984a018ce909e72463b5cc1ac98ab8b82df5bcaf955b",
+      "bytes": 7759,
+      "local_only": false
+    },
+    "critical_source_verification.json": {
+      "sha256": "f4e9826e7fb6fdcb9dacc9beffff41b0364349e4a8cfb0d9f1125dd2c0106dbc",
+      "bytes": 934,
+      "local_only": false
+    },
+    "critical_environment_check.json": {
+      "sha256": "2b0457dac1577c749de7f5414837408bb57bac39dd1782dadbe13b77ceb3f1e3",
+      "bytes": 430,
+      "local_only": false
+    }
+  },
+  "privacy": "Raw logs/JUnit remain local; public summaries contain synthetic data only"
+}
