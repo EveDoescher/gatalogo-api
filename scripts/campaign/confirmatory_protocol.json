@@ -3,10 +3,25 @@
   "execution_authorized_by_this_file": false,
   "purpose": "Confirm latency differences only after host stability and pilot review; not a load or mobile claim",
   "source_policy": "Freeze four full SHAs; verify app/lib contents and dependency/image hashes; no main changes",
-  "fixtures": {"seed": 2102026, "catalog": [40], "history_revisions_per_cat": [1, 10], "reset_each_block": true},
+  "fixtures": {
+    "seed": 2102026,
+    "catalog": [
+      40
+    ],
+    "history_revisions_per_cat": [
+      1,
+      10
+    ],
+    "reset_each_block": true
+  },
   "design": {
     "transport": "Choose and register ASGI or TCP before collection; never pool both",
-    "order": ["A", "B", "B", "A"],
+    "order": [
+      "A",
+      "B",
+      "B",
+      "A"
+    ],
     "initial_independent_blocks": 3,
     "requests_per_cell_initial_budget": 1000,
     "sizing_basis": "Initial affordable budget for P95 CI estimation, not guaranteed precision; use pilot autocorrelation and clustered intervals",
@@ -24,6 +39,15 @@
     "Abort on OOM/restart, disk >80%, error/timeout >5% for 60 seconds or unrecovered backlog",
     "Budget/time assessed before running; a 1000-request cell may be expensive on the observed official version"
   ],
-  "pending_implementation": ["stationarity/preflight collector", "block-bootstrap and CI computation", "longer-sample executor with wall-clock budget"],
-  "interpretation": "The current critical DB history trace includes oracle time and cannot substitute for this protocol"
+  "pending_implementation": [
+    "Budgeted longer-sample executor and integration with stability gates",
+    "Record IO/power/thermal and establish a quiet controlled execution window",
+    "Preregister final block count, estimand, bootstrap unit and precision from a fresh stability pilot"
+  ],
+  "interpretation": "The current critical DB history trace includes oracle time and cannot substitute for this protocol",
+  "implemented_helpers": {
+    "host_observation": "preflight.py: CPU/RAM only; no exclusive controlled host or IO/thermal validation",
+    "stationarity": "statistics_checks.py: three-window median guard, unit tested; not integrated into a confirmatory campaign",
+    "uncertainty": "statistics_checks.py: exact binomial order-statistic bounds and paired block bootstrap, unit tested; not applied to new performance data"
+  }
 }
