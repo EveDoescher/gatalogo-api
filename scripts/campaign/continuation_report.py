@@ -30,6 +30,8 @@ ATTEMPTS = [
     "flutter-resilience-04",
     "accessibility-04",
     "flutter-full-01",
+    "network-01",
+    "probe-layout-01",
 ]
 
 
@@ -53,6 +55,9 @@ def mapping(name, flutter=False):
         for s in re.findall(r"(?:SEC|DATA|DB|IMG|LOAD|DLV|RES|ACC)\d{2}", name)
     ]
     code = []
+    if "SEC10_tcp" in name:
+        scenarios.extend(["SEC-03", "SEC-10"])
+        code.extend(["app/routers/websocket.py", "app/services/auth_service.py"])
     rules = [
         (
             ("conflict", "tombstone", "reference_filter", "DB02"),
@@ -71,9 +76,9 @@ def mapping(name, flutter=False):
             ["app/routers/sync.py", "app/services/storage_service.py"],
         ),
         (
-            ("attachment_member", "websocket_loop", "revocation"),
+            ("attachment_member", "websocket_loop", "revocation", "tcp_preexisting"),
             ["SEC-02", "SEC-03"],
-            ["app/routers/social.py", "app/services/conversations.py"],
+            ["app/routers/websocket.py", "app/services/conversations.py"],
         ),
         (
             ("credential", "smtp", "registration_and"),
@@ -269,6 +274,43 @@ def build(run, destination):
                         ],
                     }
                 )
+        if a == "probe-layout-01":
+            for p in sorted((root / "flutter_results").glob("*/test.jsonl")):
+                key = index(p)
+                cases = flutter_tests(p)
+                summaries[key] = {
+                    "cases": cases,
+                    "scope": "Probe relocation revalidation; timings remain exploratory",
+                }
+                arm = "A" if p.parent.name.endswith("A") else "B"
+                for c in cases:
+                    ids, code = mapping(c["name"], True)
+                    if "DB-01" in c["name"]:
+                        ids = ["DB-01"]
+                        code = [
+                            "lib/stores/cat_store.dart",
+                            "lib/data/cat_database.dart",
+                        ]
+                    traces.append(
+                        {
+                            "attempt": a,
+                            "variant": p.parent.name,
+                            "test": c["name"],
+                            "scenarios": ids,
+                            "result": "SKIPPED" if c["skipped"] else c["result"],
+                            "code": code,
+                            "code_commit": manifest["sources"][arm + "-flutter"]["sha"],
+                            "executor_commit": commits["api"],
+                            "executor_snapshot": f"attempts/{a}/executor_manifest.json",
+                            "evidence": key,
+                            "selectors": ["tool/campaign_probe_test.dart"]
+                            if p.parent.name != "RES-03"
+                            else [
+                                "test/conversation_controller_test.dart",
+                                "test/notification_store_test.dart",
+                            ],
+                        }
+                    )
         for p in sorted(root.rglob("classification.json")):
             original = read(p)
             reviewed = p.with_name("reviewed_classification.json")

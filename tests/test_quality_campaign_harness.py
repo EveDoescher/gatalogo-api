@@ -41,7 +41,9 @@ def test_metrics_never_promote_small_pilot_to_reliable_p99():
     assert boundary["p95_ms_exploratory"] == 18
 
 
-@pytest.mark.parametrize("mode,expected_requests", [("drop_before", 0), ("drop_after", 1), ("delay", 1)])
+@pytest.mark.parametrize(
+    "mode,expected_requests", [("drop_before", 0), ("drop_after", 1), ("delay", 1)]
+)
 def test_proxy_faults_distinguish_before_and_after_effect(mode, expected_requests):
     proxy_module = module("fault_proxy")
     effects = []
@@ -57,7 +59,9 @@ def test_proxy_faults_distinguish_before_and_after_effect(mode, expected_request
             self.wfile.write(b"ok")
 
     upstream = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
-    proxy = proxy_module.server(f"http://127.0.0.1:{upstream.server_port}", mode=mode, delay_ms=5)
+    proxy = proxy_module.server(
+        f"http://127.0.0.1:{upstream.server_port}", mode=mode, delay_ms=5
+    )
     threads = [Thread(target=s.serve_forever, daemon=True) for s in (upstream, proxy)]
     for thread in threads:
         thread.start()
@@ -67,7 +71,9 @@ def test_proxy_faults_distinguish_before_and_after_effect(mode, expected_request
             with pytest.raises((RemoteDisconnected, URLError)):
                 opener.open(f"http://127.0.0.1:{proxy.server_port}", timeout=3)
         else:
-            with opener.open(f"http://127.0.0.1:{proxy.server_port}", timeout=3) as result:
+            with opener.open(
+                f"http://127.0.0.1:{proxy.server_port}", timeout=3
+            ) as result:
                 assert result.read() == b"ok"
         assert len(effects) == expected_requests
     finally:
@@ -80,7 +86,11 @@ def test_proxy_faults_distinguish_before_and_after_effect(mode, expected_request
 
 def test_proxy_refuses_live_services_and_external_hosts():
     proxy = module("fault_proxy")
-    for target in ("http://127.0.0.1:8000", "http://127.0.0.1:5432", "https://example.com:12345"):
+    for target in (
+        "http://127.0.0.1:8000",
+        "http://127.0.0.1:5432",
+        "https://example.com:12345",
+    ):
         with pytest.raises(ValueError):
             proxy.server(target)
 
@@ -100,8 +110,54 @@ def test_archive_preserves_raw_evidence_and_verifies_members(tmp_path):
     product.write_text("not evidence", encoding="utf-8")
     archive.archive(run)
     folder = tmp_path / "quality-archives"
-    receipt = json.loads(next(folder.glob("*.receipt.json")).read_text(encoding="utf-8"))
+    receipt = json.loads(
+        next(folder.glob("*.receipt.json")).read_text(encoding="utf-8")
+    )
     assert receipt["originals_removed"] is False and receipt["verified_members"] == 2
     assert observation.exists() and product.exists()
     with tarfile.open(folder / receipt["archive"]) as stored:
         assert set(stored.getnames()) == {"manifest.json", "observations.json"}
+
+
+def test_prepare_freezes_probe_from_flutter_package_and_preserves_snapshot(
+    tmp_path, monkeypatch
+):
+    import hashlib
+    import json
+
+    script = Path(__file__).resolve().parents[1] / "scripts/quality_campaign.py"
+    spec = importlib.util.spec_from_file_location("campaign_entry", script)
+    loaded = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(loaded)
+    root = tmp_path / "api"
+    campaign = root / ".tmp/quality-campaign/synthetic"
+    (campaign / "fixtures").mkdir(parents=True)
+    (campaign / "fixtures/manifest.json").write_text("{}", encoding="utf-8")
+    scripts = root / "scripts/campaign"
+    scripts.mkdir(parents=True)
+    (scripts / "fixtures.py").write_text(
+        "# pre-existing synthetic fixtures", encoding="utf-8"
+    )
+    (root / "scripts/run_integration_checks.py").write_text("pass", encoding="utf-8")
+    tools = tmp_path / "flutter/tool"
+    tools.mkdir(parents=True)
+    probe = tools / "campaign_probe_test.dart"
+    probe.write_text("// first immutable probe snapshot", encoding="utf-8")
+    (campaign / "manifest.json").write_text(
+        json.dumps({"sources": {"B-flutter": {"repo": str(tools.parent)}}}),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(loaded, "ROOT", root)
+    loaded.prepare(campaign, "layout-01")
+    frozen = campaign / "attempts/layout-01/executors/campaign_probe_test.dart"
+    assert frozen.read_bytes() == probe.read_bytes()
+    manifest = json.loads(
+        (frozen.parents[1] / "executor_manifest.json").read_text(encoding="utf-8")
+    )
+    assert (
+        manifest["hashes"][probe.name] == hashlib.sha256(probe.read_bytes()).hexdigest()
+    )
+    probe.write_text("// later edit", encoding="utf-8")
+    assert frozen.read_text(encoding="utf-8") == "// first immutable probe snapshot"
+    with pytest.raises(ValueError):
+        loaded.prepare(campaign, "layout-01")

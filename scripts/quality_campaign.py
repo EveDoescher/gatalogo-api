@@ -158,8 +158,6 @@ def prepare(run, name):
     origin = ROOT / "scripts" / "campaign"
     for path in sorted(origin.glob("*.py")):
         shutil.copy2(path, attempt / "executors" / path.name)
-    for path in sorted(origin.glob("*.dart")):
-        shutil.copy2(path, attempt / "executors" / path.name)
     shutil.copy2(Path(__file__), attempt / "executors" / "quality_campaign.py")
     shutil.copy2(
         ROOT / "scripts" / "run_integration_checks.py",
@@ -206,6 +204,7 @@ API_SUITES = {
     "queue": "queue_suite.py",
     "privacy": "privacy_suite.py",
     "diagnostic": "diagnostic_suite.py",
+    "network": "network_suite.py",
 }
 
 
@@ -288,7 +287,7 @@ def execute_flutter(run, name):
             if origin.exists():
                 shutil.copy2(origin, config / filename)
         test = target / "test" / "campaign_probe_test.dart"
-        shutil.copy2(attempt / "executors" / "flutter_probe_test.dart", test)
+        shutil.copy2(attempt / "executors" / "campaign_probe_test.dart", test)
         output = attempt / "flutter_results" / label
         output.mkdir(parents=True, exist_ok=False)
         env = dict(os.environ, QUALITY_FLUTTER_OUTPUT=str(output / "samples.json"))

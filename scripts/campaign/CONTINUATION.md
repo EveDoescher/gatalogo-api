@@ -45,3 +45,10 @@ e consolida evidências sem publicar logs brutos. Arquivar antes e depois com
 `archive_evidence.py`; conservar tars, JUnit, SQLite e logs apenas no ambiente privado.
 
 Relatório: [continuação](../../docs/campaigns/2026-10-22-continuation/README.md).
+
+
+A fonte canônica do probe comum está em `catlogue/tool/campaign_probe_test.dart`,
+para ser analisada dentro do pacote Flutter. `prepare` congela esse arquivo junto
+com os outros `tool/campaign_*test.dart`; o executor copia o snapshot para o diretório
+de testes da versão avaliada. As tentativas antigas conservam seu snapshot original
+`flutter_probe_test.dart` e seu executor original, sem alteração das evidências.
