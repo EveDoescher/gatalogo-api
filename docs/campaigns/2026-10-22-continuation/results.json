@@ -1,0 +1,6313 @@
+{
+  "attempts/extended-01/critical_runs/extended-baseline/summary.json": {
+    "run": "extended-baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 47.02840079999987,
+    "cases": [
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[photo-read]",
+        "seconds": 1.462,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[photo-write]",
+        "seconds": 1.551,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[front-read]",
+        "seconds": 1.963,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[front-write]",
+        "seconds": 3.424,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[front-delete]",
+        "seconds": 1.784,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[avatar-preview]",
+        "seconds": 1.776,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[avatar-coat]",
+        "seconds": 2.641,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[jobs]",
+        "seconds": 1.309,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[enqueue]",
+        "seconds": 1.137,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[report]",
+        "seconds": 1.191,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[sighting]",
+        "seconds": 0.99,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_SEC03_chat_attachment_member_controls",
+        "seconds": 1.171,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DATA05_http_conflicts_preserve_authoritative_analysis",
+        "seconds": 1.235,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB02_IMG03_reference_filtering",
+        "seconds": 1.598,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA02_upload_failure_records_orphan_without_committing",
+        "seconds": 0.814,
+        "status": "PASS"
+      },
+      {
+        "name": "test_photo_variants_use_content_hash_and_stay_inside_storage_root",
+        "seconds": 0.028,
+        "status": "PASS"
+      },
+      {
+        "name": "test_avatar_asset_keeps_versioned_key",
+        "seconds": 0.011,
+        "status": "PASS"
+      },
+      {
+        "name": "test_page_matches_legacy_response_with_four_selects[sqlite-1]",
+        "seconds": 0.298,
+        "status": "PASS"
+      },
+      {
+        "name": "test_page_matches_legacy_response_with_four_selects[sqlite-40]",
+        "seconds": 0.52,
+        "status": "PASS"
+      },
+      {
+        "name": "test_page_matches_legacy_response_with_four_selects[postgres-1]",
+        "seconds": 0.475,
+        "status": "PASS"
+      },
+      {
+        "name": "test_page_matches_legacy_response_with_four_selects[postgres-40]",
+        "seconds": 1.175,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[sqlite-success]",
+        "seconds": 0.057,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[sqlite-missing-key]",
+        "seconds": 0.046,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[sqlite-rejected]",
+        "seconds": 0.043,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[postgres-success]",
+        "seconds": 0.346,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[postgres-missing-key]",
+        "seconds": 0.331,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[postgres-rejected]",
+        "seconds": 0.405,
+        "status": "PASS"
+      },
+      {
+        "name": "test_stranger_cannot_emit_conversation_events_or_read_messages[typing]",
+        "seconds": 1.222,
+        "status": "PASS"
+      },
+      {
+        "name": "test_stranger_cannot_emit_conversation_events_or_read_messages[read]",
+        "seconds": 1.565,
+        "status": "PASS"
+      },
+      {
+        "name": "test_http_and_websocket_read_share_authorization_and_receipts",
+        "seconds": 1.507,
+        "status": "PASS"
+      },
+      {
+        "name": "test_typing_for_member_reaches_only_other_member",
+        "seconds": 1.536,
+        "status": "PASS"
+      },
+      {
+        "name": "test_invalid_envelopes_keep_connection_alive_and_cleanup_runs_once",
+        "seconds": 1.765,
+        "status": "PASS"
+      },
+      {
+        "name": "test_delivery_failure_does_not_fail_committed_operation_or_next_event[push]",
+        "seconds": 0.018,
+        "status": "PASS"
+      },
+      {
+        "name": "test_delivery_failure_does_not_fail_committed_operation_or_next_event[websocket]",
+        "seconds": 0.007,
+        "status": "PASS"
+      },
+      {
+        "name": "test_retry_persists_successful_devices_and_respects_deadline",
+        "seconds": 0.329,
+        "status": "PASS"
+      },
+      {
+        "name": "test_failure_then_read_discards_retry",
+        "seconds": 0.174,
+        "status": "PASS"
+      },
+      {
+        "name": "test_stale_notice_never_sends[expired]",
+        "seconds": 0.158,
+        "status": "PASS"
+      },
+      {
+        "name": "test_stale_notice_never_sends[collected]",
+        "seconds": 0.191,
+        "status": "PASS"
+      },
+      {
+        "name": "test_real_transport_retries_only_failed_device_and_keeps_bad_request_token",
+        "seconds": 0.229,
+        "status": "PASS"
+      },
+      {
+        "name": "test_old_resident_notice_does_not_resend_for_a_new_ready_cycle[coop]",
+        "seconds": 0.178,
+        "status": "PASS"
+      },
+      {
+        "name": "test_old_resident_notice_does_not_resend_for_a_new_ready_cycle[pasture]",
+        "seconds": 0.177,
+        "status": "PASS"
+      },
+      {
+        "name": "test_old_resident_notice_does_not_resend_for_a_new_ready_cycle[orchard]",
+        "seconds": 0.182,
+        "status": "PASS"
+      },
+      {
+        "name": "test_change_password_success",
+        "seconds": 0.451,
+        "status": "PASS"
+      },
+      {
+        "name": "test_change_password_wrong_current",
+        "seconds": 0.185,
+        "status": "PASS"
+      },
+      {
+        "name": "test_change_email_flow",
+        "seconds": 0.03,
+        "status": "PASS"
+      },
+      {
+        "name": "test_export_user_data",
+        "seconds": 0.159,
+        "status": "PASS"
+      },
+      {
+        "name": "test_submit_feedback",
+        "seconds": 0.004,
+        "status": "PASS"
+      },
+      {
+        "name": "test_favorites_sync",
+        "seconds": 0.007,
+        "status": "PASS"
+      },
+      {
+        "name": "test_named_reactions_and_legacy_request_key",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_unsupported_reaction_is_rejected",
+        "seconds": 0.012,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\extended_cases.py",
+      "<target>\\tests\\test_storage_service.py",
+      "<target>\\tests\\test_sync_query_performance.py",
+      "<target>\\tests\\test_conversation_events.py",
+      "<target>\\tests\\test_realtime_events.py",
+      "<target>\\tests\\test_quintal_push.py",
+      "<target>\\tests\\test_account_settings.py",
+      "<target>\\tests\\test_message_reactions.py"
+    ]
+  },
+  "attempts/extended-02/critical_runs/extended-baseline/summary.json": {
+    "run": "extended-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 93.5422566000002,
+    "cases": [
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[photo-read]",
+        "seconds": 2.812,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[photo-write]",
+        "seconds": 4.595,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[front-read]",
+        "seconds": 2.475,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[front-write]",
+        "seconds": 10.559,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[front-delete]",
+        "seconds": 6.196,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[avatar-preview]",
+        "seconds": 2.844,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[avatar-coat]",
+        "seconds": 4.55,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[jobs]",
+        "seconds": 3.797,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[enqueue]",
+        "seconds": 1.934,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[report]",
+        "seconds": 3.209,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[sighting]",
+        "seconds": 2.209,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_SEC03_chat_attachment_member_controls",
+        "seconds": 4.297,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_http_conflicts_preserve_authoritative_analysis",
+        "seconds": 3.861,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB02_IMG03_reference_filtering",
+        "seconds": 1.463,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA02_upload_failure_records_orphan_without_committing",
+        "seconds": 1.6,
+        "status": "PASS"
+      },
+      {
+        "name": "test_photo_variants_use_content_hash_and_stay_inside_storage_root",
+        "seconds": 0.038,
+        "status": "PASS"
+      },
+      {
+        "name": "test_avatar_asset_keeps_versioned_key",
+        "seconds": 0.016,
+        "status": "PASS"
+      },
+      {
+        "name": "test_page_matches_legacy_response_with_four_selects[sqlite-1]",
+        "seconds": 0.151,
+        "status": "PASS"
+      },
+      {
+        "name": "test_page_matches_legacy_response_with_four_selects[sqlite-40]",
+        "seconds": 0.78,
+        "status": "PASS"
+      },
+      {
+        "name": "test_page_matches_legacy_response_with_four_selects[postgres-1]",
+        "seconds": 0.734,
+        "status": "PASS"
+      },
+      {
+        "name": "test_page_matches_legacy_response_with_four_selects[postgres-40]",
+        "seconds": 1.409,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[sqlite-success]",
+        "seconds": 0.068,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[sqlite-missing-key]",
+        "seconds": 0.052,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[sqlite-rejected]",
+        "seconds": 0.074,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[postgres-success]",
+        "seconds": 0.954,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[postgres-missing-key]",
+        "seconds": 0.479,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[postgres-rejected]",
+        "seconds": 0.456,
+        "status": "PASS"
+      },
+      {
+        "name": "test_stranger_cannot_emit_conversation_events_or_read_messages[typing]",
+        "seconds": 2.699,
+        "status": "PASS"
+      },
+      {
+        "name": "test_stranger_cannot_emit_conversation_events_or_read_messages[read]",
+        "seconds": 2.594,
+        "status": "PASS"
+      },
+      {
+        "name": "test_http_and_websocket_read_share_authorization_and_receipts",
+        "seconds": 2.719,
+        "status": "PASS"
+      },
+      {
+        "name": "test_typing_for_member_reaches_only_other_member",
+        "seconds": 2.782,
+        "status": "PASS"
+      },
+      {
+        "name": "test_invalid_envelopes_keep_connection_alive_and_cleanup_runs_once",
+        "seconds": 3.059,
+        "status": "PASS"
+      },
+      {
+        "name": "test_delivery_failure_does_not_fail_committed_operation_or_next_event[push]",
+        "seconds": 0.013,
+        "status": "PASS"
+      },
+      {
+        "name": "test_delivery_failure_does_not_fail_committed_operation_or_next_event[websocket]",
+        "seconds": 0.012,
+        "status": "PASS"
+      },
+      {
+        "name": "test_retry_persists_successful_devices_and_respects_deadline",
+        "seconds": 0.461,
+        "status": "PASS"
+      },
+      {
+        "name": "test_failure_then_read_discards_retry",
+        "seconds": 0.445,
+        "status": "PASS"
+      },
+      {
+        "name": "test_stale_notice_never_sends[expired]",
+        "seconds": 0.429,
+        "status": "PASS"
+      },
+      {
+        "name": "test_stale_notice_never_sends[collected]",
+        "seconds": 0.395,
+        "status": "PASS"
+      },
+      {
+        "name": "test_real_transport_retries_only_failed_device_and_keeps_bad_request_token",
+        "seconds": 0.26,
+        "status": "PASS"
+      },
+      {
+        "name": "test_old_resident_notice_does_not_resend_for_a_new_ready_cycle[coop]",
+        "seconds": 0.305,
+        "status": "PASS"
+      },
+      {
+        "name": "test_old_resident_notice_does_not_resend_for_a_new_ready_cycle[pasture]",
+        "seconds": 0.247,
+        "status": "PASS"
+      },
+      {
+        "name": "test_old_resident_notice_does_not_resend_for_a_new_ready_cycle[orchard]",
+        "seconds": 0.246,
+        "status": "PASS"
+      },
+      {
+        "name": "test_change_password_success",
+        "seconds": 0.601,
+        "status": "PASS"
+      },
+      {
+        "name": "test_change_password_wrong_current",
+        "seconds": 0.509,
+        "status": "PASS"
+      },
+      {
+        "name": "test_change_email_flow",
+        "seconds": 0.018,
+        "status": "PASS"
+      },
+      {
+        "name": "test_export_user_data",
+        "seconds": 0.018,
+        "status": "PASS"
+      },
+      {
+        "name": "test_submit_feedback",
+        "seconds": 0.008,
+        "status": "PASS"
+      },
+      {
+        "name": "test_favorites_sync",
+        "seconds": 0.012,
+        "status": "PASS"
+      },
+      {
+        "name": "test_named_reactions_and_legacy_request_key",
+        "seconds": 0.004,
+        "status": "PASS"
+      },
+      {
+        "name": "test_unsupported_reaction_is_rejected",
+        "seconds": 0.005,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\extended_cases.py",
+      "<target>\\tests\\test_storage_service.py",
+      "<target>\\tests\\test_sync_query_performance.py",
+      "<target>\\tests\\test_conversation_events.py",
+      "<target>\\tests\\test_realtime_events.py",
+      "<target>\\tests\\test_quintal_push.py",
+      "<target>\\tests\\test_account_settings.py",
+      "<target>\\tests\\test_message_reactions.py"
+    ]
+  },
+  "attempts/extended-02/critical_runs/MUT-04/summary.json": {
+    "run": "MUT-04",
+    "exit_code": 1,
+    "elapsed_seconds": 15.452281500000026,
+    "cases": [
+      {
+        "name": "test_DB02_IMG03_reference_filtering",
+        "seconds": 3.116,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\extended_cases.py::test_DB02_IMG03_reference_filtering"
+    ]
+  },
+  "attempts/extended-02/critical_runs/MUT-26/summary.json": {
+    "run": "MUT-26",
+    "exit_code": 1,
+    "elapsed_seconds": 7.351914900000338,
+    "cases": [
+      {
+        "name": "test_real_transport_retries_only_failed_device_and_keeps_bad_request_token",
+        "seconds": 0.482,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<target>\\tests\\test_quintal_push.py::test_real_transport_retries_only_failed_device_and_keeps_bad_request_token"
+    ]
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/summary.json": {
+    "run": "extended-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 358.1280634999998,
+    "cases": [
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[photo-read]",
+        "seconds": 26.776,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[photo-write]",
+        "seconds": 8.082,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[front-read]",
+        "seconds": 5.346,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[front-write]",
+        "seconds": 19.887,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[front-delete]",
+        "seconds": 7.212,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[avatar-preview]",
+        "seconds": 12.469,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[avatar-coat]",
+        "seconds": 4.774,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[jobs]",
+        "seconds": 6.276,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[enqueue]",
+        "seconds": 14.302,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[report]",
+        "seconds": 12.089,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_resource_action_actor_matrix[sighting]",
+        "seconds": 6.282,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC02_SEC03_chat_attachment_member_controls",
+        "seconds": 12.164,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA05_http_conflicts_preserve_authoritative_analysis",
+        "seconds": 8.325,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB02_IMG03_reference_filtering",
+        "seconds": 10.846,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA02_upload_failure_records_orphan_without_committing",
+        "seconds": 5.318,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB05_primary_inference_releases_read_connection",
+        "seconds": 7.11,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA02_events_wait_for_successful_commit",
+        "seconds": 7.992,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC03_websocket_loop_malformed_and_membership[A]",
+        "seconds": 11.103,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC03_websocket_loop_malformed_and_membership[C]",
+        "seconds": 13.702,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC01_http_credential_variants[issuer]",
+        "seconds": 4.382,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC01_http_credential_variants[type]",
+        "seconds": 3.892,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC01_http_credential_variants[subject]",
+        "seconds": 9.946,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC01_http_credential_variants[session]",
+        "seconds": 3.232,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC01_http_credential_variants[expired]",
+        "seconds": 4.711,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC01_http_credential_variants[signature]",
+        "seconds": 2.164,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC01_http_credential_variants[inactive]",
+        "seconds": 1.929,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DLV01_disposable_smtp_registration_and_consumption",
+        "seconds": 18.965,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DLV02_smtp_failure_does_not_persist_otp",
+        "seconds": 6.358,
+        "status": "PASS"
+      },
+      {
+        "name": "test_photo_variants_use_content_hash_and_stay_inside_storage_root",
+        "seconds": 0.395,
+        "status": "PASS"
+      },
+      {
+        "name": "test_avatar_asset_keeps_versioned_key",
+        "seconds": 0.048,
+        "status": "PASS"
+      },
+      {
+        "name": "test_page_matches_legacy_response_with_four_selects[sqlite-1]",
+        "seconds": 2.558,
+        "status": "PASS"
+      },
+      {
+        "name": "test_page_matches_legacy_response_with_four_selects[sqlite-40]",
+        "seconds": 0.705,
+        "status": "PASS"
+      },
+      {
+        "name": "test_page_matches_legacy_response_with_four_selects[postgres-1]",
+        "seconds": 1.171,
+        "status": "PASS"
+      },
+      {
+        "name": "test_page_matches_legacy_response_with_four_selects[postgres-40]",
+        "seconds": 1.551,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[sqlite-success]",
+        "seconds": 0.068,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[sqlite-missing-key]",
+        "seconds": 0.137,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[sqlite-rejected]",
+        "seconds": 0.053,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[postgres-success]",
+        "seconds": 0.458,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[postgres-missing-key]",
+        "seconds": 0.345,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[postgres-rejected]",
+        "seconds": 0.381,
+        "status": "PASS"
+      },
+      {
+        "name": "test_stranger_cannot_emit_conversation_events_or_read_messages[typing]",
+        "seconds": 4.348,
+        "status": "PASS"
+      },
+      {
+        "name": "test_stranger_cannot_emit_conversation_events_or_read_messages[read]",
+        "seconds": 3.112,
+        "status": "PASS"
+      },
+      {
+        "name": "test_http_and_websocket_read_share_authorization_and_receipts",
+        "seconds": 3.451,
+        "status": "PASS"
+      },
+      {
+        "name": "test_typing_for_member_reaches_only_other_member",
+        "seconds": 3.764,
+        "status": "PASS"
+      },
+      {
+        "name": "test_invalid_envelopes_keep_connection_alive_and_cleanup_runs_once",
+        "seconds": 4.568,
+        "status": "PASS"
+      },
+      {
+        "name": "test_delivery_failure_does_not_fail_committed_operation_or_next_event[push]",
+        "seconds": 0.098,
+        "status": "PASS"
+      },
+      {
+        "name": "test_delivery_failure_does_not_fail_committed_operation_or_next_event[websocket]",
+        "seconds": 0.016,
+        "status": "PASS"
+      },
+      {
+        "name": "test_retry_persists_successful_devices_and_respects_deadline",
+        "seconds": 0.313,
+        "status": "PASS"
+      },
+      {
+        "name": "test_failure_then_read_discards_retry",
+        "seconds": 0.243,
+        "status": "PASS"
+      },
+      {
+        "name": "test_stale_notice_never_sends[expired]",
+        "seconds": 0.197,
+        "status": "PASS"
+      },
+      {
+        "name": "test_stale_notice_never_sends[collected]",
+        "seconds": 0.21,
+        "status": "PASS"
+      },
+      {
+        "name": "test_real_transport_retries_only_failed_device_and_keeps_bad_request_token",
+        "seconds": 0.193,
+        "status": "PASS"
+      },
+      {
+        "name": "test_old_resident_notice_does_not_resend_for_a_new_ready_cycle[coop]",
+        "seconds": 0.276,
+        "status": "PASS"
+      },
+      {
+        "name": "test_old_resident_notice_does_not_resend_for_a_new_ready_cycle[pasture]",
+        "seconds": 0.247,
+        "status": "PASS"
+      },
+      {
+        "name": "test_old_resident_notice_does_not_resend_for_a_new_ready_cycle[orchard]",
+        "seconds": 0.253,
+        "status": "PASS"
+      },
+      {
+        "name": "test_change_password_success",
+        "seconds": 1.028,
+        "status": "PASS"
+      },
+      {
+        "name": "test_change_password_wrong_current",
+        "seconds": 1.542,
+        "status": "PASS"
+      },
+      {
+        "name": "test_change_email_flow",
+        "seconds": 0.042,
+        "status": "PASS"
+      },
+      {
+        "name": "test_export_user_data",
+        "seconds": 0.028,
+        "status": "PASS"
+      },
+      {
+        "name": "test_submit_feedback",
+        "seconds": 0.02,
+        "status": "PASS"
+      },
+      {
+        "name": "test_favorites_sync",
+        "seconds": 0.068,
+        "status": "PASS"
+      },
+      {
+        "name": "test_named_reactions_and_legacy_request_key",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_unsupported_reaction_is_rejected",
+        "seconds": 0.007,
+        "status": "PASS"
+      },
+      {
+        "name": "test_return_receipt_only_acknowledges_presented_events",
+        "seconds": 0.974,
+        "status": "PASS"
+      },
+      {
+        "name": "test_return_preserves_two_meals_and_individual_ack",
+        "seconds": 0.362,
+        "status": "PASS"
+      },
+      {
+        "name": "test_play_result_reports_actual_bond_and_replays_without_credit",
+        "seconds": 0.219,
+        "status": "PASS"
+      },
+      {
+        "name": "test_build_interval_survives_reload_replay_and_finishes_explicitly",
+        "seconds": 0.296,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expansion_preserves_existing_production_and_unlocks_only_on_finish[garden-1]",
+        "seconds": 0.332,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expansion_preserves_existing_production_and_unlocks_only_on_finish[garden-2]",
+        "seconds": 0.4,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expansion_preserves_existing_production_and_unlocks_only_on_finish[coop-1]",
+        "seconds": 0.326,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expansion_preserves_existing_production_and_unlocks_only_on_finish[pasture-1]",
+        "seconds": 0.377,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expansion_preserves_existing_production_and_unlocks_only_on_finish[kitchen-1]",
+        "seconds": 0.546,
+        "status": "PASS"
+      },
+      {
+        "name": "test_resident_projection_explains_pause_and_next_collection",
+        "seconds": 0.498,
+        "status": "PASS"
+      },
+      {
+        "name": "test_full_production_unlock_cycle_uses_time_and_real_resources",
+        "seconds": 1.245,
+        "status": "PASS"
+      },
+      {
+        "name": "test_crop_repeat_collection_water_and_free_prices",
+        "seconds": 0.584,
+        "status": "PASS"
+      },
+      {
+        "name": "test_queue_reserves_refunds_and_finishes_offline",
+        "seconds": 0.696,
+        "status": "PASS"
+      },
+      {
+        "name": "test_residents_pause_without_water_and_capacity_stops_time",
+        "seconds": 0.416,
+        "status": "PASS"
+      },
+      {
+        "name": "test_refusal_loses_portions_but_preserves_hunger_and_bond",
+        "seconds": 0.154,
+        "status": "PASS"
+      },
+      {
+        "name": "test_preferences_positive_never_regress_and_local_day",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_fishing_trace_must_interact_and_track_fish",
+        "seconds": 0.537,
+        "status": "PASS"
+      },
+      {
+        "name": "test_cat_and_bowls_are_atomic_owned_and_return_unused_food",
+        "seconds": 0.516,
+        "status": "PASS"
+      },
+      {
+        "name": "test_market_free_coins_keep_prices_and_product_exchange_costs",
+        "seconds": 0.427,
+        "status": "PASS"
+      },
+      {
+        "name": "test_new_residents_do_not_inherit_food_or_production",
+        "seconds": 0.541,
+        "status": "PASS"
+      },
+      {
+        "name": "test_individual_collection_preserves_other_resident_and_is_idempotent[pasture-milk-2]",
+        "seconds": 0.363,
+        "status": "PASS"
+      },
+      {
+        "name": "test_individual_collection_preserves_other_resident_and_is_idempotent[orchard-apple-3]",
+        "seconds": 0.343,
+        "status": "PASS"
+      },
+      {
+        "name": "test_fishing_session_result_survives_reload_and_retry_without_new_credit[False-False-1]",
+        "seconds": 0.326,
+        "status": "PASS"
+      },
+      {
+        "name": "test_fishing_session_result_survives_reload_and_retry_without_new_credit[True-False-0]",
+        "seconds": 0.287,
+        "status": "PASS"
+      },
+      {
+        "name": "test_fishing_session_result_survives_reload_and_retry_without_new_credit[False-True-0]",
+        "seconds": 0.248,
+        "status": "PASS"
+      },
+      {
+        "name": "test_meal_projection_tracks_each_consumption_and_server_appetite",
+        "seconds": 0.615,
+        "status": "PASS"
+      },
+      {
+        "name": "test_confirmed_refusal_is_receipted_once_without_satisfying_cat",
+        "seconds": 0.404,
+        "status": "PASS"
+      },
+      {
+        "name": "test_refusals_at_same_instant_have_distinct_events_and_no_appetite_reset",
+        "seconds": 0.222,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[6-24-coop-21600]",
+        "seconds": 0.466,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[6-24-pasture-28800]",
+        "seconds": 0.11,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[12-24-coop-21600]",
+        "seconds": 0.103,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[12-24-pasture-28800]",
+        "seconds": 0.118,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[24-24-coop-21600]",
+        "seconds": 0.145,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[24-24-pasture-28800]",
+        "seconds": 0.128,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[24-8-coop-21600]",
+        "seconds": 0.11,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[24-8-pasture-28800]",
+        "seconds": 0.152,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[24-0-coop-21600]",
+        "seconds": 0.123,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[24-0-pasture-28800]",
+        "seconds": 0.151,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_scenarios_cover_full_care_without_negative_stock[3-1]",
+        "seconds": 0.01,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_scenarios_cover_full_care_without_negative_stock[3-2]",
+        "seconds": 0.009,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_scenarios_cover_full_care_without_negative_stock[6-1]",
+        "seconds": 0.011,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_scenarios_cover_full_care_without_negative_stock[6-2]",
+        "seconds": 0.012,
+        "status": "PASS"
+      },
+      {
+        "name": "test_fruit_recipe_unlock_reservation_refund_collection_and_meal[apple]",
+        "seconds": 0.975,
+        "status": "PASS"
+      },
+      {
+        "name": "test_fruit_recipe_unlock_reservation_refund_collection_and_meal[pear]",
+        "seconds": 0.924,
+        "status": "PASS"
+      },
+      {
+        "name": "test_fruit_trade_keeps_coin_price_and_existing_trade_with_replay",
+        "seconds": 0.7,
+        "status": "PASS"
+      },
+      {
+        "name": "test_invalid_or_locked_fruit_trade_cannot_spend[payload0-False]",
+        "seconds": 0.303,
+        "status": "PASS"
+      },
+      {
+        "name": "test_invalid_or_locked_fruit_trade_cannot_spend[payload1-True]",
+        "seconds": 0.232,
+        "status": "PASS"
+      },
+      {
+        "name": "test_invalid_or_locked_fruit_trade_cannot_spend[payload2-True]",
+        "seconds": 0.229,
+        "status": "PASS"
+      },
+      {
+        "name": "test_market_quantity_scales_ingredients_output_and_deadline",
+        "seconds": 0.372,
+        "status": "PASS"
+      },
+      {
+        "name": "test_pair_reuses_legacy_bowls_and_recovers_lost_references",
+        "seconds": 0.158,
+        "status": "PASS"
+      },
+      {
+        "name": "test_play_accepts_vertical_motion_and_rejects_invalid_y",
+        "seconds": 0.004,
+        "status": "PASS"
+      },
+      {
+        "name": "test_notifications_cursor_preserves_timestamp_ties_and_owner",
+        "seconds": 0.106,
+        "status": "PASS"
+      },
+      {
+        "name": "test_rewards_survive_lost_response_and_ack_is_scoped_without_new_credit",
+        "seconds": 1.302,
+        "status": "PASS"
+      },
+      {
+        "name": "test_all_bond_rewards_match_catalog_and_reconcile_never_duplicates",
+        "seconds": 0.871,
+        "status": "PASS"
+      },
+      {
+        "name": "test_locked_spaces_never_become_routine_requirements",
+        "seconds": 0.005,
+        "status": "PASS"
+      },
+      {
+        "name": "test_one_choice_finishes_day_and_two_nonconsecutive_days_finish_week",
+        "seconds": 0.006,
+        "status": "PASS"
+      },
+      {
+        "name": "test_calendar_legacy_invalid_and_locked_activity_do_not_fabricate_progress",
+        "seconds": 0.01,
+        "status": "PASS"
+      },
+      {
+        "name": "test_unlocks_and_expansion_preserve_offer_and_reward_replay",
+        "seconds": 1.374,
+        "status": "PASS"
+      },
+      {
+        "name": "test_weekly_reward_is_capped",
+        "seconds": 1.016,
+        "status": "PASS"
+      },
+      {
+        "name": "test_paused_rewards_keep_optional_progress_without_paying",
+        "seconds": 0.708,
+        "status": "PASS"
+      },
+      {
+        "name": "test_encodes_a_bounded_crop_for_gemini",
+        "seconds": 10.888,
+        "status": "PASS"
+      },
+      {
+        "name": "test_local_gate_classifies_an_obvious_solid_coat",
+        "seconds": 0.108,
+        "status": "PASS"
+      },
+      {
+        "name": "test_marks_completely_dark_and_flat_image_as_unusable",
+        "seconds": 2.476,
+        "status": "PASS"
+      },
+      {
+        "name": "test_marks_dns_failures_as_retryable",
+        "seconds": 0.022,
+        "status": "PASS"
+      },
+      {
+        "name": "test_prepares_bounded_image_for_local_vision",
+        "seconds": 0.228,
+        "status": "PASS"
+      },
+      {
+        "name": "test_rejects_small_images",
+        "seconds": 0.015,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\extended_cases.py",
+      "<target>\\tests\\test_storage_service.py",
+      "<target>\\tests\\test_sync_query_performance.py",
+      "<target>\\tests\\test_conversation_events.py",
+      "<target>\\tests\\test_realtime_events.py",
+      "<target>\\tests\\test_quintal_push.py",
+      "<target>\\tests\\test_account_settings.py",
+      "<target>\\tests\\test_message_reactions.py",
+      "<target>\\tests\\test_quintal_production.py",
+      "<target>\\tests\\test_quintal_rewards.py",
+      "<target>\\tests\\test_quintal_routines.py",
+      "<target>\\tests\\test_preprocessing_quality.py"
+    ]
+  },
+  "attempts/extended-03/critical_runs/MUT-04/summary.json": {
+    "run": "MUT-04",
+    "exit_code": 1,
+    "elapsed_seconds": 30.9922332000001,
+    "cases": [
+      {
+        "name": "test_DB02_IMG03_reference_filtering",
+        "seconds": 7.301,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\extended_cases.py::test_DB02_IMG03_reference_filtering"
+    ]
+  },
+  "attempts/extended-03/critical_runs/MUT-06/summary.json": {
+    "run": "MUT-06",
+    "exit_code": 1,
+    "elapsed_seconds": 47.16034200000013,
+    "cases": [
+      {
+        "name": "test_DB05_primary_inference_releases_read_connection",
+        "seconds": 10.796,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\extended_cases.py::test_DB05_primary_inference_releases_read_connection"
+    ]
+  },
+  "attempts/extended-03/critical_runs/MUT-26/summary.json": {
+    "run": "MUT-26",
+    "exit_code": 1,
+    "elapsed_seconds": 20.17012369999975,
+    "cases": [
+      {
+        "name": "test_real_transport_retries_only_failed_device_and_keeps_bad_request_token",
+        "seconds": 1.187,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<target>\\tests\\test_quintal_push.py::test_real_transport_retries_only_failed_device_and_keeps_bad_request_token"
+    ]
+  },
+  "attempts/extended-03/critical_runs/MUT-27/summary.json": {
+    "run": "MUT-27",
+    "exit_code": 1,
+    "elapsed_seconds": 33.435887399999956,
+    "cases": [
+      {
+        "name": "test_DATA02_events_wait_for_successful_commit",
+        "seconds": 8.069,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\extended_cases.py::test_DATA02_events_wait_for_successful_commit"
+    ]
+  },
+  "attempts/targeted-01/critical_runs/targeted-baseline/summary.json": {
+    "run": "targeted-baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 91.54711889999999,
+    "cases": [
+      {
+        "name": "test_SEC10_open_websocket_revocation_window_observation",
+        "seconds": 13.818,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC06_bounded_upload_and_schema_limits",
+        "seconds": 4.818,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_LOAD03_same_intent_bounded_barrier[2]",
+        "seconds": 8.639,
+        "status": "PASS"
+      },
+      {
+        "name": "test_LOAD03_same_intent_bounded_barrier[10]",
+        "seconds": 8.139,
+        "status": "PASS"
+      },
+      {
+        "name": "test_LOAD03_same_intent_bounded_barrier[25]",
+        "seconds": 25.743,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\extended_cases.py::test_SEC10_open_websocket_revocation_window_observation",
+      "<executors>\\extended_cases.py::test_SEC06_bounded_upload_and_schema_limits",
+      "<executors>\\extended_cases.py::test_LOAD03_same_intent_bounded_barrier"
+    ]
+  },
+  "attempts/targeted-02/critical_runs/targeted-baseline/summary.json": {
+    "run": "targeted-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 38.65414210000017,
+    "cases": [
+      {
+        "name": "test_SEC10_open_websocket_revocation_window_observation",
+        "seconds": 2.062,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC06_bounded_upload_and_schema_limits",
+        "seconds": 2.307,
+        "status": "PASS"
+      },
+      {
+        "name": "test_LOAD03_same_intent_bounded_barrier[2]",
+        "seconds": 2.271,
+        "status": "PASS"
+      },
+      {
+        "name": "test_LOAD03_same_intent_bounded_barrier[10]",
+        "seconds": 3.607,
+        "status": "PASS"
+      },
+      {
+        "name": "test_LOAD03_same_intent_bounded_barrier[25]",
+        "seconds": 5.952,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DLV02_smtp_accepted_before_database_commit_failure",
+        "seconds": 11.369,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\extended_cases.py::test_SEC10_open_websocket_revocation_window_observation",
+      "<executors>\\extended_cases.py::test_SEC06_bounded_upload_and_schema_limits",
+      "<executors>\\extended_cases.py::test_LOAD03_same_intent_bounded_barrier",
+      "<executors>\\extended_cases.py::test_DLV02_smtp_accepted_before_database_commit_failure"
+    ]
+  },
+  "attempts/queue-01/critical_runs/queue-baseline/summary.json": {
+    "run": "queue-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 38.19252020000022,
+    "cases": [
+      {
+        "name": "test_LOAD04_controlled_reference_queue[1-1]",
+        "seconds": 1.635,
+        "status": "PASS"
+      },
+      {
+        "name": "test_LOAD04_controlled_reference_queue[1-10]",
+        "seconds": 1.765,
+        "status": "PASS"
+      },
+      {
+        "name": "test_LOAD04_controlled_reference_queue[1-50]",
+        "seconds": 5.32,
+        "status": "PASS"
+      },
+      {
+        "name": "test_LOAD04_controlled_reference_queue[2-1]",
+        "seconds": 1.192,
+        "status": "PASS"
+      },
+      {
+        "name": "test_LOAD04_controlled_reference_queue[2-10]",
+        "seconds": 2.165,
+        "status": "PASS"
+      },
+      {
+        "name": "test_LOAD04_controlled_reference_queue[2-50]",
+        "seconds": 5.875,
+        "status": "PASS"
+      },
+      {
+        "name": "test_LOAD05_manager_fanout_and_cleanup[1]",
+        "seconds": 2.909,
+        "status": "PASS"
+      },
+      {
+        "name": "test_LOAD05_manager_fanout_and_cleanup[10]",
+        "seconds": 3.009,
+        "status": "PASS"
+      },
+      {
+        "name": "test_LOAD05_manager_fanout_and_cleanup[50]",
+        "seconds": 4.244,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\extended_cases.py::test_LOAD04_controlled_reference_queue",
+      "<executors>\\extended_cases.py::test_LOAD05_manager_fanout_and_cleanup"
+    ]
+  },
+  "attempts/privacy-01/critical_runs/privacy-baseline/summary.json": {
+    "run": "privacy-baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 11.797943599999599,
+    "cases": [
+      {
+        "name": "test_SEC02_SEC08_export_and_favorites_owner_isolation",
+        "seconds": 1.759,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC08_export_owned_missing_report_contract",
+        "seconds": 0.888,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_SEC02_SEC04_clue_location_and_media_permissions",
+        "seconds": 1.145,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\extended_cases.py::test_SEC02_SEC08_export_and_favorites_owner_isolation",
+      "<executors>\\extended_cases.py::test_SEC08_export_owned_missing_report_contract",
+      "<executors>\\extended_cases.py::test_SEC02_SEC04_clue_location_and_media_permissions"
+    ]
+  },
+  "attempts/privacy-02/critical_runs/official-export/summary.json": {
+    "run": "official-export",
+    "exit_code": 1,
+    "elapsed_seconds": 32.358182599999964,
+    "cases": [
+      {
+        "name": "test_SEC02_SEC08_export_and_favorites_owner_isolation",
+        "seconds": 10.246,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC08_export_owned_missing_report_contract",
+        "seconds": 3.047,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\extended_cases.py::test_SEC02_SEC08_export_and_favorites_owner_isolation",
+      "<executors>\\extended_cases.py::test_SEC08_export_owned_missing_report_contract"
+    ]
+  },
+  "attempts/privacy-02/critical_runs/privacy-baseline/summary.json": {
+    "run": "privacy-baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 15.27833339999961,
+    "cases": [
+      {
+        "name": "test_SEC02_SEC08_export_and_favorites_owner_isolation",
+        "seconds": 1.337,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC08_export_owned_missing_report_contract",
+        "seconds": 1.152,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_SEC02_SEC04_clue_location_and_media_permissions",
+        "seconds": 1.325,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\extended_cases.py::test_SEC02_SEC08_export_and_favorites_owner_isolation",
+      "<executors>\\extended_cases.py::test_SEC08_export_owned_missing_report_contract",
+      "<executors>\\extended_cases.py::test_SEC02_SEC04_clue_location_and_media_permissions"
+    ]
+  },
+  "attempts/full-regression-01/critical_runs/full-baseline/summary.json": {
+    "run": "full-baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 347.00373279999985,
+    "cases": [
+      {
+        "name": "test_change_password_success",
+        "seconds": 0.507,
+        "status": "PASS"
+      },
+      {
+        "name": "test_change_password_wrong_current",
+        "seconds": 0.204,
+        "status": "PASS"
+      },
+      {
+        "name": "test_change_email_flow",
+        "seconds": 0.029,
+        "status": "PASS"
+      },
+      {
+        "name": "test_export_user_data",
+        "seconds": 0.008,
+        "status": "PASS"
+      },
+      {
+        "name": "test_submit_feedback",
+        "seconds": 0.005,
+        "status": "PASS"
+      },
+      {
+        "name": "test_favorites_sync",
+        "seconds": 0.007,
+        "status": "PASS"
+      },
+      {
+        "name": "test_application_services_do_not_import_http_routers",
+        "seconds": 0.673,
+        "status": "PASS"
+      },
+      {
+        "name": "test_production_domain_handlers_cannot_commit_the_shared_transaction",
+        "seconds": 0.018,
+        "status": "PASS"
+      },
+      {
+        "name": "test_runtime_requirements_are_pinned_and_cover_the_declared_inputs",
+        "seconds": 0.044,
+        "status": "PASS"
+      },
+      {
+        "name": "test_presets_persist_without_overwriting_preferences",
+        "seconds": 0.281,
+        "status": "PASS"
+      },
+      {
+        "name": "test_public_presets_are_images_and_unknown_names_are_rejected",
+        "seconds": 0.086,
+        "status": "PASS"
+      },
+      {
+        "name": "test_photo_replaces_preset_and_has_fresh_cache_key",
+        "seconds": 0.088,
+        "status": "PASS"
+      },
+      {
+        "name": "test_manifest_is_balanced_between_calibration_and_evaluation",
+        "seconds": 0.019,
+        "status": "PASS"
+      },
+      {
+        "name": "test_model_paths_are_resolved_from_project_root",
+        "seconds": 0.007,
+        "status": "PASS"
+      },
+      {
+        "name": "test_summary_keeps_detection_failures_out_of_iou_average",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_trimap_masks_and_iou_handle_the_uncertain_border",
+        "seconds": 0.03,
+        "status": "PASS"
+      },
+      {
+        "name": "test_connection_manager_presence_and_last_seen",
+        "seconds": 0.004,
+        "status": "PASS"
+      },
+      {
+        "name": "test_chat_photo_storage",
+        "seconds": 0.04,
+        "status": "PASS"
+      },
+      {
+        "name": "test_message_schemas",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_user_avatar_url_helper",
+        "seconds": 0.015,
+        "status": "PASS"
+      },
+      {
+        "name": "test_extracts_colors_only_inside_the_cat_mask",
+        "seconds": 0.426,
+        "status": "PASS"
+      },
+      {
+        "name": "test_fusion_uses_measured_percentages_and_merges_same_name",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_groups_white_shadows_without_merging_black",
+        "seconds": 0.006,
+        "status": "PASS"
+      },
+      {
+        "name": "test_stranger_cannot_emit_conversation_events_or_read_messages[typing]",
+        "seconds": 1.405,
+        "status": "PASS"
+      },
+      {
+        "name": "test_stranger_cannot_emit_conversation_events_or_read_messages[read]",
+        "seconds": 1.631,
+        "status": "PASS"
+      },
+      {
+        "name": "test_http_and_websocket_read_share_authorization_and_receipts",
+        "seconds": 2.334,
+        "status": "PASS"
+      },
+      {
+        "name": "test_typing_for_member_reaches_only_other_member",
+        "seconds": 2.623,
+        "status": "PASS"
+      },
+      {
+        "name": "test_invalid_envelopes_keep_connection_alive_and_cleanup_runs_once",
+        "seconds": 3.0,
+        "status": "PASS"
+      },
+      {
+        "name": "test_dense_features_exclude_background_and_letterbox",
+        "seconds": 0.132,
+        "status": "PASS"
+      },
+      {
+        "name": "test_empty_mask_does_not_create_dense_evidence",
+        "seconds": 0.012,
+        "status": "PASS"
+      },
+      {
+        "name": "test_distinct_mutual_matches_recover_known_transform",
+        "seconds": 0.502,
+        "status": "PASS"
+      },
+      {
+        "name": "test_repeated_descriptors_cannot_manufacture_distinctive_details",
+        "seconds": 0.005,
+        "status": "PASS"
+      },
+      {
+        "name": "test_scrambled_layout_rejects_geometry_even_with_identical_descriptors",
+        "seconds": 0.04,
+        "status": "PASS"
+      },
+      {
+        "name": "test_malformed_or_unbounded_payload_is_ignored[change0]",
+        "seconds": 0.005,
+        "status": "PASS"
+      },
+      {
+        "name": "test_malformed_or_unbounded_payload_is_ignored[change1]",
+        "seconds": 0.007,
+        "status": "PASS"
+      },
+      {
+        "name": "test_malformed_or_unbounded_payload_is_ignored[change2]",
+        "seconds": 0.006,
+        "status": "PASS"
+      },
+      {
+        "name": "test_malformed_or_unbounded_payload_is_ignored[change3]",
+        "seconds": 0.01,
+        "status": "PASS"
+      },
+      {
+        "name": "test_malformed_or_unbounded_payload_is_ignored[change4]",
+        "seconds": 0.006,
+        "status": "PASS"
+      },
+      {
+        "name": "test_malformed_or_unbounded_payload_is_ignored[change5]",
+        "seconds": 0.007,
+        "status": "PASS"
+      },
+      {
+        "name": "test_malformed_or_unbounded_payload_is_ignored[change6]",
+        "seconds": 0.004,
+        "status": "PASS"
+      },
+      {
+        "name": "test_worker_extracts_global_and_dense_with_one_forward_pass",
+        "seconds": 19.46,
+        "status": "PASS"
+      },
+      {
+        "name": "test_analysis_errors_share_one_base_class[error0]",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_analysis_errors_share_one_base_class[error1]",
+        "seconds": 0.004,
+        "status": "PASS"
+      },
+      {
+        "name": "test_analysis_errors_share_one_base_class[error2]",
+        "seconds": 0.005,
+        "status": "PASS"
+      },
+      {
+        "name": "test_analysis_errors_share_one_base_class[error3]",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_analysis_errors_share_one_base_class[error4]",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_analysis_errors_share_one_base_class[error5]",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_analysis_errors_share_one_base_class[error6]",
+        "seconds": 0.004,
+        "status": "PASS"
+      },
+      {
+        "name": "test_cat_post_create_schema",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_text_post_does_not_require_a_cat_or_photo",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_post_photo_storage",
+        "seconds": 0.012,
+        "status": "PASS"
+      },
+      {
+        "name": "test_feed_item_response_schema",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_feed_pagination_skips_private_rows_without_losing_older_posts",
+        "seconds": 0.113,
+        "status": "PASS"
+      },
+      {
+        "name": "test_level_calculation",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_multiplier_does_not_reward_streak_pressure",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_achievements_count_and_keys",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_unverified_actions_never_mint_rewards",
+        "seconds": 0.199,
+        "status": "PASS"
+      },
+      {
+        "name": "test_legacy_progress_and_achievements_are_preserved",
+        "seconds": 0.121,
+        "status": "PASS"
+      },
+      {
+        "name": "test_snapshot_exposes_current_coat_evidence_without_changing_analysis",
+        "seconds": 0.092,
+        "status": "PASS"
+      },
+      {
+        "name": "test_cottage_costs_five_catalogs_and_retries_never_charge_twice",
+        "seconds": 0.104,
+        "status": "PASS"
+      },
+      {
+        "name": "test_free_shop_preserves_wallet_limits_and_reward_exclusivity",
+        "seconds": 0.08,
+        "status": "PASS"
+      },
+      {
+        "name": "test_new_decorations_keep_ownership_limits_and_rotated_collision",
+        "seconds": 0.106,
+        "status": "PASS"
+      },
+      {
+        "name": "test_feeding_has_daily_allowance_and_idempotent_consumption",
+        "seconds": 0.311,
+        "status": "PASS"
+      },
+      {
+        "name": "test_treats_charge_once_and_reject_insufficient_balance_or_foreign_cats",
+        "seconds": 0.203,
+        "status": "PASS"
+      },
+      {
+        "name": "test_feeding_requires_an_accessible_owned_bowl",
+        "seconds": 0.095,
+        "status": "PASS"
+      },
+      {
+        "name": "test_affinity_gift_is_once_and_absence_never_reduces_affinity",
+        "seconds": 0.253,
+        "status": "PASS"
+      },
+      {
+        "name": "test_plants_grow_by_server_clock_and_watering_cannot_be_spammed",
+        "seconds": 0.177,
+        "status": "PASS"
+      },
+      {
+        "name": "test_water_layers_block_walks_and_bridges_obey_their_rotated_entrances",
+        "seconds": 0.008,
+        "status": "PASS"
+      },
+      {
+        "name": "test_water_batch_purchase_is_atomic_and_replay_safe",
+        "seconds": 0.154,
+        "status": "PASS"
+      },
+      {
+        "name": "test_catalog_reward_is_once_per_cat_and_photo",
+        "seconds": 0.18,
+        "status": "PASS"
+      },
+      {
+        "name": "test_daily_limit_and_retry_do_not_move_to_a_later_reward",
+        "seconds": 0.18,
+        "status": "PASS"
+      },
+      {
+        "name": "test_purchase_is_atomic_idempotent_and_checks_balance",
+        "seconds": 0.085,
+        "status": "PASS"
+      },
+      {
+        "name": "test_old_catalog_never_receives_retroactive_rewards",
+        "seconds": 0.074,
+        "status": "PASS"
+      },
+      {
+        "name": "test_layout_checks_inventory_collision_cat_ownership_and_revision",
+        "seconds": 0.114,
+        "status": "PASS"
+      },
+      {
+        "name": "test_path_batch_is_atomic_idempotent_and_separate_from_decorations",
+        "seconds": 0.285,
+        "status": "PASS"
+      },
+      {
+        "name": "test_three_expansions_charge_once_and_unlock_irregular_cells",
+        "seconds": 0.135,
+        "status": "PASS"
+      },
+      {
+        "name": "test_bed_axis_migration_repositions_collisions_and_preserves_free_cat_anchors[1]",
+        "seconds": 0.09,
+        "status": "PASS"
+      },
+      {
+        "name": "test_bed_axis_migration_repositions_collisions_and_preserves_free_cat_anchors[2]",
+        "seconds": 0.084,
+        "status": "PASS"
+      },
+      {
+        "name": "test_bed_long_axis_matches_its_sprite_and_rotates_collision_cells[0]",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_bed_long_axis_matches_its_sprite_and_rotates_collision_cells[1]",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_bed_long_axis_matches_its_sprite_and_rotates_collision_cells[2]",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_bed_long_axis_matches_its_sprite_and_rotates_collision_cells[3]",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_directional_footprints_and_fixed_house_rotation",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_gift_visits_notify_once_and_claim_once",
+        "seconds": 0.104,
+        "status": "PASS"
+      },
+      {
+        "name": "test_recovery_limits_and_satisfaction",
+        "seconds": 0.162,
+        "status": "PASS"
+      },
+      {
+        "name": "test_non_coin_gifts_are_persisted_and_not_duplicated[reward0]",
+        "seconds": 0.053,
+        "status": "PASS"
+      },
+      {
+        "name": "test_non_coin_gifts_are_persisted_and_not_duplicated[reward1]",
+        "seconds": 0.067,
+        "status": "PASS"
+      },
+      {
+        "name": "test_missed_window_cannot_be_rerolled_and_full_inventory_converts",
+        "seconds": 0.077,
+        "status": "PASS"
+      },
+      {
+        "name": "test_accessible_comfort_and_real_care_raise_satisfaction",
+        "seconds": 0.03,
+        "status": "PASS"
+      },
+      {
+        "name": "test_named_reactions_and_legacy_request_key",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_unsupported_reaction_is_rejected",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_calendar_midnight_and_monday_are_server_owned",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_shared_action_distinguishes_unique_cats_and_details",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_paid_objectives_never_reopen_and_legacy_medals_survive",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_ranking_scores_do_not_use_xp_or_initial_missions",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_reward_pause_preserves_activity_without_claiming_received",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_daily_offer_does_not_change_during_the_day",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_pending_photo_requires_identity_and_confirmation_is_idempotent",
+        "seconds": 0.515,
+        "status": "PASS"
+      },
+      {
+        "name": "test_known_cat_reencounter_does_not_award_complement",
+        "seconds": 1.279,
+        "status": "PASS"
+      },
+      {
+        "name": "test_reward_rollout_off_records_validity_without_minting",
+        "seconds": 0.278,
+        "status": "PASS"
+      },
+      {
+        "name": "test_useful_photos_beyond_base_cap_still_advance_objectives",
+        "seconds": 0.951,
+        "status": "PASS"
+      },
+      {
+        "name": "test_profile_highlights_only_accept_earned_medals_and_use_actual_receipt",
+        "seconds": 0.459,
+        "status": "PASS"
+      },
+      {
+        "name": "test_completed_card_uses_historical_receipt_instead_of_new_balance_values",
+        "seconds": 0.005,
+        "status": "PASS"
+      },
+      {
+        "name": "test_habitat_endpoint_advances_care_missions_once_and_rejects_invalid_target",
+        "seconds": 1.001,
+        "status": "PASS"
+      },
+      {
+        "name": "test_post_endpoint_advances_community_missions_and_replay_does_not_pay_again",
+        "seconds": 0.391,
+        "status": "PASS"
+      },
+      {
+        "name": "test_poster_choices_persist_and_public_projection_excludes_hidden_data",
+        "seconds": 0.176,
+        "status": "PASS"
+      },
+      {
+        "name": "test_owner_publication_is_linked_idempotent_and_stops_after_resolution",
+        "seconds": 0.381,
+        "status": "PASS"
+      },
+      {
+        "name": "test_public_qr_page_redacts_hidden_data_and_revokes_photo_after_closure",
+        "seconds": 0.167,
+        "status": "PASS"
+      },
+      {
+        "name": "test_encodes_a_bounded_crop_for_gemini",
+        "seconds": 0.648,
+        "status": "PASS"
+      },
+      {
+        "name": "test_local_gate_classifies_an_obvious_solid_coat",
+        "seconds": 0.043,
+        "status": "PASS"
+      },
+      {
+        "name": "test_marks_completely_dark_and_flat_image_as_unusable",
+        "seconds": 0.171,
+        "status": "PASS"
+      },
+      {
+        "name": "test_marks_dns_failures_as_retryable",
+        "seconds": 0.035,
+        "status": "PASS"
+      },
+      {
+        "name": "test_prepares_bounded_image_for_local_vision",
+        "seconds": 0.185,
+        "status": "PASS"
+      },
+      {
+        "name": "test_rejects_small_images",
+        "seconds": 0.011,
+        "status": "PASS"
+      },
+      {
+        "name": "test_only_owned_cats_create_one_active_report",
+        "seconds": 0.803,
+        "status": "PASS"
+      },
+      {
+        "name": "test_owned_pet_does_not_become_street_sighting",
+        "seconds": 0.567,
+        "status": "PASS"
+      },
+      {
+        "name": "test_offline_sighting_retries_keep_original_time_and_do_not_duplicate",
+        "seconds": 2.631,
+        "status": "PASS"
+      },
+      {
+        "name": "test_edit_report_area_checks_owner_and_resolved_state",
+        "seconds": 0.517,
+        "status": "PASS"
+      },
+      {
+        "name": "test_clues_keep_exact_location_and_scores_out_until_confirmed",
+        "seconds": 0.681,
+        "status": "PASS"
+      },
+      {
+        "name": "test_conversations_require_friendship_and_notify_only_recipient",
+        "seconds": 0.539,
+        "status": "PASS"
+      },
+      {
+        "name": "test_achievements_are_durable_private_and_shared_explicitly_once",
+        "seconds": 0.592,
+        "status": "PASS"
+      },
+      {
+        "name": "test_wrong_otp_attempts_persist_and_reset_grant_is_single_use",
+        "seconds": 0.479,
+        "status": "PASS"
+      },
+      {
+        "name": "test_photo_result_replay_and_hash_duplicate",
+        "seconds": 0.251,
+        "status": "PASS"
+      },
+      {
+        "name": "test_owned_and_uncertain_have_distinct_eligibility",
+        "seconds": 0.206,
+        "status": "PASS"
+      },
+      {
+        "name": "test_social_limits_and_retries",
+        "seconds": 0.223,
+        "status": "PASS"
+      },
+      {
+        "name": "test_opening_preserves_balances_without_paying_again",
+        "seconds": 0.106,
+        "status": "PASS"
+      },
+      {
+        "name": "test_profile_defaults_and_independent_audience",
+        "seconds": 0.14,
+        "status": "PASS"
+      },
+      {
+        "name": "test_weekly_days_count_distinct_local_dates",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_identity_can_be_reversed_without_repeated_credits",
+        "seconds": 0.352,
+        "status": "PASS"
+      },
+      {
+        "name": "test_attribute_review_does_not_repeat_base_or_bonus",
+        "seconds": 0.394,
+        "status": "PASS"
+      },
+      {
+        "name": "test_clue_only_pays_once_after_tutor_confirmation",
+        "seconds": 0.237,
+        "status": "PASS"
+      },
+      {
+        "name": "test_repost_is_linked_idempotent_and_closed_case_cannot_pay",
+        "seconds": 0.224,
+        "status": "PASS"
+      },
+      {
+        "name": "test_private_post_photo_never_bypasses_post_audience",
+        "seconds": 0.09,
+        "status": "PASS"
+      },
+      {
+        "name": "test_cosmetic_unlock_is_delivered_once",
+        "seconds": 0.263,
+        "status": "PASS"
+      },
+      {
+        "name": "test_rollout_disabled_never_replays_old_actions_when_enabled",
+        "seconds": 0.139,
+        "status": "PASS"
+      },
+      {
+        "name": "test_history_cursor_and_experience_signal_are_isolated_and_unrewarded",
+        "seconds": 0.246,
+        "status": "PASS"
+      },
+      {
+        "name": "test_offline_batch_creates_anchor_before_linked_photo_and_audits_correction",
+        "seconds": 0.388,
+        "status": "PASS"
+      },
+      {
+        "name": "test_migration_preserves_balances_and_reserves_legacy_photo_hashes",
+        "seconds": 0.051,
+        "status": "PASS"
+      },
+      {
+        "name": "test_offline_meals_and_cooking_keep_local_day_week_and_do_not_republish",
+        "seconds": 0.414,
+        "status": "PASS"
+      },
+      {
+        "name": "test_live_fruit_order_two_sessions_lost_response_and_collection",
+        "seconds": 5.017,
+        "status": "PASS"
+      },
+      {
+        "name": "test_live_build_plant_water_cook_queue_cancel_and_collect",
+        "seconds": 4.614,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_live_refusal_removal_and_individual_resident_collection",
+        "seconds": 5.318,
+        "status": "PASS"
+      },
+      {
+        "name": "test_live_game_result_uses_real_server_elapsed_time_and_replays_once[success]",
+        "seconds": 23.09,
+        "status": "PASS"
+      },
+      {
+        "name": "test_live_game_result_uses_real_server_elapsed_time_and_replays_once[miss]",
+        "seconds": 25.082,
+        "status": "PASS"
+      },
+      {
+        "name": "test_live_game_result_uses_real_server_elapsed_time_and_replays_once[practice]",
+        "seconds": 22.04,
+        "status": "PASS"
+      },
+      {
+        "name": "test_live_game_result_uses_real_server_elapsed_time_and_replays_once[play]",
+        "seconds": 19.608,
+        "status": "PASS"
+      },
+      {
+        "name": "test_flutter_process_restart_after_socket_loss_and_account_switch",
+        "seconds": 75.473,
+        "status": "PASS"
+      },
+      {
+        "name": "test_live_pet_projection_and_bond_receipt_survive_reconnect[12]",
+        "seconds": 9.541,
+        "status": "PASS"
+      },
+      {
+        "name": "test_live_pet_projection_and_bond_receipt_survive_reconnect[19]",
+        "seconds": 7.028,
+        "status": "PASS"
+      },
+      {
+        "name": "test_two_clients_and_lost_response_replay_after_reconnect",
+        "seconds": 1.418,
+        "status": "PASS"
+      },
+      {
+        "name": "test_concurrent_collection_and_cross_account_access",
+        "seconds": 1.67,
+        "status": "PASS"
+      },
+      {
+        "name": "test_push_workers_share_one_receipt_and_retry_after_reconnect",
+        "seconds": 1.653,
+        "status": "PASS"
+      },
+      {
+        "name": "test_activity_calendar_survives_projection_and_reconnection",
+        "seconds": 1.302,
+        "status": "PASS"
+      },
+      {
+        "name": "test_return_receipt_only_acknowledges_presented_events",
+        "seconds": 0.345,
+        "status": "PASS"
+      },
+      {
+        "name": "test_return_preserves_two_meals_and_individual_ack",
+        "seconds": 0.396,
+        "status": "PASS"
+      },
+      {
+        "name": "test_play_result_reports_actual_bond_and_replays_without_credit",
+        "seconds": 0.255,
+        "status": "PASS"
+      },
+      {
+        "name": "test_build_interval_survives_reload_replay_and_finishes_explicitly",
+        "seconds": 0.325,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expansion_preserves_existing_production_and_unlocks_only_on_finish[garden-1]",
+        "seconds": 0.327,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expansion_preserves_existing_production_and_unlocks_only_on_finish[garden-2]",
+        "seconds": 0.389,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expansion_preserves_existing_production_and_unlocks_only_on_finish[coop-1]",
+        "seconds": 0.293,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expansion_preserves_existing_production_and_unlocks_only_on_finish[pasture-1]",
+        "seconds": 0.262,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expansion_preserves_existing_production_and_unlocks_only_on_finish[kitchen-1]",
+        "seconds": 0.277,
+        "status": "PASS"
+      },
+      {
+        "name": "test_resident_projection_explains_pause_and_next_collection",
+        "seconds": 0.293,
+        "status": "PASS"
+      },
+      {
+        "name": "test_full_production_unlock_cycle_uses_time_and_real_resources",
+        "seconds": 0.642,
+        "status": "PASS"
+      },
+      {
+        "name": "test_crop_repeat_collection_water_and_free_prices",
+        "seconds": 0.708,
+        "status": "PASS"
+      },
+      {
+        "name": "test_queue_reserves_refunds_and_finishes_offline",
+        "seconds": 1.069,
+        "status": "PASS"
+      },
+      {
+        "name": "test_residents_pause_without_water_and_capacity_stops_time",
+        "seconds": 0.539,
+        "status": "PASS"
+      },
+      {
+        "name": "test_refusal_loses_portions_but_preserves_hunger_and_bond",
+        "seconds": 0.261,
+        "status": "PASS"
+      },
+      {
+        "name": "test_preferences_positive_never_regress_and_local_day",
+        "seconds": 0.005,
+        "status": "PASS"
+      },
+      {
+        "name": "test_fishing_trace_must_interact_and_track_fish",
+        "seconds": 0.009,
+        "status": "PASS"
+      },
+      {
+        "name": "test_cat_and_bowls_are_atomic_owned_and_return_unused_food",
+        "seconds": 0.607,
+        "status": "PASS"
+      },
+      {
+        "name": "test_market_free_coins_keep_prices_and_product_exchange_costs",
+        "seconds": 0.496,
+        "status": "PASS"
+      },
+      {
+        "name": "test_new_residents_do_not_inherit_food_or_production",
+        "seconds": 0.608,
+        "status": "PASS"
+      },
+      {
+        "name": "test_individual_collection_preserves_other_resident_and_is_idempotent[pasture-milk-2]",
+        "seconds": 0.431,
+        "status": "PASS"
+      },
+      {
+        "name": "test_individual_collection_preserves_other_resident_and_is_idempotent[orchard-apple-3]",
+        "seconds": 0.37,
+        "status": "PASS"
+      },
+      {
+        "name": "test_fishing_session_result_survives_reload_and_retry_without_new_credit[False-False-1]",
+        "seconds": 0.296,
+        "status": "PASS"
+      },
+      {
+        "name": "test_fishing_session_result_survives_reload_and_retry_without_new_credit[True-False-0]",
+        "seconds": 0.294,
+        "status": "PASS"
+      },
+      {
+        "name": "test_fishing_session_result_survives_reload_and_retry_without_new_credit[False-True-0]",
+        "seconds": 0.305,
+        "status": "PASS"
+      },
+      {
+        "name": "test_meal_projection_tracks_each_consumption_and_server_appetite",
+        "seconds": 0.515,
+        "status": "PASS"
+      },
+      {
+        "name": "test_confirmed_refusal_is_receipted_once_without_satisfying_cat",
+        "seconds": 0.467,
+        "status": "PASS"
+      },
+      {
+        "name": "test_refusals_at_same_instant_have_distinct_events_and_no_appetite_reset",
+        "seconds": 0.215,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[6-24-coop-21600]",
+        "seconds": 0.206,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[6-24-pasture-28800]",
+        "seconds": 0.709,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[12-24-coop-21600]",
+        "seconds": 0.169,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[12-24-pasture-28800]",
+        "seconds": 0.168,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[24-24-coop-21600]",
+        "seconds": 0.144,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[24-24-pasture-28800]",
+        "seconds": 0.147,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[24-8-coop-21600]",
+        "seconds": 0.207,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[24-8-pasture-28800]",
+        "seconds": 0.132,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[24-0-coop-21600]",
+        "seconds": 0.156,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_simulation_matches_authoritative_resident_cycles[24-0-pasture-28800]",
+        "seconds": 0.17,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_scenarios_cover_full_care_without_negative_stock[3-1]",
+        "seconds": 0.012,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_scenarios_cover_full_care_without_negative_stock[3-2]",
+        "seconds": 0.013,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_scenarios_cover_full_care_without_negative_stock[6-1]",
+        "seconds": 0.012,
+        "status": "PASS"
+      },
+      {
+        "name": "test_balance_scenarios_cover_full_care_without_negative_stock[6-2]",
+        "seconds": 0.015,
+        "status": "PASS"
+      },
+      {
+        "name": "test_fruit_recipe_unlock_reservation_refund_collection_and_meal[apple]",
+        "seconds": 0.792,
+        "status": "PASS"
+      },
+      {
+        "name": "test_fruit_recipe_unlock_reservation_refund_collection_and_meal[pear]",
+        "seconds": 0.787,
+        "status": "PASS"
+      },
+      {
+        "name": "test_fruit_trade_keeps_coin_price_and_existing_trade_with_replay",
+        "seconds": 0.487,
+        "status": "PASS"
+      },
+      {
+        "name": "test_invalid_or_locked_fruit_trade_cannot_spend[payload0-False]",
+        "seconds": 0.199,
+        "status": "PASS"
+      },
+      {
+        "name": "test_invalid_or_locked_fruit_trade_cannot_spend[payload1-True]",
+        "seconds": 0.206,
+        "status": "PASS"
+      },
+      {
+        "name": "test_invalid_or_locked_fruit_trade_cannot_spend[payload2-True]",
+        "seconds": 0.198,
+        "status": "PASS"
+      },
+      {
+        "name": "test_market_quantity_scales_ingredients_output_and_deadline",
+        "seconds": 0.321,
+        "status": "PASS"
+      },
+      {
+        "name": "test_pair_reuses_legacy_bowls_and_recovers_lost_references",
+        "seconds": 0.122,
+        "status": "PASS"
+      },
+      {
+        "name": "test_play_accepts_vertical_motion_and_rejects_invalid_y",
+        "seconds": 0.004,
+        "status": "PASS"
+      },
+      {
+        "name": "test_notifications_cursor_preserves_timestamp_ties_and_owner",
+        "seconds": 0.091,
+        "status": "PASS"
+      },
+      {
+        "name": "test_retry_persists_successful_devices_and_respects_deadline",
+        "seconds": 0.275,
+        "status": "PASS"
+      },
+      {
+        "name": "test_failure_then_read_discards_retry",
+        "seconds": 0.289,
+        "status": "PASS"
+      },
+      {
+        "name": "test_stale_notice_never_sends[expired]",
+        "seconds": 0.261,
+        "status": "PASS"
+      },
+      {
+        "name": "test_stale_notice_never_sends[collected]",
+        "seconds": 0.294,
+        "status": "PASS"
+      },
+      {
+        "name": "test_real_transport_retries_only_failed_device_and_keeps_bad_request_token",
+        "seconds": 0.278,
+        "status": "PASS"
+      },
+      {
+        "name": "test_old_resident_notice_does_not_resend_for_a_new_ready_cycle[coop]",
+        "seconds": 0.358,
+        "status": "PASS"
+      },
+      {
+        "name": "test_old_resident_notice_does_not_resend_for_a_new_ready_cycle[pasture]",
+        "seconds": 0.202,
+        "status": "PASS"
+      },
+      {
+        "name": "test_old_resident_notice_does_not_resend_for_a_new_ready_cycle[orchard]",
+        "seconds": 0.187,
+        "status": "PASS"
+      },
+      {
+        "name": "test_rewards_survive_lost_response_and_ack_is_scoped_without_new_credit",
+        "seconds": 0.335,
+        "status": "PASS"
+      },
+      {
+        "name": "test_all_bond_rewards_match_catalog_and_reconcile_never_duplicates",
+        "seconds": 0.23,
+        "status": "PASS"
+      },
+      {
+        "name": "test_authenticated_projection_mutation_validation_and_replay",
+        "seconds": 0.385,
+        "status": "PASS"
+      },
+      {
+        "name": "test_pet_response_contains_current_production_and_replay_keeps_one_point[12]",
+        "seconds": 1.083,
+        "status": "PASS"
+      },
+      {
+        "name": "test_pet_response_contains_current_production_and_replay_keeps_one_point[19]",
+        "seconds": 0.952,
+        "status": "PASS"
+      },
+      {
+        "name": "test_order_contract_accepts_named_product_option[fruit]",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_order_contract_accepts_named_product_option[harvest]",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_order_contract_rejects_malformed_product_option[True]",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_order_contract_rejects_malformed_product_option[1]",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_order_contract_rejects_malformed_product_option[option2]",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_order_contract_rejects_malformed_product_option[xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]",
+        "seconds": 0.002,
+        "status": "PASS"
+      },
+      {
+        "name": "test_locked_spaces_never_become_routine_requirements",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_one_choice_finishes_day_and_two_nonconsecutive_days_finish_week",
+        "seconds": 0.004,
+        "status": "PASS"
+      },
+      {
+        "name": "test_calendar_legacy_invalid_and_locked_activity_do_not_fabricate_progress",
+        "seconds": 0.005,
+        "status": "PASS"
+      },
+      {
+        "name": "test_unlocks_and_expansion_preserve_offer_and_reward_replay",
+        "seconds": 0.271,
+        "status": "PASS"
+      },
+      {
+        "name": "test_weekly_reward_is_capped",
+        "seconds": 0.278,
+        "status": "PASS"
+      },
+      {
+        "name": "test_paused_rewards_keep_optional_progress_without_paying",
+        "seconds": 0.194,
+        "status": "PASS"
+      },
+      {
+        "name": "test_due_without_app_request_is_durable_deduplicated_and_not_collected",
+        "seconds": 0.384,
+        "status": "PASS"
+      },
+      {
+        "name": "test_quintal_preference_is_independent_of_social_and_sightings",
+        "seconds": 0.003,
+        "status": "PASS"
+      },
+      {
+        "name": "test_delivery_failure_does_not_fail_committed_operation_or_next_event[push]",
+        "seconds": 0.007,
+        "status": "PASS"
+      },
+      {
+        "name": "test_delivery_failure_does_not_fail_committed_operation_or_next_event[websocket]",
+        "seconds": 0.009,
+        "status": "PASS"
+      },
+      {
+        "name": "test_geography_boundary_dateline_poles_and_invalid",
+        "seconds": 0.005,
+        "status": "PASS"
+      },
+      {
+        "name": "test_invalid_vectors_do_not_create_suggestions[vector0]",
+        "seconds": 0.06,
+        "status": "PASS"
+      },
+      {
+        "name": "test_invalid_vectors_do_not_create_suggestions[vector1]",
+        "seconds": 0.039,
+        "status": "PASS"
+      },
+      {
+        "name": "test_invalid_vectors_do_not_create_suggestions[vector2]",
+        "seconds": 0.034,
+        "status": "PASS"
+      },
+      {
+        "name": "test_invalid_vectors_do_not_create_suggestions[vector3]",
+        "seconds": 0.034,
+        "status": "PASS"
+      },
+      {
+        "name": "test_cosine_rejects_mismatched_dimensions_and_normalizes",
+        "seconds": 0.004,
+        "status": "PASS"
+      },
+      {
+        "name": "test_unknown_analysis_is_not_mislabeled_solid",
+        "seconds": 0.005,
+        "status": "PASS"
+      },
+      {
+        "name": "test_solid_and_unknown_coats_never_confirm_from_body_similarity",
+        "seconds": 0.132,
+        "status": "PASS"
+      },
+      {
+        "name": "test_single_high_cosine_is_only_restricted_candidate",
+        "seconds": 0.045,
+        "status": "PASS"
+      },
+      {
+        "name": "test_duplicate_content_does_not_manufacture_independent_support",
+        "seconds": 0.028,
+        "status": "PASS"
+      },
+      {
+        "name": "test_one_query_against_many_references_is_one_pair",
+        "seconds": 0.06,
+        "status": "PASS"
+      },
+      {
+        "name": "test_two_distinct_pairs_corroborate_patterned_candidate_but_not_identity",
+        "seconds": 0.061,
+        "status": "PASS"
+      },
+      {
+        "name": "test_low_quality_incompatible_versions_and_opposite_sides_are_excluded",
+        "seconds": 0.081,
+        "status": "PASS"
+      },
+      {
+        "name": "test_letterbox_preserves_extremities",
+        "seconds": 0.025,
+        "status": "PASS"
+      },
+      {
+        "name": "test_background_features_are_not_cat_evidence",
+        "seconds": 0.348,
+        "status": "PASS"
+      },
+      {
+        "name": "test_local_geometry_rejects_scrambled_layout_and_accepts_transformation",
+        "seconds": 0.242,
+        "status": "PASS"
+      },
+      {
+        "name": "test_multiple_cats_rejected_even_if_segmenter_returns_crop",
+        "seconds": 0.007,
+        "status": "PASS"
+      },
+      {
+        "name": "test_foreground_quality_is_not_inflated_by_background_texture",
+        "seconds": 0.009,
+        "status": "PASS"
+      },
+      {
+        "name": "test_reencoded_copy_does_not_count_as_a_new_observation",
+        "seconds": 0.085,
+        "status": "PASS"
+      },
+      {
+        "name": "test_photo_storage_preserves_previous_content_and_windows_keys",
+        "seconds": 0.05,
+        "status": "PASS"
+      },
+      {
+        "name": "test_fine_verification_is_bounded_and_does_not_return_probability",
+        "seconds": 0.115,
+        "status": "PASS"
+      },
+      {
+        "name": "test_dense_geometry_corroborates_but_does_not_identify_solid_cat",
+        "seconds": 0.015,
+        "status": "PASS"
+      },
+      {
+        "name": "test_radius_and_repeat_do_not_duplicate_notifications",
+        "seconds": 0.335,
+        "status": "PASS"
+      },
+      {
+        "name": "test_target_processed_after_sighting_runs_reverse_search",
+        "seconds": 0.249,
+        "status": "PASS"
+      },
+      {
+        "name": "test_solid_candidates_stay_private",
+        "seconds": 0.314,
+        "status": "PASS"
+      },
+      {
+        "name": "test_replaced_and_deleted_photos_cannot_match",
+        "seconds": 0.338,
+        "status": "PASS"
+      },
+      {
+        "name": "test_deleted_cats_and_resolved_reports_are_excluded",
+        "seconds": 0.216,
+        "status": "PASS"
+      },
+      {
+        "name": "test_catalog_coordinates_generate_one_observation",
+        "seconds": 0.332,
+        "status": "PASS"
+      },
+      {
+        "name": "test_jobs_are_bound_to_photo_content",
+        "seconds": 0.285,
+        "status": "PASS"
+      },
+      {
+        "name": "test_worker_commits_evidence_atomically[False]",
+        "seconds": 0.557,
+        "status": "PASS"
+      },
+      {
+        "name": "test_worker_commits_evidence_atomically[True]",
+        "seconds": 0.408,
+        "status": "PASS"
+      },
+      {
+        "name": "test_superseded_job_cannot_process_old_photo",
+        "seconds": 0.326,
+        "status": "PASS"
+      },
+      {
+        "name": "test_shadow_records_decision_without_notification_and_can_transition",
+        "seconds": 0.335,
+        "status": "PASS"
+      },
+      {
+        "name": "test_committed_job_runs_from_new_consumer_and_keeps_gpu_pending[sqlite]",
+        "seconds": 2.653,
+        "status": "PASS"
+      },
+      {
+        "name": "test_committed_job_runs_from_new_consumer_and_keeps_gpu_pending[postgres]",
+        "seconds": 0.56,
+        "status": "PASS"
+      },
+      {
+        "name": "test_failures_retry_then_mark_only_current_photo_failed[sqlite]",
+        "seconds": 3.659,
+        "status": "PASS"
+      },
+      {
+        "name": "test_failures_retry_then_mark_only_current_photo_failed[postgres]",
+        "seconds": 0.487,
+        "status": "PASS"
+      },
+      {
+        "name": "test_replacement_before_processing_never_invokes_analysis[sqlite]",
+        "seconds": 2.474,
+        "status": "PASS"
+      },
+      {
+        "name": "test_replacement_before_processing_never_invokes_analysis[postgres]",
+        "seconds": 0.574,
+        "status": "PASS"
+      },
+      {
+        "name": "test_cancellation_releases_persisted_claim_and_next_process_resumes[sqlite]",
+        "seconds": 2.972,
+        "status": "PASS"
+      },
+      {
+        "name": "test_cancellation_releases_persisted_claim_and_next_process_resumes[postgres]",
+        "seconds": 0.555,
+        "status": "PASS"
+      },
+      {
+        "name": "test_postgres_claim_skips_busy_job_and_rereads_replaced_photo[postgres]",
+        "seconds": 0.496,
+        "status": "PASS"
+      },
+      {
+        "name": "test_progression_failure_rolls_back_photo_and_staged_events[sqlite]",
+        "seconds": 2.802,
+        "status": "PASS"
+      },
+      {
+        "name": "test_progression_failure_rolls_back_photo_and_staged_events[postgres]",
+        "seconds": 0.745,
+        "status": "PASS"
+      },
+      {
+        "name": "test_gpu_worker_rejects_reference_analysis_job[sqlite]",
+        "seconds": 2.229,
+        "status": "PASS"
+      },
+      {
+        "name": "test_gpu_worker_rejects_reference_analysis_job[postgres]",
+        "seconds": 0.452,
+        "status": "PASS"
+      },
+      {
+        "name": "test_inference_releases_database_connection[sqlite]",
+        "seconds": 2.774,
+        "status": "PASS"
+      },
+      {
+        "name": "test_inference_releases_database_connection[postgres]",
+        "seconds": 1.169,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expired_claim_is_recovered_and_late_result_cannot_overwrite[sqlite]",
+        "seconds": 2.985,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expired_claim_is_recovered_and_late_result_cannot_overwrite[postgres]",
+        "seconds": 0.716,
+        "status": "PASS"
+      },
+      {
+        "name": "test_terminal_progression_failure_marks_photo_after_savepoint_rollback[sqlite]",
+        "seconds": 3.075,
+        "status": "PASS"
+      },
+      {
+        "name": "test_terminal_progression_failure_marks_photo_after_savepoint_rollback[postgres]",
+        "seconds": 0.519,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expired_final_attempt_fails_without_another_inference[sqlite]",
+        "seconds": 2.489,
+        "status": "PASS"
+      },
+      {
+        "name": "test_expired_final_attempt_fails_without_another_inference[postgres]",
+        "seconds": 0.536,
+        "status": "PASS"
+      },
+      {
+        "name": "test_recognition_inference_also_releases_database_connection[sqlite]",
+        "seconds": 2.625,
+        "status": "PASS"
+      },
+      {
+        "name": "test_recognition_inference_also_releases_database_connection[postgres]",
+        "seconds": 1.52,
+        "status": "PASS"
+      },
+      {
+        "name": "test_contact_rejects_invalid_phone[        ]",
+        "seconds": 0.005,
+        "status": "PASS"
+      },
+      {
+        "name": "test_contact_rejects_invalid_phone[---()---]",
+        "seconds": 0.006,
+        "status": "PASS"
+      },
+      {
+        "name": "test_contact_rejects_invalid_phone[1234]",
+        "seconds": 0.005,
+        "status": "PASS"
+      },
+      {
+        "name": "test_contact_rejects_invalid_phone[+123456789012345678]",
+        "seconds": 0.005,
+        "status": "PASS"
+      },
+      {
+        "name": "test_contact_rejects_invalid_phone[call me]",
+        "seconds": 0.005,
+        "status": "PASS"
+      },
+      {
+        "name": "test_contacts_are_optional_and_bounded",
+        "seconds": 0.004,
+        "status": "PASS"
+      },
+      {
+        "name": "test_report_poster_details_survive_reload_and_area_edit",
+        "seconds": 0.834,
+        "status": "PASS"
+      },
+      {
+        "name": "test_old_report_has_no_invented_address_or_contacts",
+        "seconds": 0.229,
+        "status": "PASS"
+      },
+      {
+        "name": "test_empty_feed_does_not_create_official_posts",
+        "seconds": 0.163,
+        "status": "PASS"
+      },
+      {
+        "name": "test_feed_excludes_legacy_fake_posts_and_keeps_real_posts",
+        "seconds": 0.208,
+        "status": "PASS"
+      },
+      {
+        "name": "test_caches_segmentation_across_calls_for_same_image",
+        "seconds": 0.321,
+        "status": "PASS"
+      },
+      {
+        "name": "test_clamp_bbox_bounds_coordinates_to_image_shape",
+        "seconds": 0.009,
+        "status": "PASS"
+      },
+      {
+        "name": "test_refines_the_primary_detection_with_sam_mask",
+        "seconds": 0.008,
+        "status": "PASS"
+      },
+      {
+        "name": "test_rejects_a_prominent_second_cat",
+        "seconds": 0.008,
+        "status": "PASS"
+      },
+      {
+        "name": "test_rejects_ambiguous_multiple_cats_without_refining",
+        "seconds": 0.008,
+        "status": "PASS"
+      },
+      {
+        "name": "test_retries_with_fallback_detector_when_primary_finds_nothing",
+        "seconds": 0.009,
+        "status": "PASS"
+      },
+      {
+        "name": "test_returns_empty_result_when_detector_finds_no_cat",
+        "seconds": 0.006,
+        "status": "PASS"
+      },
+      {
+        "name": "test_single_pass_detector_applies_fallback_threshold_without_second_pass",
+        "seconds": 0.008,
+        "status": "PASS"
+      },
+      {
+        "name": "test_warns_about_a_smaller_secondary_detection",
+        "seconds": 0.008,
+        "status": "PASS"
+      },
+      {
+        "name": "test_search_users_and_friendship_status",
+        "seconds": 0.02,
+        "status": "PASS"
+      },
+      {
+        "name": "test_cancel_sent_invite",
+        "seconds": 0.01,
+        "status": "PASS"
+      },
+      {
+        "name": "test_get_public_profile",
+        "seconds": 0.038,
+        "status": "PASS"
+      },
+      {
+        "name": "test_weekly_leaderboard",
+        "seconds": 0.213,
+        "status": "PASS"
+      },
+      {
+        "name": "test_user_suggestions",
+        "seconds": 0.018,
+        "status": "PASS"
+      },
+      {
+        "name": "test_text_post_and_retry_use_the_same_record",
+        "seconds": 0.057,
+        "status": "PASS"
+      },
+      {
+        "name": "test_empty_post_and_foreign_photo_are_rejected",
+        "seconds": 0.027,
+        "status": "PASS"
+      },
+      {
+        "name": "test_photo_variants_use_content_hash_and_stay_inside_storage_root",
+        "seconds": 0.021,
+        "status": "PASS"
+      },
+      {
+        "name": "test_avatar_asset_keeps_versioned_key",
+        "seconds": 0.01,
+        "status": "PASS"
+      },
+      {
+        "name": "test_page_matches_legacy_response_with_four_selects[sqlite-1]",
+        "seconds": 0.09,
+        "status": "PASS"
+      },
+      {
+        "name": "test_page_matches_legacy_response_with_four_selects[sqlite-40]",
+        "seconds": 0.57,
+        "status": "PASS"
+      },
+      {
+        "name": "test_page_matches_legacy_response_with_four_selects[postgres-1]",
+        "seconds": 0.814,
+        "status": "PASS"
+      },
+      {
+        "name": "test_page_matches_legacy_response_with_four_selects[postgres-40]",
+        "seconds": 1.133,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[sqlite-success]",
+        "seconds": 0.567,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[sqlite-missing-key]",
+        "seconds": 0.124,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[sqlite-rejected]",
+        "seconds": 0.115,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[postgres-success]",
+        "seconds": 1.862,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[postgres-missing-key]",
+        "seconds": 0.572,
+        "status": "PASS"
+      },
+      {
+        "name": "test_primary_analysis_releases_authentication_connection[postgres-rejected]",
+        "seconds": 0.505,
+        "status": "PASS"
+      },
+      {
+        "name": "test_connection_manager_delivers_one_event_to_each_active_device",
+        "seconds": 0.009,
+        "status": "PASS"
+      },
+      {
+        "name": "test_disconnect_removes_the_socket_without_affecting_other_device",
+        "seconds": 0.013,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<target>\\tests"
+    ]
+  },
+  "attempts/live-diagnostic-01/critical_runs/diagnostic-baseline/summary.json": {
+    "run": "diagnostic-baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 28.998809300000175,
+    "cases": [
+      {
+        "name": "test_live_routine_reward_diagnostic",
+        "seconds": 15.087,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\live_diagnostic_cases.py"
+    ]
+  },
+  "attempts/live-diagnostic-02-enabled/critical_runs/diagnostic-baseline/summary.json": {
+    "run": "diagnostic-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 17.001869099999567,
+    "cases": [
+      {
+        "name": "test_live_routine_reward_diagnostic",
+        "seconds": 8.629,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\live_diagnostic_cases.py::test_live_routine_reward_diagnostic"
+    ]
+  },
+  "attempts/live-diagnostic-03-disabled/critical_runs/diagnostic-baseline/summary.json": {
+    "run": "diagnostic-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 7.457469800000581,
+    "cases": [
+      {
+        "name": "test_live_disabled_rewards_activity",
+        "seconds": 3.642,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\live_diagnostic_cases.py::test_live_disabled_rewards_activity"
+    ]
+  },
+  "attempts/flutter-resilience-01/flutter_resilience/baseline/summary.json": {
+    "exit_code": 0,
+    "elapsed_seconds": 179.63065129999995,
+    "files": [
+      "campaign_resilience_test.dart",
+      "catalog_read_performance_test.dart",
+      "local_database_test.dart",
+      "session_store_test.dart",
+      "authenticated_api_client_test.dart",
+      "notification_store_test.dart",
+      "conversation_controller_test.dart",
+      "habitat_service_test.dart",
+      "cat_preflight_service_test.dart",
+      "cat_sharing_service_test.dart",
+      "gamification_service_test.dart",
+      "product_flows_test.dart",
+      "quintal_production_service_test.dart",
+      "quintal_live_client_test.dart"
+    ],
+    "cases": [
+      {
+        "name": "DB01 batch boundary count=0 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=1 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=499 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=500 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=501 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=1001 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES07 sync single flight shares triggers and releases after failure",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB07 cursor remains unchanged if remote application fails and retry starts at same cursor",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES03 snapshot after owner changes during read to b is rejected",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES03 snapshot after owner changes during read to null is rejected",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "SEC07 permanent 401 stops after one refresh and two requests",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "snapshot preserves content and account boundaries for 1 cats with bounded queries",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "snapshot preserves content and account boundaries for 40 cats with bounded queries",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "private local records are isolated between accounts",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "an offline removal remains a syncable tombstone",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "queued sighting persists its location date and note until acknowledged",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "snapshot preserves content and account boundaries for 501 cats with bounded queries",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "empty snapshots read only cats and empty batch selections never query",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "cached startup migrates one credential bundle without a profile request",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "parallel requests share renewal and rotation does not rebuild account",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "temporary renewal failure retains account; rejection clears credentials",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "a delayed renewal cannot restore a logged out account",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "retries once with a refreshed token and retains the JSON body",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "returns API details through the caller-specific exception",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "pages merge in chronological order and do not duplicate IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "all listeners see the same unread count immediately after reading",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "deduplicates refreshes and retains the snapshot on network failure",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "rejects stale requests after account switch and allows a fresh request",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "failed mark-read keeps the notification unread",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "reconnect reloads and dispose cancels subscriptions and fallback",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "echo before HTTP response reconciles one confirmed message",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "fallback retains optimistic send until HTTP confirms",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "failure removes optimistic message and restores draft",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "uploaded photo dispatches its message",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "account change discards a late send and blocks subsequent commands",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care response is ignored after account switch",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care response is ignored after disposal",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care retries reuse persisted keys after restart and award only confirmed affinity",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "placement respects occupied cells, item footprint and scene capacity",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "purchase retry reuses the saved idempotency key",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "directional footprints rotate while cottages remain fixed",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "bed collision cells follow its long axis in all four orientations",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "offline cache and draft migrate bed axes without losing placed items",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "irregular expansions, separate path layer and stock-limited painting",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "later placement survives an earlier synchronization response",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "rejects an image that is too dark before loading the model",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "rejects a smooth image as excessively blurred",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "refresh and action are ordered so old XP cannot overwrite a reward",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "network errors preserve confirmed XP without fictitious rewards",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "switching accounts rejects an old response and uses a separate cache",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "buildShareText formata texto com dados reais do gato e analise de IA",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "buildShareText trata gato sem analise e sem localizacao",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "buildPostShareText formata texto completo de post do feed",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "buildPostShareText formata texto sem local e nota opcionais",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "buildAchievementShareText formata texto de conquista desbloqueada",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "buildMissingPosterText formata cartaz de alerta",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "pet response updates affinity immediately and persists across restart",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "reward receipts persist, refresh replaces the queue, and stale accounts cannot restore it",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "a retry after restart retains its operation key",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "an older projection cannot overwrite a completed action",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "a response from a former account cannot change the new account",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "owned classification survives all edits and synchronization",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "collection keeps owned pets separate and supports search",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "real HTTP commit loss survives Flutter process restart and account switch",
+        "result": "success",
+        "skipped": true
+      },
+      {
+        "name": "product pages fit 360.0 with enlarged text",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "product pages fit 820.0 with enlarged text",
+        "result": "success",
+        "skipped": false
+      }
+    ]
+  },
+  "attempts/flutter-resilience-02/flutter_resilience/baseline/summary.json": {
+    "exit_code": 0,
+    "elapsed_seconds": 114.0356769,
+    "files": [
+      "campaign_resilience_test.dart",
+      "catalog_read_performance_test.dart",
+      "local_database_test.dart",
+      "session_store_test.dart",
+      "authenticated_api_client_test.dart",
+      "notification_store_test.dart",
+      "conversation_controller_test.dart",
+      "habitat_service_test.dart",
+      "cat_preflight_service_test.dart",
+      "cat_sharing_service_test.dart",
+      "gamification_service_test.dart",
+      "product_flows_test.dart",
+      "quintal_production_service_test.dart"
+    ],
+    "cases": [
+      {
+        "name": "DB01 batch boundary count=0 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=1 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=499 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=500 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=501 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=1001 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES07 sync single flight shares triggers and releases after failure",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB07 cursor remains unchanged if remote application fails and retry starts at same cursor",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES03 snapshot after owner changes during read to b is rejected",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES03 snapshot after owner changes during read to null is rejected",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "SEC07 permanent 401 stops after one refresh and two requests",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "snapshot preserves content and account boundaries for 1 cats with bounded queries",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "private local records are isolated between accounts",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "an offline removal remains a syncable tombstone",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "snapshot preserves content and account boundaries for 40 cats with bounded queries",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "queued sighting persists its location date and note until acknowledged",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "snapshot preserves content and account boundaries for 501 cats with bounded queries",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "cached startup migrates one credential bundle without a profile request",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "parallel requests share renewal and rotation does not rebuild account",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "temporary renewal failure retains account; rejection clears credentials",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "a delayed renewal cannot restore a logged out account",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "empty snapshots read only cats and empty batch selections never query",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "retries once with a refreshed token and retains the JSON body",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "returns API details through the caller-specific exception",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "pages merge in chronological order and do not duplicate IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "all listeners see the same unread count immediately after reading",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "deduplicates refreshes and retains the snapshot on network failure",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "rejects stale requests after account switch and allows a fresh request",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "failed mark-read keeps the notification unread",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "reconnect reloads and dispose cancels subscriptions and fallback",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "echo before HTTP response reconciles one confirmed message",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "fallback retains optimistic send until HTTP confirms",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "failure removes optimistic message and restores draft",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "uploaded photo dispatches its message",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "account change discards a late send and blocks subsequent commands",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care response is ignored after account switch",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care response is ignored after disposal",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care retries reuse persisted keys after restart and award only confirmed affinity",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "placement respects occupied cells, item footprint and scene capacity",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "purchase retry reuses the saved idempotency key",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "directional footprints rotate while cottages remain fixed",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "bed collision cells follow its long axis in all four orientations",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "offline cache and draft migrate bed axes without losing placed items",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "irregular expansions, separate path layer and stock-limited painting",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "later placement survives an earlier synchronization response",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "rejects an image that is too dark before loading the model",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "rejects a smooth image as excessively blurred",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "buildShareText formata texto com dados reais do gato e analise de IA",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "buildShareText trata gato sem analise e sem localizacao",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "buildPostShareText formata texto completo de post do feed",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "buildPostShareText formata texto sem local e nota opcionais",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "buildAchievementShareText formata texto de conquista desbloqueada",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "buildMissingPosterText formata cartaz de alerta",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "refresh and action are ordered so old XP cannot overwrite a reward",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "network errors preserve confirmed XP without fictitious rewards",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "switching accounts rejects an old response and uses a separate cache",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "owned classification survives all edits and synchronization",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "pet response updates affinity immediately and persists across restart",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "reward receipts persist, refresh replaces the queue, and stale accounts cannot restore it",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "a retry after restart retains its operation key",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "an older projection cannot overwrite a completed action",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "a response from a former account cannot change the new account",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "collection keeps owned pets separate and supports search",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "product pages fit 360.0 with enlarged text",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "product pages fit 820.0 with enlarged text",
+        "result": "success",
+        "skipped": false
+      }
+    ]
+  },
+  "attempts/flutter-resilience-02/flutter_resilience/MUT-19/summary.json": {
+    "exit_code": 1,
+    "elapsed_seconds": 125.90459800000008,
+    "files": [
+      "campaign_resilience_test.dart"
+    ],
+    "cases": [
+      {
+        "name": "DB01 batch boundary count=0 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=1 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=499 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=500 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=501 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=1001 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES07 sync single flight shares triggers and releases after failure",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB07 cursor remains unchanged if remote application fails and retry starts at same cursor",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES03 snapshot after owner changes during read to b is rejected",
+        "result": "failure",
+        "skipped": false
+      },
+      {
+        "name": "RES03 snapshot after owner changes during read to null is rejected",
+        "result": "failure",
+        "skipped": false
+      },
+      {
+        "name": "SEC07 permanent 401 stops after one refresh and two requests",
+        "result": "success",
+        "skipped": false
+      }
+    ]
+  },
+  "attempts/flutter-resilience-02/flutter_resilience/MUT-20/summary.json": {
+    "exit_code": 1,
+    "elapsed_seconds": 260.2873470999998,
+    "files": [
+      "campaign_resilience_test.dart",
+      "catalog_read_performance_test.dart"
+    ],
+    "cases": [
+      {
+        "name": "DB01 batch boundary count=0 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=1 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=499 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=500 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=501 duplicates and missing IDs",
+        "result": "failure",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=1001 duplicates and missing IDs",
+        "result": "failure",
+        "skipped": false
+      },
+      {
+        "name": "RES07 sync single flight shares triggers and releases after failure",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB07 cursor remains unchanged if remote application fails and retry starts at same cursor",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES03 snapshot after owner changes during read to b is rejected",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES03 snapshot after owner changes during read to null is rejected",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "SEC07 permanent 401 stops after one refresh and two requests",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "snapshot preserves content and account boundaries for 1 cats with bounded queries",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "snapshot preserves content and account boundaries for 40 cats with bounded queries",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "snapshot preserves content and account boundaries for 501 cats with bounded queries",
+        "result": "failure",
+        "skipped": false
+      },
+      {
+        "name": "empty snapshots read only cats and empty batch selections never query",
+        "result": "success",
+        "skipped": false
+      }
+    ]
+  },
+  "attempts/flutter-resilience-02/flutter_resilience/MUT-21/summary.json": {
+    "exit_code": 1,
+    "elapsed_seconds": 101.70872309999959,
+    "files": [
+      "campaign_resilience_test.dart"
+    ],
+    "cases": [
+      {
+        "name": "DB01 batch boundary count=0 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=1 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=499 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=500 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=501 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=1001 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES07 sync single flight shares triggers and releases after failure",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB07 cursor remains unchanged if remote application fails and retry starts at same cursor",
+        "result": "failure",
+        "skipped": false
+      },
+      {
+        "name": "RES03 snapshot after owner changes during read to b is rejected",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES03 snapshot after owner changes during read to null is rejected",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "SEC07 permanent 401 stops after one refresh and two requests",
+        "result": "success",
+        "skipped": false
+      }
+    ]
+  },
+  "attempts/flutter-resilience-02/flutter_resilience/MUT-22/summary.json": {
+    "exit_code": 1,
+    "elapsed_seconds": 156.8288931000002,
+    "files": [
+      "notification_store_test.dart"
+    ],
+    "cases": [
+      {
+        "name": "pages merge in chronological order and do not duplicate IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "all listeners see the same unread count immediately after reading",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "deduplicates refreshes and retains the snapshot on network failure",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "rejects stale requests after account switch and allows a fresh request",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "failed mark-read keeps the notification unread",
+        "result": "success",
+        "skipped": false
+      }
+    ]
+  },
+  "attempts/flutter-resilience-02/flutter_resilience/MUT-23/summary.json": {
+    "exit_code": 1,
+    "elapsed_seconds": 101.8742855999999,
+    "files": [
+      "session_store_test.dart"
+    ],
+    "cases": [
+      {
+        "name": "cached startup migrates one credential bundle without a profile request",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "parallel requests share renewal and rotation does not rebuild account",
+        "result": "failure",
+        "skipped": false
+      },
+      {
+        "name": "temporary renewal failure retains account; rejection clears credentials",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "a delayed renewal cannot restore a logged out account",
+        "result": "success",
+        "skipped": false
+      }
+    ]
+  },
+  "attempts/flutter-resilience-02/flutter_resilience/MUT-24/summary.json": {
+    "exit_code": 1,
+    "elapsed_seconds": 132.83906579999984,
+    "files": [
+      "conversation_controller_test.dart"
+    ],
+    "cases": [
+      {
+        "name": "reconnect reloads and dispose cancels subscriptions and fallback",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "echo before HTTP response reconciles one confirmed message",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "fallback retains optimistic send until HTTP confirms",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "failure removes optimistic message and restores draft",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "uploaded photo dispatches its message",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "account change discards a late send and blocks subsequent commands",
+        "result": "success",
+        "skipped": false
+      }
+    ]
+  },
+  "attempts/flutter-resilience-02/flutter_resilience/MUT-25/summary.json": {
+    "exit_code": 1,
+    "elapsed_seconds": 122.36091589999978,
+    "files": [
+      "habitat_service_test.dart"
+    ],
+    "cases": [
+      {
+        "name": "care response is ignored after account switch",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care response is ignored after disposal",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care retries reuse persisted keys after restart and award only confirmed affinity",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "placement respects occupied cells, item footprint and scene capacity",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "purchase retry reuses the saved idempotency key",
+        "result": "failure",
+        "skipped": false
+      },
+      {
+        "name": "directional footprints rotate while cottages remain fixed",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "bed collision cells follow its long axis in all four orientations",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "offline cache and draft migrate bed axes without losing placed items",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "irregular expansions, separate path layer and stock-limited painting",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "later placement survives an earlier synchronization response",
+        "result": "success",
+        "skipped": false
+      }
+    ]
+  },
+  "attempts/flutter-resilience-02/flutter_resilience/MUT-28/summary.json": {
+    "exit_code": 1,
+    "elapsed_seconds": 75.64760089999982,
+    "files": [
+      "campaign_resilience_test.dart"
+    ],
+    "cases": [
+      {
+        "name": "DB01 batch boundary count=0 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=1 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=499 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=500 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=501 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=1001 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES07 sync single flight shares triggers and releases after failure",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB07 cursor remains unchanged if remote application fails and retry starts at same cursor",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES03 snapshot after owner changes during read to b is rejected",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES03 snapshot after owner changes during read to null is rejected",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "SEC07 permanent 401 stops after one refresh and two requests",
+        "result": "failure",
+        "skipped": false
+      }
+    ]
+  },
+  "attempts/flutter-resilience-03/flutter_resilience/baseline/summary.json": {
+    "exit_code": 0,
+    "elapsed_seconds": 44.7871453000007,
+    "files": [
+      "campaign_resilience_test.dart",
+      "notification_store_test.dart"
+    ],
+    "cases": [
+      {
+        "name": "RES03 explicit inbox owner oracle rejects late account A snapshot",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "pages merge in chronological order and do not duplicate IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "all listeners see the same unread count immediately after reading",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "deduplicates refreshes and retains the snapshot on network failure",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "rejects stale requests after account switch and allows a fresh request",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "failed mark-read keeps the notification unread",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB07 real SQLite concurrent opening shares failure then retries without discarding data",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=0 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=1 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=499 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=500 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=501 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=1001 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES07 sync single flight shares triggers and releases after failure",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB07 cursor remains unchanged if remote application fails and retry starts at same cursor",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES03 snapshot after owner changes during read to b is rejected",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES03 snapshot after owner changes during read to null is rejected",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "SEC07 permanent 401 stops after one refresh and two requests",
+        "result": "success",
+        "skipped": false
+      }
+    ]
+  },
+  "attempts/flutter-resilience-03/flutter_resilience/MUT-22/summary.json": {
+    "exit_code": 1,
+    "elapsed_seconds": 85.20703739999954,
+    "files": [
+      "notification_store_test.dart",
+      "campaign_resilience_test.dart"
+    ],
+    "cases": [
+      {
+        "name": "pages merge in chronological order and do not duplicate IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "all listeners see the same unread count immediately after reading",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "deduplicates refreshes and retains the snapshot on network failure",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "rejects stale requests after account switch and allows a fresh request",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "failed mark-read keeps the notification unread",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES03 explicit inbox owner oracle rejects late account A snapshot",
+        "result": "failure",
+        "skipped": false
+      },
+      {
+        "name": "DB07 real SQLite concurrent opening shares failure then retries without discarding data",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=0 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=1 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=499 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=500 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=501 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=1001 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES07 sync single flight shares triggers and releases after failure",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB07 cursor remains unchanged if remote application fails and retry starts at same cursor",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES03 snapshot after owner changes during read to b is rejected",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES03 snapshot after owner changes during read to null is rejected",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "SEC07 permanent 401 stops after one refresh and two requests",
+        "result": "success",
+        "skipped": false
+      }
+    ]
+  },
+  "attempts/flutter-resilience-04/flutter_resilience/baseline/summary.json": {
+    "exit_code": 0,
+    "elapsed_seconds": 28.839040300000306,
+    "files": [
+      "campaign_resilience_test.dart"
+    ],
+    "cases": [
+      {
+        "name": "DB07 persisted partial page retries after restart without skipped rows or duplicates",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES03 explicit inbox owner oracle rejects late account A snapshot",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB07 real SQLite concurrent opening shares failure then retries without discarding data",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=0 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=1 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=499 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=500 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=501 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB01 batch boundary count=1001 duplicates and missing IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES07 sync single flight shares triggers and releases after failure",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB07 cursor remains unchanged if remote application fails and retry starts at same cursor",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES03 snapshot after owner changes during read to b is rejected",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "RES03 snapshot after owner changes during read to null is rejected",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "SEC07 permanent 401 stops after one refresh and two requests",
+        "result": "success",
+        "skipped": false
+      }
+    ]
+  },
+  "attempts/accessibility-04/accessibility/tests.jsonl": {
+    "cases": [
+      {
+        "name": "care response is ignored after account switch",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care response is ignored after disposal",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care retries reuse persisted keys after restart and award only confirmed affinity",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "placement respects occupied cells, item footprint and scene capacity",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "purchase retry reuses the saved idempotency key",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "directional footprints rotate while cottages remain fixed",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "bed collision cells follow its long axis in all four orientations",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "offline cache and draft migrate bed axes without losing placed items",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "irregular expansions, separate path layer and stock-limited painting",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "later placement survives an earlier synchronization response",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=320.0 height=568.0 scale=1.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=320.0 height=568.0 scale=1.3",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=320.0 height=568.0 scale=2.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=360.0 height=800.0 scale=1.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=360.0 height=800.0 scale=1.3",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=360.0 height=800.0 scale=2.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=412.0 height=915.0 scale=1.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=412.0 height=915.0 scale=1.3",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=412.0 height=915.0 scale=2.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=800.0 height=1280.0 scale=1.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=800.0 height=1280.0 scale=1.3",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC login width=800.0 height=1280.0 scale=2.0",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC08 login validation exposes error text and survives keyboard viewport",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ACC hold scale=1.0 reduced=false",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ACC hold scale=1.0 reduced=true",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ACC hold scale=2.0 reduced=false",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ACC hold scale=2.0 reduced=true",
+        "result": "success",
+        "skipped": false
+      }
+    ],
+    "exit_code": 1,
+    "source_sha": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "scope": "desktop accessibility and HabitatService unit tests; no device"
+  },
+  "attempts/flutter-full-01/flutter_full/summary.json": {
+    "exit_code": 0,
+    "elapsed_seconds": 500.514142,
+    "cases": [
+      {
+        "name": "capture dates retain their supplied calendar and padded clock",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "chat day labels cross month and year boundaries",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "chat groups timestamps by local calendar day",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "release requires explicit endpoint and development keeps local configuration",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "missing and legacy production fields preserve unknown data and empty defaults",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "closing edit mode clears selection and tray but preserves server-independent gesture state",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "parallel database requests share one opening; failed opening can retry",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "retries once with a refreshed token and retains the JSON body",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "returns API details through the caller-specific exception",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Apple button visibility on TargetPlatform.android",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Apple button visibility on TargetPlatform.fuchsia",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Apple button visibility on TargetPlatform.iOS",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Apple button visibility on TargetPlatform.linux",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Apple button visibility on TargetPlatform.macOS",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Apple button visibility on TargetPlatform.windows",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Apple label fits width 320.0 and text scale 1.0",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Apple label fits width 320.0 and text scale 1.3",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Apple label fits width 320.0 and text scale 2.0",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Apple label fits width 390.0 and text scale 1.0",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "auto-sync defaults on and persists the off preference across sessions",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "off blocks background catalog and analyses but explicit sync still runs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Apple label fits width 390.0 and text scale 1.3",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Apple label fits width 390.0 and text scale 2.0",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "rejects an image that is too dark before loading the model",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "rejects a smooth image as excessively blurred",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "CatDetailsPage renderiza analise, confianca real, cores formatadas e fotos",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "CatDetailsPage exibe 0 Fotos e orientacao quando nao ha fotos adicionais",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "buildShareText formata texto com dados reais do gato e analise de IA",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "buildShareText trata gato sem analise e sem localizacao",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "buildPostShareText formata texto completo de post do feed",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "buildPostShareText formata texto sem local e nota opcionais",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "buildAchievementShareText formata texto de conquista desbloqueada",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "buildMissingPosterText formata cartaz de alerta",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ChatMessage model tests serializes and deserializes text message",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ChatMessage model tests photo message preview and properties",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ChatMessage model tests location message preview and properties",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ChatMessage model tests cat card message preview and properties",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ChatMessage model tests deleted and edited message states",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ChatMessage model tests reactions serialization and toggling",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ConversationSummary model tests parses summary correctly with sighting context and unread count",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ConversationPage widget tests renders header, rescue banner, and action buttons",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "snapshot preserves content and account boundaries for 1 cats with bounded queries",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "snapshot preserves content and account boundaries for 40 cats with bounded queries",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "reconnect reloads and dispose cancels subscriptions and fallback",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "echo before HTTP response reconciles one confirmed message",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "fallback retains optimistic send until HTTP confirms",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "failure removes optimistic message and restores draft",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "uploaded photo dispatches its message",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "account change discards a late send and blocks subsequent commands",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "snapshot preserves content and account boundaries for 501 cats with bounded queries",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "empty snapshots read only cats and empty batch selections never query",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "render corrected screens with bundled fonts for visual review",
+        "result": "success",
+        "skipped": true
+      },
+      {
+        "name": "ImageCompressionService comprime e redimensiona imagem maior que maxDimension",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ImageCompressionService mantem imagem menor sem ultrapassar maxDimension",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ImageCompressionService retorna bytes originais de forma segura se formato for invalido",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "refresh and action are ordered so old XP cannot overwrite a reward",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "network errors preserve confirmed XP without fictitious rewards",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "switching accounts rejects an old response and uses a separate cache",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "ProfileQrDialog widget tests renders QR dialog with user handle and sharing options",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "PublicProfilePage widget tests renders loading state initially and handles unauthenticated state gracefully",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Gamification Models & State GamificationState.initial creates correct defaults",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Gamification Models & State Mission.fromMap and toMap serialize properly",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Gamification Models & State Mission.copyWith correctly updates attributes",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Gamification Models & State GamificationState.fromMap supports new_xp and xp keys",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Gamification Models & State GamificationState fromMap and toMap roundtrip preserves data",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Confirmed journey cache local records never invent rewards or achievements",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "FriendsPage widget tests renders 4 tabs: Amigos, Descobrir, Convites, Ranking",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Gamification Widgets UI GatalogoXPBar renders level and progress correctly",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Gamification Widgets UI Conquistas filters unlocked achievements without a journey heading",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care sheet displays affinity, free food and explicit optional treat cost",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "zoom preserves the same world location even at each pan limit",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "coats preserve every clip geometry and share only the original shadows",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "detector attributes select the requested classic coats",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "every detector combination resolves to a shipped appearance",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "coat evidence survives the offline snapshot and old snapshots remain compatible",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "moving a reserved item cancels its visit and releases the cat",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "feeding waits for arrival and confirmation before playing eat",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "blocked or removed furniture cancels arrival without consuming food",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "rest and play reserve furniture until the visit finishes",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "water blocks navigation and bridge rotation controls its entrances",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "growth survives layout moves and cached care is never client awarded",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "pan and zoom preserve attachment, including viewport edges",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "solid models stay centered and fit their cells in every orientation",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "path pieces join at ends, corners and intersections",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "camera hit testing follows pan and pinch zoom",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "visible tree canopy and cat can be selected by their sprites",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Quintal uses a full scene, floating menu, trays and full shop",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "cats wander only through free yard cells without changing anchors",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care response is ignored after account switch",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care response is ignored after disposal",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "care retries reuse persisted keys after restart and award only confirmed affinity",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "placement respects occupied cells, item footprint and scene capacity",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "purchase retry reuses the saved idempotency key",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "directional footprints rotate while cottages remain fixed",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "bed collision cells follow its long axis in all four orientations",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "offline cache and draft migrate bed axes without losing placed items",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "irregular expansions, separate path layer and stock-limited painting",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "later placement survives an earlier synchronization response",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "record actual game renderer arrival, delivery and departure",
+        "result": "success",
+        "skipped": true
+      },
+      {
+        "name": "river bends share at least two cells in every expansion",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "camera outskirts have stable varied scenery without occupying the expanded yard",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "all provided cozy visitor species have timed routines outside the editable yard",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "scenery and gifts stay outside every expansion and leave playable land clear",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "visitors enter offscreen, use both banks and several routines simultaneously",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "panning never replans an animal already walking",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "whole scenery footprints keep clear of water, fences and visitor corridors",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "solid roots do not intersect, including scenery chunk boundaries",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "gift couriers arrive and depart outside the viewport on either side",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "LibraryPage mantém filtros nas pills e filtra por status",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "illustrated Home renders without overflow at 360.0 text 1.0",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "illustrated Home renders without overflow at 320.0 text 1.5",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "illustrated Home renders without overflow at 820.0 text 1.0",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Home reflects account values and never invents missing progress",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "private local records are isolated between accounts",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "guest can select either character and persist the choice",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "an offline removal remains a syncable tombstone",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "queued sighting persists its location date and note until acknowledged",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "poster and external share contain the same address, traits and contacts",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "hidden fields and unselected contacts never reach public exports",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "public reports cannot fall back to private cat traits",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "omits missing optional fields and never invents an address",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "report snapshot takes precedence over subsequently edited cat traits",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "QR preserves the report link and never invents an empty report ID",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "print export is a complete standalone PDF with a single page",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "all tabs paint to screen edge and keep content above menu",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "pages merge in chronological order and do not duplicate IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "all listeners see the same unread count immediately after reading",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "deduplicates refreshes and retains the snapshot on network failure",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "rejects stale requests after account switch and allows a fresh request",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "failed mark-read keeps the notification unread",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "a detail route leaves the main-tab visual scope",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "internal task overrides the main-tab setting",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "product retries once and preserves JSON and authorization",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "a second unauthorized response retains its status and stops",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "explicit retry false does not refresh",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "accepts success 200 including an empty body",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "accepts success 201 including an empty body",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "accepts success 204 including an empty body",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "accepts success 299 including an empty body",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "preserves fallback and status for not json",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "preserves fallback and status for {\"detail\":[{\"msg\":\"bad\"}]}",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "missing session does not send a request",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "connection failure keeps the product-specific message",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "owned classification survives all edits and synchronization",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "compact keyboard layout keeps labeled actions and editable location",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "text-only draft survives failed publication; unchanged retries reuse ID",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "collection keeps owned pets separate and supports search",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "render product previews for visual review",
+        "result": "success",
+        "skipped": true
+      },
+      {
+        "name": "product pages fit 360.0 with enlarged text",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "product pages fit 820.0 with enlarged text",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "account switch discards a delayed result from the previous account",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "offline read preserves confirmed progress and reset clears all selectors",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "closed-app tap is consumed once; delivered tap is never queued again",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "foreground retries refresh inbox and show the message only once",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "late initial callback does not reopen a tap already delivered",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "disposal during initial-message lookup cannot attach new listeners",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "denied permission leaves inbox available without requesting a token",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "water and food tools match the recipient and return before expiry",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "harvest lifts above the soil continuously, fades and expires",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "only a known crop snapshot creates a harvested plant",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "menu follows navigation and actual tray at height 640.0",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "menu follows navigation and actual tray at height 360.0",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "only recent confirmed quantities can drive the bowl presentation",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "preference and taste change describe the actual reaction",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "appetite uses the deadline, including older API fallback, never 90% hunger",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "bowl visits face the bowl, keep the anchor and finish with the right reaction",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "four atlas orientations face their world directions",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "interrupting the visit discards the queued celebration",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "lid stays seated in reduced motion and never sinks into the pan",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "catch zone and fish use the same center at both extremes",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "same hold/release sequence has the same result at 5, 30 and 60 FPS",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "cat approach has the same duration across frame rates",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "uncertain finish retries the same session, trace and key",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "rejected activity 409 starts a fresh session on retry",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "rejected activity 422 starts a fresh session on retry",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "result follows API even when local score differs: {success: false, quantity: 0}",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "result follows API even when local score differs: {success: true, quantity: 0, practice: true}",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "hold and release controls fishing; backgrounding never finishes or rewards a session",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "start failure exposes retry without a permanent loading spinner",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "a start response arriving after backgrounding requires a new session",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "world activity fits large text and releases the scene without a success on close",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "saved beds do not animate; confirmed new rows clear once and preserve previous beds",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "foliage remains subtle and stops for seeds and reduced motion",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "garden expands from confirmed rows and foliage keeps its soil origin",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "hold survives a second pointer and releases on cancellation or key up",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "stock, served portions and uncollected outputs stay distinct",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "reservation, deadline, cancel and collection never double debit stock",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "maximum production camera matrix keeps every action visible while moving",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "resource details fit the tray and open destinations without spending",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "real HTTP commit loss survives Flutter process restart and account switch",
+        "result": "success",
+        "skipped": true
+      },
+      {
+        "name": "kitchen keeps cooking queue and ready food visible without local credit",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "market recovery and collection preserve stock and decorative display",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "own bowls, gradual meals, preference, drinking and reduced motion in scene",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "return links acknowledge only the selected event",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Quintal notification preference remains readable",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "inventory trays fit navigation with large text and low screens",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "collecting apple preserves the other tree through confirmation",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "collecting pear preserves the other tree through confirmation",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "market keeps the crate through pending and failure, then confirms once",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "harvest retains the original crop and plot until API confirmation",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "water is a local command and repeated taps do not submit twice",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "failed operation has no confirmed effect and retry emits once",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "offline collection is disabled and selecting an object never spends stock",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "queue collects the selected ready recipe and only cancels unstarted tasks",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "large text balloon stays centered on its target near the viewport edge",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "confirmed tool briefly clears controls without losing the action state",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "construction preview frames once, keeps capacity and clears on exit",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "selection frames camera once and keeps actions attached during pan and zoom",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "all production balloons frame at every edge and camera scale",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "camera framing preserves a choice tray and an in-flight action offscreen",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "expansion badge opens works while existing production stays usable",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "legacy kitchen task without start keeps deadline without fake progress",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "orchard grows fruit and collects each tree independently without local credit",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "fruit trade sends its option without changing the old payment shape",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "orchard project explains fruit uses before construction",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "wand follows vertical and diagonal motion",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "cat changes axis while walking around a blocked cell",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "play only uses contiguous free cells and respects traversal barriers",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "reversed walks preserve their exact initial position and screen direction",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "an enclosed cat stays in place instead of entering blocked cells",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "stationary wand does not trigger automatic play",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "movement leads to approach, reach and rest without repeated jumps",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "shows only confirmed bond and explains temporary care bonus",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "daily limit shows no repeated gain and no absent care bonus",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "legacy or incomplete response does not invent earned points",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "pet response updates affinity immediately and persists across restart",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "reward receipts persist, refresh replaces the queue, and stale accounts cannot restore it",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "a retry after restart retains its operation key",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "an older projection cannot overwrite a completed action",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "a response from a former account cannot change the new account",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "reward receipts and bond prizes fit the real scene and inventory",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "rare rewards persist on refresh, retry and open the inventory only after acknowledgement",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "all bond boundaries use the catalog prize and terminal state",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "optional community mission preserves its original continuation",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "optional routines show unlocked alternatives and work with large text",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "paused progress remains frozen across time spent away",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "supplies expiring stop the bar before a network refresh",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "uses the complete server interval and rounds remaining seconds up",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "queued recipes count down to their start without fake production",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "missing or invalid starts do not fabricate percentages",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "quintal renderer matrix: edges, water, depth, expansion and zoom",
+        "result": "success",
+        "skipped": true
+      },
+      {
+        "name": "milking pauses only one resident and resumes without a route jump",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "service paths stay connected and reach both animal gates after expansion",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "residents stay separated and never teleport across their rest cycle",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "residents enter, rest and leave both shelter levels without crossing walls or jumping",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "hens scratch briefly at home and the shelter approach never opens the gate",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "every resident exits and returns through a fully open gate",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "residents reach actual food and water and face the walking direction",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "production spaces never consume cat cells or river, and retain courier access",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "empty avatars retain the caller fallback and centering",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "individual identity, notes and favorites survive edits",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "the album groups complementary photos without deleting records",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "journal screens and pending result fit width 320.0 at 1.0",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "journal screens and pending result fit width 320.0 at 1.5",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "journal screens and pending result fit width 390.0 at 1.0",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "journal screens and pending result fit width 390.0 at 1.5",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "journal screens and pending result fit width 820.0 at 1.0",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "journal screens and pending result fit width 820.0 at 1.5",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "remaining corrected screens fit 320.0 with enlarged text",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "remaining corrected screens fit 820.0 with enlarged text",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "quick alert selects its mode even when registered pets exist",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "poster has optional details and community before external sharing",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "five navigation actions fit and Quintal opens the playable scene",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "signed-in feed displays author avatar and floating composer on a narrow screen",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "notes and overflow menu use the light palette, and sharing stays inside the app",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "poster editor supports multiple contacts and independent WhatsApp choices",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "settings switch updates the persisted automatic sync preference",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "cached startup migrates one credential bundle without a profile request",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "parallel requests share renewal and rotation does not rebuild account",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "temporary renewal failure retains account; rejection clears credentials",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "a delayed renewal cannot restore a logged out account",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "publish stays above navigation in both feeds and respects login",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Social composition and real API bindings at 360.0/1.0",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Social composition and real API bindings at 320.0/1.5",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Social composition and real API bindings at 820.0/1.0",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Cat model and favorites Cat model handles isFavorite and notes correctly",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Cat model and favorites FavoritesManager toggles favorites in memory",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Dark theme AppTheme.darkTheme has cozy espresso palette and no pure black",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Settings and security dialogs renders guest banner when user is not signed in",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "Settings and security dialogs shows security section and Alterar Senha dialog when signed in",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "fresh captures of every changed screen for user validation",
+        "result": "success",
+        "skipped": true
+      },
+      {
+        "name": "keeps the camera flow available when local validation is unavailable",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "exposes a clear rejection to the capture screen",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "world object actions and inventory remain readable at phone sizes",
+        "result": "success",
+        "skipped": false
+      }
+    ],
+    "source_sha": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "scope": "Headless regression; skipped live integration is not counted as executed"
+  },
+  "attempts/network-01/critical_runs/network-baseline/summary.json": {
+    "run": "network-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 10.117021099998965,
+    "cases": [
+      {
+        "name": "test_SEC10_tcp_preexisting_socket_after_session_invalidated[revoked]",
+        "seconds": 3.497,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC10_tcp_preexisting_socket_after_session_invalidated[expired-session]",
+        "seconds": 2.777,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\network_cases.py"
+    ]
+  },
+  "attempts/probe-layout-01/flutter_results/01-A/test.jsonl": {
+    "cases": [
+      {
+        "name": "DB-01 common public CatStore load contract (no remote IO)",
+        "result": "success",
+        "skipped": false
+      }
+    ],
+    "scope": "Probe relocation revalidation; timings remain exploratory"
+  },
+  "attempts/probe-layout-01/flutter_results/02-B/test.jsonl": {
+    "cases": [
+      {
+        "name": "DB-01 common public CatStore load contract (no remote IO)",
+        "result": "success",
+        "skipped": false
+      }
+    ],
+    "scope": "Probe relocation revalidation; timings remain exploratory"
+  },
+  "attempts/probe-layout-01/flutter_results/03-B/test.jsonl": {
+    "cases": [
+      {
+        "name": "DB-01 common public CatStore load contract (no remote IO)",
+        "result": "success",
+        "skipped": false
+      }
+    ],
+    "scope": "Probe relocation revalidation; timings remain exploratory"
+  },
+  "attempts/probe-layout-01/flutter_results/04-A/test.jsonl": {
+    "cases": [
+      {
+        "name": "DB-01 common public CatStore load contract (no remote IO)",
+        "result": "success",
+        "skipped": false
+      }
+    ],
+    "scope": "Probe relocation revalidation; timings remain exploratory"
+  },
+  "attempts/probe-layout-01/flutter_results/RES-03/test.jsonl": {
+    "cases": [
+      {
+        "name": "pages merge in chronological order and do not duplicate IDs",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "all listeners see the same unread count immediately after reading",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "deduplicates refreshes and retains the snapshot on network failure",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "rejects stale requests after account switch and allows a fresh request",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "failed mark-read keeps the notification unread",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "reconnect reloads and dispose cancels subscriptions and fallback",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "echo before HTTP response reconciles one confirmed message",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "fallback retains optimistic send until HTTP confirms",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "failure removes optimistic message and restores draft",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "uploaded photo dispatches its message",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "account change discards a late send and blocks subsequent commands",
+        "result": "success",
+        "skipped": false
+      }
+    ],
+    "scope": "Probe relocation revalidation; timings remain exploratory"
+  }
+}

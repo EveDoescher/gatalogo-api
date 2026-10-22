@@ -1,0 +1,19 @@
+{
+  "states": {
+    "PREPARED": 1,
+    "PARTIAL_EXECUTED": 41,
+    "PENDING": 42,
+    "BLOCKED_EXTERNAL_PREREQUISITES": 11
+  },
+  "historical_classifications": {
+    "KILLED": 32,
+    "SURVIVED": 1,
+    "INCONCLUSIVE_ORACLE": 1
+  },
+  "latest_classifications": {
+    "KILLED": 29
+  },
+  "latest_variants": 29,
+  "families": 28,
+  "note": "Execution counts overlap; do not add regression and targeted cases as unique tests."
+}

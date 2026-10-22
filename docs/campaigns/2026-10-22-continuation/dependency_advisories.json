@@ -1,0 +1,3938 @@
+{
+  "scenario": "SEC-09",
+  "queried_at": "2026-10-22T13:07:48.376108+00:00",
+  "methodology": "https://google.github.io/osv.dev/post-v1-querybatch/",
+  "user_authorization": "Explicit approval in this conversation for these 254 package names/versions and OSV destinations on 2026-10-22",
+  "approved_file_sha256": "0b04f6355d7cfd7f2705232d9acfca6d9ccc19173cc3e98a97dabac254fa654e",
+  "requested_packages": 254,
+  "checked_packages": 254,
+  "queries": [
+    {
+      "query": {
+        "package": {
+          "name": "aiosqlite",
+          "ecosystem": "PyPI"
+        },
+        "version": "0.22.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "alembic",
+          "ecosystem": "PyPI"
+        },
+        "version": "1.19.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "annotated-doc",
+          "ecosystem": "PyPI"
+        },
+        "version": "0.0.5"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "annotated-types",
+          "ecosystem": "PyPI"
+        },
+        "version": "0.8.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "antlr4-python3-runtime",
+          "ecosystem": "PyPI"
+        },
+        "version": "4.9.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "anyio",
+          "ecosystem": "PyPI"
+        },
+        "version": "4.14.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "argon2-cffi",
+          "ecosystem": "PyPI"
+        },
+        "version": "25.1.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "argon2-cffi-bindings",
+          "ecosystem": "PyPI"
+        },
+        "version": "26.1.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "asyncpg",
+          "ecosystem": "PyPI"
+        },
+        "version": "0.31.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "certifi",
+          "ecosystem": "PyPI"
+        },
+        "version": "2026.7.22"
+      },
+      "vulns": [
+        {
+          "id": "GHSA-6q48-6c7w-9gw2",
+          "modified": "2026-10-20T22:11:14.336568Z"
+        },
+        {
+          "id": "PYSEC-2026-4320",
+          "modified": "2026-10-20T22:00:02.600723Z"
+        }
+      ],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "cffi",
+          "ecosystem": "PyPI"
+        },
+        "version": "2.1.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "charset-normalizer",
+          "ecosystem": "PyPI"
+        },
+        "version": "3.5.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "click",
+          "ecosystem": "PyPI"
+        },
+        "version": "8.5.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "colorama",
+          "ecosystem": "PyPI"
+        },
+        "version": "0.4.6"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "cryptography",
+          "ecosystem": "PyPI"
+        },
+        "version": "50.0.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "distro",
+          "ecosystem": "PyPI"
+        },
+        "version": "1.9.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "dnspython",
+          "ecosystem": "PyPI"
+        },
+        "version": "2.8.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "email-validator",
+          "ecosystem": "PyPI"
+        },
+        "version": "2.3.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "fastapi",
+          "ecosystem": "PyPI"
+        },
+        "version": "0.141.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "filelock",
+          "ecosystem": "PyPI"
+        },
+        "version": "3.32.4"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "fsspec",
+          "ecosystem": "PyPI"
+        },
+        "version": "2026.7.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "google-auth",
+          "ecosystem": "PyPI"
+        },
+        "version": "2.57.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "google-genai",
+          "ecosystem": "PyPI"
+        },
+        "version": "2.20.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "greenlet",
+          "ecosystem": "PyPI"
+        },
+        "version": "3.5.5"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "h11",
+          "ecosystem": "PyPI"
+        },
+        "version": "0.16.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "httpcore",
+          "ecosystem": "PyPI"
+        },
+        "version": "1.0.9"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "httptools",
+          "ecosystem": "PyPI"
+        },
+        "version": "0.8.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "httpx",
+          "ecosystem": "PyPI"
+        },
+        "version": "0.28.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "hydra-core",
+          "ecosystem": "PyPI"
+        },
+        "version": "1.3.5"
+      },
+      "vulns": [
+        {
+          "id": "GHSA-c3wx-c55w-pxjq",
+          "modified": "2026-10-15T14:55:50.399421Z"
+        },
+        {
+          "id": "GHSA-mwj6-rfh8-7qf4",
+          "modified": "2026-10-15T14:55:36.550457Z"
+        },
+        {
+          "id": "GHSA-rqx7-p7vv-w7hr",
+          "modified": "2026-10-15T14:55:41.619923Z"
+        },
+        {
+          "id": "PYSEC-2026-4221",
+          "modified": "2026-10-15T14:45:04.402255Z"
+        },
+        {
+          "id": "PYSEC-2026-4222",
+          "modified": "2026-10-15T14:45:07.445702Z"
+        },
+        {
+          "id": "PYSEC-2026-4223",
+          "modified": "2026-10-15T14:45:06.445110Z"
+        }
+      ],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "idna",
+          "ecosystem": "PyPI"
+        },
+        "version": "3.19"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "iniconfig",
+          "ecosystem": "PyPI"
+        },
+        "version": "2.3.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "iopath",
+          "ecosystem": "PyPI"
+        },
+        "version": "0.1.10"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "Jinja2",
+          "ecosystem": "PyPI"
+        },
+        "version": "3.1.6"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "Mako",
+          "ecosystem": "PyPI"
+        },
+        "version": "1.4.1"
+      },
+      "vulns": [
+        {
+          "id": "GHSA-5639-2j2p-m4mx",
+          "modified": "2026-10-15T14:55:45.473045Z"
+        },
+        {
+          "id": "PYSEC-2026-4243",
+          "modified": "2026-10-15T14:45:09.219391Z"
+        }
+      ],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "MarkupSafe",
+          "ecosystem": "PyPI"
+        },
+        "version": "3.0.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "mpmath",
+          "ecosystem": "PyPI"
+        },
+        "version": "1.3.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "networkx",
+          "ecosystem": "PyPI"
+        },
+        "version": "3.6.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "numpy",
+          "ecosystem": "PyPI"
+        },
+        "version": "2.5.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "omegaconf",
+          "ecosystem": "PyPI"
+        },
+        "version": "2.3.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "opencv-python-headless",
+          "ecosystem": "PyPI"
+        },
+        "version": "5.0.0.93"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "packaging",
+          "ecosystem": "PyPI"
+        },
+        "version": "26.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "pgvector",
+          "ecosystem": "PyPI"
+        },
+        "version": "0.5.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "pillow",
+          "ecosystem": "PyPI"
+        },
+        "version": "12.3.0"
+      },
+      "vulns": [
+        {
+          "id": "GHSA-22hg-r758-rrw9",
+          "modified": "2026-10-21T20:45:04.649560Z"
+        },
+        {
+          "id": "GHSA-254f-3936-288h",
+          "modified": "2026-10-21T21:15:08.507283Z"
+        },
+        {
+          "id": "GHSA-27h8-gf7j-v5hc",
+          "modified": "2026-10-21T20:45:04.650633Z"
+        },
+        {
+          "id": "GHSA-332p-7hrc-92wf",
+          "modified": "2026-10-21T21:45:08.360916Z"
+        },
+        {
+          "id": "GHSA-4558-3h8r-v8xp",
+          "modified": "2026-10-21T20:15:04.190082Z"
+        },
+        {
+          "id": "GHSA-462x-pgg6-55fp",
+          "modified": "2026-10-20T21:00:04.394527Z"
+        },
+        {
+          "id": "GHSA-4rr5-89j8-mwwm",
+          "modified": "2026-10-21T21:45:08.356370Z"
+        },
+        {
+          "id": "GHSA-58r4-6rv3-gfh8",
+          "modified": "2026-10-20T21:00:04.401258Z"
+        },
+        {
+          "id": "GHSA-5xm2-6676-qcp9",
+          "modified": "2026-10-21T21:30:26.938404Z"
+        },
+        {
+          "id": "GHSA-65qm-jvmh-6pqg",
+          "modified": "2026-10-20T21:00:04.406280Z"
+        },
+        {
+          "id": "GHSA-74r2-7ff9-mjj2",
+          "modified": "2026-10-21T21:00:06.702560Z"
+        },
+        {
+          "id": "GHSA-7mwm-ghpf-9vrm",
+          "modified": "2026-10-21T20:15:04.188796Z"
+        },
+        {
+          "id": "GHSA-8g5g-8vmr-9782",
+          "modified": "2026-10-20T21:00:04.391412Z"
+        },
+        {
+          "id": "GHSA-c6hw-5grf-ff96",
+          "modified": "2026-10-20T21:00:04.387041Z"
+        },
+        {
+          "id": "GHSA-cp9v-662q-vvx9",
+          "modified": "2026-10-21T20:45:04.636143Z"
+        },
+        {
+          "id": "GHSA-f2g6-542v-9j58",
+          "modified": "2026-10-21T21:30:27.849961Z"
+        },
+        {
+          "id": "GHSA-fc9g-5qg7-mf45",
+          "modified": "2026-10-21T20:45:04.633756Z"
+        },
+        {
+          "id": "GHSA-gg2r-wvfm-q9rx",
+          "modified": "2026-10-21T21:30:26.946223Z"
+        },
+        {
+          "id": "GHSA-j4m9-6w36-pw47",
+          "modified": "2026-10-21T20:15:04.205713Z"
+        },
+        {
+          "id": "GHSA-jg86-v3jv-hrpm",
+          "modified": "2026-10-21T21:30:26.940437Z"
+        },
+        {
+          "id": "GHSA-p4wg-p73j-c528",
+          "modified": "2026-10-20T21:00:04.433571Z"
+        },
+        {
+          "id": "GHSA-pchr-8j38-3x4p",
+          "modified": "2026-10-20T21:00:04.410817Z"
+        },
+        {
+          "id": "GHSA-q45j-58j2-45rg",
+          "modified": "2026-10-20T21:00:04.414260Z"
+        },
+        {
+          "id": "GHSA-rfgq-q3w2-pmv2",
+          "modified": "2026-10-21T21:00:06.704034Z"
+        },
+        {
+          "id": "GHSA-vx6w-vv9f-6gvg",
+          "modified": "2026-10-20T21:00:04.428653Z"
+        },
+        {
+          "id": "GHSA-w889-685w-c8fh",
+          "modified": "2026-10-21T20:15:04.208518Z"
+        },
+        {
+          "id": "GHSA-xgh8-jp6q-p5x8",
+          "modified": "2026-10-21T21:00:06.700667Z"
+        },
+        {
+          "id": "GHSA-xvh5-g6gv-559v",
+          "modified": "2026-10-21T21:45:08.352742Z"
+        }
+      ],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "pip",
+          "ecosystem": "PyPI"
+        },
+        "version": "26.2.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "pluggy",
+          "ecosystem": "PyPI"
+        },
+        "version": "1.6.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "portalocker",
+          "ecosystem": "PyPI"
+        },
+        "version": "4.3.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "pwdlib",
+          "ecosystem": "PyPI"
+        },
+        "version": "0.3.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "pyasn1",
+          "ecosystem": "PyPI"
+        },
+        "version": "0.6.4"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "pyasn1_modules",
+          "ecosystem": "PyPI"
+        },
+        "version": "0.4.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "pycparser",
+          "ecosystem": "PyPI"
+        },
+        "version": "3.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "pydantic",
+          "ecosystem": "PyPI"
+        },
+        "version": "2.13.4"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "pydantic-settings",
+          "ecosystem": "PyPI"
+        },
+        "version": "2.15.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "pydantic_core",
+          "ecosystem": "PyPI"
+        },
+        "version": "2.46.4"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "Pygments",
+          "ecosystem": "PyPI"
+        },
+        "version": "2.21.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "PyJWT",
+          "ecosystem": "PyPI"
+        },
+        "version": "2.13.0"
+      },
+      "vulns": [
+        {
+          "id": "GHSA-2gx3-rcp4-g85q",
+          "modified": "2026-10-01T17:56:20.150726Z"
+        },
+        {
+          "id": "GHSA-42vr-xj54-vc7v",
+          "modified": "2026-10-01T17:56:09.538835Z"
+        },
+        {
+          "id": "GHSA-8wjv-2p76-3863",
+          "modified": "2026-10-01T17:55:45.157085Z"
+        },
+        {
+          "id": "GHSA-9j54-fg26-wv3r",
+          "modified": "2026-10-01T17:56:01.035847Z"
+        },
+        {
+          "id": "GHSA-9v7f-9g4p-ffgj",
+          "modified": "2026-10-01T17:56:19.395032Z"
+        },
+        {
+          "id": "GHSA-ffc3-869f-jxw9",
+          "modified": "2026-10-01T17:55:42.096970Z"
+        },
+        {
+          "id": "GHSA-gvp8-978c-rx2q",
+          "modified": "2026-10-01T17:55:53.001409Z"
+        },
+        {
+          "id": "GHSA-hxm8-2xgr-2p9m",
+          "modified": "2026-10-01T17:55:59.204638Z"
+        },
+        {
+          "id": "GHSA-jwrc-g2q2-pq5p",
+          "modified": "2026-10-01T17:55:44.209063Z"
+        },
+        {
+          "id": "GHSA-p4g4-x82p-q773",
+          "modified": "2026-10-01T17:55:49.051187Z"
+        },
+        {
+          "id": "GHSA-r6x4-923q-g947",
+          "modified": "2026-10-01T17:56:05.452379Z"
+        },
+        {
+          "id": "GHSA-w2cx-738m-mc7w",
+          "modified": "2026-10-01T17:56:17.439454Z"
+        },
+        {
+          "id": "GHSA-w6j9-cwv2-h6wq",
+          "modified": "2026-10-01T17:55:45.889604Z"
+        },
+        {
+          "id": "GHSA-x33g-cr3x-6449",
+          "modified": "2026-10-07T10:11:04.862065Z"
+        },
+        {
+          "id": "PYSEC-2026-4140",
+          "modified": "2026-10-01T17:45:16.627687Z"
+        },
+        {
+          "id": "PYSEC-2026-4141",
+          "modified": "2026-10-01T17:45:16.836914Z"
+        },
+        {
+          "id": "PYSEC-2026-4142",
+          "modified": "2026-10-01T17:45:17.076153Z"
+        },
+        {
+          "id": "PYSEC-2026-4143",
+          "modified": "2026-10-01T17:45:15.998111Z"
+        },
+        {
+          "id": "PYSEC-2026-4144",
+          "modified": "2026-10-01T17:45:15.993924Z"
+        },
+        {
+          "id": "PYSEC-2026-4145",
+          "modified": "2026-10-01T17:45:17.856341Z"
+        },
+        {
+          "id": "PYSEC-2026-4146",
+          "modified": "2026-10-01T17:45:16.841846Z"
+        },
+        {
+          "id": "PYSEC-2026-4147",
+          "modified": "2026-10-01T17:45:17.859342Z"
+        },
+        {
+          "id": "PYSEC-2026-4148",
+          "modified": "2026-10-01T17:45:15.991735Z"
+        },
+        {
+          "id": "PYSEC-2026-4149",
+          "modified": "2026-10-01T17:45:14.256840Z"
+        },
+        {
+          "id": "PYSEC-2026-4150",
+          "modified": "2026-10-01T17:45:17.841640Z"
+        },
+        {
+          "id": "PYSEC-2026-4151",
+          "modified": "2026-10-01T17:45:16.846293Z"
+        },
+        {
+          "id": "PYSEC-2026-4152",
+          "modified": "2026-10-01T17:45:16.840232Z"
+        },
+        {
+          "id": "PYSEC-2026-4183",
+          "modified": "2026-10-07T10:00:03.385350Z"
+        }
+      ],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "pytest",
+          "ecosystem": "PyPI"
+        },
+        "version": "9.1.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "pytest-asyncio",
+          "ecosystem": "PyPI"
+        },
+        "version": "1.4.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "python-dotenv",
+          "ecosystem": "PyPI"
+        },
+        "version": "1.2.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "python-multipart",
+          "ecosystem": "PyPI"
+        },
+        "version": "0.0.32"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "PyYAML",
+          "ecosystem": "PyPI"
+        },
+        "version": "6.0.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "requests",
+          "ecosystem": "PyPI"
+        },
+        "version": "2.34.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "ruff",
+          "ecosystem": "PyPI"
+        },
+        "version": "0.17.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "SAM-2",
+          "ecosystem": "PyPI"
+        },
+        "version": "1.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "setuptools",
+          "ecosystem": "PyPI"
+        },
+        "version": "84.0.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "sniffio",
+          "ecosystem": "PyPI"
+        },
+        "version": "1.3.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "SQLAlchemy",
+          "ecosystem": "PyPI"
+        },
+        "version": "2.0.52"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "starlette",
+          "ecosystem": "PyPI"
+        },
+        "version": "1.6.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "sympy",
+          "ecosystem": "PyPI"
+        },
+        "version": "1.14.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "tenacity",
+          "ecosystem": "PyPI"
+        },
+        "version": "9.1.4"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "torch",
+          "ecosystem": "PyPI"
+        },
+        "version": "2.13.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "torchvision",
+          "ecosystem": "PyPI"
+        },
+        "version": "0.28.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "tqdm",
+          "ecosystem": "PyPI"
+        },
+        "version": "4.70.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "typing-inspection",
+          "ecosystem": "PyPI"
+        },
+        "version": "0.4.4"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "typing_extensions",
+          "ecosystem": "PyPI"
+        },
+        "version": "4.16.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "tzdata",
+          "ecosystem": "PyPI"
+        },
+        "version": "2026.4"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "urllib3",
+          "ecosystem": "PyPI"
+        },
+        "version": "2.7.0"
+      },
+      "vulns": [
+        {
+          "id": "GHSA-8988-9cw3-xx77",
+          "modified": "2026-10-01T17:55:53.793608Z"
+        },
+        {
+          "id": "GHSA-gh4c-6fx4-qh6g",
+          "modified": "2026-10-01T17:55:40.608255Z"
+        },
+        {
+          "id": "GHSA-vxq7-64xx-v4gw",
+          "modified": "2026-10-01T17:55:57.514829Z"
+        },
+        {
+          "id": "PYSEC-2026-4175",
+          "modified": "2026-10-01T17:45:18.542387Z"
+        },
+        {
+          "id": "PYSEC-2026-4176",
+          "modified": "2026-10-01T17:45:18.545924Z"
+        },
+        {
+          "id": "PYSEC-2026-4177",
+          "modified": "2026-10-01T17:45:18.336090Z"
+        }
+      ],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "uvicorn",
+          "ecosystem": "PyPI"
+        },
+        "version": "0.52.4"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "watchfiles",
+          "ecosystem": "PyPI"
+        },
+        "version": "1.2.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "websockets",
+          "ecosystem": "PyPI"
+        },
+        "version": "16.1.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "_flutterfire_internals",
+          "ecosystem": "Pub"
+        },
+        "version": "1.3.77"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "android_file_picker",
+          "ecosystem": "Pub"
+        },
+        "version": "2.0.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "archive",
+          "ecosystem": "Pub"
+        },
+        "version": "4.2.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "args",
+          "ecosystem": "Pub"
+        },
+        "version": "2.7.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "async",
+          "ecosystem": "Pub"
+        },
+        "version": "2.13.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "audioplayers",
+          "ecosystem": "Pub"
+        },
+        "version": "6.8.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "audioplayers_android",
+          "ecosystem": "Pub"
+        },
+        "version": "5.3.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "audioplayers_darwin",
+          "ecosystem": "Pub"
+        },
+        "version": "6.5.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "audioplayers_linux",
+          "ecosystem": "Pub"
+        },
+        "version": "4.3.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "audioplayers_platform_interface",
+          "ecosystem": "Pub"
+        },
+        "version": "7.2.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "audioplayers_web",
+          "ecosystem": "Pub"
+        },
+        "version": "5.3.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "audioplayers_windows",
+          "ecosystem": "Pub"
+        },
+        "version": "4.4.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "barcode",
+          "ecosystem": "Pub"
+        },
+        "version": "2.2.9"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "bidi",
+          "ecosystem": "Pub"
+        },
+        "version": "2.0.13"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "boolean_selector",
+          "ecosystem": "Pub"
+        },
+        "version": "2.1.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "characters",
+          "ecosystem": "Pub"
+        },
+        "version": "1.4.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "checked_yaml",
+          "ecosystem": "Pub"
+        },
+        "version": "2.0.4"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "cli_util",
+          "ecosystem": "Pub"
+        },
+        "version": "0.4.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "clock",
+          "ecosystem": "Pub"
+        },
+        "version": "1.1.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "code_assets",
+          "ecosystem": "Pub"
+        },
+        "version": "1.2.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "collection",
+          "ecosystem": "Pub"
+        },
+        "version": "1.19.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "connectivity_plus",
+          "ecosystem": "Pub"
+        },
+        "version": "7.3.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "connectivity_plus_platform_interface",
+          "ecosystem": "Pub"
+        },
+        "version": "2.1.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "cross_file",
+          "ecosystem": "Pub"
+        },
+        "version": "0.3.5+5"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "crypto",
+          "ecosystem": "Pub"
+        },
+        "version": "3.0.7"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "dart_earcut",
+          "ecosystem": "Pub"
+        },
+        "version": "1.2.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "dart_polylabel2",
+          "ecosystem": "Pub"
+        },
+        "version": "1.0.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "dbus",
+          "ecosystem": "Pub"
+        },
+        "version": "0.7.15"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "equatable",
+          "ecosystem": "Pub"
+        },
+        "version": "2.1.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "fake_async",
+          "ecosystem": "Pub"
+        },
+        "version": "1.3.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "ffi",
+          "ecosystem": "Pub"
+        },
+        "version": "2.2.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "ffi_leak_tracker",
+          "ecosystem": "Pub"
+        },
+        "version": "0.1.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "file",
+          "ecosystem": "Pub"
+        },
+        "version": "7.0.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "file_picker",
+          "ecosystem": "Pub"
+        },
+        "version": "13.1.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "file_picker_darwin",
+          "ecosystem": "Pub"
+        },
+        "version": "2.1.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "file_picker_linux",
+          "ecosystem": "Pub"
+        },
+        "version": "2.0.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "file_picker_platform_interface",
+          "ecosystem": "Pub"
+        },
+        "version": "4.0.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "file_picker_web",
+          "ecosystem": "Pub"
+        },
+        "version": "4.0.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "file_selector_linux",
+          "ecosystem": "Pub"
+        },
+        "version": "0.9.4"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "file_selector_macos",
+          "ecosystem": "Pub"
+        },
+        "version": "0.9.5"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "file_selector_platform_interface",
+          "ecosystem": "Pub"
+        },
+        "version": "2.7.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "file_selector_windows",
+          "ecosystem": "Pub"
+        },
+        "version": "0.9.3+5"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "firebase_core",
+          "ecosystem": "Pub"
+        },
+        "version": "4.14.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "firebase_core_platform_interface",
+          "ecosystem": "Pub"
+        },
+        "version": "8.1.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "firebase_core_web",
+          "ecosystem": "Pub"
+        },
+        "version": "3.11.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "firebase_messaging",
+          "ecosystem": "Pub"
+        },
+        "version": "16.6.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "firebase_messaging_platform_interface",
+          "ecosystem": "Pub"
+        },
+        "version": "4.10.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "firebase_messaging_web",
+          "ecosystem": "Pub"
+        },
+        "version": "4.2.5"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "fixnum",
+          "ecosystem": "Pub"
+        },
+        "version": "1.1.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "flame",
+          "ecosystem": "Pub"
+        },
+        "version": "1.38.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "flutter_launcher_icons",
+          "ecosystem": "Pub"
+        },
+        "version": "0.14.4"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "flutter_lints",
+          "ecosystem": "Pub"
+        },
+        "version": "6.0.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "flutter_map",
+          "ecosystem": "Pub"
+        },
+        "version": "8.3.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "flutter_plugin_android_lifecycle",
+          "ecosystem": "Pub"
+        },
+        "version": "2.0.35"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "flutter_secure_storage",
+          "ecosystem": "Pub"
+        },
+        "version": "10.3.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "flutter_secure_storage_darwin",
+          "ecosystem": "Pub"
+        },
+        "version": "0.3.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "flutter_secure_storage_linux",
+          "ecosystem": "Pub"
+        },
+        "version": "3.0.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "flutter_secure_storage_platform_interface",
+          "ecosystem": "Pub"
+        },
+        "version": "2.0.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "flutter_secure_storage_web",
+          "ecosystem": "Pub"
+        },
+        "version": "2.1.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "flutter_secure_storage_windows",
+          "ecosystem": "Pub"
+        },
+        "version": "4.2.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "flutter_timezone",
+          "ecosystem": "Pub"
+        },
+        "version": "5.1.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "geoclue",
+          "ecosystem": "Pub"
+        },
+        "version": "0.1.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "geocoding",
+          "ecosystem": "Pub"
+        },
+        "version": "5.0.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "geocoding_android",
+          "ecosystem": "Pub"
+        },
+        "version": "5.1.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "geocoding_darwin",
+          "ecosystem": "Pub"
+        },
+        "version": "1.0.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "geocoding_platform_interface",
+          "ecosystem": "Pub"
+        },
+        "version": "5.0.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "geolocator",
+          "ecosystem": "Pub"
+        },
+        "version": "14.0.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "geolocator_android",
+          "ecosystem": "Pub"
+        },
+        "version": "5.0.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "geolocator_apple",
+          "ecosystem": "Pub"
+        },
+        "version": "2.3.14"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "geolocator_linux",
+          "ecosystem": "Pub"
+        },
+        "version": "0.2.6"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "geolocator_platform_interface",
+          "ecosystem": "Pub"
+        },
+        "version": "4.3.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "geolocator_web",
+          "ecosystem": "Pub"
+        },
+        "version": "4.1.4"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "geolocator_windows",
+          "ecosystem": "Pub"
+        },
+        "version": "0.2.5"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "glob",
+          "ecosystem": "Pub"
+        },
+        "version": "2.2.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "google_fonts",
+          "ecosystem": "Pub"
+        },
+        "version": "8.2.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "google_identity_services_web",
+          "ecosystem": "Pub"
+        },
+        "version": "0.3.3+1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "google_sign_in",
+          "ecosystem": "Pub"
+        },
+        "version": "6.3.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "google_sign_in_android",
+          "ecosystem": "Pub"
+        },
+        "version": "6.2.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "google_sign_in_ios",
+          "ecosystem": "Pub"
+        },
+        "version": "5.9.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "google_sign_in_platform_interface",
+          "ecosystem": "Pub"
+        },
+        "version": "2.5.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "google_sign_in_web",
+          "ecosystem": "Pub"
+        },
+        "version": "0.12.4+4"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "gsettings",
+          "ecosystem": "Pub"
+        },
+        "version": "0.2.8"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "hooks",
+          "ecosystem": "Pub"
+        },
+        "version": "2.0.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "http",
+          "ecosystem": "Pub"
+        },
+        "version": "1.6.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "http_parser",
+          "ecosystem": "Pub"
+        },
+        "version": "4.1.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "image",
+          "ecosystem": "Pub"
+        },
+        "version": "4.9.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "image_picker",
+          "ecosystem": "Pub"
+        },
+        "version": "1.2.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "image_picker_android",
+          "ecosystem": "Pub"
+        },
+        "version": "0.8.13+19"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "image_picker_for_web",
+          "ecosystem": "Pub"
+        },
+        "version": "3.1.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "image_picker_ios",
+          "ecosystem": "Pub"
+        },
+        "version": "0.8.13+6"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "image_picker_linux",
+          "ecosystem": "Pub"
+        },
+        "version": "0.2.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "image_picker_macos",
+          "ecosystem": "Pub"
+        },
+        "version": "0.2.2+1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "image_picker_platform_interface",
+          "ecosystem": "Pub"
+        },
+        "version": "2.11.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "image_picker_windows",
+          "ecosystem": "Pub"
+        },
+        "version": "0.2.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "intl",
+          "ecosystem": "Pub"
+        },
+        "version": "0.20.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "jni",
+          "ecosystem": "Pub"
+        },
+        "version": "1.0.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "jni_flutter",
+          "ecosystem": "Pub"
+        },
+        "version": "1.0.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "jni_util",
+          "ecosystem": "Pub"
+        },
+        "version": "1.0.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "json_annotation",
+          "ecosystem": "Pub"
+        },
+        "version": "4.12.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "latlong2",
+          "ecosystem": "Pub"
+        },
+        "version": "0.9.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "leak_tracker",
+          "ecosystem": "Pub"
+        },
+        "version": "11.0.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "leak_tracker_flutter_testing",
+          "ecosystem": "Pub"
+        },
+        "version": "3.0.10"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "leak_tracker_testing",
+          "ecosystem": "Pub"
+        },
+        "version": "3.0.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "lints",
+          "ecosystem": "Pub"
+        },
+        "version": "6.1.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "logging",
+          "ecosystem": "Pub"
+        },
+        "version": "1.3.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "lucide_icons_flutter",
+          "ecosystem": "Pub"
+        },
+        "version": "3.1.19"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "matcher",
+          "ecosystem": "Pub"
+        },
+        "version": "0.12.20"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "material_color_utilities",
+          "ecosystem": "Pub"
+        },
+        "version": "0.13.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "meta",
+          "ecosystem": "Pub"
+        },
+        "version": "1.18.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "mgrs_dart",
+          "ecosystem": "Pub"
+        },
+        "version": "3.0.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "mime",
+          "ecosystem": "Pub"
+        },
+        "version": "2.0.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "native_toolchain_c",
+          "ecosystem": "Pub"
+        },
+        "version": "0.19.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "nm",
+          "ecosystem": "Pub"
+        },
+        "version": "0.5.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "objective_c",
+          "ecosystem": "Pub"
+        },
+        "version": "9.5.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "ordered_set",
+          "ecosystem": "Pub"
+        },
+        "version": "8.0.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "package_config",
+          "ecosystem": "Pub"
+        },
+        "version": "3.0.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "package_info_plus",
+          "ecosystem": "Pub"
+        },
+        "version": "10.2.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "package_info_plus_platform_interface",
+          "ecosystem": "Pub"
+        },
+        "version": "4.1.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "path",
+          "ecosystem": "Pub"
+        },
+        "version": "1.9.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "path_parsing",
+          "ecosystem": "Pub"
+        },
+        "version": "1.1.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "path_provider",
+          "ecosystem": "Pub"
+        },
+        "version": "2.1.6"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "path_provider_android",
+          "ecosystem": "Pub"
+        },
+        "version": "2.3.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "path_provider_foundation",
+          "ecosystem": "Pub"
+        },
+        "version": "2.6.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "path_provider_linux",
+          "ecosystem": "Pub"
+        },
+        "version": "2.2.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "path_provider_platform_interface",
+          "ecosystem": "Pub"
+        },
+        "version": "2.1.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "path_provider_windows",
+          "ecosystem": "Pub"
+        },
+        "version": "2.3.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "pdf",
+          "ecosystem": "Pub"
+        },
+        "version": "3.13.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "pdf_widget_wrapper",
+          "ecosystem": "Pub"
+        },
+        "version": "1.0.4"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "petitparser",
+          "ecosystem": "Pub"
+        },
+        "version": "7.0.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "platform",
+          "ecosystem": "Pub"
+        },
+        "version": "3.1.6"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "plugin_platform_interface",
+          "ecosystem": "Pub"
+        },
+        "version": "2.1.8"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "posix",
+          "ecosystem": "Pub"
+        },
+        "version": "6.5.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "printing",
+          "ecosystem": "Pub"
+        },
+        "version": "5.15.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "proj4dart",
+          "ecosystem": "Pub"
+        },
+        "version": "3.0.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "pub_semver",
+          "ecosystem": "Pub"
+        },
+        "version": "2.2.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "qr",
+          "ecosystem": "Pub"
+        },
+        "version": "3.0.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "qr_flutter",
+          "ecosystem": "Pub"
+        },
+        "version": "4.1.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "quiver",
+          "ecosystem": "Pub"
+        },
+        "version": "3.2.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "record_use",
+          "ecosystem": "Pub"
+        },
+        "version": "0.6.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "share_plus",
+          "ecosystem": "Pub"
+        },
+        "version": "13.3.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "share_plus_platform_interface",
+          "ecosystem": "Pub"
+        },
+        "version": "7.2.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "simple_sparse_list",
+          "ecosystem": "Pub"
+        },
+        "version": "0.1.4"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "source_span",
+          "ecosystem": "Pub"
+        },
+        "version": "1.10.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "sqflite",
+          "ecosystem": "Pub"
+        },
+        "version": "2.4.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "sqflite_android",
+          "ecosystem": "Pub"
+        },
+        "version": "2.4.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "sqflite_common",
+          "ecosystem": "Pub"
+        },
+        "version": "2.5.11"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "sqflite_common_ffi",
+          "ecosystem": "Pub"
+        },
+        "version": "2.4.2+1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "sqflite_darwin",
+          "ecosystem": "Pub"
+        },
+        "version": "2.4.3+1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "sqflite_platform_interface",
+          "ecosystem": "Pub"
+        },
+        "version": "2.4.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "sqlite3",
+          "ecosystem": "Pub"
+        },
+        "version": "3.5.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "stack_trace",
+          "ecosystem": "Pub"
+        },
+        "version": "1.12.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "stream_channel",
+          "ecosystem": "Pub"
+        },
+        "version": "2.1.4"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "string_scanner",
+          "ecosystem": "Pub"
+        },
+        "version": "1.4.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "synchronized",
+          "ecosystem": "Pub"
+        },
+        "version": "3.4.1+2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "term_glyph",
+          "ecosystem": "Pub"
+        },
+        "version": "1.2.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "test_api",
+          "ecosystem": "Pub"
+        },
+        "version": "0.7.12"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "tflite_flutter",
+          "ecosystem": "Pub"
+        },
+        "version": "0.12.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "typed_data",
+          "ecosystem": "Pub"
+        },
+        "version": "1.4.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "unicode",
+          "ecosystem": "Pub"
+        },
+        "version": "1.1.9"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "url_launcher_linux",
+          "ecosystem": "Pub"
+        },
+        "version": "3.2.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "url_launcher_platform_interface",
+          "ecosystem": "Pub"
+        },
+        "version": "2.3.2"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "url_launcher_web",
+          "ecosystem": "Pub"
+        },
+        "version": "2.4.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "url_launcher_windows",
+          "ecosystem": "Pub"
+        },
+        "version": "3.1.6"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "uuid",
+          "ecosystem": "Pub"
+        },
+        "version": "4.6.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "vector_math",
+          "ecosystem": "Pub"
+        },
+        "version": "2.4.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "vm_service",
+          "ecosystem": "Pub"
+        },
+        "version": "15.3.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "web",
+          "ecosystem": "Pub"
+        },
+        "version": "1.1.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "web_socket",
+          "ecosystem": "Pub"
+        },
+        "version": "1.0.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "web_socket_channel",
+          "ecosystem": "Pub"
+        },
+        "version": "3.0.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "win32",
+          "ecosystem": "Pub"
+        },
+        "version": "6.4.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "windows_file_picker",
+          "ecosystem": "Pub"
+        },
+        "version": "2.0.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "wkt_parser",
+          "ecosystem": "Pub"
+        },
+        "version": "2.0.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "xdg_directories",
+          "ecosystem": "Pub"
+        },
+        "version": "1.1.0"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "xml",
+          "ecosystem": "Pub"
+        },
+        "version": "7.0.1"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    },
+    {
+      "query": {
+        "package": {
+          "name": "yaml",
+          "ecosystem": "Pub"
+        },
+        "version": "3.1.3"
+      },
+      "vulns": [],
+      "pagination_complete": true
+    }
+  ],
+  "advisories": {
+    "GHSA-22hg-r758-rrw9": {
+      "id": "GHSA-22hg-r758-rrw9",
+      "aliases": [
+        "CVE-2026-112390"
+      ],
+      "summary": "Pillow: Infinite loop in MIC n_frames when the embedded TIFF",
+      "modified": "2026-10-21T20:45:04.649560684Z",
+      "published": "2026-10-21T20:39:49Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-22hg-r758-rrw9"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112390"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/commit/26cb3ed061173b817b9ee4b6f507cb0e1e293218"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/python-pillow/Pillow"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+        }
+      ]
+    },
+    "GHSA-254f-3936-288h": {
+      "id": "GHSA-254f-3936-288h",
+      "aliases": [
+        "CVE-2026-112391"
+      ],
+      "summary": "Pillow: PdfParser can recurse without limit in get_value() and linearize_page_tree()",
+      "modified": "2026-10-21T21:15:08.507283881Z",
+      "published": "2026-10-21T21:11:07Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-254f-3936-288h"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112391"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/commit/94cb11c44ff7345414da17ebfea1598a529ad9cd"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/python-pillow/Pillow"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+        }
+      ]
+    },
+    "GHSA-27h8-gf7j-v5hc": {
+      "id": "GHSA-27h8-gf7j-v5hc",
+      "aliases": [
+        "CVE-2026-112392"
+      ],
+      "summary": "Pillow: NULL dereference in ImagingExpand via rank filters on zero-size images",
+      "modified": "2026-10-21T20:45:04.650633812Z",
+      "published": "2026-10-21T20:32:37Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-27h8-gf7j-v5hc"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112392"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/commit/443e3130a8c11594fd0e296afad497e11e678961"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/python-pillow/Pillow"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+        }
+      ]
+    },
+    "GHSA-2gx3-rcp4-g85q": {
+      "id": "GHSA-2gx3-rcp4-g85q",
+      "aliases": [
+        "CVE-2026-101917",
+        "PYSEC-2026-4140"
+      ],
+      "summary": "PyJWT: PyJWKClient still amplifies unauthenticated JWKS fetches on unknown kid values (incomplete fix of CVE-2026-48524)",
+      "modified": "2026-10-01T17:56:20.150726241Z",
+      "published": "2026-09-29T23:11:51Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/jpadilla/pyjwt/security/advisories/GHSA-2gx3-rcp4-g85q"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101917"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/jpadilla/pyjwt/commit/ba4853a75fb9676362da17f67d0f64bd18afd4e1"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/jpadilla/pyjwt"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/jpadilla/pyjwt/releases/tag/2.14.0"
+        }
+      ]
+    },
+    "GHSA-332p-7hrc-92wf": {
+      "id": "GHSA-332p-7hrc-92wf",
+      "aliases": [
+        "CVE-2026-112393"
+      ],
+      "summary": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
+      "modified": "2026-10-21T21:45:08.360916626Z",
+      "published": "2026-10-21T21:28:09Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-332p-7hrc-92wf"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112393"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/commit/11582e5ffbdceb973d5ee593f3105af5a9852b40"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/python-pillow/Pillow"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+        }
+      ]
+    },
+    "GHSA-42vr-xj54-vc7v": {
+      "id": "GHSA-42vr-xj54-vc7v",
+      "aliases": [
+        "CVE-2026-101918",
+        "PYSEC-2026-4141"
+      ],
+      "summary": "PyJWT: Unauthenticated RecursionError DoS in pre-verification payload parse (PyJWKClient.get_signing_key_from_jwt / verify_signature=False)",
+      "modified": "2026-10-01T17:56:09.538835697Z",
+      "published": "2026-09-30T15:41:05Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/jpadilla/pyjwt/security/advisories/GHSA-42vr-xj54-vc7v"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101918"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/jpadilla/pyjwt/commit/5fde08a6cf906aa7698de2d6391d88b73006b17b"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/jpadilla/pyjwt"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/jpadilla/pyjwt/releases/tag/2.15.0"
+        }
+      ]
+    },
+    "GHSA-4558-3h8r-v8xp": {
+      "id": "GHSA-4558-3h8r-v8xp",
+      "aliases": [
+        "CVE-2026-112394"
+      ],
+      "summary": "Pillow: P;2L and P;4L decoders may read 1 to 3 bytes past the passed buffer size",
+      "modified": "2026-10-21T20:15:04.190082872Z",
+      "published": "2026-10-21T20:00:32Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-4558-3h8r-v8xp"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112394"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/pull/9723"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/commit/392ee6f0d19a4adb766a63e9a99f3c28193b8d31"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/python-pillow/Pillow"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+        }
+      ]
+    },
+    "GHSA-462x-pgg6-55fp": {
+      "id": "GHSA-462x-pgg6-55fp",
+      "aliases": [
+        "CVE-2026-112395"
+      ],
+      "summary": "Pillow tiled-TIFF decoder reads past tile buffer in copy4 (Unpack.c:1290)",
+      "modified": "2026-10-20T21:00:04.394527086Z",
+      "published": "2026-10-20T20:49:26Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-462x-pgg6-55fp"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112395"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/commit/76869efdbbf2ad7dccd7536520fb61b7a00ab61e"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/python-pillow/Pillow"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+        }
+      ]
+    },
+    "GHSA-4rr5-89j8-mwwm": {
+      "id": "GHSA-4rr5-89j8-mwwm",
+      "aliases": [
+        "CVE-2026-112396"
+      ],
+      "summary": "Pillow: Heap use-after-free when encoding TIFF to an in-memory buffer",
+      "modified": "2026-10-21T21:45:08.356370081Z",
+      "published": "2026-10-21T21:24:19Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-4rr5-89j8-mwwm"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112396"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/commit/dc95da20207827a062cfbf551ee9f6031465a8bb"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/python-pillow/Pillow"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+        }
+      ]
+    },
+    "GHSA-5639-2j2p-m4mx": {
+      "id": "GHSA-5639-2j2p-m4mx",
+      "aliases": [
+        "CVE-2026-102991",
+        "PYSEC-2026-4243"
+      ],
+      "summary": "Mako: Path traversal via drive-letter URI on Windows in TemplateLookup",
+      "modified": "2026-10-15T14:55:45.473045835Z",
+      "published": "2026-10-05T23:42:02Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/sqlalchemy/mako/security/advisories/GHSA-5639-2j2p-m4mx"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102991"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/sqlalchemy/mako/issues/441"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/sqlalchemy/mako/commit/000ed85e4e48771eff460bf4fc721fb43de80e08"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/sqlalchemy/mako"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/sqlalchemy/mako/releases/tag/rel_1_4_2"
+        }
+      ]
+    },
+    "GHSA-58r4-6rv3-gfh8": {
+      "id": "GHSA-58r4-6rv3-gfh8",
+      "aliases": [
+        "CVE-2026-112397"
+      ],
+      "summary": "Pillow: Out-of-bounds access in _imagingmorph on a zero-width image",
+      "modified": "2026-10-20T21:00:04.401258078Z",
+      "published": "2026-10-20T20:56:22Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-58r4-6rv3-gfh8"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112397"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/commit/18f7c0dfee93063c51db6ed0ca8c4da2999dcb64"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/python-pillow/Pillow"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+        }
+      ]
+    },
+    "GHSA-5xm2-6676-qcp9": {
+      "id": "GHSA-5xm2-6676-qcp9",
+      "aliases": [
+        "CVE-2026-112399"
+      ],
+      "summary": "Pillow: APNG background disposal allocates full canvas before decompression bomb check",
+      "modified": "2026-10-21T21:30:26.938404669Z",
+      "published": "2026-10-21T21:17:56Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-5xm2-6676-qcp9"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112399"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/commit/f1acfc54c53502948d0d14121872061df931db48"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/python-pillow/Pillow"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+        }
+      ]
+    },
+    "GHSA-65qm-jvmh-6pqg": {
+      "id": "GHSA-65qm-jvmh-6pqg",
+      "aliases": [
+        "CVE-2026-112400"
+      ],
+      "summary": "Pillow: GIF seek keeps rejected size after DecompressionBombError, allowing DoS",
+      "modified": "2026-10-20T21:00:04.406280915Z",
+      "published": "2026-10-20T20:53:36Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-65qm-jvmh-6pqg"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112400"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/commit/6faed707cfb760a4cbd726ddc8406f576cf35bf7"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/python-pillow/Pillow"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+        }
+      ]
+    },
+    "GHSA-6q48-6c7w-9gw2": {
+      "id": "GHSA-6q48-6c7w-9gw2",
+      "aliases": [
+        "PYSEC-2026-4320"
+      ],
+      "summary": "certifi bundles emSign root CAs with compromised intermediate CA keys",
+      "modified": "2026-10-20T22:11:14.336568839Z",
+      "published": "2026-10-20T19:35:05Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/certifi/python-certifi/security/advisories/GHSA-6q48-6c7w-9gw2"
+        },
+        {
+          "type": "WEB",
+          "url": "https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576"
+        },
+        {
+          "type": "WEB",
+          "url": "https://emudhra.we-have-a-problem.com"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/certifi/python-certifi"
+        }
+      ]
+    },
+    "GHSA-74r2-7ff9-mjj2": {
+      "id": "GHSA-74r2-7ff9-mjj2",
+      "aliases": [
+        "CVE-2026-112401"
+      ],
+      "summary": "Pillow: Quadratic GIF comment concatenation allows DoS in Image.open()",
+      "modified": "2026-10-21T21:00:06.702560170Z",
+      "published": "2026-10-21T20:42:11Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-74r2-7ff9-mjj2"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112401"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/commit/68a3fe957d8a4d552e8c69d96066d749f0614c7e"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/python-pillow/Pillow"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+        }
+      ]
+    },
+    "GHSA-7mwm-ghpf-9vrm": {
+      "id": "GHSA-7mwm-ghpf-9vrm",
+      "aliases": [
+        "CVE-2026-112402"
+      ],
+      "summary": "Pillow: Double free in ImagingScaleAffine on calloc failure via Image.transform",
+      "modified": "2026-10-21T20:15:04.188796447Z",
+      "published": "2026-10-21T20:03:56Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-7mwm-ghpf-9vrm"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112402"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/commit/aafa6c75f7cdabb9f409a8aac7c780bea31d08d9"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/python-pillow/Pillow"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+        }
+      ]
+    },
+    "GHSA-8988-9cw3-xx77": {
+      "id": "GHSA-8988-9cw3-xx77",
+      "aliases": [
+        "CVE-2026-97687",
+        "PYSEC-2026-4175"
+      ],
+      "summary": "urllib3: HTTPS proxy TLS configuration may be ignored or overridden",
+      "modified": "2026-10-01T17:55:53.793608550Z",
+      "published": "2026-09-30T14:46:04Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/urllib3/urllib3/security/advisories/GHSA-8988-9cw3-xx77"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97687"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/urllib3/urllib3/pull/5093"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/urllib3/urllib3/commit/07408cec79d1856d81bb42c74a904a24fdb9e465"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/urllib3/urllib3/commit/b6447295fff7b38fdffc67e0df9712d60cef3cc3"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/urllib3/urllib3"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/urllib3/urllib3/releases/tag/2.8.0"
+        }
+      ]
+    },
+    "GHSA-8g5g-8vmr-9782": {
+      "id": "GHSA-8g5g-8vmr-9782",
+      "aliases": [
+        "CVE-2026-112403"
+      ],
+      "summary": "Pillow: Heap buffer overflow in ImagingJpegDecode",
+      "modified": "2026-10-20T21:00:04.391412542Z",
+      "published": "2026-10-20T20:40:07Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-8g5g-8vmr-9782"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112403"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/commit/242a059aedc1935097d9aa1dc3f099750467ba75"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/python-pillow/Pillow"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+        }
+      ]
+    },
+    "GHSA-8wjv-2p76-3863": {
+      "id": "GHSA-8wjv-2p76-3863",
+      "aliases": [
+        "CVE-2026-102265",
+        "PYSEC-2026-4142"
+      ],
+      "summary": "PyJWT: Uncaught RecursionError in jwt.decode() on deeply nested token header",
+      "modified": "2026-10-01T17:55:45.157085612Z",
+      "published": "2026-09-29T23:43:06Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/jpadilla/pyjwt/security/advisories/GHSA-8wjv-2p76-3863"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102265"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/jpadilla/pyjwt/commit/06573692ebcdec8831c3927513b3e87c31fbbb62"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/jpadilla/pyjwt"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/jpadilla/pyjwt/releases/tag/2.14.0"
+        }
+      ]
+    },
+    "GHSA-9j54-fg26-wv3r": {
+      "id": "GHSA-9j54-fg26-wv3r",
+      "aliases": [
+        "CVE-2026-102266",
+        "PYSEC-2026-4143"
+      ],
+      "summary": "PyJWT: PyJWK accepts empty HMAC keys, bypassing PyJWT's empty-key validation",
+      "modified": "2026-10-01T17:56:01.035847258Z",
+      "published": "2026-09-29T23:43:19Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/jpadilla/pyjwt/security/advisories/GHSA-9j54-fg26-wv3r"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102266"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/jpadilla/pyjwt/commit/f91ed44dd65baaf457f4b3353ed35e98a753934c"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/jpadilla/pyjwt"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/jpadilla/pyjwt/releases/tag/2.14.0"
+        }
+      ]
+    },
+    "GHSA-9v7f-9g4p-ffgj": {
+      "id": "GHSA-9v7f-9g4p-ffgj",
+      "aliases": [
+        "CVE-2026-102267",
+        "PYSEC-2026-4144"
+      ],
+      "summary": "PyJWT: PyJWKClient follows redirects when fetching JWKS",
+      "modified": "2026-10-01T17:56:19.395032954Z",
+      "published": "2026-09-29T23:15:00Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/jpadilla/pyjwt/security/advisories/GHSA-9v7f-9g4p-ffgj"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102267"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/jpadilla/pyjwt/commit/0a795b8e1f6ef08f634aa7086fc41cc6d5ce3e56"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/jpadilla/pyjwt"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/jpadilla/pyjwt/releases/tag/2.14.0"
+        }
+      ]
+    },
+    "GHSA-c3wx-c55w-pxjq": {
+      "id": "GHSA-c3wx-c55w-pxjq",
+      "aliases": [
+        "CVE-2026-106441",
+        "PYSEC-2026-4221"
+      ],
+      "summary": "Hydra logging configuration permits unsafe callable resolution",
+      "modified": "2026-10-15T14:55:50.399421541Z",
+      "published": "2026-10-07T18:03:55Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/hydra-ecosystem/hydra/security/advisories/GHSA-c3wx-c55w-pxjq"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106441"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/hydra-ecosystem/hydra/pull/3420"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/hydra-ecosystem/hydra/commit/76bfc30ce1f3105416941dd2e3a562568e369120"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/hydra-ecosystem/hydra/commit/ff3e4dba890c29a21d8c2bb867ee87d37ccf21d0"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/hydra-ecosystem/hydra"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/hydra-ecosystem/hydra/releases/tag/v1.3.6"
+        }
+      ]
+    },
+    "GHSA-c6hw-5grf-ff96": {
+      "id": "GHSA-c6hw-5grf-ff96",
+      "aliases": [
+        "CVE-2026-112404"
+      ],
+      "summary": "Pillow: OOB read in TiffDecode.c tile and RGBA paths leaks heap memory into pixels",
+      "modified": "2026-10-20T21:00:04.387041458Z",
+      "published": "2026-10-20T20:42:00Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-c6hw-5grf-ff96"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112404"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/commit/1d4773e6cea0c4a2814e6d4cdc099bbcf56da6ce"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/python-pillow/Pillow"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+        }
+      ]
+    },
+    "GHSA-cp9v-662q-vvx9": {
+      "id": "GHSA-cp9v-662q-vvx9",
+      "aliases": [
+        "CVE-2026-112405"
+      ],
+      "summary": "Pillow: NULL pointer dereference in Image.merge via an unvalidated band 0",
+      "modified": "2026-10-21T20:45:04.636143652Z",
+      "published": "2026-10-21T20:30:25Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-cp9v-662q-vvx9"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112405"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/commit/b6ee66e8b2c2c0932bdf65f963268d9f2927ef86"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/python-pillow/Pillow"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+        }
+      ]
+    },
+    "GHSA-f2g6-542v-9j58": {
+      "id": "GHSA-f2g6-542v-9j58",
+      "aliases": [
+        "CVE-2026-112406"
+      ],
+      "summary": "Pillow: Infinite loop in PdfParser.rewrite_pages on page tree Parent cycle",
+      "modified": "2026-10-21T21:30:27.849961824Z",
+      "published": "2026-10-21T21:21:07Z",
+      "withdrawn": null,
+      "references": [
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-f2g6-542v-9j58"
+        },
+        {
+          "type": "ADVISORY",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112406"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/commit/b3ebf20c694f2f12537a629c30229a1d5a53f777"
+        },
+        {
+          "type": "PACKAGE",
+          "url": "https://github.com/python-pillow/Pillow"
+        },
+        {
+          "type": "WEB",
+          "url": "https://github.com/python-pillow/Pillow/releases/tag/13.0.0"
+        }
+      ]
+    }
+  },
+  "errors": [],
+  "state": "EXECUTED_MATCH_REVIEW_REQUIRED",
+  "limitations": [
+    "Database/version matches are not demonstrated application exploits",
+    "No matches does not prove vulnerability absence",
+    "Shared local Python runtime is not a pinned production deployment",
+    "Source, app data and credentials were not sent",
+    "Git/path dependencies, native SDKs and release/CORS configuration need separate review"
+  ]
+}

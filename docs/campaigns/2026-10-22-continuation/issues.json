@@ -1,0 +1,283 @@
+[
+  {
+    "id": "ACC-F01",
+    "kind": "product_observation",
+    "state": "OPEN_RECOMMENDATION_ONLY",
+    "scenarios": [
+      "ACC-01"
+    ],
+    "hypothesis": "Foreground/background combinations in AuthPage have insufficient contrast.",
+    "test": "ACC login width=320/412 scale=1/2",
+    "result": "SDK textContrast fails four cells: Entrar 2.55 vs 4.5; subtitle 3.02 vs 4.5 at scale1; create-account text also flagged.",
+    "code": [
+      "lib/pages/auth_page.dart",
+      "lib/theme/app_theme.dart"
+    ],
+    "recommendation": "Review composed colors per state and typography; propose a palette adjustment for approval before any visible change.",
+    "correction_commit": null,
+    "revalidation": "Pending product decision; four current failure observations preserved.",
+    "code_commit": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "evidence": [
+      "observations.json",
+      "traceability.json",
+      "flutter_results.json",
+      "mutation_history.json"
+    ],
+    "continuation": "A auditoria foi ampliada para 12 combinações de viewport/escala; 12 células login com falhas, hold4 e erro/teclado1 passaram. Ver observações por célula."
+  },
+  {
+    "id": "ACC-F02",
+    "kind": "product_observation",
+    "state": "OPEN_RECOMMENDATION_ONLY",
+    "scenarios": [
+      "ACC-03"
+    ],
+    "hypothesis": "Fixed button heights and text-only gesture bounds create small semantic targets.",
+    "test": "Android/iOS guidelines across four login cells",
+    "result": "Google target height42; forgot-password height16 at scale1 /31 at scale2; create-account26 at scale1. Android minimum48, iOS44.",
+    "code": [
+      "lib/pages/auth_page.dart"
+    ],
+    "recommendation": "Review layout constraints and invisible hit-area expansion while retaining visual geometry; verify no neighbor overlap before proposing product changes.",
+    "correction_commit": null,
+    "revalidation": "Pending; guidelines and semantic bounds recorded, no physical usability or hit overlap test.",
+    "code_commit": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "evidence": [
+      "observations.json",
+      "traceability.json",
+      "flutter_results.json",
+      "mutation_history.json"
+    ],
+    "continuation": "A auditoria foi ampliada para 12 combinações de viewport/escala; 12 células login com falhas, hold4 e erro/teclado1 passaram. Ver observações por célula."
+  },
+  {
+    "id": "ACC-F03",
+    "kind": "product_observation",
+    "state": "OPEN_RECOMMENDATION_ONLY",
+    "scenarios": [
+      "ACC-02",
+      "ACC-07"
+    ],
+    "hypothesis": "Fixed42 button height constrains text at larger font scaling.",
+    "test": "RenderParagraph.didExceedMaxLines with real AppTheme and bundled fonts",
+    "result": "Continuar com Google clipped at scale2 in320/412x800; no detected clipping at scale1 after font correction. No layout exception captured.",
+    "code": [
+      "lib/pages/auth_page.dart"
+    ],
+    "recommendation": "Evaluate minimum rather than fixed height/adaptive layout in a separate approved proposal; validate scrolling, focus and complete flow before changing appearance.",
+    "correction_commit": null,
+    "revalidation": "Pending; initial viewport only, no screenshot/device claim.",
+    "code_commit": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "evidence": [
+      "observations.json",
+      "traceability.json",
+      "flutter_results.json",
+      "mutation_history.json"
+    ],
+    "continuation": "A auditoria foi ampliada para 12 combinações de viewport/escala; 12 células login com falhas, hold4 e erro/teclado1 passaram. Ver observações por célula."
+  },
+  {
+    "id": "HARNESS-F01",
+    "kind": "oracle_gap",
+    "state": "CORRECTED_REVALIDATED",
+    "scenarios": [
+      "DATA-06"
+    ],
+    "hypothesis": "Completed replacement status hides missing attempt fencing.",
+    "test": "test_DATA06_old_finish_while_new_attempt_is_running",
+    "before": "MUT-07 SURVIVED security-01; old test finished newer job before checking late old result.",
+    "result": "security-03 baseline PASS and MUT-07 KILLED at intermediate running state.",
+    "correction_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "product_change": false,
+    "code_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+    "evidence": [
+      "observations.json",
+      "traceability.json",
+      "api_results.json",
+      "mutation_history.json"
+    ]
+  },
+  {
+    "id": "HARNESS-F02",
+    "kind": "fixture_error",
+    "state": "CORRECTED_REVALIDATED",
+    "scenarios": [
+      "SEC-07"
+    ],
+    "hypothesis": "Synthetic special-use .invalid email is rejected by response EmailStr validation.",
+    "test": "test_SEC07_refresh_and_logout_revoke_previous_credentials",
+    "before": "security-02 33PASS/1FAIL; four mutations blocked, never killed.",
+    "result": "example.com synthetic addresses plus AuthTokens validation; security-03 all34PASS; MUT-16 KILLED. No SMTP was used.",
+    "correction_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "product_change": false,
+    "code_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+    "evidence": [
+      "observations.json",
+      "traceability.json",
+      "api_results.json",
+      "mutation_history.json"
+    ]
+  },
+  {
+    "id": "HARNESS-F03",
+    "kind": "audit_lifecycle_error",
+    "state": "CORRECTED_REVALIDATED",
+    "scenarios": [
+      "ACC-01",
+      "ACC-02",
+      "ACC-03",
+      "ACC-05",
+      "ACC-06",
+      "ACC-07"
+    ],
+    "hypothesis": "Semantics handles/debug platform override survived until framework invariant verification; theme/fonts differed.",
+    "test": "eight explicit audit cells",
+    "before": "accessibility-01/02 eight errors each; not eight product failures.",
+    "result": "finally cleanup before invariant check; real theme and pending bundled fonts; accessibility-03 four hold PASS and four login failures with findings ACC-F01/02/03.",
+    "correction_commit": "fb1768b007db19423d8d695ce682ec4f36096cb4",
+    "product_change": false,
+    "code_commit": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "evidence": [
+      "observations.json",
+      "traceability.json",
+      "flutter_results.json",
+      "mutation_history.json"
+    ]
+  },
+  {
+    "id": "DATA-F01",
+    "kind": "product_observation",
+    "state": "OPEN_RECOMMENDATION_ONLY",
+    "scenarios": [
+      "DATA-02"
+    ],
+    "description": "Arquivo novo permanece no storage após rollback de upload",
+    "hypothesis": "O efeito no filesystem precede o commit e não participa da transação SQL.",
+    "result": "Falha injetada após salvar o arquivo e antes de registrar a mudança; banco e arquivos anteriores intactos, um arquivo órfão observado.",
+    "code": [
+      "app/routers/sync.py"
+    ],
+    "recommendation": "Avaliar compensação por referências/idade ou staging; não remover hash compartilhado sem verificar referências.",
+    "code_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+    "correction_commit": null,
+    "change_applied": null,
+    "before_after": null,
+    "revalidation": "Pendente de etapa autorizada de correção; código do produto preservado.",
+    "evidence": [
+      "observations.json",
+      "traceability.json",
+      "results.json"
+    ]
+  },
+  {
+    "id": "DLV-F01",
+    "kind": "product_observation",
+    "state": "OPEN_RECOMMENDATION_ONLY",
+    "scenarios": [
+      "DLV-02"
+    ],
+    "description": "SMTP pode entregar OTP que não fica persistido",
+    "hypothesis": "O envio externo acontece antes do commit do chamador.",
+    "result": "Mailpit próprio aceitou uma mensagem; commit injetado falhou, zero OTP persistido.",
+    "code": [
+      "app/routers/auth.py"
+    ],
+    "recommendation": "Avaliar outbox ou ordenação transacional, com idempotência e tratamento da aceitação ambígua do SMTP.",
+    "code_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+    "correction_commit": null,
+    "change_applied": null,
+    "before_after": null,
+    "revalidation": "Pendente de etapa autorizada de correção; código do produto preservado.",
+    "evidence": [
+      "observations.json",
+      "traceability.json",
+      "results.json"
+    ]
+  },
+  {
+    "id": "SEC-F01",
+    "kind": "product_observation",
+    "state": "OPEN_RECOMMENDATION_ONLY",
+    "scenarios": [
+      "SEC-10"
+    ],
+    "description": "Sessão revogada continua aceitando ação no loop WebSocket já aberto",
+    "hypothesis": "O loop autentica na abertura e não revalida a sessão antes de cada ação relevante.",
+    "result": "Reproduzido também em TCP real: revogação e expiração da sessão persistida; HTTP401, novo upgrade WebSocket403, conexão preexistente entregou um evento typing em cada variante. Não exercita todas as ações nem expiração JWT no relógio real.",
+    "code": [
+      "app/routers/websocket.py"
+    ],
+    "recommendation": "Avaliar revalidação/invalidar conexões na revogação; definir política para expiração e ações em curso; confirmar com transporte TCP próprio.",
+    "code_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+    "correction_commit": null,
+    "change_applied": null,
+    "before_after": null,
+    "revalidation": "Caracterização TCP concluída em network-01; contrato seguro ainda pendente de correção autorizada.",
+    "evidence": [
+      "observations.json",
+      "traceability.json",
+      "results.json"
+    ]
+  },
+  {
+    "id": "SEC-F02",
+    "kind": "product_observation",
+    "state": "OPEN_RECOMMENDATION_ONLY",
+    "scenarios": [
+      "SEC-08"
+    ],
+    "description": "Exportação de conta com MissingReport falha",
+    "hypothesis": "O serializador usa um atributo inexistente do modelo de busca.",
+    "result": "Contrato HTTP200 falhou com AttributeError: MissingReport.cat_client_id ausente. Reproduzido em A/main e B/refatorada; preexistente.",
+    "code": [
+      "app/routers/product.py"
+    ],
+    "recommendation": "Revisar contrato/modelo da busca e testar exportação com/sem busca ativa/resolvida, preservando isolamento de conta.",
+    "code_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+    "correction_commit": null,
+    "change_applied": null,
+    "before_after": null,
+    "revalidation": "Pendente de etapa autorizada de correção; código do produto preservado.",
+    "evidence": [
+      "observations.json",
+      "traceability.json",
+      "results.json"
+    ]
+  },
+  {
+    "id": "HARNESS-F04",
+    "kind": "tooling_organization",
+    "state": "RESOLVED",
+    "description": "Probe Flutter armazenado no pacote Python gerava 61 diagnósticos em cascata no editor.",
+    "hypothesis": "Falta de contexto de resolução de pacotes Dart.",
+    "change_applied": "Fonte canônica movida para catlogue/tool; executor congela novo caminho; dependência SQLite existente declarada dev; lints corrigidos.",
+    "correction_commit": {
+      "api": "68b60400a7fe9dfddad864048c3645ed715792e1",
+      "flutter": "a48ddbbaf891920ec790d7b545f9327f233c2c7a"
+    },
+    "before_after": "61 diagnósticos anexados; após ajuste, análise dos três tools sem issues. Quatro probes A/B e ciclo de conta passaram.",
+    "revalidation": "probe-layout-01, teste unitário de snapshot e análise estática."
+  },
+  {
+    "id": "HARNESS-F05",
+    "kind": "classification_error",
+    "state": "RESOLVED",
+    "description": "Reporter Flutter usa failure além de error; classificador original registrou falsos sobreviventes.",
+    "hypothesis": "Protocolo incompleto do executor.",
+    "change_applied": "Reconhecer failure, revisar JSONL preservado e separar erro sem asserção como inconclusivo. Novo oráculo explícito de inbox.",
+    "correction_commit": "3e87914",
+    "before_after": "Histórico bruto intacto; MUT-22 inicialmente inconclusivo na revisão estrita, depois morto com asserção explícita.",
+    "revalidation": "flutter-resilience-03 e testes do classificador."
+  },
+  {
+    "id": "HARNESS-F06",
+    "kind": "configuration_gap",
+    "state": "RESOLVED",
+    "description": "Regressão completa assumia recompensas habilitadas, mas rollout isolado estava em 0%.",
+    "hypothesis": "Condição do ambiente, não regressão por refatoração.",
+    "change_applied": "Variantes explícitas e registradas de rollout100 e rollout0 somente no serviço descartável.",
+    "correction_commit": "3e87914",
+    "before_after": "full-regression-01 329PASS/1FAIL; cenário original passou com rollout100 e variante desativada passou com rollout0.",
+    "revalidation": "live-diagnostic-02-enabled e live-diagnostic-03-disabled."
+  }
+]

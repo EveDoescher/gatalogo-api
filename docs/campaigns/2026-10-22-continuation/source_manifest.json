@@ -1,0 +1,57 @@
+{
+  "sources": {
+    "A-api": {
+      "repo": "C:\\Users\\Evelynn_Doescher\\Documents\\Projetos\\flutter\\gatalogo-ai-api",
+      "ref": "main",
+      "sha": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "path": "C:\\Users\\Evelynn_Doescher\\Documents\\Projetos\\flutter\\gatalogo-ai-api\\.tmp\\quality-campaign\\20261021T194312Z-953aa74e\\sources\\A\\api",
+      "excluded_sensitive_paths": [],
+      "history": [
+        "eced9c3 chore: preserve pending application updates before quality audit",
+        "9ecc51c feat(quintal): add production system, routines, minigames, push notifications, and milestones",
+        "3a31733 feat: add unified milestones, Quintal encounters and poster sharing"
+      ]
+    },
+    "B-api": {
+      "repo": "C:\\Users\\Evelynn_Doescher\\Documents\\Projetos\\flutter\\gatalogo-ai-api",
+      "ref": "code-quality-cleanup",
+      "sha": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "path": "C:\\Users\\Evelynn_Doescher\\Documents\\Projetos\\flutter\\gatalogo-ai-api\\.tmp\\quality-campaign\\20261021T194312Z-953aa74e\\sources\\B\\api",
+      "excluded_sensitive_paths": [],
+      "history": [
+        "ebb7f68 docs: refine comparison, accessibility and reidentification test methodology",
+        "2324e29 docs: specify efficiency, integrity and mutation test scenarios",
+        "3f10aba perf: batch catalog reads and release connections during photo analysis"
+      ]
+    },
+    "A-flutter": {
+      "repo": "C:\\Users\\Evelynn_Doescher\\Documents\\Projetos\\flutter\\catlogue",
+      "ref": "main",
+      "sha": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "path": "C:\\Users\\Evelynn_Doescher\\Documents\\Projetos\\flutter\\gatalogo-ai-api\\.tmp\\quality-campaign\\20261021T194312Z-953aa74e\\sources\\A\\flutter",
+      "excluded_sensitive_paths": [],
+      "history": [
+        "0ed31b2 chore: preserve pending application updates before quality audit",
+        "9a5657a feat(quintal): implement production, routines, minigames, cat coats, and assets",
+        "740bd2c feat: unify progression and improve Quintal, feed and missing posters"
+      ]
+    },
+    "B-flutter": {
+      "repo": "C:\\Users\\Evelynn_Doescher\\Documents\\Projetos\\flutter\\catlogue",
+      "ref": "code-quality-cleanup",
+      "sha": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+      "path": "C:\\Users\\Evelynn_Doescher\\Documents\\Projetos\\flutter\\gatalogo-ai-api\\.tmp\\quality-campaign\\20261021T194312Z-953aa74e\\sources\\B\\flutter",
+      "excluded_sensitive_paths": [],
+      "history": [
+        "469b0ab docs: refine comparison, accessibility and reidentification test methodology",
+        "88e150f docs: specify efficiency, integrity and mutation test scenarios",
+        "5da946d perf: batch local catalog and sync analysis reads"
+      ]
+    }
+  },
+  "executor_commits": {
+    "api": "68b60400a7fe9dfddad864048c3645ed715792e1",
+    "flutter": "a48ddbbaf891920ec790d7b545f9327f233c2c7a"
+  },
+  "runtime": "Same installed dependencies as pilot, not a reconstruction of historical deployments"
+}

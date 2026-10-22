@@ -123,7 +123,7 @@ def mapping(name, flutter=False):
         (
             ("live_build_plant", "rollout_disabled"),
             ["DATA-07"],
-            ["app/services/quintal_production.py", "app/services/quintal_routines.py"],
+            ["app/services/quintal_production.py", "app/services/milestones.py"],
         ),
     ]
     for keys, ids, paths in rules:
@@ -138,7 +138,7 @@ def mapping(name, flutter=False):
                 ["DB-01"],
                 [
                     "lib/data/sqlite_id_batches.dart",
-                    "lib/services/catalog_read_repository.dart",
+                    "lib/data/repositories/catalog_repository.dart",
                 ],
             ),
             (
@@ -146,7 +146,7 @@ def mapping(name, flutter=False):
                 ["DB-07", "RES-08"],
                 [
                     "lib/services/catalog_sync_service.dart",
-                    "lib/data/local_database.dart",
+                    "lib/data/cat_database.dart",
                 ],
             ),
             (

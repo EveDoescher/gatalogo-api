@@ -401,3 +401,9 @@ Os dimensionamentos/ICs devem ser justificados por experimento; as fontes não e
 Preserva o piloto, corrige BR-04 para pendente e mantém todos os cenários parciais
 até a execução de suas variantes integrais. As definições de cobertura deste plano
 não foram reduzidas pelos subconjuntos executados.
+
+
+### Continuacao de 22/10/2026
+
+[Resultados e matriz cumulativa](campaigns/2026-10-22-continuation/README.md).
+Preserva todos os cenarios anteriores; cobertura parcial nao significa conclusao.

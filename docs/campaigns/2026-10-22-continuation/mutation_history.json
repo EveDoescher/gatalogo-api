@@ -1,0 +1,719 @@
+[
+  {
+    "mutant": "MUT-01",
+    "family": "MUT-01",
+    "classification": "KILLED",
+    "elapsed_seconds": 17.5898703999992,
+    "expected_node": "test_SEC02_pull_filters_both_owners",
+    "failed_cases": [
+      {
+        "name": "test_SEC02_pull_filters_both_owners",
+        "seconds": 3.8,
+        "status": "FAIL"
+      }
+    ],
+    "baseline": "critical_runs/baseline/summary.json",
+    "source": "app/routers/sync.py",
+    "note": "Failure during call of expected oracle; setup/import/compile errors do not count",
+    "attempt": "security-01",
+    "evidence": "attempts/security-01/critical_runs/MUT-01/classification.json",
+    "patch": "attempts/security-01/critical_runs/MUT-01/mutation.diff",
+    "executor_manifest": "attempts/security-01/executor_manifest.json",
+    "executor_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461"
+  },
+  {
+    "mutant": "MUT-02",
+    "family": "MUT-02",
+    "classification": "KILLED",
+    "elapsed_seconds": 13.85560880000412,
+    "expected_node": "test_DATA05_conflict_and_tombstone",
+    "failed_cases": [
+      {
+        "name": "test_DATA05_conflict_and_tombstone[1-z-True-False]",
+        "seconds": 0.005,
+        "status": "FAIL"
+      }
+    ],
+    "baseline": "critical_runs/baseline/summary.json",
+    "source": "app/routers/sync.py",
+    "note": "Failure during call of expected oracle; setup/import/compile errors do not count",
+    "attempt": "security-01",
+    "evidence": "attempts/security-01/critical_runs/MUT-02/classification.json",
+    "patch": "attempts/security-01/critical_runs/MUT-02/mutation.diff",
+    "executor_manifest": "attempts/security-01/executor_manifest.json",
+    "executor_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461"
+  },
+  {
+    "mutant": "MUT-03",
+    "family": "MUT-03",
+    "classification": "KILLED",
+    "elapsed_seconds": 17.059424299994134,
+    "expected_node": "test_DATA05_conflict_and_tombstone",
+    "failed_cases": [
+      {
+        "name": "test_DATA05_conflict_and_tombstone[0-z-False-True]",
+        "seconds": 0.004,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DATA05_conflict_and_tombstone[0-a-False-False]",
+        "seconds": 0.008,
+        "status": "FAIL"
+      }
+    ],
+    "baseline": "critical_runs/baseline/summary.json",
+    "source": "app/routers/sync.py",
+    "note": "Failure during call of expected oracle; setup/import/compile errors do not count",
+    "attempt": "security-01",
+    "evidence": "attempts/security-01/critical_runs/MUT-03/classification.json",
+    "patch": "attempts/security-01/critical_runs/MUT-03/mutation.diff",
+    "executor_manifest": "attempts/security-01/executor_manifest.json",
+    "executor_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461"
+  },
+  {
+    "mutant": "MUT-05",
+    "family": "MUT-05",
+    "classification": "KILLED",
+    "elapsed_seconds": 16.455303599999752,
+    "expected_node": "test_DB02_history_pagination_and_latest_revision",
+    "failed_cases": [
+      {
+        "name": "test_DB02_history_pagination_and_latest_revision",
+        "seconds": 3.274,
+        "status": "FAIL"
+      }
+    ],
+    "baseline": "critical_runs/baseline/summary.json",
+    "source": "app/routers/sync.py",
+    "note": "Failure during call of expected oracle; setup/import/compile errors do not count",
+    "attempt": "security-01",
+    "evidence": "attempts/security-01/critical_runs/MUT-05/classification.json",
+    "patch": "attempts/security-01/critical_runs/MUT-05/mutation.diff",
+    "executor_manifest": "attempts/security-01/executor_manifest.json",
+    "executor_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461"
+  },
+  {
+    "mutant": "MUT-07",
+    "family": "MUT-07",
+    "classification": "SURVIVED",
+    "elapsed_seconds": 9.481148999999277,
+    "expected_node": "test_expired_claim_is_recovered_and_late_result_cannot_overwrite",
+    "failed_cases": [],
+    "baseline": "critical_runs/baseline/summary.json",
+    "source": "app/services/reference_analysis.py",
+    "note": "Failure during call of expected oracle; setup/import/compile errors do not count",
+    "attempt": "security-01",
+    "evidence": "attempts/security-01/critical_runs/MUT-07/classification.json",
+    "patch": "attempts/security-01/critical_runs/MUT-07/mutation.diff",
+    "executor_manifest": "attempts/security-01/executor_manifest.json",
+    "executor_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461"
+  },
+  {
+    "mutant": "MUT-10-events",
+    "family": "MUT-10",
+    "classification": "KILLED",
+    "elapsed_seconds": 12.640448999998625,
+    "expected_node": "test_progression_failure_rolls_back_photo_and_staged_events",
+    "failed_cases": [
+      {
+        "name": "test_progression_failure_rolls_back_photo_and_staged_events[postgres]",
+        "seconds": 2.269,
+        "status": "FAIL"
+      }
+    ],
+    "baseline": "critical_runs/baseline/summary.json",
+    "source": "app/services/reference_analysis.py",
+    "note": "Failure during call of expected oracle; setup/import/compile errors do not count",
+    "attempt": "security-01",
+    "evidence": "attempts/security-01/critical_runs/MUT-10-events/classification.json",
+    "patch": "attempts/security-01/critical_runs/MUT-10-events/mutation.diff",
+    "executor_manifest": "attempts/security-01/executor_manifest.json",
+    "executor_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461"
+  },
+  {
+    "mutant": "MUT-10-savepoint",
+    "family": "MUT-10",
+    "classification": "KILLED",
+    "elapsed_seconds": 9.8144331999938,
+    "expected_node": "test_progression_failure_rolls_back_photo_and_staged_events",
+    "failed_cases": [
+      {
+        "name": "test_progression_failure_rolls_back_photo_and_staged_events[postgres]",
+        "seconds": 0.807,
+        "status": "FAIL"
+      }
+    ],
+    "baseline": "critical_runs/baseline/summary.json",
+    "source": "app/services/reference_analysis.py",
+    "note": "Failure during call of expected oracle; setup/import/compile errors do not count",
+    "attempt": "security-01",
+    "evidence": "attempts/security-01/critical_runs/MUT-10-savepoint/classification.json",
+    "patch": "attempts/security-01/critical_runs/MUT-10-savepoint/mutation.diff",
+    "executor_manifest": "attempts/security-01/executor_manifest.json",
+    "executor_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461"
+  },
+  {
+    "mutant": "MUT-11",
+    "family": "MUT-11",
+    "classification": "KILLED",
+    "elapsed_seconds": 17.83455580000009,
+    "expected_node": "test_DATA03_DATA04_concurrent_intent_and_cross_account",
+    "failed_cases": [
+      {
+        "name": "test_DATA03_DATA04_concurrent_intent_and_cross_account",
+        "seconds": 3.028,
+        "status": "FAIL"
+      }
+    ],
+    "baseline": "critical_runs/baseline/summary.json",
+    "source": "app/services/quintal_production.py",
+    "note": "Failure during call of expected oracle; setup/import/compile errors do not count",
+    "attempt": "security-01",
+    "evidence": "attempts/security-01/critical_runs/MUT-11/classification.json",
+    "patch": "attempts/security-01/critical_runs/MUT-11/mutation.diff",
+    "executor_manifest": "attempts/security-01/executor_manifest.json",
+    "executor_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461"
+  },
+  {
+    "mutant": "MUT-12",
+    "family": "MUT-12",
+    "classification": "KILLED",
+    "elapsed_seconds": 15.263060500001302,
+    "expected_node": "test_DATA03_DATA04_concurrent_intent_and_cross_account",
+    "failed_cases": [
+      {
+        "name": "test_DATA03_DATA04_concurrent_intent_and_cross_account",
+        "seconds": 2.296,
+        "status": "FAIL"
+      }
+    ],
+    "baseline": "critical_runs/baseline/summary.json",
+    "source": "app/services/quintal_production.py",
+    "note": "Failure during call of expected oracle; setup/import/compile errors do not count",
+    "attempt": "security-01",
+    "evidence": "attempts/security-01/critical_runs/MUT-12/classification.json",
+    "patch": "attempts/security-01/critical_runs/MUT-12/mutation.diff",
+    "executor_manifest": "attempts/security-01/executor_manifest.json",
+    "executor_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461"
+  },
+  {
+    "mutant": "MUT-13",
+    "family": "MUT-13",
+    "classification": "KILLED",
+    "elapsed_seconds": 14.315462200000184,
+    "expected_node": "test_DATA03_DATA04_concurrent_intent_and_cross_account",
+    "failed_cases": [
+      {
+        "name": "test_DATA03_DATA04_concurrent_intent_and_cross_account",
+        "seconds": 1.976,
+        "status": "FAIL"
+      }
+    ],
+    "baseline": "critical_runs/baseline/summary.json",
+    "source": "app/services/quintal_production.py",
+    "note": "Failure during call of expected oracle; setup/import/compile errors do not count",
+    "attempt": "security-01",
+    "evidence": "attempts/security-01/critical_runs/MUT-13/classification.json",
+    "patch": "attempts/security-01/critical_runs/MUT-13/mutation.diff",
+    "executor_manifest": "attempts/security-01/executor_manifest.json",
+    "executor_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461"
+  },
+  {
+    "mutant": "MUT-14",
+    "family": "MUT-14",
+    "classification": "KILLED",
+    "elapsed_seconds": 20.755614599998808,
+    "expected_node": "test_DATA07_collect_boundary_and_replay",
+    "failed_cases": [
+      {
+        "name": "test_DATA07_collect_boundary_and_replay",
+        "seconds": 2.627,
+        "status": "FAIL"
+      }
+    ],
+    "baseline": "critical_runs/baseline/summary.json",
+    "source": "app/services/quintal_simulation.py",
+    "note": "Failure during call of expected oracle; setup/import/compile errors do not count",
+    "attempt": "security-01",
+    "evidence": "attempts/security-01/critical_runs/MUT-14/classification.json",
+    "patch": "attempts/security-01/critical_runs/MUT-14/mutation.diff",
+    "executor_manifest": "attempts/security-01/executor_manifest.json",
+    "executor_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461"
+  },
+  {
+    "mutant": "MUT-15",
+    "family": "MUT-15",
+    "classification": "KILLED",
+    "elapsed_seconds": 18.36878030000662,
+    "expected_node": "test_SEC07_failed_attempts_survive_request_rollback",
+    "failed_cases": [
+      {
+        "name": "test_SEC07_failed_attempts_survive_request_rollback",
+        "seconds": 3.409,
+        "status": "FAIL"
+      }
+    ],
+    "baseline": "critical_runs/baseline/summary.json",
+    "source": "app/services/auth_service.py",
+    "note": "Failure during call of expected oracle; setup/import/compile errors do not count",
+    "attempt": "security-01",
+    "evidence": "attempts/security-01/critical_runs/MUT-15/classification.json",
+    "patch": "attempts/security-01/critical_runs/MUT-15/mutation.diff",
+    "executor_manifest": "attempts/security-01/executor_manifest.json",
+    "executor_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461"
+  },
+  {
+    "mutant": "MUT-17",
+    "family": "MUT-17",
+    "classification": "KILLED",
+    "elapsed_seconds": 16.223165800009156,
+    "expected_node": "test_SEC03_stranger_friend_cannot_emit_or_mark_read",
+    "failed_cases": [
+      {
+        "name": "test_SEC03_stranger_friend_cannot_emit_or_mark_read[typing]",
+        "seconds": 2.124,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_SEC03_stranger_friend_cannot_emit_or_mark_read[read]",
+        "seconds": 1.692,
+        "status": "FAIL"
+      }
+    ],
+    "baseline": "critical_runs/baseline/summary.json",
+    "source": "app/services/conversations.py",
+    "note": "Failure during call of expected oracle; setup/import/compile errors do not count",
+    "attempt": "security-01",
+    "evidence": "attempts/security-01/critical_runs/MUT-17/classification.json",
+    "patch": "attempts/security-01/critical_runs/MUT-17/mutation.diff",
+    "executor_manifest": "attempts/security-01/executor_manifest.json",
+    "executor_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461"
+  },
+  {
+    "mutant": "MUT-18",
+    "family": "MUT-18",
+    "classification": "KILLED",
+    "elapsed_seconds": 17.034824600006687,
+    "expected_node": "test_SEC05_storage_escape_never_reads_or_deletes",
+    "failed_cases": [
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[../sentinel.txt]",
+        "seconds": 0.079,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[..\\\\sentinel.txt]",
+        "seconds": 0.017,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[users/../../sentinel.txt]",
+        "seconds": 0.024,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_SEC05_storage_escape_never_reads_or_deletes[absolute]",
+        "seconds": 0.024,
+        "status": "FAIL"
+      }
+    ],
+    "baseline": "critical_runs/baseline/summary.json",
+    "source": "app/services/storage_service.py",
+    "note": "Failure during call of expected oracle; setup/import/compile errors do not count",
+    "attempt": "security-01",
+    "evidence": "attempts/security-01/critical_runs/MUT-18/classification.json",
+    "patch": "attempts/security-01/critical_runs/MUT-18/mutation.diff",
+    "executor_manifest": "attempts/security-01/executor_manifest.json",
+    "executor_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461"
+  },
+  {
+    "mutant": "MUT-07",
+    "family": "MUT-07",
+    "classification": "KILLED",
+    "elapsed_seconds": 23.7876333000022,
+    "expected_node": "test_DATA06_old_finish_while_new_attempt_is_running",
+    "failed_cases": [
+      {
+        "name": "test_DATA06_old_finish_while_new_attempt_is_running",
+        "seconds": 3.404,
+        "status": "FAIL"
+      }
+    ],
+    "baseline": "critical_runs/baseline/summary.json",
+    "source": "app/services/reference_analysis.py",
+    "note": "Failure during call of expected oracle; setup/import/compile errors do not count",
+    "attempt": "security-03",
+    "evidence": "attempts/security-03/critical_runs/MUT-07/classification.json",
+    "patch": "attempts/security-03/critical_runs/MUT-07/mutation.diff",
+    "executor_manifest": "attempts/security-03/executor_manifest.json",
+    "executor_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461"
+  },
+  {
+    "mutant": "MUT-08",
+    "family": "MUT-08",
+    "classification": "KILLED",
+    "elapsed_seconds": 21.836346500000218,
+    "expected_node": "test_DATA06_delete_or_replace_between_claim_and_finish",
+    "failed_cases": [
+      {
+        "name": "test_DATA06_delete_or_replace_between_claim_and_finish[replace-hash]",
+        "seconds": 1.153,
+        "status": "FAIL"
+      }
+    ],
+    "baseline": "critical_runs/baseline/summary.json",
+    "source": "app/services/reference_analysis.py",
+    "note": "Failure during call of expected oracle; setup/import/compile errors do not count",
+    "attempt": "security-03",
+    "evidence": "attempts/security-03/critical_runs/MUT-08/classification.json",
+    "patch": "attempts/security-03/critical_runs/MUT-08/mutation.diff",
+    "executor_manifest": "attempts/security-03/executor_manifest.json",
+    "executor_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461"
+  },
+  {
+    "mutant": "MUT-09",
+    "family": "MUT-09",
+    "classification": "KILLED",
+    "elapsed_seconds": 20.075503400003072,
+    "expected_node": "test_DATA06_delete_or_replace_between_claim_and_finish",
+    "failed_cases": [
+      {
+        "name": "test_DATA06_delete_or_replace_between_claim_and_finish[cat-delete]",
+        "seconds": 3.687,
+        "status": "FAIL"
+      }
+    ],
+    "baseline": "critical_runs/baseline/summary.json",
+    "source": "app/services/reference_analysis.py",
+    "note": "Failure during call of expected oracle; setup/import/compile errors do not count",
+    "attempt": "security-03",
+    "evidence": "attempts/security-03/critical_runs/MUT-09/classification.json",
+    "patch": "attempts/security-03/critical_runs/MUT-09/mutation.diff",
+    "executor_manifest": "attempts/security-03/executor_manifest.json",
+    "executor_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461"
+  },
+  {
+    "mutant": "MUT-16",
+    "family": "MUT-16",
+    "classification": "KILLED",
+    "elapsed_seconds": 27.655134899992845,
+    "expected_node": "test_SEC07_refresh_and_logout_revoke_previous_credentials",
+    "failed_cases": [
+      {
+        "name": "test_SEC07_refresh_and_logout_revoke_previous_credentials",
+        "seconds": 4.807,
+        "status": "FAIL"
+      }
+    ],
+    "baseline": "critical_runs/baseline/summary.json",
+    "source": "app/services/auth_service.py",
+    "note": "Failure during call of expected oracle; setup/import/compile errors do not count",
+    "attempt": "security-03",
+    "evidence": "attempts/security-03/critical_runs/MUT-16/classification.json",
+    "patch": "attempts/security-03/critical_runs/MUT-16/mutation.diff",
+    "executor_manifest": "attempts/security-03/executor_manifest.json",
+    "executor_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461"
+  },
+  {
+    "mutant": "MUT-05",
+    "family": "MUT-05",
+    "classification": "KILLED",
+    "elapsed_seconds": 22.838237700008904,
+    "expected_node": "test_DB02_history_pagination_and_latest_revision",
+    "failed_cases": [
+      {
+        "name": "test_DB02_history_pagination_and_latest_revision[10-limits0]",
+        "seconds": 3.461,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB02_history_pagination_and_latest_revision[100-limits1]",
+        "seconds": 2.472,
+        "status": "FAIL"
+      }
+    ],
+    "baseline": "critical_runs/baseline/summary.json",
+    "source": "app/routers/sync.py",
+    "note": "Failure during call of expected oracle; setup/import/compile errors do not count",
+    "attempt": "database-01",
+    "evidence": "attempts/database-01/critical_runs/MUT-05/classification.json",
+    "patch": "attempts/database-01/critical_runs/MUT-05/mutation.diff",
+    "executor_manifest": "attempts/database-01/executor_manifest.json",
+    "executor_commit": "36e91f41317f094969f01923f1d5821b112fb398",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461"
+  },
+  {
+    "mutant": "MUT-04",
+    "classification": "KILLED",
+    "oracle": "test_DB02_IMG03_reference_filtering",
+    "source": "app/services/catalog_sync_queries.py",
+    "attempt": "extended-02",
+    "evidence": "attempts/extended-02/critical_runs/MUT-04/classification.json",
+    "original_classification": "KILLED",
+    "executor_manifest": "attempts/extended-02/executor_manifest.json",
+    "executor_commit": "68b60400a7fe9dfddad864048c3645ed715792e1",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+    "family": "MUT-04",
+    "patch": "attempts/extended-02/critical_runs/MUT-04/mutation.diff"
+  },
+  {
+    "mutant": "MUT-26",
+    "classification": "KILLED",
+    "oracle": "test_real_transport_retries_only_failed_device_and_keeps_bad_request_token",
+    "source": "app/services/fcm_service.py",
+    "attempt": "extended-02",
+    "evidence": "attempts/extended-02/critical_runs/MUT-26/classification.json",
+    "original_classification": "KILLED",
+    "executor_manifest": "attempts/extended-02/executor_manifest.json",
+    "executor_commit": "68b60400a7fe9dfddad864048c3645ed715792e1",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+    "family": "MUT-26",
+    "patch": "attempts/extended-02/critical_runs/MUT-26/mutation.diff"
+  },
+  {
+    "mutant": "MUT-04",
+    "classification": "KILLED",
+    "oracle": "test_DB02_IMG03_reference_filtering",
+    "source": "app/services/catalog_sync_queries.py",
+    "attempt": "extended-03",
+    "evidence": "attempts/extended-03/critical_runs/MUT-04/classification.json",
+    "original_classification": "KILLED",
+    "executor_manifest": "attempts/extended-03/executor_manifest.json",
+    "executor_commit": "68b60400a7fe9dfddad864048c3645ed715792e1",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+    "family": "MUT-04",
+    "patch": "attempts/extended-03/critical_runs/MUT-04/mutation.diff"
+  },
+  {
+    "mutant": "MUT-06",
+    "classification": "KILLED",
+    "oracle": "test_DB05_primary_inference_releases_read_connection",
+    "source": "app/main.py",
+    "attempt": "extended-03",
+    "evidence": "attempts/extended-03/critical_runs/MUT-06/classification.json",
+    "original_classification": "KILLED",
+    "executor_manifest": "attempts/extended-03/executor_manifest.json",
+    "executor_commit": "68b60400a7fe9dfddad864048c3645ed715792e1",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+    "family": "MUT-06",
+    "patch": "attempts/extended-03/critical_runs/MUT-06/mutation.diff"
+  },
+  {
+    "mutant": "MUT-26",
+    "classification": "KILLED",
+    "oracle": "test_real_transport_retries_only_failed_device_and_keeps_bad_request_token",
+    "source": "app/services/fcm_service.py",
+    "attempt": "extended-03",
+    "evidence": "attempts/extended-03/critical_runs/MUT-26/classification.json",
+    "original_classification": "KILLED",
+    "executor_manifest": "attempts/extended-03/executor_manifest.json",
+    "executor_commit": "68b60400a7fe9dfddad864048c3645ed715792e1",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+    "family": "MUT-26",
+    "patch": "attempts/extended-03/critical_runs/MUT-26/mutation.diff"
+  },
+  {
+    "mutant": "MUT-27",
+    "classification": "KILLED",
+    "oracle": "test_DATA02_events_wait_for_successful_commit",
+    "source": "app/services/chat_commands.py",
+    "attempt": "extended-03",
+    "evidence": "attempts/extended-03/critical_runs/MUT-27/classification.json",
+    "original_classification": "KILLED",
+    "executor_manifest": "attempts/extended-03/executor_manifest.json",
+    "executor_commit": "68b60400a7fe9dfddad864048c3645ed715792e1",
+    "source_commit": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+    "family": "MUT-27",
+    "patch": "attempts/extended-03/critical_runs/MUT-27/mutation.diff"
+  },
+  {
+    "mutant": "MUT-19",
+    "classification": "KILLED",
+    "baseline": "baseline/summary.json",
+    "verified_assertions": [
+      "RES03 snapshot after owner changes during read to b is rejected",
+      "RES03 snapshot after owner changes during read to null is rejected"
+    ],
+    "original_classification": "SURVIVED",
+    "jsonl_sha256": "79cdb54f883119294510d0802c7780ad4c4b62428767b5f4e938caff44fc6785",
+    "correction": "Flutter JSON reporter uses failure as well as error. Review uses baseline-matched assertion events; originals retained, no rerun or fabricated evidence.",
+    "attempt": "flutter-resilience-02",
+    "evidence": "attempts/flutter-resilience-02/flutter_resilience/MUT-19/classification.json",
+    "executor_manifest": "attempts/flutter-resilience-02/executor_manifest.json",
+    "executor_commit": "68b60400a7fe9dfddad864048c3645ed715792e1",
+    "source_commit": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "family": "MUT-19",
+    "review_evidence": "attempts/flutter-resilience-02/flutter_resilience/MUT-19/reviewed_classification.json",
+    "patch": "attempts/flutter-resilience-02/flutter_resilience/MUT-19/mutation.diff"
+  },
+  {
+    "mutant": "MUT-20",
+    "classification": "KILLED",
+    "baseline": "baseline/summary.json",
+    "verified_assertions": [
+      "DB01 batch boundary count=501 duplicates and missing IDs",
+      "DB01 batch boundary count=1001 duplicates and missing IDs",
+      "snapshot preserves content and account boundaries for 501 cats with bounded queries"
+    ],
+    "original_classification": "SURVIVED",
+    "jsonl_sha256": "62e07d9964deb938a061f064bd9517e67ec1d0bb86894041856711ae020db3b8",
+    "correction": "Flutter JSON reporter uses failure as well as error. Review uses baseline-matched assertion events; originals retained, no rerun or fabricated evidence.",
+    "attempt": "flutter-resilience-02",
+    "evidence": "attempts/flutter-resilience-02/flutter_resilience/MUT-20/classification.json",
+    "executor_manifest": "attempts/flutter-resilience-02/executor_manifest.json",
+    "executor_commit": "68b60400a7fe9dfddad864048c3645ed715792e1",
+    "source_commit": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "family": "MUT-20",
+    "review_evidence": "attempts/flutter-resilience-02/flutter_resilience/MUT-20/reviewed_classification.json",
+    "patch": "attempts/flutter-resilience-02/flutter_resilience/MUT-20/mutation.diff"
+  },
+  {
+    "mutant": "MUT-21",
+    "classification": "KILLED",
+    "baseline": "baseline/summary.json",
+    "verified_assertions": [
+      "DB07 cursor remains unchanged if remote application fails and retry starts at same cursor"
+    ],
+    "original_classification": "SURVIVED",
+    "jsonl_sha256": "c2808c8382534ee11d856816b9cf62f4fc3c10e62f3f96da094dcfd39a546ca1",
+    "correction": "Flutter JSON reporter uses failure as well as error. Review uses baseline-matched assertion events; originals retained, no rerun or fabricated evidence.",
+    "attempt": "flutter-resilience-02",
+    "evidence": "attempts/flutter-resilience-02/flutter_resilience/MUT-21/classification.json",
+    "executor_manifest": "attempts/flutter-resilience-02/executor_manifest.json",
+    "executor_commit": "68b60400a7fe9dfddad864048c3645ed715792e1",
+    "source_commit": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "family": "MUT-21",
+    "review_evidence": "attempts/flutter-resilience-02/flutter_resilience/MUT-21/reviewed_classification.json",
+    "patch": "attempts/flutter-resilience-02/flutter_resilience/MUT-21/mutation.diff"
+  },
+  {
+    "mutant": "MUT-22",
+    "classification": "INCONCLUSIVE_ORACLE",
+    "baseline": "baseline/summary.json",
+    "verified_assertions": [],
+    "original_classification": "KILLED",
+    "jsonl_sha256": "fde032de509cb10239c5860ba3a3c05d03295d8caf0f50c58745a1dcf8ae53b7",
+    "correction": "Flutter JSON reporter uses failure as well as error. Review uses baseline-matched assertion events; originals retained, no rerun or fabricated evidence.",
+    "attempt": "flutter-resilience-02",
+    "evidence": "attempts/flutter-resilience-02/flutter_resilience/MUT-22/classification.json",
+    "executor_manifest": "attempts/flutter-resilience-02/executor_manifest.json",
+    "executor_commit": "68b60400a7fe9dfddad864048c3645ed715792e1",
+    "source_commit": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "family": "MUT-22",
+    "review_evidence": "attempts/flutter-resilience-02/flutter_resilience/MUT-22/reviewed_classification.json",
+    "patch": "attempts/flutter-resilience-02/flutter_resilience/MUT-22/mutation.diff"
+  },
+  {
+    "mutant": "MUT-23",
+    "classification": "KILLED",
+    "baseline": "baseline/summary.json",
+    "verified_assertions": [
+      "parallel requests share renewal and rotation does not rebuild account"
+    ],
+    "original_classification": "SURVIVED",
+    "jsonl_sha256": "f029b6f7e674d9c9d70380129a692f0d63becffa444272b7d5701cdf563812b7",
+    "correction": "Flutter JSON reporter uses failure as well as error. Review uses baseline-matched assertion events; originals retained, no rerun or fabricated evidence.",
+    "attempt": "flutter-resilience-02",
+    "evidence": "attempts/flutter-resilience-02/flutter_resilience/MUT-23/classification.json",
+    "executor_manifest": "attempts/flutter-resilience-02/executor_manifest.json",
+    "executor_commit": "68b60400a7fe9dfddad864048c3645ed715792e1",
+    "source_commit": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "family": "MUT-23",
+    "review_evidence": "attempts/flutter-resilience-02/flutter_resilience/MUT-23/reviewed_classification.json",
+    "patch": "attempts/flutter-resilience-02/flutter_resilience/MUT-23/mutation.diff"
+  },
+  {
+    "mutant": "MUT-24",
+    "classification": "KILLED",
+    "baseline": "baseline/summary.json",
+    "verified_assertions": [
+      "echo before HTTP response reconciles one confirmed message"
+    ],
+    "original_classification": "KILLED",
+    "jsonl_sha256": "d8a6cc15df9aa8873018656eefc883d464c980f7a9644072e928ff2b23e1c479",
+    "correction": "Flutter JSON reporter uses failure as well as error. Review uses baseline-matched assertion events; originals retained, no rerun or fabricated evidence.",
+    "attempt": "flutter-resilience-02",
+    "evidence": "attempts/flutter-resilience-02/flutter_resilience/MUT-24/classification.json",
+    "executor_manifest": "attempts/flutter-resilience-02/executor_manifest.json",
+    "executor_commit": "68b60400a7fe9dfddad864048c3645ed715792e1",
+    "source_commit": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "family": "MUT-24",
+    "review_evidence": "attempts/flutter-resilience-02/flutter_resilience/MUT-24/reviewed_classification.json",
+    "patch": "attempts/flutter-resilience-02/flutter_resilience/MUT-24/mutation.diff"
+  },
+  {
+    "mutant": "MUT-25",
+    "classification": "KILLED",
+    "baseline": "baseline/summary.json",
+    "verified_assertions": [
+      "purchase retry reuses the saved idempotency key"
+    ],
+    "original_classification": "SURVIVED",
+    "jsonl_sha256": "b1b325acecdc412e6b9a67996fccfb646a58e0a6955db107d5378eb7fa6d0e33",
+    "correction": "Flutter JSON reporter uses failure as well as error. Review uses baseline-matched assertion events; originals retained, no rerun or fabricated evidence.",
+    "attempt": "flutter-resilience-02",
+    "evidence": "attempts/flutter-resilience-02/flutter_resilience/MUT-25/classification.json",
+    "executor_manifest": "attempts/flutter-resilience-02/executor_manifest.json",
+    "executor_commit": "68b60400a7fe9dfddad864048c3645ed715792e1",
+    "source_commit": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "family": "MUT-25",
+    "review_evidence": "attempts/flutter-resilience-02/flutter_resilience/MUT-25/reviewed_classification.json",
+    "patch": "attempts/flutter-resilience-02/flutter_resilience/MUT-25/mutation.diff"
+  },
+  {
+    "mutant": "MUT-28",
+    "classification": "KILLED",
+    "baseline": "baseline/summary.json",
+    "verified_assertions": [
+      "SEC07 permanent 401 stops after one refresh and two requests"
+    ],
+    "original_classification": "SURVIVED",
+    "jsonl_sha256": "9c9271e979a9b5a54cc9a9efa78884642647d869972bccec4123b9c93598bf62",
+    "correction": "Flutter JSON reporter uses failure as well as error. Review uses baseline-matched assertion events; originals retained, no rerun or fabricated evidence.",
+    "attempt": "flutter-resilience-02",
+    "evidence": "attempts/flutter-resilience-02/flutter_resilience/MUT-28/classification.json",
+    "executor_manifest": "attempts/flutter-resilience-02/executor_manifest.json",
+    "executor_commit": "68b60400a7fe9dfddad864048c3645ed715792e1",
+    "source_commit": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "family": "MUT-28",
+    "review_evidence": "attempts/flutter-resilience-02/flutter_resilience/MUT-28/reviewed_classification.json",
+    "patch": "attempts/flutter-resilience-02/flutter_resilience/MUT-28/mutation.diff"
+  },
+  {
+    "mutant": "MUT-22",
+    "classification": "KILLED",
+    "source": "lib/stores/notification_store.dart",
+    "source_sha": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "failed_baseline_test_names": [
+      "rejects stale requests after account switch and allows a fresh request",
+      "RES03 explicit inbox owner oracle rejects late account A snapshot"
+    ],
+    "executor_manifest": "attempts/flutter-resilience-03/executor_manifest.json",
+    "baseline": "baseline/summary.json",
+    "attempt": "flutter-resilience-03",
+    "evidence": "attempts/flutter-resilience-03/flutter_resilience/MUT-22/classification.json",
+    "original_classification": "KILLED",
+    "executor_commit": "68b60400a7fe9dfddad864048c3645ed715792e1",
+    "source_commit": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "family": "MUT-22",
+    "patch": "attempts/flutter-resilience-03/flutter_resilience/MUT-22/mutation.diff"
+  }
+]

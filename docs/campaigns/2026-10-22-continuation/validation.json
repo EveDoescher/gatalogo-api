@@ -1,0 +1,25 @@
+{
+  "infrastructure_tests": {
+    "command": "python -m pytest -q tests/test_quality_campaign_harness.py tests/test_campaign_classification.py tests/test_campaign_statistics.py tests/test_campaign_subprocesses.py",
+    "passed": 18,
+    "result": "PASS",
+    "capture": "Console da execução; sem JUnit adicional nesta validação."
+  },
+  "static_analysis": {
+    "command": "flutter analyze --no-pub tool/campaign_probe_test.dart tool/campaign_resilience_test.dart tool/campaign_accessibility_test.dart",
+    "result": "No issues found",
+    "capture": "Console da execução; não é execução da auditoria de acessibilidade."
+  },
+  "ruff": "All checks passed",
+  "main_preservation": {
+    "api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+    "flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1"
+  },
+  "report_checks": {
+    "scenario_count": 95,
+    "unique_issue_ids": 13,
+    "code_paths": "ALL_EXIST",
+    "historical_reports": "UNCHANGED",
+    "generator_sha256": "52ab2f18d4e0bfaaae28054e83f64d31305595886a6d32e15e5f8551b4387163"
+  }
+}

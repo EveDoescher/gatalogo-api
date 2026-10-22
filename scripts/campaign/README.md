@@ -60,7 +60,7 @@ cópia separada de B. Logs brutos podem conter detalhes internos e ficam locais.
 | api_probe.py | Auth real + ASGI + SQL/pool/CPU/RAM/handles; replay concorrente do Quintal | Não mede TCP, telefone, IA real nem capacidade sob carga. |
 | pilot_cases.py | Quatro subprocessos A/B/B/A e gates de integridade | Expectativa diagnóstica histórica DB-05 de A é relatada; nenhuma falha de B é dispensada. |
 | mutation_cases.py | MUT-01/MUT-12 com diff mínimo/cópia nova/baseline limpa | Outras 26 famílias só têm estratégia/oráculos no registro, ainda sem executores próprios. |
-| flutter_probe_test.dart | API pública comum CatStore.loadCats, SQLite/queries/tempo/RSS | Desabilita caminhos de rede em subclass de teste; usa interface interna da factory para observar queries, sem mudar código medido. Não representa celular. |
+| catlogue/tool/campaign_probe_test.dart | API pública comum CatStore.loadCats, SQLite/queries/tempo/RSS | Desabilita caminhos de rede em subclass de teste; usa interface interna da factory para observar queries, sem mudar código medido. Não representa celular. |
 | measurements.py | Perf counter, CPU do processo, Win32 RAM/handles, quantis exploratórios | nearest-rank; P99 sempre ausente neste piloto. CPU Windows tem resolução grosseira. |
 | fault_proxy.py | Delay limitado e drop antes/depois do encaminhamento, loopback sem redirects | Não implementa limitação de banda/perda real de pacotes. Testado em servidor próprio; não comprova commit do produto por si só. |
 | verify_sources.py | Integridade dos arquivos app/lib vs commits Git | LF/CRLF registrado; não aceita outras divergências. |
@@ -111,3 +111,6 @@ viewport inicial do login e o controle de subida; n�o � aprova��o global de ACC.
 coletor de estacionariedade/IC implementado; n�o autoriza carga automaticamente.
 
 Relat�rio consolidado: `docs/campaigns/2026-10-21-critical/README.md`.
+
+
+Current executors and probe relocation: [CONTINUATION.md](CONTINUATION.md).

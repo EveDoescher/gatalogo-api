@@ -1,0 +1,4085 @@
+{
+  "attempts/extended-01/critical_runs/extended-baseline/observations/DATA02-file-failure.json": {
+    "scenario": "DATA-02",
+    "database_rolled_back": true,
+    "old_files_unchanged": true,
+    "new_unreferenced_file_count": 1,
+    "orphan_sha256": [
+      "817f3213cb00d216fc49d64eb827a1d32a03526ead8180a0130fa158dd5a0fb8"
+    ],
+    "finding": "Inspect cleanup policy if orphan count > 0; no product fix in this stage"
+  },
+  "attempts/extended-01/critical_runs/extended-baseline/observations/DATA05-http.json": {
+    "scenario": "DATA-05",
+    "dates_and_device_orders": true,
+    "tombstone_not_resurrected": true,
+    "analysis_preserved": true,
+    "same_client_id_isolated": true
+  },
+  "attempts/extended-01/critical_runs/extended-baseline/observations/SEC02-matrix-avatar-coat.json": {
+    "scenario": "SEC-02",
+    "action": "avatar-coat",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 200
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-01/critical_runs/extended-baseline/observations/SEC02-matrix-avatar-preview.json": {
+    "scenario": "SEC-02",
+    "action": "avatar-preview",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 200
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-01/critical_runs/extended-baseline/observations/SEC02-matrix-enqueue.json": {
+    "scenario": "SEC-02",
+    "action": "enqueue",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 202
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-01/critical_runs/extended-baseline/observations/SEC02-matrix-front-delete.json": {
+    "scenario": "SEC-02",
+    "action": "front-delete",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 204
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-01/critical_runs/extended-baseline/observations/SEC02-matrix-front-read.json": {
+    "scenario": "SEC-02",
+    "action": "front-read",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 200
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-01/critical_runs/extended-baseline/observations/SEC02-matrix-front-write.json": {
+    "scenario": "SEC-02",
+    "action": "front-write",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 202
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-01/critical_runs/extended-baseline/observations/SEC02-matrix-jobs.json": {
+    "scenario": "SEC-02",
+    "action": "jobs",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 200
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-01/critical_runs/extended-baseline/observations/SEC02-matrix-photo-read.json": {
+    "scenario": "SEC-02",
+    "action": "photo-read",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 200
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-01/critical_runs/extended-baseline/observations/SEC02-matrix-photo-write.json": {
+    "scenario": "SEC-02",
+    "action": "photo-write",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 204
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-01/critical_runs/extended-baseline/observations/SEC02-matrix-report.json": {
+    "scenario": "SEC-02",
+    "action": "report",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 201
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-01/critical_runs/extended-baseline/observations/SEC02-matrix-sighting.json": {
+    "scenario": "SEC-02",
+    "action": "sighting",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 201
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-02/critical_runs/extended-baseline/observations/DATA02-file-failure.json": {
+    "scenario": "DATA-02",
+    "database_rolled_back": true,
+    "old_files_unchanged": true,
+    "new_unreferenced_file_count": 1,
+    "orphan_sha256": [
+      "817f3213cb00d216fc49d64eb827a1d32a03526ead8180a0130fa158dd5a0fb8"
+    ],
+    "finding": "Inspect cleanup policy if orphan count > 0; no product fix in this stage"
+  },
+  "attempts/extended-02/critical_runs/extended-baseline/observations/DATA05-http.json": {
+    "scenario": "DATA-05",
+    "dates_and_device_orders": true,
+    "tombstone_not_resurrected": true,
+    "analysis_preserved": true,
+    "same_client_id_isolated": true
+  },
+  "attempts/extended-02/critical_runs/extended-baseline/observations/SEC02-chat-attachment.json": {
+    "scenarios": [
+      "SEC-02",
+      "SEC-03"
+    ],
+    "member_bytes_sha256": "d7f70c853f84d40e88d7520bf10f7bbc589ade59127ca5743bfd39ab0647a636",
+    "member_query_token_positive": true,
+    "nonmember": 403,
+    "anonymous": 401
+  },
+  "attempts/extended-02/critical_runs/extended-baseline/observations/SEC02-matrix-avatar-coat.json": {
+    "scenario": "SEC-02",
+    "action": "avatar-coat",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 200
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-02/critical_runs/extended-baseline/observations/SEC02-matrix-avatar-preview.json": {
+    "scenario": "SEC-02",
+    "action": "avatar-preview",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 200
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-02/critical_runs/extended-baseline/observations/SEC02-matrix-enqueue.json": {
+    "scenario": "SEC-02",
+    "action": "enqueue",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 202
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-02/critical_runs/extended-baseline/observations/SEC02-matrix-front-delete.json": {
+    "scenario": "SEC-02",
+    "action": "front-delete",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 204
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-02/critical_runs/extended-baseline/observations/SEC02-matrix-front-read.json": {
+    "scenario": "SEC-02",
+    "action": "front-read",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 200
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-02/critical_runs/extended-baseline/observations/SEC02-matrix-front-write.json": {
+    "scenario": "SEC-02",
+    "action": "front-write",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 202
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-02/critical_runs/extended-baseline/observations/SEC02-matrix-jobs.json": {
+    "scenario": "SEC-02",
+    "action": "jobs",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 200
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-02/critical_runs/extended-baseline/observations/SEC02-matrix-photo-read.json": {
+    "scenario": "SEC-02",
+    "action": "photo-read",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 200
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-02/critical_runs/extended-baseline/observations/SEC02-matrix-photo-write.json": {
+    "scenario": "SEC-02",
+    "action": "photo-write",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 204
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-02/critical_runs/extended-baseline/observations/SEC02-matrix-report.json": {
+    "scenario": "SEC-02",
+    "action": "report",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 201
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-02/critical_runs/extended-baseline/observations/SEC02-matrix-sighting.json": {
+    "scenario": "SEC-02",
+    "action": "sighting",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 201
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/DATA02-commit-events.json": {
+    "scenario": "DATA-02",
+    "failed_commit_messages": 0,
+    "failed_commit_publications": 0,
+    "successful_commit_positive": true
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/DATA02-file-failure.json": {
+    "scenario": "DATA-02",
+    "database_rolled_back": true,
+    "old_files_unchanged": true,
+    "new_unreferenced_file_count": 1,
+    "orphan_sha256": [
+      "817f3213cb00d216fc49d64eb827a1d32a03526ead8180a0130fa158dd5a0fb8"
+    ],
+    "finding": "Inspect cleanup policy if orphan count > 0; no product fix in this stage"
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/DATA05-http.json": {
+    "scenario": "DATA-05",
+    "dates_and_device_orders": true,
+    "tombstone_not_resurrected": true,
+    "analysis_preserved": true,
+    "same_client_id_isolated": true
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/DB05-read-release.json": {
+    "scenario": "DB-05",
+    "connections_during_substituted_analysis": [
+      0
+    ],
+    "status": 503
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/DLV01-local-smtp.json": {
+    "scenario": "DLV-01",
+    "mailpit_image": "sha256:e22dce5b36f93c77082e204a3942fb6b283b7896e057458400a4c88344c3df68",
+    "smtp_messages": 1,
+    "recipient_matches": true,
+    "otp_used_once": true,
+    "scope": "Actual SMTP capture in disposable Mailpit, no external email delivery. Code and tokens omitted."
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/DLV02-refusal.json": {
+    "scenario": "DLV-02",
+    "failure": "simulated SMTP refusal before acceptance",
+    "persisted_otps": 0,
+    "scope": "No slow/drop-after-acceptance experiment; those variants pending"
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC01-expired.json": {
+    "scenario": "SEC-01",
+    "defect": "expired",
+    "positive_status": 200,
+    "negative_status": 401
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC01-inactive.json": {
+    "scenario": "SEC-01",
+    "defect": "inactive",
+    "positive_status": 200,
+    "negative_status": 401
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC01-issuer.json": {
+    "scenario": "SEC-01",
+    "defect": "issuer",
+    "positive_status": 200,
+    "negative_status": 401
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC01-session.json": {
+    "scenario": "SEC-01",
+    "defect": "session",
+    "positive_status": 200,
+    "negative_status": 401
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC01-signature.json": {
+    "scenario": "SEC-01",
+    "defect": "signature",
+    "positive_status": 200,
+    "negative_status": 401
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC01-subject.json": {
+    "scenario": "SEC-01",
+    "defect": "subject",
+    "positive_status": 200,
+    "negative_status": 401
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC01-type.json": {
+    "scenario": "SEC-01",
+    "defect": "type",
+    "positive_status": 200,
+    "negative_status": 401
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC02-chat-attachment.json": {
+    "scenarios": [
+      "SEC-02",
+      "SEC-03"
+    ],
+    "member_bytes_sha256": "d7f70c853f84d40e88d7520bf10f7bbc589ade59127ca5743bfd39ab0647a636",
+    "member_query_token_positive": true,
+    "nonmember": 403,
+    "anonymous": 401
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC02-matrix-avatar-coat.json": {
+    "scenario": "SEC-02",
+    "action": "avatar-coat",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 200
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC02-matrix-avatar-preview.json": {
+    "scenario": "SEC-02",
+    "action": "avatar-preview",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 200
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC02-matrix-enqueue.json": {
+    "scenario": "SEC-02",
+    "action": "enqueue",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 202
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC02-matrix-front-delete.json": {
+    "scenario": "SEC-02",
+    "action": "front-delete",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 204
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC02-matrix-front-read.json": {
+    "scenario": "SEC-02",
+    "action": "front-read",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 200
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC02-matrix-front-write.json": {
+    "scenario": "SEC-02",
+    "action": "front-write",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 202
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC02-matrix-jobs.json": {
+    "scenario": "SEC-02",
+    "action": "jobs",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 200
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC02-matrix-photo-read.json": {
+    "scenario": "SEC-02",
+    "action": "photo-read",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 200
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC02-matrix-photo-write.json": {
+    "scenario": "SEC-02",
+    "action": "photo-write",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 204
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC02-matrix-report.json": {
+    "scenario": "SEC-02",
+    "action": "report",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 201
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC02-matrix-sighting.json": {
+    "scenario": "SEC-02",
+    "action": "sighting",
+    "actors": {
+      "A": 404,
+      "C": 404,
+      "anonymous": 401,
+      "B": 201
+    },
+    "foreign_state_unchanged": true,
+    "owner_positive": true
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC03-ws-loop-A.json": {
+    "scenario": "SEC-03",
+    "actor": "A",
+    "malformed_frames_ignored": 5,
+    "loop_survives": "pong",
+    "events": 1,
+    "scope": "endpoint coroutine protocol loop; not a TCP WebSocket transport test"
+  },
+  "attempts/extended-03/critical_runs/extended-baseline/observations/SEC03-ws-loop-C.json": {
+    "scenario": "SEC-03",
+    "actor": "C",
+    "malformed_frames_ignored": 5,
+    "loop_survives": "pong",
+    "events": 0,
+    "scope": "endpoint coroutine protocol loop; not a TCP WebSocket transport test"
+  },
+  "attempts/targeted-01/critical_runs/targeted-baseline/observations/LOAD03-same-intent-10.json": {
+    "scenario": "LOAD-03",
+    "concurrent_calls": 10,
+    "intents": 1,
+    "wallet_balance": 88,
+    "ledger_receipts": 1,
+    "tasks": 1,
+    "scope": "Short functional barrier, not a capacity/throughput or prolonged load experiment"
+  },
+  "attempts/targeted-01/critical_runs/targeted-baseline/observations/LOAD03-same-intent-2.json": {
+    "scenario": "LOAD-03",
+    "concurrent_calls": 2,
+    "intents": 1,
+    "wallet_balance": 88,
+    "ledger_receipts": 1,
+    "tasks": 1,
+    "scope": "Short functional barrier, not a capacity/throughput or prolonged load experiment"
+  },
+  "attempts/targeted-01/critical_runs/targeted-baseline/observations/LOAD03-same-intent-25.json": {
+    "scenario": "LOAD-03",
+    "concurrent_calls": 25,
+    "intents": 1,
+    "wallet_balance": 88,
+    "ledger_receipts": 1,
+    "tasks": 1,
+    "scope": "Short functional barrier, not a capacity/throughput or prolonged load experiment"
+  },
+  "attempts/targeted-01/critical_runs/targeted-baseline/observations/SEC10-open-revocation.json": {
+    "scenario": "SEC-10",
+    "http_after_revocation": 401,
+    "new_connection_close": 1008,
+    "events_from_previously_open_session_after_revocation": 1,
+    "finding": "Existing socket loop does not revalidate revocation before conversation action",
+    "scope": "Real endpoint coroutine with synthetic transport. No elapsed-time bound or actual TCP measurement."
+  },
+  "attempts/targeted-02/critical_runs/targeted-baseline/observations/DLV02-smtp-before-commit.json": {
+    "scenario": "DLV-02",
+    "smtp_accepted_messages": 1,
+    "persisted_otps": 0,
+    "finding": "SMTP acceptance precedes the caller commit; a commit failure can leave a delivered but unusable code",
+    "scope": "Actual disposable SMTP with injected DB commit failure; code omitted, no external email sent"
+  },
+  "attempts/targeted-02/critical_runs/targeted-baseline/observations/LOAD03-same-intent-10.json": {
+    "scenario": "LOAD-03",
+    "concurrent_calls": 10,
+    "intents": 1,
+    "wallet_balance": 88,
+    "ledger_receipts": 1,
+    "tasks": 1,
+    "scope": "Short functional barrier, not a capacity/throughput or prolonged load experiment"
+  },
+  "attempts/targeted-02/critical_runs/targeted-baseline/observations/LOAD03-same-intent-2.json": {
+    "scenario": "LOAD-03",
+    "concurrent_calls": 2,
+    "intents": 1,
+    "wallet_balance": 88,
+    "ledger_receipts": 1,
+    "tasks": 1,
+    "scope": "Short functional barrier, not a capacity/throughput or prolonged load experiment"
+  },
+  "attempts/targeted-02/critical_runs/targeted-baseline/observations/LOAD03-same-intent-25.json": {
+    "scenario": "LOAD-03",
+    "concurrent_calls": 25,
+    "intents": 1,
+    "wallet_balance": 88,
+    "ledger_receipts": 1,
+    "tasks": 1,
+    "scope": "Short functional barrier, not a capacity/throughput or prolonged load experiment"
+  },
+  "attempts/targeted-02/critical_runs/targeted-baseline/observations/SEC06-bounds.json": {
+    "scenario": "SEC-06",
+    "test_image_limit_bytes": 1048576,
+    "over_limit": 413,
+    "missing_multipart": 422,
+    "out_of_bounds_query": 422,
+    "push_501": 422,
+    "sensitive_changes": 0,
+    "scope": "Limits lowered only in isolated settings; no huge requests or pixel decompression test"
+  },
+  "attempts/targeted-02/critical_runs/targeted-baseline/observations/SEC10-open-revocation.json": {
+    "scenario": "SEC-10",
+    "http_after_revocation": 401,
+    "new_connection_close": 1008,
+    "events_from_previously_open_session_after_revocation": 1,
+    "finding": "Existing socket loop does not revalidate revocation before conversation action",
+    "scope": "Real endpoint coroutine with synthetic transport. No elapsed-time bound or actual TCP measurement."
+  },
+  "attempts/queue-01/critical_runs/queue-baseline/observations/LOAD04-queue-1-1.json": {
+    "scenarios": [
+      "LOAD-04",
+      "DB-05"
+    ],
+    "jobs": 1,
+    "consumers": 1,
+    "completed": 1,
+    "duplicate_inference": false,
+    "pool_checked_out_during_fake_inference": [
+      0
+    ],
+    "scope": "Synthetic fixed analyzer; with2 consumers global pool can belong to the other consumer. No real AI/capacity claim."
+  },
+  "attempts/queue-01/critical_runs/queue-baseline/observations/LOAD04-queue-1-2.json": {
+    "scenarios": [
+      "LOAD-04",
+      "DB-05"
+    ],
+    "jobs": 1,
+    "consumers": 2,
+    "completed": 1,
+    "duplicate_inference": false,
+    "pool_checked_out_during_fake_inference": [
+      0
+    ],
+    "scope": "Synthetic fixed analyzer; with2 consumers global pool can belong to the other consumer. No real AI/capacity claim."
+  },
+  "attempts/queue-01/critical_runs/queue-baseline/observations/LOAD04-queue-10-1.json": {
+    "scenarios": [
+      "LOAD-04",
+      "DB-05"
+    ],
+    "jobs": 10,
+    "consumers": 1,
+    "completed": 10,
+    "duplicate_inference": false,
+    "pool_checked_out_during_fake_inference": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "scope": "Synthetic fixed analyzer; with2 consumers global pool can belong to the other consumer. No real AI/capacity claim."
+  },
+  "attempts/queue-01/critical_runs/queue-baseline/observations/LOAD04-queue-10-2.json": {
+    "scenarios": [
+      "LOAD-04",
+      "DB-05"
+    ],
+    "jobs": 10,
+    "consumers": 2,
+    "completed": 10,
+    "duplicate_inference": false,
+    "pool_checked_out_during_fake_inference": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "scope": "Synthetic fixed analyzer; with2 consumers global pool can belong to the other consumer. No real AI/capacity claim."
+  },
+  "attempts/queue-01/critical_runs/queue-baseline/observations/LOAD04-queue-50-1.json": {
+    "scenarios": [
+      "LOAD-04",
+      "DB-05"
+    ],
+    "jobs": 50,
+    "consumers": 1,
+    "completed": 50,
+    "duplicate_inference": false,
+    "pool_checked_out_during_fake_inference": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "scope": "Synthetic fixed analyzer; with2 consumers global pool can belong to the other consumer. No real AI/capacity claim."
+  },
+  "attempts/queue-01/critical_runs/queue-baseline/observations/LOAD04-queue-50-2.json": {
+    "scenarios": [
+      "LOAD-04",
+      "DB-05"
+    ],
+    "jobs": 50,
+    "consumers": 2,
+    "completed": 50,
+    "duplicate_inference": false,
+    "pool_checked_out_during_fake_inference": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "scope": "Synthetic fixed analyzer; with2 consumers global pool can belong to the other consumer. No real AI/capacity claim."
+  },
+  "attempts/queue-01/critical_runs/queue-baseline/observations/LOAD05-manager-1.json": {
+    "scenario": "LOAD-05",
+    "synthetic_sockets": 1,
+    "one_event_each": true,
+    "online_after_disconnect": false,
+    "scope": "Manager component; no TCP sockets, slow reader, reconnect or WS latency evidence"
+  },
+  "attempts/queue-01/critical_runs/queue-baseline/observations/LOAD05-manager-10.json": {
+    "scenario": "LOAD-05",
+    "synthetic_sockets": 10,
+    "one_event_each": true,
+    "online_after_disconnect": false,
+    "scope": "Manager component; no TCP sockets, slow reader, reconnect or WS latency evidence"
+  },
+  "attempts/queue-01/critical_runs/queue-baseline/observations/LOAD05-manager-50.json": {
+    "scenario": "LOAD-05",
+    "synthetic_sockets": 50,
+    "one_event_each": true,
+    "online_after_disconnect": false,
+    "scope": "Manager component; no TCP sockets, slow reader, reconnect or WS latency evidence"
+  },
+  "attempts/privacy-01/critical_runs/privacy-baseline/observations/SEC04-clue-media.json": {
+    "scenarios": [
+      "SEC-02",
+      "SEC-04"
+    ],
+    "report_owner_media_positive": true,
+    "observer_and_stranger_denied": true,
+    "coordinates_hidden_until_revealed": true,
+    "exif_description_removed": true,
+    "orientation_applied": true,
+    "stale_media_denied": true,
+    "scope": "Seeded suggestion for permission tests only; similarity is not reidentification evidence or a confirmed identity"
+  },
+  "attempts/privacy-01/critical_runs/privacy-baseline/observations/SEC08-export-report-failure.json": {
+    "scenario": "SEC-08",
+    "own_reports": 1,
+    "observed": "unhandled AttributeError",
+    "message": "'MissingReport' object has no attribute 'cat_client_id'",
+    "scope": "Actual HTTP export against persisted real MissingReport; no token or response dump"
+  },
+  "attempts/privacy-01/critical_runs/privacy-baseline/observations/SEC08-owner-export.json": {
+    "scenarios": [
+      "SEC-02",
+      "SEC-08"
+    ],
+    "own_export_positive": true,
+    "foreign_canary_excluded": true,
+    "favorite_owner_keys_isolated": true,
+    "auth_canary_not_in_error_or_captured_logs": true,
+    "scope": "Selected HTTP/export/log paths only; not all auth/upload/IA logging or full exported-data inventory"
+  },
+  "attempts/privacy-02/critical_runs/official-export/observations/SEC08-export-report-failure.json": {
+    "scenario": "SEC-08",
+    "own_reports": 1,
+    "observed": "unhandled AttributeError",
+    "message": "'MissingReport' object has no attribute 'cat_client_id'",
+    "scope": "Actual HTTP export against persisted real MissingReport; no token or response dump"
+  },
+  "attempts/privacy-02/critical_runs/official-export/observations/SEC08-owner-export.json": {
+    "scenarios": [
+      "SEC-02",
+      "SEC-08"
+    ],
+    "own_export_positive": true,
+    "foreign_canary_excluded": true,
+    "favorite_owner_keys_isolated": true,
+    "auth_canary_not_in_error_or_captured_logs": true,
+    "scope": "Selected HTTP/export/log paths only; not all auth/upload/IA logging or full exported-data inventory"
+  },
+  "attempts/privacy-02/critical_runs/privacy-baseline/observations/SEC04-clue-media.json": {
+    "scenarios": [
+      "SEC-02",
+      "SEC-04"
+    ],
+    "report_owner_media_positive": true,
+    "observer_and_stranger_denied": true,
+    "coordinates_hidden_until_revealed": true,
+    "exif_description_removed": true,
+    "orientation_applied": true,
+    "stale_media_denied": true,
+    "scope": "Seeded suggestion for permission tests only; similarity is not reidentification evidence or a confirmed identity"
+  },
+  "attempts/privacy-02/critical_runs/privacy-baseline/observations/SEC08-export-report-failure.json": {
+    "scenario": "SEC-08",
+    "own_reports": 1,
+    "observed": "unhandled AttributeError",
+    "message": "'MissingReport' object has no attribute 'cat_client_id'",
+    "scope": "Actual HTTP export against persisted real MissingReport; no token or response dump"
+  },
+  "attempts/privacy-02/critical_runs/privacy-baseline/observations/SEC08-owner-export.json": {
+    "scenarios": [
+      "SEC-02",
+      "SEC-08"
+    ],
+    "own_export_positive": true,
+    "foreign_canary_excluded": true,
+    "favorite_owner_keys_isolated": true,
+    "auth_canary_not_in_error_or_captured_logs": true,
+    "scope": "Selected HTTP/export/log paths only; not all auth/upload/IA logging or full exported-data inventory"
+  },
+  "attempts/live-diagnostic-01/critical_runs/diagnostic-baseline/observations/routine-reward-diagnostic.json": {
+    "scenario": "DATA-07",
+    "original_test": "test_live_build_plant_water_cook_queue_cancel_and_collect",
+    "progress_responses": [
+      {
+        "xp": 0,
+        "new_xp": 0,
+        "balance": 1000,
+        "level": 1,
+        "level_title": "Curioso",
+        "level_min_xp": 0,
+        "target_xp": 100,
+        "level_reward": "Selo e título do álbum",
+        "streak": 0,
+        "multiplier": 1.0,
+        "freeze_shields": 0,
+        "calendar": {
+          "timezone": "America/Sao_Paulo",
+          "server_now": "2026-10-22T10:33:16.079039-03:00",
+          "day": "2026-10-22",
+          "week": "2026-10-19",
+          "daily_reset_at": "2026-10-23T00:00:00-03:00",
+          "weekly_reset_at": "2026-10-26T00:00:00-03:00"
+        },
+        "daily_missions": [
+          {
+            "id": "daily_record",
+            "instance_id": "mission:daily_record:2026-10-22",
+            "event_key": "mission:daily_record:2026-10-22",
+            "title": "Guarde uma nova história",
+            "description": "Descubra um gato ou acrescente uma foto útil a uma ficha.",
+            "metric": "photos",
+            "unit": "fotos válidas",
+            "target": 1,
+            "progress": 0,
+            "type": "daily",
+            "xp_reward": 20,
+            "coin_reward": 10,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "2026-10-22",
+            "reset_at": "2026-10-23T00:00:00-03:00",
+            "ranking_points": 10,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "daily_album",
+            "instance_id": "mission:daily_album:2026-10-22",
+            "event_key": "mission:daily_album:2026-10-22",
+            "title": "Mais um detalhe",
+            "description": "Acrescente um complemento útil; outro ângulo ajuda a reconhecer o gato.",
+            "metric": "complements",
+            "unit": "complementos úteis",
+            "target": 1,
+            "progress": 0,
+            "type": "daily",
+            "xp_reward": 20,
+            "coin_reward": 10,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "2026-10-22",
+            "reset_at": "2026-10-23T00:00:00-03:00",
+            "ranking_points": 10,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "daily_community",
+            "instance_id": "mission:daily_community:2026-10-22",
+            "event_key": "mission:daily_community:2026-10-22",
+            "title": "Uma história para compartilhar",
+            "description": "Publique, comente ou compartilhe um cartaz ativo dentro do app.",
+            "metric": "community",
+            "unit": "contribuições",
+            "target": 1,
+            "progress": 0,
+            "type": "daily",
+            "xp_reward": 10,
+            "coin_reward": 5,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "2026-10-22",
+            "reset_at": "2026-10-23T00:00:00-03:00",
+            "ranking_points": 10,
+            "destination": "social",
+            "status": "available"
+          },
+          {
+            "id": "daily_quintal_routine",
+            "instance_id": "mission:daily_quintal_routine:2026-10-22",
+            "event_key": "mission:daily_quintal_routine:2026-10-22",
+            "title": "Uma pausa no Quintal",
+            "description": "Se couber na sua visita, escolha uma das atividades abaixo. Uma só basta; produtos precisam estar prontos.",
+            "metric": "quintal_routine",
+            "unit": "atividades à escolha",
+            "target": 1,
+            "progress": 1,
+            "type": "daily",
+            "xp_reward": 10,
+            "coin_reward": 5,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "2026-10-22",
+            "reset_at": "2026-10-23T00:00:00-03:00",
+            "ranking_points": 0,
+            "destination": "habitat",
+            "status": "in_progress",
+            "optional": true,
+            "group": "quintal_routine",
+            "alternatives": [
+              {
+                "space": "garden",
+                "metric": "quintal_harvest",
+                "title": "Colher um canteiro pronto",
+                "tutorial_anchor": "start_harvest"
+              },
+              {
+                "space": "kitchen",
+                "metric": "quintal_cook",
+                "title": "Concluir um lote de ração",
+                "tutorial_anchor": "start_cook"
+              },
+              {
+                "space": "coop",
+                "metric": "quintal_egg",
+                "title": "Recolher ovos prontos",
+                "tutorial_anchor": "quintal_collect_eggs"
+              },
+              {
+                "space": "pasture",
+                "metric": "quintal_milk_collection",
+                "title": "Ordenhar uma vaca pronta",
+                "tutorial_anchor": "quintal_collect_milk"
+              }
+            ],
+            "tutorial_anchor": "daily_quintal_routine",
+            "visit_hint": "Uma atividade nesta visita",
+            "selection_mode": "any"
+          }
+        ],
+        "weekly_missions": [
+          {
+            "id": "weekly_days",
+            "instance_id": "mission:weekly_days:2026-10-19",
+            "event_key": "mission:weekly_days:2026-10-19",
+            "title": "Histórias ao longo da semana",
+            "description": "Guarde fotos válidas em três dias diferentes, sem exigir dias seguidos.",
+            "metric": "photo_days",
+            "unit": "dias com registros",
+            "target": 3,
+            "progress": 0,
+            "type": "weekly",
+            "xp_reward": 100,
+            "coin_reward": 50,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "2026-10-19",
+            "reset_at": "2026-10-26T00:00:00-03:00",
+            "ranking_points": 30,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "weekly_details",
+            "instance_id": "mission:weekly_details:2026-10-19",
+            "event_key": "mission:weekly_details:2026-10-19",
+            "title": "Enriqueça seu álbum",
+            "description": "Acrescente quatro complementos úteis durante esta semana.",
+            "metric": "complements",
+            "unit": "complementos úteis",
+            "target": 4,
+            "progress": 0,
+            "type": "weekly",
+            "xp_reward": 120,
+            "coin_reward": 60,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "2026-10-19",
+            "reset_at": "2026-10-26T00:00:00-03:00",
+            "ranking_points": 30,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "weekly_discover",
+            "instance_id": "mission:weekly_discover:2026-10-19",
+            "event_key": "mission:weekly_discover:2026-10-19",
+            "title": "Novos encontros",
+            "description": "Confirme três gatos diferentes nesta semana.",
+            "metric": "individuals",
+            "unit": "gatos diferentes",
+            "target": 3,
+            "progress": 0,
+            "type": "weekly",
+            "xp_reward": 150,
+            "coin_reward": 75,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "2026-10-19",
+            "reset_at": "2026-10-26T00:00:00-03:00",
+            "ranking_points": 30,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "weekly_quintal_routine",
+            "instance_id": "mission:weekly_quintal_routine:2026-10-19",
+            "event_key": "mission:weekly_quintal_routine:2026-10-19",
+            "title": "No seu ritmo",
+            "description": "Escolha uma atividade em dois dias desta semana. Não precisam ser seguidos, nem usar espaços diferentes.",
+            "metric": "quintal_routine_days",
+            "unit": "dias de atividade",
+            "target": 2,
+            "progress": 1,
+            "type": "weekly",
+            "xp_reward": 30,
+            "coin_reward": 15,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "2026-10-19",
+            "reset_at": "2026-10-26T00:00:00-03:00",
+            "ranking_points": 0,
+            "destination": "habitat",
+            "status": "in_progress",
+            "optional": true,
+            "group": "quintal_routine",
+            "alternatives": [
+              {
+                "space": "garden",
+                "metric": "quintal_harvest",
+                "title": "Colher um canteiro pronto",
+                "tutorial_anchor": "start_harvest"
+              },
+              {
+                "space": "kitchen",
+                "metric": "quintal_cook",
+                "title": "Concluir um lote de ração",
+                "tutorial_anchor": "start_cook"
+              },
+              {
+                "space": "coop",
+                "metric": "quintal_egg",
+                "title": "Recolher ovos prontos",
+                "tutorial_anchor": "quintal_collect_eggs"
+              },
+              {
+                "space": "pasture",
+                "metric": "quintal_milk_collection",
+                "title": "Ordenhar uma vaca pronta",
+                "tutorial_anchor": "quintal_collect_milk"
+              }
+            ],
+            "tutorial_anchor": "weekly_quintal_routine",
+            "visit_hint": "Duas visitas em dias diferentes",
+            "selection_mode": "any"
+          }
+        ],
+        "initial_missions": [
+          {
+            "id": "start_record",
+            "instance_id": "mission:start_record:once",
+            "event_key": "mission:start_record:once",
+            "title": "Seu primeiro encontro",
+            "description": "Registre uma foto e confirme a identidade do gato.",
+            "metric": "photos",
+            "unit": "fotos válidas",
+            "target": 1,
+            "progress": 0,
+            "type": "initial",
+            "xp_reward": 25,
+            "coin_reward": 15,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "capture",
+            "status": "available",
+            "optional": false,
+            "tutorial_anchor": "start_record",
+            "prerequisite": null
+          },
+          {
+            "id": "start_details",
+            "instance_id": "mission:start_details:once",
+            "event_key": "mission:start_details:once",
+            "title": "Conheça melhor seu gato",
+            "description": "Acrescente uma foto com detalhes ou outro ângulo.",
+            "metric": "complements",
+            "unit": "complementos úteis",
+            "target": 1,
+            "progress": 0,
+            "type": "initial",
+            "xp_reward": 25,
+            "coin_reward": 15,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "capture",
+            "status": "available",
+            "optional": false,
+            "tutorial_anchor": "start_details",
+            "prerequisite": "start_record"
+          },
+          {
+            "id": "start_review",
+            "instance_id": "mission:start_review:once",
+            "event_key": "mission:start_review:once",
+            "title": "Seu olhar também conta",
+            "description": "Revise as características sugeridas pela IA na tela de resultado.",
+            "metric": "reviews",
+            "unit": "revisões",
+            "target": 1,
+            "progress": 0,
+            "type": "initial",
+            "xp_reward": 20,
+            "coin_reward": 10,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "collection",
+            "status": "available",
+            "optional": false,
+            "tutorial_anchor": "start_review",
+            "prerequisite": "start_details"
+          },
+          {
+            "id": "start_care",
+            "instance_id": "mission:start_care:once",
+            "event_key": "mission:start_care:once",
+            "title": "Um lar para cuidar",
+            "description": "Coloque um gato próprio no quintal e realize um cuidado válido.",
+            "metric": "care",
+            "unit": "cuidados",
+            "target": 1,
+            "progress": 0,
+            "type": "initial",
+            "xp_reward": 25,
+            "coin_reward": 15,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "habitat",
+            "status": "available",
+            "optional": false,
+            "tutorial_anchor": "start_care",
+            "prerequisite": "start_review"
+          },
+          {
+            "id": "start_community",
+            "instance_id": "mission:start_community:once",
+            "event_key": "mission:start_community:once",
+            "title": "Encontre sua comunidade",
+            "description": "Contribua com uma publicação, comentário ou cartaz. Esta etapa é opcional.",
+            "metric": "community",
+            "unit": "contribuições",
+            "target": 1,
+            "progress": 0,
+            "type": "initial",
+            "xp_reward": 20,
+            "coin_reward": 10,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "social",
+            "status": "available",
+            "optional": true,
+            "tutorial_anchor": "start_community",
+            "prerequisite": "start_care"
+          },
+          {
+            "id": "start_bowls",
+            "instance_id": "mission:start_bowls:once",
+            "event_key": "mission:start_bowls:once",
+            "title": "Um cantinho só seu",
+            "description": "Coloque um gato junto com seus potes de comida e água.",
+            "metric": "quintal_cat_set",
+            "unit": "cantinhos completos",
+            "target": 1,
+            "progress": 0,
+            "type": "initial",
+            "xp_reward": 15,
+            "coin_reward": 10,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "habitat",
+            "status": "available",
+            "optional": false,
+            "tutorial_anchor": "start_bowls",
+            "prerequisite": "start_care"
+          },
+          {
+            "id": "start_water",
+            "instance_id": "mission:start_water:once",
+            "event_key": "mission:start_water:once",
+            "title": "Água fresquinha",
+            "description": "Abasteça o pote de água do seu gato.",
+            "metric": "quintal_water_cat",
+            "unit": "abastecimentos",
+            "target": 1,
+            "progress": 0,
+            "type": "initial",
+            "xp_reward": 10,
+            "coin_reward": 5,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "habitat",
+            "status": "available",
+            "optional": false,
+            "tutorial_anchor": "start_water",
+            "prerequisite": "start_bowls"
+          },
+          {
+            "id": "start_harvest",
+            "instance_id": "mission:start_harvest:once",
+            "event_key": "mission:start_harvest:once",
+            "title": "Primeira colheita",
+            "description": "Abra a horta, plante e colha um canteiro.",
+            "metric": "quintal_harvest",
+            "unit": "colheitas",
+            "target": 1,
+            "progress": 1,
+            "type": "initial",
+            "xp_reward": 20,
+            "coin_reward": 10,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "habitat",
+            "status": "in_progress",
+            "optional": false,
+            "tutorial_anchor": "start_harvest",
+            "prerequisite": "start_water"
+          },
+          {
+            "id": "start_cook",
+            "instance_id": "mission:start_cook:once",
+            "event_key": "mission:start_cook:once",
+            "title": "Feito com carinho",
+            "description": "Prepare seu primeiro lote de ração na cozinha.",
+            "metric": "quintal_cook",
+            "unit": "lotes preparados",
+            "target": 1,
+            "progress": 1,
+            "type": "initial",
+            "xp_reward": 20,
+            "coin_reward": 10,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "habitat",
+            "status": "in_progress",
+            "optional": false,
+            "tutorial_anchor": "start_cook",
+            "prerequisite": "start_harvest"
+          },
+          {
+            "id": "start_meal",
+            "instance_id": "mission:start_meal:once",
+            "event_key": "mission:start_meal:once",
+            "title": "Conhecendo os gostos",
+            "description": "Tenha uma refeição consumida por um gato.",
+            "metric": "quintal_meal",
+            "unit": "refeições",
+            "target": 1,
+            "progress": 0,
+            "type": "initial",
+            "xp_reward": 15,
+            "coin_reward": 10,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "habitat",
+            "status": "available",
+            "optional": false,
+            "tutorial_anchor": "start_meal",
+            "prerequisite": "start_cook"
+          },
+          {
+            "id": "start_fish",
+            "instance_id": "mission:start_fish:once",
+            "event_key": "mission:start_fish:once",
+            "title": "Primeira pescaria",
+            "description": "Conserte o píer e complete uma captura válida.",
+            "metric": "quintal_fish",
+            "unit": "capturas",
+            "target": 1,
+            "progress": 0,
+            "type": "initial",
+            "xp_reward": 20,
+            "coin_reward": 10,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "habitat",
+            "status": "available",
+            "optional": false,
+            "tutorial_anchor": "start_fish",
+            "prerequisite": "start_meal"
+          }
+        ],
+        "achievements": [
+          {
+            "id": "first",
+            "instance_id": "challenge:first",
+            "event_key": "challenge:first",
+            "title": "Primeira descoberta",
+            "description": "Confirme seu primeiro gato diferente.",
+            "metric": "individuals",
+            "unit": "gatos diferentes",
+            "target": 1,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 100,
+            "coin_reward": 50,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 10,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "collector_5",
+            "instance_id": "challenge:collector_5",
+            "event_key": "challenge:collector_5",
+            "title": "Olhar curioso",
+            "description": "Conheça cinco gatos diferentes.",
+            "metric": "individuals",
+            "unit": "gatos diferentes",
+            "target": 5,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 300,
+            "coin_reward": 150,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 25,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "collector_10",
+            "instance_id": "challenge:collector_10",
+            "event_key": "challenge:collector_10",
+            "title": "Explorador felino",
+            "description": "Conheça dez gatos diferentes.",
+            "metric": "individuals",
+            "unit": "gatos diferentes",
+            "target": 10,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 650,
+            "coin_reward": 300,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 50,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "master_collector",
+            "instance_id": "challenge:master_collector",
+            "event_key": "challenge:master_collector",
+            "title": "Mestre do Gatálogo",
+            "description": "Conheça vinte gatos diferentes.",
+            "metric": "individuals",
+            "unit": "gatos diferentes",
+            "target": 20,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 1500,
+            "coin_reward": 600,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 100,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "legend_collector",
+            "instance_id": "challenge:legend_collector",
+            "event_key": "challenge:legend_collector",
+            "title": "Enciclopédia felina",
+            "description": "Conheça cinquenta gatos diferentes.",
+            "metric": "individuals",
+            "unit": "gatos diferentes",
+            "target": 50,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 3000,
+            "coin_reward": 1200,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 200,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "days",
+            "instance_id": "challenge:days",
+            "event_key": "challenge:days",
+            "title": "Histórias em três dias",
+            "description": "Guarde fotos válidas em três dias distintos.",
+            "metric": "photo_days",
+            "unit": "dias com registros",
+            "target": 3,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 150,
+            "coin_reward": 75,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 15,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "colors",
+            "instance_id": "challenge:colors",
+            "event_key": "challenge:colors",
+            "title": "Cores do álbum",
+            "description": "Confirme três cores diferentes nas fichas.",
+            "metric": "colors",
+            "unit": "cores confirmadas",
+            "target": 3,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 200,
+            "coin_reward": 100,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 20,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "angles",
+            "instance_id": "challenge:angles",
+            "event_key": "challenge:angles",
+            "title": "Um novo olhar",
+            "description": "Acrescente dois complementos úteis ao álbum.",
+            "metric": "complements",
+            "unit": "complementos úteis",
+            "target": 2,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 150,
+            "coin_reward": 75,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 15,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "album_10",
+            "instance_id": "challenge:album_10",
+            "event_key": "challenge:album_10",
+            "title": "Álbum vivo",
+            "description": "Acrescente dez complementos úteis.",
+            "metric": "complements",
+            "unit": "complementos úteis",
+            "target": 10,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 800,
+            "coin_reward": 350,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 60,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "care_10",
+            "instance_id": "challenge:care_10",
+            "event_key": "challenge:care_10",
+            "title": "Laços de cuidado",
+            "description": "Cuide do quintal em dez dias diferentes.",
+            "metric": "care_days",
+            "unit": "dias de cuidado",
+            "target": 10,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 500,
+            "coin_reward": 250,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 40,
+            "destination": "habitat",
+            "status": "available"
+          },
+          {
+            "id": "helper",
+            "instance_id": "challenge:helper",
+            "event_key": "challenge:helper",
+            "title": "Rede de cuidado",
+            "description": "Tenha uma pista reconhecida por um tutor.",
+            "metric": "clues",
+            "unit": "pistas reconhecidas",
+            "target": 1,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 300,
+            "coin_reward": 150,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 30,
+            "destination": "missing",
+            "status": "available"
+          },
+          {
+            "id": "garden_50",
+            "instance_id": "challenge:garden_50",
+            "event_key": "challenge:garden_50",
+            "title": "Colheitas com carinho",
+            "description": "Complete cinquenta colheitas da horta.",
+            "metric": "quintal_harvest",
+            "unit": "colheitas",
+            "target": 50,
+            "progress": 1,
+            "type": "achievement",
+            "xp_reward": 400,
+            "coin_reward": 200,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 30,
+            "destination": "habitat",
+            "status": "in_progress"
+          },
+          {
+            "id": "favorite_recipe",
+            "instance_id": "challenge:favorite_recipe",
+            "event_key": "challenge:favorite_recipe",
+            "title": "O sabor favorito",
+            "description": "Descubra a primeira receita favorita de um gato.",
+            "metric": "quintal_favorite",
+            "unit": "receitas favoritas",
+            "target": 1,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 500,
+            "coin_reward": 250,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 40,
+            "destination": "habitat",
+            "status": "available"
+          },
+          {
+            "id": "quintal_spaces",
+            "instance_id": "challenge:quintal_spaces",
+            "event_key": "challenge:quintal_spaces",
+            "title": "Um quintal cheio de vida",
+            "description": "Conclua cinco construções ou ampliações.",
+            "metric": "quintal_facility",
+            "unit": "instalações concluídas",
+            "target": 5,
+            "progress": 1,
+            "type": "achievement",
+            "xp_reward": 400,
+            "coin_reward": 200,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 30,
+            "destination": "habitat",
+            "status": "in_progress"
+          },
+          {
+            "id": "quintal_bond",
+            "instance_id": "challenge:quintal_bond",
+            "event_key": "challenge:quintal_bond",
+            "title": "Uma amizade para sempre",
+            "description": "Alcance duzentos pontos de vínculo com um gato.",
+            "metric": "quintal_bond",
+            "unit": "pontos de vínculo",
+            "target": 200,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 800,
+            "coin_reward": 400,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 60,
+            "destination": "habitat",
+            "status": "available"
+          }
+        ],
+        "challenges": [],
+        "season": null,
+        "confirmed_individuals": 0,
+        "weekly_mission": {
+          "id": "weekly_days",
+          "instance_id": "mission:weekly_days:2026-10-19",
+          "event_key": "mission:weekly_days:2026-10-19",
+          "title": "Histórias ao longo da semana",
+          "description": "Guarde fotos válidas em três dias diferentes, sem exigir dias seguidos.",
+          "metric": "photo_days",
+          "unit": "dias com registros",
+          "target": 3,
+          "progress": 0,
+          "type": "weekly",
+          "xp_reward": 100,
+          "coin_reward": 50,
+          "completed": false,
+          "unlocked": false,
+          "unlocked_at": null,
+          "reward_received": false,
+          "xp_received": null,
+          "coin_received": null,
+          "legacy_reward_unknown": false,
+          "period": "2026-10-19",
+          "reset_at": "2026-10-26T00:00:00-03:00",
+          "ranking_points": 30,
+          "destination": "capture",
+          "status": "available"
+        },
+        "bonus_mission": {
+          "id": "weekly_details",
+          "instance_id": "mission:weekly_details:2026-10-19",
+          "event_key": "mission:weekly_details:2026-10-19",
+          "title": "Enriqueça seu álbum",
+          "description": "Acrescente quatro complementos úteis durante esta semana.",
+          "metric": "complements",
+          "unit": "complementos úteis",
+          "target": 4,
+          "progress": 0,
+          "type": "weekly",
+          "xp_reward": 120,
+          "coin_reward": 60,
+          "completed": false,
+          "unlocked": false,
+          "unlocked_at": null,
+          "reward_received": false,
+          "xp_received": null,
+          "coin_received": null,
+          "legacy_reward_unknown": false,
+          "period": "2026-10-19",
+          "reset_at": "2026-10-26T00:00:00-03:00",
+          "ranking_points": 30,
+          "destination": "capture",
+          "status": "available"
+        },
+        "revision": 6,
+        "as_of": "2026-10-22T13:33:16.086047+00:00",
+        "rewards_enabled": false,
+        "ranking_scores": {
+          "cats_weekly": 0,
+          "cats_all": 0,
+          "missions": 0,
+          "milestones": 0
+        },
+        "highlighted_medals": [],
+        "rule_version": 2,
+        "unlocked_achievements": 0,
+        "total_achievements": 15,
+        "next_habitat_goal": {
+          "title": "Terra",
+          "price": 3,
+          "balance": 1000,
+          "sku": "earth_tile"
+        }
+      }
+    ],
+    "routine_preferences": {
+      "quintal_routine_spaces": [
+        "coop",
+        "garden",
+        "kitchen",
+        "market",
+        "orchard",
+        "pasture"
+      ],
+      "milestone_daily_offers": {
+        "2026-10-22": "album"
+      }
+    },
+    "events": [
+      {
+        "kind": "opening",
+        "state": "confirmed",
+        "event_key": "opening:v1",
+        "created_at": "2026-10-22 13:33:05.217590+00:00",
+        "evidence": {
+          "migration": true
+        }
+      },
+      {
+        "kind": "quintal",
+        "state": "recorded",
+        "event_key": "qactivity:facility:1",
+        "created_at": "2026-10-22 13:33:09.887982+00:00",
+        "evidence": {
+          "metric": "quintal_facility",
+          "quantity": 1,
+          "value": 1,
+          "occurred_at": "2026-10-22T13:33:10.028077+00:00",
+          "validated_by": "quintal_production",
+          "local_day": "2026-10-22",
+          "local_week": "2026-10-19",
+          "activity_valid": true,
+          "base_reward_capped": false,
+          "reason": "Novas recompensas ainda não estão ativas nesta conta.",
+          "eligible": false
+        }
+      },
+      {
+        "kind": "quintal",
+        "state": "recorded",
+        "event_key": "qactivity:plant:1",
+        "created_at": "2026-10-22 13:33:10.964194+00:00",
+        "evidence": {
+          "metric": "quintal_plant",
+          "quantity": 1,
+          "value": 1,
+          "occurred_at": "2026-10-22T13:33:10.982627+00:00",
+          "validated_by": "quintal_production",
+          "local_day": "2026-10-22",
+          "local_week": "2026-10-19",
+          "activity_valid": true,
+          "base_reward_capped": false,
+          "reason": "Novas recompensas ainda não estão ativas nesta conta.",
+          "eligible": false
+        }
+      },
+      {
+        "kind": "quintal",
+        "state": "recorded",
+        "event_key": "qactivity:water_crop:1",
+        "created_at": "2026-10-22 13:33:11.275118+00:00",
+        "evidence": {
+          "metric": "quintal_water_crop",
+          "quantity": 1,
+          "value": 1,
+          "occurred_at": "2026-10-22T13:33:11.298699+00:00",
+          "validated_by": "quintal_production",
+          "local_day": "2026-10-22",
+          "local_week": "2026-10-19",
+          "activity_valid": true,
+          "base_reward_capped": false,
+          "reason": "Novas recompensas ainda não estão ativas nesta conta.",
+          "eligible": false
+        }
+      },
+      {
+        "kind": "quintal",
+        "state": "recorded",
+        "event_key": "qactivity:harvest:1",
+        "created_at": "2026-10-22 13:33:12.659199+00:00",
+        "evidence": {
+          "metric": "quintal_harvest",
+          "quantity": 1,
+          "value": 1,
+          "occurred_at": "2026-10-22T13:33:12.683745+00:00",
+          "validated_by": "quintal_production",
+          "local_day": "2026-10-22",
+          "local_week": "2026-10-19",
+          "activity_valid": true,
+          "base_reward_capped": false,
+          "reason": "Novas recompensas ainda não estão ativas nesta conta.",
+          "eligible": false
+        }
+      },
+      {
+        "kind": "quintal",
+        "state": "recorded",
+        "event_key": "qactivity:cook:1",
+        "created_at": "2026-10-22 13:33:14.943097+00:00",
+        "evidence": {
+          "metric": "quintal_cook",
+          "quantity": 1,
+          "value": 1,
+          "occurred_at": "2026-10-22T13:32:14.912014+00:00",
+          "validated_by": "quintal_production",
+          "local_day": "2026-10-22",
+          "local_week": "2026-10-19",
+          "activity_valid": true,
+          "base_reward_capped": false,
+          "reason": "Novas recompensas ainda não estão ativas nesta conta.",
+          "eligible": false
+        }
+      }
+    ],
+    "activity_journal": [
+      {
+        "metric": "facility",
+        "quantity": 1,
+        "value": 1,
+        "occurred_at": "2026-10-22T13:33:10.028077+00:00",
+        "projected": true
+      },
+      {
+        "metric": "plant",
+        "quantity": 1,
+        "value": 1,
+        "occurred_at": "2026-10-22T13:33:10.982627+00:00",
+        "projected": true
+      },
+      {
+        "metric": "water_crop",
+        "quantity": 1,
+        "value": 1,
+        "occurred_at": "2026-10-22T13:33:11.298699+00:00",
+        "projected": true
+      },
+      {
+        "metric": "harvest",
+        "quantity": 1,
+        "value": 1,
+        "occurred_at": "2026-10-22T13:33:12.683745+00:00",
+        "projected": true
+      },
+      {
+        "metric": "cook",
+        "quantity": 1,
+        "value": 1,
+        "occurred_at": "2026-10-22T13:32:14.912014+00:00",
+        "projected": true
+      }
+    ],
+    "scope": "Original HTTP scenario unchanged. Own disposable account only; no auth headers, tokens or private user data captured."
+  },
+  "attempts/live-diagnostic-02-enabled/critical_runs/diagnostic-baseline/observations/routine-reward-diagnostic.json": {
+    "scenario": "DATA-07",
+    "original_test": "test_live_build_plant_water_cook_queue_cancel_and_collect",
+    "progress_responses": [
+      {
+        "xp": 50,
+        "new_xp": 50,
+        "balance": 1025,
+        "level": 1,
+        "level_title": "Curioso",
+        "level_min_xp": 0,
+        "target_xp": 100,
+        "level_reward": "Selo e título do álbum",
+        "streak": 0,
+        "multiplier": 1.0,
+        "freeze_shields": 0,
+        "calendar": {
+          "timezone": "America/Sao_Paulo",
+          "server_now": "2026-10-22T10:40:46.961759-03:00",
+          "day": "2026-10-22",
+          "week": "2026-10-19",
+          "daily_reset_at": "2026-10-23T00:00:00-03:00",
+          "weekly_reset_at": "2026-10-26T00:00:00-03:00"
+        },
+        "daily_missions": [
+          {
+            "id": "daily_record",
+            "instance_id": "mission:daily_record:2026-10-22",
+            "event_key": "mission:daily_record:2026-10-22",
+            "title": "Guarde uma nova história",
+            "description": "Descubra um gato ou acrescente uma foto útil a uma ficha.",
+            "metric": "photos",
+            "unit": "fotos válidas",
+            "target": 1,
+            "progress": 0,
+            "type": "daily",
+            "xp_reward": 20,
+            "coin_reward": 10,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "2026-10-22",
+            "reset_at": "2026-10-23T00:00:00-03:00",
+            "ranking_points": 10,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "daily_album",
+            "instance_id": "mission:daily_album:2026-10-22",
+            "event_key": "mission:daily_album:2026-10-22",
+            "title": "Mais um detalhe",
+            "description": "Acrescente um complemento útil; outro ângulo ajuda a reconhecer o gato.",
+            "metric": "complements",
+            "unit": "complementos úteis",
+            "target": 1,
+            "progress": 0,
+            "type": "daily",
+            "xp_reward": 20,
+            "coin_reward": 10,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "2026-10-22",
+            "reset_at": "2026-10-23T00:00:00-03:00",
+            "ranking_points": 10,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "daily_community",
+            "instance_id": "mission:daily_community:2026-10-22",
+            "event_key": "mission:daily_community:2026-10-22",
+            "title": "Uma história para compartilhar",
+            "description": "Publique, comente ou compartilhe um cartaz ativo dentro do app.",
+            "metric": "community",
+            "unit": "contribuições",
+            "target": 1,
+            "progress": 0,
+            "type": "daily",
+            "xp_reward": 10,
+            "coin_reward": 5,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "2026-10-22",
+            "reset_at": "2026-10-23T00:00:00-03:00",
+            "ranking_points": 10,
+            "destination": "social",
+            "status": "available"
+          },
+          {
+            "id": "daily_quintal_routine",
+            "instance_id": "mission:daily_quintal_routine:2026-10-22",
+            "event_key": "mission:daily_quintal_routine:2026-10-22",
+            "title": "Uma pausa no Quintal",
+            "description": "Se couber na sua visita, escolha uma das atividades abaixo. Uma só basta; produtos precisam estar prontos.",
+            "metric": "quintal_routine",
+            "unit": "atividades à escolha",
+            "target": 1,
+            "progress": 1,
+            "type": "daily",
+            "xp_reward": 10,
+            "coin_reward": 5,
+            "completed": true,
+            "unlocked": true,
+            "unlocked_at": "2026-10-22T13:40:45.273340+00:00",
+            "reward_received": true,
+            "xp_received": 10,
+            "coin_received": 5,
+            "legacy_reward_unknown": false,
+            "period": "2026-10-22",
+            "reset_at": "2026-10-23T00:00:00-03:00",
+            "ranking_points": 0,
+            "destination": "habitat",
+            "status": "completed",
+            "optional": true,
+            "group": "quintal_routine",
+            "alternatives": [
+              {
+                "space": "garden",
+                "metric": "quintal_harvest",
+                "title": "Colher um canteiro pronto",
+                "tutorial_anchor": "start_harvest"
+              },
+              {
+                "space": "kitchen",
+                "metric": "quintal_cook",
+                "title": "Concluir um lote de ração",
+                "tutorial_anchor": "start_cook"
+              },
+              {
+                "space": "coop",
+                "metric": "quintal_egg",
+                "title": "Recolher ovos prontos",
+                "tutorial_anchor": "quintal_collect_eggs"
+              },
+              {
+                "space": "pasture",
+                "metric": "quintal_milk_collection",
+                "title": "Ordenhar uma vaca pronta",
+                "tutorial_anchor": "quintal_collect_milk"
+              }
+            ],
+            "tutorial_anchor": "daily_quintal_routine",
+            "visit_hint": "Uma atividade nesta visita",
+            "selection_mode": "any"
+          }
+        ],
+        "weekly_missions": [
+          {
+            "id": "weekly_days",
+            "instance_id": "mission:weekly_days:2026-10-19",
+            "event_key": "mission:weekly_days:2026-10-19",
+            "title": "Histórias ao longo da semana",
+            "description": "Guarde fotos válidas em três dias diferentes, sem exigir dias seguidos.",
+            "metric": "photo_days",
+            "unit": "dias com registros",
+            "target": 3,
+            "progress": 0,
+            "type": "weekly",
+            "xp_reward": 100,
+            "coin_reward": 50,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "2026-10-19",
+            "reset_at": "2026-10-26T00:00:00-03:00",
+            "ranking_points": 30,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "weekly_details",
+            "instance_id": "mission:weekly_details:2026-10-19",
+            "event_key": "mission:weekly_details:2026-10-19",
+            "title": "Enriqueça seu álbum",
+            "description": "Acrescente quatro complementos úteis durante esta semana.",
+            "metric": "complements",
+            "unit": "complementos úteis",
+            "target": 4,
+            "progress": 0,
+            "type": "weekly",
+            "xp_reward": 120,
+            "coin_reward": 60,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "2026-10-19",
+            "reset_at": "2026-10-26T00:00:00-03:00",
+            "ranking_points": 30,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "weekly_discover",
+            "instance_id": "mission:weekly_discover:2026-10-19",
+            "event_key": "mission:weekly_discover:2026-10-19",
+            "title": "Novos encontros",
+            "description": "Confirme três gatos diferentes nesta semana.",
+            "metric": "individuals",
+            "unit": "gatos diferentes",
+            "target": 3,
+            "progress": 0,
+            "type": "weekly",
+            "xp_reward": 150,
+            "coin_reward": 75,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "2026-10-19",
+            "reset_at": "2026-10-26T00:00:00-03:00",
+            "ranking_points": 30,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "weekly_quintal_routine",
+            "instance_id": "mission:weekly_quintal_routine:2026-10-19",
+            "event_key": "mission:weekly_quintal_routine:2026-10-19",
+            "title": "No seu ritmo",
+            "description": "Escolha uma atividade em dois dias desta semana. Não precisam ser seguidos, nem usar espaços diferentes.",
+            "metric": "quintal_routine_days",
+            "unit": "dias de atividade",
+            "target": 2,
+            "progress": 1,
+            "type": "weekly",
+            "xp_reward": 30,
+            "coin_reward": 15,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "2026-10-19",
+            "reset_at": "2026-10-26T00:00:00-03:00",
+            "ranking_points": 0,
+            "destination": "habitat",
+            "status": "in_progress",
+            "optional": true,
+            "group": "quintal_routine",
+            "alternatives": [
+              {
+                "space": "garden",
+                "metric": "quintal_harvest",
+                "title": "Colher um canteiro pronto",
+                "tutorial_anchor": "start_harvest"
+              },
+              {
+                "space": "kitchen",
+                "metric": "quintal_cook",
+                "title": "Concluir um lote de ração",
+                "tutorial_anchor": "start_cook"
+              },
+              {
+                "space": "coop",
+                "metric": "quintal_egg",
+                "title": "Recolher ovos prontos",
+                "tutorial_anchor": "quintal_collect_eggs"
+              },
+              {
+                "space": "pasture",
+                "metric": "quintal_milk_collection",
+                "title": "Ordenhar uma vaca pronta",
+                "tutorial_anchor": "quintal_collect_milk"
+              }
+            ],
+            "tutorial_anchor": "weekly_quintal_routine",
+            "visit_hint": "Duas visitas em dias diferentes",
+            "selection_mode": "any"
+          }
+        ],
+        "initial_missions": [
+          {
+            "id": "start_record",
+            "instance_id": "mission:start_record:once",
+            "event_key": "mission:start_record:once",
+            "title": "Seu primeiro encontro",
+            "description": "Registre uma foto e confirme a identidade do gato.",
+            "metric": "photos",
+            "unit": "fotos válidas",
+            "target": 1,
+            "progress": 0,
+            "type": "initial",
+            "xp_reward": 25,
+            "coin_reward": 15,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "capture",
+            "status": "available",
+            "optional": false,
+            "tutorial_anchor": "start_record",
+            "prerequisite": null
+          },
+          {
+            "id": "start_details",
+            "instance_id": "mission:start_details:once",
+            "event_key": "mission:start_details:once",
+            "title": "Conheça melhor seu gato",
+            "description": "Acrescente uma foto com detalhes ou outro ângulo.",
+            "metric": "complements",
+            "unit": "complementos úteis",
+            "target": 1,
+            "progress": 0,
+            "type": "initial",
+            "xp_reward": 25,
+            "coin_reward": 15,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "capture",
+            "status": "available",
+            "optional": false,
+            "tutorial_anchor": "start_details",
+            "prerequisite": "start_record"
+          },
+          {
+            "id": "start_review",
+            "instance_id": "mission:start_review:once",
+            "event_key": "mission:start_review:once",
+            "title": "Seu olhar também conta",
+            "description": "Revise as características sugeridas pela IA na tela de resultado.",
+            "metric": "reviews",
+            "unit": "revisões",
+            "target": 1,
+            "progress": 0,
+            "type": "initial",
+            "xp_reward": 20,
+            "coin_reward": 10,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "collection",
+            "status": "available",
+            "optional": false,
+            "tutorial_anchor": "start_review",
+            "prerequisite": "start_details"
+          },
+          {
+            "id": "start_care",
+            "instance_id": "mission:start_care:once",
+            "event_key": "mission:start_care:once",
+            "title": "Um lar para cuidar",
+            "description": "Coloque um gato próprio no quintal e realize um cuidado válido.",
+            "metric": "care",
+            "unit": "cuidados",
+            "target": 1,
+            "progress": 0,
+            "type": "initial",
+            "xp_reward": 25,
+            "coin_reward": 15,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "habitat",
+            "status": "available",
+            "optional": false,
+            "tutorial_anchor": "start_care",
+            "prerequisite": "start_review"
+          },
+          {
+            "id": "start_community",
+            "instance_id": "mission:start_community:once",
+            "event_key": "mission:start_community:once",
+            "title": "Encontre sua comunidade",
+            "description": "Contribua com uma publicação, comentário ou cartaz. Esta etapa é opcional.",
+            "metric": "community",
+            "unit": "contribuições",
+            "target": 1,
+            "progress": 0,
+            "type": "initial",
+            "xp_reward": 20,
+            "coin_reward": 10,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "social",
+            "status": "available",
+            "optional": true,
+            "tutorial_anchor": "start_community",
+            "prerequisite": "start_care"
+          },
+          {
+            "id": "start_bowls",
+            "instance_id": "mission:start_bowls:once",
+            "event_key": "mission:start_bowls:once",
+            "title": "Um cantinho só seu",
+            "description": "Coloque um gato junto com seus potes de comida e água.",
+            "metric": "quintal_cat_set",
+            "unit": "cantinhos completos",
+            "target": 1,
+            "progress": 0,
+            "type": "initial",
+            "xp_reward": 15,
+            "coin_reward": 10,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "habitat",
+            "status": "available",
+            "optional": false,
+            "tutorial_anchor": "start_bowls",
+            "prerequisite": "start_care"
+          },
+          {
+            "id": "start_water",
+            "instance_id": "mission:start_water:once",
+            "event_key": "mission:start_water:once",
+            "title": "Água fresquinha",
+            "description": "Abasteça o pote de água do seu gato.",
+            "metric": "quintal_water_cat",
+            "unit": "abastecimentos",
+            "target": 1,
+            "progress": 0,
+            "type": "initial",
+            "xp_reward": 10,
+            "coin_reward": 5,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "habitat",
+            "status": "available",
+            "optional": false,
+            "tutorial_anchor": "start_water",
+            "prerequisite": "start_bowls"
+          },
+          {
+            "id": "start_harvest",
+            "instance_id": "mission:start_harvest:once",
+            "event_key": "mission:start_harvest:once",
+            "title": "Primeira colheita",
+            "description": "Abra a horta, plante e colha um canteiro.",
+            "metric": "quintal_harvest",
+            "unit": "colheitas",
+            "target": 1,
+            "progress": 1,
+            "type": "initial",
+            "xp_reward": 20,
+            "coin_reward": 10,
+            "completed": true,
+            "unlocked": true,
+            "unlocked_at": "2026-10-22T13:40:45.273340+00:00",
+            "reward_received": true,
+            "xp_received": 20,
+            "coin_received": 10,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "habitat",
+            "status": "completed",
+            "optional": false,
+            "tutorial_anchor": "start_harvest",
+            "prerequisite": "start_water"
+          },
+          {
+            "id": "start_cook",
+            "instance_id": "mission:start_cook:once",
+            "event_key": "mission:start_cook:once",
+            "title": "Feito com carinho",
+            "description": "Prepare seu primeiro lote de ração na cozinha.",
+            "metric": "quintal_cook",
+            "unit": "lotes preparados",
+            "target": 1,
+            "progress": 1,
+            "type": "initial",
+            "xp_reward": 20,
+            "coin_reward": 10,
+            "completed": true,
+            "unlocked": true,
+            "unlocked_at": "2026-10-22T13:40:46.378036+00:00",
+            "reward_received": true,
+            "xp_received": 20,
+            "coin_received": 10,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "habitat",
+            "status": "completed",
+            "optional": false,
+            "tutorial_anchor": "start_cook",
+            "prerequisite": "start_harvest"
+          },
+          {
+            "id": "start_meal",
+            "instance_id": "mission:start_meal:once",
+            "event_key": "mission:start_meal:once",
+            "title": "Conhecendo os gostos",
+            "description": "Tenha uma refeição consumida por um gato.",
+            "metric": "quintal_meal",
+            "unit": "refeições",
+            "target": 1,
+            "progress": 0,
+            "type": "initial",
+            "xp_reward": 15,
+            "coin_reward": 10,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "habitat",
+            "status": "available",
+            "optional": false,
+            "tutorial_anchor": "start_meal",
+            "prerequisite": "start_cook"
+          },
+          {
+            "id": "start_fish",
+            "instance_id": "mission:start_fish:once",
+            "event_key": "mission:start_fish:once",
+            "title": "Primeira pescaria",
+            "description": "Conserte o píer e complete uma captura válida.",
+            "metric": "quintal_fish",
+            "unit": "capturas",
+            "target": 1,
+            "progress": 0,
+            "type": "initial",
+            "xp_reward": 20,
+            "coin_reward": 10,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "once",
+            "reset_at": null,
+            "ranking_points": 0,
+            "destination": "habitat",
+            "status": "available",
+            "optional": false,
+            "tutorial_anchor": "start_fish",
+            "prerequisite": "start_meal"
+          }
+        ],
+        "achievements": [
+          {
+            "id": "first",
+            "instance_id": "challenge:first",
+            "event_key": "challenge:first",
+            "title": "Primeira descoberta",
+            "description": "Confirme seu primeiro gato diferente.",
+            "metric": "individuals",
+            "unit": "gatos diferentes",
+            "target": 1,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 100,
+            "coin_reward": 50,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 10,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "collector_5",
+            "instance_id": "challenge:collector_5",
+            "event_key": "challenge:collector_5",
+            "title": "Olhar curioso",
+            "description": "Conheça cinco gatos diferentes.",
+            "metric": "individuals",
+            "unit": "gatos diferentes",
+            "target": 5,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 300,
+            "coin_reward": 150,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 25,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "collector_10",
+            "instance_id": "challenge:collector_10",
+            "event_key": "challenge:collector_10",
+            "title": "Explorador felino",
+            "description": "Conheça dez gatos diferentes.",
+            "metric": "individuals",
+            "unit": "gatos diferentes",
+            "target": 10,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 650,
+            "coin_reward": 300,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 50,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "master_collector",
+            "instance_id": "challenge:master_collector",
+            "event_key": "challenge:master_collector",
+            "title": "Mestre do Gatálogo",
+            "description": "Conheça vinte gatos diferentes.",
+            "metric": "individuals",
+            "unit": "gatos diferentes",
+            "target": 20,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 1500,
+            "coin_reward": 600,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 100,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "legend_collector",
+            "instance_id": "challenge:legend_collector",
+            "event_key": "challenge:legend_collector",
+            "title": "Enciclopédia felina",
+            "description": "Conheça cinquenta gatos diferentes.",
+            "metric": "individuals",
+            "unit": "gatos diferentes",
+            "target": 50,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 3000,
+            "coin_reward": 1200,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 200,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "days",
+            "instance_id": "challenge:days",
+            "event_key": "challenge:days",
+            "title": "Histórias em três dias",
+            "description": "Guarde fotos válidas em três dias distintos.",
+            "metric": "photo_days",
+            "unit": "dias com registros",
+            "target": 3,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 150,
+            "coin_reward": 75,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 15,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "colors",
+            "instance_id": "challenge:colors",
+            "event_key": "challenge:colors",
+            "title": "Cores do álbum",
+            "description": "Confirme três cores diferentes nas fichas.",
+            "metric": "colors",
+            "unit": "cores confirmadas",
+            "target": 3,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 200,
+            "coin_reward": 100,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 20,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "angles",
+            "instance_id": "challenge:angles",
+            "event_key": "challenge:angles",
+            "title": "Um novo olhar",
+            "description": "Acrescente dois complementos úteis ao álbum.",
+            "metric": "complements",
+            "unit": "complementos úteis",
+            "target": 2,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 150,
+            "coin_reward": 75,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 15,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "album_10",
+            "instance_id": "challenge:album_10",
+            "event_key": "challenge:album_10",
+            "title": "Álbum vivo",
+            "description": "Acrescente dez complementos úteis.",
+            "metric": "complements",
+            "unit": "complementos úteis",
+            "target": 10,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 800,
+            "coin_reward": 350,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 60,
+            "destination": "capture",
+            "status": "available"
+          },
+          {
+            "id": "care_10",
+            "instance_id": "challenge:care_10",
+            "event_key": "challenge:care_10",
+            "title": "Laços de cuidado",
+            "description": "Cuide do quintal em dez dias diferentes.",
+            "metric": "care_days",
+            "unit": "dias de cuidado",
+            "target": 10,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 500,
+            "coin_reward": 250,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 40,
+            "destination": "habitat",
+            "status": "available"
+          },
+          {
+            "id": "helper",
+            "instance_id": "challenge:helper",
+            "event_key": "challenge:helper",
+            "title": "Rede de cuidado",
+            "description": "Tenha uma pista reconhecida por um tutor.",
+            "metric": "clues",
+            "unit": "pistas reconhecidas",
+            "target": 1,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 300,
+            "coin_reward": 150,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 30,
+            "destination": "missing",
+            "status": "available"
+          },
+          {
+            "id": "garden_50",
+            "instance_id": "challenge:garden_50",
+            "event_key": "challenge:garden_50",
+            "title": "Colheitas com carinho",
+            "description": "Complete cinquenta colheitas da horta.",
+            "metric": "quintal_harvest",
+            "unit": "colheitas",
+            "target": 50,
+            "progress": 1,
+            "type": "achievement",
+            "xp_reward": 400,
+            "coin_reward": 200,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 30,
+            "destination": "habitat",
+            "status": "in_progress"
+          },
+          {
+            "id": "favorite_recipe",
+            "instance_id": "challenge:favorite_recipe",
+            "event_key": "challenge:favorite_recipe",
+            "title": "O sabor favorito",
+            "description": "Descubra a primeira receita favorita de um gato.",
+            "metric": "quintal_favorite",
+            "unit": "receitas favoritas",
+            "target": 1,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 500,
+            "coin_reward": 250,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 40,
+            "destination": "habitat",
+            "status": "available"
+          },
+          {
+            "id": "quintal_spaces",
+            "instance_id": "challenge:quintal_spaces",
+            "event_key": "challenge:quintal_spaces",
+            "title": "Um quintal cheio de vida",
+            "description": "Conclua cinco construções ou ampliações.",
+            "metric": "quintal_facility",
+            "unit": "instalações concluídas",
+            "target": 5,
+            "progress": 1,
+            "type": "achievement",
+            "xp_reward": 400,
+            "coin_reward": 200,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 30,
+            "destination": "habitat",
+            "status": "in_progress"
+          },
+          {
+            "id": "quintal_bond",
+            "instance_id": "challenge:quintal_bond",
+            "event_key": "challenge:quintal_bond",
+            "title": "Uma amizade para sempre",
+            "description": "Alcance duzentos pontos de vínculo com um gato.",
+            "metric": "quintal_bond",
+            "unit": "pontos de vínculo",
+            "target": 200,
+            "progress": 0,
+            "type": "achievement",
+            "xp_reward": 800,
+            "coin_reward": 400,
+            "completed": false,
+            "unlocked": false,
+            "unlocked_at": null,
+            "reward_received": false,
+            "xp_received": null,
+            "coin_received": null,
+            "legacy_reward_unknown": false,
+            "period": "lifetime",
+            "reset_at": null,
+            "ranking_points": 60,
+            "destination": "habitat",
+            "status": "available"
+          }
+        ],
+        "challenges": [],
+        "season": null,
+        "confirmed_individuals": 0,
+        "weekly_mission": {
+          "id": "weekly_days",
+          "instance_id": "mission:weekly_days:2026-10-19",
+          "event_key": "mission:weekly_days:2026-10-19",
+          "title": "Histórias ao longo da semana",
+          "description": "Guarde fotos válidas em três dias diferentes, sem exigir dias seguidos.",
+          "metric": "photo_days",
+          "unit": "dias com registros",
+          "target": 3,
+          "progress": 0,
+          "type": "weekly",
+          "xp_reward": 100,
+          "coin_reward": 50,
+          "completed": false,
+          "unlocked": false,
+          "unlocked_at": null,
+          "reward_received": false,
+          "xp_received": null,
+          "coin_received": null,
+          "legacy_reward_unknown": false,
+          "period": "2026-10-19",
+          "reset_at": "2026-10-26T00:00:00-03:00",
+          "ranking_points": 30,
+          "destination": "capture",
+          "status": "available"
+        },
+        "bonus_mission": {
+          "id": "weekly_details",
+          "instance_id": "mission:weekly_details:2026-10-19",
+          "event_key": "mission:weekly_details:2026-10-19",
+          "title": "Enriqueça seu álbum",
+          "description": "Acrescente quatro complementos úteis durante esta semana.",
+          "metric": "complements",
+          "unit": "complementos úteis",
+          "target": 4,
+          "progress": 0,
+          "type": "weekly",
+          "xp_reward": 120,
+          "coin_reward": 60,
+          "completed": false,
+          "unlocked": false,
+          "unlocked_at": null,
+          "reward_received": false,
+          "xp_received": null,
+          "coin_received": null,
+          "legacy_reward_unknown": false,
+          "period": "2026-10-19",
+          "reset_at": "2026-10-26T00:00:00-03:00",
+          "ranking_points": 30,
+          "destination": "capture",
+          "status": "available"
+        },
+        "revision": 9,
+        "as_of": "2026-10-22T13:40:46.967725+00:00",
+        "rewards_enabled": true,
+        "ranking_scores": {
+          "cats_weekly": 0,
+          "cats_all": 0,
+          "missions": 0,
+          "milestones": 0
+        },
+        "highlighted_medals": [],
+        "rule_version": 2,
+        "unlocked_achievements": 0,
+        "total_achievements": 15,
+        "next_habitat_goal": {
+          "title": "Terra",
+          "price": 3,
+          "balance": 1025,
+          "sku": "earth_tile"
+        }
+      }
+    ],
+    "routine_preferences": {
+      "quintal_routine_spaces": [
+        "coop",
+        "garden",
+        "kitchen",
+        "market",
+        "orchard",
+        "pasture"
+      ],
+      "milestone_daily_offers": {
+        "2026-10-22": "album"
+      }
+    },
+    "events": [
+      {
+        "kind": "opening",
+        "state": "confirmed",
+        "event_key": "opening:v1",
+        "created_at": "2026-10-22 13:40:41.860618+00:00",
+        "evidence": {
+          "migration": true
+        }
+      },
+      {
+        "kind": "quintal",
+        "state": "confirmed",
+        "event_key": "qactivity:facility:1",
+        "created_at": "2026-10-22 13:40:43.745474+00:00",
+        "evidence": {
+          "metric": "quintal_facility",
+          "quantity": 1,
+          "value": 1,
+          "occurred_at": "2026-10-22T13:40:43.782577+00:00",
+          "validated_by": "quintal_production",
+          "local_day": "2026-10-22",
+          "local_week": "2026-10-19",
+          "activity_valid": true,
+          "base_reward_capped": false,
+          "eligible": true
+        }
+      },
+      {
+        "kind": "quintal",
+        "state": "confirmed",
+        "event_key": "qactivity:plant:1",
+        "created_at": "2026-10-22 13:40:44.469434+00:00",
+        "evidence": {
+          "metric": "quintal_plant",
+          "quantity": 1,
+          "value": 1,
+          "occurred_at": "2026-10-22T13:40:44.484621+00:00",
+          "validated_by": "quintal_production",
+          "local_day": "2026-10-22",
+          "local_week": "2026-10-19",
+          "activity_valid": true,
+          "base_reward_capped": false,
+          "eligible": true
+        }
+      },
+      {
+        "kind": "quintal",
+        "state": "confirmed",
+        "event_key": "qactivity:water_crop:1",
+        "created_at": "2026-10-22 13:40:44.682351+00:00",
+        "evidence": {
+          "metric": "quintal_water_crop",
+          "quantity": 1,
+          "value": 1,
+          "occurred_at": "2026-10-22T13:40:44.697157+00:00",
+          "validated_by": "quintal_production",
+          "local_day": "2026-10-22",
+          "local_week": "2026-10-19",
+          "activity_valid": true,
+          "base_reward_capped": false,
+          "eligible": true
+        }
+      },
+      {
+        "kind": "quintal",
+        "state": "confirmed",
+        "event_key": "qactivity:harvest:1",
+        "created_at": "2026-10-22 13:40:45.273340+00:00",
+        "evidence": {
+          "metric": "quintal_harvest",
+          "quantity": 1,
+          "value": 1,
+          "occurred_at": "2026-10-22T13:40:45.293892+00:00",
+          "validated_by": "quintal_production",
+          "local_day": "2026-10-22",
+          "local_week": "2026-10-19",
+          "activity_valid": true,
+          "base_reward_capped": false,
+          "eligible": true
+        }
+      },
+      {
+        "kind": "mission",
+        "state": "confirmed",
+        "event_key": "mission:daily_quintal_routine:2026-10-22",
+        "created_at": "2026-10-22 13:40:45.273340+00:00",
+        "evidence": {
+          "source_event_id": "245433da-c288-4362-9027-849bb7cdd36b",
+          "objective_type": "daily",
+          "ranking_points": 0,
+          "local_day": "2026-10-22",
+          "local_week": "2026-10-19",
+          "activity_valid": true,
+          "base_reward_capped": false,
+          "eligible": true
+        }
+      },
+      {
+        "kind": "mission",
+        "state": "confirmed",
+        "event_key": "mission:start_harvest:once",
+        "created_at": "2026-10-22 13:40:45.273340+00:00",
+        "evidence": {
+          "source_event_id": "245433da-c288-4362-9027-849bb7cdd36b",
+          "objective_type": "initial",
+          "ranking_points": 0,
+          "local_day": "2026-10-22",
+          "local_week": "2026-10-19",
+          "activity_valid": true,
+          "base_reward_capped": false,
+          "eligible": true
+        }
+      },
+      {
+        "kind": "quintal",
+        "state": "confirmed",
+        "event_key": "qactivity:cook:1",
+        "created_at": "2026-10-22 13:40:46.378036+00:00",
+        "evidence": {
+          "metric": "quintal_cook",
+          "quantity": 1,
+          "value": 1,
+          "occurred_at": "2026-10-22T13:39:46.363951+00:00",
+          "validated_by": "quintal_production",
+          "local_day": "2026-10-22",
+          "local_week": "2026-10-19",
+          "activity_valid": true,
+          "base_reward_capped": false,
+          "eligible": true
+        }
+      },
+      {
+        "kind": "mission",
+        "state": "confirmed",
+        "event_key": "mission:start_cook:once",
+        "created_at": "2026-10-22 13:40:46.378036+00:00",
+        "evidence": {
+          "source_event_id": "2b511a11-a3c7-4c96-87be-3a7b523b76d4",
+          "objective_type": "initial",
+          "ranking_points": 0,
+          "local_day": "2026-10-22",
+          "local_week": "2026-10-19",
+          "activity_valid": true,
+          "base_reward_capped": false,
+          "eligible": true
+        }
+      }
+    ],
+    "activity_journal": [
+      {
+        "metric": "facility",
+        "quantity": 1,
+        "value": 1,
+        "occurred_at": "2026-10-22T13:40:43.782577+00:00",
+        "projected": true
+      },
+      {
+        "metric": "plant",
+        "quantity": 1,
+        "value": 1,
+        "occurred_at": "2026-10-22T13:40:44.484621+00:00",
+        "projected": true
+      },
+      {
+        "metric": "water_crop",
+        "quantity": 1,
+        "value": 1,
+        "occurred_at": "2026-10-22T13:40:44.697157+00:00",
+        "projected": true
+      },
+      {
+        "metric": "harvest",
+        "quantity": 1,
+        "value": 1,
+        "occurred_at": "2026-10-22T13:40:45.293892+00:00",
+        "projected": true
+      },
+      {
+        "metric": "cook",
+        "quantity": 1,
+        "value": 1,
+        "occurred_at": "2026-10-22T13:39:46.363951+00:00",
+        "projected": true
+      }
+    ],
+    "scope": "Original HTTP scenario unchanged. Own disposable account only; no auth headers, tokens or private user data captured."
+  },
+  "attempts/live-diagnostic-03-disabled/critical_runs/diagnostic-baseline/observations/routine-disabled.json": {
+    "scenario": "DATA-07",
+    "rewards_enabled": false,
+    "production_collected": 3,
+    "routine_progress": 1,
+    "mission_reward_received": false,
+    "activity_recorded_without_reward": true,
+    "scope": "Explicit 0% rollout only in discarded API; original user services unchanged"
+  },
+  "attempts/accessibility-04/accessibility/observations/ACC08-login-validation.json": {
+    "scenarios": [
+      "ACC-08"
+    ],
+    "errorTextExposedInSemantics": true,
+    "keyboardInset": 320,
+    "layoutError": null,
+    "scope": "Empty email only. Actual reader announcement/focus, offline/server errors and in-progress states pending."
+  },
+  "attempts/accessibility-04/accessibility/observations/hold-1.0-false.json": {
+    "scenarios": [
+      "ACC-01",
+      "ACC-02",
+      "ACC-03",
+      "ACC-05",
+      "ACC-06",
+      "ACC-07"
+    ],
+    "widget": "QuintalHoldControl",
+    "scale": 1.0,
+    "disableAnimations": false,
+    "guidelines": {
+      "textContrast": {
+        "passed": true,
+        "reason": null
+      },
+      "androidTarget": {
+        "passed": true,
+        "reason": null
+      },
+      "iosTarget": {
+        "passed": true,
+        "reason": null
+      },
+      "labels": {
+        "passed": true,
+        "reason": null
+      }
+    },
+    "semanticMeaningful": true,
+    "semanticActionChangesState": true,
+    "animationDurationMs": 90,
+    "respectsReducedMotion": true,
+    "width": 280.0,
+    "height": 51.0,
+    "scope": "Desktop Semantics and preference signal; no screen reader device execution."
+  },
+  "attempts/accessibility-04/accessibility/observations/hold-1.0-true.json": {
+    "scenarios": [
+      "ACC-01",
+      "ACC-02",
+      "ACC-03",
+      "ACC-05",
+      "ACC-06",
+      "ACC-07"
+    ],
+    "widget": "QuintalHoldControl",
+    "scale": 1.0,
+    "disableAnimations": true,
+    "guidelines": {
+      "textContrast": {
+        "passed": true,
+        "reason": null
+      },
+      "androidTarget": {
+        "passed": true,
+        "reason": null
+      },
+      "iosTarget": {
+        "passed": true,
+        "reason": null
+      },
+      "labels": {
+        "passed": true,
+        "reason": null
+      }
+    },
+    "semanticMeaningful": true,
+    "semanticActionChangesState": true,
+    "animationDurationMs": 0,
+    "respectsReducedMotion": true,
+    "width": 280.0,
+    "height": 51.0,
+    "scope": "Desktop Semantics and preference signal; no screen reader device execution."
+  },
+  "attempts/accessibility-04/accessibility/observations/hold-2.0-false.json": {
+    "scenarios": [
+      "ACC-01",
+      "ACC-02",
+      "ACC-03",
+      "ACC-05",
+      "ACC-06",
+      "ACC-07"
+    ],
+    "widget": "QuintalHoldControl",
+    "scale": 2.0,
+    "disableAnimations": false,
+    "guidelines": {
+      "textContrast": {
+        "passed": true,
+        "reason": null
+      },
+      "androidTarget": {
+        "passed": true,
+        "reason": null
+      },
+      "iosTarget": {
+        "passed": true,
+        "reason": null
+      },
+      "labels": {
+        "passed": true,
+        "reason": null
+      }
+    },
+    "semanticMeaningful": true,
+    "semanticActionChangesState": true,
+    "animationDurationMs": 90,
+    "respectsReducedMotion": true,
+    "width": 280.0,
+    "height": 114.0,
+    "scope": "Desktop Semantics and preference signal; no screen reader device execution."
+  },
+  "attempts/accessibility-04/accessibility/observations/hold-2.0-true.json": {
+    "scenarios": [
+      "ACC-01",
+      "ACC-02",
+      "ACC-03",
+      "ACC-05",
+      "ACC-06",
+      "ACC-07"
+    ],
+    "widget": "QuintalHoldControl",
+    "scale": 2.0,
+    "disableAnimations": true,
+    "guidelines": {
+      "textContrast": {
+        "passed": true,
+        "reason": null
+      },
+      "androidTarget": {
+        "passed": true,
+        "reason": null
+      },
+      "iosTarget": {
+        "passed": true,
+        "reason": null
+      },
+      "labels": {
+        "passed": true,
+        "reason": null
+      }
+    },
+    "semanticMeaningful": true,
+    "semanticActionChangesState": true,
+    "animationDurationMs": 0,
+    "respectsReducedMotion": true,
+    "width": 280.0,
+    "height": 114.0,
+    "scope": "Desktop Semantics and preference signal; no screen reader device execution."
+  },
+  "attempts/accessibility-04/accessibility/observations/login-320.0-568.0-1.0.json": {
+    "scenarios": [
+      "ACC-01",
+      "ACC-02",
+      "ACC-03",
+      "ACC-05",
+      "ACC-07"
+    ],
+    "widget": "AuthPage",
+    "width": 320.0,
+    "height": 568.0,
+    "scale": 1.0,
+    "guidelines": {
+      "textContrast": {
+        "passed": false,
+        "reason": "SemanticsNode#12(Rect.fromLTRB(36.0, 208.0, 284.0, 223.0), label: \"e leve suas descobertas com você.\", textDirection: ltr):\nExpected contrast ratio of at least 4.5 but found 3.02 for a font size of 13.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 0.9843, green: 0.9647, blue: 0.9098, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.6275, green: 0.5451, blue: 0.4627, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n\n\n\nSemanticsNode#17(Rect.fromLTRB(36.0, 387.0, 284.0, 435.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], label: \"Entrar\", textDirection: ltr):\nExpected contrast ratio of at least 4.5 but found 2.55 for a font size of 16.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 1.0000, green: 1.0000, blue: 1.0000, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n\n\nSemanticsNode#20(Rect.fromLTRB(100.4, 541.0, 219.6, 567.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr):\nExpected contrast ratio of at least 3.0 but found 2.36 for a font size of 14.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 0.9843, green: 0.9647, blue: 0.9098, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n"
+      },
+      "androidTarget": {
+        "passed": false,
+        "reason": "SemanticsNode#16(Rect.fromLTRB(163.3, 357.0, 284.0, 373.0), actions: [tap], label: \"Esqueci minha senha\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(120.7, 16.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\n\n\nSemanticsNode#19(Rect.fromLTRB(36.0, 487.0, 284.0, 529.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isImage, isFocusable], label: \"Continuar com Google\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(248.0, 42.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\nSemanticsNode#20(Rect.fromLTRB(100.4, 541.0, 219.6, 567.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(119.2, 26.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\n"
+      },
+      "iosTarget": {
+        "passed": false,
+        "reason": "SemanticsNode#16(Rect.fromLTRB(163.3, 357.0, 284.0, 373.0), actions: [tap], label: \"Esqueci minha senha\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(120.7, 16.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\n\n\nSemanticsNode#19(Rect.fromLTRB(36.0, 487.0, 284.0, 529.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isImage, isFocusable], label: \"Continuar com Google\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(248.0, 42.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\nSemanticsNode#20(Rect.fromLTRB(100.4, 541.0, 219.6, 567.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(119.2, 26.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\n"
+      },
+      "labels": {
+        "passed": true,
+        "reason": null
+      }
+    },
+    "layoutError": null,
+    "clippedLabels": [],
+    "scope": "Initial visible viewport only. Scrolled states and device readers pending."
+  },
+  "attempts/accessibility-04/accessibility/observations/login-320.0-568.0-1.3.json": {
+    "scenarios": [
+      "ACC-01",
+      "ACC-02",
+      "ACC-03",
+      "ACC-05",
+      "ACC-07"
+    ],
+    "widget": "AuthPage",
+    "width": 320.0,
+    "height": 568.0,
+    "scale": 1.3,
+    "guidelines": {
+      "textContrast": {
+        "passed": false,
+        "reason": "SemanticsNode#17(Rect.fromLTRB(36.0, 456.0, 284.0, 504.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], label: \"Entrar\", textDirection: ltr):\nExpected contrast ratio of at least 4.5 but found 2.55 for a font size of 16.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 1.0000, green: 1.0000, blue: 1.0000, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\nSemanticsNode#18(Rect.fromLTRB(150.0, 519.0, 170.0, 541.0), label: \"ou\", textDirection: ltr):\nExpected contrast ratio of at least 4.5 but found 2.13 for a font size of 13.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 0.9843, green: 0.9647, blue: 0.9098, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.6000, green: 0.7020, blue: 0.5098, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n\n\n"
+      },
+      "androidTarget": {
+        "passed": false,
+        "reason": "SemanticsNode#16(Rect.fromLTRB(128.5, 422.0, 284.0, 442.0), actions: [tap], label: \"Esqueci minha senha\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(155.5, 20.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\n\n\n\n\n"
+      },
+      "iosTarget": {
+        "passed": false,
+        "reason": "SemanticsNode#16(Rect.fromLTRB(128.5, 422.0, 284.0, 442.0), actions: [tap], label: \"Esqueci minha senha\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(155.5, 20.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\n\n\n\n\n"
+      },
+      "labels": {
+        "passed": true,
+        "reason": null
+      }
+    },
+    "layoutError": null,
+    "clippedLabels": [
+      "Continuar com Google"
+    ],
+    "scope": "Initial visible viewport only. Scrolled states and device readers pending."
+  },
+  "attempts/accessibility-04/accessibility/observations/login-320.0-568.0-2.0.json": {
+    "scenarios": [
+      "ACC-01",
+      "ACC-02",
+      "ACC-03",
+      "ACC-05",
+      "ACC-07"
+    ],
+    "widget": "AuthPage",
+    "width": 320.0,
+    "height": 568.0,
+    "scale": 2.0,
+    "guidelines": {
+      "textContrast": {
+        "passed": false,
+        "reason": "SemanticsNode#16(Rect.fromLTRB(47.3, 532.0, 284.0, 563.0), actions: [tap], label: \"Esqueci minha senha\", textDirection: ltr):\nExpected contrast ratio of at least 4.5 but found 2.13 for a font size of 12.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 0.9843, green: 0.9647, blue: 0.9098, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.6000, green: 0.7020, blue: 0.5098, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n\n\n\n\n"
+      },
+      "androidTarget": {
+        "passed": false,
+        "reason": "SemanticsNode#16(Rect.fromLTRB(47.3, 532.0, 284.0, 563.0), actions: [tap], label: \"Esqueci minha senha\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(236.7, 31.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\n\n\n\n\n"
+      },
+      "iosTarget": {
+        "passed": false,
+        "reason": "SemanticsNode#16(Rect.fromLTRB(47.3, 532.0, 284.0, 563.0), actions: [tap], label: \"Esqueci minha senha\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(236.7, 31.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\n\n\n\n\n"
+      },
+      "labels": {
+        "passed": true,
+        "reason": null
+      }
+    },
+    "layoutError": null,
+    "clippedLabels": [
+      "Continuar com Google"
+    ],
+    "scope": "Initial visible viewport only. Scrolled states and device readers pending."
+  },
+  "attempts/accessibility-04/accessibility/observations/login-360.0-800.0-1.0.json": {
+    "scenarios": [
+      "ACC-01",
+      "ACC-02",
+      "ACC-03",
+      "ACC-05",
+      "ACC-07"
+    ],
+    "widget": "AuthPage",
+    "width": 360.0,
+    "height": 800.0,
+    "scale": 1.0,
+    "guidelines": {
+      "textContrast": {
+        "passed": false,
+        "reason": "SemanticsNode#12(Rect.fromLTRB(36.0, 208.0, 324.0, 223.0), label: \"e leve suas descobertas com você.\", textDirection: ltr):\nExpected contrast ratio of at least 4.5 but found 3.02 for a font size of 13.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 0.9843, green: 0.9647, blue: 0.9098, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.6275, green: 0.5451, blue: 0.4627, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n\n\n\nSemanticsNode#17(Rect.fromLTRB(36.0, 387.0, 324.0, 435.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], label: \"Entrar\", textDirection: ltr):\nExpected contrast ratio of at least 4.5 but found 2.55 for a font size of 16.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 1.0000, green: 1.0000, blue: 1.0000, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n\n\nSemanticsNode#20(Rect.fromLTRB(120.4, 541.0, 239.6, 567.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr):\nExpected contrast ratio of at least 3.0 but found 2.36 for a font size of 14.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 0.9843, green: 0.9647, blue: 0.9098, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n"
+      },
+      "androidTarget": {
+        "passed": false,
+        "reason": "SemanticsNode#16(Rect.fromLTRB(203.3, 357.0, 324.0, 373.0), actions: [tap], label: \"Esqueci minha senha\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(120.7, 16.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\n\n\nSemanticsNode#19(Rect.fromLTRB(36.0, 487.0, 324.0, 529.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isImage, isFocusable], label: \"Continuar com Google\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(288.0, 42.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\nSemanticsNode#20(Rect.fromLTRB(120.4, 541.0, 239.6, 567.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(119.2, 26.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\n"
+      },
+      "iosTarget": {
+        "passed": false,
+        "reason": "SemanticsNode#16(Rect.fromLTRB(203.3, 357.0, 324.0, 373.0), actions: [tap], label: \"Esqueci minha senha\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(120.7, 16.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\n\n\nSemanticsNode#19(Rect.fromLTRB(36.0, 487.0, 324.0, 529.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isImage, isFocusable], label: \"Continuar com Google\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(288.0, 42.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\nSemanticsNode#20(Rect.fromLTRB(120.4, 541.0, 239.6, 567.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(119.2, 26.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\n"
+      },
+      "labels": {
+        "passed": true,
+        "reason": null
+      }
+    },
+    "layoutError": null,
+    "clippedLabels": [],
+    "scope": "Initial visible viewport only. Scrolled states and device readers pending."
+  },
+  "attempts/accessibility-04/accessibility/observations/login-360.0-800.0-1.3.json": {
+    "scenarios": [
+      "ACC-01",
+      "ACC-02",
+      "ACC-03",
+      "ACC-05",
+      "ACC-07"
+    ],
+    "widget": "AuthPage",
+    "width": 360.0,
+    "height": 800.0,
+    "scale": 1.3,
+    "guidelines": {
+      "textContrast": {
+        "passed": false,
+        "reason": "SemanticsNode#17(Rect.fromLTRB(36.0, 406.0, 324.0, 454.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], label: \"Entrar\", textDirection: ltr):\nExpected contrast ratio of at least 4.5 but found 2.55 for a font size of 16.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 1.0000, green: 1.0000, blue: 1.0000, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n\n\nSemanticsNode#20(Rect.fromLTRB(103.2, 560.0, 256.8, 592.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr):\nExpected contrast ratio of at least 3.0 but found 2.36 for a font size of 14.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 0.9843, green: 0.9647, blue: 0.9098, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n"
+      },
+      "androidTarget": {
+        "passed": false,
+        "reason": "SemanticsNode#16(Rect.fromLTRB(168.5, 372.0, 324.0, 392.0), actions: [tap], label: \"Esqueci minha senha\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(155.5, 20.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\n\n\nSemanticsNode#19(Rect.fromLTRB(36.0, 506.0, 324.0, 548.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isImage, isFocusable], label: \"Continuar com Google\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(288.0, 42.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\nSemanticsNode#20(Rect.fromLTRB(103.2, 560.0, 256.8, 592.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(153.7, 32.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\n"
+      },
+      "iosTarget": {
+        "passed": false,
+        "reason": "SemanticsNode#16(Rect.fromLTRB(168.5, 372.0, 324.0, 392.0), actions: [tap], label: \"Esqueci minha senha\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(155.5, 20.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\n\n\nSemanticsNode#19(Rect.fromLTRB(36.0, 506.0, 324.0, 548.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isImage, isFocusable], label: \"Continuar com Google\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(288.0, 42.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\nSemanticsNode#20(Rect.fromLTRB(103.2, 560.0, 256.8, 592.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(153.7, 32.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\n"
+      },
+      "labels": {
+        "passed": true,
+        "reason": null
+      }
+    },
+    "layoutError": null,
+    "clippedLabels": [],
+    "scope": "Initial visible viewport only. Scrolled states and device readers pending."
+  },
+  "attempts/accessibility-04/accessibility/observations/login-360.0-800.0-2.0.json": {
+    "scenarios": [
+      "ACC-01",
+      "ACC-02",
+      "ACC-03",
+      "ACC-05",
+      "ACC-07"
+    ],
+    "widget": "AuthPage",
+    "width": 360.0,
+    "height": 800.0,
+    "scale": 2.0,
+    "guidelines": {
+      "textContrast": {
+        "passed": false,
+        "reason": "SemanticsNode#17(Rect.fromLTRB(36.0, 547.0, 324.0, 595.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], label: \"Entrar\", textDirection: ltr):\nExpected contrast ratio of at least 4.5 but found 2.55 for a font size of 16.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 1.0000, green: 1.0000, blue: 1.0000, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n\n\nSemanticsNode#20(Rect.fromLTRB(62.9, 711.0, 297.1, 755.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr):\nExpected contrast ratio of at least 3.0 but found 2.13 for a font size of 14.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 0.9843, green: 0.9647, blue: 0.9098, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.6000, green: 0.7020, blue: 0.5098, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n"
+      },
+      "androidTarget": {
+        "passed": false,
+        "reason": "SemanticsNode#16(Rect.fromLTRB(87.3, 502.0, 324.0, 533.0), actions: [tap], label: \"Esqueci minha senha\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(236.7, 31.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\n\n\nSemanticsNode#19(Rect.fromLTRB(36.0, 657.0, 324.0, 699.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isImage, isFocusable], label: \"Continuar com Google\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(288.0, 42.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\nSemanticsNode#20(Rect.fromLTRB(62.9, 711.0, 297.1, 755.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(234.2, 44.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\n"
+      },
+      "iosTarget": {
+        "passed": false,
+        "reason": "SemanticsNode#16(Rect.fromLTRB(87.3, 502.0, 324.0, 533.0), actions: [tap], label: \"Esqueci minha senha\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(236.7, 31.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\n\n\nSemanticsNode#19(Rect.fromLTRB(36.0, 657.0, 324.0, 699.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isImage, isFocusable], label: \"Continuar com Google\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(288.0, 42.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\n\n"
+      },
+      "labels": {
+        "passed": true,
+        "reason": null
+      }
+    },
+    "layoutError": null,
+    "clippedLabels": [
+      "Continuar com Google"
+    ],
+    "scope": "Initial visible viewport only. Scrolled states and device readers pending."
+  },
+  "attempts/accessibility-04/accessibility/observations/login-412.0-915.0-1.0.json": {
+    "scenarios": [
+      "ACC-01",
+      "ACC-02",
+      "ACC-03",
+      "ACC-05",
+      "ACC-07"
+    ],
+    "widget": "AuthPage",
+    "width": 412.0,
+    "height": 915.0,
+    "scale": 1.0,
+    "guidelines": {
+      "textContrast": {
+        "passed": false,
+        "reason": "SemanticsNode#12(Rect.fromLTRB(36.0, 208.0, 376.0, 223.0), label: \"e leve suas descobertas com você.\", textDirection: ltr):\nExpected contrast ratio of at least 4.5 but found 3.02 for a font size of 13.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 0.9843, green: 0.9647, blue: 0.9098, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.6275, green: 0.5451, blue: 0.4627, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n\n\n\nSemanticsNode#17(Rect.fromLTRB(36.0, 387.0, 376.0, 435.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], label: \"Entrar\", textDirection: ltr):\nExpected contrast ratio of at least 4.5 but found 2.55 for a font size of 16.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 1.0000, green: 1.0000, blue: 1.0000, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n\n\nSemanticsNode#20(Rect.fromLTRB(146.4, 541.0, 265.6, 567.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr):\nExpected contrast ratio of at least 3.0 but found 2.36 for a font size of 14.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 0.9843, green: 0.9647, blue: 0.9098, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n"
+      },
+      "androidTarget": {
+        "passed": false,
+        "reason": "SemanticsNode#16(Rect.fromLTRB(255.3, 357.0, 376.0, 373.0), actions: [tap], label: \"Esqueci minha senha\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(120.7, 16.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\n\n\nSemanticsNode#19(Rect.fromLTRB(36.0, 487.0, 376.0, 529.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isImage, isFocusable], label: \"Continuar com Google\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(340.0, 42.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\n\n"
+      },
+      "iosTarget": {
+        "passed": false,
+        "reason": "SemanticsNode#16(Rect.fromLTRB(255.3, 357.0, 376.0, 373.0), actions: [tap], label: \"Esqueci minha senha\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(120.7, 16.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\n\n\nSemanticsNode#19(Rect.fromLTRB(36.0, 487.0, 376.0, 529.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isImage, isFocusable], label: \"Continuar com Google\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(340.0, 42.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\n\n"
+      },
+      "labels": {
+        "passed": true,
+        "reason": null
+      }
+    },
+    "layoutError": null,
+    "clippedLabels": [],
+    "scope": "Initial visible viewport only. Scrolled states and device readers pending."
+  },
+  "attempts/accessibility-04/accessibility/observations/login-412.0-915.0-1.3.json": {
+    "scenarios": [
+      "ACC-01",
+      "ACC-02",
+      "ACC-03",
+      "ACC-05",
+      "ACC-07"
+    ],
+    "widget": "AuthPage",
+    "width": 412.0,
+    "height": 915.0,
+    "scale": 1.3,
+    "guidelines": {
+      "textContrast": {
+        "passed": false,
+        "reason": "SemanticsNode#17(Rect.fromLTRB(36.0, 406.0, 376.0, 454.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], label: \"Entrar\", textDirection: ltr):\nExpected contrast ratio of at least 4.5 but found 2.55 for a font size of 16.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 1.0000, green: 1.0000, blue: 1.0000, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n\n\nSemanticsNode#20(Rect.fromLTRB(129.2, 560.0, 282.8, 592.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr):\nExpected contrast ratio of at least 3.0 but found 2.36 for a font size of 14.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 0.9843, green: 0.9647, blue: 0.9098, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n"
+      },
+      "androidTarget": {
+        "passed": false,
+        "reason": "SemanticsNode#16(Rect.fromLTRB(220.5, 372.0, 376.0, 392.0), actions: [tap], label: \"Esqueci minha senha\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(155.5, 20.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\n\n\nSemanticsNode#19(Rect.fromLTRB(36.0, 506.0, 376.0, 548.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isImage, isFocusable], label: \"Continuar com Google\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(340.0, 42.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\nSemanticsNode#20(Rect.fromLTRB(129.2, 560.0, 282.8, 592.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(153.7, 32.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\n"
+      },
+      "iosTarget": {
+        "passed": false,
+        "reason": "SemanticsNode#16(Rect.fromLTRB(220.5, 372.0, 376.0, 392.0), actions: [tap], label: \"Esqueci minha senha\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(155.5, 20.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\n\n\nSemanticsNode#19(Rect.fromLTRB(36.0, 506.0, 376.0, 548.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isImage, isFocusable], label: \"Continuar com Google\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(340.0, 42.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\nSemanticsNode#20(Rect.fromLTRB(129.2, 560.0, 282.8, 592.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(153.7, 32.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\n"
+      },
+      "labels": {
+        "passed": true,
+        "reason": null
+      }
+    },
+    "layoutError": null,
+    "clippedLabels": [],
+    "scope": "Initial visible viewport only. Scrolled states and device readers pending."
+  },
+  "attempts/accessibility-04/accessibility/observations/login-412.0-915.0-2.0.json": {
+    "scenarios": [
+      "ACC-01",
+      "ACC-02",
+      "ACC-03",
+      "ACC-05",
+      "ACC-07"
+    ],
+    "widget": "AuthPage",
+    "width": 412.0,
+    "height": 915.0,
+    "scale": 2.0,
+    "guidelines": {
+      "textContrast": {
+        "passed": false,
+        "reason": "SemanticsNode#17(Rect.fromLTRB(36.0, 547.0, 376.0, 595.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], label: \"Entrar\", textDirection: ltr):\nExpected contrast ratio of at least 4.5 but found 2.55 for a font size of 16.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 1.0000, green: 1.0000, blue: 1.0000, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n\n\nSemanticsNode#20(Rect.fromLTRB(88.9, 711.0, 323.1, 755.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr):\nExpected contrast ratio of at least 3.0 but found 2.36 for a font size of 14.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 0.9843, green: 0.9647, blue: 0.9098, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n"
+      },
+      "androidTarget": {
+        "passed": false,
+        "reason": "SemanticsNode#16(Rect.fromLTRB(139.3, 502.0, 376.0, 533.0), actions: [tap], label: \"Esqueci minha senha\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(236.7, 31.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\n\n\nSemanticsNode#19(Rect.fromLTRB(36.0, 657.0, 376.0, 699.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isImage, isFocusable], label: \"Continuar com Google\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(340.0, 42.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\nSemanticsNode#20(Rect.fromLTRB(88.9, 711.0, 323.1, 755.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr): expected tap target size of at least Size(48.0, 48.0), but found Size(234.2, 44.0)\nSee also: https://support.google.com/accessibility/android/answer/7101858?hl=en\n"
+      },
+      "iosTarget": {
+        "passed": false,
+        "reason": "SemanticsNode#16(Rect.fromLTRB(139.3, 502.0, 376.0, 533.0), actions: [tap], label: \"Esqueci minha senha\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(236.7, 31.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\n\n\nSemanticsNode#19(Rect.fromLTRB(36.0, 657.0, 376.0, 699.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isImage, isFocusable], label: \"Continuar com Google\", textDirection: ltr): expected tap target size of at least Size(44.0, 44.0), but found Size(340.0, 42.0)\nSee also: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/\n\n"
+      },
+      "labels": {
+        "passed": true,
+        "reason": null
+      }
+    },
+    "layoutError": null,
+    "clippedLabels": [
+      "Continuar com Google"
+    ],
+    "scope": "Initial visible viewport only. Scrolled states and device readers pending."
+  },
+  "attempts/accessibility-04/accessibility/observations/login-800.0-1280.0-1.0.json": {
+    "scenarios": [
+      "ACC-01",
+      "ACC-02",
+      "ACC-03",
+      "ACC-05",
+      "ACC-07"
+    ],
+    "widget": "AuthPage",
+    "width": 800.0,
+    "height": 1280.0,
+    "scale": 1.0,
+    "guidelines": {
+      "textContrast": {
+        "passed": false,
+        "reason": "SemanticsNode#12(Rect.fromLTRB(36.0, 208.0, 376.0, 223.0), label: \"e leve suas descobertas com você.\", textDirection: ltr):\nExpected contrast ratio of at least 4.5 but found 3.02 for a font size of 13.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 0.9843, green: 0.9647, blue: 0.9098, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.6275, green: 0.5451, blue: 0.4627, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n\n\n\nSemanticsNode#17(Rect.fromLTRB(36.0, 387.0, 376.0, 435.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], label: \"Entrar\", textDirection: ltr):\nExpected contrast ratio of at least 4.5 but found 2.55 for a font size of 16.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 1.0000, green: 1.0000, blue: 1.0000, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n\n\nSemanticsNode#20(Rect.fromLTRB(146.4, 541.0, 265.6, 567.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr):\nExpected contrast ratio of at least 3.0 but found 2.36 for a font size of 14.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 0.9843, green: 0.9647, blue: 0.9098, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n"
+      },
+      "androidTarget": {
+        "passed": true,
+        "reason": null
+      },
+      "iosTarget": {
+        "passed": true,
+        "reason": null
+      },
+      "labels": {
+        "passed": true,
+        "reason": null
+      }
+    },
+    "layoutError": null,
+    "clippedLabels": [],
+    "scope": "Initial visible viewport only. Scrolled states and device readers pending."
+  },
+  "attempts/accessibility-04/accessibility/observations/login-800.0-1280.0-1.3.json": {
+    "scenarios": [
+      "ACC-01",
+      "ACC-02",
+      "ACC-03",
+      "ACC-05",
+      "ACC-07"
+    ],
+    "widget": "AuthPage",
+    "width": 800.0,
+    "height": 1280.0,
+    "scale": 1.3,
+    "guidelines": {
+      "textContrast": {
+        "passed": false,
+        "reason": "SemanticsNode#17(Rect.fromLTRB(36.0, 406.0, 376.0, 454.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], label: \"Entrar\", textDirection: ltr):\nExpected contrast ratio of at least 4.5 but found 2.55 for a font size of 16.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 1.0000, green: 1.0000, blue: 1.0000, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n\n\nSemanticsNode#20(Rect.fromLTRB(129.2, 560.0, 282.8, 592.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr):\nExpected contrast ratio of at least 3.0 but found 2.36 for a font size of 14.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 0.9843, green: 0.9647, blue: 0.9098, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n"
+      },
+      "androidTarget": {
+        "passed": true,
+        "reason": null
+      },
+      "iosTarget": {
+        "passed": true,
+        "reason": null
+      },
+      "labels": {
+        "passed": true,
+        "reason": null
+      }
+    },
+    "layoutError": null,
+    "clippedLabels": [],
+    "scope": "Initial visible viewport only. Scrolled states and device readers pending."
+  },
+  "attempts/accessibility-04/accessibility/observations/login-800.0-1280.0-2.0.json": {
+    "scenarios": [
+      "ACC-01",
+      "ACC-02",
+      "ACC-03",
+      "ACC-05",
+      "ACC-07"
+    ],
+    "widget": "AuthPage",
+    "width": 800.0,
+    "height": 1280.0,
+    "scale": 2.0,
+    "guidelines": {
+      "textContrast": {
+        "passed": false,
+        "reason": "SemanticsNode#17(Rect.fromLTRB(36.0, 547.0, 376.0, 595.0), actions: [focus, tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], label: \"Entrar\", textDirection: ltr):\nExpected contrast ratio of at least 4.5 but found 2.55 for a font size of 16.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 1.0000, green: 1.0000, blue: 1.0000, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n\n\nSemanticsNode#20(Rect.fromLTRB(88.9, 711.0, 323.1, 755.0), actions: [tap], label: \"Criar minha conta\", textDirection: ltr):\nExpected contrast ratio of at least 3.0 but found 2.36 for a font size of 14.0.\nThe computed colors was:\nlight - Color(alpha: 1.0000, red: 0.9843, green: 0.9647, blue: 0.9098, colorSpace: ColorSpace.sRGB), dark - Color(alpha: 1.0000, red: 0.8627, green: 0.5451, blue: 0.6314, colorSpace: ColorSpace.sRGB)\nSee also: https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html\n"
+      },
+      "androidTarget": {
+        "passed": true,
+        "reason": null
+      },
+      "iosTarget": {
+        "passed": true,
+        "reason": null
+      },
+      "labels": {
+        "passed": true,
+        "reason": null
+      }
+    },
+    "layoutError": null,
+    "clippedLabels": [
+      "Continuar com Google"
+    ],
+    "scope": "Initial visible viewport only. Scrolled states and device readers pending."
+  },
+  "attempts/network-01/critical_runs/network-baseline/observations/SEC10-tcp-expired-session.json": {
+    "scenario": "SEC-10",
+    "variant": "expired-session",
+    "http_after_invalidation": 401,
+    "new_websocket_http_upgrade": 403,
+    "preexisting_socket_typing_events_received": 1,
+    "authorized_positive_control": true,
+    "outsider_observation_window_seconds": 0.3,
+    "transport": "real TCP loopback, own disposable API",
+    "finding": "Existing connection still delivers typing after invalidation; observation is not proof of all actions or unbounded absence of foreign traffic"
+  },
+  "attempts/network-01/critical_runs/network-baseline/observations/SEC10-tcp-revoked.json": {
+    "scenario": "SEC-10",
+    "variant": "revoked",
+    "http_after_invalidation": 401,
+    "new_websocket_http_upgrade": 403,
+    "preexisting_socket_typing_events_received": 1,
+    "authorized_positive_control": true,
+    "outsider_observation_window_seconds": 0.3,
+    "transport": "real TCP loopback, own disposable API",
+    "finding": "Existing connection still delivers typing after invalidation; observation is not proof of all actions or unbounded absence of foreign traffic"
+  }
+}
