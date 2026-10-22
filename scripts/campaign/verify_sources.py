@@ -10,7 +10,7 @@ import platform
 import subprocess
 
 
-def verify(run):
+def verify(run, output_name="product_source_verification.json"):
     run = Path(run).resolve()
     manifest = json.loads((run / "manifest.json").read_text(encoding="utf-8"))
     results = {}
@@ -46,7 +46,9 @@ def verify(run):
         if ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(memory)):
             hardware["physical_ram_bytes"] = memory.total_physical
     results["hardware_observed_at_verification"] = hardware
-    target = run / "product_source_verification.json"
+    if Path(output_name).name != output_name:
+        raise ValueError("Output must be a filename within the campaign")
+    target = run / output_name
     if target.exists():
         raise ValueError("Never overwrite verification evidence")
     target.write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
@@ -56,4 +58,6 @@ def verify(run):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--run", required=True)
-    verify(parser.parse_args().run)
+    parser.add_argument("--output", default="product_source_verification.json")
+    args = parser.parse_args()
+    verify(args.run, args.output)

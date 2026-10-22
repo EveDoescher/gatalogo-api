@@ -77,3 +77,37 @@ Os arquivos `pilot_cases.py`/`mutation_cases.py` sÃ³ sÃ£o chamados explicitament
 runner, nÃ£o entram na coleta pytest comum. As amostras versionadas sÃ£o sintÃ©ticas,
 sanitizadas e comprimidas; abrir com `gzip.open(..., 'rt', encoding='utf-8')` e
 `json.load`. O Ã­ndice mantÃ©m SHA-256 das evidÃªncias locais originais.
+
+
+## Bateria crítica e acessibilidade (continuação)
+
+Preservar cada tentativa anterior. Primeiro arquivar com `archive_evidence.py --run RUN`;
+o arquivo em `.tmp/quality-archives` contém logs privados e não deve ser publicado.
+O recibo verifica cada membro SHA-256 sem remover originais.
+
+```powershell
+.\.venv\Scripts\python.exe scripts/quality_campaign.py --run RUN --prepare --attempt NOVO
+.\.venv\Scripts\python.exe scripts/quality_campaign.py --run RUN --execute-critical --attempt NOVO
+# Em outra tentativa, após finalizar a API:
+.\.venv\Scripts\python.exe scripts/quality_campaign.py --run RUN --prepare --attempt OUTRO
+.\.venv\Scripts\python.exe scripts/quality_campaign.py --run RUN --execute-accessibility --attempt OUTRO
+```
+
+`critical_suite.py` roda `security_cases.py` e os nove testes PostgreSQL existentes
+selecionados. Cada mutante tem cópia própria, baseline limpa e seu oráculo deve ter
+sido executado. Erro de setup/importação, skip ou ausência de casos não mata mutante.
+`QUALITY_MUTANT_FILTER` aceita IDs separados por vírgula; `QUALITY_BASELINE_FILTER=DB-02`
+seleciona somente o histórico ampliado (usar junto com `MUT-05`). Remover filtros para
+bateria completa. Os filtros são registrados nas novas tentativas; as anteriores
+mantêm seletores efetivos e hashes originais. Timeout de subprocesso é infraestrutura,
+nunca aprovação. A baseline usa OTP/JWT reais e PNG sintético; análise e FCM substituídos.
+
+O audit Flutter fica em `catlogue/tool/campaign_accessibility_test.dart`, fora da
+coleta normal de `test/`: é uma auditoria explícita que permanece vermelha diante de
+achados. Usa tema real, fontes locais, Semantics e guidelines do SDK, sem Android ou
+leitor físico. O comando também roda os dez testes de HabitatService. Escopo é o
+viewport inicial do login e o controle de subida; não é aprovação global de ACC.
+`confirmatory_protocol.json` descreve medições futuras, ainda não executadas e sem
+coletor de estacionariedade/IC implementado; não autoriza carga automaticamente.
+
+Relatório consolidado: `docs/campaigns/2026-10-21-critical/README.md`.

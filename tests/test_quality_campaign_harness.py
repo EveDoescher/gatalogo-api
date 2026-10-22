@@ -83,3 +83,25 @@ def test_proxy_refuses_live_services_and_external_hosts():
     for target in ("http://127.0.0.1:8000", "http://127.0.0.1:5432", "https://example.com:12345"):
         with pytest.raises(ValueError):
             proxy.server(target)
+
+
+def test_archive_preserves_raw_evidence_and_verifies_members(tmp_path):
+    import json
+    import tarfile
+
+    archive = module("archive_evidence")
+    run = tmp_path / "quality-campaign" / "synthetic"
+    run.mkdir(parents=True)
+    (run / "manifest.json").write_text("{}", encoding="utf-8")
+    observation = run / "observations.json"
+    observation.write_text('{"synthetic": true}', encoding="utf-8")
+    product = run / "sources" / "B" / "api" / "app.py"
+    product.parent.mkdir(parents=True)
+    product.write_text("not evidence", encoding="utf-8")
+    archive.archive(run)
+    folder = tmp_path / "quality-archives"
+    receipt = json.loads(next(folder.glob("*.receipt.json")).read_text(encoding="utf-8"))
+    assert receipt["originals_removed"] is False and receipt["verified_members"] == 2
+    assert observation.exists() and product.exists()
+    with tarfile.open(folder / receipt["archive"]) as stored:
+        assert set(stored.getnames()) == {"manifest.json", "observations.json"}

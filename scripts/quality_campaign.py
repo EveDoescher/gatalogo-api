@@ -136,6 +136,9 @@ def prepare(run, name):
         shutil.copy2(path, attempt / "executors" / path.name)
     shutil.copy2(Path(__file__), attempt / "executors" / "quality_campaign.py")
     shutil.copy2(ROOT / "scripts" / "run_integration_checks.py", attempt / "executors" / "integration_runner.py")
+    flutter_audit = Path(manifest["sources"]["B-flutter"]["repo"]) / "tool" / "campaign_accessibility_test.dart"
+    if flutter_audit.exists():
+        shutil.copy2(flutter_audit, attempt / "executors" / "campaign_accessibility_test.dart")
     spec = importlib.util.spec_from_file_location("campaign_fixtures", origin / "fixtures.py")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -151,12 +154,12 @@ def prepare(run, name):
     return run
 
 
-def execute_api(run, name, mutations=True):
+def execute_api(run, name, mutations=True, critical=False):
     run = Path(run).resolve()
     attempt = attempt_path(run, name)
     if (attempt / "api_attempt.json").exists():
         raise ValueError("Never overwrite a previous attempt; freeze a new campaign")
-    write_json(attempt / "api_attempt.json", {"started_at": datetime.now(UTC).isoformat()})
+    write_json(attempt / "api_attempt.json", {"started_at": datetime.now(UTC).isoformat(), "baseline_filter": os.getenv("QUALITY_BASELINE_FILTER"), "mutant_filter": os.getenv("QUALITY_MUTANT_FILTER")})
     os.environ.update(QUALITY_CAMPAIGN_RUN=str(run), QUALITY_CAMPAIGN_ATTEMPT=str(attempt),
                       FLUTTER_PROJECT_ROOT=str(run / "sources" / "B" / "flutter"),
                       GEMINI_API_KEY="", FCM_SERVICE_ACCOUNT_FILE="", SMTP_ENABLED="false",
@@ -170,8 +173,8 @@ def execute_api(run, name, mutations=True):
     spec.loader.exec_module(runner)
     # Reuse existing DB/image/migrations/readiness/cleanup rather than a second Docker harness.
     runner.ROOT = run / "sources" / "B" / "api"
-    selected = [str(attempt / "executors" / "pilot_cases.py")]
-    if mutations:
+    selected = [str(attempt / "executors" / ("critical_suite.py" if critical else "pilot_cases.py"))]
+    if mutations and not critical:
         selected.append(str(attempt / "executors" / "mutation_cases.py"))
     code = runner.main([*selected, "--confcutdir", str(attempt / "executors")])
     write_json(attempt / "api_attempt_result.json", {"exit_code": code, "finished_at": datetime.now(UTC).isoformat()})
@@ -222,6 +225,35 @@ def execute_flutter(run, name):
     return int(any(r["exit_code"] for r in results))
 
 
+def execute_accessibility(run, name):
+    run = Path(run).resolve()
+    attempt = attempt_path(run, name)
+    output = attempt / "accessibility"
+    output.mkdir(exist_ok=False)
+    source = run / "sources" / "B" / "flutter"
+    manifest = json.loads((run / "manifest.json").read_text(encoding="utf-8"))
+    repo = Path(manifest["sources"]["B-flutter"]["repo"])
+    config = source / ".dart_tool"
+    config.mkdir(exist_ok=True)
+    for filename in ("package_config.json", "package_graph.json"):
+        if (repo / ".dart_tool" / filename).exists():
+            shutil.copy2(repo / ".dart_tool" / filename, config / filename)
+    test = source / "test" / "campaign_accessibility_test.dart"
+    shutil.copy2(attempt / "executors" / "campaign_accessibility_test.dart", test)
+    env = dict(os.environ, QUALITY_ACC_OUTPUT=str(output / "observations"))
+    binary = shutil.which("flutter")
+    if not binary:
+        raise RuntimeError("Flutter unavailable")
+    with (output / "tests.jsonl").open("w", encoding="utf-8") as log:
+        result = subprocess.run([binary, "test", "--no-pub", "--reporter", "json", str(test),
+                                 "test/habitat_service_test.dart"], cwd=source, env=env,
+                                stdout=log, stderr=subprocess.STDOUT, timeout=600)
+    write_json(output / "result.json", {"exit_code": result.returncode,
+                                        "source_sha": manifest["sources"]["B-flutter"]["sha"],
+                                        "scope": "desktop accessibility and HabitatService unit tests; no device"})
+    return result.returncode
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--flutter", default=str(ROOT.parent / "catlogue"))
@@ -229,14 +261,18 @@ if __name__ == "__main__":
     parser.add_argument("--attempt", default="pilot-01")
     parser.add_argument("--prepare", action="store_true")
     parser.add_argument("--execute-api", action="store_true")
+    parser.add_argument("--execute-critical", action="store_true")
+    parser.add_argument("--execute-accessibility", action="store_true")
     parser.add_argument("--execute-flutter", action="store_true")
     parser.add_argument("--no-mutations", action="store_true")
     args = parser.parse_args()
-    if args.execute_api or args.execute_flutter:
+    if args.execute_api or args.execute_flutter or args.execute_critical or args.execute_accessibility:
         if not args.run:
             parser.error("Execution requires --run")
-        raise SystemExit(execute_api(args.run, args.attempt, not args.no_mutations)
-                         if args.execute_api else execute_flutter(args.run, args.attempt))
+        if args.execute_accessibility:
+            raise SystemExit(execute_accessibility(args.run, args.attempt))
+        raise SystemExit(execute_api(args.run, args.attempt, not args.no_mutations, args.execute_critical)
+                         if args.execute_api or args.execute_critical else execute_flutter(args.run, args.attempt))
     if args.prepare:
         if not args.run:
             parser.error("--prepare requires --run")

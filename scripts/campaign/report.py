@@ -71,9 +71,12 @@ def build(run, destination):
         if sid == "BR-01":
             row.update(state="PREPARED", runs=["manifest.json"],
                        limitation="Frozen four SHAs; component probes only, no full mobile/API package comparison yet")
-        if sid in ("BR-02", "BR-03", "BR-04") and any(not p["infrastructure_error"] for p in probes.values()):
+        if sid in ("BR-02", "BR-03") and any(not p["infrastructure_error"] for p in probes.values()):
             row.update(state="PARTIAL_EXECUTED", runs=list(probes),
                        limitation="Common external ASGI client and separate desktop SQLite component probes; not full mobile/API bundle comparison")
+        if sid == "BR-04":
+            row.update(state="PENDING", runs=[],
+                       limitation="No crossed API/client version experiments executed; earlier partial label was incorrect")
         if sid.startswith("ACC-") or sid.startswith("REID-") or sid in ("DLV-01", "DLV-02", "DLV-03", "DLV-04", "DLV-06"):
             row["state"] = "BLOCKED_EXTERNAL_PREREQUISITES"
         if sid == "RES-03":
