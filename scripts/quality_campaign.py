@@ -217,6 +217,10 @@ API_SUITES = {
     "socket-fanout": "socket_fanout_suite.py",
     "wire-contract": "wire_contract_suite.py",
     "identity": "identity_suite.py",
+    "identity-controls": "identity_controls_suite.py",
+    "offline-flow": "offline_flow_suite.py",
+    "upload-transport": "upload_transport_suite.py",
+    "social-history": "social_history_suite.py",
 }
 
 
