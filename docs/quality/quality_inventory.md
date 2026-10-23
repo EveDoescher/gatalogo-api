@@ -50,7 +50,7 @@ Inclui componentes acessíveis somente por testes ou ferramentas. Confirmar ante
 
 ## Arquivos rastreados que exigem classificação
 
-- `docs/session_rotation_review.patch`
+- `docs/security/session_rotation_review.patch`
 
 ## Inventário completo das fontes
 

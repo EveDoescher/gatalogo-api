@@ -2,14 +2,14 @@
 
 Preparado em 18/10/2026. A usuária executará o Alembic. **Nenhuma migração foi executada por esta revisão.**
 
-A API em hot reload continua compatível com o esquema atual. O código que depende dos novos campos está em `docs/session_rotation_review.patch`, incluindo seus testes. Não aplique esse patch antes da migração: o ORM passaria a consultar colunas ainda ausentes.
+A API em hot reload continua compatível com o esquema atual. O código que depende dos novos campos está em `docs/security/session_rotation_review.patch`, incluindo seus testes. Não aplique esse patch antes da migração: o ORM passaria a consultar colunas ainda ausentes.
 
 Na pasta da API, execute nesta ordem:
 
 ```powershell
 .\.venv\Scripts\python.exe -m alembic upgrade 20261018_14
-git apply --check --ignore-space-change docs/session_rotation_review.patch
-git apply --ignore-space-change docs/session_rotation_review.patch
+git apply --check --ignore-space-change docs/security/session_rotation_review.patch
+git apply --ignore-space-change docs/security/session_rotation_review.patch
 .\.venv\Scripts\python.exe -m pytest tests/test_device_session_rotation.py -q
 ```
 

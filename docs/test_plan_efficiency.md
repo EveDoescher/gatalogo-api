@@ -24,7 +24,7 @@ Objetivo: medir e melhorar mecanismos mantendo telas, textos, navegação, anima
 | Quintal | `routers/quintal.py`, `routers/habitat.py`, `services/quintal_production.py`, `quintal_commands/` | `services/habitat_service.dart`, `data/habitat_repository.dart`, `game/` | GETs podem reconciliar produção/recompensas ou recuperar presentes. Carteira, fingerprint idempotente e relógio do servidor fazem parte do resultado. |
 | Conta/entrega | `services/auth_service.py`, `dependencies.py`, `services/fcm_service.py` | `stores/session_store.dart`, `notification_store.dart`, `controllers/account_activity_controller.dart` | OTP errado persiste tentativas mesmo ao retornar erro; inbox já combina refresh concorrente e descarta respostas antigas por geração. |
 
-Melhorias e contagens anteriormente medidas: [performance_flows.md](performance_flows.md). Não são resultados novos desta campanha.
+Melhorias e contagens anteriormente medidas: [performance_flows.md](performance/performance_flows.md). Não são resultados novos desta campanha.
 
 ## 2. Ambientes e protocolo comum
 

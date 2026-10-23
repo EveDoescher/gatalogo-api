@@ -413,18 +413,18 @@ Não há nova migração: estado limitado usa a carteira existente.
 `POST /social/posts` aceita texto sem gato/foto, até 2000 caracteres, e
 `request_id` opcional. A mesma chave e conteúdo retornam o mesmo post;
 conteúdo diferente com a mesma chave retorna conflito. Foto por URL exige
-upload pertencente ao autor. Ver `docs/plano_habitat_social_2026-10-04.md`.
+upload pertencente ao autor. Ver `docs/product/plano_habitat_social_2026-10-04.md`.
 
 ## Qualidade e arquitetura
 
-O inventário completo das fontes está em [docs/quality_inventory.md](docs/quality_inventory.md).
-A revisão, alterações e riscos pendentes estão em [docs/quality_review.md](docs/quality_review.md).
+O inventário completo das fontes está em [docs/quality/quality_inventory.md](docs/quality/quality_inventory.md).
+A revisão, alterações e riscos pendentes estão em [docs/quality/quality_review.md](docs/quality/quality_review.md).
 
 ```powershell
 .\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
 .\.venv\Scripts\python.exe -m ruff check .
 .\.venv\Scripts\python.exe -m pytest -q
-python scripts/audit_quality.py . --output docs/quality_inventory.md
+python scripts/audit_quality.py . --output docs/quality/quality_inventory.md
 ```
 
 As dependências HTTP compartilhadas ficam em `app/dependencies.py`. Autorização de
@@ -454,13 +454,13 @@ Para selecionar cenários, passe os argumentos do pytest após o script:
 ```
 
 A organização dos domínios, a responsabilidade por transações e a retomada de
-análise de referência estão em [docs/architecture_refactoring.md](docs/architecture_refactoring.md).
+análise de referência estão em [docs/architecture/architecture_refactoring.md](docs/architecture/architecture_refactoring.md).
 
 
 ## Conclusão da refatoração arquitetural
 
 O mapa de pendências e a validação desta rodada estão em
-[docs/architecture_completion.md](docs/architecture_completion.md).
+[docs/architecture/architecture_completion.md](docs/architecture/architecture_completion.md).
 Os perfis de execução e locks estão em [requirements/README.md](requirements/README.md).
 
 O executor encontra Flutter no PATH (ou `FLUTTER_BIN`). Por padrão usa o checkout
@@ -471,8 +471,12 @@ fases do cenário, dentro de `build/`, sem compilar Android ou iniciar emulador.
 
 
 O mapa dos fluxos, medições de consultas e oportunidades de melhoria interna está
-em [docs/performance_flows.md](docs/performance_flows.md).
+em [docs/performance/performance_flows.md](docs/performance/performance_flows.md).
 
 ## Plano de testes de eficiência
 
 Cenários para revisão antes da execução: [latência, carga, dados, segurança, celular e mutação de código](docs/test_plan_efficiency.md). O plano distingue cobertura existente de medições futuras.
+
+## Organização do projeto
+
+[Índice da documentação](docs/README.md) · [Artefatos locais](artifacts/README.md). Logs antigos, anexos recebidos e relatórios locais estão agrupados em `artifacts/`; fontes, configurações e diretórios de build mantêm seus caminhos.

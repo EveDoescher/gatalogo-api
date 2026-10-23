@@ -1,6 +1,6 @@
 """Inventory tracked source and flag review candidates without deleting files.
 
-Usage: python scripts/audit_quality.py PATH --output docs/quality_inventory.md
+Usage: python scripts/audit_quality.py PATH --output docs/quality/quality_inventory.md
 Dart reachability is static: dynamically selected assets are deliberately excluded.
 """
 

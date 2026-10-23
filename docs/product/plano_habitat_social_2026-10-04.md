@@ -2,7 +2,7 @@
 
 Data: 04/10/2026. Branch: `feature/habitat-social-improvements`, base `main` em `94e9827`. Implementação aplicada; evidências e limites estão registrados abaixo.
 
-Plano completo e critérios visuais: [plano do Gatálogo](../../catlogue/docs/plano_habitat_social_2026-10-04.md), mantido no repositório irmão `catlogue`. Se os checkouts não forem irmãos, consultar `docs/plano_habitat_social_2026-10-04.md` na mesma branch do repositório `gatalogo`.
+Plano completo e critérios visuais: [plano do Gatálogo](../../../catlogue/docs/product/plano_habitat_social_2026-10-04.md), mantido no repositório irmão `catlogue`. Se os checkouts não forem irmãos, consultar `docs/product/plano_habitat_social_2026-10-04.md` na mesma branch do repositório `gatalogo`.
 
 ## Entregas da API
 

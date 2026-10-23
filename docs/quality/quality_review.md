@@ -36,7 +36,7 @@ A remoção de dois imports da migração `20260927_11` não modifica suas opera
 
 ## Arquivos preservados e decisões de remoção
 
-- `docs/session_rotation_review.patch` e a migração `20261018_14` têm ativação documentada; não são lixo. `git apply --check --ignore-space-change` continua aceitando o patch após a refatoração.
+- `docs/security/session_rotation_review.patch` e a migração `20261018_14` têm ativação documentada; não são lixo. `git apply --check --ignore-space-change` continua aceitando o patch após a refatoração.
 - Migrações históricas são necessárias para bancos existentes e novos; não devem ser excluídas por falta de imports Python.
 - Caches, modelos, credenciais, logs, uploads, ambientes virtuais e `node_modules` estão ignorados. Não foram apagados: são dados locais, não código morto comprovado.
 - Arquivos `__init__.py` vazios preservam pacotes e não representam funcionalidades obsoletas.
@@ -89,7 +89,7 @@ itens de arquitetura mapeados acima permanecem explícitos.
 ## Refatoração arquitetural — 21/10/2026
 
 O mapa inicial acima é histórico. A execução e as pendências atuais estão em
-[architecture_refactoring.md](architecture_refactoring.md).
+[architecture_refactoring.md](../architecture/architecture_refactoring.md).
 
 Foram extraídos apresentadores de habitat/mídia, domínios sociais, regras de
 produção e análise de referência persistente. HTTP e WebSocket compartilham
@@ -113,7 +113,7 @@ continuam explícitas no documento de arquitetura.
 ## Conclusão da rodada — 21/10/2026
 
 Todas as linhas do mapa anterior foram revisadas e classificadas em
-[architecture_completion.md](architecture_completion.md). Concluídos os comandos
+[architecture_completion.md](../architecture/architecture_completion.md). Concluídos os comandos
 por domínio do Quintal, serviços de consultas/comandos sociais, contratos
 compartilhados, claims persistentes curtos e locks Linux CPU com imagens validadas.
 
@@ -151,7 +151,7 @@ mocks ou imports. Não houve build Android, emulador, deploy ou merge na main.
 ## Mapeamento de fluxos e mecanismos — 21/10/2026
 
 Fluxos, medições e oportunidades priorizadas estão em
-[performance_flows.md](performance_flows.md). Leituras em lote substituem buscas
+[performance_flows.md](../performance/performance_flows.md). Leituras em lote substituem buscas
 por gato; a API também libera a conexão de autenticação antes da análise principal.
 As consultas, contratos, dados visíveis e regras foram comparados com o caminho
 anterior. Nenhuma alteração em páginas, widgets, modelos de IA ou parâmetros
