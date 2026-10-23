@@ -94,3 +94,27 @@ indexa resultados/snapshots e mantém a matriz parcial. Documentar separadamente
 recomendações e limitações; não publicar logs, tars, JUnit, SQLite ou eventos brutos.
 
 [Relatório local e pendências](../../docs/campaigns/2026-10-23-local-campaign/README.md).
+
+
+## Recuperação e controles adicionais
+
+`--execute-identity-controls`, `--execute-offline-flow`, `--execute-upload-transport`,
+`--execute-social-history` e `--execute-social-order` exigem preparação com um nome
+novo. O teste de ordem mantém o contrato vermelho nos dois braços e não é gate verde.
+O fluxo offline usa cinco processos Flutter/SQLite reais, com sessão/plataforma
+simuladas; a foto pendente não é apresentada como analisada ou automaticamente enviada.
+
+`flutter_accessibility_flows.py --run RUN --attempt NEW` executa 48 células em quatro
+páginas, mais o controle do destino de evidência, com diretório/SQLite/PackageInfo
+próprios. O status error do reporter é preservado junto dos motivos do SDK; não se
+confunde com erro de compilação ou com aprovação de leitor físico.
+
+`dependency_applicability.py --run RUN --attempt NEW` lê somente o material já
+consultado e a instalação local; não realiza rede nem executa payloads. Classificações
+são precondições estáticas com limites, não exploração confirmada ou ausência de risco.
+
+`followup_report.py --run RUN --previous RELATORIO_ANTERIOR --output DIRETORIO_NOVO
+--attempts A,B,C` gera um incremento para tentativas explícitas e mantém as fontes,
+seletores, caminhos revisados e snapshots. Conserva todos os resultados brutos.
+
+[Resultados de recuperação e acessibilidade](../../docs/campaigns/2026-10-23-recovery/README.md).

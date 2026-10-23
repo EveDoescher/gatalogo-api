@@ -1,0 +1,16 @@
+{
+  "api_main": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+  "api_branch": "code-quality-cleanup",
+  "api_executor_commit": "a25fd66476ba41900bf427ec6376fd82e000646b",
+  "api_product_diff": "",
+  "flutter_main": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+  "flutter_branch": "code-quality-cleanup",
+  "flutter_executor_commit": "baf0b9a04972059ffa000d00db51baaf632286f1",
+  "flutter_product_diff": "",
+  "original_api_health_status": 200,
+  "containers_at_observation": [
+    "gatalogo-postgres Up 19 hours (healthy)",
+    "gatalogo-mailpit Up 19 hours (healthy)"
+  ],
+  "note": "Own campaign APIs/containers removed; original API8000 and postgres/mailpit preserved. User evidence changes remain unstaged."
+}

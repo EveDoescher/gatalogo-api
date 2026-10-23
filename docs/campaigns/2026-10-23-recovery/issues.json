@@ -1,0 +1,216 @@
+[
+  {
+    "id": "DATA-CHAT-TIES",
+    "kind": "integrity_observation",
+    "state": "OPEN_RECOMMENDATION_ONLY",
+    "scenarios": [
+      "DATA-08",
+      "DB-03"
+    ],
+    "hypothesis_and_cause": "History and last-message queries order only by created_at; equal timestamps have no declared secondary key.",
+    "test_result": "Same canonical row data/hash with reversed insertion order changed both returned history order and last_message_id in API A and B; unread remained2. Initial B and subsequent A/B red assertions retained.",
+    "reviewed_code": [
+      "app/routers/social.py (A)",
+      "app/services/chat_queries.py (B)"
+    ],
+    "evaluated_product_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "attempts": [
+      "social-order-01",
+      "social-order-02"
+    ],
+    "evidence": [
+      "observations.json",
+      "results.json",
+      "traceability.json",
+      "evidence_index.json"
+    ],
+    "recommendation": "Define and review a deterministic tie-break contract before any query/client optimization; add both API and client regression controls. Do not silently choose a different visible ordering.",
+    "product_correction_commit": null,
+    "before_after_product_comparison": null,
+    "product_revalidation": null
+  },
+  {
+    "id": "PERF-CHAT-HISTORY",
+    "kind": "performance_opportunity",
+    "state": "OPEN_RECOMMENDATION_ONLY",
+    "scenarios": [
+      "DB-03",
+      "LAT-05"
+    ],
+    "hypothesis_and_cause": "Messages endpoint declares no pagination and loads/returns the entire history.",
+    "test_result": "All18 volume cells preserved contents/unread/authorization. A 1000-message history returned1000 rows and465401bytes in the synthetic fixture despite extra limit20 query; no sustained-throughput/tail claim.",
+    "reviewed_code": [
+      "app/services/chat_queries.py",
+      "app/routers/social_chat.py",
+      "lib/services/social_api_service.dart"
+    ],
+    "evaluated_product_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "attempts": [
+      "social-history-02"
+    ],
+    "evidence": [
+      "observations.json",
+      "results.json",
+      "traceability.json",
+      "evidence_index.json"
+    ],
+    "recommendation": "Evaluate a compatible incremental-history mechanism with preserved identity/order/read/scroll behavior only in a later approved optimization; collect controlled resource/latency confirmation first.",
+    "product_correction_commit": null,
+    "before_after_product_comparison": null,
+    "product_revalidation": null
+  },
+  {
+    "id": "ACC-FLOW-CONTRAST",
+    "kind": "sdk_accessibility_observation",
+    "state": "OPEN_RECOMMENDATION_ONLY",
+    "scenarios": [
+      "ACC-01"
+    ],
+    "hypothesis_and_cause": "SDK contrast failures extend previous login findings to collection/details/settings/profile.",
+    "test_result": "Failures in24/24/14/8 viewport observations respectively (24 observations per page), including ratios2.55,1.78,1.46 in initial collection samples.",
+    "reviewed_code": [
+      "lib/pages/library_page.dart",
+      "lib/pages/cat_details_page.dart",
+      "lib/pages/settings_page.dart",
+      "lib/pages/profile_page.dart",
+      "lib/theme/app_theme.dart"
+    ],
+    "evaluated_product_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "attempts": [
+      "accessibility-flows-01",
+      "accessibility-flows-02"
+    ],
+    "evidence": [
+      "observations.json",
+      "results.json",
+      "traceability.json",
+      "evidence_index.json"
+    ],
+    "recommendation": "Review composed foreground/background colors and state coverage before any visible change. These SDK results are not a physical-reader evaluation.",
+    "product_correction_commit": null,
+    "before_after_product_comparison": null,
+    "product_revalidation": null
+  },
+  {
+    "id": "ACC-FLOW-TARGETS",
+    "kind": "sdk_accessibility_observation",
+    "state": "OPEN_RECOMMENDATION_ONLY",
+    "scenarios": [
+      "ACC-03"
+    ],
+    "hypothesis_and_cause": "SDK measured targets below platform guideline minimums in the rendered viewports.",
+    "test_result": "Final Android failures24/22/24/24 and iOS16/22/24/24 observations for collection/details/profile/settings. Some controls were partially clipped: verify fully visible geometry before attribution.",
+    "reviewed_code": [
+      "lib/widgets/app_header_actions.dart",
+      "lib/pages/library_page.dart",
+      "lib/pages/cat_details_page.dart",
+      "lib/pages/settings_page.dart",
+      "lib/pages/profile_page.dart"
+    ],
+    "evaluated_product_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "attempts": [
+      "accessibility-flows-02"
+    ],
+    "evidence": [
+      "observations.json",
+      "results.json",
+      "traceability.json",
+      "evidence_index.json"
+    ],
+    "recommendation": "Review hit areas and adjacent overlap while preserving intended layout; use both initial and scrolled evidence to separate clipping from intrinsic target size.",
+    "product_correction_commit": null,
+    "before_after_product_comparison": null,
+    "product_revalidation": null
+  },
+  {
+    "id": "ACC-FLOW-LABELS",
+    "kind": "sdk_accessibility_observation",
+    "state": "OPEN_RECOMMENDATION_ONLY",
+    "scenarios": [
+      "ACC-05"
+    ],
+    "hypothesis_and_cause": "Tappable semantics nodes lacked labels according to the SDK guideline.",
+    "test_result": "Final failures24/14/24/24 observations for collection/details/profile/settings. Raw reasons identify nodes/actions/bounds; no TalkBack/VoiceOver execution.",
+    "reviewed_code": [
+      "lib/widgets/app_header_actions.dart",
+      "lib/pages/library_page.dart",
+      "lib/pages/cat_details_page.dart",
+      "lib/pages/settings_page.dart",
+      "lib/pages/profile_page.dart"
+    ],
+    "evaluated_product_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "attempts": [
+      "accessibility-flows-02"
+    ],
+    "evidence": [
+      "observations.json",
+      "results.json",
+      "traceability.json",
+      "evidence_index.json"
+    ],
+    "recommendation": "Review semantic grouping, names, hints and state on real controls; confirm complete navigation with physical readers when that stage is authorized.",
+    "product_correction_commit": null,
+    "before_after_product_comparison": null,
+    "product_revalidation": null
+  },
+  {
+    "id": "ACC-FLOW-LAYOUT",
+    "kind": "layout_observation",
+    "state": "OPEN_RECOMMENDATION_ONLY",
+    "scenarios": [
+      "ACC-02",
+      "ACC-07"
+    ],
+    "hypothesis_and_cause": "Some fixed/wrapped content constraints do not accommodate font scale2.0.",
+    "test_result": "Eight viewport observations reproduced three patterns: details320/412 initial bottom+4px; profile412 scrolled bottom+5px; settings320 scrolled right+22px, each with reduced-motion flag both ways.",
+    "reviewed_code": [
+      "lib/pages/cat_details_page.dart",
+      "lib/pages/profile_page.dart",
+      "lib/pages/settings_page.dart"
+    ],
+    "evaluated_product_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "attempts": [
+      "accessibility-flows-02"
+    ],
+    "evidence": [
+      "observations.json",
+      "results.json",
+      "traceability.json",
+      "evidence_index.json"
+    ],
+    "recommendation": "Inspect the actual failing rows and constraints; propose an adaptive solution later, then revalidate all sizes, focus, scroll and semantics. Injected motion preference is not proof of animation compliance.",
+    "product_correction_commit": null,
+    "before_after_product_comparison": null,
+    "product_revalidation": null
+  }
+]

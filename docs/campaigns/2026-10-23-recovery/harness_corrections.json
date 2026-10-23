@@ -1,0 +1,55 @@
+[
+  {
+    "id": "HARNESS-OFFLINE-ANALYSIS",
+    "before_attempt": "offline-flow-01",
+    "problem": "Parent expected RemoteCat.analysis to be null, but sync legitimately persisted an analysis_status=pending placeholder. All five initial Dart phases had passed.",
+    "hypothesis": "The failure was the oracle assumption, not completed inference.",
+    "change": "Require pending placeholder with no model result, assert local pending status, and separate explicit HTTP photo upload controls from automatic pending-analysis upload.",
+    "correction_commits": [
+      "4fdb909af37da1e05cfe29a9ddb24acac738aa4f",
+      "baf0b9a04972059ffa000d00db51baaf632286f1"
+    ],
+    "after_attempt": "offline-flow-02",
+    "revalidation": "PASS: five OS processes, pending status, persisted bytes, account isolation, explicit owner200/other404 controls.",
+    "product_changed": false
+  },
+  {
+    "id": "HARNESS-ACCESSIBILITY-PLATFORM",
+    "before_attempt": "accessibility-flows-01",
+    "problem": "Initial FavoritesManager initialization logged MissingPlugin for documents path.",
+    "hypothesis": "Missing platform fixture might confound page state.",
+    "change": "Own documents directory, real empty SQLite FFI database, initialized FavoritesManager and simulated PackageInfo; no app code change.",
+    "correction_commits": [
+      "baf0b9a04972059ffa000d00db51baaf632286f1"
+    ],
+    "after_attempt": "accessibility-flows-02",
+    "revalidation": "No missing-plugin/cache initialization error observed; same four-page SDK failure counts and8 layout observations;48 cases remain red for measured findings, evidence-destination check passes.",
+    "product_changed": false
+  },
+  {
+    "id": "HARNESS-HISTORY-FRIENDSHIPS",
+    "before_attempt": "social-history-01",
+    "problem": "All18 cases failed because the supposed positive conversation-history actor had no friendship edges, so the API correctly returned403.",
+    "hypothesis": "Fixture did not meet the route authorization precondition.",
+    "change": "Seed mutual friendships once per author, retain foreign403 control, normalize synthetic read timestamp after message creation.",
+    "correction_commits": [
+      "4fdb909af37da1e05cfe29a9ddb24acac738aa4f"
+    ],
+    "after_attempt": "social-history-02",
+    "revalidation": "All18 cells PASS; no authorization guard weakened.",
+    "product_changed": false
+  },
+  {
+    "id": "TRIAGE-PREREQUISITES",
+    "before_attempt": "dependency-static-01",
+    "problem": "Three static classifications underrepresented possible indirect paths.",
+    "hypothesis": "Ghostscript can be invoked through generic image loading and a PyJWT recursion advisory mentions verify_signature=False as well as JWK APIs.",
+    "change": "Keep two Ghostscript groups in additional media/native prerequisite review; prioritize recursion/decode analysis before JWK-only classification forGHSA-42vr-xj54-vc7v.",
+    "correction_commits": [
+      "4fdb909af37da1e05cfe29a9ddb24acac738aa4f"
+    ],
+    "after_attempt": "dependency-static-02",
+    "revalidation": "50groups retained; onlyGHSA-vx6w-vv9f-6gvg,GHSA-w889-685w-c8fh,GHSA-42vr-xj54-vc7v changed classification. Zero new network requests or exploit executions.",
+    "product_changed": false
+  }
+]

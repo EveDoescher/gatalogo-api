@@ -1,0 +1,22 @@
+{
+  "ruff": {
+    "command": "ruff check scripts/campaign scripts/quality_campaign.py",
+    "exit_code": 0
+  },
+  "harness": {
+    "passed": 18,
+    "failed": 0,
+    "evidence": "recovery_harness_validation_20261023.xml"
+  },
+  "flutter_analyzer": {
+    "files": [
+      "tool/campaign_offline_capture_test.dart",
+      "tool/campaign_flow_accessibility_test.dart"
+    ],
+    "issues": 0
+  },
+  "product_changes": false,
+  "main_preserved": true,
+  "frozen_sources_verified": 472,
+  "red_contracts_retained": true
+}

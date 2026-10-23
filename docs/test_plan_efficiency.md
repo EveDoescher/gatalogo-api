@@ -413,3 +413,8 @@ Preserva todos os cenarios anteriores; cobertura parcial nao significa conclusao
 
 [Relatório incremental, matriz e problemas reproduzidos](campaigns/2026-10-23-local-campaign/README.md).
 Preserva relatórios anteriores e os cenários integrais. Inclui contratos Apple e chat vermelhos, comparação cruzada de clientes/APIs, falhas de serviços, SQL, capturas e medições exploratórias. Nenhuma correção de produto ou conclusão de ganho foi aplicada.
+
+
+### Recuperação, históricos e acessibilidade — 23/10/2026
+
+[Resultados e matriz incremental](campaigns/2026-10-23-recovery/README.md). Inclui reinício em processos desktop, três janelas de interrupção de upload, históricos maiores, controles de identidade, revisão estática de dependências e auditoria de quatro páginas. Preserve os limites por variante; nenhum problema de produto foi corrigido nesta etapa.

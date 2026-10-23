@@ -1,0 +1,898 @@
+{
+  "attempts/identity-controls-01/critical_runs/identity-controls-A/summary.json": {
+    "run": "identity-controls-A",
+    "exit_code": 0,
+    "elapsed_seconds": 43.08900180000637,
+    "cases": [
+      {
+        "name": "test_SEC01_google_rejections_preserve_account_identity_and_sessions[verifier-reject]",
+        "seconds": 2.624,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC01_google_rejections_preserve_account_identity_and_sessions[issuer-wrong]",
+        "seconds": 2.593,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC01_google_rejections_preserve_account_identity_and_sessions[email-unverified]",
+        "seconds": 1.621,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC01_google_rejections_preserve_account_identity_and_sessions[provider-error]",
+        "seconds": 2.567,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC01_google_missing_configuration_does_not_call_verifier",
+        "seconds": 1.937,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC01_google_verified_boundary_reuses_identity_and_existing_synthetic_account[active]",
+        "seconds": 3.449,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC01_google_verified_boundary_reuses_identity_and_existing_synthetic_account[deactivated]",
+        "seconds": 2.631,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\identity_controls_cases.py"
+    ]
+  },
+  "attempts/identity-controls-01/critical_runs/identity-controls-B/summary.json": {
+    "run": "identity-controls-B",
+    "exit_code": 0,
+    "elapsed_seconds": 58.92028220000793,
+    "cases": [
+      {
+        "name": "test_SEC01_google_rejections_preserve_account_identity_and_sessions[verifier-reject]",
+        "seconds": 3.505,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC01_google_rejections_preserve_account_identity_and_sessions[issuer-wrong]",
+        "seconds": 1.811,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC01_google_rejections_preserve_account_identity_and_sessions[email-unverified]",
+        "seconds": 2.036,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC01_google_rejections_preserve_account_identity_and_sessions[provider-error]",
+        "seconds": 1.912,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC01_google_missing_configuration_does_not_call_verifier",
+        "seconds": 2.634,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC01_google_verified_boundary_reuses_identity_and_existing_synthetic_account[active]",
+        "seconds": 3.256,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC01_google_verified_boundary_reuses_identity_and_existing_synthetic_account[deactivated]",
+        "seconds": 2.878,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\identity_controls_cases.py"
+    ]
+  },
+  "attempts/offline-flow-01/critical_runs/offline-flow-baseline/summary.json": {
+    "run": "offline-flow-baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 366.85678289999487,
+    "cases": [
+      {
+        "name": "test_RES01_IMG02_DATA01_offline_capture_edit_restart_sync_and_owner_isolation",
+        "seconds": 362.264,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\offline_flow_cases.py"
+    ]
+  },
+  "attempts/offline-flow-02/critical_runs/offline-flow-baseline/summary.json": {
+    "run": "offline-flow-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 111.6377671000082,
+    "cases": [
+      {
+        "name": "test_RES01_IMG02_DATA01_offline_capture_edit_restart_sync_and_owner_isolation",
+        "seconds": 107.21,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\offline_flow_cases.py"
+    ]
+  },
+  "attempts/upload-transport-01/critical_runs/upload-transport-baseline/summary.json": {
+    "run": "upload-transport-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 45.72297479999543,
+    "cases": [
+      {
+        "name": "test_RES02_DATA02_real_upload_transport_windows_preserve_atomic_file_and_retry[partial-body]",
+        "seconds": 8.633,
+        "status": "PASS"
+      },
+      {
+        "name": "test_RES02_DATA02_real_upload_transport_windows_preserve_atomic_file_and_retry[disconnect-before-commit]",
+        "seconds": 10.26,
+        "status": "PASS"
+      },
+      {
+        "name": "test_RES02_DATA02_real_upload_transport_windows_preserve_atomic_file_and_retry[lost-response-after-commit]",
+        "seconds": 12.571,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\upload_transport_cases.py"
+    ]
+  },
+  "attempts/accessibility-flows-01/accessibility_flows/summary.json": {
+    "exit_code": 1,
+    "elapsed_seconds": 227.54621639999095,
+    "cases": [
+      {
+        "name": "ACC flows page=collection width=320.0 scale=1.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=320.0 scale=1.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=320.0 scale=1.3 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=320.0 scale=1.3 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=320.0 scale=2.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=320.0 scale=2.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=412.0 scale=1.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=412.0 scale=1.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=412.0 scale=1.3 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=412.0 scale=1.3 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=412.0 scale=2.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=412.0 scale=2.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=320.0 scale=1.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=320.0 scale=1.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=320.0 scale=1.3 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=320.0 scale=1.3 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=320.0 scale=2.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=320.0 scale=2.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=412.0 scale=1.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=412.0 scale=1.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=412.0 scale=1.3 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=412.0 scale=1.3 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=412.0 scale=2.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=412.0 scale=2.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=320.0 scale=1.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=320.0 scale=1.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=320.0 scale=1.3 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=320.0 scale=1.3 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=320.0 scale=2.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=320.0 scale=2.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=412.0 scale=1.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=412.0 scale=1.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=412.0 scale=1.3 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=412.0 scale=1.3 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=412.0 scale=2.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=412.0 scale=2.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=320.0 scale=1.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=320.0 scale=1.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=320.0 scale=1.3 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=320.0 scale=1.3 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=320.0 scale=2.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=320.0 scale=2.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=412.0 scale=1.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=412.0 scale=1.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=412.0 scale=1.3 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=412.0 scale=1.3 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=412.0 scale=2.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=412.0 scale=2.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC evidence destination is explicitly private",
+        "result": "success",
+        "skipped": false
+      }
+    ],
+    "observation_files": 96,
+    "scope": "real B widgets/fixture data, SDK guidelines in 48 cells plus evidence-path check; two scroll positions; no reader/device or animation-compliance certification"
+  },
+  "attempts/accessibility-flows-02/accessibility_flows/summary.json": {
+    "exit_code": 1,
+    "elapsed_seconds": 127.52967380000337,
+    "cases": [
+      {
+        "name": "ACC flows page=collection width=320.0 scale=1.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=320.0 scale=1.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=320.0 scale=1.3 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=320.0 scale=1.3 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=320.0 scale=2.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=320.0 scale=2.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=412.0 scale=1.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=412.0 scale=1.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=412.0 scale=1.3 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=412.0 scale=1.3 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=412.0 scale=2.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=collection width=412.0 scale=2.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=320.0 scale=1.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=320.0 scale=1.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=320.0 scale=1.3 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=320.0 scale=1.3 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=320.0 scale=2.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=320.0 scale=2.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=412.0 scale=1.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=412.0 scale=1.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=412.0 scale=1.3 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=412.0 scale=1.3 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=412.0 scale=2.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=details width=412.0 scale=2.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=320.0 scale=1.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=320.0 scale=1.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=320.0 scale=1.3 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=320.0 scale=1.3 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=320.0 scale=2.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=320.0 scale=2.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=412.0 scale=1.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=412.0 scale=1.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=412.0 scale=1.3 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=412.0 scale=1.3 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=412.0 scale=2.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=settings width=412.0 scale=2.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=320.0 scale=1.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=320.0 scale=1.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=320.0 scale=1.3 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=320.0 scale=1.3 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=320.0 scale=2.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=320.0 scale=2.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=412.0 scale=1.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=412.0 scale=1.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=412.0 scale=1.3 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=412.0 scale=1.3 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=412.0 scale=2.0 reduced=false",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC flows page=profile width=412.0 scale=2.0 reduced=true",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "ACC evidence destination is explicitly private",
+        "result": "success",
+        "skipped": false
+      }
+    ],
+    "observation_files": 96,
+    "scope": "real B widgets/fixture data, SDK guidelines in 48 cells plus evidence-path check; two scroll positions; no reader/device or animation-compliance certification"
+  },
+  "attempts/social-history-01/critical_runs/social-history-baseline/summary.json": {
+    "run": "social-history-baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 159.1754934000055,
+    "cases": [
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[repeated-0-1]",
+        "seconds": 1.596,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[repeated-0-20]",
+        "seconds": 3.794,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[repeated-0-100]",
+        "seconds": 8.722,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[repeated-100-1]",
+        "seconds": 5.546,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[repeated-100-20]",
+        "seconds": 5.756,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[repeated-100-100]",
+        "seconds": 9.661,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[repeated-1000-1]",
+        "seconds": 1.721,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[repeated-1000-20]",
+        "seconds": 7.879,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[repeated-1000-100]",
+        "seconds": 25.144,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[distinct-0-1]",
+        "seconds": 1.165,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[distinct-0-20]",
+        "seconds": 6.816,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[distinct-0-100]",
+        "seconds": 7.853,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[distinct-100-1]",
+        "seconds": 1.454,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[distinct-100-20]",
+        "seconds": 2.564,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[distinct-100-100]",
+        "seconds": 11.011,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[distinct-1000-1]",
+        "seconds": 1.802,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[distinct-1000-20]",
+        "seconds": 8.336,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[distinct-1000-100]",
+        "seconds": 36.801,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\social_history_cases.py"
+    ]
+  },
+  "attempts/social-history-02/critical_runs/social-history-baseline/summary.json": {
+    "run": "social-history-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 159.88719659998605,
+    "cases": [
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[repeated-0-1]",
+        "seconds": 1.459,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[repeated-0-20]",
+        "seconds": 1.866,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[repeated-0-100]",
+        "seconds": 5.471,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[repeated-100-1]",
+        "seconds": 3.161,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[repeated-100-20]",
+        "seconds": 5.567,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[repeated-100-100]",
+        "seconds": 7.099,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[repeated-1000-1]",
+        "seconds": 2.717,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[repeated-1000-20]",
+        "seconds": 8.23,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[repeated-1000-100]",
+        "seconds": 24.925,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[distinct-0-1]",
+        "seconds": 1.222,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[distinct-0-20]",
+        "seconds": 2.078,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[distinct-0-100]",
+        "seconds": 20.135,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[distinct-100-1]",
+        "seconds": 10.822,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[distinct-100-20]",
+        "seconds": 4.958,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[distinct-100-100]",
+        "seconds": 9.875,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[distinct-1000-1]",
+        "seconds": 1.719,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[distinct-1000-20]",
+        "seconds": 6.732,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_histories_preserve_unread_last_message_and_account_boundaries[distinct-1000-100]",
+        "seconds": 33.493,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\social_history_cases.py"
+    ]
+  },
+  "attempts/social-order-01/critical_runs/social-order-baseline/summary.json": {
+    "run": "social-order-baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 10.982737199999974,
+    "cases": [
+      {
+        "name": "test_DATA08_DB03_identical_message_rows_with_equal_times_keep_presentation_order",
+        "seconds": 1.494,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\social_order_cases.py"
+    ]
+  },
+  "attempts/social-order-02/critical_runs/social-order-A/summary.json": {
+    "run": "social-order-A",
+    "exit_code": 1,
+    "elapsed_seconds": 17.17521359999955,
+    "cases": [
+      {
+        "name": "test_DATA08_DB03_identical_message_rows_with_equal_times_keep_presentation_order",
+        "seconds": 3.099,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\social_order_cases.py"
+    ]
+  },
+  "attempts/social-order-02/critical_runs/social-order-B/summary.json": {
+    "run": "social-order-B",
+    "exit_code": 1,
+    "elapsed_seconds": 12.518081000001985,
+    "cases": [
+      {
+        "name": "test_DATA08_DB03_identical_message_rows_with_equal_times_keep_presentation_order",
+        "seconds": 1.48,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\social_order_cases.py"
+    ]
+  }
+}

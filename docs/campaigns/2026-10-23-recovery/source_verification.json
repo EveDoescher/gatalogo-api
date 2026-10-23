@@ -1,0 +1,32 @@
+{
+  "A-api": {
+    "files_verified": 63,
+    "sha": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+    "state": "UNCHANGED_CONTENT",
+    "git_crlf_translation_only": 56
+  },
+  "B-api": {
+    "files_verified": 97,
+    "sha": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+    "state": "UNCHANGED_CONTENT",
+    "git_crlf_translation_only": 90
+  },
+  "A-flutter": {
+    "files_verified": 140,
+    "sha": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+    "state": "UNCHANGED_CONTENT",
+    "git_crlf_translation_only": 140
+  },
+  "B-flutter": {
+    "files_verified": 172,
+    "sha": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "state": "UNCHANGED_CONTENT",
+    "git_crlf_translation_only": 172
+  },
+  "hardware_observed_at_verification": {
+    "cpu": "Intel64 Family 6 Model 58 Stepping 9, GenuineIntel",
+    "logical_cpus": 4,
+    "os": "Windows-10-10.0.19045-SP0",
+    "physical_ram_bytes": 17073184768
+  }
+}

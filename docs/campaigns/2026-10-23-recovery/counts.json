@@ -1,0 +1,17 @@
+{
+  "scenarios": 95,
+  "states": {
+    "PREPARED": 1,
+    "PARTIAL_EXECUTED": 65,
+    "PENDING": 18,
+    "BLOCKED_EXTERNAL_PREREQUISITES": 11
+  },
+  "case_executions_including_retries": 156,
+  "outcomes_including_retries": {
+    "PASS": 36,
+    "FAIL": 22,
+    "error": 96,
+    "success": 2
+  },
+  "static_reviews_are_not_runtime_tests": true
+}

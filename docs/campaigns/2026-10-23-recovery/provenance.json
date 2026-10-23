@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-10-23T17:36:19.491398+00:00",
+  "previous": "../2026-10-23-local-campaign/README.md",
+  "attempts": [
+    "identity-controls-01",
+    "offline-flow-01",
+    "offline-flow-02",
+    "dependency-static-01",
+    "dependency-static-02",
+    "upload-transport-01",
+    "accessibility-flows-01",
+    "accessibility-flows-02",
+    "social-history-01",
+    "social-history-02",
+    "social-order-01",
+    "social-order-02"
+  ],
+  "executor_commit": "a25fd66476ba41900bf427ec6376fd82e000646b",
+  "frozen_snapshots_authoritative": true,
+  "product_correction_commits": [],
+  "new_mutations": 0
+}

@@ -1,0 +1,15 @@
+# Pendências após este incremento
+
+Preservam-se todas as definições do [plano](../../test_plan_efficiency.md), da [matriz atual](matrix.json) e das [pendências anteriores](../2026-10-23-local-campaign/pending_variants.md). Somente os avanços abaixo mudam a avaliação; não foram descartados cenários por já haver suítes verdes.
+
+| Tema | Executado agora | Ainda necessário |
+|---|---|---|
+| Recuperação offline | Captura/edição, arquivos/SQLite em cinco processos desktop, sync de metadados, estado pendente e isolamento; upload privado HTTP como controle separado. | Caminho de análise real permitido pelo orçamento, GPS/permissões e UI do app; interrupção física/background e reabertura no celular seguem fora desta etapa. Os adaptadores de sessão/plataforma foram simulados. |
+| Upload interrompido | Três janelas TCP distintas, incluindo row lock antes do commit e queda da resposta depois dele; retry e bytes acessíveis. | Estado/erro do cliente Flutter durante essas falhas, inventário de arquivos, variantes de falhas de disco/commit combinadas, conforme plano; não inferir rollback de desconexão. |
+| Históricos maiores | 18 combinações com autores repetidos/distintos e até 1.000 mensagens por conversa, não lidas/última mensagem/autorização. | Planos das demais consultas em schema migrado/deployment, igualdade de timestamps em percursos do cliente e avaliação futura de paginação sem alterar o resultado exibido. |
+| Acessibilidade | Coleção/detalhes/configurações/perfil em 320/412, fontes 1/1,3/2, preferência de movimento e dois pontos de scroll. | Demais páginas/estados, tablet/orientação/safe areas/teclado, foco e navegação assistiva integral; cumprir redução de movimento precisa de oráculos de animação, não só sinal injetado. Leitores físicos continuam pendentes. |
+| Identidade externa | Controles Google simulados positivos/negativos em A/B e ausência de efeitos nas rejeições. | Revisar a falha Apple comprovada no relatório anterior e planejar sua correção/revalidação; os controles Google não verificam criptografia real de nenhum provedor. |
+| Dependências | 50 grupos revistos com base no material já autorizado e nos caminhos do código congelado. | Descrições completas/precondições ainda incertas, código transitivo/nativo, configuração e SBOM de deployment. Não enviar novos dados externamente nem atualizar pacotes automaticamente. |
+| Ordenação de chat | Mesmos dados lógicos, timestamps iguais e alteração da ordem física. | Definir contrato de desempate antes de corrigir; manter prova vermelha e revisar impacto no histórico, última mensagem e cliente. Não mudar a UI nesta etapa. |
+
+As próximas baterias locais devem ampliar percursos de coleção/Quintal/notificações e suas combinações ainda não cobertas, além de consultas e recursos. A comparação confirmatória A/B continua dependendo de host e amostragem qualificados; o experimento de `/health` anterior não aprovou ganhos. Patamares prolongados/soak, IA paga, bateria/dispositivo e entrega Firebase real não foram autorizados nesta etapa. A reidentificação ainda depende de conjunto rotulado e consentimento confiáveis.
