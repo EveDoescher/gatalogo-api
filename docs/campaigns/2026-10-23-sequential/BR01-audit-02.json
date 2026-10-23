@@ -1,0 +1,87 @@
+{
+  "scenario": "BR-01",
+  "state": "COMPLETED",
+  "criteria": {
+    "four_immutable_shas_and_product_content": "PASS",
+    "protected_main_refs": "PASS",
+    "fixture_image_hashes": "PASS",
+    "common_immutable_executor_hashes": "PASS",
+    "ABBA_observed_fixture_configuration_equality": "PASS",
+    "migration_statements_equivalence": "PASS"
+  },
+  "source_shas": {
+    "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+    "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+    "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+    "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+  },
+  "fixture_manifest_sha256": "65730c92255497dae237166a725c4f8d4cb94e6c5d9ee6abdffca592c122bc83",
+  "executor_manifest_sha256": "4785c5166bfa8b0d15e89acb9a9dc9b97a056e1714ca3a72cd9b4f114d5a0b8d",
+  "migration_hashes": {
+    "A": {
+      "alembic/versions/20260827_01_accounts_sync.py": "9f41270ee3f23819b6e799df303ec05e74dde176ffb11aa430a127e05c6a9289",
+      "alembic/versions/20260827_02_cat_avatars.py": "c1978469e58ac92eb00ae88a4fd2395d804d04f7b714a45a6ad6e16a1857f67e",
+      "alembic/versions/20260828_03_recognition_social.py": "16bc15b981b1e55d319ce4a1b588093e12c4d22f15797c8091eaf50769c173b1",
+      "alembic/versions/20260908_04_recognition_evidence.py": "6d90f7aedbec1bdaa64b6c05bfb6cb37baa6ac6c6d52294e3df6cccb3b51eee3",
+      "alembic/versions/20260908_05_product.py": "ce5234fdb8e8f8d8aebd5ca8df9f773041f7b56495370a772e06ab9161e9b8ae",
+      "alembic/versions/20260916_06_chat_rescue.py": "bba2147e3dbc8877d5b15d751626cfbdf65ce0cf42d1f7acaf3bf1251f25f690",
+      "alembic/versions/20260922_07_report_poster.py": "4aa73f0d2e000641948068b01fda4be2c76ed8c0beb15409ad32f36643314bb4",
+      "alembic/versions/20260923_08_habitat.py": "5e792213761b14f32517edf5e47cc8ad3ef1b9d5302cbad9b3b1bba210244a68",
+      "alembic/versions/20260923_09_habitat_yard.py": "fdba020938862f2caec528bf2807531a9b1a4981969c477db1592650e1b5f6d9",
+      "alembic/versions/20260924_10_habitat_care.py": "42eded69bf3e89188897139e20ffaafdfea5e574514478976a937c6417bbe7f1",
+      "alembic/versions/20260927_11_progression.py": "ce600151eeb5e2c7a1bb748bee5f37983cd1df38d8f74dbc6d7da14526551264",
+      "alembic/versions/20261006_12_quintal_production.py": "25ba75cf301113dddf0d9561c99a9db61c5ce88f3a3401522a6b7204ffba93c4",
+      "alembic/versions/20261009_13_quintal_build_start.py": "2949f66b2820c4fd4ec0bd24af4c04a48eef85bc437352346410e9ccb2a4b4c8",
+      "alembic/versions/20261018_14_session_rotation.py": "baceae9110d7fbd6e2d7bf4a821d405950710d1aa00738416502166678155569"
+    },
+    "B": {
+      "alembic/versions/20260827_01_accounts_sync.py": "9f41270ee3f23819b6e799df303ec05e74dde176ffb11aa430a127e05c6a9289",
+      "alembic/versions/20260827_02_cat_avatars.py": "c1978469e58ac92eb00ae88a4fd2395d804d04f7b714a45a6ad6e16a1857f67e",
+      "alembic/versions/20260828_03_recognition_social.py": "16bc15b981b1e55d319ce4a1b588093e12c4d22f15797c8091eaf50769c173b1",
+      "alembic/versions/20260908_04_recognition_evidence.py": "6d90f7aedbec1bdaa64b6c05bfb6cb37baa6ac6c6d52294e3df6cccb3b51eee3",
+      "alembic/versions/20260908_05_product.py": "ce5234fdb8e8f8d8aebd5ca8df9f773041f7b56495370a772e06ab9161e9b8ae",
+      "alembic/versions/20260916_06_chat_rescue.py": "bba2147e3dbc8877d5b15d751626cfbdf65ce0cf42d1f7acaf3bf1251f25f690",
+      "alembic/versions/20260922_07_report_poster.py": "4aa73f0d2e000641948068b01fda4be2c76ed8c0beb15409ad32f36643314bb4",
+      "alembic/versions/20260923_08_habitat.py": "5e792213761b14f32517edf5e47cc8ad3ef1b9d5302cbad9b3b1bba210244a68",
+      "alembic/versions/20260923_09_habitat_yard.py": "fdba020938862f2caec528bf2807531a9b1a4981969c477db1592650e1b5f6d9",
+      "alembic/versions/20260924_10_habitat_care.py": "42eded69bf3e89188897139e20ffaafdfea5e574514478976a937c6417bbe7f1",
+      "alembic/versions/20260927_11_progression.py": "35435215fd10929f026d6d4e05b4d60d1694d19364cce32f2ce7d1f481b4fe15",
+      "alembic/versions/20261006_12_quintal_production.py": "25ba75cf301113dddf0d9561c99a9db61c5ce88f3a3401522a6b7204ffba93c4",
+      "alembic/versions/20261009_13_quintal_build_start.py": "2949f66b2820c4fd4ec0bd24af4c04a48eef85bc437352346410e9ccb2a4b4c8",
+      "alembic/versions/20261018_14_session_rotation.py": "baceae9110d7fbd6e2d7bf4a821d405950710d1aa00738416502166678155569"
+    }
+  },
+  "reviewed_migration_differences": [
+    {
+      "file": "alembic/versions/20260927_11_progression.py",
+      "change": "removal of unused datetime import only; migration statements identical"
+    }
+  ],
+  "observed_common_fixture": {
+    "seed": 2102026,
+    "cats_A": 40,
+    "cats_B": 1,
+    "clock": "2026-10-21T12:00:00+00:00"
+  },
+  "configuration": {
+    "transport": "in-process ASGI, real PostgreSQL; no TCP latency",
+    "external_services": "analysis and FCM substituted; no lifespan/workers",
+    "database": "own random-port recognition_test, separate schema per arm/round",
+    "runtimes": "shared installed dependencies: controlled source comparison only",
+    "host": {
+      "os": "Windows-10-10.0.19045-SP0",
+      "cpu_count": 4
+    }
+  },
+  "evidence": [
+    "manifest.json",
+    "fixtures/manifest.json",
+    "attempts/pilot-03/executor_manifest.json",
+    "BR01-audit-02-sources.json"
+  ],
+  "limits": [
+    "Preparation is complete for E1/E2 controlled source comparison only.",
+    "This does not complete BR-02/03/04/05, qualify latency samples, or certify historical deployment dependencies.",
+    "No mobile build, real provider, load or benchmark was executed by this audit."
+  ]
+}

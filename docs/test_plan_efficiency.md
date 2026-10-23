@@ -1,5 +1,7 @@
 # Plano de testes de eficiência, integridade e experiência
 
+Escopo vigente em 23/10/2026: [fechamento sequencial, correções autorizadas e exclusão de iOS](campaigns/2026-10-23-sequential/README.md). As definições históricas abaixo são preservadas; iOS/VoiceOver não contam como pendência da campanha Android/API.
+
 Data: 21/10/2026. API e Flutter, branch `code-quality-cleanup`.
 
 Execução posterior ao planejamento aprovado: [preparação, matriz e resultados da primeira campanha-piloto](campaigns/2026-10-21-pilot/README.md). Os estados abaixo descrevem o plano original; a matriz do relatório registra o andamento real sem sobrescrever o planejamento.
