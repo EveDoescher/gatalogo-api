@@ -205,12 +205,24 @@ API_SUITES = {
     "privacy": "privacy_suite.py",
     "diagnostic": "diagnostic_suite.py",
     "network": "network_suite.py",
+    "delivery": "delivery_suite.py",
+    "crossed": "crossed_suite.py",
+    "social-volume": "social_volume_suite.py",
+    "image": "image_suite.py",
+    "storage-resilience": "storage_resilience_suite.py",
+    "mechanisms": "remaining_mechanism_suite.py",
+    "pipeline": "pipeline_suite.py",
+    "worker-race": "worker_race_suite.py",
+    "query-plan": "query_plan_suite.py",
 }
 
 
 def execute_api(run, name, mutations=True, suite="pilot"):
     if suite not in API_SUITES:
         raise ValueError("Unknown frozen API suite")
+    api_arm = os.environ.get("QUALITY_API_ARM", "B") if suite == "crossed" else "B"
+    if api_arm not in {"A", "B"}:
+        raise ValueError("Invalid API arm")
     run = Path(run).resolve()
     attempt = attempt_path(run, name)
     if (attempt / "api_attempt.json").exists():
@@ -220,6 +232,7 @@ def execute_api(run, name, mutations=True, suite="pilot"):
         {
             "started_at": datetime.now(UTC).isoformat(),
             "suite": suite,
+            "api_arm": api_arm,
             "experiment_environment": {
                 key: os.environ.get(key)
                 for key in (
@@ -251,7 +264,7 @@ def execute_api(run, name, mutations=True, suite="pilot"):
     runner = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(runner)
     # Reuse existing DB/image/migrations/readiness/cleanup rather than a second Docker harness.
-    runner.ROOT = run / "sources" / "B" / "api"
+    runner.ROOT = run / "sources" / api_arm / "api"
     selected = [str(attempt / "executors" / API_SUITES[suite])]
     if mutations and suite == "pilot":
         selected.append(str(attempt / "executors" / "mutation_cases.py"))

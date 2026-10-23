@@ -11,6 +11,7 @@ import time
 
 FILES = [
     "campaign_resilience_test.dart",
+    "campaign_social_resilience_test.dart",
     "catalog_read_performance_test.dart",
     "local_database_test.dart",
     "session_store_test.dart",
@@ -173,10 +174,8 @@ def main(run, attempt, baseline_only=False, files=None, mutants=None):
     base = run / "sources/B/flutter"
     for f in ("package_config.json", "package_graph.json"):
         shutil.copy2(repo / ".dart_tool" / f, base / ".dart_tool" / f)
-    shutil.copy2(
-        attempt / "executors/campaign_resilience_test.dart",
-        base / "test/campaign_resilience_test.dart",
-    )
+    for tool in (attempt / "executors").glob("campaign_*test.dart"):
+        shutil.copy2(tool, base / "test" / tool.name)
     chosen = [m for m in MUTANTS if not mutants or m[0] in mutants.split(",")]
     if mutants and set(mutants.split(",")) - {m[0] for m in MUTANTS}:
         raise ValueError("Unknown mutant filter")
