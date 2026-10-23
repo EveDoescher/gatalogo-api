@@ -12,6 +12,7 @@ import time
 FILES = [
     "campaign_resilience_test.dart",
     "campaign_social_resilience_test.dart",
+    "campaign_notification_races_test.dart",
     "catalog_read_performance_test.dart",
     "local_database_test.dart",
     "session_store_test.dart",

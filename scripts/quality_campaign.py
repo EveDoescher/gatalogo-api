@@ -214,6 +214,9 @@ API_SUITES = {
     "pipeline": "pipeline_suite.py",
     "worker-race": "worker_race_suite.py",
     "query-plan": "query_plan_suite.py",
+    "socket-fanout": "socket_fanout_suite.py",
+    "wire-contract": "wire_contract_suite.py",
+    "identity": "identity_suite.py",
 }
 
 

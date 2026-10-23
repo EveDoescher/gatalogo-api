@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import signal
 import sys
 import time
 
@@ -150,16 +151,20 @@ async def test_RES04_actual_worker_process_killed_after_claim_then_restarted(
             assert claimed["attempt"] == 1
         finally:
             if process.poll() is None:
-                if os.name == "nt":
-                    subprocess.run(
-                        ["taskkill", "/PID", str(process.pid), "/T", "/F"],
-                        check=True,
-                        stdout=subprocess.DEVNULL,
-                        stderr=subprocess.DEVNULL,
+                if ready.exists():
+                    receipt = json.loads(ready.read_text(encoding="utf-8"))
+                    assert (
+                        receipt["pid"] == process.pid
+                        or receipt["parent_pid"] == process.pid
                     )
+                    try:
+                        os.kill(receipt["pid"], signal.SIGTERM)
+                    except ProcessLookupError:
+                        pass
                 else:
                     process.kill()
             process.wait(timeout=10)
+
     async with queue.factory() as session:
         job = await session.get(VisionJob, queue.job_id)
         assert job.status == "running" and job.attempts == 1

@@ -45,7 +45,14 @@ async def run():
         if os.environ["QUALITY_WORKER_MODE"] == "claim":
             claim = await worker._claim(factory, settings)
             Path(os.environ["QUALITY_WORKER_READY"]).write_text(
-                json.dumps({"job_id": str(claim.job_id), "attempt": claim.attempt}),
+                json.dumps(
+                    {
+                        "job_id": str(claim.job_id),
+                        "attempt": claim.attempt,
+                        "pid": os.getpid(),
+                        "parent_pid": os.getppid(),
+                    }
+                ),
                 encoding="utf-8",
             )
             await asyncio.Event().wait()
