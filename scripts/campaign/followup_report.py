@@ -10,6 +10,60 @@ import subprocess
 from local_report import digest, load, save, scenarios
 
 
+def code_entrypoints(attempt, case, evaluated):
+    """Reviewed entry points; no invented exhaustive runtime call graph."""
+    if attempt.startswith("accessibility-flows-"):
+        page = next(
+            (
+                name
+                for name in ["collection", "details", "settings", "profile"]
+                if f"page={name} " in case
+            ),
+            None,
+        )
+        files = {
+            "collection": "library_page.dart",
+            "details": "cat_details_page.dart",
+            "settings": "settings_page.dart",
+            "profile": "profile_page.dart",
+        }
+        return {
+            "B-flutter": (
+                [
+                    "lib/pages/" + files[page],
+                    "lib/theme/app_theme.dart",
+                    "lib/widgets/app_header_actions.dart",
+                ]
+                if page
+                else []
+            )
+        }
+    if attempt.startswith("identity-controls-"):
+        return {evaluated[0]: ["app/routers/auth.py", "app/services/auth_service.py"]}
+    if attempt.startswith("offline-flow-"):
+        return {
+            "B-api": ["app/routers/sync.py"],
+            "B-flutter": [
+                "lib/stores/cat_store.dart",
+                "lib/services/catalog_sync_service.dart",
+                "lib/data/cat_database.dart",
+            ],
+        }
+    if attempt.startswith("upload-transport-"):
+        return {"B-api": ["app/routers/sync.py", "app/services/storage_service.py"]}
+    if attempt.startswith(("social-history-", "social-order-")):
+        if evaluated == ["A-api"]:
+            return {"A-api": ["app/routers/social.py"]}
+        return {
+            "B-api": [
+                "app/services/chat_queries.py",
+                "app/services/chat_presenter.py",
+                "app/services/conversations.py",
+            ]
+        }
+    return {}
+
+
 def run(campaign, previous, output, attempts):
     campaign, previous, output = map(
         lambda p: Path(p).resolve(), [campaign, previous, output]
@@ -52,8 +106,14 @@ def run(campaign, previous, output, attempts):
                         evaluated = ["B-flutter"]
                     else:
                         evaluated = [
-                            "A-api" if "controls-A" in file.parent.name else "B-api"
+                            "A-api" if file.parent.name.endswith("-A") else "B-api"
                         ]
+                    entrypoints = code_entrypoints(name, case["name"], evaluated)
+                    for key, paths in entrypoints.items():
+                        assert all(
+                            (Path(source["sources"][key]["path"]) / path).is_file()
+                            for path in paths
+                        )
                     traces.append(
                         {
                             "attempt": name,
@@ -63,8 +123,15 @@ def run(campaign, previous, output, attempts):
                             "scenarios": tags,
                             "summary": rel,
                             "selectors": summary.get(
-                                "selectors", summary.get("files", [])
+                                "selectors",
+                                summary.get(
+                                    "files",
+                                    ["test/campaign_flow_accessibility_test.dart"]
+                                    if name.startswith("accessibility-flows-")
+                                    else [],
+                                ),
                             ),
+                            "reviewed_code_entrypoints": entrypoints,
                             "evaluated_sources": {
                                 key: source["sources"][key]["sha"] for key in evaluated
                             },
