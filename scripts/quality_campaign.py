@@ -221,6 +221,7 @@ API_SUITES = {
     "offline-flow": "offline_flow_suite.py",
     "upload-transport": "upload_transport_suite.py",
     "social-history": "social_history_suite.py",
+    "social-order": "social_order_suite.py",
 }
 
 
