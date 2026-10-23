@@ -1,0 +1,4745 @@
+[
+  {
+    "attempt": "crossed-api-A-01",
+    "test": "test_BR04_crossed_client_api_commit_loss_restart_and_account[A]",
+    "scenarios": [
+      "BR-04"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/crossed-api-A-01/critical_runs/crossed-api-A/summary.json",
+    "executor_snapshot": "attempts/crossed-api-A-01/executor_manifest.json",
+    "executor_snapshot_sha256": "65e80bcb78b650275fdef53dd6a6b6aae35ec14000e16a0d047db760a5ccfed3",
+    "evaluated_source_keys": [
+      "A-api",
+      "A-flutter"
+    ],
+    "variant_context": "crossed-api-A",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\crossed_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "crossed-api-A-01",
+    "test": "test_BR04_crossed_client_api_commit_loss_restart_and_account[B]",
+    "scenarios": [
+      "BR-04"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/crossed-api-A-01/critical_runs/crossed-api-A/summary.json",
+    "executor_snapshot": "attempts/crossed-api-A-01/executor_manifest.json",
+    "executor_snapshot_sha256": "65e80bcb78b650275fdef53dd6a6b6aae35ec14000e16a0d047db760a5ccfed3",
+    "evaluated_source_keys": [
+      "A-api",
+      "B-flutter"
+    ],
+    "variant_context": "crossed-api-A",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\crossed_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "crossed-api-A-02",
+    "test": "test_BR04_crossed_client_api_commit_loss_restart_and_account[A]",
+    "scenarios": [
+      "BR-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/crossed-api-A-02/critical_runs/crossed-api-A/summary.json",
+    "executor_snapshot": "attempts/crossed-api-A-02/executor_manifest.json",
+    "executor_snapshot_sha256": "3e382f174dd18c35a482a5dc74efc20950909a7eac1cf74d3a094e886a9fbfc1",
+    "evaluated_source_keys": [
+      "A-api",
+      "A-flutter"
+    ],
+    "variant_context": "crossed-api-A",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\crossed_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "crossed-api-A-02",
+    "test": "test_BR04_crossed_client_api_commit_loss_restart_and_account[B]",
+    "scenarios": [
+      "BR-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/crossed-api-A-02/critical_runs/crossed-api-A/summary.json",
+    "executor_snapshot": "attempts/crossed-api-A-02/executor_manifest.json",
+    "executor_snapshot_sha256": "3e382f174dd18c35a482a5dc74efc20950909a7eac1cf74d3a094e886a9fbfc1",
+    "evaluated_source_keys": [
+      "A-api",
+      "B-flutter"
+    ],
+    "variant_context": "crossed-api-A",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\crossed_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "crossed-api-B-01",
+    "test": "test_BR04_crossed_client_api_commit_loss_restart_and_account[A]",
+    "scenarios": [
+      "BR-04"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/crossed-api-B-01/critical_runs/crossed-api-B/summary.json",
+    "executor_snapshot": "attempts/crossed-api-B-01/executor_manifest.json",
+    "executor_snapshot_sha256": "84ba6947500001a3204c5e1332250d34e86c60c5eacfc7f886f24809fa50d15d",
+    "evaluated_source_keys": [
+      "B-api",
+      "A-flutter"
+    ],
+    "variant_context": "crossed-api-B",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\crossed_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "crossed-api-B-01",
+    "test": "test_BR04_crossed_client_api_commit_loss_restart_and_account[B]",
+    "scenarios": [
+      "BR-04"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/crossed-api-B-01/critical_runs/crossed-api-B/summary.json",
+    "executor_snapshot": "attempts/crossed-api-B-01/executor_manifest.json",
+    "executor_snapshot_sha256": "84ba6947500001a3204c5e1332250d34e86c60c5eacfc7f886f24809fa50d15d",
+    "evaluated_source_keys": [
+      "B-api",
+      "B-flutter"
+    ],
+    "variant_context": "crossed-api-B",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\crossed_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "crossed-api-B-02",
+    "test": "test_BR04_crossed_client_api_commit_loss_restart_and_account[A]",
+    "scenarios": [
+      "BR-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/crossed-api-B-02/critical_runs/crossed-api-B/summary.json",
+    "executor_snapshot": "attempts/crossed-api-B-02/executor_manifest.json",
+    "executor_snapshot_sha256": "8ce1500651f0a4887fe42a7987932920b211936b84414ace4d801de10f0fb4dd",
+    "evaluated_source_keys": [
+      "B-api",
+      "A-flutter"
+    ],
+    "variant_context": "crossed-api-B",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\crossed_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "crossed-api-B-02",
+    "test": "test_BR04_crossed_client_api_commit_loss_restart_and_account[B]",
+    "scenarios": [
+      "BR-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/crossed-api-B-02/critical_runs/crossed-api-B/summary.json",
+    "executor_snapshot": "attempts/crossed-api-B-02/executor_manifest.json",
+    "executor_snapshot_sha256": "8ce1500651f0a4887fe42a7987932920b211936b84414ace4d801de10f0fb4dd",
+    "evaluated_source_keys": [
+      "B-api",
+      "B-flutter"
+    ],
+    "variant_context": "crossed-api-B",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\crossed_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "delivery-01",
+    "test": "test_DLV01_SEC07_smtp_password_recovery_complete_and_replay[confirm]",
+    "scenarios": [
+      "DLV-01",
+      "SEC-07"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/delivery-01/critical_runs/delivery-baseline/summary.json",
+    "executor_snapshot": "attempts/delivery-01/executor_manifest.json",
+    "executor_snapshot_sha256": "5395f23b3bed4d7b1b26716c0866ec2acfd25228c937255d93c640d66b127d65",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "delivery-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\delivery_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "delivery-01",
+    "test": "test_DLV01_SEC07_smtp_password_recovery_complete_and_replay[grant]",
+    "scenarios": [
+      "DLV-01",
+      "SEC-07"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/delivery-01/critical_runs/delivery-baseline/summary.json",
+    "executor_snapshot": "attempts/delivery-01/executor_manifest.json",
+    "executor_snapshot_sha256": "5395f23b3bed4d7b1b26716c0866ec2acfd25228c937255d93c640d66b127d65",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "delivery-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\delivery_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "delivery-01",
+    "test": "test_DLV02_SMTP_ambiguous_acceptance_retry_and_cooldown",
+    "scenarios": [
+      "DLV-02"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/delivery-01/critical_runs/delivery-baseline/summary.json",
+    "executor_snapshot": "attempts/delivery-01/executor_manifest.json",
+    "executor_snapshot_sha256": "5395f23b3bed4d7b1b26716c0866ec2acfd25228c937255d93c640d66b127d65",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "delivery-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\delivery_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "delivery-01",
+    "test": "test_DLV02_LAT08_slow_SMTP_does_not_block_event_loop",
+    "scenarios": [
+      "DLV-02",
+      "LAT-08"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/delivery-01/critical_runs/delivery-baseline/summary.json",
+    "executor_snapshot": "attempts/delivery-01/executor_manifest.json",
+    "executor_snapshot_sha256": "5395f23b3bed4d7b1b26716c0866ec2acfd25228c937255d93c640d66b127d65",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "delivery-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\delivery_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "delivery-01",
+    "test": "test_SEC08_SMTP_enabled_does_not_log_otp",
+    "scenarios": [
+      "SEC-08"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/delivery-01/critical_runs/delivery-baseline/summary.json",
+    "executor_snapshot": "attempts/delivery-01/executor_manifest.json",
+    "executor_snapshot_sha256": "5395f23b3bed4d7b1b26716c0866ec2acfd25228c937255d93c640d66b127d65",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "delivery-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\delivery_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-catalog-01",
+    "test": "DB-01 common public CatStore load contract (no remote IO)",
+    "scenarios": [
+      "DB-01",
+      "LAT-01"
+    ],
+    "result": "success",
+    "skipped": false,
+    "summary": "attempts/flutter-catalog-01/flutter_catalog/summary.json",
+    "executor_snapshot": "attempts/flutter-catalog-01/executor_manifest.json",
+    "executor_snapshot_sha256": "99487b686233b40f6fc046acd7d090f6ac81559bece7e8156036b0e1bd5a3876",
+    "evaluated_source_keys": [
+      "B-flutter"
+    ],
+    "variant_context": 0,
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-catalog-01",
+    "test": "DB-01 common public CatStore load contract (no remote IO)",
+    "scenarios": [
+      "DB-01",
+      "LAT-01"
+    ],
+    "result": "success",
+    "skipped": false,
+    "summary": "attempts/flutter-catalog-01/flutter_catalog/summary.json",
+    "executor_snapshot": "attempts/flutter-catalog-01/executor_manifest.json",
+    "executor_snapshot_sha256": "99487b686233b40f6fc046acd7d090f6ac81559bece7e8156036b0e1bd5a3876",
+    "evaluated_source_keys": [
+      "B-flutter"
+    ],
+    "variant_context": 40,
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-catalog-01",
+    "test": "DB-01 common public CatStore load contract (no remote IO)",
+    "scenarios": [
+      "DB-01",
+      "LAT-01"
+    ],
+    "result": "success",
+    "skipped": false,
+    "summary": "attempts/flutter-catalog-01/flutter_catalog/summary.json",
+    "executor_snapshot": "attempts/flutter-catalog-01/executor_manifest.json",
+    "executor_snapshot_sha256": "99487b686233b40f6fc046acd7d090f6ac81559bece7e8156036b0e1bd5a3876",
+    "evaluated_source_keys": [
+      "B-flutter"
+    ],
+    "variant_context": 501,
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-notifications-01",
+    "test": "DLV05 pending page respects refresh boundary",
+    "scenarios": [
+      "DLV-05"
+    ],
+    "result": "success",
+    "skipped": false,
+    "summary": "attempts/flutter-notifications-01/flutter_resilience/baseline/summary.json",
+    "executor_snapshot": "attempts/flutter-notifications-01/executor_manifest.json",
+    "executor_snapshot_sha256": "2a405e95ae9a34b829515d7255e8d21fe14455d2b4848d8ef0b553dbb46e8b53",
+    "evaluated_source_keys": [
+      "B-flutter"
+    ],
+    "variant_context": "baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "campaign_notification_races_test.dart"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-notifications-01",
+    "test": "DLV05 pending page respects clear boundary",
+    "scenarios": [
+      "DLV-05"
+    ],
+    "result": "success",
+    "skipped": false,
+    "summary": "attempts/flutter-notifications-01/flutter_resilience/baseline/summary.json",
+    "executor_snapshot": "attempts/flutter-notifications-01/executor_manifest.json",
+    "executor_snapshot_sha256": "2a405e95ae9a34b829515d7255e8d21fe14455d2b4848d8ef0b553dbb46e8b53",
+    "evaluated_source_keys": [
+      "B-flutter"
+    ],
+    "variant_context": "baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "campaign_notification_races_test.dart"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-notifications-01",
+    "test": "DLV05 pending page respects dispose boundary",
+    "scenarios": [
+      "DLV-05"
+    ],
+    "result": "success",
+    "skipped": false,
+    "summary": "attempts/flutter-notifications-01/flutter_resilience/baseline/summary.json",
+    "executor_snapshot": "attempts/flutter-notifications-01/executor_manifest.json",
+    "executor_snapshot_sha256": "2a405e95ae9a34b829515d7255e8d21fe14455d2b4848d8ef0b553dbb46e8b53",
+    "evaluated_source_keys": [
+      "B-flutter"
+    ],
+    "variant_context": "baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "campaign_notification_races_test.dart"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-notifications-01",
+    "test": "DLV05 failed page can retry without losing current inbox",
+    "scenarios": [
+      "DLV-05"
+    ],
+    "result": "success",
+    "skipped": false,
+    "summary": "attempts/flutter-notifications-01/flutter_resilience/baseline/summary.json",
+    "executor_snapshot": "attempts/flutter-notifications-01/executor_manifest.json",
+    "executor_snapshot_sha256": "2a405e95ae9a34b829515d7255e8d21fe14455d2b4848d8ef0b553dbb46e8b53",
+    "evaluated_source_keys": [
+      "B-flutter"
+    ],
+    "variant_context": "baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "campaign_notification_races_test.dart"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-social-01",
+    "test": "RES06 offline polling at 30s pauses online and resumes after disconnect",
+    "scenarios": [
+      "RES-06"
+    ],
+    "result": "success",
+    "skipped": false,
+    "summary": "attempts/flutter-social-01/flutter_resilience/baseline/summary.json",
+    "executor_snapshot": "attempts/flutter-social-01/executor_manifest.json",
+    "executor_snapshot_sha256": "b8a7fcb5e6c379659812396818ae71184fa356534051819ae529b000e96bbc08",
+    "evaluated_source_keys": [
+      "B-flutter"
+    ],
+    "variant_context": "baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "campaign_social_resilience_test.dart"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-social-01",
+    "test": "DATA08 duplicate echo reconciles once order=ws-first",
+    "scenarios": [
+      "DATA-08"
+    ],
+    "result": "success",
+    "skipped": false,
+    "summary": "attempts/flutter-social-01/flutter_resilience/baseline/summary.json",
+    "executor_snapshot": "attempts/flutter-social-01/executor_manifest.json",
+    "executor_snapshot_sha256": "b8a7fcb5e6c379659812396818ae71184fa356534051819ae529b000e96bbc08",
+    "evaluated_source_keys": [
+      "B-flutter"
+    ],
+    "variant_context": "baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "campaign_social_resilience_test.dart"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-social-01",
+    "test": "DATA08 duplicate echo reconciles once order=http-first",
+    "scenarios": [
+      "DATA-08"
+    ],
+    "result": "success",
+    "skipped": false,
+    "summary": "attempts/flutter-social-01/flutter_resilience/baseline/summary.json",
+    "executor_snapshot": "attempts/flutter-social-01/executor_manifest.json",
+    "executor_snapshot_sha256": "b8a7fcb5e6c379659812396818ae71184fa356534051819ae529b000e96bbc08",
+    "evaluated_source_keys": [
+      "B-flutter"
+    ],
+    "variant_context": "baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "campaign_social_resilience_test.dart"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-social-01",
+    "test": "DATA08 live event survives late empty history snapshot",
+    "scenarios": [
+      "DATA-08"
+    ],
+    "result": "success",
+    "skipped": false,
+    "summary": "attempts/flutter-social-01/flutter_resilience/baseline/summary.json",
+    "executor_snapshot": "attempts/flutter-social-01/executor_manifest.json",
+    "executor_snapshot_sha256": "b8a7fcb5e6c379659812396818ae71184fa356534051819ae529b000e96bbc08",
+    "evaluated_source_keys": [
+      "B-flutter"
+    ],
+    "variant_context": "baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "campaign_social_resilience_test.dart"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-social-01",
+    "test": "DLV05 read acknowledgment from old owner cannot mark new owner inbox",
+    "scenarios": [
+      "DLV-05"
+    ],
+    "result": "success",
+    "skipped": false,
+    "summary": "attempts/flutter-social-01/flutter_resilience/baseline/summary.json",
+    "executor_snapshot": "attempts/flutter-social-01/executor_manifest.json",
+    "executor_snapshot_sha256": "b8a7fcb5e6c379659812396818ae71184fa356534051819ae529b000e96bbc08",
+    "evaluated_source_keys": [
+      "B-flutter"
+    ],
+    "variant_context": "baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "campaign_social_resilience_test.dart"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-social-01",
+    "test": "DLV05 concurrent refresh triggers converge on one unread notification",
+    "scenarios": [
+      "DLV-05"
+    ],
+    "result": "success",
+    "skipped": false,
+    "summary": "attempts/flutter-social-01/flutter_resilience/baseline/summary.json",
+    "executor_snapshot": "attempts/flutter-social-01/executor_manifest.json",
+    "executor_snapshot_sha256": "b8a7fcb5e6c379659812396818ae71184fa356534051819ae529b000e96bbc08",
+    "evaluated_source_keys": [
+      "B-flutter"
+    ],
+    "variant_context": "baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "campaign_social_resilience_test.dart"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-visual-01",
+    "test": "render corrected screens with bundled fonts for visual review",
+    "scenarios": [],
+    "result": "error",
+    "skipped": false,
+    "summary": "attempts/flutter-visual-01/flutter_visual/summary.json",
+    "executor_snapshot": "attempts/flutter-visual-01/executor_manifest.json",
+    "executor_snapshot_sha256": "faa7786d35ea345257513afb2892a348ad3f56fa220d82349bf6cf1310dce174",
+    "evaluated_source_keys": [
+      "B-flutter"
+    ],
+    "variant_context": "flutter_visual",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-visual-01",
+    "test": "render product previews for visual review",
+    "scenarios": [],
+    "result": "error",
+    "skipped": false,
+    "summary": "attempts/flutter-visual-01/flutter_visual/summary.json",
+    "executor_snapshot": "attempts/flutter-visual-01/executor_manifest.json",
+    "executor_snapshot_sha256": "faa7786d35ea345257513afb2892a348ad3f56fa220d82349bf6cf1310dce174",
+    "evaluated_source_keys": [
+      "B-flutter"
+    ],
+    "variant_context": "flutter_visual",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-visual-01",
+    "test": "record actual game renderer arrival, delivery and departure",
+    "scenarios": [],
+    "result": "success",
+    "skipped": false,
+    "summary": "attempts/flutter-visual-01/flutter_visual/summary.json",
+    "executor_snapshot": "attempts/flutter-visual-01/executor_manifest.json",
+    "executor_snapshot_sha256": "faa7786d35ea345257513afb2892a348ad3f56fa220d82349bf6cf1310dce174",
+    "evaluated_source_keys": [
+      "B-flutter"
+    ],
+    "variant_context": "flutter_visual",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-visual-01",
+    "test": "quintal renderer matrix: edges, water, depth, expansion and zoom",
+    "scenarios": [],
+    "result": "success",
+    "skipped": false,
+    "summary": "attempts/flutter-visual-01/flutter_visual/summary.json",
+    "executor_snapshot": "attempts/flutter-visual-01/executor_manifest.json",
+    "executor_snapshot_sha256": "faa7786d35ea345257513afb2892a348ad3f56fa220d82349bf6cf1310dce174",
+    "evaluated_source_keys": [
+      "B-flutter"
+    ],
+    "variant_context": "flutter_visual",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-visual-01",
+    "test": "fresh captures of every changed screen for user validation",
+    "scenarios": [],
+    "result": "success",
+    "skipped": false,
+    "summary": "attempts/flutter-visual-01/flutter_visual/summary.json",
+    "executor_snapshot": "attempts/flutter-visual-01/executor_manifest.json",
+    "executor_snapshot_sha256": "faa7786d35ea345257513afb2892a348ad3f56fa220d82349bf6cf1310dce174",
+    "evaluated_source_keys": [
+      "B-flutter"
+    ],
+    "variant_context": "flutter_visual",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-visual-A-01",
+    "test": "render corrected screens with bundled fonts for visual review",
+    "scenarios": [],
+    "result": "error",
+    "skipped": false,
+    "summary": "attempts/flutter-visual-A-01/flutter_visual/summary.json",
+    "executor_snapshot": "attempts/flutter-visual-A-01/executor_manifest.json",
+    "executor_snapshot_sha256": "3f6785a275ef2b44a47b7caaf9fa9501df49db570930577a6670e0153d04193f",
+    "evaluated_source_keys": [
+      "A-flutter"
+    ],
+    "variant_context": "flutter_visual",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "flutter-visual-A-01",
+    "test": "render product previews for visual review",
+    "scenarios": [],
+    "result": "error",
+    "skipped": false,
+    "summary": "attempts/flutter-visual-A-01/flutter_visual/summary.json",
+    "executor_snapshot": "attempts/flutter-visual-A-01/executor_manifest.json",
+    "executor_snapshot_sha256": "3f6785a275ef2b44a47b7caaf9fa9501df49db570930577a6670e0153d04193f",
+    "evaluated_source_keys": [
+      "A-flutter"
+    ],
+    "variant_context": "flutter_visual",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "identity-01",
+    "test": "test_SEC01_apple_rejects_unverified_identity_for_existing_synthetic_account[unsigned]",
+    "scenarios": [
+      "SEC-01"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/identity-01/critical_runs/identity-A/summary.json",
+    "executor_snapshot": "attempts/identity-01/executor_manifest.json",
+    "executor_snapshot_sha256": "db1ba3d805f262f7b9564069fe0d7b048288ade368399fce4150a2aa008303cc",
+    "evaluated_source_keys": [
+      "A-api"
+    ],
+    "variant_context": "identity-A",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\identity_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "identity-01",
+    "test": "test_SEC01_apple_rejects_unverified_identity_for_existing_synthetic_account[wrong-signature]",
+    "scenarios": [
+      "SEC-01"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/identity-01/critical_runs/identity-A/summary.json",
+    "executor_snapshot": "attempts/identity-01/executor_manifest.json",
+    "executor_snapshot_sha256": "db1ba3d805f262f7b9564069fe0d7b048288ade368399fce4150a2aa008303cc",
+    "evaluated_source_keys": [
+      "A-api"
+    ],
+    "variant_context": "identity-A",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\identity_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "identity-01",
+    "test": "test_SEC01_apple_rejects_unverified_identity_for_existing_synthetic_account[expired]",
+    "scenarios": [
+      "SEC-01"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/identity-01/critical_runs/identity-A/summary.json",
+    "executor_snapshot": "attempts/identity-01/executor_manifest.json",
+    "executor_snapshot_sha256": "db1ba3d805f262f7b9564069fe0d7b048288ade368399fce4150a2aa008303cc",
+    "evaluated_source_keys": [
+      "A-api"
+    ],
+    "variant_context": "identity-A",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\identity_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "identity-01",
+    "test": "test_SEC01_apple_rejects_unverified_identity_for_existing_synthetic_account[issuer-substring]",
+    "scenarios": [
+      "SEC-01"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/identity-01/critical_runs/identity-A/summary.json",
+    "executor_snapshot": "attempts/identity-01/executor_manifest.json",
+    "executor_snapshot_sha256": "db1ba3d805f262f7b9564069fe0d7b048288ade368399fce4150a2aa008303cc",
+    "evaluated_source_keys": [
+      "A-api"
+    ],
+    "variant_context": "identity-A",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\identity_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "identity-01",
+    "test": "test_SEC01_apple_rejects_unverified_identity_for_existing_synthetic_account[unsigned]",
+    "scenarios": [
+      "SEC-01"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/identity-01/critical_runs/identity-B/summary.json",
+    "executor_snapshot": "attempts/identity-01/executor_manifest.json",
+    "executor_snapshot_sha256": "db1ba3d805f262f7b9564069fe0d7b048288ade368399fce4150a2aa008303cc",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "identity-B",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\identity_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "identity-01",
+    "test": "test_SEC01_apple_rejects_unverified_identity_for_existing_synthetic_account[wrong-signature]",
+    "scenarios": [
+      "SEC-01"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/identity-01/critical_runs/identity-B/summary.json",
+    "executor_snapshot": "attempts/identity-01/executor_manifest.json",
+    "executor_snapshot_sha256": "db1ba3d805f262f7b9564069fe0d7b048288ade368399fce4150a2aa008303cc",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "identity-B",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\identity_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "identity-01",
+    "test": "test_SEC01_apple_rejects_unverified_identity_for_existing_synthetic_account[expired]",
+    "scenarios": [
+      "SEC-01"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/identity-01/critical_runs/identity-B/summary.json",
+    "executor_snapshot": "attempts/identity-01/executor_manifest.json",
+    "executor_snapshot_sha256": "db1ba3d805f262f7b9564069fe0d7b048288ade368399fce4150a2aa008303cc",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "identity-B",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\identity_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "identity-01",
+    "test": "test_SEC01_apple_rejects_unverified_identity_for_existing_synthetic_account[issuer-substring]",
+    "scenarios": [
+      "SEC-01"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/identity-01/critical_runs/identity-B/summary.json",
+    "executor_snapshot": "attempts/identity-01/executor_manifest.json",
+    "executor_snapshot_sha256": "db1ba3d805f262f7b9564069fe0d7b048288ade368399fce4150a2aa008303cc",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "identity-B",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\identity_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_IMG01_preprocessing_formats_modes_and_bounds[JPEG-RGB]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_IMG01_preprocessing_formats_modes_and_bounds[JPEG-L]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_IMG01_preprocessing_formats_modes_and_bounds[PNG-RGB]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_IMG01_preprocessing_formats_modes_and_bounds[PNG-RGBA]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_IMG01_preprocessing_formats_modes_and_bounds[PNG-L]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_IMG01_preprocessing_formats_modes_and_bounds[WEBP-RGB]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_IMG01_preprocessing_formats_modes_and_bounds[WEBP-RGBA]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_IMG01_exif_orientation[1-expected0]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_IMG01_exif_orientation[3-expected1]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_IMG01_exif_orientation[6-expected2]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_IMG01_exif_orientation[8-expected3]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_IMG05_SEC06_invalid_image_matrix[empty]",
+    "scenarios": [
+      "IMG-05",
+      "SEC-06"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_IMG05_SEC06_invalid_image_matrix[invalid]",
+    "scenarios": [
+      "IMG-05",
+      "SEC-06"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_IMG05_SEC06_invalid_image_matrix[truncated]",
+    "scenarios": [
+      "IMG-05",
+      "SEC-06"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_IMG05_SEC06_invalid_image_matrix[unsupported]",
+    "scenarios": [
+      "IMG-05",
+      "SEC-06"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_IMG05_SEC06_invalid_image_matrix[small]",
+    "scenarios": [
+      "IMG-05",
+      "SEC-06"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_IMG05_SEC06_invalid_image_matrix[pixels]",
+    "scenarios": [
+      "IMG-05",
+      "SEC-06"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_IMG05_SEC06_invalid_image_matrix[bytes]",
+    "scenarios": [
+      "IMG-05",
+      "SEC-06"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_IMG04_semantic_cache_hit_invalid_payload_and_missing_provider",
+    "scenarios": [
+      "IMG-04"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_RES05_provider_response_schema[empty]",
+    "scenarios": [
+      "RES-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_RES05_provider_response_schema[invalid-json]",
+    "scenarios": [
+      "RES-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_RES05_provider_response_schema[invalid-schema]",
+    "scenarios": [
+      "RES-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_RES05_provider_retry_boundaries[503-0-1]",
+    "scenarios": [
+      "RES-05"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_RES05_provider_retry_boundaries[503-1-2]",
+    "scenarios": [
+      "RES-05"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_RES05_provider_retry_boundaries[429-2-3]",
+    "scenarios": [
+      "RES-05"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_RES05_provider_retry_boundaries[400-2-1]",
+    "scenarios": [
+      "RES-05"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_SEC08_provider_error_canary_redaction_characterization",
+    "scenarios": [
+      "SEC-08"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-01",
+    "test": "test_RES08_corrupt_private_cache_characterization",
+    "scenarios": [
+      "RES-08"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-01/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-01/executor_manifest.json",
+    "executor_snapshot_sha256": "32119439f284d765a50f946320b0567ad0c3531e3261cea7583ced877315856f",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_IMG01_preprocessing_formats_modes_and_bounds[JPEG-RGB]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_IMG01_preprocessing_formats_modes_and_bounds[JPEG-L]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_IMG01_preprocessing_formats_modes_and_bounds[PNG-RGB]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_IMG01_preprocessing_formats_modes_and_bounds[PNG-RGBA]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_IMG01_preprocessing_formats_modes_and_bounds[PNG-L]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_IMG01_preprocessing_formats_modes_and_bounds[WEBP-RGB]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_IMG01_preprocessing_formats_modes_and_bounds[WEBP-RGBA]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_IMG01_exif_orientation[1-expected0]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_IMG01_exif_orientation[3-expected1]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_IMG01_exif_orientation[6-expected2]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_IMG01_exif_orientation[8-expected3]",
+    "scenarios": [
+      "IMG-01"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_IMG05_SEC06_invalid_image_matrix[empty]",
+    "scenarios": [
+      "IMG-05",
+      "SEC-06"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_IMG05_SEC06_invalid_image_matrix[invalid]",
+    "scenarios": [
+      "IMG-05",
+      "SEC-06"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_IMG05_SEC06_invalid_image_matrix[truncated]",
+    "scenarios": [
+      "IMG-05",
+      "SEC-06"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_IMG05_SEC06_invalid_image_matrix[unsupported]",
+    "scenarios": [
+      "IMG-05",
+      "SEC-06"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_IMG05_SEC06_invalid_image_matrix[small]",
+    "scenarios": [
+      "IMG-05",
+      "SEC-06"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_IMG05_SEC06_invalid_image_matrix[pixels]",
+    "scenarios": [
+      "IMG-05",
+      "SEC-06"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_IMG05_SEC06_invalid_image_matrix[bytes]",
+    "scenarios": [
+      "IMG-05",
+      "SEC-06"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_IMG04_semantic_cache_hit_invalid_payload_and_missing_provider",
+    "scenarios": [
+      "IMG-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_RES05_provider_response_schema[empty]",
+    "scenarios": [
+      "RES-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_RES05_provider_response_schema[invalid-json]",
+    "scenarios": [
+      "RES-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_RES05_provider_response_schema[invalid-schema]",
+    "scenarios": [
+      "RES-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_RES05_provider_retry_boundaries[503-0-1]",
+    "scenarios": [
+      "RES-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_RES05_provider_retry_boundaries[503-1-2]",
+    "scenarios": [
+      "RES-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_RES05_provider_retry_boundaries[429-2-3]",
+    "scenarios": [
+      "RES-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_RES05_provider_retry_boundaries[400-2-1]",
+    "scenarios": [
+      "RES-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_SEC08_provider_error_canary_redaction_characterization",
+    "scenarios": [
+      "SEC-08"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "image-02",
+    "test": "test_RES08_corrupt_private_cache_characterization",
+    "scenarios": [
+      "RES-08"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/image-02/critical_runs/image-baseline/summary.json",
+    "executor_snapshot": "attempts/image-02/executor_manifest.json",
+    "executor_snapshot_sha256": "cce64b150fc5b3a96a1867827468ea7650af94af7d36c4cddf1d7c2b357c23c1",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "image-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-01",
+    "test": "test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[2]",
+    "scenarios": [
+      "DATA-07",
+      "LOAD-03"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-01/executor_manifest.json",
+    "executor_snapshot_sha256": "1b679b115db0b59ee2acf18f23b814c48f9dd809ccac3764164fd1233bec2ba3",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-01",
+    "test": "test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[10]",
+    "scenarios": [
+      "DATA-07",
+      "LOAD-03"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-01/executor_manifest.json",
+    "executor_snapshot_sha256": "1b679b115db0b59ee2acf18f23b814c48f9dd809ccac3764164fd1233bec2ba3",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-01",
+    "test": "test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[25]",
+    "scenarios": [
+      "DATA-07",
+      "LOAD-03"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-01/executor_manifest.json",
+    "executor_snapshot_sha256": "1b679b115db0b59ee2acf18f23b814c48f9dd809ccac3764164fd1233bec2ba3",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-01",
+    "test": "test_SEC04_gallery_actor_audience_matrix[A-public]",
+    "scenarios": [
+      "SEC-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-01/executor_manifest.json",
+    "executor_snapshot_sha256": "1b679b115db0b59ee2acf18f23b814c48f9dd809ccac3764164fd1233bec2ba3",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-01",
+    "test": "test_SEC04_gallery_actor_audience_matrix[A-friends]",
+    "scenarios": [
+      "SEC-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-01/executor_manifest.json",
+    "executor_snapshot_sha256": "1b679b115db0b59ee2acf18f23b814c48f9dd809ccac3764164fd1233bec2ba3",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-01",
+    "test": "test_SEC04_gallery_actor_audience_matrix[A-private]",
+    "scenarios": [
+      "SEC-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-01/executor_manifest.json",
+    "executor_snapshot_sha256": "1b679b115db0b59ee2acf18f23b814c48f9dd809ccac3764164fd1233bec2ba3",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-01",
+    "test": "test_SEC04_gallery_actor_audience_matrix[B-public]",
+    "scenarios": [
+      "SEC-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-01/executor_manifest.json",
+    "executor_snapshot_sha256": "1b679b115db0b59ee2acf18f23b814c48f9dd809ccac3764164fd1233bec2ba3",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-01",
+    "test": "test_SEC04_gallery_actor_audience_matrix[B-friends]",
+    "scenarios": [
+      "SEC-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-01/executor_manifest.json",
+    "executor_snapshot_sha256": "1b679b115db0b59ee2acf18f23b814c48f9dd809ccac3764164fd1233bec2ba3",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-01",
+    "test": "test_SEC04_gallery_actor_audience_matrix[B-private]",
+    "scenarios": [
+      "SEC-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-01/executor_manifest.json",
+    "executor_snapshot_sha256": "1b679b115db0b59ee2acf18f23b814c48f9dd809ccac3764164fd1233bec2ba3",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-01",
+    "test": "test_SEC04_gallery_actor_audience_matrix[C-public]",
+    "scenarios": [
+      "SEC-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-01/executor_manifest.json",
+    "executor_snapshot_sha256": "1b679b115db0b59ee2acf18f23b814c48f9dd809ccac3764164fd1233bec2ba3",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-01",
+    "test": "test_SEC04_gallery_actor_audience_matrix[C-friends]",
+    "scenarios": [
+      "SEC-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-01/executor_manifest.json",
+    "executor_snapshot_sha256": "1b679b115db0b59ee2acf18f23b814c48f9dd809ccac3764164fd1233bec2ba3",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-01",
+    "test": "test_SEC04_gallery_actor_audience_matrix[C-private]",
+    "scenarios": [
+      "SEC-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-01/executor_manifest.json",
+    "executor_snapshot_sha256": "1b679b115db0b59ee2acf18f23b814c48f9dd809ccac3764164fd1233bec2ba3",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-01",
+    "test": "test_SEC04_gallery_preference_revoked_between_requests",
+    "scenarios": [
+      "SEC-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-01/executor_manifest.json",
+    "executor_snapshot_sha256": "1b679b115db0b59ee2acf18f23b814c48f9dd809ccac3764164fd1233bec2ba3",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-01",
+    "test": "test_DATA09_SEC04_missing_report_sighting_and_human_decision_lifecycle",
+    "scenarios": [
+      "DATA-09",
+      "SEC-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-01/executor_manifest.json",
+    "executor_snapshot_sha256": "1b679b115db0b59ee2acf18f23b814c48f9dd809ccac3764164fd1233bec2ba3",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-01",
+    "test": "test_SEC09_local_configuration_http_surface",
+    "scenarios": [
+      "SEC-09"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-01/executor_manifest.json",
+    "executor_snapshot_sha256": "1b679b115db0b59ee2acf18f23b814c48f9dd809ccac3764164fd1233bec2ba3",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-01",
+    "test": "test_RSC02_bounded_repeated_read_error_cycles",
+    "scenarios": [
+      "RSC-02"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-01/executor_manifest.json",
+    "executor_snapshot_sha256": "1b679b115db0b59ee2acf18f23b814c48f9dd809ccac3764164fd1233bec2ba3",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-02",
+    "test": "test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[2]",
+    "scenarios": [
+      "DATA-07",
+      "LOAD-03"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/mechanisms-02/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-02/executor_manifest.json",
+    "executor_snapshot_sha256": "21a62785e6560db03cbf78b0718f80fb73e6d3cd0514b8cd391e73cfb8a96e7e",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py::test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-02",
+    "test": "test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[10]",
+    "scenarios": [
+      "DATA-07",
+      "LOAD-03"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/mechanisms-02/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-02/executor_manifest.json",
+    "executor_snapshot_sha256": "21a62785e6560db03cbf78b0718f80fb73e6d3cd0514b8cd391e73cfb8a96e7e",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py::test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-02",
+    "test": "test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[25]",
+    "scenarios": [
+      "DATA-07",
+      "LOAD-03"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/mechanisms-02/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-02/executor_manifest.json",
+    "executor_snapshot_sha256": "21a62785e6560db03cbf78b0718f80fb73e6d3cd0514b8cd391e73cfb8a96e7e",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py::test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-03",
+    "test": "test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[2]",
+    "scenarios": [
+      "DATA-07",
+      "LOAD-03"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/mechanisms-03/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-03/executor_manifest.json",
+    "executor_snapshot_sha256": "8c636c6211265837e1c5cd78947a0d5e651851e53f153ece3ae6c46bf153adbc",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py::test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-03",
+    "test": "test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[10]",
+    "scenarios": [
+      "DATA-07",
+      "LOAD-03"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/mechanisms-03/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-03/executor_manifest.json",
+    "executor_snapshot_sha256": "8c636c6211265837e1c5cd78947a0d5e651851e53f153ece3ae6c46bf153adbc",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py::test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "mechanisms-03",
+    "test": "test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[25]",
+    "scenarios": [
+      "DATA-07",
+      "LOAD-03"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/mechanisms-03/critical_runs/mechanisms-baseline/summary.json",
+    "executor_snapshot": "attempts/mechanisms-03/executor_manifest.json",
+    "executor_snapshot_sha256": "8c636c6211265837e1c5cd78947a0d5e651851e53f153ece3ae6c46bf153adbc",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "mechanisms-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py::test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "pipeline-01",
+    "test": "test_DATA01_IMG02_HTTP_photo_metadata_sync_preserves_analysis",
+    "scenarios": [
+      "DATA-01",
+      "IMG-02"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/pipeline-01/critical_runs/pipeline-baseline/summary.json",
+    "executor_snapshot": "attempts/pipeline-01/executor_manifest.json",
+    "executor_snapshot_sha256": "e676890edf54b1ac0e93a350ff412352cd417d32f8ec4dceacbd179191d46a0c",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "pipeline-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\pipeline_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "pipeline-01",
+    "test": "test_LAT08_DB05_paused_inference_allows_health_sync_and_chat",
+    "scenarios": [
+      "DB-05",
+      "LAT-08"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/pipeline-01/critical_runs/pipeline-baseline/summary.json",
+    "executor_snapshot": "attempts/pipeline-01/executor_manifest.json",
+    "executor_snapshot_sha256": "e676890edf54b1ac0e93a350ff412352cd417d32f8ec4dceacbd179191d46a0c",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "pipeline-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\pipeline_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "pipeline-01",
+    "test": "test_IMG05_HTTP_rejection_preserves_business_effects[no-cat-NOT_A_CAT]",
+    "scenarios": [
+      "IMG-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/pipeline-01/critical_runs/pipeline-baseline/summary.json",
+    "executor_snapshot": "attempts/pipeline-01/executor_manifest.json",
+    "executor_snapshot_sha256": "e676890edf54b1ac0e93a350ff412352cd417d32f8ec4dceacbd179191d46a0c",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "pipeline-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\pipeline_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "pipeline-01",
+    "test": "test_IMG05_HTTP_rejection_preserves_business_effects[multiple-MULTIPLE_CATS]",
+    "scenarios": [
+      "IMG-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/pipeline-01/critical_runs/pipeline-baseline/summary.json",
+    "executor_snapshot": "attempts/pipeline-01/executor_manifest.json",
+    "executor_snapshot_sha256": "e676890edf54b1ac0e93a350ff412352cd417d32f8ec4dceacbd179191d46a0c",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "pipeline-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\pipeline_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "pipeline-01",
+    "test": "test_IMG05_HTTP_rejection_preserves_business_effects[dark-LOW_QUALITY]",
+    "scenarios": [
+      "IMG-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/pipeline-01/critical_runs/pipeline-baseline/summary.json",
+    "executor_snapshot": "attempts/pipeline-01/executor_manifest.json",
+    "executor_snapshot_sha256": "e676890edf54b1ac0e93a350ff412352cd417d32f8ec4dceacbd179191d46a0c",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "pipeline-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\pipeline_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "pipeline-01",
+    "test": "test_IMG05_HTTP_rejection_preserves_business_effects[white-LOW_QUALITY]",
+    "scenarios": [
+      "IMG-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/pipeline-01/critical_runs/pipeline-baseline/summary.json",
+    "executor_snapshot": "attempts/pipeline-01/executor_manifest.json",
+    "executor_snapshot_sha256": "e676890edf54b1ac0e93a350ff412352cd417d32f8ec4dceacbd179191d46a0c",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "pipeline-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\pipeline_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "pipeline-01",
+    "test": "test_IMG05_blur_alone_follows_existing_quality_rule",
+    "scenarios": [
+      "IMG-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/pipeline-01/critical_runs/pipeline-baseline/summary.json",
+    "executor_snapshot": "attempts/pipeline-01/executor_manifest.json",
+    "executor_snapshot_sha256": "e676890edf54b1ac0e93a350ff412352cd417d32f8ec4dceacbd179191d46a0c",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "pipeline-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\pipeline_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "query-plan-01",
+    "test": "test_DB04_migrated_sync_query_plans_with_growing_catalog_and_history[40]",
+    "scenarios": [
+      "DB-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/query-plan-01/critical_runs/query-plan-baseline/summary.json",
+    "executor_snapshot": "attempts/query-plan-01/executor_manifest.json",
+    "executor_snapshot_sha256": "6dfba6925b3c9e362dae10a9f7955830738cd15d9d27f2b9b378745b73d3c72e",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "query-plan-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\query_plan_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "query-plan-01",
+    "test": "test_DB04_migrated_sync_query_plans_with_growing_catalog_and_history[500]",
+    "scenarios": [
+      "DB-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/query-plan-01/critical_runs/query-plan-baseline/summary.json",
+    "executor_snapshot": "attempts/query-plan-01/executor_manifest.json",
+    "executor_snapshot_sha256": "6dfba6925b3c9e362dae10a9f7955830738cd15d9d27f2b9b378745b73d3c72e",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "query-plan-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\query_plan_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "query-plan-01",
+    "test": "test_DB04_migrated_sync_query_plans_with_growing_catalog_and_history[2000]",
+    "scenarios": [
+      "DB-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/query-plan-01/critical_runs/query-plan-baseline/summary.json",
+    "executor_snapshot": "attempts/query-plan-01/executor_manifest.json",
+    "executor_snapshot_sha256": "6dfba6925b3c9e362dae10a9f7955830738cd15d9d27f2b9b378745b73d3c72e",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "query-plan-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\query_plan_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-01",
+    "test": "test_DB03_LAT05_conversation_volume_sql_and_isolation[repeated-1]",
+    "scenarios": [
+      "DB-03",
+      "LAT-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-01/executor_manifest.json",
+    "executor_snapshot_sha256": "0cfe4db792f27a4f05b84efff2cd26e3c34131c26207f39051969a05bb6a2ee5",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-01",
+    "test": "test_DB03_LAT05_conversation_volume_sql_and_isolation[repeated-20]",
+    "scenarios": [
+      "DB-03",
+      "LAT-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-01/executor_manifest.json",
+    "executor_snapshot_sha256": "0cfe4db792f27a4f05b84efff2cd26e3c34131c26207f39051969a05bb6a2ee5",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-01",
+    "test": "test_DB03_LAT05_conversation_volume_sql_and_isolation[repeated-100]",
+    "scenarios": [
+      "DB-03",
+      "LAT-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-01/executor_manifest.json",
+    "executor_snapshot_sha256": "0cfe4db792f27a4f05b84efff2cd26e3c34131c26207f39051969a05bb6a2ee5",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-01",
+    "test": "test_DB03_LAT05_conversation_volume_sql_and_isolation[distinct-1]",
+    "scenarios": [
+      "DB-03",
+      "LAT-05"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-01/executor_manifest.json",
+    "executor_snapshot_sha256": "0cfe4db792f27a4f05b84efff2cd26e3c34131c26207f39051969a05bb6a2ee5",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-01",
+    "test": "test_DB03_LAT05_conversation_volume_sql_and_isolation[distinct-20]",
+    "scenarios": [
+      "DB-03",
+      "LAT-05"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-01/executor_manifest.json",
+    "executor_snapshot_sha256": "0cfe4db792f27a4f05b84efff2cd26e3c34131c26207f39051969a05bb6a2ee5",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-01",
+    "test": "test_DB03_LAT05_conversation_volume_sql_and_isolation[distinct-100]",
+    "scenarios": [
+      "DB-03",
+      "LAT-05"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-01/executor_manifest.json",
+    "executor_snapshot_sha256": "0cfe4db792f27a4f05b84efff2cd26e3c34131c26207f39051969a05bb6a2ee5",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-01",
+    "test": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[repeated-1]",
+    "scenarios": [
+      "DB-03",
+      "LAT-07"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-01/executor_manifest.json",
+    "executor_snapshot_sha256": "0cfe4db792f27a4f05b84efff2cd26e3c34131c26207f39051969a05bb6a2ee5",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-01",
+    "test": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[repeated-20]",
+    "scenarios": [
+      "DB-03",
+      "LAT-07"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-01/executor_manifest.json",
+    "executor_snapshot_sha256": "0cfe4db792f27a4f05b84efff2cd26e3c34131c26207f39051969a05bb6a2ee5",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-01",
+    "test": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[repeated-100]",
+    "scenarios": [
+      "DB-03",
+      "LAT-07"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-01/executor_manifest.json",
+    "executor_snapshot_sha256": "0cfe4db792f27a4f05b84efff2cd26e3c34131c26207f39051969a05bb6a2ee5",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-01",
+    "test": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[distinct-1]",
+    "scenarios": [
+      "DB-03",
+      "LAT-07"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-01/executor_manifest.json",
+    "executor_snapshot_sha256": "0cfe4db792f27a4f05b84efff2cd26e3c34131c26207f39051969a05bb6a2ee5",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-01",
+    "test": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[distinct-20]",
+    "scenarios": [
+      "DB-03",
+      "LAT-07"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-01/executor_manifest.json",
+    "executor_snapshot_sha256": "0cfe4db792f27a4f05b84efff2cd26e3c34131c26207f39051969a05bb6a2ee5",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-01",
+    "test": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[distinct-100]",
+    "scenarios": [
+      "DB-03",
+      "LAT-07"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-01/executor_manifest.json",
+    "executor_snapshot_sha256": "0cfe4db792f27a4f05b84efff2cd26e3c34131c26207f39051969a05bb6a2ee5",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-01",
+    "test": "test_SEC04_LAT07_privacy_changes_between_feed_pages",
+    "scenarios": [
+      "LAT-07",
+      "SEC-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-01/executor_manifest.json",
+    "executor_snapshot_sha256": "0cfe4db792f27a4f05b84efff2cd26e3c34131c26207f39051969a05bb6a2ee5",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-02",
+    "test": "test_DB03_LAT05_conversation_volume_sql_and_isolation[repeated-1]",
+    "scenarios": [
+      "DB-03",
+      "LAT-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-02/executor_manifest.json",
+    "executor_snapshot_sha256": "d1244c6f14e8583f75cd775938b334b7935a22116c55b8d411aa06613fa0cd68",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-02",
+    "test": "test_DB03_LAT05_conversation_volume_sql_and_isolation[repeated-20]",
+    "scenarios": [
+      "DB-03",
+      "LAT-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-02/executor_manifest.json",
+    "executor_snapshot_sha256": "d1244c6f14e8583f75cd775938b334b7935a22116c55b8d411aa06613fa0cd68",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-02",
+    "test": "test_DB03_LAT05_conversation_volume_sql_and_isolation[repeated-100]",
+    "scenarios": [
+      "DB-03",
+      "LAT-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-02/executor_manifest.json",
+    "executor_snapshot_sha256": "d1244c6f14e8583f75cd775938b334b7935a22116c55b8d411aa06613fa0cd68",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-02",
+    "test": "test_DB03_LAT05_conversation_volume_sql_and_isolation[distinct-1]",
+    "scenarios": [
+      "DB-03",
+      "LAT-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-02/executor_manifest.json",
+    "executor_snapshot_sha256": "d1244c6f14e8583f75cd775938b334b7935a22116c55b8d411aa06613fa0cd68",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-02",
+    "test": "test_DB03_LAT05_conversation_volume_sql_and_isolation[distinct-20]",
+    "scenarios": [
+      "DB-03",
+      "LAT-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-02/executor_manifest.json",
+    "executor_snapshot_sha256": "d1244c6f14e8583f75cd775938b334b7935a22116c55b8d411aa06613fa0cd68",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-02",
+    "test": "test_DB03_LAT05_conversation_volume_sql_and_isolation[distinct-100]",
+    "scenarios": [
+      "DB-03",
+      "LAT-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-02/executor_manifest.json",
+    "executor_snapshot_sha256": "d1244c6f14e8583f75cd775938b334b7935a22116c55b8d411aa06613fa0cd68",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-02",
+    "test": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[repeated-1]",
+    "scenarios": [
+      "DB-03",
+      "LAT-07"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-02/executor_manifest.json",
+    "executor_snapshot_sha256": "d1244c6f14e8583f75cd775938b334b7935a22116c55b8d411aa06613fa0cd68",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-02",
+    "test": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[repeated-20]",
+    "scenarios": [
+      "DB-03",
+      "LAT-07"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-02/executor_manifest.json",
+    "executor_snapshot_sha256": "d1244c6f14e8583f75cd775938b334b7935a22116c55b8d411aa06613fa0cd68",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-02",
+    "test": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[repeated-100]",
+    "scenarios": [
+      "DB-03",
+      "LAT-07"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-02/executor_manifest.json",
+    "executor_snapshot_sha256": "d1244c6f14e8583f75cd775938b334b7935a22116c55b8d411aa06613fa0cd68",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-02",
+    "test": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[distinct-1]",
+    "scenarios": [
+      "DB-03",
+      "LAT-07"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-02/executor_manifest.json",
+    "executor_snapshot_sha256": "d1244c6f14e8583f75cd775938b334b7935a22116c55b8d411aa06613fa0cd68",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-02",
+    "test": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[distinct-20]",
+    "scenarios": [
+      "DB-03",
+      "LAT-07"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-02/executor_manifest.json",
+    "executor_snapshot_sha256": "d1244c6f14e8583f75cd775938b334b7935a22116c55b8d411aa06613fa0cd68",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-02",
+    "test": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[distinct-100]",
+    "scenarios": [
+      "DB-03",
+      "LAT-07"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-02/executor_manifest.json",
+    "executor_snapshot_sha256": "d1244c6f14e8583f75cd775938b334b7935a22116c55b8d411aa06613fa0cd68",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "social-volume-02",
+    "test": "test_SEC04_LAT07_privacy_changes_between_feed_pages",
+    "scenarios": [
+      "LAT-07",
+      "SEC-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json",
+    "executor_snapshot": "attempts/social-volume-02/executor_manifest.json",
+    "executor_snapshot_sha256": "d1244c6f14e8583f75cd775938b334b7935a22116c55b8d411aa06613fa0cd68",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "social-volume-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "socket-fanout-01",
+    "test": "test_LOAD05_real_message_fanout_reconnect_and_delayed_reader[1]",
+    "scenarios": [
+      "LOAD-05"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/socket-fanout-01/critical_runs/socket-fanout-baseline/summary.json",
+    "executor_snapshot": "attempts/socket-fanout-01/executor_manifest.json",
+    "executor_snapshot_sha256": "74e2a1e7842da0317e75989e5add9e5408c5f9e572aebfb86466dd93c6b3f9f3",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "socket-fanout-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\socket_fanout_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "socket-fanout-01",
+    "test": "test_LOAD05_real_message_fanout_reconnect_and_delayed_reader[10]",
+    "scenarios": [
+      "LOAD-05"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/socket-fanout-01/critical_runs/socket-fanout-baseline/summary.json",
+    "executor_snapshot": "attempts/socket-fanout-01/executor_manifest.json",
+    "executor_snapshot_sha256": "74e2a1e7842da0317e75989e5add9e5408c5f9e572aebfb86466dd93c6b3f9f3",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "socket-fanout-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\socket_fanout_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "socket-fanout-01",
+    "test": "test_LOAD05_real_message_fanout_reconnect_and_delayed_reader[50]",
+    "scenarios": [
+      "LOAD-05"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/socket-fanout-01/critical_runs/socket-fanout-baseline/summary.json",
+    "executor_snapshot": "attempts/socket-fanout-01/executor_manifest.json",
+    "executor_snapshot_sha256": "74e2a1e7842da0317e75989e5add9e5408c5f9e572aebfb86466dd93c6b3f9f3",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "socket-fanout-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\socket_fanout_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "socket-fanout-02",
+    "test": "test_LOAD05_real_message_fanout_reconnect_and_delayed_reader[1]",
+    "scenarios": [
+      "LOAD-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/socket-fanout-02/critical_runs/socket-fanout-baseline/summary.json",
+    "executor_snapshot": "attempts/socket-fanout-02/executor_manifest.json",
+    "executor_snapshot_sha256": "374dfa77efe86102f0882133e381386ce8512755c51b90cf3120501a602d9881",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "socket-fanout-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\socket_fanout_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "socket-fanout-02",
+    "test": "test_LOAD05_real_message_fanout_reconnect_and_delayed_reader[10]",
+    "scenarios": [
+      "LOAD-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/socket-fanout-02/critical_runs/socket-fanout-baseline/summary.json",
+    "executor_snapshot": "attempts/socket-fanout-02/executor_manifest.json",
+    "executor_snapshot_sha256": "374dfa77efe86102f0882133e381386ce8512755c51b90cf3120501a602d9881",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "socket-fanout-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\socket_fanout_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "socket-fanout-02",
+    "test": "test_LOAD05_real_message_fanout_reconnect_and_delayed_reader[50]",
+    "scenarios": [
+      "LOAD-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/socket-fanout-02/critical_runs/socket-fanout-baseline/summary.json",
+    "executor_snapshot": "attempts/socket-fanout-02/executor_manifest.json",
+    "executor_snapshot_sha256": "374dfa77efe86102f0882133e381386ce8512755c51b90cf3120501a602d9881",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "socket-fanout-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\socket_fanout_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "storage-resilience-01",
+    "test": "test_RES05_IMG07_storage_write_failure_rollback_and_retry[no-space]",
+    "scenarios": [
+      "IMG-07",
+      "RES-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/storage-resilience-01/critical_runs/storage-resilience-baseline/summary.json",
+    "executor_snapshot": "attempts/storage-resilience-01/executor_manifest.json",
+    "executor_snapshot_sha256": "30d3f7c48611e29737ebe78a982bec69bc37b2605bd7bf7441b66ba9ea78bf50",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "storage-resilience-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\storage_resilience_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "storage-resilience-01",
+    "test": "test_RES05_IMG07_storage_write_failure_rollback_and_retry[permission]",
+    "scenarios": [
+      "IMG-07",
+      "RES-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/storage-resilience-01/critical_runs/storage-resilience-baseline/summary.json",
+    "executor_snapshot": "attempts/storage-resilience-01/executor_manifest.json",
+    "executor_snapshot_sha256": "30d3f7c48611e29737ebe78a982bec69bc37b2605bd7bf7441b66ba9ea78bf50",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "storage-resilience-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\storage_resilience_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "storage-resilience-01",
+    "test": "test_RES05_RSC03_delete_failure_after_commit_characterization",
+    "scenarios": [
+      "RES-05",
+      "RSC-03"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/storage-resilience-01/critical_runs/storage-resilience-baseline/summary.json",
+    "executor_snapshot": "attempts/storage-resilience-01/executor_manifest.json",
+    "executor_snapshot_sha256": "30d3f7c48611e29737ebe78a982bec69bc37b2605bd7bf7441b66ba9ea78bf50",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "storage-resilience-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\storage_resilience_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "storage-resilience-01",
+    "test": "test_IMG07_missing_private_file_then_restored",
+    "scenarios": [
+      "IMG-07"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/storage-resilience-01/critical_runs/storage-resilience-baseline/summary.json",
+    "executor_snapshot": "attempts/storage-resilience-01/executor_manifest.json",
+    "executor_snapshot_sha256": "30d3f7c48611e29737ebe78a982bec69bc37b2605bd7bf7441b66ba9ea78bf50",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "storage-resilience-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\storage_resilience_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "storage-resilience-01",
+    "test": "test_RES05_disposable_database_short_outage_and_recovery",
+    "scenarios": [
+      "RES-05"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/storage-resilience-01/critical_runs/storage-resilience-baseline/summary.json",
+    "executor_snapshot": "attempts/storage-resilience-01/executor_manifest.json",
+    "executor_snapshot_sha256": "30d3f7c48611e29737ebe78a982bec69bc37b2605bd7bf7441b66ba9ea78bf50",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "storage-resilience-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\storage_resilience_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "storage-resilience-02",
+    "test": "test_IMG07_missing_private_file_then_restored",
+    "scenarios": [
+      "IMG-07"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/storage-resilience-02/critical_runs/storage-resilience-baseline/summary.json",
+    "executor_snapshot": "attempts/storage-resilience-02/executor_manifest.json",
+    "executor_snapshot_sha256": "416be9d0093c3dd71eeb7d0a59504ab2af2246f2611b6af46f6364cc20e80340",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "storage-resilience-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\storage_resilience_cases.py::test_IMG07_missing_private_file_then_restored",
+      "<executors>\\storage_resilience_cases.py::test_RES05_disposable_database_short_outage_and_recovery"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "storage-resilience-02",
+    "test": "test_RES05_disposable_database_short_outage_and_recovery",
+    "scenarios": [
+      "RES-05"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/storage-resilience-02/critical_runs/storage-resilience-baseline/summary.json",
+    "executor_snapshot": "attempts/storage-resilience-02/executor_manifest.json",
+    "executor_snapshot_sha256": "416be9d0093c3dd71eeb7d0a59504ab2af2246f2611b6af46f6364cc20e80340",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "storage-resilience-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\storage_resilience_cases.py::test_IMG07_missing_private_file_then_restored",
+      "<executors>\\storage_resilience_cases.py::test_RES05_disposable_database_short_outage_and_recovery"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "wire-contract-01",
+    "test": "test_DATA08_real_api_event_to_flutter_controller_characterization",
+    "scenarios": [
+      "DATA-08"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/wire-contract-01/critical_runs/wire-contract-baseline/summary.json",
+    "executor_snapshot": "attempts/wire-contract-01/executor_manifest.json",
+    "executor_snapshot_sha256": "27d07effeedf7c9b44aa50c97249e5ca476af1b91d541f24b390d49a35d49cd9",
+    "evaluated_source_keys": [
+      "B-api",
+      "B-flutter"
+    ],
+    "variant_context": "wire-contract-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\wire_contract_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "wire-contract-02",
+    "test": "test_DATA08_real_api_event_to_flutter_controller_characterization",
+    "scenarios": [
+      "DATA-08"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/wire-contract-02/critical_runs/wire-contract-baseline/summary.json",
+    "executor_snapshot": "attempts/wire-contract-02/executor_manifest.json",
+    "executor_snapshot_sha256": "a822e2c3cfbb931abed24c10dbb160cc1ed24394d7f32b755d45a6555b9f4be5",
+    "evaluated_source_keys": [
+      "B-api",
+      "B-flutter"
+    ],
+    "variant_context": "wire-contract-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\wire_contract_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "wire-contract-03",
+    "test": "test_DATA08_real_api_event_to_flutter_controller_characterization",
+    "scenarios": [
+      "DATA-08"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/wire-contract-03/critical_runs/wire-contract-baseline/summary.json",
+    "executor_snapshot": "attempts/wire-contract-03/executor_manifest.json",
+    "executor_snapshot_sha256": "b1b937d9ca7fc0e10113a7c358e9836eb682d234b1443aaea6ba74de1d37695c",
+    "evaluated_source_keys": [
+      "B-api",
+      "B-flutter"
+    ],
+    "variant_context": "wire-contract-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\wire_contract_cases.py"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "worker-race-01",
+    "test": "test_DB06_DATA06_result_after_resource_mutation[postgres-photo-soft-delete]",
+    "scenarios": [
+      "DATA-06",
+      "DB-06"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/worker-race-01/critical_runs/worker-race-baseline/summary.json",
+    "executor_snapshot": "attempts/worker-race-01/executor_manifest.json",
+    "executor_snapshot_sha256": "19ae85dc8e5b098da610107e03d81e9d5adfa795348dfa37e1abc2a613ed2ebe",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "worker-race-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\worker_race_cases.py",
+      "-k",
+      "postgres"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "worker-race-01",
+    "test": "test_DB06_DATA06_result_after_resource_mutation[postgres-cat-soft-delete]",
+    "scenarios": [
+      "DATA-06",
+      "DB-06"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/worker-race-01/critical_runs/worker-race-baseline/summary.json",
+    "executor_snapshot": "attempts/worker-race-01/executor_manifest.json",
+    "executor_snapshot_sha256": "19ae85dc8e5b098da610107e03d81e9d5adfa795348dfa37e1abc2a613ed2ebe",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "worker-race-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\worker_race_cases.py",
+      "-k",
+      "postgres"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "worker-race-01",
+    "test": "test_DB06_DATA06_result_after_resource_mutation[postgres-photo-replace]",
+    "scenarios": [
+      "DATA-06",
+      "DB-06"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/worker-race-01/critical_runs/worker-race-baseline/summary.json",
+    "executor_snapshot": "attempts/worker-race-01/executor_manifest.json",
+    "executor_snapshot_sha256": "19ae85dc8e5b098da610107e03d81e9d5adfa795348dfa37e1abc2a613ed2ebe",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "worker-race-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\worker_race_cases.py",
+      "-k",
+      "postgres"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "worker-race-01",
+    "test": "test_DB06_DATA06_result_after_resource_mutation[postgres-photo-hard-delete]",
+    "scenarios": [
+      "DATA-06",
+      "DB-06"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/worker-race-01/critical_runs/worker-race-baseline/summary.json",
+    "executor_snapshot": "attempts/worker-race-01/executor_manifest.json",
+    "executor_snapshot_sha256": "19ae85dc8e5b098da610107e03d81e9d5adfa795348dfa37e1abc2a613ed2ebe",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "worker-race-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\worker_race_cases.py",
+      "-k",
+      "postgres"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "worker-race-01",
+    "test": "test_DB06_DATA06_result_after_resource_mutation[postgres-cat-hard-delete]",
+    "scenarios": [
+      "DATA-06",
+      "DB-06"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/worker-race-01/critical_runs/worker-race-baseline/summary.json",
+    "executor_snapshot": "attempts/worker-race-01/executor_manifest.json",
+    "executor_snapshot_sha256": "19ae85dc8e5b098da610107e03d81e9d5adfa795348dfa37e1abc2a613ed2ebe",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "worker-race-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\worker_race_cases.py",
+      "-k",
+      "postgres"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "worker-race-01",
+    "test": "test_IMG07_bytes_changed_between_claim_and_read_then_retry[postgres]",
+    "scenarios": [
+      "IMG-07"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/worker-race-01/critical_runs/worker-race-baseline/summary.json",
+    "executor_snapshot": "attempts/worker-race-01/executor_manifest.json",
+    "executor_snapshot_sha256": "19ae85dc8e5b098da610107e03d81e9d5adfa795348dfa37e1abc2a613ed2ebe",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "worker-race-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\worker_race_cases.py",
+      "-k",
+      "postgres"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "worker-race-01",
+    "test": "test_RES04_actual_worker_process_killed_after_claim_then_restarted[postgres]",
+    "scenarios": [
+      "RES-04"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/worker-race-01/critical_runs/worker-race-baseline/summary.json",
+    "executor_snapshot": "attempts/worker-race-01/executor_manifest.json",
+    "executor_snapshot_sha256": "19ae85dc8e5b098da610107e03d81e9d5adfa795348dfa37e1abc2a613ed2ebe",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "worker-race-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\worker_race_cases.py",
+      "-k",
+      "postgres"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "worker-race-02",
+    "test": "test_RES04_actual_worker_process_killed_after_claim_then_restarted[postgres]",
+    "scenarios": [
+      "RES-04"
+    ],
+    "result": "FAIL",
+    "skipped": false,
+    "summary": "attempts/worker-race-02/critical_runs/worker-race-baseline/summary.json",
+    "executor_snapshot": "attempts/worker-race-02/executor_manifest.json",
+    "executor_snapshot_sha256": "40f66bc1dcace095baee624ad0d194d17553899e66e9ddeaccb452c50c8661d2",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "worker-race-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\worker_race_cases.py",
+      "-k",
+      "postgres and actual_worker_process"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  },
+  {
+    "attempt": "worker-race-03",
+    "test": "test_RES04_actual_worker_process_killed_after_claim_then_restarted[postgres]",
+    "scenarios": [
+      "RES-04"
+    ],
+    "result": "PASS",
+    "skipped": false,
+    "summary": "attempts/worker-race-03/critical_runs/worker-race-baseline/summary.json",
+    "executor_snapshot": "attempts/worker-race-03/executor_manifest.json",
+    "executor_snapshot_sha256": "55a4d5e4174821787cb26ce20b24cfc34593313e752bca5fe9dbe1e93be0ac32",
+    "evaluated_source_keys": [
+      "B-api"
+    ],
+    "variant_context": "worker-race-baseline",
+    "code_commits": {
+      "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+      "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+      "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+      "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+    },
+    "selectors": [
+      "<executors>\\worker_race_cases.py",
+      "-k",
+      "postgres and actual_worker_process"
+    ],
+    "code_mapping": "Exact executable selectors and four frozen product SHAs; reviewed paths in findings.md. Tags alone never establish scenario completion."
+  }
+]

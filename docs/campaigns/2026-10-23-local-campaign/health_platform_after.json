@@ -1,0 +1,16 @@
+{
+  "power_scheme": {
+    "exit_code": 0,
+    "observed": "GUID do Esquema de Energia: 381b4222-f694-41f0-9685-ff5bb260df2e  (Equilibrado)",
+    "available": true
+  },
+  "disk_io": {
+    "available": false
+  },
+  "thermal_zone": {
+    "exit_code": 1,
+    "observed": null,
+    "available": false
+  },
+  "qualification": "ACPI zones and global IO are observations, not CPU throttling or per-core independence certification"
+}

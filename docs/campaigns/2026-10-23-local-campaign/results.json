@@ -1,0 +1,1347 @@
+{
+  "attempts/crossed-api-A-01/critical_runs/crossed-api-A/summary.json": {
+    "run": "crossed-api-A",
+    "exit_code": 1,
+    "elapsed_seconds": 87.39961349999976,
+    "cases": [
+      {
+        "name": "test_BR04_crossed_client_api_commit_loss_restart_and_account[A]",
+        "seconds": 33.293,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_BR04_crossed_client_api_commit_loss_restart_and_account[B]",
+        "seconds": 49.512,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\crossed_cases.py"
+    ]
+  },
+  "attempts/crossed-api-A-02/critical_runs/crossed-api-A/summary.json": {
+    "run": "crossed-api-A",
+    "exit_code": 0,
+    "elapsed_seconds": 111.27820079999947,
+    "cases": [
+      {
+        "name": "test_BR04_crossed_client_api_commit_loss_restart_and_account[A]",
+        "seconds": 48.99,
+        "status": "PASS"
+      },
+      {
+        "name": "test_BR04_crossed_client_api_commit_loss_restart_and_account[B]",
+        "seconds": 59.041,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\crossed_cases.py"
+    ]
+  },
+  "attempts/crossed-api-B-01/critical_runs/crossed-api-B/summary.json": {
+    "run": "crossed-api-B",
+    "exit_code": 1,
+    "elapsed_seconds": 102.47584029999962,
+    "cases": [
+      {
+        "name": "test_BR04_crossed_client_api_commit_loss_restart_and_account[A]",
+        "seconds": 44.61,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_BR04_crossed_client_api_commit_loss_restart_and_account[B]",
+        "seconds": 51.457,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\crossed_cases.py"
+    ]
+  },
+  "attempts/crossed-api-B-02/critical_runs/crossed-api-B/summary.json": {
+    "run": "crossed-api-B",
+    "exit_code": 0,
+    "elapsed_seconds": 133.52943939999932,
+    "cases": [
+      {
+        "name": "test_BR04_crossed_client_api_commit_loss_restart_and_account[A]",
+        "seconds": 46.013,
+        "status": "PASS"
+      },
+      {
+        "name": "test_BR04_crossed_client_api_commit_loss_restart_and_account[B]",
+        "seconds": 82.456,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\crossed_cases.py"
+    ]
+  },
+  "attempts/delivery-01/critical_runs/delivery-baseline/summary.json": {
+    "run": "delivery-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 63.413373900000806,
+    "cases": [
+      {
+        "name": "test_DLV01_SEC07_smtp_password_recovery_complete_and_replay[confirm]",
+        "seconds": 11.301,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DLV01_SEC07_smtp_password_recovery_complete_and_replay[grant]",
+        "seconds": 10.622,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DLV02_SMTP_ambiguous_acceptance_retry_and_cooldown",
+        "seconds": 12.569,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DLV02_LAT08_slow_SMTP_does_not_block_event_loop",
+        "seconds": 10.664,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC08_SMTP_enabled_does_not_log_otp",
+        "seconds": 9.693,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\delivery_cases.py"
+    ]
+  },
+  "attempts/flutter-catalog-01/flutter_catalog/summary.json": {
+    "scenario": "LAT-01",
+    "exit_code": 0,
+    "volumes": [
+      {
+        "count": 0,
+        "exit_code": 0,
+        "elapsed_seconds": 38.24594569999317,
+        "cases": [
+          {
+            "name": "DB-01 common public CatStore load contract (no remote IO)",
+            "result": "success",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "count": 40,
+        "exit_code": 0,
+        "elapsed_seconds": 10.479576199999428,
+        "cases": [
+          {
+            "name": "DB-01 common public CatStore load contract (no remote IO)",
+            "result": "success",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "count": 501,
+        "exit_code": 0,
+        "elapsed_seconds": 18.232552899993607,
+        "cases": [
+          {
+            "name": "DB-01 common public CatStore load contract (no remote IO)",
+            "result": "success",
+            "skipped": false
+          }
+        ]
+      }
+    ],
+    "cases": [
+      {
+        "name": "DB-01 common public CatStore load contract (no remote IO)",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB-01 common public CatStore load contract (no remote IO)",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DB-01 common public CatStore load contract (no remote IO)",
+        "result": "success",
+        "skipped": false
+      }
+    ],
+    "source_sha": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "scope": "real desktop SQLite/public loadCats, fresh process+connection then 22 repeats (first3 excluded from warm summary); OS disk cache not controlled. Offline paths overridden; no online, UI frame, phone latency, confidence/P99/gain claim."
+  },
+  "attempts/flutter-notifications-01/flutter_resilience/baseline/summary.json": {
+    "exit_code": 0,
+    "elapsed_seconds": 23.701222799994866,
+    "files": [
+      "campaign_notification_races_test.dart"
+    ],
+    "cases": [
+      {
+        "name": "DLV05 pending page respects refresh boundary",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DLV05 pending page respects clear boundary",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DLV05 pending page respects dispose boundary",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DLV05 failed page can retry without losing current inbox",
+        "result": "success",
+        "skipped": false
+      }
+    ]
+  },
+  "attempts/flutter-social-01/flutter_resilience/baseline/summary.json": {
+    "exit_code": 0,
+    "elapsed_seconds": 26.979996199999732,
+    "files": [
+      "campaign_social_resilience_test.dart"
+    ],
+    "cases": [
+      {
+        "name": "RES06 offline polling at 30s pauses online and resumes after disconnect",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DATA08 duplicate echo reconciles once order=ws-first",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DATA08 duplicate echo reconciles once order=http-first",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DATA08 live event survives late empty history snapshot",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DLV05 read acknowledgment from old owner cannot mark new owner inbox",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "DLV05 concurrent refresh triggers converge on one unread notification",
+        "result": "success",
+        "skipped": false
+      }
+    ]
+  },
+  "attempts/flutter-visual-01/flutter_visual/summary.json": {
+    "exit_code": 1,
+    "elapsed_seconds": 409.7857640000002,
+    "cases": [
+      {
+        "name": "render corrected screens with bundled fonts for visual review",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "render product previews for visual review",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "record actual game renderer arrival, delivery and departure",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "quintal renderer matrix: edges, water, depth, expansion and zoom",
+        "result": "success",
+        "skipped": false
+      },
+      {
+        "name": "fresh captures of every changed screen for user validation",
+        "result": "success",
+        "skipped": false
+      }
+    ],
+    "scope": "visual captures and current golden comparison only; differences are findings, never automatically accepted"
+  },
+  "attempts/flutter-visual-A-01/flutter_visual/summary.json": {
+    "exit_code": 1,
+    "elapsed_seconds": 88.46133780000673,
+    "cases": [
+      {
+        "name": "render corrected screens with bundled fonts for visual review",
+        "result": "error",
+        "skipped": false
+      },
+      {
+        "name": "render product previews for visual review",
+        "result": "error",
+        "skipped": false
+      }
+    ],
+    "scope": "visual captures and current golden comparison only; differences are findings, never automatically accepted"
+  },
+  "attempts/health-bounded-01/bounded_health/summary.json": {
+    "state": "EXPLORATORY_COMPONENT_ONLY",
+    "cells": [
+      {
+        "arm": "A",
+        "state": "WARMUP_UNSTABLE",
+        "n": 0,
+        "response_sha256": null,
+        "evidence": "attempts\\health-bounded-01\\bounded_health\\01-A\\samples.json"
+      },
+      {
+        "arm": "B",
+        "state": "COLLECTED_EXPLORATORY",
+        "n": 1000,
+        "response_sha256": "9ab282510bc435ac159912ba5fb39df42612c56ef8e32243fce7e3bc9bc7b700",
+        "evidence": "attempts\\health-bounded-01\\bounded_health\\02-B\\samples.json"
+      },
+      {
+        "arm": "B",
+        "state": "COLLECTED_EXPLORATORY",
+        "n": 1000,
+        "response_sha256": "9ab282510bc435ac159912ba5fb39df42612c56ef8e32243fce7e3bc9bc7b700",
+        "evidence": "attempts\\health-bounded-01\\bounded_health\\03-B\\samples.json"
+      },
+      {
+        "arm": "A",
+        "state": "COLLECTED_EXPLORATORY",
+        "n": 1000,
+        "response_sha256": "9ab282510bc435ac159912ba5fb39df42612c56ef8e32243fce7e3bc9bc7b700",
+        "evidence": "attempts\\health-bounded-01\\bounded_health\\04-A\\samples.json"
+      },
+      {
+        "arm": "A",
+        "state": "WARMUP_UNSTABLE",
+        "n": 0,
+        "response_sha256": null,
+        "evidence": "attempts\\health-bounded-01\\bounded_health\\05-A\\samples.json"
+      },
+      {
+        "arm": "B",
+        "state": "WARMUP_UNSTABLE",
+        "n": 0,
+        "response_sha256": null,
+        "evidence": "attempts\\health-bounded-01\\bounded_health\\06-B\\samples.json"
+      },
+      {
+        "arm": "B",
+        "state": "WARMUP_UNSTABLE",
+        "n": 0,
+        "response_sha256": null,
+        "evidence": "attempts\\health-bounded-01\\bounded_health\\07-B\\samples.json"
+      },
+      {
+        "arm": "A",
+        "state": "WARMUP_UNSTABLE",
+        "n": 0,
+        "response_sha256": null,
+        "evidence": "attempts\\health-bounded-01\\bounded_health\\08-A\\samples.json"
+      },
+      {
+        "arm": "A",
+        "state": "COLLECTED_EXPLORATORY",
+        "n": 1000,
+        "response_sha256": "9ab282510bc435ac159912ba5fb39df42612c56ef8e32243fce7e3bc9bc7b700",
+        "evidence": "attempts\\health-bounded-01\\bounded_health\\09-A\\samples.json"
+      },
+      {
+        "arm": "B",
+        "state": "WARMUP_UNSTABLE",
+        "n": 0,
+        "response_sha256": null,
+        "evidence": "attempts\\health-bounded-01\\bounded_health\\10-B\\samples.json"
+      },
+      {
+        "arm": "B",
+        "state": "COLLECTED_EXPLORATORY",
+        "n": 1000,
+        "response_sha256": "9ab282510bc435ac159912ba5fb39df42612c56ef8e32243fce7e3bc9bc7b700",
+        "evidence": "attempts\\health-bounded-01\\bounded_health\\11-B\\samples.json"
+      },
+      {
+        "arm": "A",
+        "state": "COLLECTED_EXPLORATORY",
+        "n": 1000,
+        "response_sha256": "9ab282510bc435ac159912ba5fb39df42612c56ef8e32243fce7e3bc9bc7b700",
+        "evidence": "attempts\\health-bounded-01\\bounded_health\\12-A\\samples.json"
+      }
+    ],
+    "elapsed_seconds": 122.2784885000001,
+    "total_requests": 6000,
+    "all_registered_cells_complete": false,
+    "response_integrity": "EQUAL_ACROSS_COLLECTED_CELLS",
+    "p99": null,
+    "confirmed_gain": false,
+    "limitations": [
+      "No phone, SQL/catalog/IA workload or sustained throughput claim",
+      "Budgets/unstable warmup remain explicit; no favorable stopping",
+      "Even finite conditional CI and three block ratios cannot certify a gain without host/dependence qualification"
+    ]
+  },
+  "attempts/identity-01/critical_runs/identity-A/summary.json": {
+    "run": "identity-A",
+    "exit_code": 1,
+    "elapsed_seconds": 11.436046399991028,
+    "cases": [
+      {
+        "name": "test_SEC01_apple_rejects_unverified_identity_for_existing_synthetic_account[unsigned]",
+        "seconds": 1.131,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_SEC01_apple_rejects_unverified_identity_for_existing_synthetic_account[wrong-signature]",
+        "seconds": 0.955,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_SEC01_apple_rejects_unverified_identity_for_existing_synthetic_account[expired]",
+        "seconds": 1.024,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_SEC01_apple_rejects_unverified_identity_for_existing_synthetic_account[issuer-substring]",
+        "seconds": 1.155,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\identity_cases.py"
+    ]
+  },
+  "attempts/identity-01/critical_runs/identity-B/summary.json": {
+    "run": "identity-B",
+    "exit_code": 1,
+    "elapsed_seconds": 10.971775099998922,
+    "cases": [
+      {
+        "name": "test_SEC01_apple_rejects_unverified_identity_for_existing_synthetic_account[unsigned]",
+        "seconds": 1.231,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_SEC01_apple_rejects_unverified_identity_for_existing_synthetic_account[wrong-signature]",
+        "seconds": 1.003,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_SEC01_apple_rejects_unverified_identity_for_existing_synthetic_account[expired]",
+        "seconds": 0.851,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_SEC01_apple_rejects_unverified_identity_for_existing_synthetic_account[issuer-substring]",
+        "seconds": 0.859,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\identity_cases.py"
+    ]
+  },
+  "attempts/image-01/critical_runs/image-baseline/summary.json": {
+    "run": "image-baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 16.963839799998823,
+    "cases": [
+      {
+        "name": "test_IMG01_preprocessing_formats_modes_and_bounds[JPEG-RGB]",
+        "seconds": 0.385,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_preprocessing_formats_modes_and_bounds[JPEG-L]",
+        "seconds": 0.022,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_preprocessing_formats_modes_and_bounds[PNG-RGB]",
+        "seconds": 0.021,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_preprocessing_formats_modes_and_bounds[PNG-RGBA]",
+        "seconds": 0.016,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_preprocessing_formats_modes_and_bounds[PNG-L]",
+        "seconds": 0.017,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_preprocessing_formats_modes_and_bounds[WEBP-RGB]",
+        "seconds": 0.72,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_preprocessing_formats_modes_and_bounds[WEBP-RGBA]",
+        "seconds": 0.028,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_exif_orientation[1-expected0]",
+        "seconds": 0.031,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_exif_orientation[3-expected1]",
+        "seconds": 0.016,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_exif_orientation[6-expected2]",
+        "seconds": 0.014,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_exif_orientation[8-expected3]",
+        "seconds": 0.014,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG05_SEC06_invalid_image_matrix[empty]",
+        "seconds": 0.015,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG05_SEC06_invalid_image_matrix[invalid]",
+        "seconds": 0.017,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG05_SEC06_invalid_image_matrix[truncated]",
+        "seconds": 0.017,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG05_SEC06_invalid_image_matrix[unsupported]",
+        "seconds": 0.016,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG05_SEC06_invalid_image_matrix[small]",
+        "seconds": 0.021,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG05_SEC06_invalid_image_matrix[pixels]",
+        "seconds": 0.018,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG05_SEC06_invalid_image_matrix[bytes]",
+        "seconds": 0.016,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG04_semantic_cache_hit_invalid_payload_and_missing_provider",
+        "seconds": 0.734,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_RES05_provider_response_schema[empty]",
+        "seconds": 0.394,
+        "status": "PASS"
+      },
+      {
+        "name": "test_RES05_provider_response_schema[invalid-json]",
+        "seconds": 0.433,
+        "status": "PASS"
+      },
+      {
+        "name": "test_RES05_provider_response_schema[invalid-schema]",
+        "seconds": 0.255,
+        "status": "PASS"
+      },
+      {
+        "name": "test_RES05_provider_retry_boundaries[503-0-1]",
+        "seconds": 0.297,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_RES05_provider_retry_boundaries[503-1-2]",
+        "seconds": 0.256,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_RES05_provider_retry_boundaries[429-2-3]",
+        "seconds": 0.183,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_RES05_provider_retry_boundaries[400-2-1]",
+        "seconds": 0.209,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_SEC08_provider_error_canary_redaction_characterization",
+        "seconds": 0.193,
+        "status": "PASS"
+      },
+      {
+        "name": "test_RES08_corrupt_private_cache_characterization",
+        "seconds": 0.458,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ]
+  },
+  "attempts/image-02/critical_runs/image-baseline/summary.json": {
+    "run": "image-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 24.67693170000166,
+    "cases": [
+      {
+        "name": "test_IMG01_preprocessing_formats_modes_and_bounds[JPEG-RGB]",
+        "seconds": 0.092,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_preprocessing_formats_modes_and_bounds[JPEG-L]",
+        "seconds": 0.035,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_preprocessing_formats_modes_and_bounds[PNG-RGB]",
+        "seconds": 0.024,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_preprocessing_formats_modes_and_bounds[PNG-RGBA]",
+        "seconds": 0.02,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_preprocessing_formats_modes_and_bounds[PNG-L]",
+        "seconds": 0.042,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_preprocessing_formats_modes_and_bounds[WEBP-RGB]",
+        "seconds": 0.249,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_preprocessing_formats_modes_and_bounds[WEBP-RGBA]",
+        "seconds": 0.04,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_exif_orientation[1-expected0]",
+        "seconds": 0.033,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_exif_orientation[3-expected1]",
+        "seconds": 0.027,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_exif_orientation[6-expected2]",
+        "seconds": 0.032,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG01_exif_orientation[8-expected3]",
+        "seconds": 0.017,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG05_SEC06_invalid_image_matrix[empty]",
+        "seconds": 0.071,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG05_SEC06_invalid_image_matrix[invalid]",
+        "seconds": 0.025,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG05_SEC06_invalid_image_matrix[truncated]",
+        "seconds": 0.033,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG05_SEC06_invalid_image_matrix[unsupported]",
+        "seconds": 0.037,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG05_SEC06_invalid_image_matrix[small]",
+        "seconds": 0.057,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG05_SEC06_invalid_image_matrix[pixels]",
+        "seconds": 0.029,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG05_SEC06_invalid_image_matrix[bytes]",
+        "seconds": 0.049,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG04_semantic_cache_hit_invalid_payload_and_missing_provider",
+        "seconds": 1.35,
+        "status": "PASS"
+      },
+      {
+        "name": "test_RES05_provider_response_schema[empty]",
+        "seconds": 0.524,
+        "status": "PASS"
+      },
+      {
+        "name": "test_RES05_provider_response_schema[invalid-json]",
+        "seconds": 0.522,
+        "status": "PASS"
+      },
+      {
+        "name": "test_RES05_provider_response_schema[invalid-schema]",
+        "seconds": 1.045,
+        "status": "PASS"
+      },
+      {
+        "name": "test_RES05_provider_retry_boundaries[503-0-1]",
+        "seconds": 1.557,
+        "status": "PASS"
+      },
+      {
+        "name": "test_RES05_provider_retry_boundaries[503-1-2]",
+        "seconds": 1.469,
+        "status": "PASS"
+      },
+      {
+        "name": "test_RES05_provider_retry_boundaries[429-2-3]",
+        "seconds": 1.235,
+        "status": "PASS"
+      },
+      {
+        "name": "test_RES05_provider_retry_boundaries[400-2-1]",
+        "seconds": 2.017,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC08_provider_error_canary_redaction_characterization",
+        "seconds": 1.598,
+        "status": "PASS"
+      },
+      {
+        "name": "test_RES08_corrupt_private_cache_characterization",
+        "seconds": 0.887,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\image_cases.py"
+    ]
+  },
+  "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json": {
+    "run": "mechanisms-baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 155.78486800000246,
+    "cases": [
+      {
+        "name": "test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[2]",
+        "seconds": 18.323,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[10]",
+        "seconds": 15.092,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[25]",
+        "seconds": 27.696,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_SEC04_gallery_actor_audience_matrix[A-public]",
+        "seconds": 3.12,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC04_gallery_actor_audience_matrix[A-friends]",
+        "seconds": 2.519,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC04_gallery_actor_audience_matrix[A-private]",
+        "seconds": 2.228,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC04_gallery_actor_audience_matrix[B-public]",
+        "seconds": 3.707,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC04_gallery_actor_audience_matrix[B-friends]",
+        "seconds": 1.954,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC04_gallery_actor_audience_matrix[B-private]",
+        "seconds": 2.226,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC04_gallery_actor_audience_matrix[C-public]",
+        "seconds": 1.879,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC04_gallery_actor_audience_matrix[C-friends]",
+        "seconds": 1.324,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC04_gallery_actor_audience_matrix[C-private]",
+        "seconds": 1.382,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC04_gallery_preference_revoked_between_requests",
+        "seconds": 1.808,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DATA09_SEC04_missing_report_sighting_and_human_decision_lifecycle",
+        "seconds": 12.422,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC09_local_configuration_http_surface",
+        "seconds": 5.092,
+        "status": "PASS"
+      },
+      {
+        "name": "test_RSC02_bounded_repeated_read_error_cycles",
+        "seconds": 36.019,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py"
+    ]
+  },
+  "attempts/mechanisms-02/critical_runs/mechanisms-baseline/summary.json": {
+    "run": "mechanisms-baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 25.902977899997495,
+    "cases": [
+      {
+        "name": "test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[2]",
+        "seconds": 3.802,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[10]",
+        "seconds": 4.487,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[25]",
+        "seconds": 5.503,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py::test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance"
+    ]
+  },
+  "attempts/mechanisms-03/critical_runs/mechanisms-baseline/summary.json": {
+    "run": "mechanisms-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 37.1883353000012,
+    "cases": [
+      {
+        "name": "test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[2]",
+        "seconds": 5.249,
+        "status": "PASS"
+      },
+      {
+        "name": "test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[10]",
+        "seconds": 7.437,
+        "status": "PASS"
+      },
+      {
+        "name": "test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[25]",
+        "seconds": 13.325,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\remaining_mechanism_cases.py::test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance"
+    ]
+  },
+  "attempts/pipeline-01/critical_runs/pipeline-baseline/summary.json": {
+    "run": "pipeline-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 86.03161989999353,
+    "cases": [
+      {
+        "name": "test_DATA01_IMG02_HTTP_photo_metadata_sync_preserves_analysis",
+        "seconds": 23.214,
+        "status": "PASS"
+      },
+      {
+        "name": "test_LAT08_DB05_paused_inference_allows_health_sync_and_chat",
+        "seconds": 13.244,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG05_HTTP_rejection_preserves_business_effects[no-cat-NOT_A_CAT]",
+        "seconds": 7.544,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG05_HTTP_rejection_preserves_business_effects[multiple-MULTIPLE_CATS]",
+        "seconds": 20.857,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG05_HTTP_rejection_preserves_business_effects[dark-LOW_QUALITY]",
+        "seconds": 4.302,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG05_HTTP_rejection_preserves_business_effects[white-LOW_QUALITY]",
+        "seconds": 3.299,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG05_blur_alone_follows_existing_quality_rule",
+        "seconds": 0.054,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\pipeline_cases.py"
+    ]
+  },
+  "attempts/query-plan-01/critical_runs/query-plan-baseline/summary.json": {
+    "run": "query-plan-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 41.83856950000336,
+    "cases": [
+      {
+        "name": "test_DB04_migrated_sync_query_plans_with_growing_catalog_and_history[40]",
+        "seconds": 10.103,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB04_migrated_sync_query_plans_with_growing_catalog_and_history[500]",
+        "seconds": 4.831,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB04_migrated_sync_query_plans_with_growing_catalog_and_history[2000]",
+        "seconds": 9.11,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\query_plan_cases.py"
+    ]
+  },
+  "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json": {
+    "run": "social-volume-baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 50.52309100000093,
+    "cases": [
+      {
+        "name": "test_DB03_LAT05_conversation_volume_sql_and_isolation[repeated-1]",
+        "seconds": 2.832,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_volume_sql_and_isolation[repeated-20]",
+        "seconds": 4.057,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_volume_sql_and_isolation[repeated-100]",
+        "seconds": 8.36,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_volume_sql_and_isolation[distinct-1]",
+        "seconds": 2.291,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_volume_sql_and_isolation[distinct-20]",
+        "seconds": 0.893,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_volume_sql_and_isolation[distinct-100]",
+        "seconds": 1.001,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[repeated-1]",
+        "seconds": 1.373,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[repeated-20]",
+        "seconds": 3.713,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[repeated-100]",
+        "seconds": 1.223,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[distinct-1]",
+        "seconds": 1.075,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[distinct-20]",
+        "seconds": 0.898,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[distinct-100]",
+        "seconds": 1.407,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_SEC04_LAT07_privacy_changes_between_feed_pages",
+        "seconds": 2.572,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ]
+  },
+  "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json": {
+    "run": "social-volume-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 40.47054650000064,
+    "cases": [
+      {
+        "name": "test_DB03_LAT05_conversation_volume_sql_and_isolation[repeated-1]",
+        "seconds": 1.225,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_volume_sql_and_isolation[repeated-20]",
+        "seconds": 1.617,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_volume_sql_and_isolation[repeated-100]",
+        "seconds": 4.671,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_volume_sql_and_isolation[distinct-1]",
+        "seconds": 0.824,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_volume_sql_and_isolation[distinct-20]",
+        "seconds": 1.877,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT05_conversation_volume_sql_and_isolation[distinct-100]",
+        "seconds": 4.55,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[repeated-1]",
+        "seconds": 0.833,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[repeated-20]",
+        "seconds": 2.067,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[repeated-100]",
+        "seconds": 3.931,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[distinct-1]",
+        "seconds": 2.731,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[distinct-20]",
+        "seconds": 3.172,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB03_LAT07_feed_volume_equal_timestamps_and_pagination[distinct-100]",
+        "seconds": 3.71,
+        "status": "PASS"
+      },
+      {
+        "name": "test_SEC04_LAT07_privacy_changes_between_feed_pages",
+        "seconds": 2.406,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\social_volume_cases.py"
+    ]
+  },
+  "attempts/socket-fanout-01/critical_runs/socket-fanout-baseline/summary.json": {
+    "run": "socket-fanout-baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 34.19407610000053,
+    "cases": [
+      {
+        "name": "test_LOAD05_real_message_fanout_reconnect_and_delayed_reader[1]",
+        "seconds": 8.455,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_LOAD05_real_message_fanout_reconnect_and_delayed_reader[10]",
+        "seconds": 4.521,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_LOAD05_real_message_fanout_reconnect_and_delayed_reader[50]",
+        "seconds": 7.412,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\socket_fanout_cases.py"
+    ]
+  },
+  "attempts/socket-fanout-02/critical_runs/socket-fanout-baseline/summary.json": {
+    "run": "socket-fanout-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 31.556034699999145,
+    "cases": [
+      {
+        "name": "test_LOAD05_real_message_fanout_reconnect_and_delayed_reader[1]",
+        "seconds": 4.709,
+        "status": "PASS"
+      },
+      {
+        "name": "test_LOAD05_real_message_fanout_reconnect_and_delayed_reader[10]",
+        "seconds": 12.908,
+        "status": "PASS"
+      },
+      {
+        "name": "test_LOAD05_real_message_fanout_reconnect_and_delayed_reader[50]",
+        "seconds": 9.057,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\socket_fanout_cases.py"
+    ]
+  },
+  "attempts/storage-resilience-01/critical_runs/storage-resilience-baseline/summary.json": {
+    "run": "storage-resilience-baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 16.2908421000011,
+    "cases": [
+      {
+        "name": "test_RES05_IMG07_storage_write_failure_rollback_and_retry[no-space]",
+        "seconds": 1.332,
+        "status": "PASS"
+      },
+      {
+        "name": "test_RES05_IMG07_storage_write_failure_rollback_and_retry[permission]",
+        "seconds": 1.464,
+        "status": "PASS"
+      },
+      {
+        "name": "test_RES05_RSC03_delete_failure_after_commit_characterization",
+        "seconds": 1.3,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG07_missing_private_file_then_restored",
+        "seconds": 0.962,
+        "status": "FAIL"
+      },
+      {
+        "name": "test_RES05_disposable_database_short_outage_and_recovery",
+        "seconds": 3.178,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\storage_resilience_cases.py"
+    ]
+  },
+  "attempts/storage-resilience-02/critical_runs/storage-resilience-baseline/summary.json": {
+    "run": "storage-resilience-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 35.07366469999761,
+    "cases": [
+      {
+        "name": "test_IMG07_missing_private_file_then_restored",
+        "seconds": 4.82,
+        "status": "PASS"
+      },
+      {
+        "name": "test_RES05_disposable_database_short_outage_and_recovery",
+        "seconds": 9.769,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\storage_resilience_cases.py::test_IMG07_missing_private_file_then_restored",
+      "<executors>\\storage_resilience_cases.py::test_RES05_disposable_database_short_outage_and_recovery"
+    ]
+  },
+  "attempts/wire-contract-01/critical_runs/wire-contract-baseline/summary.json": {
+    "run": "wire-contract-baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 253.20946019999974,
+    "cases": [
+      {
+        "name": "test_DATA08_real_api_event_to_flutter_controller_characterization",
+        "seconds": 243.699,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\wire_contract_cases.py"
+    ]
+  },
+  "attempts/wire-contract-02/critical_runs/wire-contract-baseline/summary.json": {
+    "run": "wire-contract-baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 56.3209407000104,
+    "cases": [
+      {
+        "name": "test_DATA08_real_api_event_to_flutter_controller_characterization",
+        "seconds": 46.65,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\wire_contract_cases.py"
+    ]
+  },
+  "attempts/wire-contract-03/critical_runs/wire-contract-baseline/summary.json": {
+    "run": "wire-contract-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 56.12143379999907,
+    "cases": [
+      {
+        "name": "test_DATA08_real_api_event_to_flutter_controller_characterization",
+        "seconds": 51.059,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\wire_contract_cases.py"
+    ]
+  },
+  "attempts/worker-race-01/critical_runs/worker-race-baseline/summary.json": {
+    "run": "worker-race-baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 24.215778000012506,
+    "cases": [
+      {
+        "name": "test_DB06_DATA06_result_after_resource_mutation[postgres-photo-soft-delete]",
+        "seconds": 1.169,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB06_DATA06_result_after_resource_mutation[postgres-cat-soft-delete]",
+        "seconds": 0.89,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB06_DATA06_result_after_resource_mutation[postgres-photo-replace]",
+        "seconds": 0.755,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB06_DATA06_result_after_resource_mutation[postgres-photo-hard-delete]",
+        "seconds": 0.809,
+        "status": "PASS"
+      },
+      {
+        "name": "test_DB06_DATA06_result_after_resource_mutation[postgres-cat-hard-delete]",
+        "seconds": 0.87,
+        "status": "PASS"
+      },
+      {
+        "name": "test_IMG07_bytes_changed_between_claim_and_read_then_retry[postgres]",
+        "seconds": 0.732,
+        "status": "PASS"
+      },
+      {
+        "name": "test_RES04_actual_worker_process_killed_after_claim_then_restarted[postgres]",
+        "seconds": 3.824,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\worker_race_cases.py",
+      "-k",
+      "postgres"
+    ]
+  },
+  "attempts/worker-race-02/critical_runs/worker-race-baseline/summary.json": {
+    "run": "worker-race-baseline",
+    "exit_code": 1,
+    "elapsed_seconds": 30.229107599996496,
+    "cases": [
+      {
+        "name": "test_RES04_actual_worker_process_killed_after_claim_then_restarted[postgres]",
+        "seconds": 13.482,
+        "status": "FAIL"
+      }
+    ],
+    "selectors": [
+      "<executors>\\worker_race_cases.py",
+      "-k",
+      "postgres and actual_worker_process"
+    ]
+  },
+  "attempts/worker-race-03/critical_runs/worker-race-baseline/summary.json": {
+    "run": "worker-race-baseline",
+    "exit_code": 0,
+    "elapsed_seconds": 17.660066199998255,
+    "cases": [
+      {
+        "name": "test_RES04_actual_worker_process_killed_after_claim_then_restarted[postgres]",
+        "seconds": 10.299,
+        "status": "PASS"
+      }
+    ],
+    "selectors": [
+      "<executors>\\worker_race_cases.py",
+      "-k",
+      "postgres and actual_worker_process"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "scenarios": 95,
+  "states": {
+    "PREPARED": 1,
+    "PARTIAL_EXECUTED": 63,
+    "PENDING": 20,
+    "BLOCKED_EXTERNAL_PREREQUISITES": 11
+  },
+  "executions_including_failed_attempts": 180,
+  "case_outcomes_not_unique_scenarios": {
+    "FAIL": 38,
+    "PASS": 122,
+    "success": 16,
+    "error": 4
+  },
+  "completed_scenarios": 0
+}

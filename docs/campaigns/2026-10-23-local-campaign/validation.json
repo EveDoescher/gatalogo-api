@@ -1,0 +1,26 @@
+{
+  "python_lint": {
+    "command": "ruff check scripts/campaign scripts/quality_campaign.py",
+    "exit_code": 0
+  },
+  "harness_tests": {
+    "command": "pytest tests/test_campaign_subprocesses.py tests/test_campaign_statistics.py tests/test_campaign_classification.py tests/test_quality_campaign_harness.py -q --tb=short",
+    "passed": 18,
+    "failed": 0,
+    "seconds": 6.06
+  },
+  "flutter_analyzer": {
+    "files": [
+      "tool/campaign_probe_test.dart",
+      "tool/campaign_notification_races_test.dart",
+      "tool/campaign_chat_wire_contract_test.dart"
+    ],
+    "exit_code": 0,
+    "issues": 0
+  },
+  "main_refs_unchanged": true,
+  "product_working_tree_unchanged": true,
+  "frozen_product_files_verified": 472,
+  "raw_red_tests_retained": true,
+  "no_product_corrections": true
+}

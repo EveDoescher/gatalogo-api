@@ -1,0 +1,100 @@
+{
+  "state": "EXPLORATORY_COMPONENT_ONLY",
+  "cells": [
+    {
+      "arm": "A",
+      "state": "WARMUP_UNSTABLE",
+      "n": 0,
+      "response_sha256": null,
+      "evidence": "attempts\\health-bounded-01\\bounded_health\\01-A\\samples.json"
+    },
+    {
+      "arm": "B",
+      "state": "COLLECTED_EXPLORATORY",
+      "n": 1000,
+      "response_sha256": "9ab282510bc435ac159912ba5fb39df42612c56ef8e32243fce7e3bc9bc7b700",
+      "evidence": "attempts\\health-bounded-01\\bounded_health\\02-B\\samples.json"
+    },
+    {
+      "arm": "B",
+      "state": "COLLECTED_EXPLORATORY",
+      "n": 1000,
+      "response_sha256": "9ab282510bc435ac159912ba5fb39df42612c56ef8e32243fce7e3bc9bc7b700",
+      "evidence": "attempts\\health-bounded-01\\bounded_health\\03-B\\samples.json"
+    },
+    {
+      "arm": "A",
+      "state": "COLLECTED_EXPLORATORY",
+      "n": 1000,
+      "response_sha256": "9ab282510bc435ac159912ba5fb39df42612c56ef8e32243fce7e3bc9bc7b700",
+      "evidence": "attempts\\health-bounded-01\\bounded_health\\04-A\\samples.json"
+    },
+    {
+      "arm": "A",
+      "state": "WARMUP_UNSTABLE",
+      "n": 0,
+      "response_sha256": null,
+      "evidence": "attempts\\health-bounded-01\\bounded_health\\05-A\\samples.json"
+    },
+    {
+      "arm": "B",
+      "state": "WARMUP_UNSTABLE",
+      "n": 0,
+      "response_sha256": null,
+      "evidence": "attempts\\health-bounded-01\\bounded_health\\06-B\\samples.json"
+    },
+    {
+      "arm": "B",
+      "state": "WARMUP_UNSTABLE",
+      "n": 0,
+      "response_sha256": null,
+      "evidence": "attempts\\health-bounded-01\\bounded_health\\07-B\\samples.json"
+    },
+    {
+      "arm": "A",
+      "state": "WARMUP_UNSTABLE",
+      "n": 0,
+      "response_sha256": null,
+      "evidence": "attempts\\health-bounded-01\\bounded_health\\08-A\\samples.json"
+    },
+    {
+      "arm": "A",
+      "state": "COLLECTED_EXPLORATORY",
+      "n": 1000,
+      "response_sha256": "9ab282510bc435ac159912ba5fb39df42612c56ef8e32243fce7e3bc9bc7b700",
+      "evidence": "attempts\\health-bounded-01\\bounded_health\\09-A\\samples.json"
+    },
+    {
+      "arm": "B",
+      "state": "WARMUP_UNSTABLE",
+      "n": 0,
+      "response_sha256": null,
+      "evidence": "attempts\\health-bounded-01\\bounded_health\\10-B\\samples.json"
+    },
+    {
+      "arm": "B",
+      "state": "COLLECTED_EXPLORATORY",
+      "n": 1000,
+      "response_sha256": "9ab282510bc435ac159912ba5fb39df42612c56ef8e32243fce7e3bc9bc7b700",
+      "evidence": "attempts\\health-bounded-01\\bounded_health\\11-B\\samples.json"
+    },
+    {
+      "arm": "A",
+      "state": "COLLECTED_EXPLORATORY",
+      "n": 1000,
+      "response_sha256": "9ab282510bc435ac159912ba5fb39df42612c56ef8e32243fce7e3bc9bc7b700",
+      "evidence": "attempts\\health-bounded-01\\bounded_health\\12-A\\samples.json"
+    }
+  ],
+  "elapsed_seconds": 122.2784885000001,
+  "total_requests": 6000,
+  "all_registered_cells_complete": false,
+  "response_integrity": "EQUAL_ACROSS_COLLECTED_CELLS",
+  "p99": null,
+  "confirmed_gain": false,
+  "limitations": [
+    "No phone, SQL/catalog/IA workload or sustained throughput claim",
+    "Budgets/unstable warmup remain explicit; no favorable stopping",
+    "Even finite conditional CI and three block ratios cannot certify a gain without host/dependence qualification"
+  ]
+}

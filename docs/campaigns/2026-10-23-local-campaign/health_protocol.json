@@ -1,0 +1,36 @@
+{
+  "registered_at": "2026-10-23T14:42:14.985793+00:00",
+  "sources": {
+    "A-api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+    "B-api": "ebb7f689965e9f103c677ce79e8488ee9ad57461",
+    "A-flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+    "B-flutter": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7"
+  },
+  "transport": "ASGI GET /health only",
+  "order": [
+    "A",
+    "B",
+    "B",
+    "A",
+    "A",
+    "B",
+    "B",
+    "A",
+    "A",
+    "B",
+    "B",
+    "A"
+  ],
+  "blocks": 3,
+  "requests_per_cell": 1000,
+  "sizing_basis": "Initial fast-endpoint budget gives about 50 observations above P95 per complete cell; interval precision and dependence still require review. Three blocks are exploratory with sparse bootstrap support, never a definitive effect estimate.",
+  "warmup": "20 requests/window, at most6 windows; require last3 median relative range <=10%, a predeclared diagnostic rather than proof of stationarity",
+  "collection_wall_budget_seconds": 120,
+  "per_cell_wall_budget_seconds": 15,
+  "memory_safety_floor_bytes": 1073741824,
+  "memory_basis": "at least ~5 times the observed ~165MiB API probe working set available before one sequential child starts",
+  "instrumentation": "same installed dependencies, no lifespan, INFO logs disabled in both arms, no network, SQL or paid model",
+  "p99": "DISABLED",
+  "confirmatory": false,
+  "reason": "No exclusive host or CPU-throttling/independent-block qualification"
+}

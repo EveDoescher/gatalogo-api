@@ -1,0 +1,2665 @@
+{
+  "attempts/delivery-01/critical_runs/delivery-baseline/observations/DLV01-recovery-confirm.json": {
+    "scenario": "DLV-01",
+    "flow": "confirm",
+    "messages": 1,
+    "old_password_rejected": true,
+    "old_sessions_revoked": true,
+    "other_account_unchanged": true,
+    "single_use": true,
+    "cooldown": 429,
+    "scope": "real disposable SMTP; no code/password/token in evidence"
+  },
+  "attempts/delivery-01/critical_runs/delivery-baseline/observations/DLV01-recovery-grant.json": {
+    "scenario": "DLV-01",
+    "flow": "grant",
+    "messages": 1,
+    "old_password_rejected": true,
+    "old_sessions_revoked": true,
+    "other_account_unchanged": true,
+    "single_use": true,
+    "cooldown": 429,
+    "scope": "real disposable SMTP; no code/password/token in evidence"
+  },
+  "attempts/delivery-01/critical_runs/delivery-baseline/observations/DLV02-ambiguous-acceptance.json": {
+    "scenario": "DLV-02",
+    "accepted_messages": 2,
+    "persisted_otps": 1,
+    "immediate_retry_after_rollback": "allowed",
+    "retry_after_commit": 429,
+    "finding": "Acceptance uncertainty plus rollback permits a second email immediately; first code has no persisted record",
+    "scope": "real SMTP delivery followed by injected client exception, not a physical network outage"
+  },
+  "attempts/delivery-01/critical_runs/delivery-baseline/observations/DLV02-slow-smtp.json": {
+    "scenario": "DLV-02",
+    "parallel_health": 200,
+    "parallel_pull": 200,
+    "smtp_was_still_paused": true,
+    "pool_checked_out_during_send": 1,
+    "scope": "bounded barrier; responsiveness proof, not latency benchmark"
+  },
+  "attempts/delivery-01/critical_runs/delivery-baseline/observations/SEC08-smtp-log.json": {
+    "scenario": "SEC-08",
+    "mode": "smtp_enabled",
+    "application_log_contains_otp": false,
+    "scope": "captured app log records only; reverse-proxy/APM/deployment logs not observed"
+  },
+  "attempts/identity-01/critical_runs/identity-A/observations/SEC01-apple-expired.json": {
+    "scenario": "SEC-01",
+    "variant": "expired",
+    "expected_rejection": 401,
+    "actual_status": 200,
+    "issued_session_for_existing_synthetic_account": true,
+    "subsequent_authenticated_sync_status": 200,
+    "finding": "Unverified identity token accepted and linked by supplied email",
+    "scope": "own synthetic accounts and disposable schemas only; no Apple/network/real-user token or credential used; negative assertion remains red"
+  },
+  "attempts/identity-01/critical_runs/identity-A/observations/SEC01-apple-issuer-substring.json": {
+    "scenario": "SEC-01",
+    "variant": "issuer-substring",
+    "expected_rejection": 401,
+    "actual_status": 200,
+    "issued_session_for_existing_synthetic_account": true,
+    "subsequent_authenticated_sync_status": 200,
+    "finding": "Unverified identity token accepted and linked by supplied email",
+    "scope": "own synthetic accounts and disposable schemas only; no Apple/network/real-user token or credential used; negative assertion remains red"
+  },
+  "attempts/identity-01/critical_runs/identity-A/observations/SEC01-apple-unsigned.json": {
+    "scenario": "SEC-01",
+    "variant": "unsigned",
+    "expected_rejection": 401,
+    "actual_status": 200,
+    "issued_session_for_existing_synthetic_account": true,
+    "subsequent_authenticated_sync_status": 200,
+    "finding": "Unverified identity token accepted and linked by supplied email",
+    "scope": "own synthetic accounts and disposable schemas only; no Apple/network/real-user token or credential used; negative assertion remains red"
+  },
+  "attempts/identity-01/critical_runs/identity-A/observations/SEC01-apple-wrong-signature.json": {
+    "scenario": "SEC-01",
+    "variant": "wrong-signature",
+    "expected_rejection": 401,
+    "actual_status": 200,
+    "issued_session_for_existing_synthetic_account": true,
+    "subsequent_authenticated_sync_status": 200,
+    "finding": "Unverified identity token accepted and linked by supplied email",
+    "scope": "own synthetic accounts and disposable schemas only; no Apple/network/real-user token or credential used; negative assertion remains red"
+  },
+  "attempts/identity-01/critical_runs/identity-B/observations/SEC01-apple-expired.json": {
+    "scenario": "SEC-01",
+    "variant": "expired",
+    "expected_rejection": 401,
+    "actual_status": 200,
+    "issued_session_for_existing_synthetic_account": true,
+    "subsequent_authenticated_sync_status": 200,
+    "finding": "Unverified identity token accepted and linked by supplied email",
+    "scope": "own synthetic accounts and disposable schemas only; no Apple/network/real-user token or credential used; negative assertion remains red"
+  },
+  "attempts/identity-01/critical_runs/identity-B/observations/SEC01-apple-issuer-substring.json": {
+    "scenario": "SEC-01",
+    "variant": "issuer-substring",
+    "expected_rejection": 401,
+    "actual_status": 200,
+    "issued_session_for_existing_synthetic_account": true,
+    "subsequent_authenticated_sync_status": 200,
+    "finding": "Unverified identity token accepted and linked by supplied email",
+    "scope": "own synthetic accounts and disposable schemas only; no Apple/network/real-user token or credential used; negative assertion remains red"
+  },
+  "attempts/identity-01/critical_runs/identity-B/observations/SEC01-apple-unsigned.json": {
+    "scenario": "SEC-01",
+    "variant": "unsigned",
+    "expected_rejection": 401,
+    "actual_status": 200,
+    "issued_session_for_existing_synthetic_account": true,
+    "subsequent_authenticated_sync_status": 200,
+    "finding": "Unverified identity token accepted and linked by supplied email",
+    "scope": "own synthetic accounts and disposable schemas only; no Apple/network/real-user token or credential used; negative assertion remains red"
+  },
+  "attempts/identity-01/critical_runs/identity-B/observations/SEC01-apple-wrong-signature.json": {
+    "scenario": "SEC-01",
+    "variant": "wrong-signature",
+    "expected_rejection": 401,
+    "actual_status": 200,
+    "issued_session_for_existing_synthetic_account": true,
+    "subsequent_authenticated_sync_status": 200,
+    "finding": "Unverified identity token accepted and linked by supplied email",
+    "scope": "own synthetic accounts and disposable schemas only; no Apple/network/real-user token or credential used; negative assertion remains red"
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/IMG01-exif-1.json": {
+    "scenario": "IMG-01",
+    "orientation": 1,
+    "normalized_original": [
+      256,
+      128
+    ]
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/IMG01-exif-3.json": {
+    "scenario": "IMG-01",
+    "orientation": 3,
+    "normalized_original": [
+      256,
+      128
+    ]
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/IMG01-exif-6.json": {
+    "scenario": "IMG-01",
+    "orientation": 6,
+    "normalized_original": [
+      128,
+      256
+    ]
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/IMG01-exif-8.json": {
+    "scenario": "IMG-01",
+    "orientation": 8,
+    "normalized_original": [
+      128,
+      256
+    ]
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/IMG01-format-JPEG-L.json": {
+    "scenario": "IMG-01",
+    "format": "JPEG",
+    "mode": "L",
+    "original": [
+      256,
+      128
+    ],
+    "normalized": [
+      128,
+      64
+    ],
+    "scope": "generated image normalization; no camera/device or cat semantics"
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/IMG01-format-JPEG-RGB.json": {
+    "scenario": "IMG-01",
+    "format": "JPEG",
+    "mode": "RGB",
+    "original": [
+      256,
+      128
+    ],
+    "normalized": [
+      128,
+      64
+    ],
+    "scope": "generated image normalization; no camera/device or cat semantics"
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/IMG01-format-PNG-L.json": {
+    "scenario": "IMG-01",
+    "format": "PNG",
+    "mode": "L",
+    "original": [
+      256,
+      128
+    ],
+    "normalized": [
+      128,
+      64
+    ],
+    "scope": "generated image normalization; no camera/device or cat semantics"
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/IMG01-format-PNG-RGB.json": {
+    "scenario": "IMG-01",
+    "format": "PNG",
+    "mode": "RGB",
+    "original": [
+      256,
+      128
+    ],
+    "normalized": [
+      128,
+      64
+    ],
+    "scope": "generated image normalization; no camera/device or cat semantics"
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/IMG01-format-PNG-RGBA.json": {
+    "scenario": "IMG-01",
+    "format": "PNG",
+    "mode": "RGBA",
+    "original": [
+      256,
+      128
+    ],
+    "normalized": [
+      128,
+      64
+    ],
+    "scope": "generated image normalization; no camera/device or cat semantics"
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/IMG01-format-WEBP-RGB.json": {
+    "scenario": "IMG-01",
+    "format": "WEBP",
+    "mode": "RGB",
+    "original": [
+      256,
+      128
+    ],
+    "normalized": [
+      128,
+      64
+    ],
+    "scope": "generated image normalization; no camera/device or cat semantics"
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/IMG01-format-WEBP-RGBA.json": {
+    "scenario": "IMG-01",
+    "format": "WEBP",
+    "mode": "RGBA",
+    "original": [
+      256,
+      128
+    ],
+    "normalized": [
+      128,
+      64
+    ],
+    "scope": "generated image normalization; no camera/device or cat semantics"
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/IMG05-invalid-bytes.json": {
+    "scenario": "IMG-05",
+    "defect": "bytes",
+    "rejected": true,
+    "pixel_limit_positive_control": true
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/IMG05-invalid-empty.json": {
+    "scenario": "IMG-05",
+    "defect": "empty",
+    "rejected": true,
+    "pixel_limit_positive_control": true
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/IMG05-invalid-invalid.json": {
+    "scenario": "IMG-05",
+    "defect": "invalid",
+    "rejected": true,
+    "pixel_limit_positive_control": true
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/IMG05-invalid-pixels.json": {
+    "scenario": "IMG-05",
+    "defect": "pixels",
+    "rejected": true,
+    "pixel_limit_positive_control": true
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/IMG05-invalid-small.json": {
+    "scenario": "IMG-05",
+    "defect": "small",
+    "rejected": true,
+    "pixel_limit_positive_control": true
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/IMG05-invalid-truncated.json": {
+    "scenario": "IMG-05",
+    "defect": "truncated",
+    "rejected": true,
+    "pixel_limit_positive_control": true
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/IMG05-invalid-unsupported.json": {
+    "scenario": "IMG-05",
+    "defect": "unsupported",
+    "rejected": true,
+    "pixel_limit_positive_control": true
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/RES05-provider-empty.json": {
+    "scenario": "RES-05",
+    "variant": "empty",
+    "schema_failure_wrapped": true,
+    "external_calls": 0
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/RES05-provider-invalid-json.json": {
+    "scenario": "RES-05",
+    "variant": "invalid-json",
+    "schema_failure_wrapped": true,
+    "external_calls": 0
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/RES05-provider-invalid-schema.json": {
+    "scenario": "RES-05",
+    "variant": "invalid-schema",
+    "schema_failure_wrapped": true,
+    "external_calls": 0
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/RES08-corrupt-semantic-cache.json": {
+    "scenario": "RES-08",
+    "corrupted_cache": "constructor raises DatabaseError",
+    "finding": "No automatic recovery observed for corrupted private semantic cache",
+    "scope": "own cache only; no recovery behavior asserted as safe"
+  },
+  "attempts/image-01/critical_runs/image-baseline/observations/SEC08-provider-log-canary.json": {
+    "scenario": "SEC-08",
+    "wrapped_error_redacted": true,
+    "raw_exception_log_contains_synthetic_key": true,
+    "scope": "synthetic key and injected provider exception; no real credentials loaded or leaked",
+    "finding": "logger.exception retains upstream raw exception despite redacted wrapped detail"
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/IMG01-exif-1.json": {
+    "scenario": "IMG-01",
+    "orientation": 1,
+    "normalized_original": [
+      256,
+      128
+    ]
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/IMG01-exif-3.json": {
+    "scenario": "IMG-01",
+    "orientation": 3,
+    "normalized_original": [
+      256,
+      128
+    ]
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/IMG01-exif-6.json": {
+    "scenario": "IMG-01",
+    "orientation": 6,
+    "normalized_original": [
+      128,
+      256
+    ]
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/IMG01-exif-8.json": {
+    "scenario": "IMG-01",
+    "orientation": 8,
+    "normalized_original": [
+      128,
+      256
+    ]
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/IMG01-format-JPEG-L.json": {
+    "scenario": "IMG-01",
+    "format": "JPEG",
+    "mode": "L",
+    "original": [
+      256,
+      128
+    ],
+    "normalized": [
+      128,
+      64
+    ],
+    "scope": "generated image normalization; no camera/device or cat semantics"
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/IMG01-format-JPEG-RGB.json": {
+    "scenario": "IMG-01",
+    "format": "JPEG",
+    "mode": "RGB",
+    "original": [
+      256,
+      128
+    ],
+    "normalized": [
+      128,
+      64
+    ],
+    "scope": "generated image normalization; no camera/device or cat semantics"
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/IMG01-format-PNG-L.json": {
+    "scenario": "IMG-01",
+    "format": "PNG",
+    "mode": "L",
+    "original": [
+      256,
+      128
+    ],
+    "normalized": [
+      128,
+      64
+    ],
+    "scope": "generated image normalization; no camera/device or cat semantics"
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/IMG01-format-PNG-RGB.json": {
+    "scenario": "IMG-01",
+    "format": "PNG",
+    "mode": "RGB",
+    "original": [
+      256,
+      128
+    ],
+    "normalized": [
+      128,
+      64
+    ],
+    "scope": "generated image normalization; no camera/device or cat semantics"
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/IMG01-format-PNG-RGBA.json": {
+    "scenario": "IMG-01",
+    "format": "PNG",
+    "mode": "RGBA",
+    "original": [
+      256,
+      128
+    ],
+    "normalized": [
+      128,
+      64
+    ],
+    "scope": "generated image normalization; no camera/device or cat semantics"
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/IMG01-format-WEBP-RGB.json": {
+    "scenario": "IMG-01",
+    "format": "WEBP",
+    "mode": "RGB",
+    "original": [
+      256,
+      128
+    ],
+    "normalized": [
+      128,
+      64
+    ],
+    "scope": "generated image normalization; no camera/device or cat semantics"
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/IMG01-format-WEBP-RGBA.json": {
+    "scenario": "IMG-01",
+    "format": "WEBP",
+    "mode": "RGBA",
+    "original": [
+      256,
+      128
+    ],
+    "normalized": [
+      128,
+      64
+    ],
+    "scope": "generated image normalization; no camera/device or cat semantics"
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/IMG04-semantic-cache.json": {
+    "scenario": "IMG-04",
+    "provider_calls_for_four_analyses": 2,
+    "valid_hit_without_key": true,
+    "invalid_payload_refetched": true,
+    "same_semantics_ignoring_timestamp_cache_warning": true,
+    "missing_key_without_cache": "rejected",
+    "scope": "fake model/provider; real SQLite/preprocessing/fusion; no segmentation inference"
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/IMG05-invalid-bytes.json": {
+    "scenario": "IMG-05",
+    "defect": "bytes",
+    "rejected": true,
+    "pixel_limit_positive_control": true
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/IMG05-invalid-empty.json": {
+    "scenario": "IMG-05",
+    "defect": "empty",
+    "rejected": true,
+    "pixel_limit_positive_control": true
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/IMG05-invalid-invalid.json": {
+    "scenario": "IMG-05",
+    "defect": "invalid",
+    "rejected": true,
+    "pixel_limit_positive_control": true
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/IMG05-invalid-pixels.json": {
+    "scenario": "IMG-05",
+    "defect": "pixels",
+    "rejected": true,
+    "pixel_limit_positive_control": true
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/IMG05-invalid-small.json": {
+    "scenario": "IMG-05",
+    "defect": "small",
+    "rejected": true,
+    "pixel_limit_positive_control": true
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/IMG05-invalid-truncated.json": {
+    "scenario": "IMG-05",
+    "defect": "truncated",
+    "rejected": true,
+    "pixel_limit_positive_control": true
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/IMG05-invalid-unsupported.json": {
+    "scenario": "IMG-05",
+    "defect": "unsupported",
+    "rejected": true,
+    "pixel_limit_positive_control": true
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/RES05-provider-empty.json": {
+    "scenario": "RES-05",
+    "variant": "empty",
+    "schema_failure_wrapped": true,
+    "external_calls": 0
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/RES05-provider-invalid-json.json": {
+    "scenario": "RES-05",
+    "variant": "invalid-json",
+    "schema_failure_wrapped": true,
+    "external_calls": 0
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/RES05-provider-invalid-schema.json": {
+    "scenario": "RES-05",
+    "variant": "invalid-schema",
+    "schema_failure_wrapped": true,
+    "external_calls": 0
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/RES05-retry-400-2.json": {
+    "scenario": "RES-05",
+    "status": 400,
+    "retry_setting": 2,
+    "calls": 1,
+    "backoff_seconds": [],
+    "external_calls": 0
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/RES05-retry-429-2.json": {
+    "scenario": "RES-05",
+    "status": 429,
+    "retry_setting": 2,
+    "calls": 3,
+    "backoff_seconds": [
+      1,
+      2
+    ],
+    "external_calls": 0
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/RES05-retry-503-0.json": {
+    "scenario": "RES-05",
+    "status": 503,
+    "retry_setting": 0,
+    "calls": 1,
+    "backoff_seconds": [],
+    "external_calls": 0
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/RES05-retry-503-1.json": {
+    "scenario": "RES-05",
+    "status": 503,
+    "retry_setting": 1,
+    "calls": 2,
+    "backoff_seconds": [
+      1
+    ],
+    "external_calls": 0
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/RES08-corrupt-semantic-cache.json": {
+    "scenario": "RES-08",
+    "corrupted_cache": "constructor raises DatabaseError",
+    "finding": "No automatic recovery observed for corrupted private semantic cache",
+    "scope": "own cache only; no recovery behavior asserted as safe"
+  },
+  "attempts/image-02/critical_runs/image-baseline/observations/SEC08-provider-log-canary.json": {
+    "scenario": "SEC-08",
+    "wrapped_error_redacted": true,
+    "raw_exception_log_contains_synthetic_key": true,
+    "scope": "synthetic key and injected provider exception; no real credentials loaded or leaked",
+    "finding": "logger.exception retains upstream raw exception despite redacted wrapped detail"
+  },
+  "attempts/mechanisms-01/critical_runs/mechanisms-baseline/observations/DATA09-report-lifecycle.json": {
+    "scenario": "DATA-09",
+    "report_idempotent": true,
+    "sighting_idempotent": true,
+    "conflicting_event": 409,
+    "human_decisions": [
+      "dismiss",
+      "reopen",
+      "confirm"
+    ],
+    "duplicate_confirmation": 409,
+    "closed_poster_edit": 409,
+    "public_private_canaries_absent": true,
+    "scope": "synthetic match exercises human decision workflow, not confirmed cat reidentification accuracy"
+  },
+  "attempts/mechanisms-01/critical_runs/mechanisms-baseline/observations/RSC02-read-error-cycles.json": {
+    "scenario": "RSC-02",
+    "rounds": 3,
+    "cycles_per_round": 100,
+    "requests": 1200,
+    "samples": [
+      {
+        "round": 0,
+        "cycles": 1,
+        "process_cpu_seconds": 24.15625,
+        "pid": 15964,
+        "rss_bytes": 164204544,
+        "peak_rss_bytes": 164212736,
+        "handles": 221
+      },
+      {
+        "round": 0,
+        "cycles": 25,
+        "process_cpu_seconds": 25.234375,
+        "pid": 15964,
+        "rss_bytes": 164212736,
+        "peak_rss_bytes": 164225024,
+        "handles": 221
+      },
+      {
+        "round": 0,
+        "cycles": 50,
+        "process_cpu_seconds": 26.546875,
+        "pid": 15964,
+        "rss_bytes": 164225024,
+        "peak_rss_bytes": 164237312,
+        "handles": 221
+      },
+      {
+        "round": 0,
+        "cycles": 75,
+        "process_cpu_seconds": 27.578125,
+        "pid": 15964,
+        "rss_bytes": 164212736,
+        "peak_rss_bytes": 164241408,
+        "handles": 217
+      },
+      {
+        "round": 0,
+        "cycles": 100,
+        "process_cpu_seconds": 28.921875,
+        "pid": 15964,
+        "rss_bytes": 163037184,
+        "peak_rss_bytes": 164241408,
+        "handles": 212
+      },
+      {
+        "round": 1,
+        "cycles": 1,
+        "process_cpu_seconds": 28.984375,
+        "pid": 15964,
+        "rss_bytes": 163037184,
+        "peak_rss_bytes": 164241408,
+        "handles": 212
+      },
+      {
+        "round": 1,
+        "cycles": 25,
+        "process_cpu_seconds": 30.15625,
+        "pid": 15964,
+        "rss_bytes": 163008512,
+        "peak_rss_bytes": 164241408,
+        "handles": 208
+      },
+      {
+        "round": 1,
+        "cycles": 50,
+        "process_cpu_seconds": 31.1875,
+        "pid": 15964,
+        "rss_bytes": 163008512,
+        "peak_rss_bytes": 164241408,
+        "handles": 208
+      },
+      {
+        "round": 1,
+        "cycles": 75,
+        "process_cpu_seconds": 32.15625,
+        "pid": 15964,
+        "rss_bytes": 163008512,
+        "peak_rss_bytes": 164241408,
+        "handles": 208
+      },
+      {
+        "round": 1,
+        "cycles": 100,
+        "process_cpu_seconds": 33.5,
+        "pid": 15964,
+        "rss_bytes": 163008512,
+        "peak_rss_bytes": 164241408,
+        "handles": 208
+      },
+      {
+        "round": 2,
+        "cycles": 1,
+        "process_cpu_seconds": 33.5625,
+        "pid": 15964,
+        "rss_bytes": 163008512,
+        "peak_rss_bytes": 164241408,
+        "handles": 208
+      },
+      {
+        "round": 2,
+        "cycles": 25,
+        "process_cpu_seconds": 34.46875,
+        "pid": 15964,
+        "rss_bytes": 163008512,
+        "peak_rss_bytes": 164241408,
+        "handles": 208
+      },
+      {
+        "round": 2,
+        "cycles": 50,
+        "process_cpu_seconds": 35.890625,
+        "pid": 15964,
+        "rss_bytes": 163008512,
+        "peak_rss_bytes": 164241408,
+        "handles": 208
+      },
+      {
+        "round": 2,
+        "cycles": 75,
+        "process_cpu_seconds": 37.140625,
+        "pid": 15964,
+        "rss_bytes": 163008512,
+        "peak_rss_bytes": 164241408,
+        "handles": 208
+      },
+      {
+        "round": 2,
+        "cycles": 100,
+        "process_cpu_seconds": 38.375,
+        "pid": 15964,
+        "rss_bytes": 163008512,
+        "peak_rss_bytes": 164241408,
+        "handles": 208
+      }
+    ],
+    "interpretation": "ASGI test-process resource observations; no upload/write/conversation-send loop or server/mobile leak certification"
+  },
+  "attempts/mechanisms-01/critical_runs/mechanisms-baseline/observations/SEC04-gallery-friends-A.json": {
+    "scenario": "SEC-04",
+    "audience": "friends",
+    "viewer": "A",
+    "status": 200,
+    "anonymous": 401
+  },
+  "attempts/mechanisms-01/critical_runs/mechanisms-baseline/observations/SEC04-gallery-friends-B.json": {
+    "scenario": "SEC-04",
+    "audience": "friends",
+    "viewer": "B",
+    "status": 200,
+    "anonymous": 401
+  },
+  "attempts/mechanisms-01/critical_runs/mechanisms-baseline/observations/SEC04-gallery-friends-C.json": {
+    "scenario": "SEC-04",
+    "audience": "friends",
+    "viewer": "C",
+    "status": 404,
+    "anonymous": 401
+  },
+  "attempts/mechanisms-01/critical_runs/mechanisms-baseline/observations/SEC04-gallery-preference-change.json": {
+    "scenario": "SEC-04",
+    "before": 200,
+    "after_revocation": 404,
+    "owner_after_revocation": 200,
+    "scope": "new server requests; already downloaded bytes cannot be remotely erased"
+  },
+  "attempts/mechanisms-01/critical_runs/mechanisms-baseline/observations/SEC04-gallery-private-A.json": {
+    "scenario": "SEC-04",
+    "audience": "private",
+    "viewer": "A",
+    "status": 404,
+    "anonymous": 401
+  },
+  "attempts/mechanisms-01/critical_runs/mechanisms-baseline/observations/SEC04-gallery-private-B.json": {
+    "scenario": "SEC-04",
+    "audience": "private",
+    "viewer": "B",
+    "status": 200,
+    "anonymous": 401
+  },
+  "attempts/mechanisms-01/critical_runs/mechanisms-baseline/observations/SEC04-gallery-private-C.json": {
+    "scenario": "SEC-04",
+    "audience": "private",
+    "viewer": "C",
+    "status": 404,
+    "anonymous": 401
+  },
+  "attempts/mechanisms-01/critical_runs/mechanisms-baseline/observations/SEC04-gallery-public-A.json": {
+    "scenario": "SEC-04",
+    "audience": "public",
+    "viewer": "A",
+    "status": 200,
+    "anonymous": 401
+  },
+  "attempts/mechanisms-01/critical_runs/mechanisms-baseline/observations/SEC04-gallery-public-B.json": {
+    "scenario": "SEC-04",
+    "audience": "public",
+    "viewer": "B",
+    "status": 200,
+    "anonymous": 401
+  },
+  "attempts/mechanisms-01/critical_runs/mechanisms-baseline/observations/SEC04-gallery-public-C.json": {
+    "scenario": "SEC-04",
+    "audience": "public",
+    "viewer": "C",
+    "status": 200,
+    "anonymous": 401
+  },
+  "attempts/mechanisms-01/critical_runs/mechanisms-baseline/observations/SEC09-local-surface.json": {
+    "scenario": "SEC-09",
+    "docs_http": 200,
+    "openapi_http": 200,
+    "cross_origin_preflight_http": 405,
+    "cross_origin_allow_header": false,
+    "default_secret_is_development_placeholder": false,
+    "default_otp_pepper_is_development_placeholder": true,
+    "scope": "frozen app defaults and disposable service only; deployment/reverse-proxy/release settings not certified"
+  },
+  "attempts/mechanisms-03/critical_runs/mechanisms-baseline/observations/LOAD03-distinct-balance-10.json": {
+    "scenario": "LOAD-03",
+    "concurrent_distinct_intents": 10,
+    "successes": 1,
+    "insufficient_balance_conflicts": 9,
+    "remaining_balance": 0,
+    "items": 1,
+    "receipts": 1,
+    "scope": "real HTTP purchases, ownership cap above request count; rejection demonstrably due to funds, not order-queue capacity"
+  },
+  "attempts/mechanisms-03/critical_runs/mechanisms-baseline/observations/LOAD03-distinct-balance-2.json": {
+    "scenario": "LOAD-03",
+    "concurrent_distinct_intents": 2,
+    "successes": 1,
+    "insufficient_balance_conflicts": 1,
+    "remaining_balance": 0,
+    "items": 1,
+    "receipts": 1,
+    "scope": "real HTTP purchases, ownership cap above request count; rejection demonstrably due to funds, not order-queue capacity"
+  },
+  "attempts/mechanisms-03/critical_runs/mechanisms-baseline/observations/LOAD03-distinct-balance-25.json": {
+    "scenario": "LOAD-03",
+    "concurrent_distinct_intents": 25,
+    "successes": 1,
+    "insufficient_balance_conflicts": 24,
+    "remaining_balance": 0,
+    "items": 1,
+    "receipts": 1,
+    "scope": "real HTTP purchases, ownership cap above request count; rejection demonstrably due to funds, not order-queue capacity"
+  },
+  "attempts/pipeline-01/critical_runs/pipeline-baseline/observations/DATA01-photo-sync.json": {
+    "scenario": "DATA-01",
+    "analysis_response_equals_persisted_primary_and_catalog": true,
+    "metadata_changed": true,
+    "forged_analysis_ignored": true,
+    "photo_available_after_sync": true,
+    "pending_recognition_jobs": 1,
+    "provider_calls": 1,
+    "scope": "HTTP/server and fresh DB sessions; mobile local restart is a separate scenario"
+  },
+  "attempts/pipeline-01/critical_runs/pipeline-baseline/observations/IMG05-blur-rule.json": {
+    "scenario": "IMG-05",
+    "blur_score": 0.0,
+    "quality_usable": true,
+    "scope": "current quality rule accepts blur alone; no claim this generated image depicts a cat"
+  },
+  "attempts/pipeline-01/critical_runs/pipeline-baseline/observations/IMG05-http-dark.json": {
+    "scenario": "IMG-05",
+    "variant": "dark",
+    "status": 422,
+    "code": "LOW_QUALITY",
+    "provider_calls": 0,
+    "duplicate_request_single_rejected_eligibility_record": true,
+    "no_accepted_photo_or_analysis": true,
+    "scope": "real exposure check for dark/white; detection/multiple-cat predictions are fake"
+  },
+  "attempts/pipeline-01/critical_runs/pipeline-baseline/observations/IMG05-http-multiple.json": {
+    "scenario": "IMG-05",
+    "variant": "multiple",
+    "status": 422,
+    "code": "MULTIPLE_CATS",
+    "provider_calls": 0,
+    "duplicate_request_single_rejected_eligibility_record": true,
+    "no_accepted_photo_or_analysis": true,
+    "scope": "real exposure check for dark/white; detection/multiple-cat predictions are fake"
+  },
+  "attempts/pipeline-01/critical_runs/pipeline-baseline/observations/IMG05-http-no-cat.json": {
+    "scenario": "IMG-05",
+    "variant": "no-cat",
+    "status": 422,
+    "code": "NOT_A_CAT",
+    "provider_calls": 0,
+    "duplicate_request_single_rejected_eligibility_record": true,
+    "no_accepted_photo_or_analysis": true,
+    "scope": "real exposure check for dark/white; detection/multiple-cat predictions are fake"
+  },
+  "attempts/pipeline-01/critical_runs/pipeline-baseline/observations/IMG05-http-white.json": {
+    "scenario": "IMG-05",
+    "variant": "white",
+    "status": 422,
+    "code": "LOW_QUALITY",
+    "provider_calls": 0,
+    "duplicate_request_single_rejected_eligibility_record": true,
+    "no_accepted_photo_or_analysis": true,
+    "scope": "real exposure check for dark/white; detection/multiple-cat predictions are fake"
+  },
+  "attempts/pipeline-01/critical_runs/pipeline-baseline/observations/LAT08-paused-inference.json": {
+    "scenario": "LAT-08",
+    "parallel_health": 200,
+    "parallel_sync": 200,
+    "parallel_chat": 200,
+    "held_database_connections_at_barrier": 0,
+    "analysis_after_release": 200,
+    "scope": "single bounded functional barrier with fake provider, not capacity or latency percentile evidence"
+  },
+  "attempts/query-plan-01/critical_runs/query-plan-baseline/observations/DB04-sync-plans-2000.json": {
+    "scenario": "DB-04",
+    "catalog_rows": 2000,
+    "history_rows": 20000,
+    "response_rows": 2,
+    "sql_statements": 4,
+    "internal_pull_elapsed_ms_exploratory": 39.72240000439342,
+    "plans": [
+      {
+        "sql": "SELECT sync_changes.revision, sync_changes.user_id, sync_changes.cat_id, sync_changes.created_at \nFROM sync_changes \nWHERE sync_changes.user_id = $1::UUID AND sync_changes.revision > $2::INTEGER ORDER BY sync_changes.revision \n LIMIT $3::INTEGER",
+        "plan": [
+          {
+            "Plan": {
+              "Node Type": "Limit",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 0.29,
+              "Total Cost": 1.16,
+              "Plan Rows": 20,
+              "Plan Width": 44,
+              "Actual Startup Time": 0.031,
+              "Actual Total Time": 0.042,
+              "Actual Rows": 20,
+              "Actual Loops": 1,
+              "Shared Hit Blocks": 3,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Index Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "sync_changes_pkey",
+                  "Relation Name": "sync_changes",
+                  "Alias": "sync_changes",
+                  "Startup Cost": 0.29,
+                  "Total Cost": 874.29,
+                  "Plan Rows": 20000,
+                  "Plan Width": 44,
+                  "Actual Startup Time": 0.029,
+                  "Actual Total Time": 0.037,
+                  "Actual Rows": 20,
+                  "Actual Loops": 1,
+                  "Index Cond": "(revision > 0)",
+                  "Rows Removed by Index Recheck": 0,
+                  "Filter": "(user_id = '480806da-0852-4302-a7b9-dffbf382f837'::uuid)",
+                  "Rows Removed by Filter": 0,
+                  "Shared Hit Blocks": 3,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 3,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 0.208,
+            "Triggers": [],
+            "Execution Time": 0.073
+          }
+        ]
+      },
+      {
+        "sql": "SELECT cats.id, cats.user_id, cats.client_id, cats.payload, cats.analysis, cats.photo_key, cats.photo_hash, cats.photo_content_type, cats.client_updated_at, cats.updated_by_device, cats.deleted_at, cats.created_at, cats.server_updated_at \nFROM cats \nWHERE cats.id IN ($1::UUID, $2::UUID)",
+        "plan": [
+          {
+            "Plan": {
+              "Node Type": "Bitmap Heap Scan",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "cats",
+              "Alias": "cats",
+              "Startup Cost": 8.57,
+              "Total Cost": 15.2,
+              "Plan Rows": 2,
+              "Plan Width": 1078,
+              "Actual Startup Time": 0.039,
+              "Actual Total Time": 0.041,
+              "Actual Rows": 2,
+              "Actual Loops": 1,
+              "Recheck Cond": "(id = ANY ('{5d01b657-0fde-581a-9c47-470267b71279,64484868-6dd8-5fd3-b51a-aeabc4b645c4}'::uuid[]))",
+              "Rows Removed by Index Recheck": 0,
+              "Exact Heap Blocks": 1,
+              "Lossy Heap Blocks": 0,
+              "Shared Hit Blocks": 3,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Bitmap Index Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Index Name": "cats_pkey",
+                  "Startup Cost": 0.0,
+                  "Total Cost": 8.57,
+                  "Plan Rows": 2,
+                  "Plan Width": 0,
+                  "Actual Startup Time": 0.025,
+                  "Actual Total Time": 0.025,
+                  "Actual Rows": 2,
+                  "Actual Loops": 1,
+                  "Index Cond": "(id = ANY ('{5d01b657-0fde-581a-9c47-470267b71279,64484868-6dd8-5fd3-b51a-aeabc4b645c4}'::uuid[]))",
+                  "Shared Hit Blocks": 2,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 0,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 0.165,
+            "Triggers": [],
+            "Execution Time": 0.073
+          }
+        ]
+      },
+      {
+        "sql": "SELECT sync_changes.cat_id, max(sync_changes.revision) AS max_1 \nFROM sync_changes \nWHERE sync_changes.cat_id IN ($1::UUID, $2::UUID) GROUP BY sync_changes.cat_id",
+        "plan": [
+          {
+            "Plan": {
+              "Node Type": "Aggregate",
+              "Strategy": "Sorted",
+              "Partial Mode": "Simple",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 67.24,
+              "Total Cost": 67.59,
+              "Plan Rows": 20,
+              "Plan Width": 20,
+              "Actual Startup Time": 0.071,
+              "Actual Total Time": 0.075,
+              "Actual Rows": 2,
+              "Actual Loops": 1,
+              "Group Key": [
+                "cat_id"
+              ],
+              "Shared Hit Blocks": 5,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Sort",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Startup Cost": 67.24,
+                  "Total Cost": 67.29,
+                  "Plan Rows": 20,
+                  "Plan Width": 20,
+                  "Actual Startup Time": 0.061,
+                  "Actual Total Time": 0.063,
+                  "Actual Rows": 20,
+                  "Actual Loops": 1,
+                  "Sort Key": [
+                    "cat_id"
+                  ],
+                  "Sort Method": "quicksort",
+                  "Sort Space Used": 25,
+                  "Sort Space Type": "Memory",
+                  "Shared Hit Blocks": 5,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0,
+                  "Plans": [
+                    {
+                      "Node Type": "Bitmap Heap Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Relation Name": "sync_changes",
+                      "Alias": "sync_changes",
+                      "Startup Cost": 8.73,
+                      "Total Cost": 66.81,
+                      "Plan Rows": 20,
+                      "Plan Width": 20,
+                      "Actual Startup Time": 0.042,
+                      "Actual Total Time": 0.046,
+                      "Actual Rows": 20,
+                      "Actual Loops": 1,
+                      "Recheck Cond": "(cat_id = ANY ('{5d01b657-0fde-581a-9c47-470267b71279,64484868-6dd8-5fd3-b51a-aeabc4b645c4}'::uuid[]))",
+                      "Rows Removed by Index Recheck": 0,
+                      "Exact Heap Blocks": 1,
+                      "Lossy Heap Blocks": 0,
+                      "Shared Hit Blocks": 5,
+                      "Shared Read Blocks": 0,
+                      "Shared Dirtied Blocks": 0,
+                      "Shared Written Blocks": 0,
+                      "Local Hit Blocks": 0,
+                      "Local Read Blocks": 0,
+                      "Local Dirtied Blocks": 0,
+                      "Local Written Blocks": 0,
+                      "Temp Read Blocks": 0,
+                      "Temp Written Blocks": 0,
+                      "Plans": [
+                        {
+                          "Node Type": "Bitmap Index Scan",
+                          "Parent Relationship": "Outer",
+                          "Parallel Aware": false,
+                          "Async Capable": false,
+                          "Index Name": "ix_sync_changes_cat_id",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 8.72,
+                          "Plan Rows": 20,
+                          "Plan Width": 0,
+                          "Actual Startup Time": 0.027,
+                          "Actual Total Time": 0.028,
+                          "Actual Rows": 20,
+                          "Actual Loops": 1,
+                          "Index Cond": "(cat_id = ANY ('{5d01b657-0fde-581a-9c47-470267b71279,64484868-6dd8-5fd3-b51a-aeabc4b645c4}'::uuid[]))",
+                          "Shared Hit Blocks": 4,
+                          "Shared Read Blocks": 0,
+                          "Shared Dirtied Blocks": 0,
+                          "Shared Written Blocks": 0,
+                          "Local Hit Blocks": 0,
+                          "Local Read Blocks": 0,
+                          "Local Dirtied Blocks": 0,
+                          "Local Written Blocks": 0,
+                          "Temp Read Blocks": 0,
+                          "Temp Written Blocks": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 0,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 0.167,
+            "Triggers": [],
+            "Execution Time": 0.126
+          }
+        ]
+      },
+      {
+        "sql": "SELECT cat_photos.id, cat_photos.cat_id, cat_photos.kind, cat_photos.storage_key, cat_photos.content_hash, cat_photos.content_type, cat_photos.status, cat_photos.analysis, cat_photos.deleted_at, cat_photos.created_at, cat_photos.updated_at \nFROM cat_photos \nWHERE cat_photos.cat_id IN ($1::UUID, $2::UUID) AND cat_photos.kind IN ($3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR) AND cat_photos.deleted_at IS NULL",
+        "plan": [
+          {
+            "Plan": {
+              "Node Type": "Seq Scan",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "cat_photos",
+              "Alias": "cat_photos",
+              "Startup Cost": 0.0,
+              "Total Cost": 0.0,
+              "Plan Rows": 1,
+              "Plan Width": 1156,
+              "Actual Startup Time": 0.009,
+              "Actual Total Time": 0.01,
+              "Actual Rows": 0,
+              "Actual Loops": 1,
+              "Filter": "((deleted_at IS NULL) AND (cat_id = ANY ('{5d01b657-0fde-581a-9c47-470267b71279,64484868-6dd8-5fd3-b51a-aeabc4b645c4}'::uuid[])) AND ((kind)::text = ANY ('{front,left,right,back}'::text[])))",
+              "Rows Removed by Filter": 0,
+              "Shared Hit Blocks": 0,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning": {
+              "Shared Hit Blocks": 3,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 0.165,
+            "Triggers": [],
+            "Execution Time": 0.034
+          }
+        ]
+      }
+    ],
+    "scope": "single EXPLAIN sample per SQL shape, real migrated disposable schema and refreshed statistics; not definitive latency improvement or all query families"
+  },
+  "attempts/query-plan-01/critical_runs/query-plan-baseline/observations/DB04-sync-plans-40.json": {
+    "scenario": "DB-04",
+    "catalog_rows": 40,
+    "history_rows": 400,
+    "response_rows": 2,
+    "sql_statements": 4,
+    "internal_pull_elapsed_ms_exploratory": 181.770700000925,
+    "plans": [
+      {
+        "sql": "SELECT sync_changes.revision, sync_changes.user_id, sync_changes.cat_id, sync_changes.created_at \nFROM sync_changes \nWHERE sync_changes.user_id = $1::UUID AND sync_changes.revision > $2::INTEGER ORDER BY sync_changes.revision \n LIMIT $3::INTEGER",
+        "plan": [
+          {
+            "Plan": {
+              "Node Type": "Limit",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 0.15,
+              "Total Cost": 1.3,
+              "Plan Rows": 20,
+              "Plan Width": 44,
+              "Actual Startup Time": 0.043,
+              "Actual Total Time": 0.054,
+              "Actual Rows": 20,
+              "Actual Loops": 1,
+              "Shared Hit Blocks": 2,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Index Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "sync_changes_pkey",
+                  "Relation Name": "sync_changes",
+                  "Alias": "sync_changes",
+                  "Startup Cost": 0.15,
+                  "Total Cost": 23.15,
+                  "Plan Rows": 400,
+                  "Plan Width": 44,
+                  "Actual Startup Time": 0.041,
+                  "Actual Total Time": 0.049,
+                  "Actual Rows": 20,
+                  "Actual Loops": 1,
+                  "Index Cond": "(revision > 0)",
+                  "Rows Removed by Index Recheck": 0,
+                  "Filter": "(user_id = 'e335d44f-f076-4db9-9311-30439e2e0ad6'::uuid)",
+                  "Rows Removed by Filter": 0,
+                  "Shared Hit Blocks": 2,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 2,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 0.432,
+            "Triggers": [],
+            "Execution Time": 0.111
+          }
+        ]
+      },
+      {
+        "sql": "SELECT cats.id, cats.user_id, cats.client_id, cats.payload, cats.analysis, cats.photo_key, cats.photo_hash, cats.photo_content_type, cats.client_updated_at, cats.updated_by_device, cats.deleted_at, cats.created_at, cats.server_updated_at \nFROM cats \nWHERE cats.id IN ($1::UUID, $2::UUID)",
+        "plan": [
+          {
+            "Plan": {
+              "Node Type": "Seq Scan",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "cats",
+              "Alias": "cats",
+              "Startup Cost": 0.0,
+              "Total Cost": 1.5,
+              "Plan Rows": 2,
+              "Plan Width": 1078,
+              "Actual Startup Time": 0.021,
+              "Actual Total Time": 0.027,
+              "Actual Rows": 2,
+              "Actual Loops": 1,
+              "Filter": "(id = ANY ('{5d01b657-0fde-581a-9c47-470267b71279,64484868-6dd8-5fd3-b51a-aeabc4b645c4}'::uuid[]))",
+              "Rows Removed by Filter": 38,
+              "Shared Hit Blocks": 1,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning": {
+              "Shared Hit Blocks": 0,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 0.14,
+            "Triggers": [],
+            "Execution Time": 0.049
+          }
+        ]
+      },
+      {
+        "sql": "SELECT sync_changes.cat_id, max(sync_changes.revision) AS max_1 \nFROM sync_changes \nWHERE sync_changes.cat_id IN ($1::UUID, $2::UUID) GROUP BY sync_changes.cat_id",
+        "plan": [
+          {
+            "Plan": {
+              "Node Type": "Aggregate",
+              "Strategy": "Hashed",
+              "Partial Mode": "Simple",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 8.65,
+              "Total Cost": 8.81,
+              "Plan Rows": 16,
+              "Plan Width": 20,
+              "Actual Startup Time": 0.068,
+              "Actual Total Time": 0.07,
+              "Actual Rows": 2,
+              "Actual Loops": 1,
+              "Group Key": [
+                "cat_id"
+              ],
+              "Planned Partitions": 0,
+              "HashAgg Batches": 1,
+              "Peak Memory Usage": 24,
+              "Disk Usage": 0,
+              "Shared Hit Blocks": 2,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Bitmap Heap Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Relation Name": "sync_changes",
+                  "Alias": "sync_changes",
+                  "Startup Cost": 4.3,
+                  "Total Cost": 8.55,
+                  "Plan Rows": 20,
+                  "Plan Width": 20,
+                  "Actual Startup Time": 0.047,
+                  "Actual Total Time": 0.05,
+                  "Actual Rows": 20,
+                  "Actual Loops": 1,
+                  "Recheck Cond": "(cat_id = ANY ('{5d01b657-0fde-581a-9c47-470267b71279,64484868-6dd8-5fd3-b51a-aeabc4b645c4}'::uuid[]))",
+                  "Rows Removed by Index Recheck": 0,
+                  "Exact Heap Blocks": 1,
+                  "Lossy Heap Blocks": 0,
+                  "Shared Hit Blocks": 2,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0,
+                  "Plans": [
+                    {
+                      "Node Type": "Bitmap Index Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Index Name": "ix_sync_changes_cat_id",
+                      "Startup Cost": 0.0,
+                      "Total Cost": 4.3,
+                      "Plan Rows": 20,
+                      "Plan Width": 0,
+                      "Actual Startup Time": 0.023,
+                      "Actual Total Time": 0.023,
+                      "Actual Rows": 20,
+                      "Actual Loops": 1,
+                      "Index Cond": "(cat_id = ANY ('{5d01b657-0fde-581a-9c47-470267b71279,64484868-6dd8-5fd3-b51a-aeabc4b645c4}'::uuid[]))",
+                      "Shared Hit Blocks": 1,
+                      "Shared Read Blocks": 0,
+                      "Shared Dirtied Blocks": 0,
+                      "Shared Written Blocks": 0,
+                      "Local Hit Blocks": 0,
+                      "Local Read Blocks": 0,
+                      "Local Dirtied Blocks": 0,
+                      "Local Written Blocks": 0,
+                      "Temp Read Blocks": 0,
+                      "Temp Written Blocks": 0
+                    }
+                  ]
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 0,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 0.158,
+            "Triggers": [],
+            "Execution Time": 0.186
+          }
+        ]
+      },
+      {
+        "sql": "SELECT cat_photos.id, cat_photos.cat_id, cat_photos.kind, cat_photos.storage_key, cat_photos.content_hash, cat_photos.content_type, cat_photos.status, cat_photos.analysis, cat_photos.deleted_at, cat_photos.created_at, cat_photos.updated_at \nFROM cat_photos \nWHERE cat_photos.cat_id IN ($1::UUID, $2::UUID) AND cat_photos.kind IN ($3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR) AND cat_photos.deleted_at IS NULL",
+        "plan": [
+          {
+            "Plan": {
+              "Node Type": "Seq Scan",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "cat_photos",
+              "Alias": "cat_photos",
+              "Startup Cost": 0.0,
+              "Total Cost": 0.0,
+              "Plan Rows": 1,
+              "Plan Width": 1156,
+              "Actual Startup Time": 0.012,
+              "Actual Total Time": 0.012,
+              "Actual Rows": 0,
+              "Actual Loops": 1,
+              "Filter": "((deleted_at IS NULL) AND (cat_id = ANY ('{5d01b657-0fde-581a-9c47-470267b71279,64484868-6dd8-5fd3-b51a-aeabc4b645c4}'::uuid[])) AND ((kind)::text = ANY ('{front,left,right,back}'::text[])))",
+              "Rows Removed by Filter": 0,
+              "Shared Hit Blocks": 0,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning": {
+              "Shared Hit Blocks": 3,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 0.221,
+            "Triggers": [],
+            "Execution Time": 0.042
+          }
+        ]
+      }
+    ],
+    "scope": "single EXPLAIN sample per SQL shape, real migrated disposable schema and refreshed statistics; not definitive latency improvement or all query families"
+  },
+  "attempts/query-plan-01/critical_runs/query-plan-baseline/observations/DB04-sync-plans-500.json": {
+    "scenario": "DB-04",
+    "catalog_rows": 500,
+    "history_rows": 5000,
+    "response_rows": 2,
+    "sql_statements": 4,
+    "internal_pull_elapsed_ms_exploratory": 32.482900001923554,
+    "plans": [
+      {
+        "sql": "SELECT sync_changes.revision, sync_changes.user_id, sync_changes.cat_id, sync_changes.created_at \nFROM sync_changes \nWHERE sync_changes.user_id = $1::UUID AND sync_changes.revision > $2::INTEGER ORDER BY sync_changes.revision \n LIMIT $3::INTEGER",
+        "plan": [
+          {
+            "Plan": {
+              "Node Type": "Limit",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 0.28,
+              "Total Cost": 1.17,
+              "Plan Rows": 20,
+              "Plan Width": 44,
+              "Actual Startup Time": 0.025,
+              "Actual Total Time": 0.037,
+              "Actual Rows": 20,
+              "Actual Loops": 1,
+              "Shared Hit Blocks": 4,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Index Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Scan Direction": "Forward",
+                  "Index Name": "sync_changes_pkey",
+                  "Relation Name": "sync_changes",
+                  "Alias": "sync_changes",
+                  "Startup Cost": 0.28,
+                  "Total Cost": 222.28,
+                  "Plan Rows": 5000,
+                  "Plan Width": 44,
+                  "Actual Startup Time": 0.024,
+                  "Actual Total Time": 0.032,
+                  "Actual Rows": 20,
+                  "Actual Loops": 1,
+                  "Index Cond": "(revision > 0)",
+                  "Rows Removed by Index Recheck": 0,
+                  "Filter": "(user_id = '3625b9ac-850d-4aa8-a09b-8d2b5314aba5'::uuid)",
+                  "Rows Removed by Filter": 0,
+                  "Shared Hit Blocks": 4,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 4,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 0.183,
+            "Triggers": [],
+            "Execution Time": 0.058
+          }
+        ]
+      },
+      {
+        "sql": "SELECT cats.id, cats.user_id, cats.client_id, cats.payload, cats.analysis, cats.photo_key, cats.photo_hash, cats.photo_content_type, cats.client_updated_at, cats.updated_by_device, cats.deleted_at, cats.created_at, cats.server_updated_at \nFROM cats \nWHERE cats.id IN ($1::UUID, $2::UUID)",
+        "plan": [
+          {
+            "Plan": {
+              "Node Type": "Bitmap Heap Scan",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "cats",
+              "Alias": "cats",
+              "Startup Cost": 8.56,
+              "Total Cost": 13.9,
+              "Plan Rows": 2,
+              "Plan Width": 1078,
+              "Actual Startup Time": 0.034,
+              "Actual Total Time": 0.035,
+              "Actual Rows": 2,
+              "Actual Loops": 1,
+              "Recheck Cond": "(id = ANY ('{5d01b657-0fde-581a-9c47-470267b71279,64484868-6dd8-5fd3-b51a-aeabc4b645c4}'::uuid[]))",
+              "Rows Removed by Index Recheck": 0,
+              "Exact Heap Blocks": 1,
+              "Lossy Heap Blocks": 0,
+              "Shared Hit Blocks": 3,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Bitmap Index Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Index Name": "cats_pkey",
+                  "Startup Cost": 0.0,
+                  "Total Cost": 8.56,
+                  "Plan Rows": 2,
+                  "Plan Width": 0,
+                  "Actual Startup Time": 0.023,
+                  "Actual Total Time": 0.024,
+                  "Actual Rows": 2,
+                  "Actual Loops": 1,
+                  "Index Cond": "(id = ANY ('{5d01b657-0fde-581a-9c47-470267b71279,64484868-6dd8-5fd3-b51a-aeabc4b645c4}'::uuid[]))",
+                  "Shared Hit Blocks": 2,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 0,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 0.138,
+            "Triggers": [],
+            "Execution Time": 0.058
+          }
+        ]
+      },
+      {
+        "sql": "SELECT sync_changes.cat_id, max(sync_changes.revision) AS max_1 \nFROM sync_changes \nWHERE sync_changes.cat_id IN ($1::UUID, $2::UUID) GROUP BY sync_changes.cat_id",
+        "plan": [
+          {
+            "Plan": {
+              "Node Type": "Aggregate",
+              "Strategy": "Hashed",
+              "Partial Mode": "Simple",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 47.63,
+              "Total Cost": 47.83,
+              "Plan Rows": 20,
+              "Plan Width": 20,
+              "Actual Startup Time": 0.063,
+              "Actual Total Time": 0.065,
+              "Actual Rows": 2,
+              "Actual Loops": 1,
+              "Group Key": [
+                "cat_id"
+              ],
+              "Planned Partitions": 0,
+              "HashAgg Batches": 1,
+              "Peak Memory Usage": 24,
+              "Disk Usage": 0,
+              "Shared Hit Blocks": 4,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Bitmap Heap Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Relation Name": "sync_changes",
+                  "Alias": "sync_changes",
+                  "Startup Cost": 8.72,
+                  "Total Cost": 47.53,
+                  "Plan Rows": 20,
+                  "Plan Width": 20,
+                  "Actual Startup Time": 0.044,
+                  "Actual Total Time": 0.047,
+                  "Actual Rows": 20,
+                  "Actual Loops": 1,
+                  "Recheck Cond": "(cat_id = ANY ('{5d01b657-0fde-581a-9c47-470267b71279,64484868-6dd8-5fd3-b51a-aeabc4b645c4}'::uuid[]))",
+                  "Rows Removed by Index Recheck": 0,
+                  "Exact Heap Blocks": 2,
+                  "Lossy Heap Blocks": 0,
+                  "Shared Hit Blocks": 4,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0,
+                  "Plans": [
+                    {
+                      "Node Type": "Bitmap Index Scan",
+                      "Parent Relationship": "Outer",
+                      "Parallel Aware": false,
+                      "Async Capable": false,
+                      "Index Name": "ix_sync_changes_cat_id",
+                      "Startup Cost": 0.0,
+                      "Total Cost": 8.71,
+                      "Plan Rows": 20,
+                      "Plan Width": 0,
+                      "Actual Startup Time": 0.027,
+                      "Actual Total Time": 0.027,
+                      "Actual Rows": 40,
+                      "Actual Loops": 1,
+                      "Index Cond": "(cat_id = ANY ('{5d01b657-0fde-581a-9c47-470267b71279,64484868-6dd8-5fd3-b51a-aeabc4b645c4}'::uuid[]))",
+                      "Shared Hit Blocks": 2,
+                      "Shared Read Blocks": 0,
+                      "Shared Dirtied Blocks": 0,
+                      "Shared Written Blocks": 0,
+                      "Local Hit Blocks": 0,
+                      "Local Read Blocks": 0,
+                      "Local Dirtied Blocks": 0,
+                      "Local Written Blocks": 0,
+                      "Temp Read Blocks": 0,
+                      "Temp Written Blocks": 0
+                    }
+                  ]
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 0,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 0.148,
+            "Triggers": [],
+            "Execution Time": 0.156
+          }
+        ]
+      },
+      {
+        "sql": "SELECT cat_photos.id, cat_photos.cat_id, cat_photos.kind, cat_photos.storage_key, cat_photos.content_hash, cat_photos.content_type, cat_photos.status, cat_photos.analysis, cat_photos.deleted_at, cat_photos.created_at, cat_photos.updated_at \nFROM cat_photos \nWHERE cat_photos.cat_id IN ($1::UUID, $2::UUID) AND cat_photos.kind IN ($3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR) AND cat_photos.deleted_at IS NULL",
+        "plan": [
+          {
+            "Plan": {
+              "Node Type": "Seq Scan",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "cat_photos",
+              "Alias": "cat_photos",
+              "Startup Cost": 0.0,
+              "Total Cost": 0.0,
+              "Plan Rows": 1,
+              "Plan Width": 1156,
+              "Actual Startup Time": 0.009,
+              "Actual Total Time": 0.01,
+              "Actual Rows": 0,
+              "Actual Loops": 1,
+              "Filter": "((deleted_at IS NULL) AND (cat_id = ANY ('{5d01b657-0fde-581a-9c47-470267b71279,64484868-6dd8-5fd3-b51a-aeabc4b645c4}'::uuid[])) AND ((kind)::text = ANY ('{front,left,right,back}'::text[])))",
+              "Rows Removed by Filter": 0,
+              "Shared Hit Blocks": 0,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning": {
+              "Shared Hit Blocks": 3,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 0.151,
+            "Triggers": [],
+            "Execution Time": 0.06
+          }
+        ]
+      }
+    ],
+    "scope": "single EXPLAIN sample per SQL shape, real migrated disposable schema and refreshed statistics; not definitive latency improvement or all query families"
+  },
+  "attempts/social-volume-01/critical_runs/social-volume-baseline/observations/DB03-conversations-repeated-1.json": {
+    "scenario": "DB-03",
+    "conversations": 1,
+    "authors": "repeated",
+    "samples": [
+      {
+        "warmup": true,
+        "sql_selects": 7,
+        "elapsed_ms_exploratory": 491.39820000164036,
+        "response_bytes": 717,
+        "cpu_seconds_delta": 0.359375,
+        "rss_bytes": 145395712
+      },
+      {
+        "warmup": false,
+        "sql_selects": 7,
+        "elapsed_ms_exploratory": 49.03329999979178,
+        "response_bytes": 717,
+        "cpu_seconds_delta": 0.03125,
+        "rss_bytes": 145461248
+      },
+      {
+        "warmup": false,
+        "sql_selects": 7,
+        "elapsed_ms_exploratory": 46.64030000094499,
+        "response_bytes": 717,
+        "cpu_seconds_delta": 0.03125,
+        "rss_bytes": 145481728
+      }
+    ],
+    "integrity": "all own, no foreign, unread preserved",
+    "interpretation": "SQL structural probe; three requests do not estimate reliable tails or latency gains"
+  },
+  "attempts/social-volume-01/critical_runs/social-volume-baseline/observations/DB03-conversations-repeated-100.json": {
+    "scenario": "DB-03",
+    "conversations": 100,
+    "authors": "repeated",
+    "samples": [
+      {
+        "warmup": true,
+        "sql_selects": 304,
+        "elapsed_ms_exploratory": 1632.0906999990257,
+        "response_bytes": 71601,
+        "cpu_seconds_delta": 0.796875,
+        "rss_bytes": 147415040
+      },
+      {
+        "warmup": false,
+        "sql_selects": 304,
+        "elapsed_ms_exploratory": 1996.0241000007954,
+        "response_bytes": 71601,
+        "cpu_seconds_delta": 0.890625,
+        "rss_bytes": 147566592
+      },
+      {
+        "warmup": false,
+        "sql_selects": 304,
+        "elapsed_ms_exploratory": 1639.109700001427,
+        "response_bytes": 71601,
+        "cpu_seconds_delta": 0.765625,
+        "rss_bytes": 147668992
+      }
+    ],
+    "integrity": "all own, no foreign, unread preserved",
+    "interpretation": "SQL structural probe; three requests do not estimate reliable tails or latency gains"
+  },
+  "attempts/social-volume-01/critical_runs/social-volume-baseline/observations/DB03-conversations-repeated-20.json": {
+    "scenario": "DB-03",
+    "conversations": 20,
+    "authors": "repeated",
+    "samples": [
+      {
+        "warmup": true,
+        "sql_selects": 64,
+        "elapsed_ms_exploratory": 506.47509999907925,
+        "response_bytes": 14321,
+        "cpu_seconds_delta": 0.265625,
+        "rss_bytes": 146247680
+      },
+      {
+        "warmup": false,
+        "sql_selects": 64,
+        "elapsed_ms_exploratory": 649.8152000003756,
+        "response_bytes": 14321,
+        "cpu_seconds_delta": 0.15625,
+        "rss_bytes": 146272256
+      },
+      {
+        "warmup": false,
+        "sql_selects": 64,
+        "elapsed_ms_exploratory": 803.6320000010164,
+        "response_bytes": 14321,
+        "cpu_seconds_delta": 0.109375,
+        "rss_bytes": 146313216
+      }
+    ],
+    "integrity": "all own, no foreign, unread preserved",
+    "interpretation": "SQL structural probe; three requests do not estimate reliable tails or latency gains"
+  },
+  "attempts/social-volume-01/critical_runs/social-volume-baseline/observations/DB03-feed-repeated-1.json": {
+    "scenario": "DB-03",
+    "posts": 1,
+    "authors": "repeated",
+    "samples": [
+      {
+        "warmup": true,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 56.24609999904351,
+        "response_bytes": 225,
+        "cpu_seconds_delta": 0.015625,
+        "rss_bytes": 177692672
+      },
+      {
+        "warmup": false,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 35.374000000956585,
+        "response_bytes": 225,
+        "cpu_seconds_delta": 0.015625,
+        "rss_bytes": 177692672
+      },
+      {
+        "warmup": false,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 34.273000001121545,
+        "response_bytes": 225,
+        "cpu_seconds_delta": 0.0,
+        "rss_bytes": 177692672
+      }
+    ],
+    "equal_timestamp_tiebreak": true,
+    "no_omission_or_duplicates": true,
+    "interpretation": "SQL structural probe; three requests do not estimate reliable tails"
+  },
+  "attempts/social-volume-01/critical_runs/social-volume-baseline/observations/DB03-feed-repeated-100.json": {
+    "scenario": "DB-03",
+    "posts": 100,
+    "authors": "repeated",
+    "samples": [
+      {
+        "warmup": true,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 48.31709999962186,
+        "response_bytes": 22401,
+        "cpu_seconds_delta": 0.03125,
+        "rss_bytes": 177844224
+      },
+      {
+        "warmup": false,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 35.33850000167149,
+        "response_bytes": 22401,
+        "cpu_seconds_delta": 0.015625,
+        "rss_bytes": 177844224
+      },
+      {
+        "warmup": false,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 40.62599999997474,
+        "response_bytes": 22401,
+        "cpu_seconds_delta": 0.015625,
+        "rss_bytes": 177844224
+      }
+    ],
+    "equal_timestamp_tiebreak": true,
+    "no_omission_or_duplicates": true,
+    "interpretation": "SQL structural probe; three requests do not estimate reliable tails"
+  },
+  "attempts/social-volume-01/critical_runs/social-volume-baseline/observations/DB03-feed-repeated-20.json": {
+    "scenario": "DB-03",
+    "posts": 20,
+    "authors": "repeated",
+    "samples": [
+      {
+        "warmup": true,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 145.7436000000598,
+        "response_bytes": 4481,
+        "cpu_seconds_delta": 0.03125,
+        "rss_bytes": 177840128
+      },
+      {
+        "warmup": false,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 92.96139999969455,
+        "response_bytes": 4481,
+        "cpu_seconds_delta": 0.03125,
+        "rss_bytes": 177840128
+      },
+      {
+        "warmup": false,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 104.81430000072578,
+        "response_bytes": 4481,
+        "cpu_seconds_delta": 0.015625,
+        "rss_bytes": 177840128
+      }
+    ],
+    "equal_timestamp_tiebreak": true,
+    "no_omission_or_duplicates": true,
+    "interpretation": "SQL structural probe; three requests do not estimate reliable tails"
+  },
+  "attempts/social-volume-01/critical_runs/social-volume-baseline/observations/SEC04-feed-revocation-pages.json": {
+    "scenario": "SEC-04",
+    "initial_friend_rows": 3,
+    "after_revocation_public_rows": 5,
+    "private_scan_rows": 35,
+    "foreign_canary_absent": true,
+    "scope": "post privacy and friendship change; gallery preference and report lifecycle tested separately"
+  },
+  "attempts/social-volume-02/critical_runs/social-volume-baseline/observations/DB03-conversations-distinct-1.json": {
+    "scenario": "DB-03",
+    "conversations": 1,
+    "authors": "distinct",
+    "samples": [
+      {
+        "warmup": true,
+        "sql_selects": 7,
+        "elapsed_ms_exploratory": 39.54450000128418,
+        "response_bytes": 739,
+        "cpu_seconds_delta": 0.015625,
+        "rss_bytes": 147648512
+      },
+      {
+        "warmup": false,
+        "sql_selects": 7,
+        "elapsed_ms_exploratory": 21.72479999899224,
+        "response_bytes": 739,
+        "cpu_seconds_delta": 0.015625,
+        "rss_bytes": 147652608
+      },
+      {
+        "warmup": false,
+        "sql_selects": 7,
+        "elapsed_ms_exploratory": 21.97870000054536,
+        "response_bytes": 739,
+        "cpu_seconds_delta": 0.0,
+        "rss_bytes": 147656704
+      }
+    ],
+    "integrity": "all own, no foreign, unread preserved",
+    "interpretation": "SQL structural probe; three requests do not estimate reliable tails or latency gains"
+  },
+  "attempts/social-volume-02/critical_runs/social-volume-baseline/observations/DB03-conversations-distinct-100.json": {
+    "scenario": "DB-03",
+    "conversations": 100,
+    "authors": "distinct",
+    "samples": [
+      {
+        "warmup": true,
+        "sql_selects": 304,
+        "elapsed_ms_exploratory": 804.5180999997683,
+        "response_bytes": 73801,
+        "cpu_seconds_delta": 0.5,
+        "rss_bytes": 149274624
+      },
+      {
+        "warmup": false,
+        "sql_selects": 304,
+        "elapsed_ms_exploratory": 859.4696000000113,
+        "response_bytes": 73801,
+        "cpu_seconds_delta": 0.5,
+        "rss_bytes": 149331968
+      },
+      {
+        "warmup": false,
+        "sql_selects": 304,
+        "elapsed_ms_exploratory": 848.6659999998665,
+        "response_bytes": 73801,
+        "cpu_seconds_delta": 0.53125,
+        "rss_bytes": 149471232
+      }
+    ],
+    "integrity": "all own, no foreign, unread preserved",
+    "interpretation": "SQL structural probe; three requests do not estimate reliable tails or latency gains"
+  },
+  "attempts/social-volume-02/critical_runs/social-volume-baseline/observations/DB03-conversations-distinct-20.json": {
+    "scenario": "DB-03",
+    "conversations": 20,
+    "authors": "distinct",
+    "samples": [
+      {
+        "warmup": true,
+        "sql_selects": 64,
+        "elapsed_ms_exploratory": 308.68919999920763,
+        "response_bytes": 14761,
+        "cpu_seconds_delta": 0.140625,
+        "rss_bytes": 148127744
+      },
+      {
+        "warmup": false,
+        "sql_selects": 64,
+        "elapsed_ms_exploratory": 279.1572999994969,
+        "response_bytes": 14761,
+        "cpu_seconds_delta": 0.234375,
+        "rss_bytes": 148164608
+      },
+      {
+        "warmup": false,
+        "sql_selects": 64,
+        "elapsed_ms_exploratory": 168.37190000114788,
+        "response_bytes": 14761,
+        "cpu_seconds_delta": 0.125,
+        "rss_bytes": 148217856
+      }
+    ],
+    "integrity": "all own, no foreign, unread preserved",
+    "interpretation": "SQL structural probe; three requests do not estimate reliable tails or latency gains"
+  },
+  "attempts/social-volume-02/critical_runs/social-volume-baseline/observations/DB03-conversations-repeated-1.json": {
+    "scenario": "DB-03",
+    "conversations": 1,
+    "authors": "repeated",
+    "samples": [
+      {
+        "warmup": true,
+        "sql_selects": 7,
+        "elapsed_ms_exploratory": 166.6423999995459,
+        "response_bytes": 717,
+        "cpu_seconds_delta": 0.140625,
+        "rss_bytes": 145375232
+      },
+      {
+        "warmup": false,
+        "sql_selects": 7,
+        "elapsed_ms_exploratory": 29.60950000124285,
+        "response_bytes": 717,
+        "cpu_seconds_delta": 0.03125,
+        "rss_bytes": 145403904
+      },
+      {
+        "warmup": false,
+        "sql_selects": 7,
+        "elapsed_ms_exploratory": 28.084300000045914,
+        "response_bytes": 717,
+        "cpu_seconds_delta": 0.015625,
+        "rss_bytes": 145494016
+      }
+    ],
+    "integrity": "all own, no foreign, unread preserved",
+    "interpretation": "SQL structural probe; three requests do not estimate reliable tails or latency gains"
+  },
+  "attempts/social-volume-02/critical_runs/social-volume-baseline/observations/DB03-conversations-repeated-100.json": {
+    "scenario": "DB-03",
+    "conversations": 100,
+    "authors": "repeated",
+    "samples": [
+      {
+        "warmup": true,
+        "sql_selects": 304,
+        "elapsed_ms_exploratory": 923.8096999997651,
+        "response_bytes": 71601,
+        "cpu_seconds_delta": 0.5,
+        "rss_bytes": 147296256
+      },
+      {
+        "warmup": false,
+        "sql_selects": 304,
+        "elapsed_ms_exploratory": 1369.3044999999984,
+        "response_bytes": 71601,
+        "cpu_seconds_delta": 0.703125,
+        "rss_bytes": 147456000
+      },
+      {
+        "warmup": false,
+        "sql_selects": 304,
+        "elapsed_ms_exploratory": 905.8707999993203,
+        "response_bytes": 71601,
+        "cpu_seconds_delta": 0.421875,
+        "rss_bytes": 147570688
+      }
+    ],
+    "integrity": "all own, no foreign, unread preserved",
+    "interpretation": "SQL structural probe; three requests do not estimate reliable tails or latency gains"
+  },
+  "attempts/social-volume-02/critical_runs/social-volume-baseline/observations/DB03-conversations-repeated-20.json": {
+    "scenario": "DB-03",
+    "conversations": 20,
+    "authors": "repeated",
+    "samples": [
+      {
+        "warmup": true,
+        "sql_selects": 64,
+        "elapsed_ms_exploratory": 194.96460000118532,
+        "response_bytes": 14321,
+        "cpu_seconds_delta": 0.109375,
+        "rss_bytes": 146198528
+      },
+      {
+        "warmup": false,
+        "sql_selects": 64,
+        "elapsed_ms_exploratory": 177.85420000109298,
+        "response_bytes": 14321,
+        "cpu_seconds_delta": 0.109375,
+        "rss_bytes": 146223104
+      },
+      {
+        "warmup": false,
+        "sql_selects": 64,
+        "elapsed_ms_exploratory": 215.52840000003926,
+        "response_bytes": 14321,
+        "cpu_seconds_delta": 0.140625,
+        "rss_bytes": 146276352
+      }
+    ],
+    "integrity": "all own, no foreign, unread preserved",
+    "interpretation": "SQL structural probe; three requests do not estimate reliable tails or latency gains"
+  },
+  "attempts/social-volume-02/critical_runs/social-volume-baseline/observations/DB03-feed-distinct-1.json": {
+    "scenario": "DB-03",
+    "posts": 1,
+    "authors": "distinct",
+    "samples": [
+      {
+        "warmup": true,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 59.76130000090052,
+        "response_bytes": 242,
+        "cpu_seconds_delta": 0.015625,
+        "rss_bytes": 150773760
+      },
+      {
+        "warmup": false,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 28.418400001100963,
+        "response_bytes": 242,
+        "cpu_seconds_delta": 0.03125,
+        "rss_bytes": 150773760
+      },
+      {
+        "warmup": false,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 27.89880000091216,
+        "response_bytes": 242,
+        "cpu_seconds_delta": 0.015625,
+        "rss_bytes": 150777856
+      }
+    ],
+    "equal_timestamp_tiebreak": true,
+    "no_omission_or_duplicates": true,
+    "interpretation": "SQL structural probe; three requests do not estimate reliable tails"
+  },
+  "attempts/social-volume-02/critical_runs/social-volume-baseline/observations/DB03-feed-distinct-100.json": {
+    "scenario": "DB-03",
+    "posts": 100,
+    "authors": "distinct",
+    "samples": [
+      {
+        "warmup": true,
+        "sql_selects": 104,
+        "elapsed_ms_exploratory": 860.882799999672,
+        "response_bytes": 24101,
+        "cpu_seconds_delta": 0.1875,
+        "rss_bytes": 152104960
+      },
+      {
+        "warmup": false,
+        "sql_selects": 104,
+        "elapsed_ms_exploratory": 586.5991999999096,
+        "response_bytes": 24101,
+        "cpu_seconds_delta": 0.234375,
+        "rss_bytes": 152162304
+      },
+      {
+        "warmup": false,
+        "sql_selects": 104,
+        "elapsed_ms_exploratory": 463.9764000003197,
+        "response_bytes": 24101,
+        "cpu_seconds_delta": 0.328125,
+        "rss_bytes": 152174592
+      }
+    ],
+    "equal_timestamp_tiebreak": true,
+    "no_omission_or_duplicates": true,
+    "interpretation": "SQL structural probe; three requests do not estimate reliable tails"
+  },
+  "attempts/social-volume-02/critical_runs/social-volume-baseline/observations/DB03-feed-distinct-20.json": {
+    "scenario": "DB-03",
+    "posts": 20,
+    "authors": "distinct",
+    "samples": [
+      {
+        "warmup": true,
+        "sql_selects": 24,
+        "elapsed_ms_exploratory": 120.11050000000978,
+        "response_bytes": 4821,
+        "cpu_seconds_delta": 0.046875,
+        "rss_bytes": 151183360
+      },
+      {
+        "warmup": false,
+        "sql_selects": 24,
+        "elapsed_ms_exploratory": 89.66549999968265,
+        "response_bytes": 4821,
+        "cpu_seconds_delta": 0.0625,
+        "rss_bytes": 151212032
+      },
+      {
+        "warmup": false,
+        "sql_selects": 24,
+        "elapsed_ms_exploratory": 87.65780000067025,
+        "response_bytes": 4821,
+        "cpu_seconds_delta": 0.0625,
+        "rss_bytes": 151236608
+      }
+    ],
+    "equal_timestamp_tiebreak": true,
+    "no_omission_or_duplicates": true,
+    "interpretation": "SQL structural probe; three requests do not estimate reliable tails"
+  },
+  "attempts/social-volume-02/critical_runs/social-volume-baseline/observations/DB03-feed-repeated-1.json": {
+    "scenario": "DB-03",
+    "posts": 1,
+    "authors": "repeated",
+    "samples": [
+      {
+        "warmup": true,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 33.765300000595744,
+        "response_bytes": 225,
+        "cpu_seconds_delta": 0.03125,
+        "rss_bytes": 149524480
+      },
+      {
+        "warmup": false,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 17.697400000542984,
+        "response_bytes": 225,
+        "cpu_seconds_delta": 0.015625,
+        "rss_bytes": 149524480
+      },
+      {
+        "warmup": false,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 18.052400000669877,
+        "response_bytes": 225,
+        "cpu_seconds_delta": 0.0,
+        "rss_bytes": 149524480
+      }
+    ],
+    "equal_timestamp_tiebreak": true,
+    "no_omission_or_duplicates": true,
+    "interpretation": "SQL structural probe; three requests do not estimate reliable tails"
+  },
+  "attempts/social-volume-02/critical_runs/social-volume-baseline/observations/DB03-feed-repeated-100.json": {
+    "scenario": "DB-03",
+    "posts": 100,
+    "authors": "repeated",
+    "samples": [
+      {
+        "warmup": true,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 335.26999999958207,
+        "response_bytes": 22401,
+        "cpu_seconds_delta": 0.0625,
+        "rss_bytes": 150622208
+      },
+      {
+        "warmup": false,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 238.35349999899336,
+        "response_bytes": 22401,
+        "cpu_seconds_delta": 0.03125,
+        "rss_bytes": 150650880
+      },
+      {
+        "warmup": false,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 191.08070000038424,
+        "response_bytes": 22401,
+        "cpu_seconds_delta": 0.015625,
+        "rss_bytes": 150659072
+      }
+    ],
+    "equal_timestamp_tiebreak": true,
+    "no_omission_or_duplicates": true,
+    "interpretation": "SQL structural probe; three requests do not estimate reliable tails"
+  },
+  "attempts/social-volume-02/critical_runs/social-volume-baseline/observations/DB03-feed-repeated-20.json": {
+    "scenario": "DB-03",
+    "posts": 20,
+    "authors": "repeated",
+    "samples": [
+      {
+        "warmup": true,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 54.852900000696536,
+        "response_bytes": 4481,
+        "cpu_seconds_delta": 0.03125,
+        "rss_bytes": 149872640
+      },
+      {
+        "warmup": false,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 44.06390000076499,
+        "response_bytes": 4481,
+        "cpu_seconds_delta": 0.015625,
+        "rss_bytes": 149893120
+      },
+      {
+        "warmup": false,
+        "sql_selects": 5,
+        "elapsed_ms_exploratory": 43.04439999941678,
+        "response_bytes": 4481,
+        "cpu_seconds_delta": 0.03125,
+        "rss_bytes": 149905408
+      }
+    ],
+    "equal_timestamp_tiebreak": true,
+    "no_omission_or_duplicates": true,
+    "interpretation": "SQL structural probe; three requests do not estimate reliable tails"
+  },
+  "attempts/social-volume-02/critical_runs/social-volume-baseline/observations/SEC04-feed-revocation-pages.json": {
+    "scenario": "SEC-04",
+    "initial_friend_rows": 3,
+    "after_revocation_public_rows": 5,
+    "private_scan_rows": 35,
+    "foreign_canary_absent": true,
+    "scope": "post privacy and friendship change; gallery preference and report lifecycle tested separately"
+  },
+  "attempts/socket-fanout-02/critical_runs/socket-fanout-baseline/observations/LOAD05-tcp-1.json": {
+    "scenario": "LOAD-05",
+    "devices": 1,
+    "partial_reconnect_devices": 1,
+    "real_committed_messages": 13,
+    "message_fanout_correct": true,
+    "delayed_reader_drained_messages": 10,
+    "fast_reader_count": 0,
+    "server_presence_after_all_closed": false,
+    "scope": "bounded functional TCP burst with one paused transport; not backpressure saturation, capacity, battery or prolonged load evidence"
+  },
+  "attempts/socket-fanout-02/critical_runs/socket-fanout-baseline/observations/LOAD05-tcp-10.json": {
+    "scenario": "LOAD-05",
+    "devices": 10,
+    "partial_reconnect_devices": 5,
+    "real_committed_messages": 13,
+    "message_fanout_correct": true,
+    "delayed_reader_drained_messages": 10,
+    "fast_reader_count": 9,
+    "server_presence_after_all_closed": false,
+    "scope": "bounded functional TCP burst with one paused transport; not backpressure saturation, capacity, battery or prolonged load evidence"
+  },
+  "attempts/socket-fanout-02/critical_runs/socket-fanout-baseline/observations/LOAD05-tcp-50.json": {
+    "scenario": "LOAD-05",
+    "devices": 50,
+    "partial_reconnect_devices": 25,
+    "real_committed_messages": 13,
+    "message_fanout_correct": true,
+    "delayed_reader_drained_messages": 10,
+    "fast_reader_count": 49,
+    "server_presence_after_all_closed": false,
+    "scope": "bounded functional TCP burst with one paused transport; not backpressure saturation, capacity, battery or prolonged load evidence"
+  },
+  "attempts/storage-resilience-01/critical_runs/storage-resilience-baseline/observations/RES05-storage-no-space.json": {
+    "scenario": "RES-05",
+    "fault": "no-space",
+    "database_rollback": true,
+    "previous_file_intact": true,
+    "retry": 204,
+    "owner_read": 200,
+    "scope": "injected OS exception in private storage, no disk filling or ACL changes"
+  },
+  "attempts/storage-resilience-01/critical_runs/storage-resilience-baseline/observations/RES05-storage-permission.json": {
+    "scenario": "RES-05",
+    "fault": "permission",
+    "database_rollback": true,
+    "previous_file_intact": true,
+    "retry": 204,
+    "owner_read": 200,
+    "scope": "injected OS exception in private storage, no disk filling or ACL changes"
+  },
+  "attempts/storage-resilience-01/critical_runs/storage-resilience-baseline/observations/RSC03-postcommit-cleanup.json": {
+    "scenario": "RSC-03",
+    "new_content_committed_despite_error": true,
+    "retry": 204,
+    "old_file_remains_after_retry": true,
+    "finding": "Cleanup failure happens after commit; retry of same content does not revisit old key",
+    "scope": "own files and injected delete error"
+  },
+  "attempts/storage-resilience-02/critical_runs/storage-resilience-baseline/observations/IMG07-storage-restore.json": {
+    "scenario": "IMG-07",
+    "missing_file_http_status": 404,
+    "restored_read": 200,
+    "scope": "own file; owner endpoint returns controlled 404; device UX is separate"
+  },
+  "attempts/storage-resilience-02/critical_runs/storage-resilience-baseline/observations/RES05-real-db-pause.json": {
+    "scenario": "RES-05",
+    "outage": "short pause of exact random-port disposable DB container",
+    "authenticated_request_pending_during_pause": true,
+    "health_during_pause": 200,
+    "after_resume": 200,
+    "quintal_integrity_read": 200,
+    "scope": "connection/server stall and recovery, not crash/data-loss or timeout upper-bound certification"
+  },
+  "attempts/wire-contract-03/critical_runs/wire-contract-baseline/observations/DATA08-real-wire-consumer.json": {
+    "scenario": "DATA-08",
+    "classification": "CONTRACT_FAILURE_REPRODUCED",
+    "api_root_data_keys": [
+      "conversation_id",
+      "message"
+    ],
+    "nested_message_id_matches_http": true,
+    "flutter_consumed_id_empty": true,
+    "flutter_consumed_body_empty": true,
+    "wire_fixture_sha256": "4074559ecab44506114fa38a6e336580d9bd7eefd92b9c4ff0e778e7dfddb8ed",
+    "flutter_source_sha": "469b0abb7a8d7f65c75c6cf417d8112809e9e3f7",
+    "finding": "API nests message while consumer decodes the outer data map",
+    "scope": "actual API TCP event to actual B controller via injected transport; no phone/real Firebase; red Flutter assertion is preserved, parent test characterizes it"
+  },
+  "attempts/worker-race-01/critical_runs/worker-race-baseline/observations/DB06-late-cat-hard-delete.json": {
+    "scenario": "DB-06",
+    "variant": "cat-hard-delete",
+    "backend": "postgres",
+    "stale_analysis_not_committed": true,
+    "progression_not_called": true
+  },
+  "attempts/worker-race-01/critical_runs/worker-race-baseline/observations/DB06-late-cat-soft-delete.json": {
+    "scenario": "DB-06",
+    "variant": "cat-soft-delete",
+    "backend": "postgres",
+    "stale_analysis_not_committed": true,
+    "progression_not_called": true
+  },
+  "attempts/worker-race-01/critical_runs/worker-race-baseline/observations/DB06-late-photo-hard-delete.json": {
+    "scenario": "DB-06",
+    "variant": "photo-hard-delete",
+    "backend": "postgres",
+    "stale_analysis_not_committed": true,
+    "progression_not_called": true
+  },
+  "attempts/worker-race-01/critical_runs/worker-race-baseline/observations/DB06-late-photo-replace.json": {
+    "scenario": "DB-06",
+    "variant": "photo-replace",
+    "backend": "postgres",
+    "stale_analysis_not_committed": true,
+    "progression_not_called": true
+  },
+  "attempts/worker-race-01/critical_runs/worker-race-baseline/observations/DB06-late-photo-soft-delete.json": {
+    "scenario": "DB-06",
+    "variant": "photo-soft-delete",
+    "backend": "postgres",
+    "stale_analysis_not_committed": true,
+    "progression_not_called": true
+  },
+  "attempts/worker-race-01/critical_runs/worker-race-baseline/observations/IMG07-claim-read-change.json": {
+    "scenario": "IMG-07",
+    "changed_content_detected_before_inference": true,
+    "inference_calls_after_restore": 1,
+    "retry": "completed",
+    "backend": "postgres"
+  },
+  "attempts/worker-race-03/critical_runs/worker-race-baseline/observations/RES04-real-process-crash.json": {
+    "scenario": "RES-04",
+    "first_claim_committed_before_os_kill": true,
+    "lease_expiry": "controlled persisted started_at",
+    "new_os_process_completed_attempt": 2,
+    "stale_lease_recovered": true,
+    "scope": "own worker subprocess, real PG, fake inference/progression; late old result is covered by separate fence tests"
+  }
+}

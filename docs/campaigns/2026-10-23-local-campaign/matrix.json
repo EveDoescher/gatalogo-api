@@ -1,0 +1,1245 @@
+[
+  {
+    "scenario": "BR-01",
+    "state": "PREPARED",
+    "scope": "Resolver refs, preparar A/B isolados com fixtures/snapshots equivalentes e harness comum.",
+    "limitation": "Frozen four SHAs; component probes only, no full mobile/API package comparison yet",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "manifest.json"
+    ],
+    "runs": []
+  },
+  {
+    "scenario": "BR-02",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Repetir LAT/LOAD/DB/RSC aplicáveis em blocos pareados nas duas versões.",
+    "limitation": "Common external ASGI client and separate desktop SQLite component probes; not full mobile/API bundle comparison",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json",
+      "results\\01-A\\probe.json",
+      "results\\02-B\\probe.json",
+      "results\\03-B\\probe.json",
+      "results\\04-A\\probe.json"
+    ],
+    "runs": []
+  },
+  {
+    "scenario": "BR-03",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Repetir DATA/RES/SEC e percursos UX/ACC nas duas versões, incluindo perda de resposta e conta.",
+    "limitation": "Common external ASGI client and separate desktop SQLite component probes; not full mobile/API bundle comparison",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json",
+      "results\\01-A\\probe.json",
+      "results\\02-B\\probe.json",
+      "results\\03-B\\probe.json",
+      "results\\04-A\\probe.json"
+    ],
+    "runs": []
+  },
+  {
+    "scenario": "BR-04",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Quando compatível, fixar cliente para variar API e fixar API para variar Flutter.",
+    "limitation": "Quatro combinações API A/B × cliente A/B, mesmo contrato externo de serviço, perda de resposta após commit e reinício com SQLite. Não inclui toda a interface, todos os endpoints ou IA real.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json",
+      "results\\01-A\\probe.json",
+      "results\\02-B\\probe.json",
+      "results\\03-B\\probe.json",
+      "results\\04-A\\probe.json"
+    ],
+    "runs": [],
+    "local_runs": [
+      "attempts/crossed-api-A-02/critical_runs/crossed-api-A/summary.json",
+      "attempts/crossed-api-B-02/critical_runs/crossed-api-B/summary.json"
+    ]
+  },
+  {
+    "scenario": "BR-05",
+    "state": "PENDING",
+    "scope": "Revisar comparação A/B, congelar SHAs B e vincular campanha OPT-0.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "LAT-01",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "F-AC/F-CAT; abrir 0/40/501 gatos, cache vazio/cheio, online/offline.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/flutter-catalog-01/flutter_catalog/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "LAT-02",
+    "state": "PENDING",
+    "scope": "Foto válida: confirmação até análise inicial e, separadamente, fim do reconhecimento; cache hit/miss.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "LAT-03",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Foto rejeitada, 503 controlado, 401 com refresh bem/malsucedido.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json"
+    ],
+    "runs": [
+      "attempts/flutter-resilience-02/flutter_resilience/baseline/summary.json",
+      "attempts/flutter-resilience-03/flutter_resilience/baseline/summary.json",
+      "attempts/flutter-resilience-04/flutter_resilience/baseline/summary.json"
+    ],
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+  },
+  {
+    "scenario": "LAT-04",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Sync com 0/1/40/501 dirty, pull vazio/multipágina e histórico crescente.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json"
+    ],
+    "runs": []
+  },
+  {
+    "scenario": "LAT-05",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "F-SOC; abrir lista/conversa, enviar texto/foto; atrasar detalhes e mensagens alternadamente.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
+      "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "LAT-06",
+    "state": "PENDING",
+    "scope": "F-YARD; abrir cache e executar build/plant/cook/collect.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "LAT-07",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Feed/inbox: paginação, filtros e timestamps iguais.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
+      "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "LAT-08",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Análise lenta em paralelo com health, pull e conversa sob carga fixa.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/delivery-01/critical_runs/delivery-baseline/summary.json",
+      "attempts/pipeline-01/critical_runs/pipeline-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "LOAD-01",
+    "state": "PENDING",
+    "scope": "Leituras por contas distintas, concorrência 1/5/10/25/50; patamares de 3 min aquecidos.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "LOAD-02",
+    "state": "PENDING",
+    "scope": "Taxa aberta inicial 1/5/10/25 req/s, 3 min/patamar; mix 40% pull, 20% inbox, 20% feed, 20% Quintal com contas separadas.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "LOAD-03",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "2/10/25 requests com barreira: mesma operação/chave; depois comandos distintos disputando saldo de uma compra.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [
+      "attempts/targeted-02/critical_runs/targeted-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "local_runs": [
+      "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
+      "attempts/mechanisms-02/critical_runs/mechanisms-baseline/summary.json",
+      "attempts/mechanisms-03/critical_runs/mechanisms-baseline/summary.json"
+    ]
+  },
+  {
+    "scenario": "LOAD-04",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "1/10/50 jobs de referência, 1/2 consumidores e inferência controlada; lote real menor separado.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [
+      "attempts/queue-01/critical_runs/queue-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+  },
+  {
+    "scenario": "LOAD-05",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "1/10/50 sockets, consumidores lentos, mensagens e reconexão parcial.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [
+      "attempts/queue-01/critical_runs/queue-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "local_runs": [
+      "attempts/socket-fanout-01/critical_runs/socket-fanout-baseline/summary.json",
+      "attempts/socket-fanout-02/critical_runs/socket-fanout-baseline/summary.json"
+    ]
+  },
+  {
+    "scenario": "LOAD-06",
+    "state": "PENDING",
+    "scope": "Rajada de 30 s sobre carga sustentável medida; 5 min para drenar; soak de 60 min sustentável.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "DB-01",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "F-CAT nas bordas de 500, com G/B; snapshot real do coordinator.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts\\pilot-02\\flutter_results\\01-A\\samples.json",
+      "attempts\\pilot-02\\flutter_results\\02-B\\samples.json",
+      "attempts\\pilot-02\\flutter_results\\03-B\\samples.json",
+      "attempts\\pilot-02\\flutter_results\\04-A\\samples.json"
+    ],
+    "runs": [
+      "attempts/flutter-resilience-02/flutter_resilience/baseline/summary.json",
+      "attempts/flutter-resilience-03/flutter_resilience/baseline/summary.json",
+      "attempts/flutter-resilience-04/flutter_resilience/baseline/summary.json",
+      "attempts/probe-layout-01/flutter_results/01-A/test.jsonl",
+      "attempts/probe-layout-01/flutter_results/02-B/test.jsonl",
+      "attempts/probe-layout-01/flutter_results/03-B/test.jsonl",
+      "attempts/probe-layout-01/flutter_results/04-A/test.jsonl"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "local_runs": [
+      "attempts/flutter-catalog-01/flutter_catalog/summary.json"
+    ]
+  },
+  {
+    "scenario": "DB-02",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "F-HIST, limit 1/200/500, página fria/repetida.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts/database-01/critical_runs/baseline/summary.json",
+      "attempts/security-03/critical_runs/baseline/summary.json",
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json"
+    ],
+    "runs": [
+      "attempts/extended-02/critical_runs/extended-baseline/summary.json",
+      "attempts/extended-03/critical_runs/extended-baseline/summary.json",
+      "attempts/flutter-resilience-02/flutter_resilience/baseline/summary.json"
+    ],
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+  },
+  {
+    "scenario": "DB-03",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "1/20/100 conversas e feed com autores repetidos/distintos.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
+      "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "DB-04",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Consultas críticas em volumes crescentes, estatísticas atualizadas.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/query-plan-01/critical_runs/query-plan-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "DB-05",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Análise principal/referência/reconhecimento pausados na inferência; requests leves paralelos.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json"
+    ],
+    "runs": [
+      "attempts/extended-03/critical_runs/extended-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "local_runs": [
+      "attempts/pipeline-01/critical_runs/pipeline-baseline/summary.json"
+    ]
+  },
+  {
+    "scenario": "DB-06",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Upload/substituição/delete concorrem com finish de worker; compras/coleta simultâneas.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/worker-race-01/critical_runs/worker-race-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "DB-07",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Abertura SQLite concorrente, falha temporária ao abrir, falha entre aplicar página e salvar cursor.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [
+      "attempts/flutter-resilience-02/flutter_resilience/baseline/summary.json",
+      "attempts/flutter-resilience-03/flutter_resilience/baseline/summary.json",
+      "attempts/flutter-resilience-04/flutter_resilience/baseline/summary.json"
+    ],
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+  },
+  {
+    "scenario": "IMG-01",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Câmera/galeria, formatos/EXIF/resoluções do manifesto.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/image-01/critical_runs/image-baseline/summary.json",
+      "attempts/image-02/critical_runs/image-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "IMG-02",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Analisar, editar metadado que deixe dirty, sync e reiniciar.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/pipeline-01/critical_runs/pipeline-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "IMG-03",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Referência igual, conteúdo novo no mesmo ângulo, só status alterado e tombstone; reabrir offline.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [
+      "attempts/extended-02/critical_runs/extended-baseline/summary.json",
+      "attempts/extended-03/critical_runs/extended-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+  },
+  {
+    "scenario": "IMG-04",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Fotos fixas, processo frio/quente, caches semântico/segmentação vazios/cheios e caminho com/sem provedor.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/image-01/critical_runs/image-baseline/summary.json",
+      "attempts/image-02/critical_runs/image-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "IMG-05",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Sem gato/múltiplos/escura/borrada, bytes/pixels nas bordas, arquivo inválido.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/image-01/critical_runs/image-baseline/summary.json",
+      "attempts/image-02/critical_runs/image-baseline/summary.json",
+      "attempts/pipeline-01/critical_runs/pipeline-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "IMG-06",
+    "state": "PENDING",
+    "scope": "Conjunto real rotulado antes/depois de mudança interna, modelo/prompt/seed registrados.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "IMG-07",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Disco/permissão indisponível no storage próprio; arquivo muda entre claim e leitura.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/storage-resilience-01/critical_runs/storage-resilience-baseline/summary.json",
+      "attempts/storage-resilience-02/critical_runs/storage-resilience-baseline/summary.json",
+      "attempts/worker-race-01/critical_runs/worker-race-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "REID-01",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "scope": "Auditar identidades/consentimento, splits por gato/sessão e duplicatas do F-REID antes de inferir.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "REID-02",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "scope": "Mesmo gato em luz, ângulo/lado, distância e sessões distintos, com galeria fixa.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "REID-03",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "scope": "Gatos diferentes com pelagem semelhante, sólidos e pouco distintivos; negativos fáceis separados.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "REID-04",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "scope": "Baixa qualidade/oclusão e detecção/segmentação problemática; medir componente e pipeline.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "REID-05",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "scope": "Calibração de limiar e depois holdout bloqueado, threshold atual e candidato hipotético registrados.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "REID-06",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "scope": "Imagem repetida/recomprimida/crop, região/versão incompatível, ângulo oposto e apenas uma evidência independente.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "REID-07",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "scope": "Consultas com/sem indivíduo na galeria, tamanhos crescentes e múltiplas fotos por indivíduo.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "REID-08",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "scope": "Candidato restrito/não restrito, shadow on/off no ambiente próprio e decisões humanas de confirmar/rejeitar.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "DATA-01",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Análise determinística; snapshots após metadados, persistência e job.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/pipeline-01/critical_runs/pipeline-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "DATA-02",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Falha após arquivo salvo, durante progressão e antes de commit; observar em outra sessão.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts/security-03/critical_runs/baseline/summary.json"
+    ],
+    "runs": [
+      "attempts/extended-02/critical_runs/extended-baseline/summary.json",
+      "attempts/extended-03/critical_runs/extended-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+  },
+  {
+    "scenario": "DATA-03",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Replay serial/paralelo da chave Quintal; resposta perdida após commit e reinício.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts/security-03/critical_runs/baseline/summary.json",
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json"
+    ],
+    "runs": [
+      "attempts/targeted-02/critical_runs/targeted-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+  },
+  {
+    "scenario": "DATA-04",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Mesma chave com action/target/data diferente; mesma chave em A e B.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts/security-03/critical_runs/baseline/summary.json",
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json"
+    ],
+    "runs": [],
+    "limitation": "Selected variants only; see variant ledger and approved plan. No whole-scenario completion."
+  },
+  {
+    "scenario": "DATA-05",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Datas antiga/nova/igual, device IDs em ordens inversas, tombstone seguido de edição, análise já existente.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts/security-03/critical_runs/baseline/summary.json"
+    ],
+    "runs": [
+      "attempts/extended-02/critical_runs/extended-baseline/summary.json",
+      "attempts/extended-03/critical_runs/extended-baseline/summary.json",
+      "attempts/flutter-resilience-02/flutter_resilience/baseline/summary.json"
+    ],
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+  },
+  {
+    "scenario": "DATA-06",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Finish após substituir/deletar foto/gato; lease expira e tentativa nova termina antes da antiga.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts/security-03/critical_runs/baseline/summary.json"
+    ],
+    "runs": [
+      "attempts/extended-02/critical_runs/extended-baseline/summary.json",
+      "attempts/extended-03/critical_runs/extended-baseline/summary.json",
+      "attempts/flutter-resilience-02/flutter_resilience/baseline/summary.json",
+      "attempts/flutter-resilience-03/flutter_resilience/baseline/summary.json",
+      "attempts/flutter-resilience-04/flutter_resilience/baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "local_runs": [
+      "attempts/worker-race-01/critical_runs/worker-race-baseline/summary.json"
+    ]
+  },
+  {
+    "scenario": "DATA-07",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Coleta dupla, saldo exato/insuficiente, estoque mínimo, prazo −1 ms/0/+1 ms, cliente adiantado.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts/security-03/critical_runs/baseline/summary.json"
+    ],
+    "runs": [
+      "attempts/targeted-02/critical_runs/targeted-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "local_runs": [
+      "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
+      "attempts/mechanisms-02/critical_runs/mechanisms-baseline/summary.json",
+      "attempts/mechanisms-03/critical_runs/mechanisms-baseline/summary.json"
+    ]
+  },
+  {
+    "scenario": "DATA-08",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Leitura seguida de resposta atrasada; eco WS/HTTP nas duas ordens, evento duplicado e timestamps iguais.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/flutter-social-01/flutter_resilience/baseline/summary.json",
+      "attempts/wire-contract-01/critical_runs/wire-contract-baseline/summary.json",
+      "attempts/wire-contract-02/critical_runs/wire-contract-baseline/summary.json",
+      "attempts/wire-contract-03/critical_runs/wire-contract-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "DATA-09",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Criar/alterar/resolver busca, repetir avistamento e confirmar/rejeitar pista.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "RES-01",
+    "state": "PENDING",
+    "scope": "Capturar/editar offline, fechar/reabrir e recuperar rede.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "RES-02",
+    "state": "PENDING",
+    "scope": "Cortar upload no meio, resposta antes de commit e depois de commit em casos distintos com barreiras.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "RES-03",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Pausar resposta A de catálogo/análise/chat/inbox/Quintal; trocar para B/logout/dispose; liberar A.",
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts/accessibility-03/accessibility/tests.jsonl",
+      "flutter_results\\RES-03\\test.jsonl",
+      "attempts\\pilot-02\\flutter_results\\RES-03\\test.jsonl"
+    ],
+    "runs": [
+      "attempts/accessibility-04/accessibility/tests.jsonl",
+      "attempts/flutter-resilience-02/flutter_resilience/baseline/summary.json",
+      "attempts/flutter-resilience-03/flutter_resilience/baseline/summary.json",
+      "attempts/flutter-resilience-04/flutter_resilience/baseline/summary.json",
+      "attempts/probe-layout-01/flutter_results/RES-03/test.jsonl"
+    ]
+  },
+  {
+    "scenario": "RES-04",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Encerrar worker próprio após claim, expirar lease e iniciar consumidor; resultado antigo tardio em caso separado.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/worker-race-01/critical_runs/worker-race-baseline/summary.json",
+      "attempts/worker-race-02/critical_runs/worker-race-baseline/summary.json",
+      "attempts/worker-race-03/critical_runs/worker-race-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "RES-05",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Queda/retorno de DB/storage próprios; Gemini lento/503/JSON inválido; SMTP/FCM indisponível separadamente.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/image-01/critical_runs/image-baseline/summary.json",
+      "attempts/image-02/critical_runs/image-baseline/summary.json",
+      "attempts/storage-resilience-01/critical_runs/storage-resilience-baseline/summary.json",
+      "attempts/storage-resilience-02/critical_runs/storage-resilience-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "RES-06",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "WS cai, fallback de 30 s, WS volta; eventos antes/depois.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/flutter-social-01/flutter_resilience/baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "RES-07",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Muitos gatilhos simultâneos sync/refresh; primeira operação falha, seguinte funciona.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [
+      "attempts/flutter-resilience-02/flutter_resilience/baseline/summary.json",
+      "attempts/flutter-resilience-03/flutter_resilience/baseline/summary.json",
+      "attempts/flutter-resilience-04/flutter_resilience/baseline/summary.json",
+      "attempts/probe-layout-01/flutter_results/RES-03/test.jsonl"
+    ],
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+  },
+  {
+    "scenario": "RES-08",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "SQLite/cache/storage próprios corrompidos/indisponíveis e interrupção durante página.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [
+      "attempts/flutter-resilience-02/flutter_resilience/baseline/summary.json",
+      "attempts/flutter-resilience-03/flutter_resilience/baseline/summary.json",
+      "attempts/flutter-resilience-04/flutter_resilience/baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "local_runs": [
+      "attempts/image-01/critical_runs/image-baseline/summary.json",
+      "attempts/image-02/critical_runs/image-baseline/summary.json"
+    ]
+  },
+  {
+    "scenario": "SEC-01",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Sem token, assinatura/issuer/type inválidos, expirado/revogado, sessão de outro user, conta inativa; HTTP e abertura WS.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json"
+    ],
+    "runs": [
+      "attempts/extended-03/critical_runs/extended-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "local_runs": [
+      "attempts/identity-01/critical_runs/identity-A/summary.json",
+      "attempts/identity-01/critical_runs/identity-B/summary.json"
+    ]
+  },
+  {
+    "scenario": "SEC-02",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "A tenta ler/alterar/excluir mídia, análise, pistas, conversa/anexo, favoritos e Quintal de B sem permissão.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts/security-03/critical_runs/baseline/summary.json",
+      "attempts\\pilot-02\\results\\01-A\\probe.json",
+      "attempts\\pilot-02\\results\\02-B\\probe.json",
+      "attempts\\pilot-02\\results\\03-B\\probe.json",
+      "attempts\\pilot-02\\results\\04-A\\probe.json",
+      "attempts\\pilot-03\\results\\01-A\\probe.json",
+      "attempts\\pilot-03\\results\\02-B\\probe.json",
+      "attempts\\pilot-03\\results\\03-B\\probe.json",
+      "attempts\\pilot-03\\results\\04-A\\probe.json"
+    ],
+    "runs": [
+      "attempts/extended-02/critical_runs/extended-baseline/summary.json",
+      "attempts/extended-03/critical_runs/extended-baseline/summary.json",
+      "attempts/network-01/critical_runs/network-baseline/summary.json",
+      "attempts/privacy-01/critical_runs/privacy-baseline/summary.json",
+      "attempts/privacy-02/critical_runs/official-export/summary.json",
+      "attempts/privacy-02/critical_runs/privacy-baseline/summary.json",
+      "attempts/targeted-02/critical_runs/targeted-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+  },
+  {
+    "scenario": "SEC-03",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "C fora da conversa manda typing/read WS e acessa mídia; JSON/tipo/UUID inválidos.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts/security-03/critical_runs/baseline/summary.json"
+    ],
+    "runs": [
+      "attempts/extended-02/critical_runs/extended-baseline/summary.json",
+      "attempts/extended-03/critical_runs/extended-baseline/summary.json",
+      "attempts/network-01/critical_runs/network-baseline/summary.json",
+      "attempts/targeted-02/critical_runs/targeted-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+  },
+  {
+    "scenario": "SEC-04",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Público/amigo/estranho no feed/galeria/pistas, preferência muda durante paginação; busca pública ativa/resolvida.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [
+      "attempts/privacy-01/critical_runs/privacy-baseline/summary.json",
+      "attempts/privacy-02/critical_runs/privacy-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "local_runs": [
+      "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
+      "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
+      "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json"
+    ]
+  },
+  {
+    "scenario": "SEC-05",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "`../`, caminho absoluto, barras Windows/POSIX, nomes/sufixos incomuns em storage/rotas de arquivo.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts/security-03/critical_runs/baseline/summary.json"
+    ],
+    "runs": [],
+    "limitation": "Selected variants only; see variant ledger and approved plan. No whole-scenario completion."
+  },
+  {
+    "scenario": "SEC-06",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Foto excedente/MIME falso/pixels excessivos/multipart inválido e campos/paginação fora do limite.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [
+      "attempts/targeted-02/critical_runs/targeted-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "local_runs": [
+      "attempts/image-01/critical_runs/image-baseline/summary.json",
+      "attempts/image-02/critical_runs/image-baseline/summary.json"
+    ]
+  },
+  {
+    "scenario": "SEC-07",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "OTP errado até limite, expiração exata/reuso/purpose/email trocados, reenvio <60 s; refresh/logout/replay de token antigo.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts/security-03/critical_runs/baseline/summary.json"
+    ],
+    "runs": [
+      "attempts/flutter-resilience-02/flutter_resilience/baseline/summary.json",
+      "attempts/flutter-resilience-03/flutter_resilience/baseline/summary.json",
+      "attempts/flutter-resilience-04/flutter_resilience/baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "local_runs": [
+      "attempts/delivery-01/critical_runs/delivery-baseline/summary.json"
+    ]
+  },
+  {
+    "scenario": "SEC-08",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Erros de auth/upload/WS/IA, logs com canários, export A com B no banco.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [
+      "attempts/extended-02/critical_runs/extended-baseline/summary.json",
+      "attempts/extended-03/critical_runs/extended-baseline/summary.json",
+      "attempts/privacy-01/critical_runs/privacy-baseline/summary.json",
+      "attempts/privacy-02/critical_runs/official-export/summary.json",
+      "attempts/privacy-02/critical_runs/privacy-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "local_runs": [
+      "attempts/delivery-01/critical_runs/delivery-baseline/summary.json",
+      "attempts/image-01/critical_runs/image-baseline/summary.json",
+      "attempts/image-02/critical_runs/image-baseline/summary.json"
+    ]
+  },
+  {
+    "scenario": "SEC-09",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Inventário de dependências/lockfiles, configuração release/CORS/docs expostas.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [
+      "dependency_advisories.json",
+      "dependency_advisory_review.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "local_runs": [
+      "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json"
+    ]
+  },
+  {
+    "scenario": "SEC-10",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Abrir WS válido, revogar sessão/expirar token e tentar ações/novas conexões.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [
+      "attempts/network-01/critical_runs/network-baseline/summary.json",
+      "attempts/targeted-02/critical_runs/targeted-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+  },
+  {
+    "scenario": "UX-01",
+    "state": "PENDING",
+    "scope": "Frio/quente, logado/deslogado, cache vazio/cheio, online/offline; iniciar e abrir coleção.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "UX-02",
+    "state": "PENDING",
+    "scope": "40/501 gatos, mídia carregada/não carregada, scroll/filtros/detalhes repetíveis.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "UX-03",
+    "state": "PENDING",
+    "scope": "Quintal nas três densidades, pan/zoom/seleção/construção/efeitos.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "UX-04",
+    "state": "PENDING",
+    "scope": "Câmera/galeria, preflight, permissão negada e GPS lento/ausente.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "UX-05",
+    "state": "PENDING",
+    "scope": "Chat com histórico/teclado/foto e rede ruim; inbox com rajada de eventos.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "UX-06",
+    "state": "PENDING",
+    "scope": "Capturas determinísticas e percursos foto→detalhes, offline→retomada, compra→coleta.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "UX-07",
+    "state": "PENDING",
+    "scope": "Background/foreground/lock durante upload/produção; 20 ciclos de entrar/sair.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "RSC-01",
+    "state": "PENDING",
+    "scope": "Iniciar API/worker, lote fixo frio/quente e repouso.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "RSC-02",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "100 ciclos de sync/foto/conversa/erro, 3 rodadas com repouso sem reiniciar.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "RSC-03",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Substituir/excluir fotos, repetir downloads/status e reabrir offline.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/storage-resilience-01/critical_runs/storage-resilience-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "RSC-04",
+    "state": "PENDING",
+    "scope": "30 ciclos câmera/detalhes/chat/Quintal; heap antes/depois de repouso/GC observado.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "RSC-05",
+    "state": "PENDING",
+    "scope": "Sessões pareadas de 15 min coleção/chat/Quintal, brilho/rádio/condição térmica fixos, sem carregar quando viável.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "RSC-06",
+    "state": "PENDING",
+    "scope": "LOAD-04/LAT-08 com limites CPU/RAM e concorrência constantes.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "DLV-01",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Registrar/recuperar conta sintética, SMTP habilitado em Mailpit próprio; receber e usar OTP.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [
+      "attempts/extended-03/critical_runs/extended-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "local_runs": [
+      "attempts/delivery-01/critical_runs/delivery-baseline/summary.json"
+    ]
+  },
+  {
+    "scenario": "DLV-02",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "SMTP lento/recusa/queda, falha antes/depois de envio e repetição respeitando cooldown.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [
+      "attempts/extended-03/critical_runs/extended-baseline/summary.json",
+      "attempts/targeted-02/critical_runs/targeted-baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "local_runs": [
+      "attempts/delivery-01/critical_runs/delivery-baseline/summary.json"
+    ]
+  },
+  {
+    "scenario": "DLV-03",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "scope": "App foreground/background/encerrado, permissão concedida/negada, token real de teste.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "DLV-04",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Devices com preferências diferentes, UNREGISTERED, erro transitório e sucesso parcial/retry.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "limitation": "Transporte FCM mockado em testes existentes e MUT-26; entrega real em aparelho e sucesso parcial/retry completos pendentes."
+  },
+  {
+    "scenario": "DLV-05",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Mesmo notification_id via WS/push nas duas ordens; refresh/loadMore/markRead concorrentes e troca de conta.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [],
+    "local_runs": [
+      "attempts/flutter-notifications-01/flutter_resilience/baseline/summary.json",
+      "attempts/flutter-social-01/flutter_resilience/baseline/summary.json"
+    ],
+    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+  },
+  {
+    "scenario": "DLV-06",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "scope": "Reconectar push worker e repetir evento confirmado; ausência de credencial em caso separado.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "ACC-01",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Telas/estados suportados, tema(s) existentes, texto sobre imagens e overlays, foco/seleção/erro.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts/accessibility-03/accessibility/tests.jsonl"
+    ],
+    "runs": [
+      "attempts/accessibility-04/accessibility/tests.jsonl"
+    ],
+    "findings": true,
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+  },
+  {
+    "scenario": "ACC-02",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Escala de fonte 1,0/1,3/2,0 e máximo suportado pelo OS, viewport pequeno, texto longo/teclado.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts/accessibility-03/accessibility/tests.jsonl"
+    ],
+    "runs": [
+      "attempts/accessibility-04/accessibility/tests.jsonl"
+    ],
+    "findings": true,
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+  },
+  {
+    "scenario": "ACC-03",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Botões de ícone, fechar modal, itens de coleção/chat, ações/seleção do Quintal, proximidade de controles.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts/accessibility-03/accessibility/tests.jsonl"
+    ],
+    "runs": [
+      "attempts/accessibility-04/accessibility/tests.jsonl"
+    ],
+    "findings": true,
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+  },
+  {
+    "scenario": "ACC-04",
+    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
+    "scope": "TalkBack/VoiceOver: entrar, escolher foto, localizar gato, ouvir análise, enviar mensagem, ler notificação e operar uma ação do Quintal.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": []
+  },
+  {
+    "scenario": "ACC-05",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Inspecionar ícones, imagens informativas/decorativas, tabs, contadores, mensagens e ações desenhadas na cena.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts/accessibility-03/accessibility/tests.jsonl"
+    ],
+    "runs": [
+      "attempts/accessibility-04/accessibility/tests.jsonl"
+    ],
+    "findings": false,
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+  },
+  {
+    "scenario": "ACC-06",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Preferência de redução de movimento ativa/inativa, entrada/saída de telas, celebração e cena Quintal.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts/accessibility-03/accessibility/tests.jsonl"
+    ],
+    "runs": [
+      "attempts/accessibility-04/accessibility/tests.jsonl"
+    ],
+    "findings": false,
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+  },
+  {
+    "scenario": "ACC-07",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Viewports lógicos 320×568, 360×800, 412×915 e tablet 800×1280 como amostra de classes; orientação suportada, safe areas e teclado.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [
+      "attempts/accessibility-03/accessibility/tests.jsonl"
+    ],
+    "runs": [
+      "attempts/accessibility-04/accessibility/tests.jsonl"
+    ],
+    "findings": true,
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+  },
+  {
+    "scenario": "ACC-08",
+    "state": "PARTIAL_EXECUTED",
+    "scope": "Offline, imagem rejeitada, sessão expirada, saldo insuficiente e carregamento durante tarefa assistiva.",
+    "previous_report": "../2026-10-22-continuation/matrix.json",
+    "previous_runs": [],
+    "runs": [
+      "attempts/accessibility-04/accessibility/tests.jsonl"
+    ],
+    "limitation": "Erro de e-mail vazio, semântica exposta e teclado; demais erros, anúncio assistivo e gestão de foco pendentes."
+  }
+]

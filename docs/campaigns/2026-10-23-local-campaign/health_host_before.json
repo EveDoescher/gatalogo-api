@@ -1,0 +1,111 @@
+{
+  "label": "before bounded endpoint observations",
+  "samples": [
+    {
+      "utc": "2026-10-23T14:42:15.382640+00:00",
+      "cpu_busy_fraction": 1.0,
+      "available_physical_bytes": 5435760640
+    },
+    {
+      "utc": "2026-10-23T14:42:15.668000+00:00",
+      "cpu_busy_fraction": 1.0,
+      "available_physical_bytes": 5434068992
+    },
+    {
+      "utc": "2026-10-23T14:42:15.939436+00:00",
+      "cpu_busy_fraction": 1.0,
+      "available_physical_bytes": 5417947136
+    },
+    {
+      "utc": "2026-10-23T14:42:16.189952+00:00",
+      "cpu_busy_fraction": 1.0,
+      "available_physical_bytes": 5437149184
+    },
+    {
+      "utc": "2026-10-23T14:42:16.442705+00:00",
+      "cpu_busy_fraction": 0.984375,
+      "available_physical_bytes": 5442539520
+    },
+    {
+      "utc": "2026-10-23T14:42:16.693550+00:00",
+      "cpu_busy_fraction": 1.0,
+      "available_physical_bytes": 5429874688
+    },
+    {
+      "utc": "2026-10-23T14:42:16.944404+00:00",
+      "cpu_busy_fraction": 1.0,
+      "available_physical_bytes": 5427703808
+    },
+    {
+      "utc": "2026-10-23T14:42:17.194936+00:00",
+      "cpu_busy_fraction": 1.0,
+      "available_physical_bytes": 5387239424
+    },
+    {
+      "utc": "2026-10-23T14:42:17.445443+00:00",
+      "cpu_busy_fraction": 1.0,
+      "available_physical_bytes": 5463277568
+    },
+    {
+      "utc": "2026-10-23T14:42:17.701134+00:00",
+      "cpu_busy_fraction": 0.953125,
+      "available_physical_bytes": 5496647680
+    },
+    {
+      "utc": "2026-10-23T14:42:17.952459+00:00",
+      "cpu_busy_fraction": 0.96875,
+      "available_physical_bytes": 5496852480
+    },
+    {
+      "utc": "2026-10-23T14:42:18.208894+00:00",
+      "cpu_busy_fraction": 0.8333333333333334,
+      "available_physical_bytes": 5490675712
+    },
+    {
+      "utc": "2026-10-23T14:42:18.551275+00:00",
+      "cpu_busy_fraction": 1.0,
+      "available_physical_bytes": 5469454336
+    },
+    {
+      "utc": "2026-10-23T14:42:18.987555+00:00",
+      "cpu_busy_fraction": 1.0,
+      "available_physical_bytes": 5403205632
+    },
+    {
+      "utc": "2026-10-23T14:42:19.414943+00:00",
+      "cpu_busy_fraction": 1.0,
+      "available_physical_bytes": 5373288448
+    },
+    {
+      "utc": "2026-10-23T14:42:19.679081+00:00",
+      "cpu_busy_fraction": 1.0,
+      "available_physical_bytes": 5385531392
+    },
+    {
+      "utc": "2026-10-23T14:42:20.071898+00:00",
+      "cpu_busy_fraction": 1.0,
+      "available_physical_bytes": 5373652992
+    },
+    {
+      "utc": "2026-10-23T14:42:20.413396+00:00",
+      "cpu_busy_fraction": 0.9887640449438202,
+      "available_physical_bytes": 5321121792
+    },
+    {
+      "utc": "2026-10-23T14:42:20.751020+00:00",
+      "cpu_busy_fraction": 1.0,
+      "available_physical_bytes": 5355483136
+    },
+    {
+      "utc": "2026-10-23T14:42:21.121989+00:00",
+      "cpu_busy_fraction": 1.0,
+      "available_physical_bytes": 5313323008
+    }
+  ],
+  "confirmatory_ready": false,
+  "limitations": [
+    "Observes host CPU/memory only; thermal/power mode/IO stationarity require dedicated preconditions",
+    "No endpoint requests or product changes",
+    "Concurrent functional tests invalidate comparative performance interpretation"
+  ]
+}

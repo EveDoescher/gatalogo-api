@@ -1,0 +1,9 @@
+{
+  "generated_at": "2026-10-23T14:56:46.588065+00:00",
+  "run": "20261021T194312Z-953aa74e",
+  "api_executor_publication_commit": "b5e340359712f2c0b3d89032770140c4689be67c",
+  "frozen_snapshots_authoritative": true,
+  "historical_reports_preserved": true,
+  "mutation_report": "../2026-10-22-continuation/mutation_history.json",
+  "new_mutations_this_increment": 0
+}

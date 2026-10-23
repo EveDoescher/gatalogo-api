@@ -1,0 +1,19 @@
+{
+  "api_main": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+  "flutter_main": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+  "api_branch": "code-quality-cleanup",
+  "flutter_branch": "code-quality-cleanup",
+  "api_product_diff": "",
+  "flutter_product_diff": "",
+  "containers": [
+    "gatalogo-postgres Up 16 hours (healthy)",
+    "gatalogo-mailpit Up 16 hours (healthy)"
+  ],
+  "original_api_health_status": 200,
+  "original_api_health": {
+    "status": "ok",
+    "model": "gemini-3.5-flash-lite",
+    "gemini_key": "configured"
+  },
+  "preserved_user_artifacts": "API evidencias_gatalogo.zip/evidencias_gatalogo/output and Flutter Evidencias_Gatalogo deletions left unstaged and unchanged by campaign"
+}

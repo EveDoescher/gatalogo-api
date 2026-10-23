@@ -1,0 +1,23 @@
+{
+  "files": [
+    {
+      "file": "login_testImage.png",
+      "a_sha256": "3a4ec07c5374356aa6d6bfc1974933957a4e8598d981e6ad3e25bdeadd5213ae",
+      "b_sha256": "3a4ec07c5374356aa6d6bfc1974933957a4e8598d981e6ad3e25bdeadd5213ae",
+      "byte_equal": true
+    },
+    {
+      "file": "home_testImage.png",
+      "a_sha256": "513e92627abec5db4a658fde538ffe01c022735db060a489fc88030e0b8481f9",
+      "b_sha256": "513e92627abec5db4a658fde538ffe01c022735db060a489fc88030e0b8481f9",
+      "byte_equal": true
+    },
+    {
+      "file": "my_cat_testImage.png",
+      "a_sha256": "91be04ef23dbb3705f833415a734588c769b2b4260f19da83246c8690c4cc488",
+      "b_sha256": "91be04ef23dbb3705f833415a734588c769b2b4260f19da83246c8690c4cc488",
+      "byte_equal": true
+    }
+  ],
+  "scope": "Only three actually rendered/differing artifacts; helpers are version-local, not a full common-harness UI campaign"
+}

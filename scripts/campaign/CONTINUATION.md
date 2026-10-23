@@ -52,3 +52,45 @@ para ser analisada dentro do pacote Flutter. `prepare` congela esse arquivo junt
 com os outros `tool/campaign_*test.dart`; o executor copia o snapshot para o diretório
 de testes da versão avaliada. As tentativas antigas conservam seu snapshot original
 `flutter_probe_test.dart` e seu executor original, sem alteração das evidências.
+
+
+## Baterias locais adicionais — 23/10/2026
+
+Depois de preparar uma tentativa NOVA, os seletores `--execute-delivery`,
+`--execute-crossed`, `--execute-social-volume`, `--execute-image`,
+`--execute-storage-resilience`, `--execute-mechanisms`, `--execute-pipeline`,
+`--execute-worker-race`, `--execute-query-plan`, `--execute-socket-fanout`,
+`--execute-wire-contract` e `--execute-identity` usam os executores congelados.
+`QUALITY_API_ARM=A/B` escolhe o braço somente de `crossed`; identity executa A e B
+em processos separados contra schemas próprios. A suíte identity conserva contratos
+vermelhos de segurança e não pode ser usada como gate verde de mutação.
+
+O gate de wire-contract reconhece especificamente a TestFailure de ID vazio no
+reporter Flutter, junto do evento HTTP/TCP e arquivo consumido; seu PASS caracteriza
+uma falha real, não uma aprovação. Casos inválidos/timeout de executores permanecem
+separados. Não generalizar `isFailure=false` como ausência de asserção.
+
+```powershell
+# Ajustar RUN/NEW e usar uma tentativa nova para cada comando.
+python scripts/campaign/flutter_resilience.py --run RUN --attempt NEW --baseline-only --files campaign_notification_races_test.dart
+python scripts/campaign/flutter_catalog.py --run RUN --attempt NEW
+python scripts/campaign/flutter_visual.py --run RUN --attempt NEW
+python scripts/campaign/flutter_visual.py --run RUN --attempt NEW --arm A --goldens-only
+python scripts/campaign/health_campaign.py --run RUN --attempt NEW
+```
+
+A prova de catálogo aceita `QUALITY_FLUTTER_COUNT=0/40/501` e
+`QUALITY_FLUTTER_NO_GUEST=1`; o default mantém o piloto 40+guest. O executor de saúde
+pré-registra amostra, aquecimento e orçamento. Não repetir até obter uma comparação
+favorável. Uma célula instável permanece explícita. Não equivale a carga prolongada.
+
+Filtros de revalidação usados nesta etapa: `QUALITY_STORAGE_FILTER=revalidate`,
+`QUALITY_MECHANISM_FILTER=money`, `QUALITY_WORKER_FILTER=process`; selectors,
+snapshots e evidências mostram o subconjunto exato. A ausência de uma falha na
+revalidação filtrada não converte toda a tentativa anterior em verde.
+
+`local_report.py --run RUN --output DIRETORIO_NOVO` conserva os relatórios anteriores,
+indexa resultados/snapshots e mantém a matriz parcial. Documentar separadamente
+recomendações e limitações; não publicar logs, tars, JUnit, SQLite ou eventos brutos.
+
+[Relatório local e pendências](../../docs/campaigns/2026-10-23-local-campaign/README.md).

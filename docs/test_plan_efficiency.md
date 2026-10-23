@@ -407,3 +407,9 @@ não foram reduzidas pelos subconjuntos executados.
 
 [Resultados e matriz cumulativa](campaigns/2026-10-22-continuation/README.md).
 Preserva todos os cenarios anteriores; cobertura parcial nao significa conclusao.
+
+
+### Continuação local de 23/10/2026
+
+[Relatório incremental, matriz e problemas reproduzidos](campaigns/2026-10-23-local-campaign/README.md).
+Preserva relatórios anteriores e os cenários integrais. Inclui contratos Apple e chat vermelhos, comparação cruzada de clientes/APIs, falhas de serviços, SQL, capturas e medições exploratórias. Nenhuma correção de produto ou conclusão de ganho foi aplicada.
