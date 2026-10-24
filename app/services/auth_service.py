@@ -12,7 +12,7 @@ from uuid import UUID
 import jwt
 from fastapi import HTTPException, status
 from pwdlib import PasswordHash
-from sqlalchemy import select, update
+from sqlalchemy import func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import Settings, get_settings
@@ -53,6 +53,12 @@ async def create_otp(
 ) -> None:
     settings = settings or get_settings()
     normalized = normalize_email(email)
+    if session.bind is not None and session.bind.dialect.name == "postgresql":
+        # No OTP row exists on first issuance. Serialize by normalized address
+        # and purpose until commit/rollback, independently of User row locks.
+        digest = hashlib.sha256(f"gatalogo:otp:{normalized}\0{purpose}".encode()).digest()
+        lock_key = int.from_bytes(digest[:8], "big", signed=True)
+        await session.execute(select(func.pg_advisory_xact_lock(lock_key)))
     recent = (await session.execute(select(EmailOtp).where(EmailOtp.email == normalized, EmailOtp.purpose == purpose).order_by(EmailOtp.created_at.desc()).limit(1))).scalar_one_or_none()
     if recent is not None and (utc_now() - recent.created_at).total_seconds() < 60:
         raise HTTPException(429, "Aguarde um minuto antes de solicitar outro código.")
