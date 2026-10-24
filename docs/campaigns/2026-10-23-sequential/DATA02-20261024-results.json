@@ -1,0 +1,590 @@
+{
+  "scenario": "DATA-02",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_sha": "54d7b5b630401ceb31c3de4c962a36babd2a6de1",
+  "test_commit": "23f51c3",
+  "correction_commit": "54d7b5b630401ceb31c3de4c962a36babd2a6de1",
+  "cases": {
+    "before": [
+      {
+        "selector": "sequential.DATA02-20261024-02.executors.extended_cases::test_DATA02_upload_failure_records_orphan_without_committing[primary]",
+        "status": "PASS",
+        "seconds": 1.595
+      },
+      {
+        "selector": "sequential.DATA02-20261024-02.executors.extended_cases::test_DATA02_upload_failure_records_orphan_without_committing[right]",
+        "status": "PASS",
+        "seconds": 1.403
+      },
+      {
+        "selector": "sequential.DATA02-20261024-02.executors.extended_cases::test_DATA02_events_wait_for_successful_commit",
+        "status": "PASS",
+        "seconds": 2.775
+      },
+      {
+        "selector": "sequential.DATA02-20261024-02.executors.rollback_cases::test_DATA02_worker_transaction_visibility[progression]",
+        "status": "PASS",
+        "seconds": 1.977
+      },
+      {
+        "selector": "sequential.DATA02-20261024-02.executors.rollback_cases::test_DATA02_worker_transaction_visibility[before-commit]",
+        "status": "PASS",
+        "seconds": 3.201
+      },
+      {
+        "selector": "sequential.DATA02-20261024-02.executors.rollback_cases::test_DATA02_worker_transaction_visibility[success]",
+        "status": "PASS",
+        "seconds": 1.776
+      },
+      {
+        "selector": "sequential.DATA02-20261024-02.executors.rollback_cases::test_DATA02_interrupted_write_preserves_destination[False]",
+        "status": "FAIL",
+        "seconds": 0.013
+      },
+      {
+        "selector": "sequential.DATA02-20261024-02.executors.rollback_cases::test_DATA02_interrupted_write_preserves_destination[True]",
+        "status": "FAIL",
+        "seconds": 0.012
+      }
+    ],
+    "after": [
+      {
+        "selector": "sequential.DATA02-20261024-03.executors.extended_cases::test_DATA02_upload_failure_records_orphan_without_committing[primary]",
+        "status": "PASS",
+        "seconds": 2.76
+      },
+      {
+        "selector": "sequential.DATA02-20261024-03.executors.extended_cases::test_DATA02_upload_failure_records_orphan_without_committing[right]",
+        "status": "PASS",
+        "seconds": 2.73
+      },
+      {
+        "selector": "sequential.DATA02-20261024-03.executors.extended_cases::test_DATA02_events_wait_for_successful_commit",
+        "status": "PASS",
+        "seconds": 6.972
+      },
+      {
+        "selector": "sequential.DATA02-20261024-03.executors.rollback_cases::test_DATA02_worker_transaction_visibility[progression]",
+        "status": "PASS",
+        "seconds": 4.588
+      },
+      {
+        "selector": "sequential.DATA02-20261024-03.executors.rollback_cases::test_DATA02_worker_transaction_visibility[before-commit]",
+        "status": "PASS",
+        "seconds": 2.427
+      },
+      {
+        "selector": "sequential.DATA02-20261024-03.executors.rollback_cases::test_DATA02_worker_transaction_visibility[success]",
+        "status": "PASS",
+        "seconds": 2.417
+      },
+      {
+        "selector": "sequential.DATA02-20261024-03.executors.rollback_cases::test_DATA02_interrupted_write_preserves_destination[False]",
+        "status": "PASS",
+        "seconds": 0.016
+      },
+      {
+        "selector": "sequential.DATA02-20261024-03.executors.rollback_cases::test_DATA02_interrupted_write_preserves_destination[True]",
+        "status": "PASS",
+        "seconds": 2.12
+      }
+    ],
+    "storage_security": [
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.security_cases::test_SEC05_storage_escape_never_reads_or_deletes[../sentinel.txt]",
+        "status": "PASS",
+        "seconds": 0.087
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.security_cases::test_SEC05_storage_escape_never_reads_or_deletes[..\\\\sentinel.txt]",
+        "status": "PASS",
+        "seconds": 0.036
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.security_cases::test_SEC05_storage_escape_never_reads_or_deletes[users/../../sentinel.txt]",
+        "status": "PASS",
+        "seconds": 0.023
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.security_cases::test_SEC05_storage_escape_never_reads_or_deletes[absolute]",
+        "status": "PASS",
+        "seconds": 0.056
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_read_write_delete_outside_sentinels_are_untouched[parent]",
+        "status": "PASS",
+        "seconds": 0.015
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_read_write_delete_outside_sentinels_are_untouched[windows-parent]",
+        "status": "PASS",
+        "seconds": 0.024
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_read_write_delete_outside_sentinels_are_untouched[nested-posix]",
+        "status": "PASS",
+        "seconds": 0.018
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_read_write_delete_outside_sentinels_are_untouched[nested-windows]",
+        "status": "PASS",
+        "seconds": 0.025
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_read_write_delete_outside_sentinels_are_untouched[absolute-native]",
+        "status": "PASS",
+        "seconds": 0.016
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_read_write_delete_outside_sentinels_are_untouched[absolute-posix]",
+        "status": "PASS",
+        "seconds": 0.021
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.png-primary]",
+        "status": "PASS",
+        "seconds": 0.022
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.png-reference]",
+        "status": "PASS",
+        "seconds": 0.035
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.png-avatar]",
+        "status": "PASS",
+        "seconds": 0.031
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.png-profile]",
+        "status": "PASS",
+        "seconds": 0.026
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.png-chat]",
+        "status": "PASS",
+        "seconds": 0.029
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.png-post]",
+        "status": "PASS",
+        "seconds": 0.019
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.JPEG-primary]",
+        "status": "PASS",
+        "seconds": 0.031
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.JPEG-reference]",
+        "status": "PASS",
+        "seconds": 0.037
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.JPEG-avatar]",
+        "status": "PASS",
+        "seconds": 0.04
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.JPEG-profile]",
+        "status": "PASS",
+        "seconds": 0.028
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.JPEG-chat]",
+        "status": "PASS",
+        "seconds": 0.029
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.JPEG-post]",
+        "status": "PASS",
+        "seconds": 0.026
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[-primary]",
+        "status": "PASS",
+        "seconds": 0.032
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[-reference]",
+        "status": "PASS",
+        "seconds": 0.028
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[-avatar]",
+        "status": "PASS",
+        "seconds": 0.027
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[-profile]",
+        "status": "PASS",
+        "seconds": 0.027
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[-chat]",
+        "status": "PASS",
+        "seconds": 0.024
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[-post]",
+        "status": "PASS",
+        "seconds": 0.027
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.extensionistoolong-primary]",
+        "status": "PASS",
+        "seconds": 0.031
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.extensionistoolong-reference]",
+        "status": "PASS",
+        "seconds": 0.092
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.extensionistoolong-avatar]",
+        "status": "PASS",
+        "seconds": 0.063
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.extensionistoolong-profile]",
+        "status": "PASS",
+        "seconds": 0.023
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.extensionistoolong-chat]",
+        "status": "PASS",
+        "seconds": 0.03
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.extensionistoolong-post]",
+        "status": "PASS",
+        "seconds": 0.02
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn:g-primary]",
+        "status": "PASS",
+        "seconds": 0.055
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn:g-reference]",
+        "status": "PASS",
+        "seconds": 0.034
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn:g-avatar]",
+        "status": "PASS",
+        "seconds": 0.036
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn:g-profile]",
+        "status": "PASS",
+        "seconds": 0.024
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn:g-chat]",
+        "status": "PASS",
+        "seconds": 0.016
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn:g-post]",
+        "status": "PASS",
+        "seconds": 0.016
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.png:ads-primary]",
+        "status": "PASS",
+        "seconds": 0.02
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.png:ads-reference]",
+        "status": "PASS",
+        "seconds": 0.026
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.png:ads-avatar]",
+        "status": "PASS",
+        "seconds": 0.026
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.png:ads-profile]",
+        "status": "PASS",
+        "seconds": 0.025
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.png:ads-chat]",
+        "status": "PASS",
+        "seconds": 0.022
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.png:ads-post]",
+        "status": "PASS",
+        "seconds": 0.016
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn\\x00g-primary]",
+        "status": "PASS",
+        "seconds": 0.019
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn\\x00g-reference]",
+        "status": "PASS",
+        "seconds": 0.019
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn\\x00g-avatar]",
+        "status": "PASS",
+        "seconds": 0.02
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn\\x00g-profile]",
+        "status": "PASS",
+        "seconds": 0.021
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn\\x00g-chat]",
+        "status": "PASS",
+        "seconds": 0.021
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn\\x00g-post]",
+        "status": "PASS",
+        "seconds": 0.014
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.\\\\..\\\\x-primary]",
+        "status": "PASS",
+        "seconds": 0.055
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.\\\\..\\\\x-reference]",
+        "status": "PASS",
+        "seconds": 0.032
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.\\\\..\\\\x-avatar]",
+        "status": "PASS",
+        "seconds": 0.038
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.\\\\..\\\\x-profile]",
+        "status": "PASS",
+        "seconds": 0.032
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.\\\\..\\\\x-chat]",
+        "status": "PASS",
+        "seconds": 0.022
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.\\\\..\\\\x-post]",
+        "status": "PASS",
+        "seconds": 0.014
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[./../x-primary]",
+        "status": "PASS",
+        "seconds": 0.023
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[./../x-reference]",
+        "status": "PASS",
+        "seconds": 0.024
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[./../x-avatar]",
+        "status": "PASS",
+        "seconds": 0.03
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[./../x-profile]",
+        "status": "PASS",
+        "seconds": 0.032
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[./../x-chat]",
+        "status": "PASS",
+        "seconds": 0.019
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[./../x-post]",
+        "status": "PASS",
+        "seconds": 0.018
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.-primary]",
+        "status": "PASS",
+        "seconds": 0.023
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.-reference]",
+        "status": "PASS",
+        "seconds": 0.023
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.-avatar]",
+        "status": "PASS",
+        "seconds": 0.023
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.-profile]",
+        "status": "PASS",
+        "seconds": 0.02
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.-chat]",
+        "status": "PASS",
+        "seconds": 0.021
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_all_storage_writers_use_confined_portable_keys[.-post]",
+        "status": "PASS",
+        "seconds": 0.014
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_http_upload_names_never_escape_or_raise_unhandled_errors[primary]",
+        "status": "PASS",
+        "seconds": 5.037
+      },
+      {
+        "selector": "sequential.SEC05-atomic-20261024-01.executors.storage_cases::test_SEC05_http_upload_names_never_escape_or_raise_unhandled_errors[reference]",
+        "status": "PASS",
+        "seconds": 2.793
+      }
+    ]
+  },
+  "passed": 8,
+  "failed": 0,
+  "skipped": 0,
+  "regression": {
+    "storage_security": 72,
+    "storage_compatibility": 2
+  },
+  "executor": "scripts/run_security_regression.py --scenario DATA-02 --output <new-directory-under-original-run>/sequential/<attempt>",
+  "executor_sha256": {
+    "security_cases.py": "29740245f414e7645404dce0e627c6a09087978b2478f265d928bf05737bc656",
+    "extended_cases.py": "474814562131639227c8c20e068e192aa21783fc7de37ef1b8541855a31e291f",
+    "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+    "rollback_cases.py": "a0134b14d048294f05999536cc94f6f2c904e88cdaa725723e10ed296560c5e7"
+  },
+  "evidence_sha256": {
+    "sequential/DATA02-20261024-02/junit.xml": "b18d0d9b6a1514fc5e4da07cce5086240a94dcf04e1905ae0963778b6669d3ec",
+    "sequential/DATA02-20261024-02/pytest.log": "8bbaf2e2c23984070f2d3522d74012d87f84f37dc471a373078b3a964722c46a",
+    "sequential/DATA02-20261024-02/summary.json": "00aced3b9a6078f34fffc4da7ec641b24ffb42991c7a08363fa1924b38757e84",
+    "sequential/DATA02-20261024-02/source_manifest.json": "c2e68311d95824a59f99afa68b76340c1d1df53c40d41d20ac2d624922470d77",
+    "sequential/DATA02-20261024-02/candidate_manifest.json": "6c20beb8c264ec5392e3ced11b90ada0a6018e6c56d8865cdcf74353f9c6190a",
+    "sequential/DATA02-20261024-02/observations/DATA02-commit-events.json": "a23a76b85248b48700753017a86b3b78a2d0b80018b2a49885bbd5c096ab3582",
+    "sequential/DATA02-20261024-02/observations/DATA02-file-failure-primary.json": "769b2fac4fe8341adc0340f979609706921e66f988830ee954e2c6b5d61baa69",
+    "sequential/DATA02-20261024-02/observations/DATA02-file-failure-right.json": "769b2fac4fe8341adc0340f979609706921e66f988830ee954e2c6b5d61baa69",
+    "sequential/DATA02-20261024-02/observations/DATA02-worker-before-commit.json": "3fb81597c74200ebbfaa985e05fcd70f99de60cca224808a8cea8978eac6e3fa",
+    "sequential/DATA02-20261024-02/observations/DATA02-worker-progression.json": "aeb67da0c2f62d459761d1e8de13e1269a6c3b3c6983aa10ffe569c24e561070",
+    "sequential/DATA02-20261024-02/observations/DATA02-worker-success.json": "64a395e4b5a772427832f3004c05c1cfc97a7f7f2a605a1f1c351adfcb3d208f",
+    "sequential/DATA02-20261024-03/junit.xml": "fe22876d00481d2190dbc150bd8be14bfffdf33ca987f5e141761f1157266d4f",
+    "sequential/DATA02-20261024-03/pytest.log": "53cc084d6f04121d86df2afa501a4dccfd8ece3063c45a8d7f193dd377c82420",
+    "sequential/DATA02-20261024-03/summary.json": "a58bf865460642b2ab9122733e89b30c28e589817d121b30c84654516b44f5a4",
+    "sequential/DATA02-20261024-03/source_manifest.json": "6d82925393a4ca965928993d056a43d0183ea9fb06fbfc4f1db410293fb9eee6",
+    "sequential/DATA02-20261024-03/candidate_manifest.json": "42a4498613dddfcfd9cea72f33ecf893263bab7a5cdad796880d03e7923e57d7",
+    "sequential/DATA02-20261024-03/observations/DATA02-commit-events.json": "a23a76b85248b48700753017a86b3b78a2d0b80018b2a49885bbd5c096ab3582",
+    "sequential/DATA02-20261024-03/observations/DATA02-file-failure-primary.json": "769b2fac4fe8341adc0340f979609706921e66f988830ee954e2c6b5d61baa69",
+    "sequential/DATA02-20261024-03/observations/DATA02-file-failure-right.json": "769b2fac4fe8341adc0340f979609706921e66f988830ee954e2c6b5d61baa69",
+    "sequential/DATA02-20261024-03/observations/DATA02-worker-before-commit.json": "3fb81597c74200ebbfaa985e05fcd70f99de60cca224808a8cea8978eac6e3fa",
+    "sequential/DATA02-20261024-03/observations/DATA02-worker-progression.json": "aeb67da0c2f62d459761d1e8de13e1269a6c3b3c6983aa10ffe569c24e561070",
+    "sequential/DATA02-20261024-03/observations/DATA02-worker-success.json": "64a395e4b5a772427832f3004c05c1cfc97a7f7f2a605a1f1c351adfcb3d208f",
+    "sequential/SEC05-atomic-20261024-01/junit.xml": "dab3ca45b3686572c2243ba68e7b8ca3050e06274d025506a2ce7e0d4c2a62d5",
+    "sequential/SEC05-atomic-20261024-01/pytest.log": "43f37ffaf1957eae2ae13308cb786293a4a3fc48426fa197a238e88d9113ec7d",
+    "sequential/SEC05-atomic-20261024-01/summary.json": "75b8efb336bfb3ae534d1d04aa9b26b3f06199a8447581245ee4a65216932629",
+    "sequential/SEC05-atomic-20261024-01/source_manifest.json": "6d82925393a4ca965928993d056a43d0183ea9fb06fbfc4f1db410293fb9eee6",
+    "sequential/SEC05-atomic-20261024-01/candidate_manifest.json": "0b97bc269a583024f35fafccdb9de9399c33852f57d6a65525037871b6e35443",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-http-filenames-primary.json": "e229cf54ce4e09edc1af75d1850559f7b76a57edd8417b6a68bde82f258dfded",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-http-filenames-reference.json": "a29ae098629bf3ef7314f8ba48aabb98c76e9ff1ea2258d3951c3dbaa0199fa6",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-sentinel-absolute-native.json": "4cc72908384bd8cb03557bfc54c88740cc8ca67534bca854dbd8c2e89d29cf8d",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-sentinel-absolute-posix.json": "4e443a61a9f30f51a9ad89c098d06e0744d5c1dc6b22869a70464120bc885fae",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-sentinel-nested-posix.json": "9a77db59525029f8c6e9befee30981afa35601e4ac7bcbd80c9a9d64cdf6ee96",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-sentinel-nested-windows.json": "029e6b6a408b5c65d2d5421bb7a5cf734fbcce9662f068cfad288247cee1bfa8",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-sentinel-parent.json": "dca96f6d44c5a18f759df2e945f3917450c84812defdd9fb480dd32cccf5922e",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-sentinel-windows-parent.json": "c908e096a7314038cae86f8b2ae934a2ce0d6f12e2582c3acd18015147383290",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-avatar-2e.json": "812d90cbc611fe744a98e5cfa0437caf282141211dd9b3ca1862bb9053922421",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-avatar-2e2f2e2e2f78.json": "c416bff89f45dae37152927fc8edb7c0bcfbbedc9ef7502d704727799b491dd8",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-avatar-2e4a504547.json": "f0863069dc83762a0bd1b1ecdbe021202261c5a00fa27a50d16533ecbb7f5763",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-avatar-2e5c2e2e5c78.json": "b70b492ee1f2d99dfb24bfed4bbe6a98f249138b89237b780f962c84da0c6f49",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-avatar-2e657874656e73696f6e6973746f6f6c6f6e67.json": "0a4d66b08d159d236ebfc338ab146ceb4c2e7691e6bd5ff2be815b01694048e8",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-avatar-2e706e0067.json": "272ae44d2f3ec0b2012b567dcdb459cc51d7b80500b19ec58766a9fa9f574e2d",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-avatar-2e706e3a67.json": "982b2790e6cd9dab3c99ed4575c41b3d6b2ecdeec2ab3157190976f0f0076c9e",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-avatar-2e706e67.json": "728e67cbff53de4d8c63f10d90cd5cb618c88a21767036104f1068a733baa0f7",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-avatar-2e706e673a616473.json": "65983cb00f8dd296a80f9a31b40077a5ac7abed1360e863a34696e5b6cbf1159",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-avatar-empty.json": "2a8b01778f14395e5cc0f8d15d0d85bf3edaf5dada37e282e59a2acfe38de5c8",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-chat-2e.json": "271b65131c61422d31af26bf3a749963a6ce436eb2d387fecf12f935bfcf665b",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-chat-2e2f2e2e2f78.json": "041b877f7823257895d2d255dc55bd0b35b6832a73663edbfdd0a280ffee7423",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-chat-2e4a504547.json": "e28cc80da598a1ee4015a3f768eb17762b07fef0fff8e142a6c57aca4e92dce4",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-chat-2e5c2e2e5c78.json": "378c899517329274f91942003d1819d5c09112f400ed28e8450f27a9b136eceb",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-chat-2e657874656e73696f6e6973746f6f6c6f6e67.json": "87192d379c98ae4f7a85ec87fbb97b96e89cb938bdd1ba0f043e034646401aa9",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-chat-2e706e0067.json": "5d5fe09a1466cf6b76bc848d7c1b12f8436773111042142fc8c310f37a4d8eca",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-chat-2e706e3a67.json": "6a35f8dd0d4be20e2ed00216a319b984e422d86f5bee0799b2d54fb20ea73630",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-chat-2e706e67.json": "6bd01d2810905c8fdc3d165b4625f8fcc1f8cacd856f465bcf18813c21b25d31",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-chat-2e706e673a616473.json": "c8d3c9f46d46c3d74358cb376d1f29d1f438dde5e7aa7768245055760b3cb65d",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-chat-empty.json": "c956e333c4367897e8c14f7cb945d4d4c03dd456dcb587719b4c6cc22fb05f6e",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-post-2e.json": "33cf80f83bc6a224734c8da7bacc129ae7601fabe0540c10b32a3837a309af46",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-post-2e2f2e2e2f78.json": "88f484ed5b3bff2ab829a66b84a333493eba95719019e15aa0112fc6dd94f705",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-post-2e4a504547.json": "8f004b63e7e7b67405cf5f2091f5495bcf4a5bd3ac28d4ec19f5f4681852156d",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-post-2e5c2e2e5c78.json": "c807b0084cbd4de9f0db49b4f3f86a78528437e2eb505e4662ffb7f742cd64b9",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-post-2e657874656e73696f6e6973746f6f6c6f6e67.json": "817ccc5baee240a9857d93833e4d35d7ee08f31b1c97c1493af64b3ba7063a58",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-post-2e706e0067.json": "33f1e4e828bfb12c2e6220e30037deb16956e0abc2875a072c1990a9519eef68",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-post-2e706e3a67.json": "a88fe60bf0c5ad137027b7903b186ca8ea093c34c62f92413704f378e31ff73c",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-post-2e706e67.json": "24b21d0be5a7d2336fb1afa68b60f091c46d1b6831eecd5a67013fbc231ed1fc",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-post-2e706e673a616473.json": "9734491b0810b8baedbdf18c209a752e4a61db52bd371de80887ec8fe7b29af6",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-post-empty.json": "46dee2c396bb769310bd83e4fb438583a7445a1308557079781d72a72f6a2fe7",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-primary-2e.json": "3f3e342669ee7137df7dfbe6508a90231d55b47f57a6876990114eecfbfebb56",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-primary-2e2f2e2e2f78.json": "1ce2ce1b74577db11b8255dcc48bd57e7e7ada673b84c630fa7beaa37c60d4a9",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-primary-2e4a504547.json": "54aca8c0501d04efba312fb19cdad1887ebf0bf0796a8f165265a4f11c9f8c97",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-primary-2e5c2e2e5c78.json": "567011c2d64d76d53273b585108427fe4b01ad27c805cf5d3c3fa5d6c77c4b32",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-primary-2e657874656e73696f6e6973746f6f6c6f6e67.json": "6a14e11bcf82f1bfb826426b2f2fb5451065aaec009cd07776b52c762c98ae89",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-primary-2e706e0067.json": "bbb1daae917374fe8501bc4255b597d795d89cd1e6e5d0a86eaa8f4963056aa6",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-primary-2e706e3a67.json": "40491f306fd3ba3477f69e0da2be20084968e55e9e31f9bf36f5164828003076",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-primary-2e706e67.json": "901601f5242048e98c6692178c8501afa136fd3a4a75af88cf467a34d02647bf",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-primary-2e706e673a616473.json": "87ef32fb683b0589c3cf45887d2ada9593721fcd47492e1f1bb6031120246cfe",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-primary-empty.json": "28472928ee25c286d22eef43496ceae4c4ce562498a1afaf07cfd99b3365ebc4",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-profile-2e.json": "7b2136c6102938cfe5b5195ade547f35ed588bc4924c4b432cd658852c532475",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-profile-2e2f2e2e2f78.json": "dcb0fe705e8d35e10a5cf70a7b9888a79ccde88fbb7fa2a079662f898fe2b397",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-profile-2e4a504547.json": "196aa2bbbb2dc2a5e550f75466782f9cc83f15fbb6a85b742e77a4b87be628c1",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-profile-2e5c2e2e5c78.json": "b82cb37e19d48855c1f69b98017611d93216af64d2d99c54c67d06e7dc7f1054",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-profile-2e657874656e73696f6e6973746f6f6c6f6e67.json": "78aff6d391824fec64b017ed93af0cb54ae64faed043ba33051b8f9b34f2e296",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-profile-2e706e0067.json": "e85b3b61ecba11bef8b66d9da1fbf46132dcb39e382390c7a2d17da011ba26a2",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-profile-2e706e3a67.json": "981a53f96f792cb076bc96b8a8c8771f4ae0599e592bbc0652699a37107464d8",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-profile-2e706e67.json": "cbe4fa9423316451d1f667d970de233d8f7b3989197c1af49ca8952ff9f65b4e",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-profile-2e706e673a616473.json": "005e1ba92f58764952223a1340ef1574a809e747ce24e32aa459ad581a10aebc",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-profile-empty.json": "24e3bf78083ee9c1da2990b93d5843a957f4337e8f09faa4002bc98d9cda5944",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-reference-2e.json": "518a000b207f18e5b9911ef9a98918cad1ccf2229182e263f5603e67f744b683",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-reference-2e2f2e2e2f78.json": "9c32a7cc2523cdb53d770bab9ddee162aa80ddd194195ab23940e1067f134b0c",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-reference-2e4a504547.json": "81715e85ac003087198d47fcc4b892afbddff5eef270006a4a19886e81bfccfd",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-reference-2e5c2e2e5c78.json": "72081017ccd5972f053415c1f503240c129a166c38e3e9cf6be1d4dd11096ab6",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-reference-2e657874656e73696f6e6973746f6f6c6f6e67.json": "1400f85975c5ca0567b1f6955ae492cdd05c656a90533da4e15dc493f8c400e1",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-reference-2e706e0067.json": "755eace0cdeacf3b6c63334f3ff8774a7ba856e60bd80e80b2668c71b28b06db",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-reference-2e706e3a67.json": "a4eacf13cb72679192e06a4a72c1646496be39ef67eb78fcdf9252786aeb671c",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-reference-2e706e67.json": "9aef936c1a7412c51dd86cd595ea0cdc0b8c11c70401cde294886f4e6226d2e5",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-reference-2e706e673a616473.json": "91c212c7af76e34291faed0f24b2afdfbac5fa184c048bf835fdcd71703ca24c",
+    "sequential/SEC05-atomic-20261024-01/observations/SEC05-writer-reference-empty.json": "0249e7b2ceaa8f9e2d6fe79f5b89e8dba356e03c6f51faec50da54390bc3e220",
+    "sequential/DATA02-storage-compat-20261024.xml": "da6e94c47f0e10c161ccfdce775e49f873941c7120b3ad632dfc0f0c8616ccdf"
+  },
+  "coverage": [
+    "Primary and reference upload: injected failure after storage, rollback observed from separate session; original hashes/files retained; one complete orphan inventoried for each case",
+    "Progression after flush and failure before commit: separate observer cannot see uncommitted analysis, synthetic reward/balance or revision; failed transactions publish zero success events",
+    "Positive worker transaction persists complete analysis and reward, publishes after commit",
+    "Chat commit failure: no persisted message or event; successful control persists and publishes",
+    "Interrupted file write: absent destination stays absent, existing bytes stay intact, temporary file removed"
+  ],
+  "finding": {
+    "problem": "Direct write can expose partial content and damage an existing asset after an OS write failure",
+    "hypothesis": "Writing into the final destination truncates it before successful completion",
+    "before": "2 interrupted-write failures; 6 transactional tests pass",
+    "change": "Same-directory temporary file and atomic replacement, cleanup in finally",
+    "after": "8 DATA-02 + 72 storage security + 2 storage compatibility pass"
+  },
+  "limitations": [
+    "First attempt had an invalid max_image_bytes fixture setting; its worker negatives are not accepted as proof. Corrected second and third attempts retained.",
+    "Inference and reward business algorithm are stubbed; real PostgreSQL savepoint, wallet mutation, file IO, HTTP and event transport are evaluated.",
+    "A complete file may remain unreferenced after DB rollback; this is not filesystem+DB atomicity. Cleanup policy requires all writers paused, complete reference inventory, backup and quarantine. No live cleanup performed.",
+    "Partial-write guarantee covers exceptions while process remains alive; no power-loss durability claim."
+  ],
+  "recovery_policy": "../../quality/storage_recovery.md",
+  "metadata_amendment": "Historic orphan observation says no product fix in this stage: retained unchanged. Atomic-write fix is evaluated here; no automatic orphan collector was added."
+}

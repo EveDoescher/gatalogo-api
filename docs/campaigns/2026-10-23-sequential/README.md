@@ -41,3 +41,7 @@ As rejeições cobrem token ausente/malformado, assinatura/issuer/type inválido
 ## SEC-07 — concluído em 24/10/2026
 
 16 testes aprovados. [Antes/depois, limites, SMTP, concorrência e correção](SEC07-20261024-results.json). A corrida gerava dois e-mails e dois OTPs ativos; após o lock transacional, as respostas foram 202/429 com uma mensagem e um código ativo. Recuperação real nos dois endpoints, limites exatos, consumo único, refresh/logout e isolamento passaram. A entrega SMTP antes de um commit que falha continua explicitamente no cenário DLV-02.
+
+## DATA-02 — concluído em 24/10/2026
+
+8 testes aprovados, mais 72 de regressão de segurança do storage e 2 de compatibilidade. [Antes/depois, variantes, hashes e limites](DATA02-20261024-results.json). A escrita parcial danificava o destino; a substituição atômica preserva os bytes anteriores e remove o temporário após exceção. Rollback não expõe meia análise, saldo ou evento de sucesso. Um arquivo completo ainda pode sobreviver ao rollback: a [política de recuperação](../../quality/storage_recovery.md) exige inventário integral e escritores pausados; nenhum arquivo ou serviço do usuário foi removido/interrompido. Não foi implementada coleta automática concorrente.

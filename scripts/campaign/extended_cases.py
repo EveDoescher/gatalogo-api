@@ -246,8 +246,14 @@ async def test_SEC02_SEC03_chat_attachment_member_controls(db):
 
 
 @pytest.mark.asyncio
-async def test_DATA05_http_conflicts_preserve_authoritative_analysis(db):
+@pytest.mark.parametrize("order", ["ascending", "descending"])
+async def test_DATA05_http_conflicts_preserve_authoritative_analysis(db, order):
     await seed(db)
+    identity = str(uid("server-owned-identity"))
+    async with db.factory() as session:
+        cat = await session.get(RemoteCat, uid("matrix-cat"))
+        cat.payload = {**cat.payload, "individual_id": identity, "identity_revision": 7}
+        await session.commit()
 
     async def push(who, seconds, device, deleted=False):
         stamp = (NOW + timedelta(seconds=seconds)).isoformat()
@@ -268,12 +274,24 @@ async def test_DATA05_http_conflicts_preserve_authoritative_analysis(db):
             },
         )
 
-    for sec, dev, accepted in (
-        (-1, "z", False),
-        (1, "a", True),
-        (1, "0", False),
-        (1, "z", True),
-    ):
+    cases = (
+        [
+            (-1, "z", False),
+            (1, "a", True),
+            (1, "0", False),
+            (1, "z", True),
+            (1, "z", False),
+        ]
+        if order == "ascending"
+        else [
+            (-1, "a", False),
+            (1, "z", True),
+            (1, "a", False),
+            (0, "zz", False),
+            (1, "z", False),
+        ]
+    )
+    for sec, dev, accepted in cases:
         before = None
         async with db.factory() as session:
             cat = await session.get(RemoteCat, uid("matrix-cat"))
@@ -283,6 +301,8 @@ async def test_DATA05_http_conflicts_preserve_authoritative_analysis(db):
         async with db.factory() as session:
             cat = await session.get(RemoteCat, uid("matrix-cat"))
             assert cat.analysis == {"authoritative": True}
+            assert cat.payload["individual_id"] == identity
+            assert cat.payload["identity_revision"] == 7
             assert (
                 cat.payload.get("untrusted") == dev
                 if accepted
@@ -304,12 +324,14 @@ async def test_DATA05_http_conflicts_preserve_authoritative_analysis(db):
         ).all()
         assert len(rows) == 2 and {r.user_id for r in rows} == {uid("A"), uid("B")}
     evidence(
-        "DATA05-http",
+        "DATA05-http-" + order,
         {
             "scenario": "DATA-05",
             "dates_and_device_orders": True,
             "tombstone_not_resurrected": True,
             "analysis_preserved": True,
+            "identity_and_revision_preserved": True,
+            "device_order": order,
             "same_client_id_isolated": True,
         },
     )

@@ -570,7 +570,7 @@
   },
   {
     "scenario": "DATA-02",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Falha após arquivo salvo, durante progressão e antes de commit; observar em outra sessão.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [
@@ -580,10 +580,14 @@
       "attempts/extended-02/critical_runs/extended-baseline/summary.json",
       "attempts/extended-03/critical_runs/extended-baseline/summary.json"
     ],
-    "limitation": "Novas variantes locais rastreadas; conferir escopo e pendências no relatório. Nenhuma aprovação integral ou correção de produto.",
+    "limitation": "Banco e filesystem continuam distintos; órfãos identificados, política de recuperação em janela sem escritores documentada. Não aprova coletor concorrente nem durabilidade contra perda de energia.",
     "followup_runs": [
       "attempts/upload-transport-01/critical_runs/upload-transport-baseline/summary.json"
-    ]
+    ],
+    "closure_evidence": [
+      "DATA02-20261024-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario DATA-02"
   },
   {
     "scenario": "DATA-03",

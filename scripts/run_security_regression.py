@@ -1,4 +1,4 @@
-"""Run SEC-01 regression on disposable PostgreSQL without API lifespan or providers."""
+"""Run bounded security/integrity cases on disposable PostgreSQL and frozen sources."""
 
 import argparse
 import hashlib
@@ -91,8 +91,10 @@ def selection(scenario, output):
         "SEC-05": "storage_cases.py",
         "SEC-07": "auth_flow_cases.py",
         "DATA-02": "rollback_cases.py",
+        "DATA-05": None,
     }[scenario]
-    names += [case_file]
+    if case_file:
+        names.append(case_file)
     if scenario == "SEC-03":
         names.append("test_auth_security.py")
     if scenario == "SEC-07":
@@ -111,7 +113,8 @@ def selection(scenario, output):
         encoding="utf-8",
     )
     selected = ["security_cases.py", "extended_cases.py"]
-    selected += [case_file]
+    if case_file:
+        selected.append(case_file)
     if scenario == "SEC-07":
         selected.append("delivery_cases.py")
     selectors = [str(executors / name) for name in selected]
@@ -281,7 +284,9 @@ def run(output, scenario="SEC-01"):
                     "database": "own random-port PostgreSQL, migrations applied; fixture schema per case",
                     "providers": "local RSA/JWKS; no live identity provider"
                     if scenario == "SEC-01"
-                    else "generated app JWTs; analysis/delivery stubbed; no live IdP or inference",
+                    else "isolated local Mailpit/SMTP; generated JWTs; no external recipients or inference"
+                    if scenario == "SEC-07"
+                    else "generated app JWTs; synthetic analysis/fault injection; no external delivery or inference",
                     "api_lifespan_started": False,
                     "physical_device": False,
                     "evaluated_sources_unchanged": evaluated == source_hashes(),
@@ -310,7 +315,15 @@ if __name__ == "__main__":
     parser.add_argument("--output", required=True)
     parser.add_argument(
         "--scenario",
-        choices=["SEC-01", "SEC-02", "SEC-03", "SEC-05", "SEC-07", "DATA-02"],
+        choices=[
+            "SEC-01",
+            "SEC-02",
+            "SEC-03",
+            "SEC-05",
+            "SEC-07",
+            "DATA-02",
+            "DATA-05",
+        ],
         default="SEC-01",
     )
     args = parser.parse_args()
