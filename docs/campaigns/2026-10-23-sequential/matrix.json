@@ -674,7 +674,7 @@
   },
   {
     "scenario": "DATA-07",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Coleta dupla, saldo exato/insuficiente, estoque mínimo, prazo −1 ms/0/+1 ms, cliente adiantado.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [
@@ -683,12 +683,16 @@
     "runs": [
       "attempts/targeted-02/critical_runs/targeted-baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "limitation": "Limites funcionais com relógio controlado e HTTP; não mede throughput nem altera relógio físico.",
     "local_runs": [
       "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
       "attempts/mechanisms-02/critical_runs/mechanisms-baseline/summary.json",
       "attempts/mechanisms-03/critical_runs/mechanisms-baseline/summary.json"
-    ]
+    ],
+    "closure_evidence": [
+      "DATA07-20261024-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario DATA-07"
   },
   {
     "scenario": "DATA-08",

@@ -1,0 +1,129 @@
+{
+  "scenario": "DATA-07",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_sha": "53f71b4b9847daa0110dcdf4c60fc3e324e367ce",
+  "test_commit": "53f71b4b9847daa0110dcdf4c60fc3e324e367ce",
+  "product_changes": null,
+  "passed": 15,
+  "failed": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "selector": "sequential.DATA07-20261024-01.executors.security_cases::test_DATA07_collect_boundary_and_replay",
+      "status": "PASS",
+      "seconds": 5.1
+    },
+    {
+      "selector": "sequential.DATA07-20261024-01.executors.production_boundary_cases::test_DATA07_exact_collection_deadline[-1]",
+      "status": "PASS",
+      "seconds": 2.841
+    },
+    {
+      "selector": "sequential.DATA07-20261024-01.executors.production_boundary_cases::test_DATA07_exact_collection_deadline[0]",
+      "status": "PASS",
+      "seconds": 1.784
+    },
+    {
+      "selector": "sequential.DATA07-20261024-01.executors.production_boundary_cases::test_DATA07_exact_collection_deadline[1]",
+      "status": "PASS",
+      "seconds": 2.914
+    },
+    {
+      "selector": "sequential.DATA07-20261024-01.executors.production_boundary_cases::test_DATA07_exact_balance_and_no_partial_debit[0]",
+      "status": "PASS",
+      "seconds": 2.226
+    },
+    {
+      "selector": "sequential.DATA07-20261024-01.executors.production_boundary_cases::test_DATA07_exact_balance_and_no_partial_debit[11]",
+      "status": "PASS",
+      "seconds": 3.799
+    },
+    {
+      "selector": "sequential.DATA07-20261024-01.executors.production_boundary_cases::test_DATA07_exact_balance_and_no_partial_debit[12]",
+      "status": "PASS",
+      "seconds": 4.526
+    },
+    {
+      "selector": "sequential.DATA07-20261024-01.executors.production_boundary_cases::test_DATA07_exact_balance_and_no_partial_debit[13]",
+      "status": "PASS",
+      "seconds": 2.205
+    },
+    {
+      "selector": "sequential.DATA07-20261024-01.executors.production_boundary_cases::test_DATA07_product_exchange_minimum_inventory[0-0]",
+      "status": "PASS",
+      "seconds": 5.825
+    },
+    {
+      "selector": "sequential.DATA07-20261024-01.executors.production_boundary_cases::test_DATA07_product_exchange_minimum_inventory[1-1]",
+      "status": "PASS",
+      "seconds": 4.208
+    },
+    {
+      "selector": "sequential.DATA07-20261024-01.executors.production_boundary_cases::test_DATA07_product_exchange_minimum_inventory[2-0]",
+      "status": "PASS",
+      "seconds": 2.932
+    },
+    {
+      "selector": "sequential.DATA07-20261024-01.executors.production_boundary_cases::test_DATA07_product_exchange_minimum_inventory[2-1]",
+      "status": "PASS",
+      "seconds": 2.601
+    },
+    {
+      "selector": "sequential.DATA07-20261024-01.executors.production_boundary_cases::test_DATA07_product_exchange_minimum_inventory[3-2]",
+      "status": "PASS",
+      "seconds": 2.34
+    },
+    {
+      "selector": "sequential.DATA07-20261024-01.executors.production_boundary_cases::test_DATA07_double_collect_different_intents_is_single_reward",
+      "status": "PASS",
+      "seconds": 2.992
+    },
+    {
+      "selector": "sequential.DATA07-20261024-01.executors.production_boundary_cases::test_DATA07_http_future_client_clock_cannot_collect_early",
+      "status": "PASS",
+      "seconds": 2.166
+    }
+  ],
+  "executor": "scripts/run_security_regression.py --scenario DATA-07 --output <new-directory-under-original-run>/sequential/<attempt>",
+  "executor_sha256": {
+    "security_cases.py": "29740245f414e7645404dce0e627c6a09087978b2478f265d928bf05737bc656",
+    "extended_cases.py": "fded2ef157c87ef30e188fe8435921d1d4402be354b30365498dc36fceb94fc4",
+    "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+    "production_boundary_cases.py": "ff5a257d0132da8d4969fb5e6e01dba9f431aff432c358f68f8b7dd136c7d7ba"
+  },
+  "coverage": [
+    "Collection at deadline -1ms/0/+1ms, replay same key and duplicate new key",
+    "Concurrent collection with distinct intents: one accepted, one rejected, quantity 2 and one ledger receipt",
+    "Coin cost 12: balances 0/11 rejected without debit/task/receipt; balances 12/13 succeed with residual 0/1",
+    "Product exchange requires corn 2/wheat 1: stock 0/0,1/1,2/0 rejected without partial decrement; exact 2/1 and excess 3/2 succeed without coin debit",
+    "HTTP client-supplied future now/past ready_at cannot collect early (409); unrecognized clock inside data rejected (422), stock/task intact"
+  ],
+  "evidence_sha256": {
+    "sequential/DATA07-20261024-01/junit.xml": "8e3e40703b7b31f6e36b6ab51811a8a59bb58f1be05bf1546a14aaa9f319a5da",
+    "sequential/DATA07-20261024-01/pytest.log": "c8b6ae6340aa4eb3213f55c8e61b2056571669fce7c25350e536f5d97057b6eb",
+    "sequential/DATA07-20261024-01/summary.json": "c7677b30da52c9eba97b213ef1d373cdf6059490b553d9200103b698e07f0c3b",
+    "sequential/DATA07-20261024-01/source_manifest.json": "9931c314cbb7490e7edd9512916c51b3de95809142580774725079404ed5ee8d",
+    "sequential/DATA07-20261024-01/candidate_manifest.json": "f1eb33fc3521e98e968db098ffbb507aed9ac24ef408ed20b6c7435860dcc759",
+    "sequential/DATA07-20261024-01/observations/DATA07-balance-0.json": "6bd9d3137712cd0f47896f8ee91fa798857af0047f76c4b7566d96622e7500ef",
+    "sequential/DATA07-20261024-01/observations/DATA07-balance-11.json": "1136ffd4c07a0a522ec28bcde1572d446050b91f747869d74f1d884eb221b6d5",
+    "sequential/DATA07-20261024-01/observations/DATA07-balance-12.json": "e776f236395bfe226adcc858e1bf78b9b07d6d6f696f4cfd7787a40f57590458",
+    "sequential/DATA07-20261024-01/observations/DATA07-balance-13.json": "bb82831b05e187d08b0690c637e4b042ef09e5c405a1d1a09afe4ed1f3b040f6",
+    "sequential/DATA07-20261024-01/observations/DATA07-boundary.json": "8d157afed1a6838206bf7f91d77c28b2df55a5786c2cc94495ed64cd266e83f4",
+    "sequential/DATA07-20261024-01/observations/DATA07-client-clock.json": "300eef6f63dddbd39185a3fa09662934f955ba3bbedb59ec98bb9d666520cc67",
+    "sequential/DATA07-20261024-01/observations/DATA07-deadline--1.json": "89259d431ea38f4d94de34b64a670e8fec4cf3931c31133de9d022fde18c8cab",
+    "sequential/DATA07-20261024-01/observations/DATA07-deadline-0.json": "97a169758c705a8040a5b78571676fd26499242c998908334417395771ba478b",
+    "sequential/DATA07-20261024-01/observations/DATA07-deadline-1.json": "b32765ae38eaa5156e7cbd3535b7b364e58b460e6a7dcb195de7ab67a2f8f9b2",
+    "sequential/DATA07-20261024-01/observations/DATA07-double-collect.json": "f01bfe3e4566a8513357bef116da0c1cc5c41c0ace882a47ae76cd6a3e1b0969",
+    "sequential/DATA07-20261024-01/observations/DATA07-stock-0-0.json": "87019f2062483f2e88e7a092b40f987a0e375427bdce41da8703666a220d484b",
+    "sequential/DATA07-20261024-01/observations/DATA07-stock-1-1.json": "3439769c8a4aa0eb188cdd32c0a961f267043e32b681b8f4e0c40fb84c838130",
+    "sequential/DATA07-20261024-01/observations/DATA07-stock-2-0.json": "3deb5f0189dde676c4e31eb1f5b18877229bfb20fe0df200cd0759783aac8564",
+    "sequential/DATA07-20261024-01/observations/DATA07-stock-2-1.json": "73f6904ab41913caeb7da7821264d0288fd41e48ed746c90d11fe386be64e663",
+    "sequential/DATA07-20261024-01/observations/DATA07-stock-3-2.json": "5b69bfcd2ca6d04600fded8173b7eb8943279cf3977e42cda6737df9edfae064"
+  },
+  "limitations": [
+    "Real disposable PostgreSQL, synthetic accounts and controlled service clock; HTTP rejects forged client time. No host clock change or physical-device clock manipulation.",
+    "Short two-request contention validates business correctness, not throughput.",
+    "Paid catalogue mode evaluated explicitly; no rewards or real account changes."
+  ]
+}

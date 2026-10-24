@@ -53,3 +53,7 @@ As rejeições cobrem token ausente/malformado, assinatura/issuer/type inválido
 ## DATA-06 — concluído em 24/10/2026
 
 9 testes aprovados, sem alteração do produto. [Interleavings, invariantes, fontes e hashes](DATA06-20261024-results.json). Resultados antigos não alteraram análise, status, hash, payload, saldo, revisões nem eventos após substituição/exclusão ou retomada por nova tentativa, inclusive já concluída. O resultado da tentativa atual foi persistido no controle positivo.
+
+## DATA-07 — concluído em 24/10/2026
+
+15 testes aprovados, sem alteração do produto. [Limites exatos, concorrência, HTTP, fontes e hashes](DATA07-20261024-results.json). Coleta em -1/0/+1 ms, replay e duas intenções concorrentes, saldos zero/insuficiente/exato/excedente e estoques abaixo/no/acima do mínimo passaram. Relógio forjado pelo cliente não antecipou coleta.
