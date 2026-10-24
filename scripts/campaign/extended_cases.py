@@ -336,7 +336,10 @@ async def test_DB02_IMG03_reference_filtering(db):
 
 
 @pytest.mark.asyncio
-async def test_DATA02_upload_failure_records_orphan_without_committing(db, monkeypatch):
+@pytest.mark.parametrize("kind", ["primary", "right"])
+async def test_DATA02_upload_failure_records_orphan_without_committing(
+    db, monkeypatch, kind
+):
     await seed(db)
     before = {p: p.read_bytes() for p in db.storage.root.rglob("*") if p.is_file()}
 
@@ -348,14 +351,19 @@ async def test_DATA02_upload_failure_records_orphan_without_committing(db, monke
     # ASGI propagates this injected application error; the dependency rolls back.
     with pytest.raises(RuntimeError, match="injected"):
         await db.client.put(
-            f"/sync/cats/{uid('matrix-client')}/reference-photos/right",
+            f"/sync/cats/{uid('matrix-client')}/"
+            + ("photo" if kind == "primary" else "reference-photos/right"),
             headers=db.headers("B"),
+            data={
+                "updated_at": (NOW + timedelta(seconds=1)).isoformat(),
+                "device_id": "b",
+            },
             files={"image": ("changed.png", data, "image/png")},
         )
     async with db.factory() as session:
         saved = await session.scalar(
             select(CatPhoto).where(
-                CatPhoto.cat_id == uid("matrix-cat"), CatPhoto.kind == "right"
+                CatPhoto.cat_id == uid("matrix-cat"), CatPhoto.kind == kind
             )
         )
         assert (
@@ -368,7 +376,7 @@ async def test_DATA02_upload_failure_records_orphan_without_committing(db, monke
     assert all(after[p] == body for p, body in before.items())
     # Observation, not an acceptance requirement: expose missing compensation honestly.
     evidence(
-        "DATA02-file-failure",
+        "DATA02-file-failure-" + kind,
         {
             "scenario": "DATA-02",
             "database_rolled_back": True,

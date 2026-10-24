@@ -90,6 +90,7 @@ def selection(scenario, output):
         "SEC-03": "websocket_cases.py",
         "SEC-05": "storage_cases.py",
         "SEC-07": "auth_flow_cases.py",
+        "DATA-02": "rollback_cases.py",
     }[scenario]
     names += [case_file]
     if scenario == "SEC-03":
@@ -309,7 +310,7 @@ if __name__ == "__main__":
     parser.add_argument("--output", required=True)
     parser.add_argument(
         "--scenario",
-        choices=["SEC-01", "SEC-02", "SEC-03", "SEC-05", "SEC-07"],
+        choices=["SEC-01", "SEC-02", "SEC-03", "SEC-05", "SEC-07", "DATA-02"],
         default="SEC-01",
     )
     args = parser.parse_args()
