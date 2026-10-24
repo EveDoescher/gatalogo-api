@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import tempfile
 from pathlib import Path
 from uuid import UUID
 
@@ -110,7 +111,17 @@ class PrivatePhotoStorage:
     def _write(self, key: str, data: bytes) -> None:
         destination = self.absolute_path(key)
         destination.parent.mkdir(parents=True, exist_ok=True)
-        destination.write_bytes(data)
+        # Keep the previous complete file visible until all new bytes are written.
+        # Same-directory replacement stays on one filesystem, including Windows.
+        with tempfile.NamedTemporaryFile(
+            dir=destination.parent, prefix=".upload-", suffix=".tmp", delete=False
+        ) as temporary:
+            pending = Path(temporary.name)
+        try:
+            pending.write_bytes(data)
+            pending.replace(destination)
+        finally:
+            pending.unlink(missing_ok=True)
 
     def open(self, key: str) -> Path:
         path = self.absolute_path(key)
