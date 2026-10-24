@@ -7,6 +7,14 @@ from uuid import UUID
 from app.config import get_settings
 
 
+def _safe_suffix(suffix: str, fallback: str = ".jpg") -> str:
+    """Keep extensions portable; exclude separators, device streams and NULs."""
+    extension = suffix[1:] if suffix.startswith(".") else ""
+    if 1 <= len(extension) <= 11 and extension.isascii() and extension.isalnum():
+        return suffix
+    return fallback
+
+
 class PrivatePhotoStorage:
     """Armazenamento privado local, intercambiável por object storage depois."""
 
@@ -14,13 +22,13 @@ class PrivatePhotoStorage:
         self.root = Path(root or get_settings().photo_storage_dir)
 
     def key_for(self, user_id: UUID, cat_id: UUID, suffix: str) -> str:
-        safe_suffix = suffix if suffix.startswith(".") and len(suffix) <= 12 else ".jpg"
+        safe_suffix = _safe_suffix(suffix)
         return str(Path("users") / str(user_id) / "cats" / f"{cat_id}{safe_suffix}")
 
     def reference_key_for(
         self, user_id: UUID, cat_id: UUID, kind: str, suffix: str
     ) -> str:
-        safe_suffix = suffix if suffix.startswith(".") and len(suffix) <= 12 else ".jpg"
+        safe_suffix = _safe_suffix(suffix)
         safe_kind = "".join(char for char in kind if char.isascii() and (char.isalnum() or char in "_-"))
         return str(
             Path("users") / str(user_id) / "cats" / str(cat_id) / "references" / f"{safe_kind}{safe_suffix}"
@@ -29,7 +37,7 @@ class PrivatePhotoStorage:
     def avatar_key_for(
         self, user_id: UUID, cat_id: UUID, version: int, name: str, suffix: str
     ) -> str:
-        safe_suffix = suffix if suffix.startswith(".") and len(suffix) <= 12 else ".bin"
+        safe_suffix = _safe_suffix(suffix, ".bin")
         safe_name = "".join(char for char in name if char.isascii() and (char.isalnum() or char in "_-"))
         return str(
             Path("users") / str(user_id) / "cats" / str(cat_id) / "avatar" / str(version) / f"{safe_name}{safe_suffix}"
@@ -66,7 +74,7 @@ class PrivatePhotoStorage:
         return key, hashlib.sha256(data).hexdigest()
 
     def profile_key_for(self, user_id: UUID, suffix: str) -> str:
-        safe_suffix = suffix if suffix.startswith(".") and len(suffix) <= 12 else ".jpg"
+        safe_suffix = _safe_suffix(suffix)
         return str(Path("users") / str(user_id) / "profile" / f"avatar{safe_suffix}")
 
     def save_profile_photo(
@@ -75,7 +83,7 @@ class PrivatePhotoStorage:
         return self._save_hashed_photo(self.profile_key_for(user_id, suffix), data)
 
     def chat_photo_key_for(self, conversation_id: UUID, message_id: UUID, suffix: str) -> str:
-        safe_suffix = suffix if suffix.startswith(".") and len(suffix) <= 12 else ".jpg"
+        safe_suffix = _safe_suffix(suffix)
         return str(Path("conversations") / str(conversation_id) / f"{message_id}{safe_suffix}")
 
     def save_chat_photo(
@@ -84,7 +92,7 @@ class PrivatePhotoStorage:
         return self._save_hashed_photo(self.chat_photo_key_for(conversation_id, message_id, suffix), data)
 
     def post_photo_key_for(self, post_id: UUID, suffix: str) -> str:
-        safe_suffix = suffix if suffix.startswith(".") and len(suffix) <= 12 else ".jpg"
+        safe_suffix = _safe_suffix(suffix)
         return str(Path("posts") / f"{post_id}{safe_suffix}")
 
     def save_post_photo(
