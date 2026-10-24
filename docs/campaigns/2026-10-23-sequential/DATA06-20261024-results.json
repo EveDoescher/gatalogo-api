@@ -1,0 +1,92 @@
+{
+  "scenario": "DATA-06",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_sha": "6fe840eeadbb469b31d204af968e74234e543dc2",
+  "test_commit": "6fe840eeadbb469b31d204af968e74234e543dc2",
+  "product_changes": null,
+  "passed": 9,
+  "failed": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "selector": "sequential.DATA06-20261024-01.executors.security_cases::test_DATA06_old_finish_while_new_attempt_is_running",
+      "status": "PASS",
+      "seconds": 3.395
+    },
+    {
+      "selector": "sequential.DATA06-20261024-01.executors.security_cases::test_DATA06_delete_or_replace_between_claim_and_finish[cat-delete]",
+      "status": "PASS",
+      "seconds": 2.282
+    },
+    {
+      "selector": "sequential.DATA06-20261024-01.executors.security_cases::test_DATA06_delete_or_replace_between_claim_and_finish[photo-delete]",
+      "status": "PASS",
+      "seconds": 5.317
+    },
+    {
+      "selector": "sequential.DATA06-20261024-01.executors.security_cases::test_DATA06_delete_or_replace_between_claim_and_finish[replace-hash]",
+      "status": "PASS",
+      "seconds": 3.229
+    },
+    {
+      "selector": "sequential.DATA06-20261024-01.executors.fencing_cases::test_DATA06_obsolete_finish_has_zero_catalogue_reward_or_event_effect[cat-delete]",
+      "status": "PASS",
+      "seconds": 2.066
+    },
+    {
+      "selector": "sequential.DATA06-20261024-01.executors.fencing_cases::test_DATA06_obsolete_finish_has_zero_catalogue_reward_or_event_effect[photo-delete]",
+      "status": "PASS",
+      "seconds": 2.627
+    },
+    {
+      "selector": "sequential.DATA06-20261024-01.executors.fencing_cases::test_DATA06_obsolete_finish_has_zero_catalogue_reward_or_event_effect[replace-hash]",
+      "status": "PASS",
+      "seconds": 2.166
+    },
+    {
+      "selector": "sequential.DATA06-20261024-01.executors.fencing_cases::test_DATA06_reclaimed_attempt_discards_old_result_before_and_after_new_completion[False]",
+      "status": "PASS",
+      "seconds": 1.961
+    },
+    {
+      "selector": "sequential.DATA06-20261024-01.executors.fencing_cases::test_DATA06_reclaimed_attempt_discards_old_result_before_and_after_new_completion[True]",
+      "status": "PASS",
+      "seconds": 1.988
+    }
+  ],
+  "executor": "scripts/run_security_regression.py --scenario DATA-06 --output <new-directory-under-original-run>/sequential/<attempt>",
+  "executor_sha256": {
+    "security_cases.py": "29740245f414e7645404dce0e627c6a09087978b2478f265d928bf05737bc656",
+    "extended_cases.py": "fded2ef157c87ef30e188fe8435921d1d4402be354b30365498dc36fceb94fc4",
+    "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+    "fencing_cases.py": "80b3429751a0ee804e2bef79b18eb6eeb735085a6046598696adb3e0982332f1"
+  },
+  "coverage": [
+    "Late result after cat deletion, photo deletion and hash replacement: analysis/status/hash/tombstone/payload/balance/revisions unchanged, no progression or success events; old job superseded",
+    "Expired lease reclaimed before old result: obsolete attempt has no effect while current runs",
+    "Expired lease reclaimed and new attempt completed before old result: completed state remains unchanged",
+    "Positive current attempt persists its analysis/status and exactly one revision; progression called once"
+  ],
+  "evidence_sha256": {
+    "sequential/DATA06-20261024-01/junit.xml": "63d721ee9885edc4b7c5203ad2f29dd165c2f195e86a8fff9e797ecae8f6c9ba",
+    "sequential/DATA06-20261024-01/pytest.log": "6bcc507b70b159df84f9c0e5b93049d3d84cb84f9e0e1524ef0314df33683c8f",
+    "sequential/DATA06-20261024-01/summary.json": "cec8bea7b85d6c00c47800dda0b8f1013edd6e5a704717037e0c177e811a9744",
+    "sequential/DATA06-20261024-01/source_manifest.json": "b7488816f8b95fb4d3bcfc7bd6f9ad1252210eb1047af0172b6b17fffa41c6b8",
+    "sequential/DATA06-20261024-01/candidate_manifest.json": "33c3544c4c6b01405a4dc036c02996c6b17471fab9f9c0637381f20699c24eba",
+    "sequential/DATA06-20261024-01/observations/DATA06-attempt-fence.json": "80988a1b34ecff39b2b4cbf36a1fb1164079f4b050bfaa6f16313cefdf5a69bd",
+    "sequential/DATA06-20261024-01/observations/DATA06-cat-delete.json": "b32777ae7811931fd45fd8dae0888f2944f861b01f0fd89fabefa7de8a7e94ad",
+    "sequential/DATA06-20261024-01/observations/DATA06-full-state-cat-delete.json": "162af966f51c91edc04f1eb5a26f470835659ed49fb43bda9268d9743ad3782f",
+    "sequential/DATA06-20261024-01/observations/DATA06-full-state-lease-False.json": "1936c39cd134e470fe858f8c048d1d77a9ede983eb8a788bc1562a89c7ab1043",
+    "sequential/DATA06-20261024-01/observations/DATA06-full-state-lease-True.json": "a7675c0016976c5309dbd22391851b3172d7d124dc996d1829297779f658b88f",
+    "sequential/DATA06-20261024-01/observations/DATA06-full-state-photo-delete.json": "285ae03f1068080f9bd031073345e5634e743e010d1dd9395e36d415d4806eae",
+    "sequential/DATA06-20261024-01/observations/DATA06-full-state-replace-hash.json": "3b7b382c4b8be05b20eed797c7e85b7c286d1dad52e27995ab4a58ff7f80fdb7",
+    "sequential/DATA06-20261024-01/observations/DATA06-photo-delete.json": "25288ed6a1b574eb2f6f8d724e4c3c2b348e7fb1c12e72b3000714d79ab7318c",
+    "sequential/DATA06-20261024-01/observations/DATA06-replace-hash.json": "1432607deb88471be35e255ec90f56224100888b695baa029595ce29b660a650"
+  },
+  "limitations": [
+    "Directed interleavings on real disposable PostgreSQL and actual finish/fencing/commit logic; no paid inference or prolonged worker load.",
+    "Inference/progression business algorithm stubbed; catalogue/wallet snapshot and real event publisher assert zero stale effects.",
+    "Does not assert expired-but-unreclaimed claim is invalid: attempt generation is the fencing boundary."
+  ]
+}

@@ -49,3 +49,7 @@ As rejeições cobrem token ausente/malformado, assinatura/issuer/type inválido
 ## DATA-05 — concluído em 24/10/2026
 
 7 testes aprovados, sem alteração do produto. [Variantes, fontes, executores e hashes](DATA05-20261024-results.json). Datas e desempates foram testados na função e por HTTP nas duas ordens dos dispositivos, incluindo replay idêntico, tombstone e isolamento entre contas. Análise, identidade e revisão de identidade do servidor permaneceram intactas.
+
+## DATA-06 — concluído em 24/10/2026
+
+9 testes aprovados, sem alteração do produto. [Interleavings, invariantes, fontes e hashes](DATA06-20261024-results.json). Resultados antigos não alteraram análise, status, hash, payload, saldo, revisões nem eventos após substituição/exclusão ou retomada por nova tentativa, inclusive já concluída. O resultado da tentativa atual foi persistido no controle positivo.

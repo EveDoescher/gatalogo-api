@@ -650,7 +650,7 @@
   },
   {
     "scenario": "DATA-06",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Finish após substituir/deletar foto/gato; lease expira e tentativa nova termina antes da antiga.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [
@@ -663,10 +663,14 @@
       "attempts/flutter-resilience-03/flutter_resilience/baseline/summary.json",
       "attempts/flutter-resilience-04/flutter_resilience/baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "limitation": "Interleavings dirigidos com PG, sem IA real ou carga prolongada; estado e eventos obsoletos integralmente verificados.",
     "local_runs": [
       "attempts/worker-race-01/critical_runs/worker-race-baseline/summary.json"
-    ]
+    ],
+    "closure_evidence": [
+      "DATA06-20261024-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario DATA-06"
   },
   {
     "scenario": "DATA-07",
