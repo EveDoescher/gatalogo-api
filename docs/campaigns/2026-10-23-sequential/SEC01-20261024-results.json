@@ -1,0 +1,486 @@
+{
+  "scenario": "SEC-01",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "correction_commit": "d6573b0401491ad350460d1054bdba414e53f873",
+  "cases": [
+    {
+      "selector": "tests/test_apple_identity.py::test_verified_signature_and_claims",
+      "status": "PASS",
+      "seconds": 0.544
+    },
+    {
+      "selector": "tests/test_apple_identity.py::test_signed_invalid_claims_rejected[change0]",
+      "status": "PASS",
+      "seconds": 0.3
+    },
+    {
+      "selector": "tests/test_apple_identity.py::test_signed_invalid_claims_rejected[change1]",
+      "status": "PASS",
+      "seconds": 0.079
+    },
+    {
+      "selector": "tests/test_apple_identity.py::test_signed_invalid_claims_rejected[change2]",
+      "status": "PASS",
+      "seconds": 0.076
+    },
+    {
+      "selector": "tests/test_apple_identity.py::test_signed_invalid_claims_rejected[change3]",
+      "status": "PASS",
+      "seconds": 0.093
+    },
+    {
+      "selector": "tests/test_apple_identity.py::test_signed_invalid_claims_rejected[change4]",
+      "status": "PASS",
+      "seconds": 0.05
+    },
+    {
+      "selector": "tests/test_apple_identity.py::test_signed_invalid_claims_rejected[change5]",
+      "status": "PASS",
+      "seconds": 0.057
+    },
+    {
+      "selector": "tests/test_apple_identity.py::test_signed_invalid_claims_rejected[change6]",
+      "status": "PASS",
+      "seconds": 0.073
+    },
+    {
+      "selector": "tests/test_apple_identity.py::test_signed_invalid_claims_rejected[change7]",
+      "status": "PASS",
+      "seconds": 0.125
+    },
+    {
+      "selector": "tests/test_apple_identity.py::test_signed_invalid_claims_rejected[change8]",
+      "status": "PASS",
+      "seconds": 0.103
+    },
+    {
+      "selector": "tests/test_apple_identity.py::test_signed_invalid_claims_rejected[change9]",
+      "status": "PASS",
+      "seconds": 0.149
+    },
+    {
+      "selector": "tests/test_apple_identity.py::test_forged_signatures_rejected[none]",
+      "status": "PASS",
+      "seconds": 0.09
+    },
+    {
+      "selector": "tests/test_apple_identity.py::test_forged_signatures_rejected[HS256]",
+      "status": "PASS",
+      "seconds": 0.762
+    },
+    {
+      "selector": "tests/test_apple_identity.py::test_forged_signatures_rejected[RS256]",
+      "status": "PASS",
+      "seconds": 0.587
+    },
+    {
+      "selector": "tests/test_apple_identity.py::test_unknown_key_rejected",
+      "status": "PASS",
+      "seconds": 0.05
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_invalid_auth_rejected_http_and_websocket[missing]",
+      "status": "PASS",
+      "seconds": 1.676
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_invalid_auth_rejected_http_and_websocket[malformed]",
+      "status": "PASS",
+      "seconds": 1.02
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_invalid_auth_rejected_http_and_websocket[wrong-signature]",
+      "status": "PASS",
+      "seconds": 2.414
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_invalid_auth_rejected_http_and_websocket[wrong-issuer]",
+      "status": "PASS",
+      "seconds": 1.086
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_invalid_auth_rejected_http_and_websocket[wrong-type]",
+      "status": "PASS",
+      "seconds": 1.17
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_invalid_auth_rejected_http_and_websocket[expired]",
+      "status": "PASS",
+      "seconds": 1.15
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_invalid_auth_rejected_http_and_websocket[missing-exp]",
+      "status": "PASS",
+      "seconds": 1.301
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_invalid_auth_rejected_http_and_websocket[missing-iat]",
+      "status": "PASS",
+      "seconds": 1.079
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_invalid_auth_rejected_http_and_websocket[missing-sub]",
+      "status": "PASS",
+      "seconds": 1.055
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_invalid_auth_rejected_http_and_websocket[missing-sid]",
+      "status": "PASS",
+      "seconds": 1.823
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_invalid_auth_rejected_http_and_websocket[missing-iss]",
+      "status": "PASS",
+      "seconds": 3.016
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_invalid_auth_rejected_http_and_websocket[missing-type]",
+      "status": "PASS",
+      "seconds": 3.932
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_invalid_auth_rejected_http_and_websocket[null-session]",
+      "status": "PASS",
+      "seconds": 2.03
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_invalid_auth_rejected_http_and_websocket[malformed-user]",
+      "status": "PASS",
+      "seconds": 2.542
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_invalid_auth_rejected_http_and_websocket[foreign-session]",
+      "status": "PASS",
+      "seconds": 1.594
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_invalid_auth_rejected_http_and_websocket[unknown-session]",
+      "status": "PASS",
+      "seconds": 1.656
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_invalid_auth_rejected_http_and_websocket[revoked]",
+      "status": "PASS",
+      "seconds": 1.456
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_invalid_auth_rejected_http_and_websocket[session-expired]",
+      "status": "PASS",
+      "seconds": 0.935
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_invalid_auth_rejected_http_and_websocket[inactive]",
+      "status": "PASS",
+      "seconds": 1.168
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_valid_auth_http_and_websocket",
+      "status": "PASS",
+      "seconds": 1.132
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_open_socket_revalidates_before_handling_frames[ping-revoked]",
+      "status": "PASS",
+      "seconds": 2.358
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_open_socket_revalidates_before_handling_frames[ping-session-expired]",
+      "status": "PASS",
+      "seconds": 1.324
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_open_socket_revalidates_before_handling_frames[ping-inactive]",
+      "status": "PASS",
+      "seconds": 1.495
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_open_socket_revalidates_before_handling_frames[{\"type\": \"typing\", \"conversation_id\": \"0fef54ce-bf95-4f82-b4ca-9825087fc669\"}-revoked]",
+      "status": "PASS",
+      "seconds": 1.676
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_open_socket_revalidates_before_handling_frames[{\"type\": \"typing\", \"conversation_id\": \"0fef54ce-bf95-4f82-b4ca-9825087fc669\"}-session-expired]",
+      "status": "PASS",
+      "seconds": 1.444
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_open_socket_revalidates_before_handling_frames[{\"type\": \"typing\", \"conversation_id\": \"0fef54ce-bf95-4f82-b4ca-9825087fc669\"}-inactive]",
+      "status": "PASS",
+      "seconds": 1.071
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_open_socket_revalidates_before_handling_frames[{\"type\": \"read\", \"conversation_id\": \"b2f5b566-7117-431c-bf6e-6e327b7cf9a3\"}-revoked]",
+      "status": "PASS",
+      "seconds": 2.336
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_open_socket_revalidates_before_handling_frames[{\"type\": \"read\", \"conversation_id\": \"b2f5b566-7117-431c-bf6e-6e327b7cf9a3\"}-session-expired]",
+      "status": "PASS",
+      "seconds": 1.173
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_open_socket_revalidates_before_handling_frames[{\"type\": \"read\", \"conversation_id\": \"b2f5b566-7117-431c-bf6e-6e327b7cf9a3\"}-inactive]",
+      "status": "PASS",
+      "seconds": 1.301
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_idle_socket_revalidates_without_client_heartbeat[revoked]",
+      "status": "PASS",
+      "seconds": 1.115
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_idle_socket_revalidates_without_client_heartbeat[session-expired]",
+      "status": "PASS",
+      "seconds": 1.567
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_idle_socket_revalidates_without_client_heartbeat[inactive]",
+      "status": "PASS",
+      "seconds": 0.996
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_apple_rejections_have_no_database_effects[wrong-audience]",
+      "status": "PASS",
+      "seconds": 1.109
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_apple_rejections_have_no_database_effects[wrong-issuer]",
+      "status": "PASS",
+      "seconds": 1.561
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_apple_rejections_have_no_database_effects[expired]",
+      "status": "PASS",
+      "seconds": 2.366
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_apple_rejections_have_no_database_effects[unsigned]",
+      "status": "PASS",
+      "seconds": 1.672
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_apple_rejections_have_no_database_effects[wrong-signature]",
+      "status": "PASS",
+      "seconds": 1.642
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_apple_rejections_have_no_database_effects[unverified-email]",
+      "status": "PASS",
+      "seconds": 1.213
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_apple_rejections_have_no_database_effects[subject-override]",
+      "status": "PASS",
+      "seconds": 1.45
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_apple_verified_identity_reused_and_request_email_ignored[verified@example.com]",
+      "status": "PASS",
+      "seconds": 1.418
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_apple_verified_identity_reused_and_request_email_ignored[None]",
+      "status": "PASS",
+      "seconds": 2.279
+    },
+    {
+      "selector": "tests/test_auth_security.py::test_apple_unconfigured_does_not_fetch_keys",
+      "status": "PASS",
+      "seconds": 1.176
+    },
+    {
+      "selector": "tests/test_conversation_events.py::test_stranger_cannot_emit_conversation_events_or_read_messages[typing]",
+      "status": "PASS",
+      "seconds": 2.416
+    },
+    {
+      "selector": "tests/test_conversation_events.py::test_stranger_cannot_emit_conversation_events_or_read_messages[read]",
+      "status": "PASS",
+      "seconds": 1.372
+    },
+    {
+      "selector": "tests/test_conversation_events.py::test_http_and_websocket_read_share_authorization_and_receipts",
+      "status": "PASS",
+      "seconds": 2.082
+    },
+    {
+      "selector": "tests/test_conversation_events.py::test_typing_for_member_reaches_only_other_member",
+      "status": "PASS",
+      "seconds": 2.18
+    },
+    {
+      "selector": "tests/test_conversation_events.py::test_invalid_envelopes_keep_connection_alive_and_cleanup_runs_once",
+      "status": "PASS",
+      "seconds": 1.784
+    },
+    {
+      "selector": "tests/test_websocket_manager.py::test_connection_manager_delivers_one_event_to_each_active_device",
+      "status": "PASS",
+      "seconds": 0.009
+    },
+    {
+      "selector": "tests/test_websocket_manager.py::test_disconnect_removes_the_socket_without_affecting_other_device",
+      "status": "PASS",
+      "seconds": 0.009
+    }
+  ],
+  "total": 64,
+  "passed": 64,
+  "failed": 0,
+  "skipped": 0,
+  "environment": {
+    "scenario": "SEC-01",
+    "exit_code": 0,
+    "database": "own random-port PostgreSQL, migrations applied; fixture schema per case",
+    "providers": "local RSA/JWKS and verifier doubles; no live identity provider",
+    "api_lifespan_started": false,
+    "physical_device": false,
+    "evaluated_sources_unchanged": true
+  },
+  "executor": "scripts/run_security_regression.py",
+  "reproduce": "python scripts/run_security_regression.py --output .tmp/quality-campaign/<run>/sequential/<new-unique-attempt>",
+  "raw_evidence": "20261021T194312Z-953aa74e/sequential/SEC01-20261024-01",
+  "raw_hashes": {
+    "junit.xml": "24e6158c288140a46060fa72fda2c6c6f1d0731e5d3297d9fa2cb66d824a5989",
+    "migrations.log": "a3b46d2f11f9b6e02caac2d03005d0237af6f6b915efdc0e4805c9d2bcafece2",
+    "pytest.log": "1a191eda5df09679691aad68177c182d944d24074067f2b163fefa39ff10846c",
+    "source_manifest.json": "e1a2f33f4ce66c49574f84d7b6cac5b6ffcda70f6a7e4d5f3e23658eb4a42d1d",
+    "summary.json": "d92b73f2db1a2793f3b375b28678925eb46114091bd95fa89d8eaf681e756779"
+  },
+  "source_manifest": {
+    "git_head": "c8f3ede0f028aa49f5d7868c240847adf058d347",
+    "evaluated_content_sha256": {
+      ".env.example": "aa4fbc4d819006e0b2130f1e980a19298205fcb72ac797e90231437bb2fba1b0",
+      "app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/config.py": "018c33c9b9a23890904dcf7afee06eaf413d945d9e981a59a623ae4595e80042",
+      "app/database.py": "6dc06da28b1c65dc23dd063dd60a2c7fad65a65c9f0c5add6da5691a12b89eef",
+      "app/dependencies.py": "154f905f4b19d5cd409e26dc215c32b50392e37638c2f70ddbe3b09f7f4d1a44",
+      "app/exceptions.py": "566d5bad9f9dc5ff5d479ebb842401b6d3d984180c2c2c6e7fcee28c295a832a",
+      "app/main.py": "f55ff410ea6d959d2068b5a3f8ece5f998b4a82a756f56899a750b0e0144b85f",
+      "app/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/models/analysis.py": "379311d17ba40ccff7ff0b978444689659e99a6592a08680218af323ae17551f",
+      "app/models/vision.py": "5f74cc910837962e257266b28537eca34ff47e1422fa7b7ad130f51d31aa49b9",
+      "app/persistence_models.py": "3c9e6ce745ae6fd789ec1c51880924fda2a79ddea4da90076044eac610dc958c",
+      "app/prompts/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/prompts/coat_analysis.py": "8a6ff914071655662f96e331269094ef4d025879dc5399aad513ccab368b5aed",
+      "app/quintal_models.py": "3d915dfb18fffb307170eaca1fba7eb70f902b71a654f9c248957b2d1eb0536c",
+      "app/routers/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/routers/auth.py": "777ef2eb0830f01c55741c9845ec4ef7b5cea3957b6f85e9022e78110e6b76ef",
+      "app/routers/habitat.py": "1b51738f08551ba56507540bf7430d9de2fc57d2c02e10ff9cc4112f09f20136",
+      "app/routers/product.py": "af8c38fa5936aa7828f1fb79fead0f722d784a6029cbbe6a81cb27ea8d517f82",
+      "app/routers/progression.py": "2c631bf407fa28d6a16a6aae072574c9540dadd782c594e310c75ff25d2ed845",
+      "app/routers/public_search.py": "c29df4e4cc9c837be759dfb22db1cf94f646cd76e67e4069dedc124568813d4d",
+      "app/routers/quintal.py": "421db5787d103288ec3b02bedddd94ce0e61d59cf8f8855d47493aa5c7d7d343",
+      "app/routers/social.py": "fbc4a5ac9c2e9fdfc228d463ed0588785f18c9fe90cc48169db7df886f18ff42",
+      "app/routers/social_chat.py": "65a3a2c2bfaecee8c935b49c828cbd7d23379bf3e05291588ad80034173abce5",
+      "app/routers/social_devices.py": "a826fab2e9ccc9577e3a843e4f1e7fd03dcabde920408d75f2e62dcb19f9f5ee",
+      "app/routers/social_feed.py": "9d42120baf52d5fd91fd02ba85e79e2108f70b4eb2beaa9918776b96eea99b45",
+      "app/routers/social_friendships.py": "085b312b0a42131895bf7d00be00803649c80c0f0068fa2c1c6a51ddb5e6b9b2",
+      "app/routers/social_profiles.py": "5f347e148f20d837b250b8666bdae8bf0c6436cabeefe894628d25f0b22a6f31",
+      "app/routers/sync.py": "39e3a199decf40bc55730ad6f3bbb167bb41d7e36416c0ea1454601c6fda4e46",
+      "app/routers/vision.py": "1f50c3c367dcfb1f2f3e484ad73e71cf6a5c480e38f2160c9d46d2876c0abafe",
+      "app/routers/websocket.py": "e9b7cfbe2f2f0f16e50b7d26d26011a72f564038beae0bf7b8cdff85155860ad",
+      "app/schemas.py": "ae5d1dec2340ff37279d22268ee8ee530abd375e5fa0632fba4fe921bee6d60a",
+      "app/services/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/services/analysis_cache.py": "6df49d0d09c6a856080ab6979daec1af67aa301a6992f9bf3644bc0800b0ced8",
+      "app/services/analysis_service.py": "abedf84046e120c094226c48ae47c22ff7658e6c579b491ff0f556b8d4dfff0b",
+      "app/services/apple_identity.py": "68fbe2e5a9e05e8e326d59a38f68bd4cf0790e976678f1157d98e2ebfc768d2a",
+      "app/services/audience.py": "fa12acea18f6ec2e14f4da102f570c105ef87411a9c3b3baf97c65f79db0990a",
+      "app/services/auth_service.py": "ecd6efb2cb27ceaa68b7bf7d0173ae2e078350d6d2f3c5844367505de2c6efef",
+      "app/services/avatar_generation_service.py": "8dac83793f4a54b9266d0ae7c461d34420ec2ceb3b9e1b6adb7ec8de006b4245",
+      "app/services/avatar_service.py": "c49f018ce4f1f2a060be31fd22dc6f6a7fda9832d1a528aba10d7ab3160b6102",
+      "app/services/catalog_changes.py": "229bcef613e8fac10ece90ee46cace53c6f3a061e55f415f30f2c5b850d27b9b",
+      "app/services/catalog_sync_queries.py": "eb81009a6cb6bfd1a14e62a09b38e585ace163aafa441beb965f69f4b1fe2d71",
+      "app/services/chat_commands.py": "07feacfa9a66001536747315f57235f5d0dd19e1aa6e9d7e75fa32fe9f15780a",
+      "app/services/chat_presenter.py": "ef4daf7bdcbb8456ccdd842ad9c2af9a584b849f49605d93dbeeb0061470d6c9",
+      "app/services/chat_queries.py": "eed4630699faf992c0981e81f7d8111267b4233b168d874692edf19e03c340f0",
+      "app/services/color_service.py": "5ac2b285b80fed87ea095f44c6acdf20634f75e9b189c4861183f7575c577cbb",
+      "app/services/conversations.py": "85d4a783f56fce6626d400c1de893bb850b5f3fe193bbde58eefcdafcec60a5b",
+      "app/services/dense_features.py": "2f3f4442f2f29b4ea373839bb67b095bb0b86e72b12027af06fef42e39b9f9d1",
+      "app/services/fcm_service.py": "ccf6fa6fa106e8bea2bfbba336c9c67bb954e7cc849c02690354ac2edd1046a6",
+      "app/services/fusion_service.py": "39fd68133053f7e3d68e40b34eb93c9cca9617975394bb82b3c8ae32cd1059d9",
+      "app/services/habitat_encounters.py": "3cf31aed867639512b60becc23f223c0ca530f9b5832699d03cc55627ff9258a",
+      "app/services/habitat_interactions.py": "d7351b7410caf94be3a697e2d43b479856ad5d0d659cba452ae4d9dd2fc40a4f",
+      "app/services/habitat_presenter.py": "22a92359a4e3563e353bde9bc386ca9194001b296c5ae97584abd0b3bf90b687",
+      "app/services/habitat_pricing.py": "09bb94d7322a4a410a66619ced8bb6725507f0aa7fd2170377ff1977a2c195ed",
+      "app/services/habitat_service.py": "2a7b3245d73b3ff5875434005163cddbc88462f9d17147e6dbc939b8c1f94cca",
+      "app/services/milestones.py": "659dc78807de91a05d7f7c163fb3e1c4acbb53047c83e9fa66869889bc6bf805",
+      "app/services/missing_posters.py": "a1fd1cb5d1ebff2a75e695b9fcb1c952a3a8efa40f687027c298f25eef74986a",
+      "app/services/preprocessing_service.py": "2fc40e60a0fe8b8a7d582940d307ca33827cef3a6644994316b0f058138a4c39",
+      "app/services/progression.py": "2f25f5041095282d2ea56b628be0906021e9f8e931deaeef55d09dcaa5ae8865",
+      "app/services/quality_service.py": "65b72c12b9bfea2691aa5f6e0172e05fa5a9d9f21744f5ff48ea7b5f2c61b10b",
+      "app/services/quintal_care.py": "1e7b9aaac74175f6576efeeef295d5cae6154794041f0a6cd69a7162ecc4ba6c",
+      "app/services/quintal_catalog.py": "50a268d0cff729ec909e08410621ed4e9008be19158036b095e8c3ee1ccf4150",
+      "app/services/quintal_clock.py": "6c61071ee7c669f1e5739d3355e826e5d9dc85e697433966ada5fb82816b7f0d",
+      "app/services/quintal_commands/__init__.py": "7a30fc9262d179b05e4d8b04c6a953858703c653e4fb2a0e049e9283360c70d3",
+      "app/services/quintal_commands/cats.py": "a5b0dd5046ea8eb613d64523f01abb98aafaa27af03177a61e88375dca4af350",
+      "app/services/quintal_commands/construction.py": "dd6f5fc453cea31f19a44ea26c89fb13c6924f7fb6cca5263c091f5a3bfed881",
+      "app/services/quintal_commands/context.py": "89c296fc1bd5e9a3de0a21acaec77bce6337b5aec8e8d077e4610e053d6918a0",
+      "app/services/quintal_commands/garden.py": "098c53700bb9718b4f18808f3447c738fd61d5a61ffaacfa54e3043a7b31a96b",
+      "app/services/quintal_commands/receipts.py": "d6f3cbb913174e36155e8f44e87684c40b1a71fcebe1ea4d7d9376ee4da0cce5",
+      "app/services/quintal_commands/residents.py": "a645a8916f693064c380a46359778a77e876738083902a5d97d455631d06800f",
+      "app/services/quintal_commands/tasks.py": "7c896f06b51cb4502091e6afb16cd7a73aaf7c2a5950e10824fb1e8d0b088cc5",
+      "app/services/quintal_games.py": "5ee0b035de1e27842a4b82b95875c450d9e37ef9d38939d8123807f5f9ff3b14",
+      "app/services/quintal_inventory.py": "e95d30f2635dfc7b1307d8034e8c1318320f8eb4e73ac6f68e7b0fd4cac31e23",
+      "app/services/quintal_notifications.py": "5246e8b0e20f6c2b396847fcb6126a875106272fbb88258f0ee38ec45dba68df",
+      "app/services/quintal_production.py": "f82ae8574f953d9852515409a2e26e438d454565e79ff0132d4a2553684572eb",
+      "app/services/quintal_progress.py": "bdc7f824aeb1917682b4227c3b1a69dbdbd58faefb9a619adee72bcf259f3d02",
+      "app/services/quintal_projection.py": "fad98ad44ff83f4e85589d7d4a74fd2d76bd29704038c6bf19e359c1fa6e69c1",
+      "app/services/quintal_push.py": "d7440d1237781d86a4a64e963dd21a1f4c62773e9c83e07e8fd47f46ba25efab",
+      "app/services/quintal_return.py": "abefc46ae67ec3ad3258ecfd568e6671909d6c39dab979dcc242c4283638b79f",
+      "app/services/quintal_rewards.py": "452153683f6d3bd915da7995ad90304214ef63fc73b8ed875ca900d441ac4a85",
+      "app/services/quintal_scheduler.py": "30f79e512e7fba8112ebfd231f66702fdbbcab67ef7f6566baa1e7912626c6a1",
+      "app/services/quintal_simulation.py": "f53189a9c2720727d4c3c44c44584edd9847a488834e78916cdce6ab4e02c9e6",
+      "app/services/realtime_events.py": "6da075769e0b481c9175b0f7487bc269f62f0dbcf27754bb8a758cfed797f3ca",
+      "app/services/recognition_features.py": "87c694795df0248d643fafa0d2acb30f2ee284a6a587755dca2ce6c39ef3efec",
+      "app/services/recognition_service.py": "5d3556a131d23ef529085d8d0879c19edc2ee41d59c7eaaf989c31b838552c81",
+      "app/services/reference_analysis.py": "3afdb96232365f16c5a8845b15617a7ef6c4664ac561412f63a482f92fb0eb1f",
+      "app/services/report_media.py": "951a779ec43b3e071fef71a708ab71892beffd36b28777e5ad8db3ed283216f5",
+      "app/services/report_presenter.py": "af11aa62e8ad6e0aee349ff648062769fbe891f115d8cc30bd8b5829f31374c0",
+      "app/services/segmentation_service.py": "eeeb986428abd8f83b6781e0a72302f82f543659218ee64acac71ec34d3707b3",
+      "app/services/social_feed_commands.py": "869923ac08f2dd66ed0c9316999398d1cff19aae4a8352f8128d0cd52d6537b1",
+      "app/services/social_feed_queries.py": "8e919daacf1085c6cc09d5488efe1dcb74f39c47e4067c06e07e4711970e698f",
+      "app/services/social_graph.py": "4585e6a00a94eccc55dc566b6c4f3cabb57d3786c5e6c218cb04fe93a87f2cc8",
+      "app/services/social_presenter.py": "2dfd223841d1e96c9be0f73867a5fc0dfa111a2160de78fb778261127ae44be8",
+      "app/services/storage_service.py": "7c6d79a97ae06b6192a32cf186d7bf9f30fd80c446f9fb7c31458d10b5ce6ccc",
+      "app/services/vision_jobs.py": "7d6b6a5689ff626983e3ca0786d3515b08c4014aad39d0e7c687df26a71136b2",
+      "app/services/vision_worker.py": "9d2fc69f35387bbeca4905f4f0c1d541b5447f51862ef88cd975d17d8dcf9a77",
+      "app/services/websocket_manager.py": "9918619e4ba07fb5462c4de425c1b41176ebf6c6202821ed30e84b9b933a9683",
+      "app/social_schemas.py": "b48fe613dd53aafbc9c25750263e747b099502fa8ee07e73a51374bb975df0d6",
+      "scripts/run_security_regression.py": "f8ef0c21eb69763ac2c5c114317c0d2732d60c93de2a206fddf5f047144b249c",
+      "tests/test_apple_identity.py": "ff0becf5be87a8eac59084d25234a9ffac95ba80b9b3f835531587dc7799d5f8",
+      "tests/test_auth_security.py": "6749261b11daf0b9e3ffdf82410b781c87bddb0f0af17671527169cb54aab743",
+      "tests/test_conversation_events.py": "f995204f9c4c64d0f1bd1327c2dd189ba39646fe916fcf919058ab1293269250",
+      "tests/test_websocket_manager.py": "e2e2c571c63bbbb3120af75ae43b2368ef80be9214683fbd5f80f5dfa0762ffa"
+    },
+    "note": "Working candidate identified by content hashes; commit recorded after validation."
+  },
+  "limits": [
+    "Offline local RSA/JWKS; no login against live Apple/Google, paid AI, load, SMTP/FCM or physical UI test.",
+    "Regression suite duration is not endpoint latency or a performance gain."
+  ],
+  "fixes": [
+    {
+      "problem": "Apple accepted unsigned/untrusted identity tokens and request-provided identity/email.",
+      "before": "Preserved identity-01 A/B negative assertions and local-campaign report: forged tokens issued sessions.",
+      "change": "Fixed key endpoint, RS256 verification, exact issuer/audience/required dates/subject, verified signed email, no request-email account linking.",
+      "commit": "d6573b0401491ad350460d1054bdba414e53f873",
+      "after": "Local cryptographic and HTTP positive/negative cases pass."
+    },
+    {
+      "problem": "An already-open WebSocket continued processing events after persisted session revocation/expiry.",
+      "before": "Preserved TCP revocation/expiry diagnostic in local-campaign report.",
+      "change": "Recheck authentication before each frame and during idle periods, close policy1008 on rejection.",
+      "commit": "d6573b0401491ad350460d1054bdba414e53f873",
+      "after": "Nine invalidated-session/frame combinations and three idle rechecks pass."
+    },
+    {
+      "problem": "Essential access-token fields were not explicitly required; malformed session IDs could escape controlled rejection.",
+      "before": "Review of previous authenticated_user implementation; no claim of a separate pre-fix runtime experiment for every missing field.",
+      "change": "Require issuer, subject, session ID, type, issued-at and expiry; reject malformed IDs.",
+      "commit": "d6573b0401491ad350460d1054bdba414e53f873",
+      "after": "19 rejection variants pass for both HTTP and WS; valid access and pong remain functional."
+    }
+  ]
+}

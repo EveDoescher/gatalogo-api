@@ -19,3 +19,9 @@ As novas execuções ficam no diretório privado `.tmp/quality-campaign/20261021
 Autenticação Apple é um contrato de segurança da API, mesmo com iOS fora do escopo. A correção verifica assinatura e claims segundo a [documentação da Apple](https://developer.apple.com/documentation/signinwithapple/verifying-a-user). Para habilitar esse login, `APPLE_CLIENT_ID` deve identificar o destinatário cadastrado. Os testes usam JWKS/chaves RSA locais; não representam uma sessão real com o provedor.
 
 Os resultados e a matriz desta etapa serão anexados após sua validação, sem editar os relatórios históricos.
+
+## SEC-01 — concluído em 24/10/2026
+
+64 testes passaram, sem falhas ou skips, em PostgreSQL descartável com migrações, HTTP e WebSocket ASGI. [Resultado, seletores, hashes, correções e revalidação](SEC01-20261024-results.json). Commit da correção: `d6573b0401491ad350460d1054bdba414e53f873`.
+
+As rejeições cobrem token ausente/malformado, assinatura/issuer/type inválidos, expiração/revogação, campos obrigatórios, IDs inválidos, sessão inexistente/de outra conta e conta inativa. Controles positivos preservam login, acesso e pong. A revalidação também cobre sessões WS já abertas e ociosas e validação criptográfica Apple com RSA/JWKS locais. Não representa login real no provedor nem teste de latência. Para habilitar Apple no deployment, configure `APPLE_CLIENT_ID`; nunca derive esse destinatário do token recebido.

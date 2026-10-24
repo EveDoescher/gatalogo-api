@@ -828,7 +828,7 @@
   },
   {
     "scenario": "SEC-01",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Sem token, assinatura/issuer/type inválidos, expirado/revogado, sessão de outro user, conta inativa; HTTP e abertura WS.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [
@@ -844,7 +844,7 @@
     "runs": [
       "attempts/extended-03/critical_runs/extended-baseline/summary.json"
     ],
-    "limitation": "Novas variantes locais rastreadas; conferir escopo e pendências no relatório. Nenhuma aprovação integral ou correção de produto.",
+    "limitation": "All SEC-01 HTTP/WS authentication variants passed; real provider delivery and physical UI are separate experiments.",
     "local_runs": [
       "attempts/identity-01/critical_runs/identity-A/summary.json",
       "attempts/identity-01/critical_runs/identity-B/summary.json"
@@ -852,7 +852,11 @@
     "followup_runs": [
       "attempts/identity-controls-01/critical_runs/identity-controls-A/summary.json",
       "attempts/identity-controls-01/critical_runs/identity-controls-B/summary.json"
-    ]
+    ],
+    "closure_evidence": [
+      "SEC01-20261024-results.json"
+    ],
+    "correction_commit": "d6573b0401491ad350460d1054bdba414e53f873"
   },
   {
     "scenario": "SEC-02",

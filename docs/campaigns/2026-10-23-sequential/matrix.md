@@ -1,6 +1,6 @@
 # Matriz de fechamento sequencial
 
-iOS/VoiceOver fora do escopo por decisão do usuário. Os demais critérios originais permanecem.
+iOS/VoiceOver fora do escopo. Resultados anteriores preservados; critérios originais mantidos.
 
 | Cenário | Estado |
 |---|---|
@@ -62,7 +62,7 @@ iOS/VoiceOver fora do escopo por decisão do usuário. Os demais critérios orig
 | RES-06 | PARTIAL_EXECUTED |
 | RES-07 | PARTIAL_EXECUTED |
 | RES-08 | PARTIAL_EXECUTED |
-| SEC-01 | PARTIAL_EXECUTED |
+| SEC-01 | COMPLETED |
 | SEC-02 | PARTIAL_EXECUTED |
 | SEC-03 | PARTIAL_EXECUTED |
 | SEC-04 | PARTIAL_EXECUTED |
