@@ -37,3 +37,7 @@ As rejeições cobrem token ausente/malformado, assinatura/issuer/type inválido
 ## SEC-05 — concluído em 24/10/2026
 
 72 testes de segurança e 2 de compatibilidade aprovados. [Antes/depois, correção, seletores e evidências](SEC05-20261024-results.json). Os 33 casos vermelhos passaram após normalizar extensões nos seis gravadores. Bytes, hashes, leitura do proprietário e chaves válidas/versionadas foram preservados. Não houve escape comprovado da raiz: o defeito confirmado era a aceitação de sufixos não portáveis, inclusive sintaxe de streams no Windows.
+
+## SEC-07 — concluído em 24/10/2026
+
+16 testes aprovados. [Antes/depois, limites, SMTP, concorrência e correção](SEC07-20261024-results.json). A corrida gerava dois e-mails e dois OTPs ativos; após o lock transacional, as respostas foram 202/429 com uma mensagem e um código ativo. Recuperação real nos dois endpoints, limites exatos, consumo único, refresh/logout e isolamento passaram. A entrega SMTP antes de um commit que falha continua explicitamente no cenário DLV-02.

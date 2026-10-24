@@ -1,0 +1,420 @@
+{
+  "scenario": "SEC-07",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_sha": "3a410625dc115a513b1aae906a7f513bf7483def",
+  "correction_commit": "3a410625dc115a513b1aae906a7f513bf7483def",
+  "passed": 16,
+  "failed": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "selector": "scripts/campaign/security_cases.py::test_SEC07_failed_attempts_survive_request_rollback",
+      "status": "PASS",
+      "seconds": 2.521
+    },
+    {
+      "selector": "scripts/campaign/security_cases.py::test_SEC07_expiry_purpose_email_and_reuse",
+      "status": "PASS",
+      "seconds": 1.074
+    },
+    {
+      "selector": "scripts/campaign/security_cases.py::test_SEC07_resend_cooldown_invalidates_previous",
+      "status": "PASS",
+      "seconds": 1.238
+    },
+    {
+      "selector": "scripts/campaign/security_cases.py::test_SEC07_refresh_and_logout_revoke_previous_credentials",
+      "status": "PASS",
+      "seconds": 0.975
+    },
+    {
+      "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_expiry_microsecond_boundary[-1]",
+      "status": "PASS",
+      "seconds": 1.205
+    },
+    {
+      "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_expiry_microsecond_boundary[0]",
+      "status": "PASS",
+      "seconds": 0.995
+    },
+    {
+      "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_expiry_microsecond_boundary[1]",
+      "status": "PASS",
+      "seconds": 0.939
+    },
+    {
+      "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_resend_exact_cooldown_and_previous_code_invalidation[59.999]",
+      "status": "PASS",
+      "seconds": 1.104
+    },
+    {
+      "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_resend_exact_cooldown_and_previous_code_invalidation[60.0]",
+      "status": "PASS",
+      "seconds": 1.814
+    },
+    {
+      "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_concurrent_consumption_is_single_use",
+      "status": "PASS",
+      "seconds": 0.929
+    },
+    {
+      "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_concurrent_bad_codes_cannot_lose_attempts",
+      "status": "PASS",
+      "seconds": 1.571
+    },
+    {
+      "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_concurrent_refresh_has_one_winner_and_revokes_old_token",
+      "status": "PASS",
+      "seconds": 3.59
+    },
+    {
+      "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_parallel_first_request_obeys_cooldown_and_sends_one_email[same-email]",
+      "status": "PASS",
+      "seconds": 14.238
+    },
+    {
+      "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_parallel_first_request_obeys_cooldown_and_sends_one_email[normalized-email]",
+      "status": "PASS",
+      "seconds": 12.668
+    },
+    {
+      "selector": "scripts/campaign/delivery_cases.py::test_DLV01_SEC07_smtp_password_recovery_complete_and_replay[confirm]",
+      "status": "PASS",
+      "seconds": 15.331
+    },
+    {
+      "selector": "scripts/campaign/delivery_cases.py::test_DLV01_SEC07_smtp_password_recovery_complete_and_replay[grant]",
+      "status": "PASS",
+      "seconds": 12.16
+    }
+  ],
+  "before": {
+    "passed": 14,
+    "failed": 2,
+    "cases": [
+      {
+        "selector": "scripts/campaign/security_cases.py::test_SEC07_failed_attempts_survive_request_rollback",
+        "status": "PASS",
+        "seconds": 1.618
+      },
+      {
+        "selector": "scripts/campaign/security_cases.py::test_SEC07_expiry_purpose_email_and_reuse",
+        "status": "PASS",
+        "seconds": 1.213
+      },
+      {
+        "selector": "scripts/campaign/security_cases.py::test_SEC07_resend_cooldown_invalidates_previous",
+        "status": "PASS",
+        "seconds": 3.465
+      },
+      {
+        "selector": "scripts/campaign/security_cases.py::test_SEC07_refresh_and_logout_revoke_previous_credentials",
+        "status": "PASS",
+        "seconds": 3.032
+      },
+      {
+        "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_expiry_microsecond_boundary[-1]",
+        "status": "PASS",
+        "seconds": 1.668
+      },
+      {
+        "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_expiry_microsecond_boundary[0]",
+        "status": "PASS",
+        "seconds": 1.327
+      },
+      {
+        "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_expiry_microsecond_boundary[1]",
+        "status": "PASS",
+        "seconds": 2.575
+      },
+      {
+        "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_resend_exact_cooldown_and_previous_code_invalidation[59.999]",
+        "status": "PASS",
+        "seconds": 2.238
+      },
+      {
+        "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_resend_exact_cooldown_and_previous_code_invalidation[60.0]",
+        "status": "PASS",
+        "seconds": 1.533
+      },
+      {
+        "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_concurrent_consumption_is_single_use",
+        "status": "PASS",
+        "seconds": 1.718
+      },
+      {
+        "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_concurrent_bad_codes_cannot_lose_attempts",
+        "status": "PASS",
+        "seconds": 2.384
+      },
+      {
+        "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_concurrent_refresh_has_one_winner_and_revokes_old_token",
+        "status": "PASS",
+        "seconds": 2.079
+      },
+      {
+        "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_parallel_first_request_obeys_cooldown_and_sends_one_email[same-email]",
+        "status": "FAIL",
+        "seconds": 17.432
+      },
+      {
+        "selector": "scripts/campaign/auth_flow_cases.py::test_SEC07_parallel_first_request_obeys_cooldown_and_sends_one_email[normalized-email]",
+        "status": "FAIL",
+        "seconds": 13.39
+      },
+      {
+        "selector": "scripts/campaign/delivery_cases.py::test_DLV01_SEC07_smtp_password_recovery_complete_and_replay[confirm]",
+        "status": "PASS",
+        "seconds": 13.614
+      },
+      {
+        "selector": "scripts/campaign/delivery_cases.py::test_DLV01_SEC07_smtp_password_recovery_complete_and_replay[grant]",
+        "status": "PASS",
+        "seconds": 13.932
+      }
+    ],
+    "raw_evidence": "sequential/SEC07-20261024-01",
+    "observations": [
+      {
+        "scenario": "SEC-07",
+        "variant": "normalized-email",
+        "statuses": [
+          202,
+          202
+        ],
+        "smtp_messages": 2,
+        "active_otps": 2,
+        "scope": "Two requests; first delivery held 300 ms before commit. Own PostgreSQL and Mailpit; not load or a latency benchmark."
+      },
+      {
+        "scenario": "SEC-07",
+        "variant": "same-email",
+        "statuses": [
+          202,
+          202
+        ],
+        "smtp_messages": 2,
+        "active_otps": 2,
+        "scope": "Two requests; first delivery held 300 ms before commit. Own PostgreSQL and Mailpit; not load or a latency benchmark."
+      }
+    ]
+  },
+  "environment": {
+    "scenario": "SEC-07",
+    "exit_code": 0,
+    "database": "own random-port PostgreSQL, migrations applied; fixture schema per case",
+    "providers": "Generated app JWTs; real disposable Mailpit/SMTP in recovery and issuance-race cases; other OTP cases stub sender. No live IdP, paid inference or FCM.",
+    "api_lifespan_started": false,
+    "physical_device": false,
+    "evaluated_sources_unchanged": true
+  },
+  "candidate_manifest": {
+    "source_sha": "3a410625dc115a513b1aae906a7f513bf7483def",
+    "executor_sha256": {
+      "security_cases.py": "29740245f414e7645404dce0e627c6a09087978b2478f265d928bf05737bc656",
+      "extended_cases.py": "bd89b9bbbc3abab3da290105220094966ad976ea29a8da55d1da23deb24f855f",
+      "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+      "auth_flow_cases.py": "0525d6469c3a8f0669d27b195e3bc53544cd1b2f6fcdce759665f7cd26e68383",
+      "delivery_cases.py": "5d5f6a8719ed55efdd9be1c0b202199837b0ce33eaa27fb7c522cfed4ab2ac96"
+    }
+  },
+  "raw_evidence": "sequential/SEC07-20261024-02",
+  "raw_hashes": {
+    "candidate.tar": "99e004d97076816e540d691aa5829188062a74bf83895a0224777db34a3d2cd8",
+    "candidate_manifest.json": "ce16c6d9ab01f9a16a75028e2d0c8a9499c0205c4b4bd61b6f1ea65545d9010d",
+    "junit.xml": "9afa6a503f23bc12a51e3b2a1432763459a81b8807a83d1228a8c8a43a054dc3",
+    "migrations.log": "a3b46d2f11f9b6e02caac2d03005d0237af6f6b915efdc0e4805c9d2bcafece2",
+    "pytest.log": "73adfb23bca64c4bc57c5e210720f4ccc53a2ba57e76a4781ead8ab519a17472",
+    "source_manifest.json": "d43f585f8f5e0a663d99fa73888f764f190c791ff9244f897555bccaa60c76b2",
+    "summary.json": "6696a29cf4219463c1a47496aa32e7c75337a5ae0a4ec220eb5d83a047cd3cfa"
+  },
+  "observations": [
+    {
+      "file": "DLV01-recovery-confirm.json",
+      "sha256": "01eb476c76538d3eb8c5a7f1b42237d078196a03f8c564716f2c2764d734aa14",
+      "result": {
+        "scenario": "DLV-01",
+        "flow": "confirm",
+        "messages": 1,
+        "old_password_rejected": true,
+        "old_sessions_revoked": true,
+        "other_account_unchanged": true,
+        "single_use": true,
+        "cooldown": 429,
+        "scope": "real disposable SMTP; no code/password/token in evidence"
+      }
+    },
+    {
+      "file": "DLV01-recovery-grant.json",
+      "sha256": "528b331affa3afdc3b558b860e5bd008b09feb60edf68d9468e25e918a5c4b3b",
+      "result": {
+        "scenario": "DLV-01",
+        "flow": "grant",
+        "messages": 1,
+        "old_password_rejected": true,
+        "old_sessions_revoked": true,
+        "other_account_unchanged": true,
+        "single_use": true,
+        "cooldown": 429,
+        "scope": "real disposable SMTP; no code/password/token in evidence"
+      }
+    },
+    {
+      "file": "SEC07-attempt-race.json",
+      "sha256": "9fdec878934f91a2221cb14f7a034fa0cd101be4a7a322ac930049e276847a12",
+      "result": {
+        "scenario": "SEC-07",
+        "parallel_bad_codes": 2,
+        "attempts_at_limit": 5,
+        "valid_code_after_limit_rejected": true
+      }
+    },
+    {
+      "file": "SEC07-attempts.json",
+      "sha256": "068fd33fd94f883cc9426a7a150afa9e08a7a4f41e7a5684a7106462dc68861e",
+      "result": {
+        "scenario": "SEC-07",
+        "attempts_persisted": 5,
+        "valid_code_after_limit": "rejected"
+      }
+    },
+    {
+      "file": "SEC07-concurrent-consume.json",
+      "sha256": "1619c589bcc18d0f711a15e067cec7cc0687fe702c786a75b9a50a34d050ab9a",
+      "result": {
+        "scenario": "SEC-07",
+        "statuses": [
+          200,
+          400
+        ],
+        "successful_consumptions": 1
+      }
+    },
+    {
+      "file": "SEC07-cooldown-59.999.json",
+      "sha256": "41cf17c92e48f39f468fe1fd61bd5ee1c66dfcf78b9c0477657a3939b7bd6946",
+      "result": {
+        "scenario": "SEC-07",
+        "seconds": 59.999,
+        "resend_allowed": false,
+        "old_code_invalidated_when_replaced": false,
+        "clock": "controlled application clock; fixture timestamps aligned"
+      }
+    },
+    {
+      "file": "SEC07-cooldown-60.0.json",
+      "sha256": "9c775087eafee5d6aaacae2afda97ad83b7fc5c8e1a5838c79e440167b7c614f",
+      "result": {
+        "scenario": "SEC-07",
+        "seconds": 60.0,
+        "resend_allowed": true,
+        "old_code_invalidated_when_replaced": true,
+        "clock": "controlled application clock; fixture timestamps aligned"
+      }
+    },
+    {
+      "file": "SEC07-expiry--1.json",
+      "sha256": "297a9b56ce31b25ac8f41ded01ca63ae95424315da46621d74c9ec00b66f800f",
+      "result": {
+        "scenario": "SEC-07",
+        "expiry_offset_microseconds": -1,
+        "accepted": false
+      }
+    },
+    {
+      "file": "SEC07-expiry-0.json",
+      "sha256": "c7d9ff889b3caac7dcec2d7dce6d9cfc2060e0fd1f95c7967698342876613a51",
+      "result": {
+        "scenario": "SEC-07",
+        "expiry_offset_microseconds": 0,
+        "accepted": false
+      }
+    },
+    {
+      "file": "SEC07-expiry-1.json",
+      "sha256": "a93edd6da67859f5a170f4f482c96a340e2458d4bc8ae5a57d979f3a5faf7217",
+      "result": {
+        "scenario": "SEC-07",
+        "expiry_offset_microseconds": 1,
+        "accepted": true
+      }
+    },
+    {
+      "file": "SEC07-first-request-race-normalized-email.json",
+      "sha256": "ec172ac54c538af52e64ee40cc6671762b81ae9417af9433ce43a3c73bd539ec",
+      "result": {
+        "scenario": "SEC-07",
+        "variant": "normalized-email",
+        "statuses": [
+          202,
+          429
+        ],
+        "smtp_messages": 1,
+        "active_otps": 1,
+        "scope": "Two requests; first delivery held 300 ms before commit. Own PostgreSQL and Mailpit; not load or a latency benchmark."
+      }
+    },
+    {
+      "file": "SEC07-first-request-race-same-email.json",
+      "sha256": "71a29ad0af4d824dd1951171ae5e607c5df3c7c23bd1fec087f569b0f0d20196",
+      "result": {
+        "scenario": "SEC-07",
+        "variant": "same-email",
+        "statuses": [
+          202,
+          429
+        ],
+        "smtp_messages": 1,
+        "active_otps": 1,
+        "scope": "Two requests; first delivery held 300 ms before commit. Own PostgreSQL and Mailpit; not load or a latency benchmark."
+      }
+    },
+    {
+      "file": "SEC07-refresh-race.json",
+      "sha256": "ad2df51daa0d7a9f221615492e8c0c8faa5d46b9e04f7621e3d6702ec3863947",
+      "result": {
+        "scenario": "SEC-07",
+        "statuses": [
+          200,
+          401
+        ],
+        "new_sessions": 1,
+        "old_access_rejected": true,
+        "other_account_valid": true
+      }
+    },
+    {
+      "file": "SEC07-refresh.json",
+      "sha256": "d9b8df36cb686c9fbc470cd70d53993e050e2f93a6a8c5b56b2715c175f5db91",
+      "result": {
+        "scenario": "SEC-07",
+        "rotation": "new credentials",
+        "old_access": 401,
+        "old_refresh": 401,
+        "post_logout_access": 401,
+        "post_logout_refresh": 401
+      }
+    }
+  ],
+  "problem": "Concurrent first OTP requests bypassed cooldown: two202 responses, two SMTP messages and two active OTPs, also with differently-cased email.",
+  "cause": "No existing OTP row to serialize first issuance; recent-code check and insert were not serialized.",
+  "correction": "Per normalized email/purpose PostgreSQL transaction advisory lock, released on commit/rollback. No User row lock, schema change or process-local mutex.",
+  "coverage": [
+    "Wrong-code attempt limit persists across rollback; purpose/email isolation and single use.",
+    "Expiry at minus1/zero/plus1 microsecond; resend blocked at59.999s and accepted at60s, invalidating old code.",
+    "Parallel consume, bad-attempt increment and refresh: one winner, no lost attempts or duplicate sessions.",
+    "Serial refresh/logout/replay rejection and other-account session preservation.",
+    "Real SMTP password recovery through confirm and grant endpoints; delivered code works, grant is not bearer access, old password/session revoked, replay rejected.",
+    "Parallel first issuance with held first delivery; same/case-normalized email; one send and one active code after correction."
+  ],
+  "limits": [
+    "PostgreSQL race guarantee; SQLite sequential fixtures retain behavior but no SQLite concurrency guarantee is claimed.",
+    "Two controlled requests per race; no throughput or latency conclusion, no production mutation or external recipients.",
+    "SMTP acceptance before a subsequent DB commit failure remains the separate DLV-02 finding; this lock does not implement transactional email delivery."
+  ],
+  "metadata_amendments": [
+    "Raw runner provider label was generic; corrected to real isolated SMTP here, with immutable original raw summary/hash retained."
+  ],
+  "reproduce": "python scripts/run_security_regression.py --scenario SEC-07 --output .tmp/quality-campaign/<run>/sequential/<new-unique-attempt>"
+}
