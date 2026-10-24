@@ -92,6 +92,7 @@ def selection(scenario, output):
         "SEC-07": "auth_flow_cases.py",
         "DATA-02": "rollback_cases.py",
         "DATA-05": None,
+        "DATA-06": "fencing_cases.py",
     }[scenario]
     if case_file:
         names.append(case_file)
@@ -323,6 +324,7 @@ if __name__ == "__main__":
             "SEC-07",
             "DATA-02",
             "DATA-05",
+            "DATA-06",
         ],
         default="SEC-01",
     )

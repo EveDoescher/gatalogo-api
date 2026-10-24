@@ -1,0 +1,74 @@
+{
+  "scenario": "DATA-05",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_sha": "54d7b5b630401ceb31c3de4c962a36babd2a6de1",
+  "test_commit": "7bc8c9e",
+  "product_changes": null,
+  "passed": 7,
+  "failed": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "selector": "sequential.DATA05-20261024-01.executors.security_cases::test_DATA05_conflict_and_tombstone[-1-z-False-False]",
+      "status": "PASS",
+      "seconds": 0.077
+    },
+    {
+      "selector": "sequential.DATA05-20261024-01.executors.security_cases::test_DATA05_conflict_and_tombstone[1-a-False-True]",
+      "status": "PASS",
+      "seconds": 0.012
+    },
+    {
+      "selector": "sequential.DATA05-20261024-01.executors.security_cases::test_DATA05_conflict_and_tombstone[0-z-False-True]",
+      "status": "PASS",
+      "seconds": 0.003
+    },
+    {
+      "selector": "sequential.DATA05-20261024-01.executors.security_cases::test_DATA05_conflict_and_tombstone[0-a-False-False]",
+      "status": "PASS",
+      "seconds": 0.004
+    },
+    {
+      "selector": "sequential.DATA05-20261024-01.executors.security_cases::test_DATA05_conflict_and_tombstone[1-z-True-False]",
+      "status": "PASS",
+      "seconds": 0.003
+    },
+    {
+      "selector": "sequential.DATA05-20261024-01.executors.extended_cases::test_DATA05_http_conflicts_preserve_authoritative_analysis[ascending]",
+      "status": "PASS",
+      "seconds": 3.742
+    },
+    {
+      "selector": "sequential.DATA05-20261024-01.executors.extended_cases::test_DATA05_http_conflicts_preserve_authoritative_analysis[descending]",
+      "status": "PASS",
+      "seconds": 2.418
+    }
+  ],
+  "executor": "scripts/run_security_regression.py --scenario DATA-05 --output <new-directory-under-original-run>/sequential/<attempt>",
+  "executor_sha256": {
+    "security_cases.py": "29740245f414e7645404dce0e627c6a09087978b2478f265d928bf05737bc656",
+    "extended_cases.py": "fded2ef157c87ef30e188fe8435921d1d4402be354b30365498dc36fceb94fc4",
+    "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36"
+  },
+  "coverage": [
+    "Function: older/newer/equal timestamps and device tie-break; tombstone resists later edit",
+    "HTTP ascending and descending device arrival: older/newer/equal dates, equal timestamp/device replay, losing and winning devices",
+    "HTTP tombstone then later edit stays deleted",
+    "Existing authoritative analysis, server-owned individual ID and identity revision preserved against untrusted payload",
+    "Same client ID under A/B remains isolated"
+  ],
+  "evidence_sha256": {
+    "sequential/DATA05-20261024-01/junit.xml": "db7481dcdd9945b7f8c1b6afc64ab14edab054c801b881e8126905660548095b",
+    "sequential/DATA05-20261024-01/pytest.log": "8514c6e8a22659823745ebc6f07a3ed8a247f430a71a0bfe17b9533409907500",
+    "sequential/DATA05-20261024-01/summary.json": "8a635f3655944fc494ee8d00cef5e74e9f2b5495b702c1d6c0e9154f147fcbeb",
+    "sequential/DATA05-20261024-01/source_manifest.json": "5fb7282b865cef46b4947cb6a3962ded2570ba1b48ede9daf8e04bbd8f8fcf31",
+    "sequential/DATA05-20261024-01/candidate_manifest.json": "1e9365a60cd0eaf69b6f79fe2559af50904472e92840fff7cea73407acce5656",
+    "sequential/DATA05-20261024-01/observations/DATA05-http-ascending.json": "63aac7efa6e961c980901ce3687dd273b6d4d4118712f0c03f90520ca3106f98",
+    "sequential/DATA05-20261024-01/observations/DATA05-http-descending.json": "1292fda063f61fcca2e003a8b00e3648e10eac268695e15a34370eaf4f5fb969"
+  },
+  "limitations": [
+    "HTTP ASGI and real disposable PostgreSQL, not mobile offline UI coverage; that remains separate.",
+    "App source frozen at source_sha; executor changed before execution and is identified by its manifest hashes and test_commit. No source changed during run."
+  ]
+}

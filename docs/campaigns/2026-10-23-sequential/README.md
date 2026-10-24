@@ -45,3 +45,7 @@ As rejeições cobrem token ausente/malformado, assinatura/issuer/type inválido
 ## DATA-02 — concluído em 24/10/2026
 
 8 testes aprovados, mais 72 de regressão de segurança do storage e 2 de compatibilidade. [Antes/depois, variantes, hashes e limites](DATA02-20261024-results.json). A escrita parcial danificava o destino; a substituição atômica preserva os bytes anteriores e remove o temporário após exceção. Rollback não expõe meia análise, saldo ou evento de sucesso. Um arquivo completo ainda pode sobreviver ao rollback: a [política de recuperação](../../quality/storage_recovery.md) exige inventário integral e escritores pausados; nenhum arquivo ou serviço do usuário foi removido/interrompido. Não foi implementada coleta automática concorrente.
+
+## DATA-05 — concluído em 24/10/2026
+
+7 testes aprovados, sem alteração do produto. [Variantes, fontes, executores e hashes](DATA05-20261024-results.json). Datas e desempates foram testados na função e por HTTP nas duas ordens dos dispositivos, incluindo replay idêntico, tombstone e isolamento entre contas. Análise, identidade e revisão de identidade do servidor permaneceram intactas.

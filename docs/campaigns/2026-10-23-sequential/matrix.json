@@ -631,7 +631,7 @@
   },
   {
     "scenario": "DATA-05",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Datas antiga/nova/igual, device IDs em ordens inversas, tombstone seguido de edição, análise já existente.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [
@@ -642,7 +642,11 @@
       "attempts/extended-03/critical_runs/extended-baseline/summary.json",
       "attempts/flutter-resilience-02/flutter_resilience/baseline/summary.json"
     ],
-    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+    "limitation": "Função e HTTP/PG cobertos; não representa percurso de UI/offline móvel.",
+    "closure_evidence": [
+      "DATA05-20261024-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario DATA-05"
   },
   {
     "scenario": "DATA-06",
