@@ -89,10 +89,13 @@ def selection(scenario, output):
         "SEC-02": "isolation_cases.py",
         "SEC-03": "websocket_cases.py",
         "SEC-05": "storage_cases.py",
+        "SEC-07": "auth_flow_cases.py",
     }[scenario]
     names += [case_file]
     if scenario == "SEC-03":
         names.append("test_auth_security.py")
+    if scenario == "SEC-07":
+        names.append("delivery_cases.py")
     for name in names:
         destination = executors / name
         origin = (
@@ -108,6 +111,8 @@ def selection(scenario, output):
     )
     selected = ["security_cases.py", "extended_cases.py"]
     selected += [case_file]
+    if scenario == "SEC-07":
+        selected.append("delivery_cases.py")
     selectors = [str(executors / name) for name in selected]
     selectors += ["-k", scenario.replace("-", ""), "--confcutdir", str(executors)]
     return (
@@ -303,7 +308,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", required=True)
     parser.add_argument(
-        "--scenario", choices=["SEC-01", "SEC-02", "SEC-03", "SEC-05"], default="SEC-01"
+        "--scenario",
+        choices=["SEC-01", "SEC-02", "SEC-03", "SEC-05", "SEC-07"],
+        default="SEC-01",
     )
     args = parser.parse_args()
     raise SystemExit(run(args.output, args.scenario))
