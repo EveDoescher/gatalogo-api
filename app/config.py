@@ -83,6 +83,7 @@ class Settings(BaseSettings):
     smtp_use_tls: bool = True
     smtp_enabled: bool = False
     google_web_client_id: str | None = None
+    apple_client_id: str | None = None
     # JSON de conta de serviço usado somente pelo servidor para enviar FCM.
     # Nunca é incluído no app móvel ou versionado no repositório.
     fcm_service_account_file: str | None = None

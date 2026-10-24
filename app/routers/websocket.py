@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import json
 import logging
 from datetime import UTC, datetime
@@ -23,6 +24,7 @@ from app.services.websocket_manager import ws_manager
 
 logger = logging.getLogger(__name__)
 router = APIRouter(tags=["websocket"])
+SESSION_RECHECK_SECONDS = 30
 
 
 async def _conversation_event(factory, user, data):
@@ -73,7 +75,20 @@ async def websocket_endpoint(websocket: WebSocket, token: str = Query(...)) -> N
     await ws_manager.connect(user.id, websocket)
     try:
         while True:
-            raw = await websocket.receive_text()
+            try:
+                raw = await asyncio.wait_for(websocket.receive_text(), timeout=SESSION_RECHECK_SECONDS)
+            except TimeoutError:
+                raw = None
+            # Connections can outlive their JWT or persisted session. Never
+            # process a frame using the identity cached at the handshake.
+            try:
+                async with factory() as session:
+                    user = await authenticated_user(token, session)
+            except HTTPException:
+                await websocket.close(code=status.WS_1008_POLICY_VIOLATION)
+                return
+            if raw is None:
+                continue
             if raw == "ping":
                 await websocket.send_text("pong")
                 continue

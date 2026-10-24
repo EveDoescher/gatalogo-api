@@ -160,12 +160,13 @@ async def authenticated_user(token: str, session: AsyncSession) -> User:
             settings.jwt_secret,
             algorithms=["HS256"],
             issuer=settings.jwt_issuer,
+            options={"require": ["iss", "sub", "sid", "type", "iat", "exp"]},
         )
         if payload.get("type") != "access":
             raise jwt.InvalidTokenError("wrong token type")
         user_id = UUID(payload["sub"])
         session_id = UUID(payload["sid"])
-    except (jwt.PyJWTError, KeyError, ValueError) as error:
+    except (jwt.PyJWTError, KeyError, ValueError, TypeError, AttributeError) as error:
         raise invalid_credentials() from error
     active_session = await session.get(UserSession, session_id)
     if (

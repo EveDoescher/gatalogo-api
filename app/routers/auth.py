@@ -1,17 +1,19 @@
 from __future__ import annotations
 
 from datetime import timedelta
+import hashlib
 import secrets
-import jwt
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, TypeAdapter
 
 from fastapi import APIRouter, Depends, Header, HTTPException, status
+from starlette.concurrency import run_in_threadpool
 from google.auth.transport import requests as google_requests
 from google.oauth2 import id_token as google_id_token
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import get_settings
+from app.services.apple_identity import verify_apple_identity
 from app.database import get_database_session
 from app.persistence_models import AuthIdentity, EmailOtp, User, UserSession
 from app.schemas import (
@@ -197,25 +199,31 @@ async def google_login(payload: GoogleLoginRequest, session: AsyncSession = Depe
 
 @router.post("/apple", response_model=AuthTokens)
 async def apple_login(payload: AppleLoginRequest, session: AsyncSession = Depends(get_database_session)) -> dict[str, object]:
+    audience = get_settings().apple_client_id
+    if not audience:
+        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="Login Apple não configurado.")
     try:
-        claims = jwt.decode(payload.id_token, options={"verify_signature": False})
-        iss = claims.get("iss", "")
-        if "appleid.apple.com" not in iss:
-            raise ValueError("Invalid issuer")
-        subject = str(payload.user_identifier or claims.get("sub"))
-        email_claim = claims.get("email") or payload.email
-        if not email_claim:
-            email = f"apple_{subject[:12]}@privaterelay.appleid.com"
-        else:
-            email = normalize_email(str(email_claim))
+        claims = await run_in_threadpool(verify_apple_identity, payload.id_token, audience)
+        subject = claims["sub"]
+        if payload.user_identifier is not None and payload.user_identifier != subject:
+            raise ValueError("Apple subject mismatch")
+        email = None
+        if claims.get("email"):
+            if claims.get("email_verified") not in (True, "true"):
+                raise ValueError("Apple email not verified")
+            email = normalize_email(str(TypeAdapter(EmailStr).validate_python(claims["email"])))
     except Exception as error:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token Apple inválido.") from error
 
     identity = (await session.execute(select(AuthIdentity).where(AuthIdentity.provider == "apple", AuthIdentity.subject == subject))).scalar_one_or_none()
     user = await session.get(User, identity.user_id) if identity else None
     if user is None:
-        user = (await session.execute(select(User).where(User.email == email))).scalar_one_or_none()
+        user = (await session.execute(select(User).where(User.email == email))).scalar_one_or_none() if email else None
         if user is None:
+            if email is None:
+                # Stable non-colliding placeholder; never trust the request email.
+                digest = hashlib.sha256(subject.encode("utf-8")).hexdigest()[:48]
+                email = f"apple_{digest}@privaterelay.appleid.com"
             user = User(email=email, status="active")
             session.add(user)
             await session.flush()
