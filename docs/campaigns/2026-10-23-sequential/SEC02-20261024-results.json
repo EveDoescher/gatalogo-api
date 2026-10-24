@@ -1,0 +1,1331 @@
+{
+  "scenario": "SEC-02",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_sha": "9b134dcc85e7202c867cb09b316a542ccb4402bf",
+  "test_commit": "285bb9b5a525aefd58c74c70550bbd7ce609ca59",
+  "cases": [
+    {
+      "selector": "scripts/campaign/security_cases.py::test_SEC02_private_photo_positive_control[primary]",
+      "status": "PASS",
+      "seconds": 2.221
+    },
+    {
+      "selector": "scripts/campaign/security_cases.py::test_SEC02_private_photo_positive_control[front]",
+      "status": "PASS",
+      "seconds": 1.394
+    },
+    {
+      "selector": "scripts/campaign/security_cases.py::test_SEC02_pull_filters_both_owners",
+      "status": "PASS",
+      "seconds": 1.094
+    },
+    {
+      "selector": "scripts/campaign/extended_cases.py::test_SEC02_resource_action_actor_matrix[photo-read]",
+      "status": "PASS",
+      "seconds": 1.26
+    },
+    {
+      "selector": "scripts/campaign/extended_cases.py::test_SEC02_resource_action_actor_matrix[photo-write]",
+      "status": "PASS",
+      "seconds": 2.345
+    },
+    {
+      "selector": "scripts/campaign/extended_cases.py::test_SEC02_resource_action_actor_matrix[front-read]",
+      "status": "PASS",
+      "seconds": 2.236
+    },
+    {
+      "selector": "scripts/campaign/extended_cases.py::test_SEC02_resource_action_actor_matrix[front-write]",
+      "status": "PASS",
+      "seconds": 3.002
+    },
+    {
+      "selector": "scripts/campaign/extended_cases.py::test_SEC02_resource_action_actor_matrix[front-delete]",
+      "status": "PASS",
+      "seconds": 2.258
+    },
+    {
+      "selector": "scripts/campaign/extended_cases.py::test_SEC02_resource_action_actor_matrix[avatar-preview]",
+      "status": "PASS",
+      "seconds": 2.667
+    },
+    {
+      "selector": "scripts/campaign/extended_cases.py::test_SEC02_resource_action_actor_matrix[avatar-coat]",
+      "status": "PASS",
+      "seconds": 2.72
+    },
+    {
+      "selector": "scripts/campaign/extended_cases.py::test_SEC02_resource_action_actor_matrix[jobs]",
+      "status": "PASS",
+      "seconds": 6.35
+    },
+    {
+      "selector": "scripts/campaign/extended_cases.py::test_SEC02_resource_action_actor_matrix[enqueue]",
+      "status": "PASS",
+      "seconds": 2.646
+    },
+    {
+      "selector": "scripts/campaign/extended_cases.py::test_SEC02_resource_action_actor_matrix[report]",
+      "status": "PASS",
+      "seconds": 5.432
+    },
+    {
+      "selector": "scripts/campaign/extended_cases.py::test_SEC02_resource_action_actor_matrix[sighting]",
+      "status": "PASS",
+      "seconds": 1.972
+    },
+    {
+      "selector": "scripts/campaign/extended_cases.py::test_SEC02_SEC03_chat_attachment_member_controls",
+      "status": "PASS",
+      "seconds": 1.852
+    },
+    {
+      "selector": "scripts/campaign/extended_cases.py::test_SEC02_SEC08_export_and_favorites_owner_isolation",
+      "status": "PASS",
+      "seconds": 3.414
+    },
+    {
+      "selector": "scripts/campaign/extended_cases.py::test_SEC02_SEC04_clue_location_and_media_permissions",
+      "status": "PASS",
+      "seconds": 2.236
+    },
+    {
+      "selector": "scripts/campaign/isolation_cases.py::test_SEC02_all_reference_angles_and_identifier_namespaces[matrix-client]",
+      "status": "PASS",
+      "seconds": 4.234
+    },
+    {
+      "selector": "scripts/campaign/isolation_cases.py::test_SEC02_all_reference_angles_and_identifier_namespaces[matrix-cat]",
+      "status": "PASS",
+      "seconds": 5.459
+    },
+    {
+      "selector": "scripts/campaign/isolation_cases.py::test_SEC02_sync_collision_analysis_update_and_tombstone_are_owner_scoped",
+      "status": "PASS",
+      "seconds": 4.702
+    },
+    {
+      "selector": "scripts/campaign/isolation_cases.py::test_SEC02_chat_reads_writes_receipts_and_cross_conversation_ids",
+      "status": "PASS",
+      "seconds": 3.34
+    },
+    {
+      "selector": "scripts/campaign/isolation_cases.py::test_SEC02_favorites_read_replace_clear_ignore_other_owner_claims",
+      "status": "PASS",
+      "seconds": 2.118
+    },
+    {
+      "selector": "scripts/campaign/isolation_cases.py::test_SEC02_quintal_task_item_cat_and_wallet_scopes",
+      "status": "PASS",
+      "seconds": 2.633
+    },
+    {
+      "selector": "scripts/campaign/isolation_cases.py::test_SEC02_private_clue_and_report_mutations_require_report_owner",
+      "status": "PASS",
+      "seconds": 2.134
+    }
+  ],
+  "passed": 24,
+  "failed": 0,
+  "skipped": 0,
+  "environment": {
+    "scenario": "SEC-02",
+    "exit_code": 0,
+    "database": "own random-port PostgreSQL, migrations applied; fixture schema per case",
+    "providers": "local RSA/JWKS and verifier doubles; no live identity provider",
+    "api_lifespan_started": false,
+    "physical_device": false,
+    "evaluated_sources_unchanged": true
+  },
+  "candidate_manifest": {
+    "source_sha": "9b134dcc85e7202c867cb09b316a542ccb4402bf",
+    "executor_sha256": {
+      "security_cases.py": "29740245f414e7645404dce0e627c6a09087978b2478f265d928bf05737bc656",
+      "extended_cases.py": "bd89b9bbbc3abab3da290105220094966ad976ea29a8da55d1da23deb24f855f",
+      "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+      "isolation_cases.py": "adf63beb8a199bcc6e9d03e9a1a6f6867879aa252a703567ab3a40c897903ef9"
+    }
+  },
+  "observations": [
+    {
+      "evidence_file": "SEC02-chat-actions.json",
+      "sha256": "2626c69a18f8d1d081ddbe39c2a6c2a5670223a239a4298c4e6de90db23e565a",
+      "result": {
+        "scenario": "SEC-02",
+        "checks": [
+          {
+            "actor": "A",
+            "method": "GET",
+            "status": 403
+          },
+          {
+            "actor": "A",
+            "method": "GET",
+            "status": 403
+          },
+          {
+            "actor": "A",
+            "method": "GET",
+            "status": 403
+          },
+          {
+            "actor": "A",
+            "method": "POST",
+            "status": 403
+          },
+          {
+            "actor": "A",
+            "method": "POST",
+            "status": 403
+          },
+          {
+            "actor": "A",
+            "method": "POST",
+            "status": 403
+          },
+          {
+            "actor": "A",
+            "method": "PUT",
+            "status": 403
+          },
+          {
+            "actor": "A",
+            "method": "DELETE",
+            "status": 403
+          },
+          {
+            "actor": "anonymous",
+            "method": "GET",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "GET",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "GET",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "POST",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "POST",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "POST",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "PUT",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "DELETE",
+            "status": 401
+          }
+        ],
+        "member_cannot_edit_other_sender": true,
+        "message_id_cannot_cross_conversation": true,
+        "owner_read_edit_delete_positive": true
+      }
+    },
+    {
+      "evidence_file": "SEC02-chat-attachment.json",
+      "sha256": "9dd98adc3f6dada1ee90849943a6b5190a8f3b7098ab55966a411b3cb9944717",
+      "result": {
+        "scenarios": [
+          "SEC-02",
+          "SEC-03"
+        ],
+        "member_bytes_sha256": "d7f70c853f84d40e88d7520bf10f7bbc589ade59127ca5743bfd39ab0647a636",
+        "member_query_token_positive": true,
+        "nonmember": 403,
+        "anonymous": 401
+      }
+    },
+    {
+      "evidence_file": "SEC02-clue-report-actions.json",
+      "sha256": "a9f847bcd830e788261ea745563cc4f04ca45f4b8f28ea20cc088f477d60a050",
+      "result": {
+        "scenario": "SEC-02",
+        "actors": [
+          "owner",
+          "observer",
+          "stranger",
+          "anonymous"
+        ],
+        "read_area_poster_resolve_and_decisions": true,
+        "unauthorized_state_unchanged": true,
+        "owner_controls_passed": true,
+        "scope": "Synthetic suggestion: permission test, not AI identification. Matching computation stubbed; explicit owner decision only."
+      }
+    },
+    {
+      "evidence_file": "SEC02-favorites-actions.json",
+      "sha256": "3577c3d166d015336cc796eed54736feacefdc77d287bf629fc29d69da6791b4",
+      "result": {
+        "scenario": "SEC-02",
+        "read_replace_clear": true,
+        "body_and_query_owner_override_ignored": true,
+        "foreign_list_unchanged": true,
+        "anonymous_denied": true
+      }
+    },
+    {
+      "evidence_file": "SEC02-front.json",
+      "sha256": "b0c7bc2797d50b8620a823a3db67070cc7acad4443ffa0235f4c6982026b270c",
+      "result": {
+        "scenario": "SEC-02",
+        "actor_status": {
+          "B": 200,
+          "A": 404,
+          "C": 404,
+          "anonymous": 401
+        },
+        "owner_content_sha256": "d7f70c853f84d40e88d7520bf10f7bbc589ade59127ca5743bfd39ab0647a636",
+        "positive_control": true
+      }
+    },
+    {
+      "evidence_file": "SEC02-identifiers-matrix-cat.json",
+      "sha256": "49fef92ccfcbe2f9389ebb2afdb2eb6a27981c22968bf1cbdb00e67d60ac400b",
+      "result": {
+        "scenario": "SEC-02",
+        "checks": [
+          {
+            "actor": "A",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/photo",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/avatar/preview",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/avatar/coat",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "GET",
+            "path": "/vision/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/jobs",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "POST",
+            "path": "/vision/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/enqueue",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "PUT",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/photo",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/front",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "DELETE",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/front",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "PUT",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/front",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/left",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "DELETE",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/left",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "PUT",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/left",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/right",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "DELETE",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/right",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "PUT",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/right",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/back",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "DELETE",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/back",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "PUT",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/back",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/photo",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/avatar/preview",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/avatar/coat",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "GET",
+            "path": "/vision/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/jobs",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "POST",
+            "path": "/vision/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/enqueue",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "PUT",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/photo",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/front",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "DELETE",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/front",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "PUT",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/front",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/left",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "DELETE",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/left",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "PUT",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/left",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/right",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "DELETE",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/right",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "PUT",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/right",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/back",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "DELETE",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/back",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "PUT",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/back",
+            "status": 404
+          },
+          {
+            "actor": "anonymous",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/photo",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/avatar/preview",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/avatar/coat",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "GET",
+            "path": "/vision/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/jobs",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "POST",
+            "path": "/vision/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/enqueue",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "PUT",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/photo",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/front",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "DELETE",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/front",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "PUT",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/front",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/left",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "DELETE",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/left",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "PUT",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/left",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/right",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "DELETE",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/right",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "PUT",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/right",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "GET",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/back",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "DELETE",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/back",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "PUT",
+            "path": "/sync/cats/542bd44f-ffc9-558a-89f7-d92c5de849e9/reference-photos/back",
+            "status": 401
+          }
+        ],
+        "owner_all_four_angles": true,
+        "foreign_rows_and_file_bytes_unchanged": true
+      }
+    },
+    {
+      "evidence_file": "SEC02-identifiers-matrix-client.json",
+      "sha256": "8041321af784ae42dcda03ac3e2a7828d3b500b24725559dcad22044fc2f4c6b",
+      "result": {
+        "scenario": "SEC-02",
+        "checks": [
+          {
+            "actor": "A",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/photo",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/avatar/preview",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/avatar/coat",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "GET",
+            "path": "/vision/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/jobs",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "POST",
+            "path": "/vision/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/enqueue",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "PUT",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/photo",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/front",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "DELETE",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/front",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "PUT",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/front",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/left",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "DELETE",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/left",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "PUT",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/left",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/right",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "DELETE",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/right",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "PUT",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/right",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/back",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "DELETE",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/back",
+            "status": 404
+          },
+          {
+            "actor": "A",
+            "method": "PUT",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/back",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/photo",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/avatar/preview",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/avatar/coat",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "GET",
+            "path": "/vision/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/jobs",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "POST",
+            "path": "/vision/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/enqueue",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "PUT",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/photo",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/front",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "DELETE",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/front",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "PUT",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/front",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/left",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "DELETE",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/left",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "PUT",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/left",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/right",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "DELETE",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/right",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "PUT",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/right",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/back",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "DELETE",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/back",
+            "status": 404
+          },
+          {
+            "actor": "C",
+            "method": "PUT",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/back",
+            "status": 404
+          },
+          {
+            "actor": "anonymous",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/photo",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/avatar/preview",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/avatar/coat",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "GET",
+            "path": "/vision/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/jobs",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "POST",
+            "path": "/vision/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/enqueue",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "PUT",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/photo",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/front",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "DELETE",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/front",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "PUT",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/front",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/left",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "DELETE",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/left",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "PUT",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/left",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/right",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "DELETE",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/right",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "PUT",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/right",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "GET",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/back",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "DELETE",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/back",
+            "status": 401
+          },
+          {
+            "actor": "anonymous",
+            "method": "PUT",
+            "path": "/sync/cats/cba137b9-5f37-53b2-b099-2d408c376cbc/reference-photos/back",
+            "status": 401
+          }
+        ],
+        "owner_all_four_angles": true,
+        "foreign_rows_and_file_bytes_unchanged": true
+      }
+    },
+    {
+      "evidence_file": "SEC02-matrix-avatar-coat.json",
+      "sha256": "91332ae7d0c376a6f318ec5237bd0739f7c6fc9df1059c44e9c5e3364e051e62",
+      "result": {
+        "scenario": "SEC-02",
+        "action": "avatar-coat",
+        "actors": {
+          "A": 404,
+          "C": 404,
+          "anonymous": 401,
+          "B": 200
+        },
+        "foreign_state_unchanged": true,
+        "owner_positive": true
+      }
+    },
+    {
+      "evidence_file": "SEC02-matrix-avatar-preview.json",
+      "sha256": "6d63188471c347a0f22ffbe0a6ac4577d11c26c999b22e5d87d13574bbf48cd4",
+      "result": {
+        "scenario": "SEC-02",
+        "action": "avatar-preview",
+        "actors": {
+          "A": 404,
+          "C": 404,
+          "anonymous": 401,
+          "B": 200
+        },
+        "foreign_state_unchanged": true,
+        "owner_positive": true
+      }
+    },
+    {
+      "evidence_file": "SEC02-matrix-enqueue.json",
+      "sha256": "a3b0ead653528f1f2d1185f0edfce76621b4829d44e9f1e6279ccfd0aad1357c",
+      "result": {
+        "scenario": "SEC-02",
+        "action": "enqueue",
+        "actors": {
+          "A": 404,
+          "C": 404,
+          "anonymous": 401,
+          "B": 202
+        },
+        "foreign_state_unchanged": true,
+        "owner_positive": true
+      }
+    },
+    {
+      "evidence_file": "SEC02-matrix-front-delete.json",
+      "sha256": "de40268bb3afd9a5b3c7c1ceef361407e600212a659c2cb3e2513eeb1172fe3c",
+      "result": {
+        "scenario": "SEC-02",
+        "action": "front-delete",
+        "actors": {
+          "A": 404,
+          "C": 404,
+          "anonymous": 401,
+          "B": 204
+        },
+        "foreign_state_unchanged": true,
+        "owner_positive": true
+      }
+    },
+    {
+      "evidence_file": "SEC02-matrix-front-read.json",
+      "sha256": "f7680876e46048b9b2719be9437163e92e921d53a75b0065938d58628421f976",
+      "result": {
+        "scenario": "SEC-02",
+        "action": "front-read",
+        "actors": {
+          "A": 404,
+          "C": 404,
+          "anonymous": 401,
+          "B": 200
+        },
+        "foreign_state_unchanged": true,
+        "owner_positive": true
+      }
+    },
+    {
+      "evidence_file": "SEC02-matrix-front-write.json",
+      "sha256": "ff8bef53f5215219417596c4dde068ec93df5b024868ede61a7a861aaa83f775",
+      "result": {
+        "scenario": "SEC-02",
+        "action": "front-write",
+        "actors": {
+          "A": 404,
+          "C": 404,
+          "anonymous": 401,
+          "B": 202
+        },
+        "foreign_state_unchanged": true,
+        "owner_positive": true
+      }
+    },
+    {
+      "evidence_file": "SEC02-matrix-jobs.json",
+      "sha256": "10d9d25c14e4af1ce40a326c795c673f6f4a72fe369c7ebac4f3a9963ff6add1",
+      "result": {
+        "scenario": "SEC-02",
+        "action": "jobs",
+        "actors": {
+          "A": 404,
+          "C": 404,
+          "anonymous": 401,
+          "B": 200
+        },
+        "foreign_state_unchanged": true,
+        "owner_positive": true
+      }
+    },
+    {
+      "evidence_file": "SEC02-matrix-photo-read.json",
+      "sha256": "602af002446743b70af367575003b32683e4aa380aca2a02bf4db031d0c4901a",
+      "result": {
+        "scenario": "SEC-02",
+        "action": "photo-read",
+        "actors": {
+          "A": 404,
+          "C": 404,
+          "anonymous": 401,
+          "B": 200
+        },
+        "foreign_state_unchanged": true,
+        "owner_positive": true
+      }
+    },
+    {
+      "evidence_file": "SEC02-matrix-photo-write.json",
+      "sha256": "811a9e68a43a2349a6afdccba17fff01652739b5959340fc1fcdf2830498f101",
+      "result": {
+        "scenario": "SEC-02",
+        "action": "photo-write",
+        "actors": {
+          "A": 404,
+          "C": 404,
+          "anonymous": 401,
+          "B": 204
+        },
+        "foreign_state_unchanged": true,
+        "owner_positive": true
+      }
+    },
+    {
+      "evidence_file": "SEC02-matrix-report.json",
+      "sha256": "1cb9d97427eee6c23012035668cbf7466432f6ca2260899b5d68be729ee0efc1",
+      "result": {
+        "scenario": "SEC-02",
+        "action": "report",
+        "actors": {
+          "A": 404,
+          "C": 404,
+          "anonymous": 401,
+          "B": 201
+        },
+        "foreign_state_unchanged": true,
+        "owner_positive": true
+      }
+    },
+    {
+      "evidence_file": "SEC02-matrix-sighting.json",
+      "sha256": "115b1adcfa1b0d936a1679db92e0550b0bc700ebba17ad7bcdaabc3144ca131b",
+      "result": {
+        "scenario": "SEC-02",
+        "action": "sighting",
+        "actors": {
+          "A": 404,
+          "C": 404,
+          "anonymous": 401,
+          "B": 201
+        },
+        "foreign_state_unchanged": true,
+        "owner_positive": true
+      }
+    },
+    {
+      "evidence_file": "SEC02-primary.json",
+      "sha256": "b0c7bc2797d50b8620a823a3db67070cc7acad4443ffa0235f4c6982026b270c",
+      "result": {
+        "scenario": "SEC-02",
+        "actor_status": {
+          "B": 200,
+          "A": 404,
+          "C": 404,
+          "anonymous": 401
+        },
+        "owner_content_sha256": "d7f70c853f84d40e88d7520bf10f7bbc589ade59127ca5743bfd39ab0647a636",
+        "positive_control": true
+      }
+    },
+    {
+      "evidence_file": "SEC02-quintal-actions.json",
+      "sha256": "f2e1e741d671f4ca98b4296ae4bc2c2d51e4813bf2dbf417f3dcacbc3571a803",
+      "result": {
+        "scenario": "SEC-02",
+        "checks": [
+          {
+            "actor": "A",
+            "action": "collect",
+            "status": 409
+          },
+          {
+            "actor": "A",
+            "action": "cancel",
+            "status": 409
+          },
+          {
+            "actor": "C",
+            "action": "collect",
+            "status": 409
+          },
+          {
+            "actor": "C",
+            "action": "cancel",
+            "status": 409
+          }
+        ],
+        "foreign_item_and_owned_cat_selection_denied_with_current_revision": true,
+        "B_wallet_task_and_item_unchanged": true,
+        "owner_purchase_order_collect_and_queued_cook_cancel_positive": true,
+        "task_fixture": "Persisted ready purchase and future queued preparation; no timer wait or business-rule change."
+      }
+    },
+    {
+      "evidence_file": "SEC02-sync-namespaces.json",
+      "sha256": "f8912928cc08e50c69f2e48b9c14e4559ed7cb009a210c8b5a61846cc8babe1a",
+      "result": {
+        "scenario": "SEC-02",
+        "checks": [
+          {
+            "actor": "A",
+            "namespace": "matrix-client",
+            "tombstone": false,
+            "status": 200
+          },
+          {
+            "actor": "A",
+            "namespace": "matrix-client",
+            "tombstone": true,
+            "status": 200
+          },
+          {
+            "actor": "A",
+            "namespace": "matrix-cat",
+            "tombstone": false,
+            "status": 200
+          },
+          {
+            "actor": "A",
+            "namespace": "matrix-cat",
+            "tombstone": true,
+            "status": 200
+          },
+          {
+            "actor": "C",
+            "namespace": "matrix-client",
+            "tombstone": false,
+            "status": 200
+          },
+          {
+            "actor": "C",
+            "namespace": "matrix-client",
+            "tombstone": true,
+            "status": 200
+          },
+          {
+            "actor": "C",
+            "namespace": "matrix-cat",
+            "tombstone": false,
+            "status": 200
+          },
+          {
+            "actor": "C",
+            "namespace": "matrix-cat",
+            "tombstone": true,
+            "status": 200
+          }
+        ],
+        "foreign_authoritative_analysis_and_media_unchanged": true,
+        "owner_delete_positive": true,
+        "scope": "Client IDs are per account: allowed writes create/change only the caller record, never B. Sighting reconciliation stubbed; no inference."
+      }
+    },
+    {
+      "evidence_file": "SEC04-clue-media.json",
+      "sha256": "052069211f4f3870ede060ae332ab5dd57c2a0d310157d65c85e55fc96281a4a",
+      "result": {
+        "scenarios": [
+          "SEC-02",
+          "SEC-04"
+        ],
+        "report_owner_media_positive": true,
+        "observer_and_stranger_denied": true,
+        "coordinates_hidden_until_revealed": true,
+        "exif_description_removed": true,
+        "orientation_applied": true,
+        "stale_media_denied": true,
+        "scope": "Seeded suggestion for permission tests only; similarity is not reidentification evidence or a confirmed identity"
+      }
+    },
+    {
+      "evidence_file": "SEC08-owner-export.json",
+      "sha256": "570898c388a0ac93c9f76b32abaaede29df899c58f15e38e727c657c0872af39",
+      "result": {
+        "scenarios": [
+          "SEC-02",
+          "SEC-08"
+        ],
+        "own_export_positive": true,
+        "foreign_canary_excluded": true,
+        "favorite_owner_keys_isolated": true,
+        "auth_canary_not_in_error_or_captured_logs": true,
+        "scope": "Selected HTTP/export/log paths only; not all auth/upload/IA logging or full exported-data inventory"
+      }
+    }
+  ],
+  "raw_evidence": "20261021T194312Z-953aa74e/sequential/SEC02-20261024-03",
+  "raw_hashes": {
+    "candidate.tar": "049e722252e609b39f5f68ca5aa2f85f74d300deb55c3e25830b4ae4af2a8db1",
+    "candidate_manifest.json": "848588044c4f761e5a2d134b3f8932196374190af8a40f5bafbe7d64cc175021",
+    "junit.xml": "a734e52f900fd68c181e78beed62e479839a51d302486ca84096f9bed27d6e1f",
+    "migrations.log": "a3b46d2f11f9b6e02caac2d03005d0237af6f6b915efdc0e4805c9d2bcafece2",
+    "pytest.log": "d390388ea2c82edc71b468c37e7ab0a0fac15419d769e3c51289aeb39caeddf5",
+    "source_manifest.json": "5e3a280206474dcf322f0b750d659e876ba3624975192974828fc5d106d3a9d2",
+    "summary.json": "d1d7c928f3909d266883d6116483223497bb2ffdd4c1a6467389db35e720ae2a"
+  },
+  "reproduce": "python scripts/run_security_regression.py --scenario SEC-02 --output .tmp/quality-campaign/<run>/sequential/<new-unique-attempt>",
+  "product_changes": [],
+  "harness_corrections": [
+    {
+      "attempt": "SEC02-20261024-01",
+      "classification": "setup failure, no product test executed",
+      "cause": "data is local/untracked and cannot be selected by git archive",
+      "correction": "Snapshot versioned app only; never include real local data."
+    },
+    {
+      "attempt": "SEC02-20261024-02",
+      "classification": "23 PASS, one invalid positive oracle",
+      "cause": "Cancellation is allowed for queued cooking, not animal purchases.",
+      "correction": "Use persisted ready purchase and future queued preparation. Both foreign denials and owner collect/cancel now exercise valid operations. Product rules unchanged."
+    }
+  ],
+  "coverage": [
+    "Primary and all four reference-photo read/write/delete paths, avatar assets and recognition jobs; foreign and anonymous actors; internal/client IDs; owner bytes positive.",
+    "Sync read/push, account-local ID collisions, analysis preservation and owner-scoped tombstones.",
+    "Private clue image/coordinates and report area/poster/resolve/decisions; observer/stranger/anonymous denied; report owner positive.",
+    "Conversation read/send/read-receipt/reaction/edit/delete, attachment upload/read/query-token; member/sender restrictions and cross-conversation message IDs.",
+    "Favorites read/replace/clear with forged body/query owner selectors.",
+    "Quintal snapshots, foreign valid ready collect and queued cancel, items/cat layout with current revision, wallet/task/file invariants and owner positive controls."
+  ],
+  "not_applicable": [
+    "No standalone primary-photo/analysis DELETE endpoint: deletion is the tested sync tombstone.",
+    "No separate favorites DELETE endpoint: removal is tested by replacing the caller list with empty.",
+    "No public deletion endpoint for conversation attachments: access and upload are tested; message edit/delete are separately covered."
+  ],
+  "limits": [
+    "No paid inference, worker execution, load or physical UI; matching/analysis recomputation stubbed where declared.",
+    "These are security/integrity results, not performance claims.",
+    "Public poster visibility is an intentional separate audience policy; this matrix does not assume all published report images are private."
+  ]
+}

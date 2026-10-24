@@ -860,7 +860,7 @@
   },
   {
     "scenario": "SEC-02",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "A tenta ler/alterar/excluir mídia, análise, pistas, conversa/anexo, favoritos e Quintal de B sem permissão.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [
@@ -883,7 +883,12 @@
       "attempts/privacy-02/critical_runs/privacy-baseline/summary.json",
       "attempts/targeted-02/critical_runs/targeted-baseline/summary.json"
     ],
-    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+    "limitation": "Resource/action/actor matrix and owner positive controls passed; route absences documented explicitly.",
+    "closure_evidence": [
+      "SEC02-20261024-results.json"
+    ],
+    "evaluated_source_sha": "9b134dcc85e7202c867cb09b316a542ccb4402bf",
+    "test_commit": "285bb9b5a525aefd58c74c70550bbd7ce609ca59"
   },
   {
     "scenario": "SEC-03",
