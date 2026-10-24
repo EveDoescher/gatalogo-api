@@ -80,24 +80,35 @@ def selection(scenario, output):
     executors = output / "executors"
     executors.mkdir()
     hashes = {}
-    for name in (
+    names = [
         "security_cases.py",
         "extended_cases.py",
         "fixtures.py",
-        "isolation_cases.py",
-    ):
+    ]
+    names += (
+        ["isolation_cases.py"]
+        if scenario == "SEC-02"
+        else ["websocket_cases.py", "test_auth_security.py"]
+    )
+    for name in names:
         destination = executors / name
-        shutil.copy2(ROOT / "scripts/campaign" / name, destination)
+        origin = (
+            ROOT
+            / ("tests" if name == "test_auth_security.py" else "scripts/campaign")
+            / name
+        )
+        shutil.copy2(origin, destination)
         hashes[name] = hashlib.sha256(destination.read_bytes()).hexdigest()
     (output / "candidate_manifest.json").write_text(
         json.dumps({"source_sha": sha, "executor_sha256": hashes}, indent=2) + "\n",
         encoding="utf-8",
     )
-    selectors = [
-        str(executors / name)
-        for name in ("security_cases.py", "extended_cases.py", "isolation_cases.py")
-    ]
-    selectors += ["-k", "SEC02", "--confcutdir", str(executors)]
+    selected = ["security_cases.py", "extended_cases.py"]
+    selected += (
+        ["isolation_cases.py"] if scenario == "SEC-02" else ["websocket_cases.py"]
+    )
+    selectors = [str(executors / name) for name in selected]
+    selectors += ["-k", scenario.replace("-", ""), "--confcutdir", str(executors)]
     return (
         source,
         selectors,
@@ -261,7 +272,9 @@ def run(output, scenario="SEC-01"):
                     "scenario": scenario,
                     "exit_code": result.returncode,
                     "database": "own random-port PostgreSQL, migrations applied; fixture schema per case",
-                    "providers": "local RSA/JWKS and verifier doubles; no live identity provider",
+                    "providers": "local RSA/JWKS; no live identity provider"
+                    if scenario == "SEC-01"
+                    else "generated app JWTs; analysis/delivery stubbed; no live IdP or inference",
                     "api_lifespan_started": False,
                     "physical_device": False,
                     "evaluated_sources_unchanged": evaluated == source_hashes(),
@@ -288,6 +301,8 @@ def run(output, scenario="SEC-01"):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", required=True)
-    parser.add_argument("--scenario", choices=["SEC-01", "SEC-02"], default="SEC-01")
+    parser.add_argument(
+        "--scenario", choices=["SEC-01", "SEC-02", "SEC-03"], default="SEC-01"
+    )
     args = parser.parse_args()
     raise SystemExit(run(args.output, args.scenario))
