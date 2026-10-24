@@ -1,0 +1,174 @@
+{
+  "scenario": "SEC-03",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_sha": "fae5572034c4e9df0a29525bfe40e2f608420f80",
+  "test_commit": "411d2a6742f860c9840ff34b44d682c26c9e7fc6",
+  "passed": 6,
+  "failed": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "selector": "scripts/campaign/security_cases.py::test_SEC03_stranger_friend_cannot_emit_or_mark_read[typing]",
+      "status": "PASS",
+      "seconds": 3.304
+    },
+    {
+      "selector": "scripts/campaign/security_cases.py::test_SEC03_stranger_friend_cannot_emit_or_mark_read[read]",
+      "status": "PASS",
+      "seconds": 1.969
+    },
+    {
+      "selector": "scripts/campaign/extended_cases.py::test_SEC02_SEC03_chat_attachment_member_controls",
+      "status": "PASS",
+      "seconds": 2.274
+    },
+    {
+      "selector": "scripts/campaign/extended_cases.py::test_SEC03_websocket_loop_malformed_and_membership[A]",
+      "status": "PASS",
+      "seconds": 2.521
+    },
+    {
+      "selector": "scripts/campaign/extended_cases.py::test_SEC03_websocket_loop_malformed_and_membership[C]",
+      "status": "PASS",
+      "seconds": 2.842
+    },
+    {
+      "selector": "scripts/campaign/websocket_cases.py::test_SEC03_asgi_loop_rejects_nonmember_and_malformed_frames_with_positive_receipts",
+      "status": "PASS",
+      "seconds": 4.83
+    }
+  ],
+  "observations": [
+    {
+      "file": "SEC02-chat-attachment.json",
+      "sha256": "9dd98adc3f6dada1ee90849943a6b5190a8f3b7098ab55966a411b3cb9944717",
+      "result": {
+        "scenarios": [
+          "SEC-02",
+          "SEC-03"
+        ],
+        "member_bytes_sha256": "d7f70c853f84d40e88d7520bf10f7bbc589ade59127ca5743bfd39ab0647a636",
+        "member_query_token_positive": true,
+        "nonmember": 403,
+        "anonymous": 401
+      }
+    },
+    {
+      "file": "SEC03-asgi-membership-and-envelope.json",
+      "sha256": "e2a283765235fb0d46ff34df4f3ba0c19ed5f7270d175545db491c775406f6bc",
+      "result": {
+        "scenario": "SEC-03",
+        "transport": "ASGI WebSocket route and connection manager; real PostgreSQL",
+        "invalid_variants": [
+          "invalid-json",
+          "json-array",
+          "json-null",
+          "missing-type",
+          "nonstring-type",
+          "unknown-type",
+          "typing-null-id",
+          "read-nonstring-id",
+          "typing-invalid-uuid",
+          "read-invalid-uuid",
+          "nonmember-typing",
+          "nonmember-read"
+        ],
+        "surviving_pongs": 12,
+        "unauthorized_deliveries": 0,
+        "unauthorized_receipt_changes": 0,
+        "member_typing_delivered": true,
+        "member_read_persisted_and_delivered": true,
+        "nonmember_never_received_private_event": true,
+        "physical_device": false
+      }
+    },
+    {
+      "file": "SEC03-read.json",
+      "sha256": "c4304902b18f8ae9b1bd7a902b341c79a96c642ce5efd5bebfbcafe644c54282",
+      "result": {
+        "scenario": "SEC-03",
+        "positive_member_control": true,
+        "denied_status": 403,
+        "unauthorized_events": 0,
+        "read_at": null
+      }
+    },
+    {
+      "file": "SEC03-typing.json",
+      "sha256": "c4304902b18f8ae9b1bd7a902b341c79a96c642ce5efd5bebfbcafe644c54282",
+      "result": {
+        "scenario": "SEC-03",
+        "positive_member_control": true,
+        "denied_status": 403,
+        "unauthorized_events": 0,
+        "read_at": null
+      }
+    },
+    {
+      "file": "SEC03-ws-loop-A.json",
+      "sha256": "a16b5d29bd864b600aeadd345744882483b19674e136265812ca73414f1e7153",
+      "result": {
+        "scenario": "SEC-03",
+        "actor": "A",
+        "malformed_frames_ignored": 5,
+        "loop_survives": "pong",
+        "events": 1,
+        "scope": "endpoint coroutine protocol loop; not a TCP WebSocket transport test"
+      }
+    },
+    {
+      "file": "SEC03-ws-loop-C.json",
+      "sha256": "26225157661190b0d41a7ae3e1f37ec55ee4dfa5eb0a1e511b1463aef85e58ba",
+      "result": {
+        "scenario": "SEC-03",
+        "actor": "C",
+        "malformed_frames_ignored": 5,
+        "loop_survives": "pong",
+        "events": 0,
+        "scope": "endpoint coroutine protocol loop; not a TCP WebSocket transport test"
+      }
+    }
+  ],
+  "environment": {
+    "scenario": "SEC-03",
+    "exit_code": 0,
+    "database": "own random-port PostgreSQL, migrations applied; fixture schema per case",
+    "providers": "generated app JWTs; analysis/delivery stubbed; no live IdP or inference",
+    "api_lifespan_started": false,
+    "physical_device": false,
+    "evaluated_sources_unchanged": true
+  },
+  "candidate_manifest": {
+    "source_sha": "fae5572034c4e9df0a29525bfe40e2f608420f80",
+    "executor_sha256": {
+      "security_cases.py": "29740245f414e7645404dce0e627c6a09087978b2478f265d928bf05737bc656",
+      "extended_cases.py": "bd89b9bbbc3abab3da290105220094966ad976ea29a8da55d1da23deb24f855f",
+      "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+      "websocket_cases.py": "4eda39a15cb0b98588eb24b4bfaec876dd431a5f3cd41f3517ad2e2cb44c7fac",
+      "test_auth_security.py": "6749261b11daf0b9e3ffdf82410b781c87bddb0f0af17671527169cb54aab743"
+    }
+  },
+  "raw_evidence": "20261021T194312Z-953aa74e/sequential/SEC03-20261024-01",
+  "raw_hashes": {
+    "candidate.tar": "e14caccc33411db1f413039e6dd11a30eff52228771b4a8baf5678b01631f132",
+    "candidate_manifest.json": "6af7b8b2e0f2198910d3114a4c67a69d424629353fce2025a6ac91882603e7d8",
+    "junit.xml": "10cda736167c7c99f12d7b89f4d821c25ae706fc3e594a80c297d2802928ebc9",
+    "migrations.log": "a3b46d2f11f9b6e02caac2d03005d0237af6f6b915efdc0e4805c9d2bcafece2",
+    "pytest.log": "4f19f804add68bf01fe5c1b6424c33e15ecd7e1f20142899464e7a63d2a5dd00",
+    "source_manifest.json": "e0a0eb4bac2cf7dcdc04002be2bd18f46eea0a1746b8522339fe0bcb133f28a0",
+    "summary.json": "476ee4fafc924dfdbc356a7130496827803e6adad947e0d39151e3b8c018b5ad"
+  },
+  "coverage": [
+    "Outsider friend cannot type/read or access private attachment; membership is separate from friendship.",
+    "Invalid JSON, arrays/null, missing/nonstring/unknown type, missing/nonstring/malformed UUID: loop survives and no receipt/event side effect.",
+    "Actual ASGI sockets A/B/C with real PostgreSQL, original manager delivery and persisted positive read receipt.",
+    "Attachment bytes for members and denial for outsider/anonymous, including member query-token control."
+  ],
+  "product_changes": [],
+  "limits": [
+    "ASGI protocol and real database, not a new TCP latency/load or physical UI experiment.",
+    "No paid inference, real IdP or external delivery."
+  ],
+  "reproduce": "python scripts/run_security_regression.py --scenario SEC-03 --output .tmp/quality-campaign/<run>/sequential/<new-unique-attempt>"
+}

@@ -29,3 +29,7 @@ As rejeições cobrem token ausente/malformado, assinatura/issuer/type inválido
 ## SEC-02 — concluído em 24/10/2026
 
 24 testes aprovados, sem falhas ou skips. [Matriz de cobertura, controles positivos, evidências, hashes e correções dos fixtures](SEC02-20261024-results.json). Fotos/ângulos, análise/sync, pistas, conversas/anexos, favoritos e Quintal foram avaliados em cópia congelada com banco descartável. Não houve alteração do produto. Rotas inexistentes e os mecanismos reais de remoção estão discriminados; não foram contados como testes omitidos.
+
+## SEC-03 — concluído em 24/10/2026
+
+6 testes aprovados. [Variantes, protocolo, recibos, seletores e hashes](SEC03-20261024-results.json). Doze variantes inválidas/não autorizadas mantiveram o loop vivo, sem eventos indevidos ou alteração dos recibos. Os membros receberam digitação e recibo de leitura, persistido em PostgreSQL; mídia privada teve controles positivos/negativos. Sem nova correção no produto.

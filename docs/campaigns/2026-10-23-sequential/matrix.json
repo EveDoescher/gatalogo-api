@@ -892,7 +892,7 @@
   },
   {
     "scenario": "SEC-03",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "C fora da conversa manda typing/read WS e acessa mídia; JSON/tipo/UUID inválidos.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [
@@ -904,7 +904,12 @@
       "attempts/network-01/critical_runs/network-baseline/summary.json",
       "attempts/targeted-02/critical_runs/targeted-baseline/summary.json"
     ],
-    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+    "limitation": "Nonmember, media, malformed envelopes/UUID and controlled loop criteria passed with positive events/receipts.",
+    "closure_evidence": [
+      "SEC03-20261024-results.json"
+    ],
+    "evaluated_source_sha": "fae5572034c4e9df0a29525bfe40e2f608420f80",
+    "test_commit": "411d2a6742f860c9840ff34b44d682c26c9e7fc6"
   },
   {
     "scenario": "SEC-04",

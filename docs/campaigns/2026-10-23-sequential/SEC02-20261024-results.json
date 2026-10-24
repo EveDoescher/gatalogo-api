@@ -133,7 +133,7 @@
     "scenario": "SEC-02",
     "exit_code": 0,
     "database": "own random-port PostgreSQL, migrations applied; fixture schema per case",
-    "providers": "local RSA/JWKS and verifier doubles; no live identity provider",
+    "providers": "Generated app JWTs; analysis/delivery stubbed; no live IdP or inference. RSA/JWKS cryptography belongs to SEC-01, not this matrix.",
     "api_lifespan_started": false,
     "physical_device": false,
     "evaluated_sources_unchanged": true
@@ -1327,5 +1327,11 @@
     "No paid inference, worker execution, load or physical UI; matching/analysis recomputation stubbed where declared.",
     "These are security/integrity results, not performance claims.",
     "Public poster visibility is an intentional separate audience policy; this matrix does not assume all published report images are private."
+  ],
+  "metadata_amendments": [
+    {
+      "field": "environment.providers",
+      "reason": "Original runner used a generic SEC-01 provider label for all scenarios. Corrected here and in the runner; immutable raw summary/hash retained. No test verdict or source changed."
+    }
   ]
 }
