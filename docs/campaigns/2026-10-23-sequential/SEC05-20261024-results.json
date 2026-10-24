@@ -1,0 +1,1693 @@
+{
+  "scenario": "SEC-05",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_sha": "70819a0e924d7e0776b4bd08887d3fadb30837dd",
+  "correction_commit": "70819a0e924d7e0776b4bd08887d3fadb30837dd",
+  "passed": 74,
+  "failed": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "selector": "scripts/campaign/security_cases.py::test_SEC05_storage_escape_never_reads_or_deletes[../sentinel.txt]",
+      "status": "PASS",
+      "seconds": 0.04
+    },
+    {
+      "selector": "scripts/campaign/security_cases.py::test_SEC05_storage_escape_never_reads_or_deletes[..\\\\sentinel.txt]",
+      "status": "PASS",
+      "seconds": 0.012
+    },
+    {
+      "selector": "scripts/campaign/security_cases.py::test_SEC05_storage_escape_never_reads_or_deletes[users/../../sentinel.txt]",
+      "status": "PASS",
+      "seconds": 0.013
+    },
+    {
+      "selector": "scripts/campaign/security_cases.py::test_SEC05_storage_escape_never_reads_or_deletes[absolute]",
+      "status": "PASS",
+      "seconds": 0.01
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_read_write_delete_outside_sentinels_are_untouched[parent]",
+      "status": "PASS",
+      "seconds": 0.014
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_read_write_delete_outside_sentinels_are_untouched[windows-parent]",
+      "status": "PASS",
+      "seconds": 0.011
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_read_write_delete_outside_sentinels_are_untouched[nested-posix]",
+      "status": "PASS",
+      "seconds": 0.011
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_read_write_delete_outside_sentinels_are_untouched[nested-windows]",
+      "status": "PASS",
+      "seconds": 0.009
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_read_write_delete_outside_sentinels_are_untouched[absolute-native]",
+      "status": "PASS",
+      "seconds": 0.03
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_read_write_delete_outside_sentinels_are_untouched[absolute-posix]",
+      "status": "PASS",
+      "seconds": 0.012
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png-primary]",
+      "status": "PASS",
+      "seconds": 0.057
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png-reference]",
+      "status": "PASS",
+      "seconds": 0.015
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png-avatar]",
+      "status": "PASS",
+      "seconds": 0.015
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png-profile]",
+      "status": "PASS",
+      "seconds": 0.013
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png-chat]",
+      "status": "PASS",
+      "seconds": 0.013
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png-post]",
+      "status": "PASS",
+      "seconds": 0.016
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.JPEG-primary]",
+      "status": "PASS",
+      "seconds": 0.023
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.JPEG-reference]",
+      "status": "PASS",
+      "seconds": 0.017
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.JPEG-avatar]",
+      "status": "PASS",
+      "seconds": 0.016
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.JPEG-profile]",
+      "status": "PASS",
+      "seconds": 0.015
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.JPEG-chat]",
+      "status": "PASS",
+      "seconds": 0.05
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.JPEG-post]",
+      "status": "PASS",
+      "seconds": 0.014
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[-primary]",
+      "status": "PASS",
+      "seconds": 0.024
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[-reference]",
+      "status": "PASS",
+      "seconds": 0.026
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[-avatar]",
+      "status": "PASS",
+      "seconds": 0.022
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[-profile]",
+      "status": "PASS",
+      "seconds": 0.023
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[-chat]",
+      "status": "PASS",
+      "seconds": 0.031
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[-post]",
+      "status": "PASS",
+      "seconds": 0.02
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.extensionistoolong-primary]",
+      "status": "PASS",
+      "seconds": 2.352
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.extensionistoolong-reference]",
+      "status": "PASS",
+      "seconds": 0.12
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.extensionistoolong-avatar]",
+      "status": "PASS",
+      "seconds": 0.025
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.extensionistoolong-profile]",
+      "status": "PASS",
+      "seconds": 0.035
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.extensionistoolong-chat]",
+      "status": "PASS",
+      "seconds": 0.026
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.extensionistoolong-post]",
+      "status": "PASS",
+      "seconds": 0.031
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn:g-primary]",
+      "status": "PASS",
+      "seconds": 0.027
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn:g-reference]",
+      "status": "PASS",
+      "seconds": 0.054
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn:g-avatar]",
+      "status": "PASS",
+      "seconds": 0.03
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn:g-profile]",
+      "status": "PASS",
+      "seconds": 0.022
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn:g-chat]",
+      "status": "PASS",
+      "seconds": 0.023
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn:g-post]",
+      "status": "PASS",
+      "seconds": 0.029
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png:ads-primary]",
+      "status": "PASS",
+      "seconds": 0.022
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png:ads-reference]",
+      "status": "PASS",
+      "seconds": 0.066
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png:ads-avatar]",
+      "status": "PASS",
+      "seconds": 0.057
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png:ads-profile]",
+      "status": "PASS",
+      "seconds": 0.044
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png:ads-chat]",
+      "status": "PASS",
+      "seconds": 0.031
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png:ads-post]",
+      "status": "PASS",
+      "seconds": 0.022
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn\\x00g-primary]",
+      "status": "PASS",
+      "seconds": 0.026
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn\\x00g-reference]",
+      "status": "PASS",
+      "seconds": 0.056
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn\\x00g-avatar]",
+      "status": "PASS",
+      "seconds": 0.099
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn\\x00g-profile]",
+      "status": "PASS",
+      "seconds": 0.059
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn\\x00g-chat]",
+      "status": "PASS",
+      "seconds": 0.036
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn\\x00g-post]",
+      "status": "PASS",
+      "seconds": 0.092
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.\\\\..\\\\x-primary]",
+      "status": "PASS",
+      "seconds": 0.065
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.\\\\..\\\\x-reference]",
+      "status": "PASS",
+      "seconds": 0.058
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.\\\\..\\\\x-avatar]",
+      "status": "PASS",
+      "seconds": 0.085
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.\\\\..\\\\x-profile]",
+      "status": "PASS",
+      "seconds": 0.056
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.\\\\..\\\\x-chat]",
+      "status": "PASS",
+      "seconds": 0.039
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.\\\\..\\\\x-post]",
+      "status": "PASS",
+      "seconds": 0.023
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[./../x-primary]",
+      "status": "PASS",
+      "seconds": 0.03
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[./../x-reference]",
+      "status": "PASS",
+      "seconds": 0.046
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[./../x-avatar]",
+      "status": "PASS",
+      "seconds": 0.034
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[./../x-profile]",
+      "status": "PASS",
+      "seconds": 0.059
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[./../x-chat]",
+      "status": "PASS",
+      "seconds": 0.029
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[./../x-post]",
+      "status": "PASS",
+      "seconds": 0.046
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.-primary]",
+      "status": "PASS",
+      "seconds": 0.061
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.-reference]",
+      "status": "PASS",
+      "seconds": 0.031
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.-avatar]",
+      "status": "PASS",
+      "seconds": 0.036
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.-profile]",
+      "status": "PASS",
+      "seconds": 0.028
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.-chat]",
+      "status": "PASS",
+      "seconds": 0.026
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.-post]",
+      "status": "PASS",
+      "seconds": 0.03
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_http_upload_names_never_escape_or_raise_unhandled_errors[primary]",
+      "status": "PASS",
+      "seconds": 3.285
+    },
+    {
+      "selector": "scripts/campaign/storage_cases.py::test_SEC05_http_upload_names_never_escape_or_raise_unhandled_errors[reference]",
+      "status": "PASS",
+      "seconds": 5.662
+    },
+    {
+      "selector": "tests/test_storage_service.py::test_photo_variants_use_content_hash_and_stay_inside_storage_root",
+      "status": "PASS",
+      "seconds": 0.03
+    },
+    {
+      "selector": "tests/test_storage_service.py::test_avatar_asset_keeps_versioned_key",
+      "status": "PASS",
+      "seconds": 0.014
+    }
+  ],
+  "before": {
+    "source_manifest": {
+      "source_sha": "18826b8fa0a5d49a17a8dc8a47258e163c16ff1b",
+      "executor_sha256": {
+        "security_cases.py": "29740245f414e7645404dce0e627c6a09087978b2478f265d928bf05737bc656",
+        "extended_cases.py": "bd89b9bbbc3abab3da290105220094966ad976ea29a8da55d1da23deb24f855f",
+        "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+        "storage_cases.py": "97d6f3618bebf2535c02a080aeef344fecac73d2ead291e67add510d64b78e7d"
+      }
+    },
+    "failed": 33,
+    "passed": 39,
+    "cases": [
+      {
+        "selector": "scripts/campaign/security_cases.py::test_SEC05_storage_escape_never_reads_or_deletes[../sentinel.txt]",
+        "status": "PASS",
+        "seconds": 0.07
+      },
+      {
+        "selector": "scripts/campaign/security_cases.py::test_SEC05_storage_escape_never_reads_or_deletes[..\\\\sentinel.txt]",
+        "status": "PASS",
+        "seconds": 0.048
+      },
+      {
+        "selector": "scripts/campaign/security_cases.py::test_SEC05_storage_escape_never_reads_or_deletes[users/../../sentinel.txt]",
+        "status": "PASS",
+        "seconds": 0.05
+      },
+      {
+        "selector": "scripts/campaign/security_cases.py::test_SEC05_storage_escape_never_reads_or_deletes[absolute]",
+        "status": "PASS",
+        "seconds": 0.04
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_read_write_delete_outside_sentinels_are_untouched[parent]",
+        "status": "PASS",
+        "seconds": 0.034
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_read_write_delete_outside_sentinels_are_untouched[windows-parent]",
+        "status": "PASS",
+        "seconds": 0.037
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_read_write_delete_outside_sentinels_are_untouched[nested-posix]",
+        "status": "PASS",
+        "seconds": 0.03
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_read_write_delete_outside_sentinels_are_untouched[nested-windows]",
+        "status": "PASS",
+        "seconds": 0.063
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_read_write_delete_outside_sentinels_are_untouched[absolute-native]",
+        "status": "PASS",
+        "seconds": 0.148
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_read_write_delete_outside_sentinels_are_untouched[absolute-posix]",
+        "status": "PASS",
+        "seconds": 0.041
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png-primary]",
+        "status": "PASS",
+        "seconds": 0.033
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png-reference]",
+        "status": "PASS",
+        "seconds": 0.051
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png-avatar]",
+        "status": "PASS",
+        "seconds": 0.063
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png-profile]",
+        "status": "PASS",
+        "seconds": 0.065
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png-chat]",
+        "status": "PASS",
+        "seconds": 0.042
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png-post]",
+        "status": "PASS",
+        "seconds": 0.063
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.JPEG-primary]",
+        "status": "PASS",
+        "seconds": 0.054
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.JPEG-reference]",
+        "status": "PASS",
+        "seconds": 0.061
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.JPEG-avatar]",
+        "status": "PASS",
+        "seconds": 0.021
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.JPEG-profile]",
+        "status": "PASS",
+        "seconds": 0.03
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.JPEG-chat]",
+        "status": "PASS",
+        "seconds": 0.039
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.JPEG-post]",
+        "status": "PASS",
+        "seconds": 0.068
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[-primary]",
+        "status": "PASS",
+        "seconds": 0.015
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[-reference]",
+        "status": "PASS",
+        "seconds": 0.015
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[-avatar]",
+        "status": "PASS",
+        "seconds": 0.014
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[-profile]",
+        "status": "PASS",
+        "seconds": 0.014
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[-chat]",
+        "status": "PASS",
+        "seconds": 0.014
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[-post]",
+        "status": "PASS",
+        "seconds": 0.011
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.extensionistoolong-primary]",
+        "status": "PASS",
+        "seconds": 0.014
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.extensionistoolong-reference]",
+        "status": "PASS",
+        "seconds": 0.015
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.extensionistoolong-avatar]",
+        "status": "PASS",
+        "seconds": 0.015
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.extensionistoolong-profile]",
+        "status": "PASS",
+        "seconds": 0.019
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.extensionistoolong-chat]",
+        "status": "PASS",
+        "seconds": 0.016
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.extensionistoolong-post]",
+        "status": "PASS",
+        "seconds": 0.012
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn:g-primary]",
+        "status": "FAIL",
+        "seconds": 0.01
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn:g-reference]",
+        "status": "FAIL",
+        "seconds": 0.012
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn:g-avatar]",
+        "status": "FAIL",
+        "seconds": 0.014
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn:g-profile]",
+        "status": "FAIL",
+        "seconds": 0.018
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn:g-chat]",
+        "status": "FAIL",
+        "seconds": 0.009
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn:g-post]",
+        "status": "FAIL",
+        "seconds": 0.197
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png:ads-primary]",
+        "status": "FAIL",
+        "seconds": 0.028
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png:ads-reference]",
+        "status": "FAIL",
+        "seconds": 0.015
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png:ads-avatar]",
+        "status": "FAIL",
+        "seconds": 0.017
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png:ads-profile]",
+        "status": "FAIL",
+        "seconds": 0.013
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png:ads-chat]",
+        "status": "FAIL",
+        "seconds": 0.008
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.png:ads-post]",
+        "status": "FAIL",
+        "seconds": 0.008
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn\\x00g-primary]",
+        "status": "FAIL",
+        "seconds": 0.006
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn\\x00g-reference]",
+        "status": "FAIL",
+        "seconds": 0.008
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn\\x00g-avatar]",
+        "status": "FAIL",
+        "seconds": 0.011
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn\\x00g-profile]",
+        "status": "FAIL",
+        "seconds": 0.011
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn\\x00g-chat]",
+        "status": "FAIL",
+        "seconds": 0.01
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.pn\\x00g-post]",
+        "status": "FAIL",
+        "seconds": 0.013
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.\\\\..\\\\x-primary]",
+        "status": "FAIL",
+        "seconds": 0.011
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.\\\\..\\\\x-reference]",
+        "status": "FAIL",
+        "seconds": 0.013
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.\\\\..\\\\x-avatar]",
+        "status": "FAIL",
+        "seconds": 0.014
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.\\\\..\\\\x-profile]",
+        "status": "FAIL",
+        "seconds": 0.012
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.\\\\..\\\\x-chat]",
+        "status": "FAIL",
+        "seconds": 0.011
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.\\\\..\\\\x-post]",
+        "status": "FAIL",
+        "seconds": 0.024
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[./../x-primary]",
+        "status": "FAIL",
+        "seconds": 0.016
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[./../x-reference]",
+        "status": "FAIL",
+        "seconds": 0.02
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[./../x-avatar]",
+        "status": "FAIL",
+        "seconds": 0.02
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[./../x-profile]",
+        "status": "FAIL",
+        "seconds": 0.015
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[./../x-chat]",
+        "status": "FAIL",
+        "seconds": 0.013
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[./../x-post]",
+        "status": "FAIL",
+        "seconds": 0.01
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.-primary]",
+        "status": "PASS",
+        "seconds": 0.016
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.-reference]",
+        "status": "PASS",
+        "seconds": 0.018
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.-avatar]",
+        "status": "FAIL",
+        "seconds": 0.01
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.-profile]",
+        "status": "PASS",
+        "seconds": 0.016
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.-chat]",
+        "status": "PASS",
+        "seconds": 0.017
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_all_storage_writers_use_confined_portable_keys[.-post]",
+        "status": "PASS",
+        "seconds": 0.014
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_http_upload_names_never_escape_or_raise_unhandled_errors[primary]",
+        "status": "FAIL",
+        "seconds": 1.816
+      },
+      {
+        "selector": "scripts/campaign/storage_cases.py::test_SEC05_http_upload_names_never_escape_or_raise_unhandled_errors[reference]",
+        "status": "FAIL",
+        "seconds": 2.049
+      }
+    ],
+    "raw_evidence": "sequential/SEC05-20261024-01"
+  },
+  "after": {
+    "scenario_cases": 72,
+    "normal_compatibility_cases": 2,
+    "raw_evidence": "sequential/SEC05-20261024-02"
+  },
+  "environment": {
+    "scenario": "SEC-05",
+    "exit_code": 0,
+    "database": "own random-port PostgreSQL, migrations applied; fixture schema per case",
+    "providers": "generated app JWTs; analysis/delivery stubbed; no live IdP or inference",
+    "api_lifespan_started": false,
+    "physical_device": false,
+    "evaluated_sources_unchanged": true
+  },
+  "candidate_manifest": {
+    "source_sha": "70819a0e924d7e0776b4bd08887d3fadb30837dd",
+    "executor_sha256": {
+      "security_cases.py": "29740245f414e7645404dce0e627c6a09087978b2478f265d928bf05737bc656",
+      "extended_cases.py": "bd89b9bbbc3abab3da290105220094966ad976ea29a8da55d1da23deb24f855f",
+      "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+      "storage_cases.py": "97d6f3618bebf2535c02a080aeef344fecac73d2ead291e67add510d64b78e7d"
+    }
+  },
+  "raw_hashes": {
+    "candidate.tar": "6cc60c3fb756b43092393406d087dde7a4c262bac0da1ce82ca3edf63c97a04d",
+    "candidate_manifest.json": "8431ee27c577b95753c0cc3c102f48480456c23f040b5fca080f991ffcdfd341",
+    "junit.xml": "cc08503478ba68c1b0712a871b9d9d488d6e05a2da2c25213c78e0f3707bb267",
+    "migrations.log": "a3b46d2f11f9b6e02caac2d03005d0237af6f6b915efdc0e4805c9d2bcafece2",
+    "pytest.log": "4519acc43c97c1ffe647b46d642df18fcb9d473018a962cb98c72a0e293f08cc",
+    "source_manifest.json": "754ea04efda6f9e58cdc0af02951a971a4b236007d571042b8c2f00f627e1c13",
+    "summary.json": "75b8efb336bfb3ae534d1d04aa9b26b3f06199a8447581245ee4a65216932629"
+  },
+  "observations": [
+    {
+      "file": "SEC05-http-filenames-primary.json",
+      "sha256": "e229cf54ce4e09edc1af75d1850559f7b76a57edd8417b6a68bde82f258dfded",
+      "result": {
+        "scenario": "SEC-05",
+        "variant": "primary",
+        "checks": [
+          {
+            "filename_variant": "parent-posix",
+            "status": 204
+          },
+          {
+            "filename_variant": "parent-windows",
+            "status": 204
+          },
+          {
+            "filename_variant": "absolute-native",
+            "status": 204
+          },
+          {
+            "filename_variant": "absolute-posix",
+            "status": 204
+          },
+          {
+            "filename_variant": "reserved-base",
+            "status": 204
+          },
+          {
+            "filename_variant": "unicode-base",
+            "status": 204
+          },
+          {
+            "filename_variant": "invalid-colon",
+            "status": 204
+          },
+          {
+            "filename_variant": "alternate-stream",
+            "status": 204
+          },
+          {
+            "filename_variant": "null-byte",
+            "status": 204
+          },
+          {
+            "filename_variant": "long-extension",
+            "status": 204
+          }
+        ],
+        "outside_owned_sentinel_unchanged": true,
+        "owner_downloaded_exact_bytes": true,
+        "scope": "Only synthetic own files and disposable schema; no inference or real host sentinel paths."
+      }
+    },
+    {
+      "file": "SEC05-http-filenames-reference.json",
+      "sha256": "a29ae098629bf3ef7314f8ba48aabb98c76e9ff1ea2258d3951c3dbaa0199fa6",
+      "result": {
+        "scenario": "SEC-05",
+        "variant": "reference",
+        "checks": [
+          {
+            "filename_variant": "parent-posix",
+            "status": 202
+          },
+          {
+            "filename_variant": "parent-windows",
+            "status": 202
+          },
+          {
+            "filename_variant": "absolute-native",
+            "status": 202
+          },
+          {
+            "filename_variant": "absolute-posix",
+            "status": 202
+          },
+          {
+            "filename_variant": "reserved-base",
+            "status": 202
+          },
+          {
+            "filename_variant": "unicode-base",
+            "status": 202
+          },
+          {
+            "filename_variant": "invalid-colon",
+            "status": 202
+          },
+          {
+            "filename_variant": "alternate-stream",
+            "status": 202
+          },
+          {
+            "filename_variant": "null-byte",
+            "status": 202
+          },
+          {
+            "filename_variant": "long-extension",
+            "status": 202
+          }
+        ],
+        "outside_owned_sentinel_unchanged": true,
+        "owner_downloaded_exact_bytes": true,
+        "scope": "Only synthetic own files and disposable schema; no inference or real host sentinel paths."
+      }
+    },
+    {
+      "file": "SEC05-sentinel-absolute-native.json",
+      "sha256": "4cc72908384bd8cb03557bfc54c88740cc8ca67534bca854dbd8c2e89d29cf8d",
+      "result": {
+        "scenario": "SEC-05",
+        "variant": "absolute-native",
+        "read_write_delete_rejected": true,
+        "outside_owned_sentinel_unchanged": true
+      }
+    },
+    {
+      "file": "SEC05-sentinel-absolute-posix.json",
+      "sha256": "4e443a61a9f30f51a9ad89c098d06e0744d5c1dc6b22869a70464120bc885fae",
+      "result": {
+        "scenario": "SEC-05",
+        "variant": "absolute-posix",
+        "read_write_delete_rejected": true,
+        "outside_owned_sentinel_unchanged": true
+      }
+    },
+    {
+      "file": "SEC05-sentinel-nested-posix.json",
+      "sha256": "9a77db59525029f8c6e9befee30981afa35601e4ac7bcbd80c9a9d64cdf6ee96",
+      "result": {
+        "scenario": "SEC-05",
+        "variant": "nested-posix",
+        "read_write_delete_rejected": true,
+        "outside_owned_sentinel_unchanged": true
+      }
+    },
+    {
+      "file": "SEC05-sentinel-nested-windows.json",
+      "sha256": "029e6b6a408b5c65d2d5421bb7a5cf734fbcce9662f068cfad288247cee1bfa8",
+      "result": {
+        "scenario": "SEC-05",
+        "variant": "nested-windows",
+        "read_write_delete_rejected": true,
+        "outside_owned_sentinel_unchanged": true
+      }
+    },
+    {
+      "file": "SEC05-sentinel-parent.json",
+      "sha256": "dca96f6d44c5a18f759df2e945f3917450c84812defdd9fb480dd32cccf5922e",
+      "result": {
+        "scenario": "SEC-05",
+        "variant": "parent",
+        "read_write_delete_rejected": true,
+        "outside_owned_sentinel_unchanged": true
+      }
+    },
+    {
+      "file": "SEC05-sentinel-windows-parent.json",
+      "sha256": "c908e096a7314038cae86f8b2ae934a2ce0d6f12e2582c3acd18015147383290",
+      "result": {
+        "scenario": "SEC-05",
+        "variant": "windows-parent",
+        "read_write_delete_rejected": true,
+        "outside_owned_sentinel_unchanged": true
+      }
+    },
+    {
+      "file": "SEC05-writer-avatar-2e.json",
+      "sha256": "812d90cbc611fe744a98e5cfa0437caf282141211dd9b3ca1862bb9053922421",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "avatar",
+        "suffix_hex": "2e",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-avatar-2e2f2e2e2f78.json",
+      "sha256": "c416bff89f45dae37152927fc8edb7c0bcfbbedc9ef7502d704727799b491dd8",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "avatar",
+        "suffix_hex": "2e2f2e2e2f78",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-avatar-2e4a504547.json",
+      "sha256": "f0863069dc83762a0bd1b1ecdbe021202261c5a00fa27a50d16533ecbb7f5763",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "avatar",
+        "suffix_hex": "2e4a504547",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-avatar-2e5c2e2e5c78.json",
+      "sha256": "b70b492ee1f2d99dfb24bfed4bbe6a98f249138b89237b780f962c84da0c6f49",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "avatar",
+        "suffix_hex": "2e5c2e2e5c78",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-avatar-2e657874656e73696f6e6973746f6f6c6f6e67.json",
+      "sha256": "0a4d66b08d159d236ebfc338ab146ceb4c2e7691e6bd5ff2be815b01694048e8",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "avatar",
+        "suffix_hex": "2e657874656e73696f6e6973746f6f6c6f6e67",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-avatar-2e706e0067.json",
+      "sha256": "272ae44d2f3ec0b2012b567dcdb459cc51d7b80500b19ec58766a9fa9f574e2d",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "avatar",
+        "suffix_hex": "2e706e0067",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-avatar-2e706e3a67.json",
+      "sha256": "982b2790e6cd9dab3c99ed4575c41b3d6b2ecdeec2ab3157190976f0f0076c9e",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "avatar",
+        "suffix_hex": "2e706e3a67",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-avatar-2e706e67.json",
+      "sha256": "728e67cbff53de4d8c63f10d90cd5cb618c88a21767036104f1068a733baa0f7",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "avatar",
+        "suffix_hex": "2e706e67",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-avatar-2e706e673a616473.json",
+      "sha256": "65983cb00f8dd296a80f9a31b40077a5ac7abed1360e863a34696e5b6cbf1159",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "avatar",
+        "suffix_hex": "2e706e673a616473",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-avatar-empty.json",
+      "sha256": "2a8b01778f14395e5cc0f8d15d0d85bf3edaf5dada37e282e59a2acfe38de5c8",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "avatar",
+        "suffix_hex": "",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-chat-2e.json",
+      "sha256": "271b65131c61422d31af26bf3a749963a6ce436eb2d387fecf12f935bfcf665b",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "chat",
+        "suffix_hex": "2e",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-chat-2e2f2e2e2f78.json",
+      "sha256": "041b877f7823257895d2d255dc55bd0b35b6832a73663edbfdd0a280ffee7423",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "chat",
+        "suffix_hex": "2e2f2e2e2f78",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-chat-2e4a504547.json",
+      "sha256": "e28cc80da598a1ee4015a3f768eb17762b07fef0fff8e142a6c57aca4e92dce4",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "chat",
+        "suffix_hex": "2e4a504547",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-chat-2e5c2e2e5c78.json",
+      "sha256": "378c899517329274f91942003d1819d5c09112f400ed28e8450f27a9b136eceb",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "chat",
+        "suffix_hex": "2e5c2e2e5c78",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-chat-2e657874656e73696f6e6973746f6f6c6f6e67.json",
+      "sha256": "87192d379c98ae4f7a85ec87fbb97b96e89cb938bdd1ba0f043e034646401aa9",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "chat",
+        "suffix_hex": "2e657874656e73696f6e6973746f6f6c6f6e67",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-chat-2e706e0067.json",
+      "sha256": "5d5fe09a1466cf6b76bc848d7c1b12f8436773111042142fc8c310f37a4d8eca",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "chat",
+        "suffix_hex": "2e706e0067",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-chat-2e706e3a67.json",
+      "sha256": "6a35f8dd0d4be20e2ed00216a319b984e422d86f5bee0799b2d54fb20ea73630",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "chat",
+        "suffix_hex": "2e706e3a67",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-chat-2e706e67.json",
+      "sha256": "6bd01d2810905c8fdc3d165b4625f8fcc1f8cacd856f465bcf18813c21b25d31",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "chat",
+        "suffix_hex": "2e706e67",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-chat-2e706e673a616473.json",
+      "sha256": "c8d3c9f46d46c3d74358cb376d1f29d1f438dde5e7aa7768245055760b3cb65d",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "chat",
+        "suffix_hex": "2e706e673a616473",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-chat-empty.json",
+      "sha256": "c956e333c4367897e8c14f7cb945d4d4c03dd456dcb587719b4c6cc22fb05f6e",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "chat",
+        "suffix_hex": "",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-post-2e.json",
+      "sha256": "33cf80f83bc6a224734c8da7bacc129ae7601fabe0540c10b32a3837a309af46",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "post",
+        "suffix_hex": "2e",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-post-2e2f2e2e2f78.json",
+      "sha256": "88f484ed5b3bff2ab829a66b84a333493eba95719019e15aa0112fc6dd94f705",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "post",
+        "suffix_hex": "2e2f2e2e2f78",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-post-2e4a504547.json",
+      "sha256": "8f004b63e7e7b67405cf5f2091f5495bcf4a5bd3ac28d4ec19f5f4681852156d",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "post",
+        "suffix_hex": "2e4a504547",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-post-2e5c2e2e5c78.json",
+      "sha256": "c807b0084cbd4de9f0db49b4f3f86a78528437e2eb505e4662ffb7f742cd64b9",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "post",
+        "suffix_hex": "2e5c2e2e5c78",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-post-2e657874656e73696f6e6973746f6f6c6f6e67.json",
+      "sha256": "817ccc5baee240a9857d93833e4d35d7ee08f31b1c97c1493af64b3ba7063a58",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "post",
+        "suffix_hex": "2e657874656e73696f6e6973746f6f6c6f6e67",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-post-2e706e0067.json",
+      "sha256": "33f1e4e828bfb12c2e6220e30037deb16956e0abc2875a072c1990a9519eef68",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "post",
+        "suffix_hex": "2e706e0067",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-post-2e706e3a67.json",
+      "sha256": "a88fe60bf0c5ad137027b7903b186ca8ea093c34c62f92413704f378e31ff73c",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "post",
+        "suffix_hex": "2e706e3a67",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-post-2e706e67.json",
+      "sha256": "24b21d0be5a7d2336fb1afa68b60f091c46d1b6831eecd5a67013fbc231ed1fc",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "post",
+        "suffix_hex": "2e706e67",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-post-2e706e673a616473.json",
+      "sha256": "9734491b0810b8baedbdf18c209a752e4a61db52bd371de80887ec8fe7b29af6",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "post",
+        "suffix_hex": "2e706e673a616473",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-post-empty.json",
+      "sha256": "46dee2c396bb769310bd83e4fb438583a7445a1308557079781d72a72f6a2fe7",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "post",
+        "suffix_hex": "",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-primary-2e.json",
+      "sha256": "3f3e342669ee7137df7dfbe6508a90231d55b47f57a6876990114eecfbfebb56",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "primary",
+        "suffix_hex": "2e",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-primary-2e2f2e2e2f78.json",
+      "sha256": "1ce2ce1b74577db11b8255dcc48bd57e7e7ada673b84c630fa7beaa37c60d4a9",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "primary",
+        "suffix_hex": "2e2f2e2e2f78",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-primary-2e4a504547.json",
+      "sha256": "54aca8c0501d04efba312fb19cdad1887ebf0bf0796a8f165265a4f11c9f8c97",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "primary",
+        "suffix_hex": "2e4a504547",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-primary-2e5c2e2e5c78.json",
+      "sha256": "567011c2d64d76d53273b585108427fe4b01ad27c805cf5d3c3fa5d6c77c4b32",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "primary",
+        "suffix_hex": "2e5c2e2e5c78",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-primary-2e657874656e73696f6e6973746f6f6c6f6e67.json",
+      "sha256": "6a14e11bcf82f1bfb826426b2f2fb5451065aaec009cd07776b52c762c98ae89",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "primary",
+        "suffix_hex": "2e657874656e73696f6e6973746f6f6c6f6e67",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-primary-2e706e0067.json",
+      "sha256": "bbb1daae917374fe8501bc4255b597d795d89cd1e6e5d0a86eaa8f4963056aa6",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "primary",
+        "suffix_hex": "2e706e0067",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-primary-2e706e3a67.json",
+      "sha256": "40491f306fd3ba3477f69e0da2be20084968e55e9e31f9bf36f5164828003076",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "primary",
+        "suffix_hex": "2e706e3a67",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-primary-2e706e67.json",
+      "sha256": "901601f5242048e98c6692178c8501afa136fd3a4a75af88cf467a34d02647bf",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "primary",
+        "suffix_hex": "2e706e67",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-primary-2e706e673a616473.json",
+      "sha256": "87ef32fb683b0589c3cf45887d2ada9593721fcd47492e1f1bb6031120246cfe",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "primary",
+        "suffix_hex": "2e706e673a616473",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-primary-empty.json",
+      "sha256": "28472928ee25c286d22eef43496ceae4c4ce562498a1afaf07cfd99b3365ebc4",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "primary",
+        "suffix_hex": "",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-profile-2e.json",
+      "sha256": "7b2136c6102938cfe5b5195ade547f35ed588bc4924c4b432cd658852c532475",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "profile",
+        "suffix_hex": "2e",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-profile-2e2f2e2e2f78.json",
+      "sha256": "dcb0fe705e8d35e10a5cf70a7b9888a79ccde88fbb7fa2a079662f898fe2b397",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "profile",
+        "suffix_hex": "2e2f2e2e2f78",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-profile-2e4a504547.json",
+      "sha256": "196aa2bbbb2dc2a5e550f75466782f9cc83f15fbb6a85b742e77a4b87be628c1",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "profile",
+        "suffix_hex": "2e4a504547",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-profile-2e5c2e2e5c78.json",
+      "sha256": "b82cb37e19d48855c1f69b98017611d93216af64d2d99c54c67d06e7dc7f1054",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "profile",
+        "suffix_hex": "2e5c2e2e5c78",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-profile-2e657874656e73696f6e6973746f6f6c6f6e67.json",
+      "sha256": "78aff6d391824fec64b017ed93af0cb54ae64faed043ba33051b8f9b34f2e296",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "profile",
+        "suffix_hex": "2e657874656e73696f6e6973746f6f6c6f6e67",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-profile-2e706e0067.json",
+      "sha256": "e85b3b61ecba11bef8b66d9da1fbf46132dcb39e382390c7a2d17da011ba26a2",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "profile",
+        "suffix_hex": "2e706e0067",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-profile-2e706e3a67.json",
+      "sha256": "981a53f96f792cb076bc96b8a8c8771f4ae0599e592bbc0652699a37107464d8",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "profile",
+        "suffix_hex": "2e706e3a67",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-profile-2e706e67.json",
+      "sha256": "cbe4fa9423316451d1f667d970de233d8f7b3989197c1af49ca8952ff9f65b4e",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "profile",
+        "suffix_hex": "2e706e67",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-profile-2e706e673a616473.json",
+      "sha256": "005e1ba92f58764952223a1340ef1574a809e747ce24e32aa459ad581a10aebc",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "profile",
+        "suffix_hex": "2e706e673a616473",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-profile-empty.json",
+      "sha256": "24e3bf78083ee9c1da2990b93d5843a957f4337e8f09faa4002bc98d9cda5944",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "profile",
+        "suffix_hex": "",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-reference-2e.json",
+      "sha256": "518a000b207f18e5b9911ef9a98918cad1ccf2229182e263f5603e67f744b683",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "reference",
+        "suffix_hex": "2e",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-reference-2e2f2e2e2f78.json",
+      "sha256": "9c32a7cc2523cdb53d770bab9ddee162aa80ddd194195ab23940e1067f134b0c",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "reference",
+        "suffix_hex": "2e2f2e2e2f78",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-reference-2e4a504547.json",
+      "sha256": "81715e85ac003087198d47fcc4b892afbddff5eef270006a4a19886e81bfccfd",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "reference",
+        "suffix_hex": "2e4a504547",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-reference-2e5c2e2e5c78.json",
+      "sha256": "72081017ccd5972f053415c1f503240c129a166c38e3e9cf6be1d4dd11096ab6",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "reference",
+        "suffix_hex": "2e5c2e2e5c78",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-reference-2e657874656e73696f6e6973746f6f6c6f6e67.json",
+      "sha256": "1400f85975c5ca0567b1f6955ae492cdd05c656a90533da4e15dc493f8c400e1",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "reference",
+        "suffix_hex": "2e657874656e73696f6e6973746f6f6c6f6e67",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-reference-2e706e0067.json",
+      "sha256": "755eace0cdeacf3b6c63334f3ff8774a7ba856e60bd80e80b2668c71b28b06db",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "reference",
+        "suffix_hex": "2e706e0067",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-reference-2e706e3a67.json",
+      "sha256": "a4eacf13cb72679192e06a4a72c1646496be39ef67eb78fcdf9252786aeb671c",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "reference",
+        "suffix_hex": "2e706e3a67",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-reference-2e706e67.json",
+      "sha256": "9aef936c1a7412c51dd86cd595ea0cdc0b8c11c70401cde294886f4e6226d2e5",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "reference",
+        "suffix_hex": "2e706e67",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-reference-2e706e673a616473.json",
+      "sha256": "91c212c7af76e34291faed0f24b2afdfbac5fa184c048bf835fdcd71703ca24c",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "reference",
+        "suffix_hex": "2e706e673a616473",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    },
+    {
+      "file": "SEC05-writer-reference-empty.json",
+      "sha256": "0249e7b2ceaa8f9e2d6fe79f5b89e8dba356e03c6f51faec50da54390bc3e220",
+      "result": {
+        "scenario": "SEC-05",
+        "writer": "reference",
+        "suffix_hex": "",
+        "confined_portable_key": true,
+        "bytes_and_hash_preserved": true,
+        "delete_positive": true
+      }
+    }
+  ],
+  "problem": "Suffix validation accepted separators, colons/NTFS stream syntax and NULs, producing nonportable storage keys or errors. Actual primary/reference upload routes accepted colon-bearing keys.",
+  "cause": "Six writers only checked leading dot and length.",
+  "correction": "Shared ASCII alphanumeric extension validation with the existing jpg/bin fallbacks; root confinement and legacy-key reads remain unchanged.",
+  "coverage": [
+    "POSIX/Windows traversal and absolute own sentinels: read/write/delete rejected.",
+    "Six storage writers times ten suffix classes: contained portable names, exact bytes/hash and delete controls.",
+    "Primary/reference HTTP uploads with ten filename classes each, owner reads and outside sentinel invariants.",
+    "Existing content-hash key and versioned-avatar compatibility tests."
+  ],
+  "limits": [
+    "No demonstrated outside-root disclosure or mutation: old confinement tests already passed.",
+    "No claim that arbitrary NTFS stream contents were executed or that HTTP NUL failure was isolated before the first colon assertion.",
+    "Windows host with POSIX/Windows input forms; not an additional Linux deployment test. No inference or load."
+  ],
+  "reproduce": "python scripts/run_security_regression.py --scenario SEC-05 --output .tmp/quality-campaign/<run>/sequential/<new-unique-attempt>; python -m pytest tests/test_storage_service.py"
+}

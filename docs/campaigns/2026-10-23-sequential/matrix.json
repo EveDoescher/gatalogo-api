@@ -930,14 +930,18 @@
   },
   {
     "scenario": "SEC-05",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "`../`, caminho absoluto, barras Windows/POSIX, nomes/sufixos incomuns em storage/rotas de arquivo.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [
       "attempts/security-03/critical_runs/baseline/summary.json"
     ],
     "runs": [],
-    "limitation": "Selected variants only; see variant ledger and approved plan. No whole-scenario completion."
+    "limitation": "All planned path/name variants and compatibility passed after shared suffix correction.",
+    "closure_evidence": [
+      "SEC05-20261024-results.json"
+    ],
+    "correction_commit": "70819a0e924d7e0776b4bd08887d3fadb30837dd"
   },
   {
     "scenario": "SEC-06",
