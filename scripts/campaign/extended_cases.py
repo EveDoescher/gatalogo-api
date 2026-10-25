@@ -296,6 +296,9 @@ async def test_DATA05_http_conflicts_preserve_authoritative_analysis(db, order):
         async with db.factory() as session:
             cat = await session.get(RemoteCat, uid("matrix-cat"))
             before = cat.payload
+            before_revisions = await session.scalar(
+                select(func.count()).select_from(SyncChange)
+            )
         response = await push("B", sec, dev)
         assert response.status_code == 200
         async with db.factory() as session:
@@ -303,6 +306,9 @@ async def test_DATA05_http_conflicts_preserve_authoritative_analysis(db, order):
             assert cat.analysis == {"authoritative": True}
             assert cat.payload["individual_id"] == identity
             assert cat.payload["identity_revision"] == 7
+            assert await session.scalar(
+                select(func.count()).select_from(SyncChange)
+            ) == before_revisions + int(accepted)
             assert (
                 cat.payload.get("untrusted") == dev
                 if accepted

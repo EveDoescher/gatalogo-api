@@ -358,7 +358,7 @@ async def test_DATA06_delete_or_replace_between_claim_and_finish(db, monkeypatch
 
 @pytest.mark.parametrize("offset,device,deleted,expected", [
     (-1, "z", False, False), (1, "a", False, True), (0, "z", False, True),
-    (0, "a", False, False), (1, "z", True, False),
+    (0, "a", False, False), (0, "m", False, False), (1, "z", True, False),
 ])
 def test_DATA05_conflict_and_tombstone(offset, device, deleted, expected):
     cat = RemoteCat(client_updated_at=NOW, updated_by_device="m", deleted_at=NOW if deleted else None)
