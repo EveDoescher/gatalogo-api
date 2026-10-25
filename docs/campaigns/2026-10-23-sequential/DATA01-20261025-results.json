@@ -1,0 +1,87 @@
+{
+  "scenario": "DATA-01",
+  "state": "COMPLETED",
+  "date": "2026-10-25",
+  "source_sha": "c5ea851bb62347b95920822421c46d1ab6328d48",
+  "passed": 5,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes": false,
+  "executor": "scripts/run_security_regression.py --scenario DATA-01 --output <new private attempt>",
+  "coverage": [
+    "Full real PostgreSQL snapshots before primary analysis, after analysis, after metadata sync, reference pending and reference job complete.",
+    "Owned/non-owned cats x reward rollout 0/100; ledger, wallet and XP remain coherent, other accounts unchanged.",
+    "Metadata cannot forge authoritative analysis or change photos/jobs/rewards/storage; exact revision progression 1/2/3/4.",
+    "Reference job completes once with real progression/merge; GPU jobs remain pending and second empty queue pass has no effects.",
+    "Publish wrappers assert transaction committed; external observer sees committed notification/analysis."
+  ],
+  "limitations": [
+    "Local deterministic classification/segmentation fixtures only; no paid model or reidentification accuracy claim.",
+    "Real ASGI/services/SQL/files; no mobile restart or live provider transport claim."
+  ],
+  "measurements": [],
+  "cases": [
+    {
+      "selector": "sequential.DATA01-20261025-01.executors.data_snapshot_cases::test_DATA01_primary_metadata_reference_job_snapshots[0-False]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DATA01-20261025-01.executors.data_snapshot_cases::test_DATA01_primary_metadata_reference_job_snapshots[0-True]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DATA01-20261025-01.executors.data_snapshot_cases::test_DATA01_primary_metadata_reference_job_snapshots[100-False]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DATA01-20261025-01.executors.data_snapshot_cases::test_DATA01_primary_metadata_reference_job_snapshots[100-True]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DATA01-20261025-01.executors.pipeline_cases::test_DATA01_IMG02_HTTP_photo_metadata_sync_preserves_analysis",
+      "status": "PASS"
+    }
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA01-20261025-01/junit.xml",
+      "sha256": "c3ca03d217929dccb5e1179615728b2d811b6127005dba983f9b0f4c3addc3b9"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA01-20261025-01/pytest.log",
+      "sha256": "1059d22d1eedaff1923660c6f104801b6681c7568342ad9a13d60deb27262de5"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA01-20261025-01/summary.json",
+      "sha256": "017be82837cf255757a62ede0d0a1705ebe8de2cdad6e3fb306097b71b3a4c17"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA01-20261025-01/source_manifest.json",
+      "sha256": "eed9960bb6ae632229552d18b39a288f0427763f9307d286c8df98c0c6c5e3b8"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA01-20261025-01/candidate_manifest.json",
+      "sha256": "5ba81f99b1bc279250082faaeecbae6e5354e728a1034f8bbbfb786b5f7e81e0"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA01-20261025-01/observations/DATA01-photo-sync.json",
+      "sha256": "d3ebc94ba0ac40e80beaa695919726a39a33efba4dafe37e30da7ee78523e2c4"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA01-20261025-01/observations/DATA01-stages-False-0.json",
+      "sha256": "f7476bc8eceea76245a0f5df6b1530f2981f1ea5f84903c558c702ee7ad12401"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA01-20261025-01/observations/DATA01-stages-False-100.json",
+      "sha256": "f5a8265031d56d256dbd17430d85418fd27bc0286a25d6b403267e4e7d349db1"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA01-20261025-01/observations/DATA01-stages-True-0.json",
+      "sha256": "67d68124dd23b1291adb0625d012b4b6d1f99f9018de4d213cb39ad8284364a9"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA01-20261025-01/observations/DATA01-stages-True-100.json",
+      "sha256": "650259a03f55de38a81053c55f1b1e182c903fe699d49da622a64f7f77a6c55e"
+    }
+  ]
+}

@@ -149,3 +149,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## DB-01 — concluído em 25/10/2026
 
 20 testes aprovados e 42 snapshots reais, de 0 a 2.000 gatos, com G/B. Mapas/ordem/referências preservados e contagem SQL exata nas bordas de 500. [Fontes, variantes e evidências](DB01-20261025-results.json). Sem mudança no produto.
+
+## DATA-01 — concluído em 25/10/2026
+
+5 testes aprovados: snapshots completos de análise/metadados/job, rollout 0/100 e gato próprio/não próprio; revisões exatas, ledger/XP coerentes e eventos após commit. [Variantes, fontes e evidências](DATA01-20261025-results.json). Sem alteração no produto.

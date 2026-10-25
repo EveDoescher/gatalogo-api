@@ -574,7 +574,7 @@
   },
   {
     "scenario": "DATA-01",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Análise determinística; snapshots após metadados, persistência e job.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -582,11 +582,15 @@
     "local_runs": [
       "attempts/pipeline-01/critical_runs/pipeline-baseline/summary.json"
     ],
-    "limitation": "Novas variantes locais rastreadas; conferir escopo e pendências no relatório. Nenhuma aprovação integral ou correção de produto.",
+    "limitation": "Local deterministic classification/segmentation fixtures only; no paid model or reidentification accuracy claim. Real ASGI/services/SQL/files; no mobile restart or live provider transport claim.",
     "followup_runs": [
       "attempts/offline-flow-01/critical_runs/offline-flow-baseline/summary.json",
       "attempts/offline-flow-02/critical_runs/offline-flow-baseline/summary.json"
-    ]
+    ],
+    "closure_evidence": [
+      "DATA01-20261025-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario DATA-01 --output <new private attempt>"
   },
   {
     "scenario": "DATA-02",
