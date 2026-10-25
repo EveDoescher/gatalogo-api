@@ -1271,7 +1271,7 @@
   },
   {
     "scenario": "DLV-05",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Mesmo notification_id via WS/push nas duas ordens; refresh/loadMore/markRead concorrentes e troca de conta.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -1280,7 +1280,11 @@
       "attempts/flutter-notifications-01/flutter_resilience/baseline/summary.json",
       "attempts/flutter-social-01/flutter_resilience/baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+    "limitation": "Controlled WS/push event sources and HTTP mocks; real native Firebase delivery is a separate external prerequisite. Account-switch test invokes the same clear boundary used by CatStore; actual CatStore account transition is covered separately by RES-03. First attempt had test fixture type compilation errors; second bound stream subscriptions outside the HTTP mock zone. Both are preserved as harness failures, not product defects. Final run fixes zone and includes source guard.",
+    "closure_evidence": [
+      "DLV05-20261024-results.json"
+    ],
+    "executor": "scripts/run_flutter_regression.py"
   },
   {
     "scenario": "DLV-06",

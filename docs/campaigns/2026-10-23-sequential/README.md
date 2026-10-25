@@ -129,3 +129,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## RES-06 — concluído em 24/10/2026
 
 2 percursos completos aprovados: eventos antes/depois da queda, fallback de 30 s, falha transitória, reconexão, deduplicação e cancelamento ao descartar. [Fontes, variantes e evidências](RES06-20261024-results.json). Sem mudança no produto.
+
+## DLV-05 — concluído em 24/10/2026
+
+6 testes aprovados: WS/push nas duas ordens, requisições combinadas, paginação/leitura concorrentes, isolamento após troca de conta e descarte. [Fontes, variantes e evidências](DLV05-20261024-results.json). Sem mudança no produto.

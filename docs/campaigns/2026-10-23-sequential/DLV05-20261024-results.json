@@ -1,0 +1,80 @@
+{
+  "scenario": "DLV-05",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "flutter_source_sha": "ed5f6a48e9db1ea7e5553bb56394356bb1335e3e",
+  "passed": 6,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes": false,
+  "executor": "scripts/run_flutter_regression.py",
+  "command": [
+    "C:\\flutter\\bin\\cache\\dart-sdk\\bin\\dart.exe",
+    "C:\\flutter\\bin\\cache\\flutter_tools.snapshot",
+    "test",
+    "--no-pub",
+    "--machine",
+    "test/notification_delivery_races_test.dart"
+  ],
+  "code": [
+    "catlogue/lib/controllers/account_activity_controller.dart",
+    "catlogue/lib/stores/notification_store.dart"
+  ],
+  "coverage": [
+    "Real AccountActivityController bridge receives same ID from controlled WS/push streams in both orders; in-flight refreshes coalesce and inbox remains one unread item.",
+    "Concurrent refresh/loadMore/markRead preserve 21 unique sorted notifications, correct cursor and confirmed read against stale unread response.",
+    "Late refresh and loadMore responses cannot cross the clear boundary used on account switch; fresh B inbox remains isolated.",
+    "Dispose cancels activity subscriptions and ignores late response/events."
+  ],
+  "limitations": [
+    "Controlled WS/push event sources and HTTP mocks; real native Firebase delivery is a separate external prerequisite.",
+    "Account-switch test invokes the same clear boundary used by CatStore; actual CatStore account transition is covered separately by RES-03.",
+    "First attempt had test fixture type compilation errors; second bound stream subscriptions outside the HTTP mock zone. Both are preserved as harness failures, not product defects. Final run fixes zone and includes source guard."
+  ],
+  "cases": [
+    {
+      "name": "DLV05 real activity bridge coalesces WS/push wsFirst=true",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DLV05 real activity bridge coalesces WS/push wsFirst=false",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DLV05 refresh loadMore and read acknowledgment preserve pages and count",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DLV05 old refresh response cannot cross account clear boundary",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DLV05 old loadMore response cannot cross account clear boundary",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DLV05 disposed activity ignores late response and future transport events",
+      "result": "success",
+      "skipped": false
+    }
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV05-20261024-03/tests.jsonl",
+      "sha256": "3d4b5269775754d24261184c9ee46ae0a5b467086bc81af523a3bbf3118091b5"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV05-20261024-03/summary.json",
+      "sha256": "65df913cd77f3cce928281974c51c2f56f120378c60f367636260d9fb9e60437"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV05-20261024-03/source_manifest.json",
+      "sha256": "1d41d7b44f6679abbc6653e82d8b0ec8d166ce6f5163fc13c2cc0e3b08428e5a"
+    }
+  ]
+}

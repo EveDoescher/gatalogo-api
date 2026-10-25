@@ -156,6 +156,7 @@ def selection(scenario, output):
         "DATA-04": "idempotency_cases.py",
         "DB-02": "history_cases.py",
         "DLV-01": "delivery_cases.py",
+        "DLV-04": "fcm_delivery_cases.py",
         "LOAD-03": "remaining_mechanism_cases.py",
         "RES-04": "worker_race_cases.py",
     }[scenario]
@@ -529,6 +530,7 @@ if __name__ == "__main__":
             "DATA-04",
             "DB-02",
             "DLV-01",
+            "DLV-04",
             "LOAD-03",
             "RES-04",
         ],
