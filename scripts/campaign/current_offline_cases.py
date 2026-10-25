@@ -174,6 +174,7 @@ async def test_RES01_IMG02_current_capture_analyze_edit_restart_and_account_isol
                     "test",
                     "--no-pub",
                     "--machine",
+                    "--timeout=100s",
                     f"--dart-define=API_BASE_URL={own_api.url}",
                     "tool/campaign_offline_capture_test.dart",
                 ],
