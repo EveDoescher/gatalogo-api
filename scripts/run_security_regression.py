@@ -81,6 +81,7 @@ def source_hashes():
             "test_websocket_manager.py",
             "test_sync_query_performance.py",
             "test_logging_security.py",
+            "test_reference_analysis.py",
         )
     )
     paths.extend(ROOT.glob("scripts/campaign/*.py"))
@@ -154,6 +155,9 @@ def selection(scenario, output):
         "DATA-03": "idempotency_cases.py",
         "DATA-04": "idempotency_cases.py",
         "DB-02": "history_cases.py",
+        "DLV-01": "delivery_cases.py",
+        "LOAD-03": "remaining_mechanism_cases.py",
+        "RES-04": "worker_race_cases.py",
     }[scenario]
     if case_file:
         names.append(case_file)
@@ -169,6 +173,10 @@ def selection(scenario, output):
         names.append("image_cases.py")
     if scenario == "SEC-04":
         names.extend(["remaining_mechanism_cases.py", "social_volume_cases.py", "measurements.py"])
+    if scenario == "LOAD-03":
+        names.append("measurements.py")
+    if scenario == "RES-04":
+        names.extend(["test_reference_analysis.py", "worker_child.py", "subprocesses.py"])
     if scenario in ("DATA-03", "DATA-04"):
         names.append("idempotency_child.py")
     if scenario == "DB-02":
@@ -205,6 +213,16 @@ def selection(scenario, output):
         selected.extend(["remaining_mechanism_cases.py", "social_volume_cases.py"])
     selectors = [str(executors / name) for name in selected]
     selectors += ["-k", scenario.replace("-", ""), "--confcutdir", str(executors)]
+    if scenario == "RES-04":
+        selectors = [str(executors / "worker_race_cases.py") + "::test_RES04_actual_worker_process_killed_after_claim_then_restarted[postgres]"]
+        selectors.extend(str(executors / "test_reference_analysis.py") + "::" + name + "[postgres]" for name in (
+            "test_expired_claim_is_recovered_and_late_result_cannot_overwrite",
+            "test_cancellation_releases_persisted_claim_and_next_process_resumes",
+            "test_failures_retry_then_mark_only_current_photo_failed",
+            "test_expired_final_attempt_fails_without_another_inference",
+            "test_inference_releases_database_connection",
+        ))
+        selectors.extend(["--confcutdir", str(executors)])
     return (
         source,
         selectors,
@@ -510,6 +528,9 @@ if __name__ == "__main__":
             "DATA-03",
             "DATA-04",
             "DB-02",
+            "DLV-01",
+            "LOAD-03",
+            "RES-04",
         ],
         default="SEC-01",
     )

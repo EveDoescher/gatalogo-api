@@ -722,6 +722,10 @@ async def test_DLV01_disposable_smtp_registration_and_consumption(
 ):
     from app.config import get_settings
     import re
+    import time
+    from datetime import timedelta
+    from app.persistence_models import EmailOtp
+    from app.services import auth_service
 
     settings = get_settings()
     for key, value in {
@@ -735,6 +739,8 @@ async def test_DLV01_disposable_smtp_registration_and_consumption(
     }.items():
         monkeypatch.setattr(settings, key, value)
     recipient = "registration@example.com"
+    started_at = auth_service.utc_now()
+    started = time.perf_counter()
     response = await db.client.post(
         "/auth/register",
         json={"email": recipient, "password": "Synthetic_password_2026!"},
@@ -743,7 +749,14 @@ async def test_DLV01_disposable_smtp_registration_and_consumption(
     messages = mailpit["get"]("/api/v1/messages")["messages"]
     assert len(messages) == 1
     content = mailpit["get"]("/api/v1/message/" + messages[0]["ID"])
+    observed_ms = (time.perf_counter() - started) * 1000
+    observed_at = auth_service.utc_now()
     assert any(m["Address"] == recipient for m in content["To"])
+    async with db.factory() as session:
+        otp = await session.scalar(select(EmailOtp).where(EmailOtp.email == recipient))
+        assert otp.purpose == "verify_email" and otp.consumed_at is None
+        ttl = timedelta(minutes=settings.otp_ttl_minutes)
+        assert started_at + ttl <= otp.expires_at <= observed_at + ttl
     codes = re.findall(r"\b[0-9]{6}\b", content["Text"])
     assert len(codes) == 1
     verify = await db.client.post(
@@ -768,6 +781,9 @@ async def test_DLV01_disposable_smtp_registration_and_consumption(
             "mailpit_image": mailpit["image"],
             "smtp_messages": 1,
             "recipient_matches": True,
+            "purpose": "verify_email",
+            "configured_expiration_verified": True,
+            "request_to_mailpit_observed_ms": observed_ms,
             "otp_used_once": True,
             "scope": "Actual SMTP capture in disposable Mailpit, no external email delivery. Code and tokens omitted.",
         },

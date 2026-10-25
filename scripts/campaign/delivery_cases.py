@@ -4,6 +4,8 @@ import asyncio
 import re
 import smtplib
 import threading
+import time
+from datetime import timedelta
 
 import pytest
 from sqlalchemy import func, select
@@ -56,6 +58,8 @@ async def test_DLV01_SEC07_smtp_password_recovery_complete_and_replay(
     unknown = await db.client.post(
         "/auth/password-reset/request", json={"email": "absent@example.com"}
     )
+    started_at = auth_service.utc_now()
+    started = time.perf_counter()
     request = await db.client.post(
         "/auth/password-reset/request", json={"email": "a@example.com"}
     )
@@ -64,7 +68,16 @@ async def test_DLV01_SEC07_smtp_password_recovery_complete_and_replay(
         and unknown.json() == request.json()
     )
     sent = messages(mailpit)
+    observed_ms = (time.perf_counter() - started) * 1000
+    observed_at = auth_service.utc_now()
     assert len(sent) == 1
+    content = mailpit['get']('/api/v1/message/' + sent[0]['ID'])
+    assert any(m['Address'] == 'a@example.com' for m in content['To'])
+    async with db.factory() as session:
+        otp_row = await session.scalar(select(EmailOtp).where(EmailOtp.email == 'a@example.com'))
+        assert otp_row.purpose == 'reset_password' and otp_row.consumed_at is None
+        ttl = timedelta(minutes=smtp_settings.otp_ttl_minutes)
+        assert started_at + ttl <= otp_row.expires_at <= observed_at + ttl
     otp = code(mailpit, sent[0])
     assert (
         await db.client.post(
@@ -114,6 +127,10 @@ async def test_DLV01_SEC07_smtp_password_recovery_complete_and_replay(
             "scenario": "DLV-01",
             "flow": flow,
             "messages": 1,
+            "recipient_matches": True,
+            "purpose": "reset_password",
+            "configured_expiration_verified": True,
+            "request_to_mailpit_observed_ms": observed_ms,
             "old_password_rejected": True,
             "old_sessions_revoked": True,
             "other_account_unchanged": True,
