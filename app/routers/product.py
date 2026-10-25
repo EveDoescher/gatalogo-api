@@ -224,7 +224,7 @@ async def report_photo(
     session: AsyncSession = Depends(get_database_session),
 ) -> Response:
     data = await report_photo_bytes(session, report_id)
-    return Response(data, media_type="image/jpeg", headers={"Cache-Control": "public, max-age=300"})
+    return Response(data, media_type="image/jpeg", headers={"Cache-Control": "private, no-store"})
 
 async def _clue(session: AsyncSession, user: User, match_id: UUID):
     row = (await session.execute(select(MatchSuggestion, MissingReport, Sighting).join(MissingReport, MissingReport.id == MatchSuggestion.missing_report_id).join(Sighting, Sighting.id == MatchSuggestion.sighting_id).where(MatchSuggestion.id == match_id, MissingReport.user_id == user.id))).one_or_none()
