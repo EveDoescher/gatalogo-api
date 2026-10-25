@@ -13,6 +13,7 @@ from websockets.asyncio.client import connect
 class Vm:
     def __init__(self, socket):
         self.socket, self.counter, self.isolate = socket, 0, None
+        self.zone = None
 
     async def rpc(self, method, **params):
         self.counter += 1
@@ -31,7 +32,10 @@ class Vm:
                     return reply["result"]
 
     async def obj(self, ident):
-        return await self.rpc("getObject", isolateId=self.isolate, objectId=ident)
+        params = {"idZoneId": self.zone} if self.zone else {}
+        return await self.rpc(
+            "getObject", isolateId=self.isolate, objectId=ident, **params
+        )
 
     async def library(self, uri):
         isolate = await self.rpc("getIsolate", isolateId=self.isolate)
@@ -44,10 +48,27 @@ class Vm:
         classes = [c for c in library["classes"] if c["name"] == name]
         assert len(classes) == 1
         result = await self.rpc(
-            "getInstances", isolateId=self.isolate, objectId=classes[0]["id"], limit=10
+            "getInstances",
+            isolateId=self.isolate,
+            objectId=classes[0]["id"],
+            limit=10,
+            **({"idZoneId": self.zone} if self.zone else {}),
         )
-        assert len(result["instances"]) == 1
-        return result["instances"][0]["id"]
+        instances = result["instances"]
+        if len(instances) != 1 and name.endswith("State"):
+            mounted = []
+            for ref in instances:
+                fields = (await self.obj(ref["id"])).get("fields", [])
+                if any(
+                    f["decl"]["name"] == "_element" and f["value"].get("kind") != "Null"
+                    for f in fields
+                ):
+                    mounted.append(ref)
+            instances = mounted
+        assert len(instances) == 1, (
+            f"Expected one mounted {name}, found {len(instances)}"
+        )
+        return instances[0]["id"]
 
     async def field(self, ident, name):
         obj = await self.obj(ident)
@@ -58,6 +79,10 @@ class Vm:
         return matches[0]
 
     async def allocations(self, gc=False):
+        if gc and self.zone:
+            await self.rpc(
+                "invalidateIdZone", isolateId=self.isolate, idZoneId=self.zone
+            )
         profile = await self.rpc("getAllocationProfile", isolateId=self.isolate, gc=gc)
         wanted = {
             "_CatDetailsPageState",
@@ -110,6 +135,17 @@ async def session(android, source_log):
             isolates = [i for i in root["isolates"] if i["name"] == "main"]
             assert len(isolates) == 1
             vm.isolate = isolates[0]["id"]
-            yield vm
+            zone = await vm.rpc(
+                "createIdZone",
+                isolateId=vm.isolate,
+                backingBufferKind="ring",
+                idAssignmentPolicy="reuseExisting",
+                capacity=512,
+            )
+            vm.zone = zone["id"]
+            try:
+                yield vm
+            finally:
+                await vm.rpc("deleteIdZone", isolateId=vm.isolate, idZoneId=vm.zone)
     finally:
         android.run("forward", "--remove", "tcp:" + port)
