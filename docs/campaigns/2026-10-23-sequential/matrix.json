@@ -1335,11 +1335,14 @@
     "runs": [
       "attempts/accessibility-04/accessibility/tests.jsonl"
     ],
-    "findings": false,
-    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes.",
+    "findings": true,
+    "limitation": "Shared header labels/roles corrected and revalidated in 10 widget tests and Android native tree; other ACC-05 variants and TalkBack navigation remain pending.",
     "followup_runs": [
       "attempts/accessibility-flows-01/accessibility_flows/summary.json",
       "attempts/accessibility-flows-02/accessibility_flows/summary.json"
+    ],
+    "closure_evidence": [
+      "ACC05-header-20261024-results.json"
     ]
   },
   {

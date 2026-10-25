@@ -93,3 +93,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## SEC-08 — concluído em 24/10/2026
 
 19 testes e 7 regressões de exceção aprovados. [Defeitos, correções, canários, fontes e hashes](SEC08-20261024-results.json). Exportação de relatos foi corrigida, inclusive com gato excluído logicamente. Canários do provedor não aparecem mais nos logs/traces testados; token de query não vaza nos logs reais do Uvicorn, incluindo nome percent-encoded. SMTP real isolado não loga OTP. O fluxo intencional de OTP de desenvolvimento com SMTP desligado permanece contextualizado, sem alegação de configuração de produção aprovada.
+
+## ACC-05 — cabeçalhos corrigidos e revalidados
+
+[Antes/depois, hashes e limites](ACC05-header-20261024-results.json). Perfil e notificações agora têm nomes e papel de botão. Os 10 testes passaram, análise estática sem problemas e 10 imagens permaneceram idênticas byte a byte. Após hot reload confirmado pelo usuário, a árvore nativa Android confirmou os dois rótulos e limites inalterados. ACC-05 permanece parcial: demais componentes e navegação TalkBack ainda precisam de avaliação.

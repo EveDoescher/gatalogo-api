@@ -1,0 +1,115 @@
+{
+  "scenario": "ACC-05",
+  "state": "PARTIAL_EXECUTED",
+  "date": "2026-10-24",
+  "completed_subscope": "Shared profile and notification header actions: meaningful labels, button roles and unread values.",
+  "flutter_source_sha": "eb484ac77ef7fe1d6df2c1940c57499891bb7519",
+  "correction_commits": [
+    "4cead19",
+    "eb484ac"
+  ],
+  "executor": "catlogue/test/header_accessibility_test.dart",
+  "code": [
+    "catlogue/lib/widgets/app_widgets.dart::UserAvatarButton",
+    "catlogue/lib/widgets/inbox_button.dart::InboxButton"
+  ],
+  "cycle": {
+    "hypothesis": "Unlabelled profile image and standalone numeric badge obscure action purpose.",
+    "before": "10 reviewed widget assertions failed; physical UI tree corroborated missing action names.",
+    "correction": "Explicit button names and unread value; exclude redundant child semantics; preserve existing visuals and callbacks.",
+    "after": {
+      "widget_passed": 10,
+      "static_analysis": "No issues found",
+      "byte_identical_images": [
+        {
+          "image": "avatar-false.png",
+          "before_after_sha256": "1b91d2a9ea52ff8cba1ed1f619b093ce7f0eb4dd218ade136ea86946dee2d016"
+        },
+        {
+          "image": "avatar-true.png",
+          "before_after_sha256": "2e1dfa6476e8b665c877994c20fa47d83387ac4850834670663dd7ba28cbe99b"
+        },
+        {
+          "image": "inbox-false-0.png",
+          "before_after_sha256": "9b2fa4c57da70dadfe230145b496929e4b0a5374f10a1323b2e9f2d51117e3ae"
+        },
+        {
+          "image": "inbox-false-1.png",
+          "before_after_sha256": "75f0d3e75b5897b1cc2f169a6fece7ede8ed4462d8d5ec398185e96da526f9ad"
+        },
+        {
+          "image": "inbox-false-120.png",
+          "before_after_sha256": "ede2a7b4c74c643629695c22f45bf323f69a978c12e5578567df43b9d24d51c3"
+        },
+        {
+          "image": "inbox-false-18.png",
+          "before_after_sha256": "bdbd5205bc4a37bd610cc1d437946e3dcb9969a043976e3f79f61d4bf8feb741"
+        },
+        {
+          "image": "inbox-true-0.png",
+          "before_after_sha256": "49f52418c0ac749dd34052ec416570ee82412d24577c2a2a4dd4e50aede35757"
+        },
+        {
+          "image": "inbox-true-1.png",
+          "before_after_sha256": "9769d566bbcb5c4d9a2a110b8ac07032ea978db0b10a70d69b2dabc8a272e233"
+        },
+        {
+          "image": "inbox-true-120.png",
+          "before_after_sha256": "360dcd814bedd6dae90cbf11a3033ec1c8a77b6eab535f66e8ca72080fba58c7"
+        },
+        {
+          "image": "inbox-true-18.png",
+          "before_after_sha256": "1aad955fe81f400f5c81b939bfb869df10d1ca26c544e7c6c29d65b8b675b01b"
+        }
+      ],
+      "android_native_tree": [
+        {
+          "action": "Perfil",
+          "native_role": "android.widget.Button",
+          "clickable": true,
+          "bounds_unchanged": true
+        },
+        {
+          "action": "Notificações",
+          "native_role": "android.widget.Button",
+          "clickable": true,
+          "bounds_unchanged": true
+        }
+      ]
+    }
+  },
+  "physical_provenance": {
+    "update": "User confirmed hot reload in original flutter run terminal; updated native labels independently observed.",
+    "baseline_apk_sha256": "7fcee00ca1c6631e070eb52c14a882d3f620af68bb3c85ce1e6ebfb1a1133698",
+    "limitation": "Hot reload does not produce a new APK. Runtime source mapping relies on user-confirmed reload plus observed changed labels, not a reproducible release build attestation."
+  },
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/ACC05-header-before-20261024-01.jsonl",
+      "sha256": "854ad7d240d7947bef9f0e50abe61abf409453239e621ee8f3149f42bd58b06e"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/ACC05-header-after-20261024-01.jsonl",
+      "sha256": "5725922f41516ffe6dd29754aa848f2a1faa6d67c9dfd41a94a63a00032b00a9"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/ACC05-header-analyze-20261024-02.log",
+      "sha256": "8e91e5c098403b5d55a30d0d9bf13944f37a037de4d535c929352d1ea3267b32"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/ANDROID-20261024-01/ui.xml",
+      "sha256": "c8f0997a906273c5781ab6d07b83d00c214abba21d9a260162c99b81faa108b5"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/ANDROID-20261024-02/ui.xml",
+      "sha256": "85d94d2f112d6b460c4101097f957f78ea9f667ab99f6b0406e86de3122f7948"
+    }
+  ],
+  "limitations": [
+    "TalkBack navigation not executed; baseline accessibility service disabled.",
+    "No taps, login or server mutations during native tree inspection.",
+    "Other icons, informative/decorative images, tabs, messages and scene actions remain in ACC-05 scope; whole scenario remains partial.",
+    "iOS/VoiceOver excluded by user.",
+    "Raw Android trees remain private; no account data published."
+  ]
+}

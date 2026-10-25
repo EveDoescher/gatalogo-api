@@ -141,6 +141,7 @@ def selection(scenario, output):
         "SEC-02": "isolation_cases.py",
         "SEC-03": "websocket_cases.py",
         "SEC-05": "storage_cases.py",
+        "SEC-06": "input_bounds_cases.py",
         "SEC-07": "auth_flow_cases.py",
         "SEC-10": "revocation_cases.py",
         "SEC-08": "privacy_cases.py",
@@ -163,6 +164,8 @@ def selection(scenario, output):
         names.extend(
             ["delivery_cases.py", "image_cases.py", "test_logging_security.py"]
         )
+    if scenario == "SEC-06":
+        names.append("image_cases.py")
     if scenario in ("DATA-03", "DATA-04"):
         names.append("idempotency_child.py")
     if scenario == "DB-02":
@@ -193,6 +196,8 @@ def selection(scenario, output):
         selected.extend(
             ["delivery_cases.py", "image_cases.py", "test_logging_security.py"]
         )
+    if scenario == "SEC-06":
+        selected.append("image_cases.py")
     selectors = [str(executors / name) for name in selected]
     selectors += ["-k", scenario.replace("-", ""), "--confcutdir", str(executors)]
     return (
@@ -487,6 +492,7 @@ if __name__ == "__main__":
             "SEC-02",
             "SEC-03",
             "SEC-05",
+            "SEC-06",
             "SEC-07",
             "SEC-10",
             "SEC-08",
