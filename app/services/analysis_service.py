@@ -387,7 +387,7 @@ class AnalysisService:
             raise
         except GeminiAnalysisError:
             raise
-        except ValidationError as error:
+        except ValidationError:
             raise GeminiAnalysisError(
                 "A resposta do Gemini não corresponde ao schema esperado."
             ) from None
