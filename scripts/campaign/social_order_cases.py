@@ -89,6 +89,9 @@ async def test_DATA08_DB03_identical_message_rows_with_equal_times_keep_presenta
         }
 
     first = await view()
+    expected_ids = sorted(str(row["id"]) for row in rows)
+    assert first["history_ids"] == expected_ids
+    assert first["last_message_id"] == expected_ids[-1]
     async with db.factory() as session:
         await session.execute(
             delete(ConversationMessage).where(
@@ -117,7 +120,7 @@ async def test_DATA08_DB03_identical_message_rows_with_equal_times_keep_presenta
             "history_order_invariant": first["history_ids"] == second["history_ids"],
             "last_message_invariant": first["last_message_id"]
             == second["last_message_id"],
-            "scope": "two own messages with equal times and identical logical rows; only physical insertion order changes. Does not prescribe which tie-break key should be chosen or alter user-visible ordering.",
+            "scope": "two own messages with equal times and identical logical rows; only physical insertion order changes. Contract is created_at then canonical UUID ascending; inbox uses the last such message.",
         },
     )
     assert first == second, (

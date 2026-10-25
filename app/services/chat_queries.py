@@ -79,7 +79,9 @@ async def conversations_list(
             await session.execute(
                 select(ConversationMessage)
                 .where(ConversationMessage.conversation_id == conv.id)
-                .order_by(ConversationMessage.created_at.desc())
+                .order_by(
+                    ConversationMessage.created_at.desc(), ConversationMessage.id.desc()
+                )
                 .limit(1)
             )
         ).scalar_one_or_none()
@@ -159,7 +161,7 @@ async def messages(
             await session.execute(
                 select(ConversationMessage)
                 .where(ConversationMessage.conversation_id == conversation_id)
-                .order_by(ConversationMessage.created_at)
+                .order_by(ConversationMessage.created_at, ConversationMessage.id)
             )
         )
         .scalars()
