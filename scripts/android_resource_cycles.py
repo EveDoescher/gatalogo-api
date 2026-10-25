@@ -26,7 +26,7 @@ async def run(args):
             {
                 "cycles": 30,
                 "resumed": args.resume,
-                "observer_id_policy": "Scoped VM ID zone, invalidated before GC",
+                "observer_id_policy": "Scoped VM ID zone when protocol supports it; older protocol retains default observer IDs",
                 "warmup_cycles": 3,
                 "executor_sha256": hashlib.sha256(
                     Path(__file__).read_bytes()

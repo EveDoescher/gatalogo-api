@@ -28,7 +28,9 @@ class Vm:
                 reply = json.loads(await self.socket.recv())
                 if reply.get("id") == ident:
                     if "error" in reply:
-                        raise RuntimeError(f"Diagnostic VM method {method} rejected")
+                        raise RuntimeError(
+                            f"Diagnostic VM method {method} rejected ({reply['error'].get('code')})"
+                        )
                     return reply["result"]
 
     async def obj(self, ident):
@@ -135,17 +137,23 @@ async def session(android, source_log):
             isolates = [i for i in root["isolates"] if i["name"] == "main"]
             assert len(isolates) == 1
             vm.isolate = isolates[0]["id"]
-            zone = await vm.rpc(
-                "createIdZone",
-                isolateId=vm.isolate,
-                backingBufferKind="ring",
-                idAssignmentPolicy="reuseExisting",
-                capacity=512,
-            )
-            vm.zone = zone["id"]
+            try:
+                zone = await vm.rpc(
+                    "createIdZone",
+                    isolateId=vm.isolate,
+                    backingBufferKind="Ring",
+                    idAssignmentPolicy="ReuseExisting",
+                    capacity=512,
+                )
+                vm.zone = zone["id"]
+            except RuntimeError as error:
+                if "(-32601)" not in str(error):
+                    raise
+                vm.zone = None
             try:
                 yield vm
             finally:
-                await vm.rpc("deleteIdZone", isolateId=vm.isolate, idZoneId=vm.zone)
+                if vm.zone:
+                    await vm.rpc("deleteIdZone", isolateId=vm.isolate, idZoneId=vm.zone)
     finally:
         android.run("forward", "--remove", "tcp:" + port)
