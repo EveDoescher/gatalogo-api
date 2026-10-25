@@ -73,3 +73,7 @@ As rejeições cobrem token ausente/malformado, assinatura/issuer/type inválido
 ## DATA-04 — concluído em 24/10/2026
 
 4 testes aprovados, sem alteração do produto. [Fingerprint, escopo, fontes e hashes](DATA04-20261024-results.json). Mudanças de ação/alvo/conteúdo foram rejeitadas pelo motivo correto, sem efeitos extras; replay original e a mesma chave em outra conta permaneceram válidos.
+
+## DATA-05 / MUT-03 — reforço do oráculo
+
+O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idêntico escondia uma revisão extra. [Ciclo completo e evidências](DATA05-MUT03-20261024-results.json). Foi acrescentado empate com o mesmo dispositivo e contagem exata de revisões por operação. O baseline passou em 8 testes e o mutante foi detectado por 3 asserções. Não houve correção no produto, que já tratava o empate corretamente. O sobrevivente histórico permanece preservado.

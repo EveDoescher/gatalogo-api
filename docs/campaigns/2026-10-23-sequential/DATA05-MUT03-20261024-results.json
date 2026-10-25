@@ -1,0 +1,72 @@
+{
+  "scenario": "DATA-05",
+  "mutation": "MUT-03",
+  "date": "2026-10-24",
+  "test_correction_commit": "fadde7c",
+  "product_correction": null,
+  "cycle": {
+    "hypothesis": "Equal timestamp/device replay must not create another revision",
+    "before": "7 green tests did not detect >= replacing > in device tie-break; mutant survived",
+    "problem": "Same payload hid an extra write; missing equality assertion for identical device",
+    "test_change": "Add identical-device function case and exact SyncChange delta per accepted/rejected HTTP operation",
+    "revalidation": "8 baseline PASS; mutant killed by identical-device case and both HTTP arrival orders"
+  },
+  "runs": [
+    {
+      "mutation": "MUT-03",
+      "classification": "SURVIVED",
+      "recipe": {
+        "path": "app/routers/sync.py",
+        "before_sha256": "6076fb79271e216583d684868f2c048aba2ea4fcf96ec04c20a080a6863234b3",
+        "after_sha256": "a828b2c80860fd1d4aa78ec256e7a37b6bdf42ff67c2ecb828fe003139a92d55"
+      },
+      "failed_baseline_selectors": [],
+      "baseline_passed": 7,
+      "isolated_candidate": "sources\\MUT03-20261024-01\\api",
+      "product_checkout_unchanged": true
+    },
+    {
+      "mutation": "MUT-03",
+      "classification": "KILLED",
+      "recipe": {
+        "path": "app/routers/sync.py",
+        "before_sha256": "6076fb79271e216583d684868f2c048aba2ea4fcf96ec04c20a080a6863234b3",
+        "after_sha256": "a828b2c80860fd1d4aa78ec256e7a37b6bdf42ff67c2ecb828fe003139a92d55"
+      },
+      "failed_baseline_selectors": [
+        [
+          "sequential.MUT03-20261024-02.executors.security_cases",
+          "test_DATA05_conflict_and_tombstone[0-m-False-False]"
+        ],
+        [
+          "sequential.MUT03-20261024-02.executors.extended_cases",
+          "test_DATA05_http_conflicts_preserve_authoritative_analysis[ascending]"
+        ],
+        [
+          "sequential.MUT03-20261024-02.executors.extended_cases",
+          "test_DATA05_http_conflicts_preserve_authoritative_analysis[descending]"
+        ]
+      ],
+      "baseline_passed": 8,
+      "isolated_candidate": "sources\\MUT03-20261024-02\\api",
+      "product_checkout_unchanged": true
+    }
+  ],
+  "evidence_sha256": {
+    "sequential/MUT03-20261024-01/mutation.json": "6b7707db55f3a5fbe6926e533cd42f4a65861c069496d8c9a94b337df2ae9c29",
+    "sequential/MUT03-20261024-01/mutation.diff": "de678a77a2c8dbdd98dd8eb6ffd06f18f278773db405310150627d3553efe790",
+    "sequential/MUT03-20261024-01/candidate_manifest.json": "df02aa59ec892058bec2df5b29eedac7fe980ca3c09f301f15bc24cfbe2eccd4",
+    "sequential/MUT03-20261024-01/source_manifest.json": "a31275ba86b13baf462868cac3434ba109407ab38c62e1a2bc09e6f9a110b47e",
+    "sequential/MUT03-20261024-01/baseline-junit.xml": "a91126c38bf5a839c54a68645af03d57621ff9c8b8b736eb40cdf44b58208203",
+    "sequential/MUT03-20261024-01/junit.xml": "8e787db658ba2b2027027d08d3a4c780974048c7c1b6dd2a6518ec2393284ec5",
+    "sequential/MUT03-20261024-01/summary.json": "285c2e8e036072727ad253855158199a5d9b7bb4bf1cf2758f8a1e71c8c9acb5",
+    "sequential/MUT03-20261024-02/mutation.json": "a18193250a7e6b0ab8494f83c1f86894a2f7232ba69f2eeec17c7db6bee75a11",
+    "sequential/MUT03-20261024-02/mutation.diff": "de678a77a2c8dbdd98dd8eb6ffd06f18f278773db405310150627d3553efe790",
+    "sequential/MUT03-20261024-02/candidate_manifest.json": "9b5925d52fba0a07153f8a1f37fcff898466971e4c6f8f33a0db0e3232e36eeb",
+    "sequential/MUT03-20261024-02/source_manifest.json": "86591dddf883096c0c93298a05701621d10d0d3815f313fed231e0a45cadf95c",
+    "sequential/MUT03-20261024-02/baseline-junit.xml": "3ee37fc1b099d5202c83ca2ccbfdbec68df18987c30a710b2e82119a09337bb8",
+    "sequential/MUT03-20261024-02/junit.xml": "87d9c36850f81eff562f9387f193565e77b6217684b0c40d5f9767312c435c56",
+    "sequential/MUT03-20261024-02/summary.json": "cc07a68556dd6583f22e6b51e95d543e75eb54e18e6b603ec17cac6dac02f850"
+  },
+  "limitation": "Directed mutation in frozen copies only; product already rejected identical-device replay and was not changed."
+}

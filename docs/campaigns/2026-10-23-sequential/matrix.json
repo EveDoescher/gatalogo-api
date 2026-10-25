@@ -652,7 +652,8 @@
     ],
     "limitation": "Função e HTTP/PG cobertos; não representa percurso de UI/offline móvel.",
     "closure_evidence": [
-      "DATA05-20261024-results.json"
+      "DATA05-20261024-results.json",
+      "DATA05-MUT03-20261024-results.json"
     ],
     "executor": "scripts/run_security_regression.py --scenario DATA-05"
   },
