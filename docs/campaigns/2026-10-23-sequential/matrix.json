@@ -1243,7 +1243,10 @@
     "local_runs": [
       "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+    "limitation": "One 100-cycle mixed round and 400 isolated denied-upload diagnostics passed; run 05 timed out in mixed round 2 cycle 28. Three-round stability not established.",
+    "closure_evidence": [
+      "RSC02-20261025-results.json"
+    ]
   },
   {
     "scenario": "RSC-03",
@@ -1259,11 +1262,16 @@
   },
   {
     "scenario": "RSC-04",
-    "state": "PENDING",
+    "state": "COMPLETED",
     "scope": "30 ciclos câmera/detalhes/chat/Quintal; heap antes/depois de repouso/GC observado.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
-    "runs": []
+    "runs": [],
+    "closure_evidence": [
+      "ANDROID-USB-20261025-results.json"
+    ],
+    "limitation": "30 camera-cancel/details/chat/yard cycles + 3 warmups on physical Android, GC/heap/native memory checkpoints. Existing development dataset, debug only; no release no-leak claim.",
+    "executor": "scripts/android_resource_cycles.py + scripts/android_cycle_report.py"
   },
   {
     "scenario": "RSC-05",
@@ -1394,6 +1402,9 @@
     "followup_runs": [
       "attempts/accessibility-flows-01/accessibility_flows/summary.json",
       "attempts/accessibility-flows-02/accessibility_flows/summary.json"
+    ],
+    "closure_evidence": [
+      "ANDROID-USB-20261025-results.json"
     ]
   },
   {
@@ -1412,11 +1423,14 @@
     "followup_runs": [
       "attempts/accessibility-flows-01/accessibility_flows/summary.json",
       "attempts/accessibility-flows-02/accessibility_flows/summary.json"
+    ],
+    "closure_evidence": [
+      "ANDROID-USB-20261025-results.json"
     ]
   },
   {
     "scenario": "ACC-04",
-    "state": "PENDING",
+    "state": "COMPLETED",
     "scope": "Android/TalkBack: entrar, escolher foto, localizar gato, ouvir análise, enviar mensagem, ler notificação e operar uma ação do Quintal.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -1424,7 +1438,11 @@
     "excluded": [
       "iOS/VoiceOver por decisão do usuário"
     ],
-    "limitation": "Android USB autorizado e app em primeiro plano confirmados em 24/10. Percursos com TalkBack ainda não executados; não é mais um bloqueio por ausência de aparelho."
+    "limitation": "Android TalkBack tasks passed by explicit human report: sign-in, real photo selection/cancel, collection/analysis, message send to provided test peer, notification and yard action. No audio recording or independent remote speech verification; iOS excluded. ACC-08 error states remain separate.",
+    "closure_evidence": [
+      "ANDROID-USB-20261025-results.json"
+    ],
+    "executor": "scripts/android_quality.py + human TalkBack task confirmations"
   },
   {
     "scenario": "ACC-05",
@@ -1444,7 +1462,8 @@
       "attempts/accessibility-flows-02/accessibility_flows/summary.json"
     ],
     "closure_evidence": [
-      "ACC05-header-20261024-results.json"
+      "ACC05-header-20261024-results.json",
+      "ANDROID-USB-20261025-results.json"
     ]
   },
   {
@@ -1459,7 +1478,10 @@
       "attempts/accessibility-04/accessibility/tests.jsonl"
     ],
     "findings": false,
-    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes.",
+    "closure_evidence": [
+      "ANDROID-USB-20261025-results.json"
+    ]
   },
   {
     "scenario": "ACC-07",
@@ -1477,6 +1499,9 @@
     "followup_runs": [
       "attempts/accessibility-flows-01/accessibility_flows/summary.json",
       "attempts/accessibility-flows-02/accessibility_flows/summary.json"
+    ],
+    "closure_evidence": [
+      "ANDROID-USB-20261025-results.json"
     ]
   },
   {

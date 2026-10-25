@@ -1,0 +1,3319 @@
+{
+  "date": "2026-10-25",
+  "scope": "Physical Android debug app, existing development accounts/data. Automated cycles send no messages or photos; human TalkBack phase sent one test message to the provided development peer and cancelled selected photo before Analyze/Save. No paid inference, APK rebuild or data clearing; iOS excluded.",
+  "api_executor_commit": "2b2546de0d39b8f8348242a54c82e88ec10701e3",
+  "flutter_commit": "cf6cc8be296a33d9120d7515d855dbd29656e4a2",
+  "baseline_main": {
+    "api": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+    "flutter": "0ed31b211f31873d6f905116a0f0ccc5588e01c1"
+  },
+  "source_attestation": {
+    "date_utc": "2026-10-25T20:37:45.889932+00:00",
+    "package": "com.example.catlogue",
+    "actions": "Read PID/logs/VM source hashes; own loopback forward only. No code evaluation, attach, reload, install, preferences or app mutation.",
+    "discovery": "saved VM log from same currently running Android PID",
+    "state": "READ",
+    "loaded_app_scripts": 172,
+    "matched": 172,
+    "different": 0,
+    "source_unavailable": 0,
+    "flutter_head": "cf6cc8be296a33d9120d7515d855dbd29656e4a2"
+  },
+  "executors": [
+    "scripts/android_quality.py",
+    "scripts/android_vm.py",
+    "scripts/android_resource_cycles.py",
+    "scripts/android_network_motion.py",
+    "scripts/probe_android_runtime.py",
+    "scripts/hot_reload_android.py",
+    "scripts/android_cycle_report.py"
+  ],
+  "fix": {
+    "scenario": "ACC-02",
+    "problem": "XP text clipped at enlarged font in fixed-height progress indicator.",
+    "hypothesis": "A minimum height with intrinsic label height will preserve normal rendering and accommodate enlarged text.",
+    "implementation": "Minimum height, filled progress background and text-driven stack height; enlarged line height only for scaled fonts.",
+    "symbol": "IllustratedProgress",
+    "file": "lib/widgets/illustrated_home_components.dart",
+    "commit": "cf6cc8be296a33d9120d7515d855dbd29656e4a2",
+    "automated_test": "test/illustrated_progress_accessibility_test.dart",
+    "before": {
+      "cases": 6,
+      "passed": 3,
+      "failed": 3,
+      "run": "ACC02-progress-20261025-before-02"
+    },
+    "after": {
+      "passed": 21,
+      "failed": 0,
+      "run": "ACC02-progress-20261025-after-02"
+    },
+    "normal_png_byte_identical": {
+      "110": true,
+      "140": true
+    },
+    "physical_revalidation": "xp-after-font200/screen.png; complete XP label visually inspected after two-library hot reload.",
+    "delivery": "Hot reload only; installed APK not rebuilt. Next normal build incorporates committed correction."
+  },
+  "human_talkback": {
+    "status": "HUMAN_REPORTED_PASS",
+    "source": "User confirmed four-step TalkBack task on connected Android",
+    "answer": "Completei sem problemas",
+    "variants": [
+      "header actions",
+      "collection and existing analysis",
+      "open gallery and cancel without photo submission",
+      "read notification and select yard action"
+    ],
+    "not_claimed": [
+      "login with reader",
+      "sending chat with reader",
+      "audio recording or independent remote speech verification"
+    ],
+    "restored": {
+      "enabled_accessibility_services": "null",
+      "accessibility_enabled": "0",
+      "touch_exploration_enabled": "0"
+    }
+  },
+  "keyboard": {
+    "query": "qqq",
+    "query_removed": true,
+    "scope": "Filter and soft keyboard only, no server write or message send"
+  },
+  "native_capture_inventory": [
+    {
+      "capture": "after-talkback",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Início"
+      ],
+      "metadata_sha256": "58b68cc3156b7d0a4fd9b4af14d395a0760b192fb1a68fd337310314e4f6933d"
+    },
+    {
+      "capture": "collection-scale100",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Início"
+      ],
+      "metadata_sha256": "b47502d5659e6e2b3093b6cb8122eaa40f9969113bd53cc1f84f34c62efb8ba5"
+    },
+    {
+      "capture": "collection-scale130",
+      "font": "1.3",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "f1ef2a3d0a95ef4eac4565febdee539f88bc0af7974c847734cef41108c77063"
+    },
+    {
+      "capture": "collection-scale200",
+      "font": "2.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "8da2dc6f4b9c7f2001597068da143680f4aed3d4789dbc35276b6b955c72a96e"
+    },
+    {
+      "capture": "cycles-camera-setup",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Gatalogar"
+      ],
+      "metadata_sha256": "0ba468e46317e0035bc33ef8ea0155ab9e34367361fc8d2e3ccb66963bd73fd1"
+    },
+    {
+      "capture": "cycles-collection-setup",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "ecebea9331f6f46f77b9f42057eec238e47d55996d7a58d1f8e80a916c46a4ab"
+    },
+    {
+      "capture": "cycles-inbox-setup",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Social"
+      ],
+      "metadata_sha256": "40af7ce29c5fdf2668ce64ca34647e42af77aebf91406bcf8e73153a662183fa"
+    },
+    {
+      "capture": "cycles-start",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Social"
+      ],
+      "metadata_sha256": "75badf1e978b022d819d25249125af3f84aeacc4456c36eaa9d82b30a6842968"
+    },
+    {
+      "capture": "home-font100",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Início"
+      ],
+      "metadata_sha256": "c0bff4e8c1d024c300659973ef15dbba37c8810d3b7042a7bcf1ccbb7129d9c4"
+    },
+    {
+      "capture": "home-scale100",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Início"
+      ],
+      "metadata_sha256": "d0666a641827f80c44898f1aab665f80bb1bc44438ed4aaa8c5b1a97e99a2427"
+    },
+    {
+      "capture": "home-scale130",
+      "font": "1.3",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Início"
+      ],
+      "metadata_sha256": "e9a17a0896a40d754afcbcf548e699c315021bd8265e763ca3a21e6e31b61f79"
+    },
+    {
+      "capture": "home-scale200",
+      "font": "2.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Início"
+      ],
+      "metadata_sha256": "2ec9915d28dede9d39124c8578cfbeab96fbb49e48fc4a2e67ed2baf5791580d"
+    },
+    {
+      "capture": "keyboard-collection",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Início"
+      ],
+      "metadata_sha256": "7c1c32e63894374af69a66e445f2733922bff1335ecc45f7d52263d3f46fb4e3"
+    },
+    {
+      "capture": "keyboard-collection-retry",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "f519eea0443fccd800c12e7bf4ddf7ebfa9d96300f7136c776ede8cf9f333d4d"
+    },
+    {
+      "capture": "keyboard-filtered",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "33ba1540315b95945b5c2441b703e188abc152578e1632ea9306ad84918298c3"
+    },
+    {
+      "capture": "keyboard-restored",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "f427220df421717de3f3ab96083acfc659132451755f9be35c03704d81b6090f"
+    },
+    {
+      "capture": "network-before",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "87acdbd5c7b12180bd41fe95691ee099a6037c9c1ef555ab1c0dd23e759eb260"
+    },
+    {
+      "capture": "network-offline-social",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "f328d4b9c302459fd5fe57d81e80133f2704715d3903d72c602da7e04ba3d8e6"
+    },
+    {
+      "capture": "network-recovered-social",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "360287f433eaf63f7a5ce4d8f089cf60a5bd46909af0373454ba5d3a4cd36d22"
+    },
+    {
+      "capture": "post-reload-current",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "0d71a1e33f09b925d315ac645f7add891b78c630e97ecec017d5924221b9ad82"
+    },
+    {
+      "capture": "rsc-friends",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Social"
+      ],
+      "metadata_sha256": "94e473e55fe3b782813425629e3614b9c12b18e7e70e3d02493936d511cffb87"
+    },
+    {
+      "capture": "rsc-inbox",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Social"
+      ],
+      "metadata_sha256": "3bcb8a8a04554833d095efc98a0d4149f6b2e5e47b95bec801024a3286ad110e"
+    },
+    {
+      "capture": "rsc-inbox-ready",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Social"
+      ],
+      "metadata_sha256": "c0380ae7a689d22e524c105c108353f1599e9dd70a16546c9bc13d8f0652411c"
+    },
+    {
+      "capture": "rsc-social",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "170cfb32f58c232b430f0fb34584c457cd40351dccbaf86f0b0de88c534fd45a"
+    },
+    {
+      "capture": "rsc-social-retry",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Social"
+      ],
+      "metadata_sha256": "6cad01722e3113dca2ac4bae31e21800c34217f5464990d938df07383799236f"
+    },
+    {
+      "capture": "social-scale100",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Social"
+      ],
+      "metadata_sha256": "6fc5222b1376e08a6ef4a0c54dcc5fd179c8ad00a826c2d0c470ad5d04c0789c"
+    },
+    {
+      "capture": "social-scale130",
+      "font": "1.3",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Social"
+      ],
+      "metadata_sha256": "d5897fda179a020a0c270f71ac04f2137a18a222ed8a2c196c40e59dd87b4c11"
+    },
+    {
+      "capture": "social-scale200",
+      "font": "2.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Social"
+      ],
+      "metadata_sha256": "e862f5a2e864c7505e1609ad2754c2dec5764ae98cd9a57e7fa91697c5639224"
+    },
+    {
+      "capture": "v320x568-f100-collection",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 880x1562",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "84ca6573f9000f174dc9b5924853b224bfd145e0804dd662fa4e78ecde073734"
+    },
+    {
+      "capture": "v320x568-f100-home",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 880x1562",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Início"
+      ],
+      "metadata_sha256": "b3bbfaf46585adb185e3a6c32e3db5f746f03d6a4be76ab63cf00ccd003cbff1"
+    },
+    {
+      "capture": "v320x568-f100-start",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 880x1562",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Início"
+      ],
+      "metadata_sha256": "d5525c84eb4f47313844715b81f311973b01acdf5d93c3184f8a2459f7725e1c"
+    },
+    {
+      "capture": "v320x568-f200-collection",
+      "font": "2.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 880x1562",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "0f906426b2ed53f62f26f691f1c07c0e5abab2298a875a8a95fb2819a357bf89"
+    },
+    {
+      "capture": "v320x568-f200-home",
+      "font": "2.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 880x1562",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Início"
+      ],
+      "metadata_sha256": "ecc6df9070db39fdb25be908d0129d563daa8decd69f1fadf90b776a76c63302"
+    },
+    {
+      "capture": "v320x568-f200-start",
+      "font": "2.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 880x1562",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "ecf90f5e933b6471859c4456ec17cd0145269edcc50bd4b1186d95e885f11784"
+    },
+    {
+      "capture": "v360x800-f100-collection",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 990x2200",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "c99881d476ffacb7af89e65eab2c868538ea67bde43bb2b4d46ddb7dc82891ae"
+    },
+    {
+      "capture": "v360x800-f100-home",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 990x2200",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Início"
+      ],
+      "metadata_sha256": "d44dafd81c94397decf2dc06f6a1bb960967f3cf89ab20cc7df730688093fd97"
+    },
+    {
+      "capture": "v360x800-f100-start",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 990x2200",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "d066d7104c693dbdf13497c63f2740f686b8802cea8997aed0cce90a0a711890"
+    },
+    {
+      "capture": "v360x800-f200-collection",
+      "font": "2.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 990x2200",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "dbc252f9c85109b28d1affc06d99cd8c5bb3b4e0bf9c7af9bf71f6df7a5dd16c"
+    },
+    {
+      "capture": "v360x800-f200-home",
+      "font": "2.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 990x2200",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Início"
+      ],
+      "metadata_sha256": "4020587631854f9c02eb2bb4646eab4ce7790845e48725de7ba222f115b01c85"
+    },
+    {
+      "capture": "v360x800-f200-start",
+      "font": "2.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 990x2200",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "ecee67e3a598dd4e7908f6305771ab272d38829396a31332a8377925a38f2990"
+    },
+    {
+      "capture": "v412x915-f100-collection",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 1133x2516",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "d3e07068b81bd5c69940250abb89c9e8461d735213ea296d634aa4189532b3a0"
+    },
+    {
+      "capture": "v412x915-f100-home",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 1133x2516",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Início"
+      ],
+      "metadata_sha256": "6d71bb8de9b70d937e940ff96861f17e3866388e8dbda4d3cb865db8873ff64c"
+    },
+    {
+      "capture": "v412x915-f100-start",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 1133x2516",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "da8b44f0586c48d8d589bee440d104d8e674175f0f2a6f6d01023e3995a94030"
+    },
+    {
+      "capture": "v412x915-f200-collection",
+      "font": "2.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 1133x2516",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "028376c9d271e59104114812ed63a5e33ebfcecba951261b3d104811f25500e5"
+    },
+    {
+      "capture": "v412x915-f200-home",
+      "font": "2.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 1133x2516",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Início"
+      ],
+      "metadata_sha256": "f215eb1ffd081a1904edfad6731524a4da67ea24828cc1f43108ab6dd3745dda"
+    },
+    {
+      "capture": "v412x915-f200-start",
+      "font": "2.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 1133x2516",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "ec19a01c98df34fba45d13e40cfcbfc2a8ce185eeb5776faa78ec89d9bafa45a"
+    },
+    {
+      "capture": "v800x1280-f100-collection",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 800x1280",
+      "density": "Physical density: 440\r\nOverride density: 160",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "f7ac4905c4c230c168b8099954aa815db3591dc79770a6ec1b19b30e1dd2e596"
+    },
+    {
+      "capture": "v800x1280-f100-home",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 800x1280",
+      "density": "Physical density: 440\r\nOverride density: 160",
+      "selected_root": [
+        "Início"
+      ],
+      "metadata_sha256": "9180a62b671602f5b03e77b4d199dae238410c0494cde83c84738427f563557f"
+    },
+    {
+      "capture": "v800x1280-f100-start",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 800x1280",
+      "density": "Physical density: 440\r\nOverride density: 160",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "8e5e6a50ab9f51afbf49b0fd6e38ab3123bf202442fe9675f483cae4ccfb8cc1"
+    },
+    {
+      "capture": "v800x1280-f200-collection",
+      "font": "2.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 800x1280",
+      "density": "Physical density: 440\r\nOverride density: 160",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "6edb874d99576495598941c0672abd57a96c01fd7907013630da8a6a7db1d84c"
+    },
+    {
+      "capture": "v800x1280-f200-home",
+      "font": "2.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 800x1280",
+      "density": "Physical density: 440\r\nOverride density: 160",
+      "selected_root": [
+        "Início"
+      ],
+      "metadata_sha256": "91188b83223398a92a371135b621d4a7bc356645a1f1ff3efb23098ac9a9175c"
+    },
+    {
+      "capture": "v800x1280-f200-start",
+      "font": "2.0",
+      "wm_size": "Physical size: 1080x2400\r\nOverride size: 800x1280",
+      "density": "Physical density: 440\r\nOverride density: 160",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "fc435e82c6ac0c5300a297b3d033d8c8c1e00c1ead2471b1563bd872b7dc1aa3"
+    },
+    {
+      "capture": "xp-after-font100",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Coleção"
+      ],
+      "metadata_sha256": "96f842af95d85a8177cbc639faed186db30d0e97bb41ad24c960e14c72470230"
+    },
+    {
+      "capture": "xp-after-font100-retry",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Início"
+      ],
+      "metadata_sha256": "259605d09fb0ba14a48f458dfe1b3cd01fc36ee4b21deea41e21f3ba7dd0ebd2"
+    },
+    {
+      "capture": "xp-after-font200",
+      "font": "2.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Início"
+      ],
+      "metadata_sha256": "dbd1cb5c03d902f5e082e58da798291d17fcfd7639afd73f9d8dede217280c03"
+    },
+    {
+      "capture": "xp-font-restored",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Início"
+      ],
+      "metadata_sha256": "0b2d7f4aa819fbc217f48941001a5c948dd0b21f03b6394132f023abeb490e02"
+    },
+    {
+      "capture": "yard-scale100",
+      "font": "1.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Quintal"
+      ],
+      "metadata_sha256": "ab86d180c6fd33e14179986b3b4fa84c5d6672170583943b73f1af31b412061c"
+    },
+    {
+      "capture": "yard-scale130",
+      "font": "1.3",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Quintal"
+      ],
+      "metadata_sha256": "7dbab15a849ac25939687fbad141d63ee75440ddf6189d77202c2e500a3e519d"
+    },
+    {
+      "capture": "yard-scale200",
+      "font": "2.0",
+      "wm_size": "Physical size: 1080x2400",
+      "density": "Physical density: 440",
+      "selected_root": [
+        "Quintal"
+      ],
+      "metadata_sha256": "7ac0354660499fa3fafe33f7f881ef4b5084a6358be93c51dbe73645e46d25be"
+    }
+  ],
+  "limitations": [
+    "Debug instrumentation and artificial navigation waits are not release latency, throughput or no-leak certification.",
+    "One physical device with OS size/density overrides is not an independent tablet or population sample.",
+    "Font 2.0 tested; maximum supported OS font, all dialogs, error states and routes not comprehensively certified.",
+    "Header native bounds below 48dp are candidates requiring actual hit-test review; no audible defect inferred from duplicate tree labels.",
+    "Quest text/art overlap at enlarged font remains a visual review finding; not corrected by the XP fix.",
+    "Earlier network-*social files actually show Collection. They support cached Collection only, not Social recovery.",
+    "collection-scale100 remained Home; keyboard-collection-retry/keyboard-restored provide actual default Collection evidence.",
+    "Cold-start capture attempt failed; no precise cold-start latency claimed.",
+    "Early executor attempts and all raw evidence are retained. Scripts from exploratory native cohorts were not frozen at execution time; no retroactive exact executor SHA claim.",
+    "Final human confirmation completes Android reader tasks, but does not certify all accessibility error states or replace pending ACC-08 variants."
+  ],
+  "resource_cycles": {
+    "state": "PASS",
+    "cycles_completed": 30,
+    "warmup_cycles": 3,
+    "same_android_pid": "7662",
+    "snapshots": [
+      {
+        "dateLastGC": "1792962928682",
+        "memoryUsage": {
+          "type": "MemoryUsage",
+          "heapUsage": 225093088,
+          "heapCapacity": 233312256,
+          "externalUsage": 172192
+        },
+        "classes": [
+          {
+            "name": "_BroadcastSubscription",
+            "instances": 42,
+            "bytes": 2688
+          },
+          {
+            "name": "_Timer",
+            "instances": 12,
+            "bytes": 576
+          },
+          {
+            "name": "_MainNavigationState",
+            "instances": 1,
+            "bytes": 112
+          },
+          {
+            "name": "ConversationController",
+            "instances": 3,
+            "bytes": 576
+          },
+          {
+            "name": "_CapturePageState",
+            "instances": 1,
+            "bytes": 64
+          },
+          {
+            "name": "_CatDetailsPageState",
+            "instances": 2,
+            "bytes": 64
+          },
+          {
+            "name": "_ConversationPageState",
+            "instances": 3,
+            "bytes": 192
+          },
+          {
+            "name": "_HabitatPageState",
+            "instances": 1,
+            "bytes": 128
+          },
+          {
+            "name": "CatPreflightService",
+            "instances": 1,
+            "bytes": 16
+          },
+          {
+            "name": "Interpreter",
+            "instances": 1,
+            "bytes": 48
+          },
+          {
+            "name": "AnimationController",
+            "instances": 196,
+            "bytes": 15680
+          }
+        ],
+        "label": "cycles-baseline",
+        "app_cache_du": "55377\tcache"
+      },
+      {
+        "dateLastGC": "1792963175259",
+        "memoryUsage": {
+          "type": "MemoryUsage",
+          "heapUsage": 226732160,
+          "heapCapacity": 239603712,
+          "externalUsage": 237952
+        },
+        "classes": [
+          {
+            "name": "_BroadcastSubscription",
+            "instances": 42,
+            "bytes": 2688
+          },
+          {
+            "name": "_Timer",
+            "instances": 12,
+            "bytes": 576
+          },
+          {
+            "name": "_MainNavigationState",
+            "instances": 1,
+            "bytes": 112
+          },
+          {
+            "name": "ConversationController",
+            "instances": 3,
+            "bytes": 576
+          },
+          {
+            "name": "_CapturePageState",
+            "instances": 1,
+            "bytes": 64
+          },
+          {
+            "name": "_CatDetailsPageState",
+            "instances": 2,
+            "bytes": 64
+          },
+          {
+            "name": "_ConversationPageState",
+            "instances": 3,
+            "bytes": 192
+          },
+          {
+            "name": "_HabitatPageState",
+            "instances": 1,
+            "bytes": 128
+          },
+          {
+            "name": "CatPreflightService",
+            "instances": 1,
+            "bytes": 16
+          },
+          {
+            "name": "Interpreter",
+            "instances": 1,
+            "bytes": 48
+          },
+          {
+            "name": "AnimationController",
+            "instances": 196,
+            "bytes": 15680
+          }
+        ],
+        "label": "cycles-after-10",
+        "app_cache_du": "55385\tcache"
+      },
+      {
+        "dateLastGC": "1792963727467",
+        "memoryUsage": {
+          "type": "MemoryUsage",
+          "heapUsage": 225491744,
+          "heapCapacity": 232787968,
+          "externalUsage": 168656
+        },
+        "classes": [
+          {
+            "name": "_BroadcastSubscription",
+            "instances": 28,
+            "bytes": 1792
+          },
+          {
+            "name": "_Timer",
+            "instances": 10,
+            "bytes": 480
+          },
+          {
+            "name": "_MainNavigationState",
+            "instances": 1,
+            "bytes": 112
+          },
+          {
+            "name": "ConversationController",
+            "instances": 1,
+            "bytes": 192
+          },
+          {
+            "name": "_CapturePageState",
+            "instances": 1,
+            "bytes": 64
+          },
+          {
+            "name": "_CatDetailsPageState",
+            "instances": 0,
+            "bytes": 0
+          },
+          {
+            "name": "_ConversationPageState",
+            "instances": 1,
+            "bytes": 64
+          },
+          {
+            "name": "_HabitatPageState",
+            "instances": 1,
+            "bytes": 128
+          },
+          {
+            "name": "CatPreflightService",
+            "instances": 1,
+            "bytes": 16
+          },
+          {
+            "name": "Interpreter",
+            "instances": 1,
+            "bytes": 48
+          },
+          {
+            "name": "AnimationController",
+            "instances": 178,
+            "bytes": 14240
+          }
+        ],
+        "label": "cycles-after-20",
+        "app_cache_du": "55385\tcache"
+      },
+      {
+        "dateLastGC": "1792963972237",
+        "memoryUsage": {
+          "type": "MemoryUsage",
+          "heapUsage": 227148800,
+          "heapCapacity": 244527104,
+          "externalUsage": 234384
+        },
+        "classes": [
+          {
+            "name": "_BroadcastSubscription",
+            "instances": 21,
+            "bytes": 1344
+          },
+          {
+            "name": "_Timer",
+            "instances": 9,
+            "bytes": 432
+          },
+          {
+            "name": "_MainNavigationState",
+            "instances": 1,
+            "bytes": 112
+          },
+          {
+            "name": "ConversationController",
+            "instances": 0,
+            "bytes": 0
+          },
+          {
+            "name": "_CapturePageState",
+            "instances": 1,
+            "bytes": 64
+          },
+          {
+            "name": "_CatDetailsPageState",
+            "instances": 0,
+            "bytes": 0
+          },
+          {
+            "name": "_ConversationPageState",
+            "instances": 0,
+            "bytes": 0
+          },
+          {
+            "name": "_HabitatPageState",
+            "instances": 1,
+            "bytes": 128
+          },
+          {
+            "name": "CatPreflightService",
+            "instances": 1,
+            "bytes": 16
+          },
+          {
+            "name": "Interpreter",
+            "instances": 1,
+            "bytes": 48
+          },
+          {
+            "name": "AnimationController",
+            "instances": 178,
+            "bytes": 14240
+          }
+        ],
+        "label": "cycles-after-30",
+        "app_cache_du": "55385\tcache"
+      },
+      {
+        "dateLastGC": "1792963979327",
+        "memoryUsage": {
+          "type": "MemoryUsage",
+          "heapUsage": 225907040,
+          "heapCapacity": 238235648,
+          "externalUsage": 234384
+        },
+        "classes": [
+          {
+            "name": "_BroadcastSubscription",
+            "instances": 21,
+            "bytes": 1344
+          },
+          {
+            "name": "_Timer",
+            "instances": 9,
+            "bytes": 432
+          },
+          {
+            "name": "_MainNavigationState",
+            "instances": 1,
+            "bytes": 112
+          },
+          {
+            "name": "ConversationController",
+            "instances": 0,
+            "bytes": 0
+          },
+          {
+            "name": "_CapturePageState",
+            "instances": 1,
+            "bytes": 64
+          },
+          {
+            "name": "_CatDetailsPageState",
+            "instances": 0,
+            "bytes": 0
+          },
+          {
+            "name": "_ConversationPageState",
+            "instances": 0,
+            "bytes": 0
+          },
+          {
+            "name": "_HabitatPageState",
+            "instances": 1,
+            "bytes": 128
+          },
+          {
+            "name": "CatPreflightService",
+            "instances": 1,
+            "bytes": 16
+          },
+          {
+            "name": "Interpreter",
+            "instances": 1,
+            "bytes": 48
+          },
+          {
+            "name": "AnimationController",
+            "instances": 178,
+            "bytes": 14240
+          }
+        ],
+        "label": "cycles-final-rest",
+        "app_cache_du": "55385\tcache"
+      },
+      {
+        "dateLastGC": "1792964002091",
+        "memoryUsage": {
+          "type": "MemoryUsage",
+          "heapUsage": 225982688,
+          "heapCapacity": 234885120,
+          "externalUsage": 234384
+        },
+        "classes": [
+          {
+            "name": "_BroadcastSubscription",
+            "instances": 21,
+            "bytes": 1344
+          },
+          {
+            "name": "_Timer",
+            "instances": 9,
+            "bytes": 432
+          },
+          {
+            "name": "_MainNavigationState",
+            "instances": 1,
+            "bytes": 112
+          },
+          {
+            "name": "ConversationController",
+            "instances": 0,
+            "bytes": 0
+          },
+          {
+            "name": "_CapturePageState",
+            "instances": 1,
+            "bytes": 64
+          },
+          {
+            "name": "_CatDetailsPageState",
+            "instances": 0,
+            "bytes": 0
+          },
+          {
+            "name": "_ConversationPageState",
+            "instances": 0,
+            "bytes": 0
+          },
+          {
+            "name": "_HabitatPageState",
+            "instances": 1,
+            "bytes": 128
+          },
+          {
+            "name": "CatPreflightService",
+            "instances": 1,
+            "bytes": 16
+          },
+          {
+            "name": "Interpreter",
+            "instances": 1,
+            "bytes": 48
+          },
+          {
+            "name": "AnimationController",
+            "instances": 178,
+            "bytes": 14240
+          }
+        ],
+        "label": "cycles-independent-scoped-observer"
+      }
+    ],
+    "native": [
+      {
+        "file": "cycles-after-10-meminfo.txt",
+        "summary_kb": {
+          "Java Heap": 12640,
+          "Native Heap": 76444,
+          "Code": 14888,
+          "Stack": 1192,
+          "Graphics": 881071,
+          "Private Other": 195592,
+          "System": 210994,
+          "TOTAL PSS": 1392821
+        }
+      },
+      {
+        "file": "cycles-after-20-meminfo.txt",
+        "summary_kb": {
+          "Java Heap": 8808,
+          "Native Heap": 77924,
+          "Code": 14500,
+          "Stack": 1208,
+          "Graphics": 922875,
+          "Private Other": 191560,
+          "System": 209709,
+          "TOTAL PSS": 1426584
+        }
+      },
+      {
+        "file": "cycles-after-30-meminfo.txt",
+        "summary_kb": {
+          "Java Heap": 8488,
+          "Native Heap": 75668,
+          "Code": 14220,
+          "Stack": 1224,
+          "Graphics": 947663,
+          "Private Other": 192256,
+          "System": 213225,
+          "TOTAL PSS": 1452744
+        }
+      },
+      {
+        "file": "cycles-baseline-meminfo.txt",
+        "summary_kb": {
+          "Java Heap": 7000,
+          "Native Heap": 81936,
+          "Code": 15708,
+          "Stack": 1172,
+          "Graphics": 875411,
+          "Private Other": 190708,
+          "System": 207507,
+          "TOTAL PSS": 1379442
+        }
+      },
+      {
+        "file": "cycles-final-rest-meminfo.txt",
+        "summary_kb": {
+          "Java Heap": 8948,
+          "Native Heap": 73468,
+          "Code": 14304,
+          "Stack": 1204,
+          "Graphics": 945615,
+          "Private Other": 191644,
+          "System": 213221,
+          "TOTAL PSS": 1448404
+        }
+      }
+    ],
+    "retaining_roots": [],
+    "retries": [
+      {
+        "target": "Gatalogar",
+        "attempt": 2
+      }
+    ],
+    "cached_instance_counts_stable": true,
+    "disposable_instance_counts_not_growing": true,
+    "scope": "Observed debug-app lifecycle retention trend. Original zero-instance oracle was too strong for service-observed objects; original failed attempt and snapshots retained. Not release capacity or proof of no leak."
+  },
+  "network": {
+    "state": "PASS",
+    "original": {
+      "wifi": "1",
+      "mobile_data": "0"
+    },
+    "restored": {
+      "wifi": "1",
+      "mobile_data": "0"
+    },
+    "offline_error_observed": true,
+    "recovered_error_null": true
+  },
+  "motion": {
+    "original": {
+      "window_animation_scale": "1.0",
+      "transition_animation_scale": "1.0",
+      "animator_duration_scale": "1.0"
+    },
+    "conditions": [
+      {
+        "label": "original",
+        "effective": {
+          "feature_fields": {
+            "_index": "128"
+          },
+          "yard_reduced_motion": "false"
+        }
+      },
+      {
+        "label": "disabled",
+        "effective": {
+          "feature_fields": {
+            "_index": "132"
+          },
+          "yard_reduced_motion": "true"
+        }
+      }
+    ],
+    "restored": {
+      "window_animation_scale": "1.0",
+      "transition_animation_scale": "1.0",
+      "animator_duration_scale": "1.0"
+    }
+  },
+  "evidence": [
+    {
+      "path": "ANDROID-USB-20261025-01/after-talkback/hierarchy.xml",
+      "bytes": 14024,
+      "sha256": "dfc6d1ac92519808b46f41266c11bcbb7e918576158bf9ccbcf5bead5fe33461"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/after-talkback/metadata.json",
+      "bytes": 9803,
+      "sha256": "58b68cc3156b7d0a4fd9b4af14d395a0760b192fb1a68fd337310314e4f6933d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/after-talkback/screen-initial.png",
+      "bytes": 1857229,
+      "sha256": "c39920688fd0243c3c428ddbf9623d7a5370e4e1ae6c1c525ef4d4c0d73342e6"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/after-talkback/screen.png",
+      "bytes": 1857620,
+      "sha256": "b55f8e712d6dd9f4ab10cbe11389fb343df99127959de30106700f9c5b64e19e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/after-talkback/uiautomator-0.txt",
+      "bytes": 75,
+      "sha256": "28e615264b30afac8624d619f248c0f6fd16206eaa1a038801bfcbba38da5029"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/collection-scale100/hierarchy.xml",
+      "bytes": 14024,
+      "sha256": "782e1ea66b66723920e2389f6ad856a0adc29c80d3923d6a558570ed6a3f95b7"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/collection-scale100/metadata.json",
+      "bytes": 9614,
+      "sha256": "b47502d5659e6e2b3093b6cb8122eaa40f9969113bd53cc1f84f34c62efb8ba5"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/collection-scale100/screen.png",
+      "bytes": 1857943,
+      "sha256": "0104ff2f1e41be483a41b0eae9aa2aecc7d50651eb07477208e52530289991ca"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/collection-scale130/hierarchy.xml",
+      "bytes": 18695,
+      "sha256": "c5103f67b314b305c3671462e1e58678573b900cd201a83f01fb1be3c5b54b53"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/collection-scale130/metadata.json",
+      "bytes": 11564,
+      "sha256": "f1ef2a3d0a95ef4eac4565febdee539f88bc0af7974c847734cef41108c77063"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/collection-scale130/screen.png",
+      "bytes": 2222836,
+      "sha256": "402034090a47367fd2f37424662910e030b2b9e3e908bbdbe9b340e3b23f8112"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/collection-scale200/hierarchy.xml",
+      "bytes": 16715,
+      "sha256": "c8e0c91fa043a47fedc055cb3af040712da8b787783aab05f867dc0ca58f4872"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/collection-scale200/metadata.json",
+      "bytes": 9917,
+      "sha256": "8da2dc6f4b9c7f2001597068da143680f4aed3d4789dbc35276b6b955c72a96e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/collection-scale200/screen.png",
+      "bytes": 2190937,
+      "sha256": "f66649578ac53776f0f1deb280ae049c88256af577f80fdcd65060b042c34ee9"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-camera-setup/hierarchy.xml",
+      "bytes": 11534,
+      "sha256": "db4870c89da7cddb2b916f727ecb4022434eb721a5228a9de1efec91b629677f"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-camera-setup/metadata.json",
+      "bytes": 6802,
+      "sha256": "0ba468e46317e0035bc33ef8ea0155ab9e34367361fc8d2e3ccb66963bd73fd1"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-camera-setup/screen-initial.png",
+      "bytes": 1413369,
+      "sha256": "f275f914de5e6612ed3586b89eeef55ec8451e65dc29eaef23afef3b2ca24e72"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-camera-setup/screen.png",
+      "bytes": 1413369,
+      "sha256": "f275f914de5e6612ed3586b89eeef55ec8451e65dc29eaef23afef3b2ca24e72"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-camera-setup/uiautomator-0.txt",
+      "bytes": 80,
+      "sha256": "7d4d0e3eecc4517c56597936f705091474043c4d66205d7a0bfc08c772492f2e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-collection-setup/hierarchy.xml",
+      "bytes": 19814,
+      "sha256": "8bc62bab369242f3a0ce79ab0c1fe6cf95285498bf97a0324d06243dc404a8ca"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-collection-setup/metadata.json",
+      "bytes": 12722,
+      "sha256": "ecebea9331f6f46f77b9f42057eec238e47d55996d7a58d1f8e80a916c46a4ab"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-collection-setup/screen-initial.png",
+      "bytes": 2244820,
+      "sha256": "951dc88a591e95b78bbdc8092b82a7b061f75b40e2aeefbd4c3d7b9ae289a7f9"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-collection-setup/screen.png",
+      "bytes": 2244820,
+      "sha256": "951dc88a591e95b78bbdc8092b82a7b061f75b40e2aeefbd4c3d7b9ae289a7f9"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-collection-setup/uiautomator-0.txt",
+      "bytes": 84,
+      "sha256": "038278f2ef6fd90b84c36b9c1317c57824153de28c0e88c92c382cf916340243"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-inbox-setup/hierarchy.xml",
+      "bytes": 8211,
+      "sha256": "8a3fd272749abbe7bc0f65a6d143c53f278708a1e26ae1600b21c56d8e9e49c8"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-inbox-setup/metadata.json",
+      "bytes": 4519,
+      "sha256": "40af7ce29c5fdf2668ce64ca34647e42af77aebf91406bcf8e73153a662183fa"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-inbox-setup/screen-initial.png",
+      "bytes": 1104810,
+      "sha256": "c620c949834c0ad903b21931b6c9f5e0cad87535015bf0301bb2bd0feda8132c"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-inbox-setup/screen.png",
+      "bytes": 1104810,
+      "sha256": "c620c949834c0ad903b21931b6c9f5e0cad87535015bf0301bb2bd0feda8132c"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-inbox-setup/uiautomator-0.txt",
+      "bytes": 79,
+      "sha256": "73e12e49c7ec5a7bc289e7f71ec98179fd4a65271d588e44057be51fb017d189"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-start/hierarchy.xml",
+      "bytes": 8211,
+      "sha256": "8a3fd272749abbe7bc0f65a6d143c53f278708a1e26ae1600b21c56d8e9e49c8"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-start/metadata.json",
+      "bytes": 4519,
+      "sha256": "75badf1e978b022d819d25249125af3f84aeacc4456c36eaa9d82b30a6842968"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-start/screen-initial.png",
+      "bytes": 1104681,
+      "sha256": "5b458833948d4adb92652b2aa08e78b1eb3f72e94d66641d4e30a190db15b55d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-start/screen.png",
+      "bytes": 1104681,
+      "sha256": "5b458833948d4adb92652b2aa08e78b1eb3f72e94d66641d4e30a190db15b55d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/cycles-start/uiautomator-0.txt",
+      "bytes": 73,
+      "sha256": "c4d48b9668ea7a208c5fcc8c87c1632d9b669b645bc2368e5b3f1fd7a57fd823"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/final-device-settings.json",
+      "bytes": 563,
+      "sha256": "83815759d8120c8b4205d0e149e50ee7d0a29d4b47462b762555c01e11baddd4"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/font-matrix-progress.json",
+      "bytes": 1278,
+      "sha256": "f00a1766f38e34a99db6bcaca9ab563280219e02b4322458aee0ab81eff205f1"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/home-font100/hierarchy.xml",
+      "bytes": 14024,
+      "sha256": "5f2267b5f4c42f4003ea286347116523a3275f12ef7e1305b06976cffa9ade7f"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/home-font100/metadata.json",
+      "bytes": 9614,
+      "sha256": "c0bff4e8c1d024c300659973ef15dbba37c8810d3b7042a7bcf1ccbb7129d9c4"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/home-font100/screen.png",
+      "bytes": 1841428,
+      "sha256": "6b6e5000c7a96255f28ea2450024ff6ba02f2f58c8b47dd95312806a7c1e8a0e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/home-scale100/hierarchy.xml",
+      "bytes": 14024,
+      "sha256": "0c4f520fa4f649a690b671e8a266a095d217a0c59469d8bfb49b359e8ad8d695"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/home-scale100/metadata.json",
+      "bytes": 9614,
+      "sha256": "d0666a641827f80c44898f1aab665f80bb1bc44438ed4aaa8c5b1a97e99a2427"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/home-scale100/screen.png",
+      "bytes": 1858085,
+      "sha256": "b505516c8bd29bb080f48b175b2cced571dbbfd11896d8a01179df4ff7ea5f41"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/home-scale130/hierarchy.xml",
+      "bytes": 13276,
+      "sha256": "f9501a8a6eee26921dca2c03d0d05cd8c0ac8137ebf8621b5032af7b84eb77f9"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/home-scale130/metadata.json",
+      "bytes": 8969,
+      "sha256": "e9a17a0896a40d754afcbcf548e699c315021bd8265e763ca3a21e6e31b61f79"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/home-scale130/screen.png",
+      "bytes": 1804275,
+      "sha256": "5194297e3249a5e9b896815f17f5131540eb8a018383e910a9a6ab01620c1876"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/home-scale200/hierarchy.xml",
+      "bytes": 10300,
+      "sha256": "1416a132472577277df60a2564bf1f355f9932a6ebf798d926abab8fcb7ae508"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/home-scale200/metadata.json",
+      "bytes": 6410,
+      "sha256": "2ec9915d28dede9d39124c8578cfbeab96fbb49e48fc4a2e67ed2baf5791580d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/home-scale200/screen.png",
+      "bytes": 1355190,
+      "sha256": "c5394cb7e647751c78c0a9a1a7a301c195faa94568c57522d199518c9ba68bbb"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/image-cache-after-native-cycles.json",
+      "bytes": 141,
+      "sha256": "45212749eceadaa676fc069695de0d90edcb489daafe14b063ae6df52dc90424"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/inbox-runtime-state.json",
+      "bytes": 261,
+      "sha256": "6d58238fce7cb77615c79d60d49540d59dc4f2c6ced2b48e223f3734eeedc12f"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-collection/hierarchy.xml",
+      "bytes": 14024,
+      "sha256": "5af334c14591b8e18ee8fb847943ab78a4bb475b39368d37d0435ca761744862"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-collection/metadata.json",
+      "bytes": 9803,
+      "sha256": "7c1c32e63894374af69a66e445f2733922bff1335ecc45f7d52263d3f46fb4e3"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-collection/screen-initial.png",
+      "bytes": 1858269,
+      "sha256": "5ee8c9185a8f680744b2f38368d8db3e4d07ad712aeef533a876cb077db47aa4"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-collection/screen.png",
+      "bytes": 1858122,
+      "sha256": "f9ef399bbf0587d71447ede3ffe8f22246bdf1b9dcb6eadfcff5861db10b4960"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-collection/uiautomator-0.txt",
+      "bytes": 80,
+      "sha256": "37cfc79722856f082c309947aad28ec612998af70ea46d3cd617c1a7ec26a696"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-collection-retry/hierarchy.xml",
+      "bytes": 19815,
+      "sha256": "88493b28d858e531b92fe6e59933c9de502af3939d78e1d79a38566ab85fdd16"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-collection-retry/metadata.json",
+      "bytes": 12722,
+      "sha256": "f519eea0443fccd800c12e7bf4ddf7ebfa9d96300f7136c776ede8cf9f333d4d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-collection-retry/screen-initial.png",
+      "bytes": 2244691,
+      "sha256": "9b5ad4255476eabdaac1f0385b6ffbeba2747416b2016f18b36200f82b5b07c7"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-collection-retry/screen.png",
+      "bytes": 2244691,
+      "sha256": "9b5ad4255476eabdaac1f0385b6ffbeba2747416b2016f18b36200f82b5b07c7"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-collection-retry/uiautomator-0.txt",
+      "bytes": 86,
+      "sha256": "d92ace7fab9334c78fe466eb59b99835ddbf4e1f4befa0389e10a176d4f0ef1d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-filtered/hierarchy.xml",
+      "bytes": 11066,
+      "sha256": "471689f731d68bb0701c367785eb868e08f6fb021f3cdd53822dc3679f8987f6"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-filtered/metadata.json",
+      "bytes": 6408,
+      "sha256": "33ba1540315b95945b5c2441b703e188abc152578e1632ea9306ad84918298c3"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-filtered/screen-initial.png",
+      "bytes": 1323272,
+      "sha256": "482e02aa933042e3ced61ebbfa54bc8c39c20e9bdf5c1a779632a3e7f91a516c"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-filtered/screen.png",
+      "bytes": 1267074,
+      "sha256": "5d715652e1ab98aa1eee7985b803bd5a88c831f0ed0be0a22987a6ba75172a9e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-filtered/uiautomator-0.txt",
+      "bytes": 78,
+      "sha256": "aa16e496a1ae97652503c6d26b08094d69e3bcfa0b8a702c53deac9828649dd3"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-restored/hierarchy.xml",
+      "bytes": 19813,
+      "sha256": "0f63ad821a0326de8ec729fe5970af4b7f39a208aacbeab14072912103faf1a2"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-restored/metadata.json",
+      "bytes": 12722,
+      "sha256": "f427220df421717de3f3ab96083acfc659132451755f9be35c03704d81b6090f"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-restored/screen-initial.png",
+      "bytes": 2227351,
+      "sha256": "9d0a1d01537f8d28663467754c5050d414d501d8efa0a102c219571ac39efa74"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-restored/screen.png",
+      "bytes": 2244601,
+      "sha256": "243e09cd5026efb60e6e330cb7919f9c6b82f1a19521367c1dad5c74b762af0e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-restored/uiautomator-0.txt",
+      "bytes": 78,
+      "sha256": "96a10ae4c17df6a8036efdcbb41b49360cda5610a14a33b389337b3ad013ef7e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/keyboard-result.json",
+      "bytes": 116,
+      "sha256": "8e455fd4da29a925b78edbdf695df3401ae5a9be484e3070864fd7f5af228a5d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-before/hierarchy.xml",
+      "bytes": 19815,
+      "sha256": "88493b28d858e531b92fe6e59933c9de502af3939d78e1d79a38566ab85fdd16"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-before/metadata.json",
+      "bytes": 12722,
+      "sha256": "87acdbd5c7b12180bd41fe95691ee099a6037c9c1ef555ab1c0dd23e759eb260"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-before/screen-initial.png",
+      "bytes": 2243893,
+      "sha256": "aa8838d02b59b5489c3d079ae11d55248332f663d22347c59a0c0d39a6f1a0fa"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-before/screen.png",
+      "bytes": 2243817,
+      "sha256": "be15942ff84fb86187d7809a9e5b71116fef1e80c08691a26ff32e690fcea35b"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-before/uiautomator-0.txt",
+      "bytes": 75,
+      "sha256": "d5533f219d7b8f915ac521d553c256d81e16c95f76f9ad2949411f4136d35e7a"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/motion-disabled.mp4",
+      "bytes": 695686,
+      "sha256": "cd37002ba73c07af7967b7cd5ce1c49eb47f54ef3cf2ac0f29bb12863839db07"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/motion-original.mp4",
+      "bytes": 702502,
+      "sha256": "a808e98bc250fab80ece8c044e03bbdcbfde7457063c67b93d72cf2ec1effa3e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/motion-result.json",
+      "bytes": 674,
+      "sha256": "1116f13fbb320b5b652914b5d48291309cd1273bb74e73c75c9a2a1334424998"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/motion-yard-disabled/hierarchy.xml",
+      "bytes": 8151,
+      "sha256": "fb54d6bc1c1536ff00ce048f349f0282648268b261bf1e255d88b559ab679047"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/motion-yard-disabled/metadata.json",
+      "bytes": 4642,
+      "sha256": "10dc08e0362af7805edeb402cbb9587c2a0e239276f07cbf4f72ce43f7d045a7"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/motion-yard-disabled/screen-initial.png",
+      "bytes": 1590055,
+      "sha256": "24f823fa14e80079261a8df3ce5aa7306e0700b80ef225201a2abc97b0c28023"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/motion-yard-disabled/screen.png",
+      "bytes": 1590077,
+      "sha256": "634875427f56de4f4832657c2299bc8b44ec4ba5e651660ec64ea2f6b5b484f1"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/motion-yard-disabled/uiautomator-0.txt",
+      "bytes": 81,
+      "sha256": "646efc13a03aebcc176b59788164b48794d8abad403d27612b1f6e2415df91b6"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/motion-yard-original/hierarchy.xml",
+      "bytes": 8151,
+      "sha256": "fb54d6bc1c1536ff00ce048f349f0282648268b261bf1e255d88b559ab679047"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/motion-yard-original/metadata.json",
+      "bytes": 4642,
+      "sha256": "24c0d0c3afd207a31f3088197e4e4dbfac8bf929ff071c6e9320b8a69933076a"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/motion-yard-original/screen-initial.png",
+      "bytes": 1590562,
+      "sha256": "357e97250e63b1d259e44746ec652b3cd3409c406b04b524cb78bbe51fdfd20a"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/motion-yard-original/screen.png",
+      "bytes": 1597586,
+      "sha256": "1ef8693eefa5386825cd2ff8e8b05de1af0bce9e0416e4d15bbe0898b39109a6"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/motion-yard-original/uiautomator-0.txt",
+      "bytes": 81,
+      "sha256": "af3b748dbbf1a6dfa0fa7942efba50005f55a206c770e32b0bbdfd07a48eac52"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-progress.json",
+      "bytes": 495,
+      "sha256": "82a74993d807e812cefc8e321fc25da8d25774f41f5ff2e858b88e0ef5a11abd"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-result.json",
+      "bytes": 831,
+      "sha256": "5a524764497741096c81f685eb771214b17592fa874d610feab42723916f8bdb"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-confirmed/hierarchy.xml",
+      "bytes": 14248,
+      "sha256": "4a59cb9213ddb21100e140480311e2e8dca43286d6546e90832717bdd128b66e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-confirmed/metadata.json",
+      "bytes": 9937,
+      "sha256": "514acc60f3efb15b71b1699d3a45362726c14d57552df149729a36bb699e460f"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-confirmed/screen-initial.png",
+      "bytes": 1594018,
+      "sha256": "2a01f1f54a06d2fb64f505e4e7f4d048063309b16a13eea0e55f1a1d16ce494e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-confirmed/screen.png",
+      "bytes": 1594018,
+      "sha256": "2a01f1f54a06d2fb64f505e4e7f4d048063309b16a13eea0e55f1a1d16ce494e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-confirmed/uiautomator-0.txt",
+      "bytes": 85,
+      "sha256": "260f630a9ee0f40a2a05540e2d530191630f452a725e2c7b02461d4dc20817e3"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-inbox/hierarchy.xml",
+      "bytes": 8212,
+      "sha256": "ae2b599e43b7a344b283fac62d21f5902fb3b27a5e9a47d4f3013d24548c496a"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-inbox/metadata.json",
+      "bytes": 4519,
+      "sha256": "029b17dee251a7ec0e1d95a7126bef21749679630513b43e631a79e454240768"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-inbox/screen-initial.png",
+      "bytes": 1104736,
+      "sha256": "e651023025eb46738580b81bdc4583633496a0e63eff034a282768bffb8908c5"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-inbox/screen.png",
+      "bytes": 1104736,
+      "sha256": "e651023025eb46738580b81bdc4583633496a0e63eff034a282768bffb8908c5"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-inbox/uiautomator-0.txt",
+      "bytes": 81,
+      "sha256": "43a9ba7f5836e25fffe0ba7451786ebdb8a7621b671fa76bbbd30e7d21a2b7da"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-offline-verified/hierarchy.xml",
+      "bytes": 13933,
+      "sha256": "e4c2f07db069dc64fd88946f1e3f03ade07ffa5471df71b109c61faf73370e58"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-offline-verified/metadata.json",
+      "bytes": 9676,
+      "sha256": "0ad64a72b086b20b50ade5751c78a30d7bd0d0fc5069a94bd575360bc214c7c9"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-offline-verified/screen-initial.png",
+      "bytes": 1185141,
+      "sha256": "4f20d8eb424826248039f5bf38d62bb63b54078cbe5775be18e4c04a714307f3"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-offline-verified/screen.png",
+      "bytes": 1185141,
+      "sha256": "4f20d8eb424826248039f5bf38d62bb63b54078cbe5775be18e4c04a714307f3"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-offline-verified/uiautomator-0.txt",
+      "bytes": 92,
+      "sha256": "ae059cd320b4c7ac12830ec8c0f514e9e407d52932314cd3f171366a340bd47d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-recovered-verified/hierarchy.xml",
+      "bytes": 14248,
+      "sha256": "4a59cb9213ddb21100e140480311e2e8dca43286d6546e90832717bdd128b66e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-recovered-verified/metadata.json",
+      "bytes": 9937,
+      "sha256": "6de34b07d4b5abee84de427fe9b99cb4f7b118bfff1fdb55ea04793202ad3376"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-recovered-verified/screen-initial.png",
+      "bytes": 1592833,
+      "sha256": "3d32d80ee3663e9574806c5042631018f67ab696603496c95ad224df7085fef6"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-recovered-verified/screen.png",
+      "bytes": 1592838,
+      "sha256": "8c8f12b4d528d598c56bf0a68b4626cd622a344be8e6a903aaacf74baaf196e8"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-motion-01/network-social-recovered-verified/uiautomator-0.txt",
+      "bytes": 94,
+      "sha256": "29e4521eb46fff0578fa4a6162ab61dd7960c4639f0ec1d30458839e29ff55fa"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-offline-social/hierarchy.xml",
+      "bytes": 19815,
+      "sha256": "88493b28d858e531b92fe6e59933c9de502af3939d78e1d79a38566ab85fdd16"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-offline-social/metadata.json",
+      "bytes": 12722,
+      "sha256": "f328d4b9c302459fd5fe57d81e80133f2704715d3903d72c602da7e04ba3d8e6"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-offline-social/screen-initial.png",
+      "bytes": 2242159,
+      "sha256": "8a7613c0aa89d98159681e12032af5b4197482f6035d1695932936870a8c0bb2"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-offline-social/screen.png",
+      "bytes": 2242159,
+      "sha256": "8a7613c0aa89d98159681e12032af5b4197482f6035d1695932936870a8c0bb2"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-offline-social/uiautomator-0.txt",
+      "bytes": 83,
+      "sha256": "43479cf2ff346b4afcbfab218331e333914d97dc9f710eeee28f99096a9b46a9"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-original.json",
+      "bytes": 35,
+      "sha256": "24c37a38739844cbf7c8e35e078c4a081443b4d9cb231a5314b601433aff23df"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-recovered-social/hierarchy.xml",
+      "bytes": 19815,
+      "sha256": "88493b28d858e531b92fe6e59933c9de502af3939d78e1d79a38566ab85fdd16"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-recovered-social/metadata.json",
+      "bytes": 12722,
+      "sha256": "360287f433eaf63f7a5ce4d8f089cf60a5bd46909af0373454ba5d3a4cd36d22"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-recovered-social/screen-initial.png",
+      "bytes": 2242200,
+      "sha256": "65dd02e40e085a825a49118631b0bd1ca37d9a4f80d44bfbb87bb533bc23519c"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-recovered-social/screen.png",
+      "bytes": 2242200,
+      "sha256": "65dd02e40e085a825a49118631b0bd1ca37d9a4f80d44bfbb87bb533bc23519c"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-recovered-social/uiautomator-0.txt",
+      "bytes": 85,
+      "sha256": "40e28e01e0ee3aeb5d744a4ae649b5195a7ba63840217ab5a3c3442b4bde2224"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/network-restored.json",
+      "bytes": 35,
+      "sha256": "24c37a38739844cbf7c8e35e078c4a081443b4d9cb231a5314b601433aff23df"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/original-settings.json",
+      "bytes": 256,
+      "sha256": "bef12ad4be7d0ef992b3d2c9cf15fec08916c39122c9e8baec2d56502f959e79"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/phone-api-health.txt",
+      "bytes": 231,
+      "sha256": "d564eb66eca48ca836047bf937aedbe44c961ffd95450ff3d8c5601c1b898486"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/post-reload-current/hierarchy.xml",
+      "bytes": 19815,
+      "sha256": "88493b28d858e531b92fe6e59933c9de502af3939d78e1d79a38566ab85fdd16"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/post-reload-current/metadata.json",
+      "bytes": 12722,
+      "sha256": "0d71a1e33f09b925d315ac645f7add891b78c630e97ecec017d5924221b9ad82"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/post-reload-current/screen-initial.png",
+      "bytes": 2196041,
+      "sha256": "4c28c9f1f923c8aafe5c047e9a0ffddb44610ee35cbbc32926b5c69bb95c670a"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/post-reload-current/screen.png",
+      "bytes": 2247037,
+      "sha256": "050b5fe804bab1fc23237e2e751d50d83a77639612585dd2ef2f9ca7df6812e7"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/post-reload-current/uiautomator-0.txt",
+      "bytes": 80,
+      "sha256": "3207fa851543c5664087bb004bec76a27a3740f22b5346d626d6477d3919b493"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/private-wifi-status.txt",
+      "bytes": 1242,
+      "sha256": "aa7871f7ff06ff7302b67b4f4219654e05f8a51399c40d4993920301b6a0b44e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-camera-setup/hierarchy.xml",
+      "bytes": 11535,
+      "sha256": "abfd8346769c1c324dd258a264fd9ac8879f967b468aa432cff7089bda6f79ac"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-camera-setup/metadata.json",
+      "bytes": 6802,
+      "sha256": "aea347775585d20aef7c14cdaee85c3ab74b363e3d3da63500d61803a96948ce"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-camera-setup/screen-initial.png",
+      "bytes": 1413334,
+      "sha256": "00186ee041d73e0fa5683d42b38cbca2cd319d76297d2ee8be1470328d87fb0b"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-camera-setup/screen.png",
+      "bytes": 1413334,
+      "sha256": "00186ee041d73e0fa5683d42b38cbca2cd319d76297d2ee8be1470328d87fb0b"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-camera-setup/uiautomator-0.txt",
+      "bytes": 80,
+      "sha256": "7d4d0e3eecc4517c56597936f705091474043c4d66205d7a0bfc08c772492f2e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-collection-setup/hierarchy.xml",
+      "bytes": 19815,
+      "sha256": "88493b28d858e531b92fe6e59933c9de502af3939d78e1d79a38566ab85fdd16"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-collection-setup/metadata.json",
+      "bytes": 12722,
+      "sha256": "7869486c2fbf3a0e90916058dde43d2881e4c7f5158802ee03b5e1c00a9e6144"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-collection-setup/screen-initial.png",
+      "bytes": 2244639,
+      "sha256": "35a6bd28a174d1dbee12a962a18f1b401faf92ee2db3db93798144fae1380941"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-collection-setup/screen.png",
+      "bytes": 2244639,
+      "sha256": "35a6bd28a174d1dbee12a962a18f1b401faf92ee2db3db93798144fae1380941"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-collection-setup/uiautomator-0.txt",
+      "bytes": 84,
+      "sha256": "038278f2ef6fd90b84c36b9c1317c57824153de28c0e88c92c382cf916340243"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-inbox-setup/hierarchy.xml",
+      "bytes": 8212,
+      "sha256": "ae2b599e43b7a344b283fac62d21f5902fb3b27a5e9a47d4f3013d24548c496a"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-inbox-setup/metadata.json",
+      "bytes": 4519,
+      "sha256": "f3e3ef1ffa8c3ce3019db350a12928896d476fa48a3fe45ccba21b83ee0bb12d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-inbox-setup/screen-initial.png",
+      "bytes": 1104114,
+      "sha256": "b14c07157da437bfa7b7d43eba31e2c2f7f8d042a91bd5f01bdd29b12cd87614"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-inbox-setup/screen.png",
+      "bytes": 1104129,
+      "sha256": "3945061230c6fec6d886352adff63c20c49043ccbccc46d842045c7f45e6cfa7"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-inbox-setup/uiautomator-0.txt",
+      "bytes": 79,
+      "sha256": "73e12e49c7ec5a7bc289e7f71ec98179fd4a65271d588e44057be51fb017d189"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-start/hierarchy.xml",
+      "bytes": 11535,
+      "sha256": "abfd8346769c1c324dd258a264fd9ac8879f967b468aa432cff7089bda6f79ac"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-start/metadata.json",
+      "bytes": 6802,
+      "sha256": "d4d1db36115c277f2fb7f1a334c7c4b23447e9bae64b5e9d31447577157ad086"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-start/screen-initial.png",
+      "bytes": 1413334,
+      "sha256": "00186ee041d73e0fa5683d42b38cbca2cd319d76297d2ee8be1470328d87fb0b"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-start/screen.png",
+      "bytes": 1413311,
+      "sha256": "51bf91cef59e67aeb24351051d34b2a4c06fe021c01b629c691721bd06bd0274"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/cycles-start/uiautomator-0.txt",
+      "bytes": 73,
+      "sha256": "c4d48b9668ea7a208c5fcc8c87c1632d9b669b645bc2368e5b3f1fd7a57fd823"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/resource-cycles-manifest.json",
+      "bytes": 326,
+      "sha256": "65e93db5ca75d48f182bb29da791daddaa2d0725984f17c17488407fd6f00663"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-02/resource-navigation-points.json",
+      "bytes": 457,
+      "sha256": "ec1fa35d3d241f3d0302d39b045c1607331c7f54bac7107113f9f1b50290d169"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/camera-focus-last.txt",
+      "bytes": 84,
+      "sha256": "38f1720b20028d1c1e6ebb48da4f875b712bc4172572873233548248f7bf6f57"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-camera-setup/hierarchy.xml",
+      "bytes": 11535,
+      "sha256": "abfd8346769c1c324dd258a264fd9ac8879f967b468aa432cff7089bda6f79ac"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-camera-setup/metadata.json",
+      "bytes": 6802,
+      "sha256": "01d66c84af9276c16f8c9b6facc2e4f30e60b4b580af47a605112be0d3fbdf19"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-camera-setup/screen-initial.png",
+      "bytes": 1413548,
+      "sha256": "8b4ccd5b35a618850c0cf8c1f486bb3a2c5cc63770933740965c056ea2159b77"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-camera-setup/screen.png",
+      "bytes": 1413593,
+      "sha256": "01e45a1ced0a5dfb9d7491919b35a215ca7a2cf8507aae99bb8b164fcd227b27"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-camera-setup/uiautomator-0.txt",
+      "bytes": 80,
+      "sha256": "7d4d0e3eecc4517c56597936f705091474043c4d66205d7a0bfc08c772492f2e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-collection-setup/hierarchy.xml",
+      "bytes": 19815,
+      "sha256": "88493b28d858e531b92fe6e59933c9de502af3939d78e1d79a38566ab85fdd16"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-collection-setup/metadata.json",
+      "bytes": 12722,
+      "sha256": "2f6cfd37bdf8f5ba7321d0e0fa313432d5ef34f23cd82009b84fb49b966e7491"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-collection-setup/screen-initial.png",
+      "bytes": 2245006,
+      "sha256": "544ffe1f800d3ab12cf0e4948edffed546bc44b7503ac95b4ef8b2794ac239f9"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-collection-setup/screen.png",
+      "bytes": 2245036,
+      "sha256": "c2342ac067592a0576f841ffa5983852905a189cabf8b9d3d19740c1aad65049"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-collection-setup/uiautomator-0.txt",
+      "bytes": 84,
+      "sha256": "038278f2ef6fd90b84c36b9c1317c57824153de28c0e88c92c382cf916340243"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-inbox-setup/hierarchy.xml",
+      "bytes": 8212,
+      "sha256": "ae2b599e43b7a344b283fac62d21f5902fb3b27a5e9a47d4f3013d24548c496a"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-inbox-setup/metadata.json",
+      "bytes": 4519,
+      "sha256": "7d63f759945e6f1dbd71cf6a85b6857084e869e54c0ba0e3ade89be27e4b5f64"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-inbox-setup/screen-initial.png",
+      "bytes": 1104521,
+      "sha256": "4472076909c8434a3884098d8db4590bd106f8638954746fb041bc8b2126f61d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-inbox-setup/screen.png",
+      "bytes": 1104521,
+      "sha256": "4472076909c8434a3884098d8db4590bd106f8638954746fb041bc8b2126f61d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-inbox-setup/uiautomator-0.txt",
+      "bytes": 79,
+      "sha256": "73e12e49c7ec5a7bc289e7f71ec98179fd4a65271d588e44057be51fb017d189"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-start/hierarchy.xml",
+      "bytes": 11535,
+      "sha256": "abfd8346769c1c324dd258a264fd9ac8879f967b468aa432cff7089bda6f79ac"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-start/metadata.json",
+      "bytes": 6802,
+      "sha256": "2006437cb163da694dc44df5f5dda9dbf12a692a848653b045509833e01dc142"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-start/screen-initial.png",
+      "bytes": 1413593,
+      "sha256": "01e45a1ced0a5dfb9d7491919b35a215ca7a2cf8507aae99bb8b164fcd227b27"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-start/screen.png",
+      "bytes": 1413593,
+      "sha256": "01e45a1ced0a5dfb9d7491919b35a215ca7a2cf8507aae99bb8b164fcd227b27"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/cycles-start/uiautomator-0.txt",
+      "bytes": 73,
+      "sha256": "c4d48b9668ea7a208c5fcc8c87c1632d9b669b645bc2368e5b3f1fd7a57fd823"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/resource-cycles-manifest.json",
+      "bytes": 326,
+      "sha256": "16b3f8e89191d18fb18d20de4eeac02209b167ab4b17bd47a35fa7e2a8dba7f2"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-03/resource-navigation-points.json",
+      "bytes": 457,
+      "sha256": "ec1fa35d3d241f3d0302d39b045c1607331c7f54bac7107113f9f1b50290d169"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-04/camera-focus-last.txt",
+      "bytes": 84,
+      "sha256": "9173a6680926d9064385fb3451c53dffdb6d767200672afc0b873014df4b6b84"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-04/cycles-after-10-meminfo.txt",
+      "bytes": 3662,
+      "sha256": "3aa259b36a7faae459375597cc64567226641f1ac3e44c42ff2abfc694fea89e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-04/cycles-after-20-meminfo.txt",
+      "bytes": 3662,
+      "sha256": "ecbd3f426081643bc592f526d1f69c202ea580295c0ff9faa737934847883a80"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-04/cycles-after-30-meminfo.txt",
+      "bytes": 3662,
+      "sha256": "0e407ac2d8078444d006b9aea63b1530c6bd036f1d56515e90473d62b076c10a"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-04/cycles-baseline-meminfo.txt",
+      "bytes": 3662,
+      "sha256": "59661a783ee07b9130f2210bc3eef9ec1e112c201ed44b5141c49cf23ef7565f"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-04/cycles-final-rest-meminfo.txt",
+      "bytes": 3662,
+      "sha256": "7f5c5e06d0babfcbc22cbf61a220ccd43cc98c1a5b0adb80b17bc3d5d7054f13"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-04/interrupted-chat-state.json",
+      "bytes": 132,
+      "sha256": "78cdc1c4528283b1d32d8e17c0006cb29b0f1acdf9ca2b9da12b16cc57a8f590"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-04/resource-cycles-initial-manifest.json",
+      "bytes": 326,
+      "sha256": "ddcbd833630e8d4acda3999e1bef5673e18feb66fac29598214de154380ee65b"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-04/resource-cycles-manifest.json",
+      "bytes": 463,
+      "sha256": "c10831056402667b0e624d917eb1bbf38f500a86b3df8db0ca2491e61da00267"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-04/resource-cycles-progress.json",
+      "bytes": 7166,
+      "sha256": "9791a5c2b3de5a5fa570275bfd5843d6355029ec44b6585e44f7003cb104c6e5"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-04/resource-cycles-result.json",
+      "bytes": 11673,
+      "sha256": "377690ad7c765303b4cf811f58981570991d0964e3c389f7327860b38d917875"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-04/resource-navigation-points.json",
+      "bytes": 457,
+      "sha256": "ec1fa35d3d241f3d0302d39b045c1607331c7f54bac7107113f9f1b50290d169"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-04/resource-retaining-roots.json",
+      "bytes": 4,
+      "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-04/resource-snapshots.json",
+      "bytes": 7253,
+      "sha256": "d6b8c51255212739d6b4ca197e32a0702ba04aacd646b6032a98a84f02398c65"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-cycles-manifest.json",
+      "bytes": 326,
+      "sha256": "26d337296b03d8080ca86a47d2b8604c5bb3a51929deb66e8d65eb1280e8b824"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/resource-navigation-points.json",
+      "bytes": 457,
+      "sha256": "ec1fa35d3d241f3d0302d39b045c1607331c7f54bac7107113f9f1b50290d169"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-friends/hierarchy.xml",
+      "bytes": 14247,
+      "sha256": "c1e74d6de1ac44cc2db8a911ddaa8738a63303407bc9492c0d9f01df42d80e37"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-friends/metadata.json",
+      "bytes": 9937,
+      "sha256": "94e473e55fe3b782813425629e3614b9c12b18e7e70e3d02493936d511cffb87"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-friends/screen-initial.png",
+      "bytes": 1591697,
+      "sha256": "c6ebb30d7363ad369a359d555c895be4cd46b7f2f5aef47ab5c5247a163b7b86"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-friends/screen.png",
+      "bytes": 1591697,
+      "sha256": "c6ebb30d7363ad369a359d555c895be4cd46b7f2f5aef47ab5c5247a163b7b86"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-friends/uiautomator-0.txt",
+      "bytes": 72,
+      "sha256": "a03ba7a30de0cb8c90ec62f9677f60545f7ab7f75325005c6a8ada6d81d518d4"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-inbox/hierarchy.xml",
+      "bytes": 6020,
+      "sha256": "fe25bae858f89335aa7854ba22d5492221e586b9711ce6e58857efc04ca9a933"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-inbox/metadata.json",
+      "bytes": 2924,
+      "sha256": "3bcb8a8a04554833d095efc98a0d4149f6b2e5e47b95bec801024a3286ad110e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-inbox/screen-initial.png",
+      "bytes": 1629047,
+      "sha256": "491d5fa3b169e7d7150af9fb2356c15982bb33a00ceb13d4418f53141cf5a932"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-inbox/screen.png",
+      "bytes": 1628247,
+      "sha256": "4fc2fc549ce9e448269f897b4073c1273577f1120d9b4541246a7f6a042925df"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-inbox/uiautomator-0.txt",
+      "bytes": 70,
+      "sha256": "75efa529758289ef69cbbfd49f5f6a98f5d991dd39439db628efbb0e965f2f47"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-inbox-ready/hierarchy.xml",
+      "bytes": 8211,
+      "sha256": "8a3fd272749abbe7bc0f65a6d143c53f278708a1e26ae1600b21c56d8e9e49c8"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-inbox-ready/metadata.json",
+      "bytes": 4519,
+      "sha256": "c0380ae7a689d22e524c105c108353f1599e9dd70a16546c9bc13d8f0652411c"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-inbox-ready/screen-initial.png",
+      "bytes": 1104197,
+      "sha256": "a90781562a7ac7d2eb235d6d6f88388f2ff9987b79f802c6f4d6fa1fa6cbf326"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-inbox-ready/screen.png",
+      "bytes": 1104197,
+      "sha256": "a90781562a7ac7d2eb235d6d6f88388f2ff9987b79f802c6f4d6fa1fa6cbf326"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-inbox-ready/uiautomator-0.txt",
+      "bytes": 76,
+      "sha256": "a6e91dbfdca3d34f6cd5ca12df95fac2adae604115d4e206cc08dbb0cd65b8b4"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-social/hierarchy.xml",
+      "bytes": 19813,
+      "sha256": "0f63ad821a0326de8ec729fe5970af4b7f39a208aacbeab14072912103faf1a2"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-social/metadata.json",
+      "bytes": 12722,
+      "sha256": "170cfb32f58c232b430f0fb34584c457cd40351dccbaf86f0b0de88c534fd45a"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-social/screen-initial.png",
+      "bytes": 2244677,
+      "sha256": "e77100d1b0d4c0ec9dfebd2cc187a00a4916f777ddb6fdb786191c5e26c0b0c8"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-social/screen.png",
+      "bytes": 2243907,
+      "sha256": "c1e7a863c71b4e0a9f40b056e846446d40b1a3e10541cc8e4a94d3158db2c19b"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-social/uiautomator-0.txt",
+      "bytes": 71,
+      "sha256": "2bb4a0ed38b147df98e2ec58977ef2c7a6332369d05837cb8134bb80119b69e4"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-social-retry/hierarchy.xml",
+      "bytes": 14412,
+      "sha256": "40244014e84e8606fdfe0cc9d9545d63712295180e573b8ea9a8ca320fcd8956"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-social-retry/metadata.json",
+      "bytes": 10121,
+      "sha256": "6cad01722e3113dca2ac4bae31e21800c34217f5464990d938df07383799236f"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-social-retry/screen-initial.png",
+      "bytes": 1621583,
+      "sha256": "31ca0d2144b77970f92ecc55081b38dcc97daa3fd2b77e1a68c0572fec7d83e2"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-social-retry/screen.png",
+      "bytes": 1621583,
+      "sha256": "31ca0d2144b77970f92ecc55081b38dcc97daa3fd2b77e1a68c0572fec7d83e2"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/rsc-social-retry/uiautomator-0.txt",
+      "bytes": 77,
+      "sha256": "f773e24afb9f4677f4a0e8d83d6fcd586f66519b6ebe664fe5f1b302823800b1"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/social-scale100/hierarchy.xml",
+      "bytes": 9394,
+      "sha256": "4e8c421b19b4844914386521bd2a6665945a631fa9ebe10044e4b642cb7d5222"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/social-scale100/metadata.json",
+      "bytes": 5633,
+      "sha256": "6fc5222b1376e08a6ef4a0c54dcc5fd179c8ad00a826c2d0c470ad5d04c0789c"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/social-scale100/screen.png",
+      "bytes": 1476374,
+      "sha256": "897c52f3540a3e96c0e31e5049ec1f2cf8e934984ce36102d5b3482e55054b92"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/social-scale130/hierarchy.xml",
+      "bytes": 9393,
+      "sha256": "0c0e1387bfbf3523f18cd487a6fcd883058a518234d44ae1da7bb9a4674731d8"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/social-scale130/metadata.json",
+      "bytes": 5632,
+      "sha256": "d5897fda179a020a0c270f71ac04f2137a18a222ed8a2c196c40e59dd87b4c11"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/social-scale130/screen.png",
+      "bytes": 1448945,
+      "sha256": "34977752a273cc462928b39d7068027860062b1863799715adf0d70d1a30bc67"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/social-scale200/hierarchy.xml",
+      "bytes": 9395,
+      "sha256": "1c33e34322646f8199a8a47ad6e3a75894c34c9b9e53024b0963c9fd75f6df37"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/social-scale200/metadata.json",
+      "bytes": 5636,
+      "sha256": "e862f5a2e864c7505e1609ad2754c2dec5764ae98cd9a57e7fa91697c5639224"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/social-scale200/screen.png",
+      "bytes": 1107032,
+      "sha256": "6193de60da10bcaef612e97cc3f01e391f1dbe8de97e6511d962d6b3301be6f4"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/talkback-additional-original.json",
+      "bytes": 120,
+      "sha256": "4a8725a2207ade1d0475f66c8868a1e2cd817299dac7f80f450631b79f917a64"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/talkback-additional-result.json",
+      "bytes": 481,
+      "sha256": "e7dc2de9b88cd1b23b2e9fd61b71a9029aba23b56d4252d7078574299b293adb"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/talkback-original.json",
+      "bytes": 120,
+      "sha256": "4a8725a2207ade1d0475f66c8868a1e2cd817299dac7f80f450631b79f917a64"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/talkback-result.json",
+      "bytes": 642,
+      "sha256": "8484efeb845cea01e7f31abfe345efcec551ad6d30438859d5c8a16c98c2f28f"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f100-collection/hierarchy.xml",
+      "bytes": 11957,
+      "sha256": "39f371990d777a18c2044d7825b74cb24733701a166ea56c8c4b3e442330f784"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f100-collection/metadata.json",
+      "bytes": 6616,
+      "sha256": "84ca6573f9000f174dc9b5924853b224bfd145e0804dd662fa4e78ecde073734"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f100-collection/screen-initial.png",
+      "bytes": 1185530,
+      "sha256": "3b10775b0a8a6e92ea5908a06035c4f265331bd15806d8b5fb0177377b801983"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f100-collection/screen.png",
+      "bytes": 1185639,
+      "sha256": "c38f79f2fdc79d9597ed38e076f3c4e6f80695cdc5e95272107ba836ff7517c1"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f100-collection/uiautomator-0.txt",
+      "bytes": 85,
+      "sha256": "d56c81eee4d686e6770caa7ed1e1c51e1509df53f3a940e27bc3a41a7973089f"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f100-home/hierarchy.xml",
+      "bytes": 12908,
+      "sha256": "cbe1d7d7366a2daf1000cef6e038ca3017724943d6745aefcdb8847f4a6ac2d9"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f100-home/metadata.json",
+      "bytes": 8868,
+      "sha256": "b3bbfaf46585adb185e3a6c32e3db5f746f03d6a4be76ab63cf00ccd003cbff1"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f100-home/screen-initial.png",
+      "bytes": 990367,
+      "sha256": "2e226cf577ae937c473d6285a8611c46b6588673a12edc8b3af836790e3ada41"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f100-home/screen.png",
+      "bytes": 990369,
+      "sha256": "3aed767551f80fdb0b5fc87049f9cf0c5b65c45703d3b2dee580ee592167a2de"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f100-home/uiautomator-0.txt",
+      "bytes": 79,
+      "sha256": "64557fc08b55d77d7525a08df6c5de8105ee9a47d7f688ec05846a6d0519d68a"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f100-start/hierarchy.xml",
+      "bytes": 12908,
+      "sha256": "d1eca2590cbaf92ae34d0ca193bba3dc6c3fafabe8b4a4c6dcec2fc22ae49867"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f100-start/metadata.json",
+      "bytes": 8868,
+      "sha256": "d5525c84eb4f47313844715b81f311973b01acdf5d93c3184f8a2459f7725e1c"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f100-start/screen-initial.png",
+      "bytes": 990353,
+      "sha256": "48e7c7866dff93bc8349cfcf3fd1c9cbb86a3819fd8ecef9554f7bacff8a350c"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f100-start/screen.png",
+      "bytes": 990353,
+      "sha256": "dcf19ed7c0d350c2426d4046379d586388aa49f677431dbe7c9b3368b3d4122d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f100-start/uiautomator-0.txt",
+      "bytes": 80,
+      "sha256": "b3a7c19a1a6b838ac974f4cc094aeaf7efe54a8e2d07ae6b3454c8951998c554"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f200-collection/hierarchy.xml",
+      "bytes": 10353,
+      "sha256": "5e3eb483475be755d8bb2348134a5d393ab0be54222eddcdf90a400912ce49fd"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f200-collection/metadata.json",
+      "bytes": 5794,
+      "sha256": "0f906426b2ed53f62f26f691f1c07c0e5abab2298a875a8a95fb2819a357bf89"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f200-collection/screen-initial.png",
+      "bytes": 1061412,
+      "sha256": "b7e615373d30814f55a3475a08b91bff28edd0e5bd7f2c8ccd558cd4c9f62d14"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f200-collection/screen.png",
+      "bytes": 1061582,
+      "sha256": "5db81be58c426861a8cf6c86886338077a5b8677c2c649139154accf57cd891d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f200-collection/uiautomator-0.txt",
+      "bytes": 85,
+      "sha256": "85022c9c452bc4c09d2640d3274c3a9051eb3f348ca81119876cc23fe233f503"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f200-home/hierarchy.xml",
+      "bytes": 9775,
+      "sha256": "eba4811ab96fbf0c0c9163e56761e06fff12ce12d54c985f1d6106c89232e1ad"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f200-home/metadata.json",
+      "bytes": 6173,
+      "sha256": "ecc6df9070db39fdb25be908d0129d563daa8decd69f1fadf90b776a76c63302"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f200-home/screen-initial.png",
+      "bytes": 710808,
+      "sha256": "841d490360cd285c34cc801fb8d332240666fb762e6a83538744f64a9c36f2fb"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f200-home/screen.png",
+      "bytes": 710808,
+      "sha256": "841d490360cd285c34cc801fb8d332240666fb762e6a83538744f64a9c36f2fb"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f200-home/uiautomator-0.txt",
+      "bytes": 79,
+      "sha256": "9994c0bc223fb6883276c09fc4222f5329ffc42d3373c96d7398cd39b61292f6"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f200-start/hierarchy.xml",
+      "bytes": 10353,
+      "sha256": "5e3eb483475be755d8bb2348134a5d393ab0be54222eddcdf90a400912ce49fd"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f200-start/metadata.json",
+      "bytes": 5794,
+      "sha256": "ecf90f5e933b6471859c4456ec17cd0145269edcc50bd4b1186d95e885f11784"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f200-start/screen-initial.png",
+      "bytes": 1118518,
+      "sha256": "82c1417e37e27040eeee42ebab7c266b7bf1c79ce13aadbfc4f3423140b4fccc"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f200-start/screen.png",
+      "bytes": 1061582,
+      "sha256": "5db81be58c426861a8cf6c86886338077a5b8677c2c649139154accf57cd891d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v320x568-f200-start/uiautomator-0.txt",
+      "bytes": 80,
+      "sha256": "f1462fa7cd832217c149855b5df2a18417f9f2a114d8a64368ca04746b05da60"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f100-collection/hierarchy.xml",
+      "bytes": 17674,
+      "sha256": "65d7834b11392f6a382b9619746dd9dad66b2a44747566ddde4e53c37f525a2d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f100-collection/metadata.json",
+      "bytes": 10925,
+      "sha256": "c99881d476ffacb7af89e65eab2c868538ea67bde43bb2b4d46ddb7dc82891ae"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f100-collection/screen-initial.png",
+      "bytes": 2002577,
+      "sha256": "4556aa09c6b32c7a65121cac443466cba0763c312e3fab772f674915854999a5"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f100-collection/screen.png",
+      "bytes": 2002570,
+      "sha256": "604ba2d3ea81765d4727273af7d67a0cae89b399acf2705871a5fc1ac7dcad45"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f100-collection/uiautomator-0.txt",
+      "bytes": 85,
+      "sha256": "cb96fb88f13fadeeb1b2effc91cc2137c6da4bfc43d700c366f1170683b74bb3"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f100-home/hierarchy.xml",
+      "bytes": 14003,
+      "sha256": "6414bd114717c95672bb10f2c0f4f7b1e50515afabfd7d401ee03e4777599ba8"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f100-home/metadata.json",
+      "bytes": 9807,
+      "sha256": "d44dafd81c94397decf2dc06f6a1bb960967f3cf89ab20cc7df730688093fd97"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f100-home/screen-initial.png",
+      "bytes": 1643712,
+      "sha256": "e2ecbbea5f8945ea1f34178de88b92c84519f2114a13e697d590f359fd78edbc"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f100-home/screen.png",
+      "bytes": 1643718,
+      "sha256": "c1dc629c55927d4149bc86b0839251c26c062eab35b9f2d45d300dbb46345cae"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f100-home/uiautomator-0.txt",
+      "bytes": 79,
+      "sha256": "373c81a4aba513db53684f6d8f3e88feac9251d61fbb74022ea72fedce050574"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f100-start/hierarchy.xml",
+      "bytes": 17674,
+      "sha256": "65d7834b11392f6a382b9619746dd9dad66b2a44747566ddde4e53c37f525a2d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f100-start/metadata.json",
+      "bytes": 10925,
+      "sha256": "d066d7104c693dbdf13497c63f2740f686b8802cea8997aed0cce90a0a711890"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f100-start/screen-initial.png",
+      "bytes": 2000574,
+      "sha256": "540e5a431517400c21b593c99c28ae492f1efcd4e39782cc9db868209823abf2"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f100-start/screen.png",
+      "bytes": 2002971,
+      "sha256": "d0a6e6b3253a600a624c52aa8e38e4e11a9ccb3fbb21263da7c9cc8adb96eb2d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f100-start/uiautomator-0.txt",
+      "bytes": 80,
+      "sha256": "d3f37fdf6e7a37685259ad280993941a02869486015c3640ee14b845ad9eca28"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f200-collection/hierarchy.xml",
+      "bytes": 13959,
+      "sha256": "ac2dd8b49e3531ab3f775837ade290e05925926af19653c45f2f58f5f626dd0d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f200-collection/metadata.json",
+      "bytes": 8315,
+      "sha256": "dbc252f9c85109b28d1affc06d99cd8c5bb3b4e0bf9c7af9bf71f6df7a5dd16c"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f200-collection/screen-initial.png",
+      "bytes": 1887296,
+      "sha256": "29183349df1d0d728f5be979a097e3ec60a2cd41be9bd7f66783b86ea99f587f"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f200-collection/screen.png",
+      "bytes": 1887296,
+      "sha256": "29183349df1d0d728f5be979a097e3ec60a2cd41be9bd7f66783b86ea99f587f"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f200-collection/uiautomator-0.txt",
+      "bytes": 85,
+      "sha256": "ab53205b0e58de9a35f26d4b23bcf61b3ce47d7c58aa1629bf8d0ce902b78055"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f200-home/hierarchy.xml",
+      "bytes": 10283,
+      "sha256": "fe613482ecee783f1ee01425ee8a811b6082b72e2981453c0c9fd53f2d38067c"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f200-home/metadata.json",
+      "bytes": 6613,
+      "sha256": "4020587631854f9c02eb2bb4646eab4ce7790845e48725de7ba222f115b01c85"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f200-home/screen-initial.png",
+      "bytes": 1202547,
+      "sha256": "59cc1642ce2af5ceaf641ec0687112c1f03ac9b5ba68c531b38bca64d4ad6517"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f200-home/screen.png",
+      "bytes": 1202910,
+      "sha256": "93424067c01f6584a9cd812519c57e361791f8a900449662faeb9bb51b0f61b6"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f200-home/uiautomator-0.txt",
+      "bytes": 79,
+      "sha256": "e8b6e65d1de0c0d383111fe754c67ac5c09e2ed1ca322cd5e23ff877dca8bf13"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f200-start/hierarchy.xml",
+      "bytes": 13959,
+      "sha256": "ac2dd8b49e3531ab3f775837ade290e05925926af19653c45f2f58f5f626dd0d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f200-start/metadata.json",
+      "bytes": 8315,
+      "sha256": "ecee67e3a598dd4e7908f6305771ab272d38829396a31332a8377925a38f2990"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f200-start/screen-initial.png",
+      "bytes": 1887260,
+      "sha256": "fd555a2ed281f0fc5fbc3cf7faeaf30436091f721290a03f8eba234e19cde8e9"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f200-start/screen.png",
+      "bytes": 1887260,
+      "sha256": "fd555a2ed281f0fc5fbc3cf7faeaf30436091f721290a03f8eba234e19cde8e9"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v360x800-f200-start/uiautomator-0.txt",
+      "bytes": 80,
+      "sha256": "a97db91a9723e03e0054e2d21adcc735415e5ae2e7af2e204e146a4663ce8187"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f100-collection/hierarchy.xml",
+      "bytes": 19819,
+      "sha256": "ad4f70ced18336847f656bf3a6a7b8a2f9ad80cacb96c604e119418265499b7e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f100-collection/metadata.json",
+      "bytes": 12753,
+      "sha256": "d3e07068b81bd5c69940250abb89c9e8461d735213ea296d634aa4189532b3a0"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f100-collection/screen-initial.png",
+      "bytes": 2362911,
+      "sha256": "28abdb1e30d226cc84e426be7020b7fa1ad333d6fe462dd2e064ea2fabce616e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f100-collection/screen.png",
+      "bytes": 2362911,
+      "sha256": "28abdb1e30d226cc84e426be7020b7fa1ad333d6fe462dd2e064ea2fabce616e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f100-collection/uiautomator-0.txt",
+      "bytes": 85,
+      "sha256": "9b535b65953da990f5b71c331fd1e3cf08c6897198d907a15531ab3ca91c30ca"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f100-home/hierarchy.xml",
+      "bytes": 14698,
+      "sha256": "0774e285b382b69f920fced2f25c48de53d5b8919a5f961783fbaf7323b7f554"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f100-home/metadata.json",
+      "bytes": 10405,
+      "sha256": "6d71bb8de9b70d937e940ff96861f17e3866388e8dbda4d3cb865db8873ff64c"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f100-home/screen-initial.png",
+      "bytes": 1996119,
+      "sha256": "2c4646d7ad37ac5d123892ea0cca78169624fc689d9e1296420803aad518a081"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f100-home/screen.png",
+      "bytes": 1995984,
+      "sha256": "d96bbd61315e1c77feb42b2ce09075759e2a65ab422a2463834397b59acd7776"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f100-home/uiautomator-0.txt",
+      "bytes": 79,
+      "sha256": "37ac0c9c0fbbb38348a3abdbec799e1de04d123062b0147085ceb4275d60c5cd"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f100-start/hierarchy.xml",
+      "bytes": 19819,
+      "sha256": "ad4f70ced18336847f656bf3a6a7b8a2f9ad80cacb96c604e119418265499b7e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f100-start/metadata.json",
+      "bytes": 12753,
+      "sha256": "da8b44f0586c48d8d589bee440d104d8e674175f0f2a6f6d01023e3995a94030"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f100-start/screen-initial.png",
+      "bytes": 2361834,
+      "sha256": "c5b852e141289c0c7f56f921a2e560b01c1188a9d4af615b92997a74ba09149a"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f100-start/screen.png",
+      "bytes": 2362282,
+      "sha256": "4cf007d28182adcb6a869f35059663dcc876a72a1a59bac50862863c2fed1c75"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f100-start/uiautomator-0.txt",
+      "bytes": 80,
+      "sha256": "58d6703f430f0001fd74026259af185a45acb8edb93a40551130a075e00f1a1b"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f200-collection/hierarchy.xml",
+      "bytes": 17378,
+      "sha256": "6f72c8731ffbd4a61ace0c6aaedf233e86f19241a854c7fc9f59dde0c3fc0e8e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f200-collection/metadata.json",
+      "bytes": 10680,
+      "sha256": "028376c9d271e59104114812ed63a5e33ebfcecba951261b3d104811f25500e5"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f200-collection/screen-initial.png",
+      "bytes": 2330373,
+      "sha256": "207c842f40cef40425f7ffc970844e2de00d0cdb798b9fc198270c6f3b3ae8f7"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f200-collection/screen.png",
+      "bytes": 2330373,
+      "sha256": "207c842f40cef40425f7ffc970844e2de00d0cdb798b9fc198270c6f3b3ae8f7"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f200-collection/uiautomator-0.txt",
+      "bytes": 85,
+      "sha256": "c7c30bfded2e56b4901cdb07eb5cf06175db06b25a2fa8c17cc1fefed8753803"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f200-home/hierarchy.xml",
+      "bytes": 10970,
+      "sha256": "5ae95f9ff35c82ab8358500ca45319acb3a8548886e8aa5daa3516cea9141fcb"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f200-home/metadata.json",
+      "bytes": 7196,
+      "sha256": "f215eb1ffd081a1904edfad6731524a4da67ea24828cc1f43108ab6dd3745dda"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f200-home/screen-initial.png",
+      "bytes": 1476495,
+      "sha256": "20c60d6683cb3b2c8d6058a234fd5786560521f4c433fa4647db5e6f09e22b96"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f200-home/screen.png",
+      "bytes": 1477007,
+      "sha256": "b4efa68483e203cf1d31aeac48ddd5c42b3076a76128c1418232dec4844b1b5f"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f200-home/uiautomator-0.txt",
+      "bytes": 79,
+      "sha256": "73787531c001322e2530cc3996a20397bbd25ee659308ec253b40dc7a4736ff6"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f200-start/hierarchy.xml",
+      "bytes": 17378,
+      "sha256": "6f72c8731ffbd4a61ace0c6aaedf233e86f19241a854c7fc9f59dde0c3fc0e8e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f200-start/metadata.json",
+      "bytes": 10680,
+      "sha256": "ec19a01c98df34fba45d13e40cfcbfc2a8ce185eeb5776faa78ec89d9bafa45a"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f200-start/screen-initial.png",
+      "bytes": 2362911,
+      "sha256": "28abdb1e30d226cc84e426be7020b7fa1ad333d6fe462dd2e064ea2fabce616e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f200-start/screen.png",
+      "bytes": 2330429,
+      "sha256": "f2a0604b69ac85b2fdf2d89c87d4fbc62f39bc091e6fde4af8387f945815be15"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v412x915-f200-start/uiautomator-0.txt",
+      "bytes": 80,
+      "sha256": "814e68db246fb17c5ee530da1fc765094739e58ba60b845e3b56176c58292207"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f100-collection/hierarchy.xml",
+      "bytes": 20076,
+      "sha256": "b44a40f991e2278a32cdcc8543fce9fa2c0f5d365b56bba706b163d17e1b4f03"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f100-collection/metadata.json",
+      "bytes": 12680,
+      "sha256": "f7ac4905c4c230c168b8099954aa815db3591dc79770a6ec1b19b30e1dd2e596"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f100-collection/screen-initial.png",
+      "bytes": 728173,
+      "sha256": "f713cc6cfe78da54212271d38b31ba2ada60b775b41faf259c6d8f140541070b"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f100-collection/screen.png",
+      "bytes": 728173,
+      "sha256": "f713cc6cfe78da54212271d38b31ba2ada60b775b41faf259c6d8f140541070b"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f100-collection/uiautomator-0.txt",
+      "bytes": 86,
+      "sha256": "8ff9f4a26fdc2d6a5a63e1135bf0903b00e7dd9ff1a5f305a31ed8f65b9765de"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f100-home/hierarchy.xml",
+      "bytes": 15122,
+      "sha256": "b7132e43c61762baf732e35617adaddd6bf2761ed6a24c4f9c72adbe911470b4"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f100-home/metadata.json",
+      "bytes": 10771,
+      "sha256": "9180a62b671602f5b03e77b4d199dae238410c0494cde83c84738427f563557f"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f100-home/screen-initial.png",
+      "bytes": 991678,
+      "sha256": "e1470b1deec3791b42f157a6495c3bcf302b30455c121ec2cc618795af9a5a41"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f100-home/screen.png",
+      "bytes": 991730,
+      "sha256": "5cdad0bab301dc0caccbf5a2bc36c1290f77659ec4443f173bd41bd198998378"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f100-home/uiautomator-0.txt",
+      "bytes": 80,
+      "sha256": "82e3bdc0ce20f05f09db6d7bab2220c69d3ef80bcec1f5c4fb3df1958edb1f75"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f100-start/hierarchy.xml",
+      "bytes": 20076,
+      "sha256": "b44a40f991e2278a32cdcc8543fce9fa2c0f5d365b56bba706b163d17e1b4f03"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f100-start/metadata.json",
+      "bytes": 12680,
+      "sha256": "8e5e6a50ab9f51afbf49b0fd6e38ab3123bf202442fe9675f483cae4ccfb8cc1"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f100-start/screen-initial.png",
+      "bytes": 772557,
+      "sha256": "2df6977094cf5a0273668878958d0abf768f74157857972666a8714bf3f07949"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f100-start/screen.png",
+      "bytes": 728189,
+      "sha256": "cf181a60329dc4a3395e69160ae71209cf61bccd164298cb7bda55e019c396b4"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f100-start/uiautomator-0.txt",
+      "bytes": 81,
+      "sha256": "a498568d7085432669390d1bf72115e8c0fc8bcf97a7db67de77d0be6799cdba"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f200-collection/hierarchy.xml",
+      "bytes": 20092,
+      "sha256": "ff6f04f743feff4fa4866e87f819f0c388f3bb9618aff8666c784a94fea74029"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f200-collection/metadata.json",
+      "bytes": 12971,
+      "sha256": "6edb874d99576495598941c0672abd57a96c01fd7907013630da8a6a7db1d84c"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f200-collection/screen-initial.png",
+      "bytes": 761672,
+      "sha256": "f5fa163e21c08ccfd49c8a168af00c303f9db88a7878a96544ce2d8fb8f871a1"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f200-collection/screen.png",
+      "bytes": 761672,
+      "sha256": "f5fa163e21c08ccfd49c8a168af00c303f9db88a7878a96544ce2d8fb8f871a1"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f200-collection/uiautomator-0.txt",
+      "bytes": 86,
+      "sha256": "7fc0256fc0592d5de9139c705a4d95c4f1dbc1d60b680c657e574f54587a9d0e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f200-home/hierarchy.xml",
+      "bytes": 12914,
+      "sha256": "6d3e7c515dc70267380d1dc92c449d5b3de23d3895db14361025af9a46e1610e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f200-home/metadata.json",
+      "bytes": 8878,
+      "sha256": "91188b83223398a92a371135b621d4a7bc356645a1f1ff3efb23098ac9a9175c"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f200-home/screen-initial.png",
+      "bytes": 973463,
+      "sha256": "a66d053ef65ac6886b44606e5c85424080a980acccfd982e5da0d7f26f3752c5"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f200-home/screen.png",
+      "bytes": 973417,
+      "sha256": "57b3910aca7940659b455ddc1ab034ae99f8ed61772c0576e1ad4e0da16ad839"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f200-home/uiautomator-0.txt",
+      "bytes": 80,
+      "sha256": "186eb56b37a6c0e2825dd95967ce3c6221ebb7fbf0daace9d9e117f8eb38c7b1"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f200-start/hierarchy.xml",
+      "bytes": 20092,
+      "sha256": "ff6f04f743feff4fa4866e87f819f0c388f3bb9618aff8666c784a94fea74029"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f200-start/metadata.json",
+      "bytes": 12971,
+      "sha256": "fc435e82c6ac0c5300a297b3d033d8c8c1e00c1ead2471b1563bd872b7dc1aa3"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f200-start/screen-initial.png",
+      "bytes": 761672,
+      "sha256": "f5fa163e21c08ccfd49c8a168af00c303f9db88a7878a96544ce2d8fb8f871a1"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f200-start/screen.png",
+      "bytes": 761672,
+      "sha256": "f5fa163e21c08ccfd49c8a168af00c303f9db88a7878a96544ce2d8fb8f871a1"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/v800x1280-f200-start/uiautomator-0.txt",
+      "bytes": 81,
+      "sha256": "b49d30b149b8d45b070e714e1b0a26d50c16e64af071657cdbedf1ee6731109e"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/viewport-matrix-progress.json",
+      "bytes": 4275,
+      "sha256": "626fce70ab5928406d8fc04ac521daca6e9641243fb0ebfea11a6f7c20bcaa59"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/vm-resource-baseline.json",
+      "bytes": 1243,
+      "sha256": "d90755facaf85c7b73aafbd72aec3b56876f987b0f8d5b1a6a07e92d46131ba1"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-after-font100/hierarchy.xml",
+      "bytes": 19815,
+      "sha256": "88493b28d858e531b92fe6e59933c9de502af3939d78e1d79a38566ab85fdd16"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-after-font100/metadata.json",
+      "bytes": 12722,
+      "sha256": "96f842af95d85a8177cbc639faed186db30d0e97bb41ad24c960e14c72470230"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-after-font100/screen-initial.png",
+      "bytes": 2244902,
+      "sha256": "5886096f1141df467c26e77724f2045148cecb5ce427bc3bbdd325dc2ccf7445"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-after-font100/screen.png",
+      "bytes": 2244902,
+      "sha256": "5886096f1141df467c26e77724f2045148cecb5ce427bc3bbdd325dc2ccf7445"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-after-font100/uiautomator-0.txt",
+      "bytes": 77,
+      "sha256": "e8d97a4f0849e23baf79a13da94f972515a9f4706f31d29381e608c1f0a7de91"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-after-font100-retry/hierarchy.xml",
+      "bytes": 14024,
+      "sha256": "9bfc17b6814ac0766fde3f5c1c615538b3c61b63c30a1f324c3a4b79fd69b7b2"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-after-font100-retry/metadata.json",
+      "bytes": 9803,
+      "sha256": "259605d09fb0ba14a48f458dfe1b3cd01fc36ee4b21deea41e21f3ba7dd0ebd2"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-after-font100-retry/screen-initial.png",
+      "bytes": 1857420,
+      "sha256": "4978fe10b4390b3f5f24180c8f0deaaea3279398d62735c8677d604eb21f4432"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-after-font100-retry/screen.png",
+      "bytes": 1857890,
+      "sha256": "a6897140fa08f53dd8f759d69de193dcd172b2761aa5aca3b48988eb478c00dc"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-after-font100-retry/uiautomator-0.txt",
+      "bytes": 83,
+      "sha256": "95f7001969900315a4d7ceee6ef2bf924c0e34393dba3e7c50e223438ab74fbf"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-after-font200/hierarchy.xml",
+      "bytes": 10301,
+      "sha256": "192b538f8ff71f76b143417cd0be92f5e42e3580e7983b8f3dd95a25db78b103"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-after-font200/metadata.json",
+      "bytes": 6599,
+      "sha256": "dbd1cb5c03d902f5e082e58da798291d17fcfd7639afd73f9d8dede217280c03"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-after-font200/screen-initial.png",
+      "bytes": 1359057,
+      "sha256": "14b80b2fea6118edf81938f02b4c98f5ac306c93e46a3f36c517a6af633c08c0"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-after-font200/screen.png",
+      "bytes": 1362853,
+      "sha256": "13cbeed05ba15d0d75f97838708fb9d9c586ff8cef826c6792afa8d819717a8b"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-after-font200/uiautomator-0.txt",
+      "bytes": 77,
+      "sha256": "68fd25299807c9114920e8eac47b58335730bb146ab6bfae5039c04091449196"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-font-restored/hierarchy.xml",
+      "bytes": 14024,
+      "sha256": "43cc46430cca0afd44ed126c285633acb466e3955c391844cc77ac521b953044"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-font-restored/metadata.json",
+      "bytes": 9803,
+      "sha256": "0b2d7f4aa819fbc217f48941001a5c948dd0b21f03b6394132f023abeb490e02"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-font-restored/screen-initial.png",
+      "bytes": 1362853,
+      "sha256": "13cbeed05ba15d0d75f97838708fb9d9c586ff8cef826c6792afa8d819717a8b"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-font-restored/screen.png",
+      "bytes": 1857783,
+      "sha256": "13ae9860195a6692c9c147431d1ee7d4f8b1ca6bd4eaffc90fa74cda473f9048"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/xp-font-restored/uiautomator-0.txt",
+      "bytes": 77,
+      "sha256": "fe9a68c30e68c60dbc8f86af49d4fcc18b867335e94a1f993445cba3948ea137"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/yard-scale100/hierarchy.xml",
+      "bytes": 11840,
+      "sha256": "3b12461efba6465c8878f7f4677790f5bcc8ece75f916e954571df825bd73d2b"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/yard-scale100/metadata.json",
+      "bytes": 6782,
+      "sha256": "ab86d180c6fd33e14179986b3b4fa84c5d6672170583943b73f1af31b412061c"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/yard-scale100/screen.png",
+      "bytes": 1139602,
+      "sha256": "6ef84e576c98ccd0d56b31388e4c52faad1c041adf1303c89b188f20d42e0fc3"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/yard-scale130/hierarchy.xml",
+      "bytes": 11839,
+      "sha256": "b1966820b25030d50e243a94a11c1c41fa7e94112df9df14d21494713ff25965"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/yard-scale130/metadata.json",
+      "bytes": 6775,
+      "sha256": "7dbab15a849ac25939687fbad141d63ee75440ddf6189d77202c2e500a3e519d"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/yard-scale130/screen.png",
+      "bytes": 1076661,
+      "sha256": "19e62642eba6654b4127e7e3ded396cf067968fb3f37db3a614f746e03147522"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/yard-scale200/hierarchy.xml",
+      "bytes": 11837,
+      "sha256": "e61a1c5113770a5d810d9a4627c9339c2f2fca93fd4f309807f7bfd4b81a3ef1"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/yard-scale200/metadata.json",
+      "bytes": 6781,
+      "sha256": "7ac0354660499fa3fafe33f7f881ef4b5084a6358be93c51dbe73645e46d25be"
+    },
+    {
+      "path": "ANDROID-USB-20261025-01/yard-scale200/screen.png",
+      "bytes": 827704,
+      "sha256": "d3b941e166345be682a3e7da0601eb8c3b61fe2f85fb07b562d1107f5767dc35"
+    },
+    {
+      "path": "ANDROID-runtime-20261025-06/private-flutter-log.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ANDROID-runtime-20261025-06/source-attestation.json",
+      "bytes": 46665,
+      "sha256": "8487ddb83189dd10490c2e03407646c331eb63e01111becf4d9afa05f52a3482"
+    },
+    {
+      "path": "ANDROID-runtime-20261025-06/summary.json",
+      "bytes": 495,
+      "sha256": "c0846d0eeaef2978f27c66352ac6024f110f1bb0b1b41dcce036be7a64630fb6"
+    },
+    {
+      "path": "ANDROID-hot-reload-20261025-03/private-attach.jsonl",
+      "bytes": 1857,
+      "sha256": "9aa8a59ea6d79f31c215e063931f6b2cad94185859476eaa4c9f83f088f28a70"
+    },
+    {
+      "path": "ANDROID-hot-reload-20261025-03/summary.json",
+      "bytes": 706,
+      "sha256": "e2e49fe6b005eb4adcf54f7277a4780a0f2b97cb681b1546993b9944b6921bd2"
+    },
+    {
+      "path": "ACC02-progress-20261025-before-02/observations/w110-s100.png",
+      "bytes": 2769,
+      "sha256": "0e514a4673ff506a0b625d09d748ed7c4dd50bb537571812337c86d62fd75dae"
+    },
+    {
+      "path": "ACC02-progress-20261025-before-02/observations/w110-s130.png",
+      "bytes": 3195,
+      "sha256": "0e0454338469e2b466d042bbc857ae3a2281490c3c5ce44c7c2c801efac4f9ee"
+    },
+    {
+      "path": "ACC02-progress-20261025-before-02/observations/w110-s200.png",
+      "bytes": 4572,
+      "sha256": "4c22b8c0994d1ee5808bbafd30744a744aabc9da6faf3d4aa79af70fd2a3e9d8"
+    },
+    {
+      "path": "ACC02-progress-20261025-before-02/observations/w140-s100.png",
+      "bytes": 2730,
+      "sha256": "aecdc83352680b92d139ad1de57c8efae28aa7cc3449c6b602ad7646404d10f7"
+    },
+    {
+      "path": "ACC02-progress-20261025-before-02/observations/w140-s130.png",
+      "bytes": 3558,
+      "sha256": "cc28eb0689ed5a3bbc10d68b4570f20b3b63bb819b784f08f5830063e890cd6d"
+    },
+    {
+      "path": "ACC02-progress-20261025-before-02/observations/w140-s200.png",
+      "bytes": 5083,
+      "sha256": "29a29471a0852c56ba3f6c4fa8cd66aa07cc08480766c527946d22fa20e1d706"
+    },
+    {
+      "path": "ACC02-progress-20261025-before-02/source_manifest.json",
+      "bytes": 31339,
+      "sha256": "7bd5d4fe94a15121c3e782f49643f8bc528a429ff1a3a6945b7ad20c8edddf42"
+    },
+    {
+      "path": "ACC02-progress-20261025-before-02/summary.json",
+      "bytes": 988,
+      "sha256": "5e700d9a42be58d9bbecdd07411a3393a42e3c2c8ccbe932dc88acfe0b87ea02"
+    },
+    {
+      "path": "ACC02-progress-20261025-before-02/tests.jsonl",
+      "bytes": 9717,
+      "sha256": "c815904b580525855663917b94706eb1e105f7d9b089596137452e6ce96ea545"
+    },
+    {
+      "path": "ACC02-progress-20261025-after-02/observations/w110-s100.png",
+      "bytes": 2769,
+      "sha256": "0e514a4673ff506a0b625d09d748ed7c4dd50bb537571812337c86d62fd75dae"
+    },
+    {
+      "path": "ACC02-progress-20261025-after-02/observations/w110-s130.png",
+      "bytes": 4278,
+      "sha256": "78d383e97e80d22603fcbede7999dbe4a5f37a0d8dc75c9c6dc8bd6a41a0c71f"
+    },
+    {
+      "path": "ACC02-progress-20261025-after-02/observations/w110-s200.png",
+      "bytes": 5611,
+      "sha256": "093b106ddb025bd0df34ced6e1fa32067fbd54c6d9550d2a56eb6880975baeaf"
+    },
+    {
+      "path": "ACC02-progress-20261025-after-02/observations/w140-s100.png",
+      "bytes": 2730,
+      "sha256": "aecdc83352680b92d139ad1de57c8efae28aa7cc3449c6b602ad7646404d10f7"
+    },
+    {
+      "path": "ACC02-progress-20261025-after-02/observations/w140-s130.png",
+      "bytes": 3558,
+      "sha256": "cc28eb0689ed5a3bbc10d68b4570f20b3b63bb819b784f08f5830063e890cd6d"
+    },
+    {
+      "path": "ACC02-progress-20261025-after-02/observations/w140-s200.png",
+      "bytes": 5705,
+      "sha256": "d1a9e9d3c07775f944c408bcbeebb7fcd4c4795418548ed824c6e2523ef0d91c"
+    },
+    {
+      "path": "ACC02-progress-20261025-after-02/source_manifest.json",
+      "bytes": 31421,
+      "sha256": "b76dfe63422f41cc9cc7c21ff4f7fa74c2c8a25fe2d39a2d36d599a5bd7befc2"
+    },
+    {
+      "path": "ACC02-progress-20261025-after-02/summary.json",
+      "bytes": 3209,
+      "sha256": "b78b69cb10f0fd6660471787de8c35e79fbd00dde5c5407921a8150e3ed05593"
+    },
+    {
+      "path": "ACC02-progress-20261025-after-02/tests.jsonl",
+      "bytes": 13358,
+      "sha256": "d6138430c9cf33c3a9c609377eb2ba573000c41a4fb321f2103a4f4895e68be1"
+    }
+  ],
+  "evidence_root_private": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential",
+  "executor_revisions": {
+    "first_17_cycles": "2b2546de0d39b8f8348242a54c82e88ec10701e3",
+    "resume_basis": "78a8619",
+    "resume_changes": "Scoped VM zone enum spelling Ring/ReuseExisting corrected before resumption; exact file hashes recorded below. Product sources unchanged."
+  },
+  "current_executor_hashes": {
+    "scripts/android_quality.py": "528ae3cd40b756c052c6f10fecc85b6c9dc35e60d735a71a5a189824b71cc819",
+    "scripts/android_vm.py": "1df9c2e32c4c879c2a8bd2bfd9d7cf90c99179855c378803d791a1a651d6741e",
+    "scripts/android_resource_cycles.py": "1252f42393c6dda33b04fa966520960f88847f5eb74bd9b082bf6c4b5333efc5",
+    "scripts/android_network_motion.py": "81dc5148d27e8fd509431a70d1223f261a3fa97ae438ebc513dc2c94d6f91fa0",
+    "scripts/probe_android_runtime.py": "941f7b6da0640539a4bcc4b112f75fa67e2fc38e8805fbc59ef16149930bba03",
+    "scripts/hot_reload_android.py": "65b6fb6251c0468a10e2b6a289473da23d2eb30bfe9f99a12e82c9efb03c510e",
+    "scripts/android_cycle_report.py": "beb4fb0ab68a4fe9452e8f4c883b159752781a94251fe27eaf22c1998eee62ac"
+  },
+  "native_memory_finding": {
+    "state": "OPEN_MEASUREMENT_FINDING",
+    "observation": "Dart heap after rest 215.44 MiB vs warmed 214.67 MiB; graphics PSS 945615 KiB vs warmed 875411 KiB; total PSS 1448404 KiB vs warmed 1379442 KiB.",
+    "image_cache_final": {
+      "_currentSizeBytes": "94922664",
+      "_maximumSizeBytes": "104857600",
+      "_cache": 41,
+      "_liveImages": 40,
+      "_pendingImages": 0
+    },
+    "probable_cause": "Unresolved texture/renderer/cache warmup or native retention; zero disposed page/controller objects does not identify the GPU owner.",
+    "recommendation": "Confirm on an equivalent release/profile build with texture/image allocation attribution and longer bounded rest before changing cache or decode policy.",
+    "correction_commit": null,
+    "statistical_limit": "One debug-device session, no confidence interval or population/no-leak claim."
+  },
+  "execution_interruption": {
+    "completed_before_pause": 17,
+    "cause": "18th attempt exceeded harness 15 s history-loading wait while development API had restarted; cause remains correlated, not proven. Later _loading=false and _error=null.",
+    "resumption": "Continued from cycle 18 without repeating completed cycles, with 45 s bounded loading wait and scoped VM observer IDs. Same Android process; all 30 recorded cycles succeeded.",
+    "zero_instance_oracle": "Replaced overstrong absolute-zero assertion during service-observed checkpoints with warmed-baseline growth check. Independent final observer found all three disposed-state/controller classes at zero."
+  },
+  "talkback_additional": {
+    "state": "HUMAN_REPORTED_PASS",
+    "answer": "Concluí os três passos sem problemas",
+    "variants": [
+      "sign out and sign in with development account",
+      "select existing cat photo and cancel before Analyze/Save",
+      "send teste TalkBack to provided development peer"
+    ],
+    "audio_recording": false,
+    "secure_settings_restored": {
+      "enabled_accessibility_services": "null",
+      "accessibility_enabled": "0",
+      "touch_exploration_enabled": "0"
+    }
+  },
+  "talkback_android_state": "COMPLETED; combined four-step and final three-step human-reported tasks cover the planned Android reader flows. No independent audio recording; iOS excluded.",
+  "final_device_settings": {
+    "secure": {
+      "enabled_accessibility_services": "null",
+      "accessibility_enabled": "0",
+      "touch_exploration_enabled": "0"
+    },
+    "font_scale": "1.0",
+    "wm_size": "Physical size: 1080x2400",
+    "wm_density": "Physical density: 440",
+    "animations": {
+      "window_animation_scale": "1.0",
+      "transition_animation_scale": "1.0",
+      "animator_duration_scale": "1.0"
+    },
+    "wifi": "1",
+    "mobile_data": "0",
+    "pid": "7662",
+    "own_forward_cleanup": "All scoped sessions remove their own forwards; no existing user forward removed"
+  },
+  "final_executor_commit": "d339d754e55ea327258adb4fb0f09828f22dfe9b"
+}

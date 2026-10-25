@@ -1,0 +1,445 @@
+{
+  "scenario": "RSC-02",
+  "state": "PARTIAL_EXECUTED",
+  "date": "2026-10-25",
+  "product_changes": false,
+  "executor_commit": "2b2546de0d39b8f8348242a54c82e88ec10701e3",
+  "executors": [
+    "scripts/campaign/resource_lifecycle_cases.py::test_RSC02_three_rounds_of_100_lifecycles_without_process_restart",
+    "scripts/campaign/resource_lifecycle_cases.py::test_RSC02_diagnostic_denied_multipart_keepalive"
+  ],
+  "environment": "Own random-port PostgreSQL, migrated schema and synthetic accounts/photos/providers; no external push, inference or development database changes.",
+  "runs": [
+    {
+      "name": "RSC02-20261025-01",
+      "summary": {
+        "scenario": "RSC-02",
+        "mutation": null,
+        "classification": null,
+        "exit_code": 1,
+        "database": "own random-port PostgreSQL, migrations applied; fixture schema per case",
+        "providers": "generated app JWTs; synthetic analysis/fault injection; no external delivery or inference",
+        "api_lifespan_started": false,
+        "physical_device": false,
+        "evaluated_sources_unchanged": true
+      }
+    },
+    {
+      "name": "RSC02-20261025-02",
+      "summary": {
+        "scenario": "RSC-02",
+        "mutation": null,
+        "classification": null,
+        "exit_code": 1,
+        "database": "own random-port PostgreSQL, migrations applied; fixture schema per case",
+        "providers": "generated app JWTs; synthetic analysis/fault injection; no external delivery or inference",
+        "api_lifespan_started": false,
+        "physical_device": false,
+        "evaluated_sources_unchanged": true
+      }
+    },
+    {
+      "name": "RSC02-20261025-03",
+      "summary": {
+        "scenario": "RSC-02",
+        "mutation": null,
+        "classification": null,
+        "exit_code": 1,
+        "database": "own random-port PostgreSQL, migrations applied; fixture schema per case",
+        "providers": "generated app JWTs; synthetic analysis/fault injection; no external delivery or inference",
+        "api_lifespan_started": false,
+        "physical_device": false,
+        "evaluated_sources_unchanged": true
+      }
+    },
+    {
+      "name": "RSC02-20261025-04",
+      "summary": {
+        "scenario": "RSC-02",
+        "mutation": null,
+        "classification": null,
+        "exit_code": 1,
+        "database": "own random-port PostgreSQL, migrations applied; fixture schema per case",
+        "providers": "generated app JWTs; synthetic analysis/fault injection; no external delivery or inference",
+        "api_lifespan_started": false,
+        "physical_device": false,
+        "evaluated_sources_unchanged": true
+      }
+    },
+    {
+      "name": "RSC02-20261025-05",
+      "summary": {
+        "scenario": "RSC-02",
+        "mutation": null,
+        "classification": null,
+        "exit_code": 1,
+        "database": "own random-port PostgreSQL, migrations applied; fixture schema per case",
+        "providers": "generated app JWTs; synthetic analysis/fault injection; no external delivery or inference",
+        "api_lifespan_started": false,
+        "physical_device": false,
+        "evaluated_sources_unchanged": true
+      }
+    },
+    {
+      "name": "RSC02-diagnostic-20261025-01",
+      "summary": {
+        "scenario": "RSC-02-DIAG",
+        "mutation": null,
+        "classification": null,
+        "exit_code": 0,
+        "database": "own random-port PostgreSQL, migrations applied; fixture schema per case",
+        "providers": "generated app JWTs; synthetic analysis/fault injection; no external delivery or inference",
+        "api_lifespan_started": false,
+        "physical_device": false,
+        "evaluated_sources_unchanged": true
+      }
+    }
+  ],
+  "observed_round": {
+    "baseline": {
+      "process_cpu_seconds": 13.1875,
+      "pid": 21616,
+      "rss_bytes": 167723008,
+      "peak_rss_bytes": 169828352,
+      "handles": 225,
+      "threads": 2,
+      "asyncio_tasks": 3,
+      "pool_checkedout": 0,
+      "pool_checkedin": 2,
+      "pool_connections": 2,
+      "http_connections": 2,
+      "own_active_sockets": 0,
+      "python_traced_bytes": 3705449
+    },
+    "warm_envelope": {
+      "handles": 227,
+      "threads": 2,
+      "asyncio_tasks": 7,
+      "http_connections": 2,
+      "pool_connections": 5
+    },
+    "rounds": [
+      {
+        "round": 1,
+        "cycles": 100,
+        "before": {
+          "process_cpu_seconds": 13.1875,
+          "pid": 21616,
+          "rss_bytes": 167723008,
+          "peak_rss_bytes": 169828352,
+          "handles": 225,
+          "threads": 2,
+          "asyncio_tasks": 3,
+          "pool_checkedout": 0,
+          "pool_checkedin": 2,
+          "pool_connections": 2,
+          "http_connections": 2,
+          "own_active_sockets": 0,
+          "python_traced_bytes": 3718751
+        },
+        "observed_peak": {
+          "process_cpu_seconds": 13.1875,
+          "pid": 21616,
+          "rss_bytes": 171134976,
+          "peak_rss_bytes": 169828352,
+          "handles": 227,
+          "threads": 2,
+          "asyncio_tasks": 7,
+          "pool_checkedout": 1,
+          "pool_checkedin": 2,
+          "pool_connections": 2,
+          "http_connections": 2,
+          "own_active_sockets": 0,
+          "python_traced_bytes": 3718751
+        },
+        "rest_after_gc": {
+          "process_cpu_seconds": 48.09375,
+          "pid": 21616,
+          "rss_bytes": 167641088,
+          "peak_rss_bytes": 171147264,
+          "handles": 222,
+          "threads": 2,
+          "asyncio_tasks": 3,
+          "pool_checkedout": 0,
+          "pool_checkedin": 2,
+          "pool_connections": 2,
+          "http_connections": 2,
+          "own_active_sockets": 0,
+          "python_traced_bytes": 3777184
+        },
+        "cycle_ms_observed": {
+          "min": 352.30249999585794,
+          "mean": 497.4657169992133,
+          "max": 1111.5172000063467
+        }
+      }
+    ],
+    "deviations": []
+  },
+  "diagnostics": [
+    {
+      "connection": "persistent",
+      "completed": 200,
+      "slow_requests": [],
+      "failure": null
+    },
+    {
+      "connection": "close",
+      "completed": 200,
+      "slow_requests": [],
+      "failure": null
+    }
+  ],
+  "findings": [
+    {
+      "description": "Repeated mixed HTTP/photo/WebSocket lifecycle did not complete all three rounds: run 05 hit ReadTimeout at cycle 28 of round 2 on a denied multipart photo upload.",
+      "probable_cause": "Unresolved interaction between request lifecycle, persistent transport, profiling and fixture timing. Isolated denied-upload probes did not reproduce the mixed failure.",
+      "recommendation": "Reproduce one mixed failure with request-stage and connection-state evidence before changing the product; compare profiling enabled/disabled with otherwise identical fixtures.",
+      "correction_commit": null,
+      "status": "OPEN"
+    }
+  ],
+  "measurement_corrections": [
+    "Replace AsyncMock call-history retention with signature-compatible no-op stubs in disposable fixtures.",
+    "Ignore successful request INFO log capture that manufactures observer heap growth.",
+    "Allow legitimate idle pool warmup up to configured capacity instead of asserting identical cold and warm counts.",
+    "Original attempts, including stub-signature and overstrict-oracle failures, remain retained."
+  ],
+  "limits": [
+    "One 100-cycle round succeeded, not the planned three. No overall resource-leak pass or P99 claim.",
+    "200 denied uploads with persistent transport and 200 with Connection: close passed; isolated pass does not clear the mixed-flow timeout."
+  ],
+  "evidence_root_private": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential",
+  "evidence": [
+    {
+      "path": "RSC02-20261025-01/candidate_manifest.json",
+      "sha256": "d087728b48d8db7a17014036bb85ccffcfae118e356632b40431fcad36ef7b46",
+      "bytes": 1251
+    },
+    {
+      "path": "RSC02-20261025-01/junit.xml",
+      "sha256": "304ff9deef6dd9f937aa7a495fbe357b9955da9df3d758fdaa0d4cb1fbe34713",
+      "bytes": 13344
+    },
+    {
+      "path": "RSC02-20261025-01/pytest.log",
+      "sha256": "39549dfe48287c5c86cf987e548fb44e658ee6993cff15df22e5b69b129c9e24",
+      "bytes": 84845
+    },
+    {
+      "path": "RSC02-20261025-01/source_manifest.json",
+      "sha256": "5b93f49b67fa22a376c15a2d2aeb75abe54986fc78a1f4af0dc1e28b4aedbb8b",
+      "bytes": 25248
+    },
+    {
+      "path": "RSC02-20261025-01/summary.json",
+      "sha256": "998a79caa67b99bcb442c76df16d591c3ae0f1becac7dc610060b526af957ed5",
+      "bytes": 399
+    },
+    {
+      "path": "RSC02-20261025-01/observations/RSC02-baseline.tracemalloc",
+      "sha256": "6f212781777fa1ca4d1861fbf05b78fb16940861dbb813cd04bdc10a33ff921c",
+      "bytes": 547541
+    },
+    {
+      "path": "RSC02-20261025-01/observations/RSC02-cycles.jsonl",
+      "sha256": "bfbd75a5030331427c54471dc8c8b884b668886171a45251ca46c07a1bdde156",
+      "bytes": 28837
+    },
+    {
+      "path": "RSC02-20261025-02/candidate_manifest.json",
+      "sha256": "7ca76c108789efd8e58dfaf553f2a474cd8d268536014b72e08e42df98af01f6",
+      "bytes": 1251
+    },
+    {
+      "path": "RSC02-20261025-02/junit.xml",
+      "sha256": "755fa5c86544dd4dc79c4a8e7cc7e0b5625eb6ea75ea569394bf8610dcb334a4",
+      "bytes": 9650
+    },
+    {
+      "path": "RSC02-20261025-02/pytest.log",
+      "sha256": "a09aa50f52cf7f639a72c9439b6115989f290e75049c1cdac07acf83545f2ce1",
+      "bytes": 10050
+    },
+    {
+      "path": "RSC02-20261025-02/source_manifest.json",
+      "sha256": "22c84a60fc7ec9c2feb27bbe4ed03dbeb92404dddfea4b4a88f6270c5e1ebf84",
+      "bytes": 25248
+    },
+    {
+      "path": "RSC02-20261025-02/summary.json",
+      "sha256": "998a79caa67b99bcb442c76df16d591c3ae0f1becac7dc610060b526af957ed5",
+      "bytes": 399
+    },
+    {
+      "path": "RSC02-20261025-02/observations/RSC02-baseline.tracemalloc",
+      "sha256": "6c983063393eb941b131ac56f50405c1da79f749ede8943f00852c7137fc5591",
+      "bytes": 470187
+    },
+    {
+      "path": "RSC02-20261025-02/observations/RSC02-cycles.jsonl",
+      "sha256": "7af3e75716dcdf164f05dac98212493f851635b582545dc093367561e0d7c04d",
+      "bytes": 35733
+    },
+    {
+      "path": "RSC02-20261025-03/candidate_manifest.json",
+      "sha256": "cc7bc41b54eab341a0ab4114ca27eda12091d1f3c2e90cd656f08eab8f1d5fc7",
+      "bytes": 1251
+    },
+    {
+      "path": "RSC02-20261025-03/junit.xml",
+      "sha256": "5b87ae59741edf92f7f12608c5886d3e51584f8284c7c1b152ccb2b568d3a17b",
+      "bytes": 8228
+    },
+    {
+      "path": "RSC02-20261025-03/pytest.log",
+      "sha256": "11698f631955b8ad620791024c20fb557b68af58cbfd0d33fa789beb742fb027",
+      "bytes": 19328
+    },
+    {
+      "path": "RSC02-20261025-03/source_manifest.json",
+      "sha256": "dc61feb2e380a522149619ff698484f1501496a00d8b48e0e9afd04ffa6cef1b",
+      "bytes": 25248
+    },
+    {
+      "path": "RSC02-20261025-03/summary.json",
+      "sha256": "998a79caa67b99bcb442c76df16d591c3ae0f1becac7dc610060b526af957ed5",
+      "bytes": 399
+    },
+    {
+      "path": "RSC02-20261025-03/observations/RSC02-cycles.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "RSC02-20261025-03/observations/RSC02-interrupted.tracemalloc",
+      "sha256": "2d9ef8baa7b779b3348314cda60da6aa17016b6250dd9a0ffdd254af9603a9c9",
+      "bytes": 329042
+    },
+    {
+      "path": "RSC02-20261025-04/candidate_manifest.json",
+      "sha256": "aed09522c2d3e0ba73f53a6bac31805ea96ed42f329ebc52df309d6b571deb78",
+      "bytes": 1251
+    },
+    {
+      "path": "RSC02-20261025-04/junit.xml",
+      "sha256": "26415f22be7d873ad95998789cdb9bdb202384f19ed57786f1af359c4c896516",
+      "bytes": 10828
+    },
+    {
+      "path": "RSC02-20261025-04/pytest.log",
+      "sha256": "06a5d5a8ce505014c52ab73bb228e6b10c1c1cf7a47006f21a4496ae2956e72a",
+      "bytes": 11223
+    },
+    {
+      "path": "RSC02-20261025-04/source_manifest.json",
+      "sha256": "12beba6d23cde8f3af25cf54f32e00ace02289370244a2ebe7c6517c8612a04d",
+      "bytes": 25248
+    },
+    {
+      "path": "RSC02-20261025-04/summary.json",
+      "sha256": "998a79caa67b99bcb442c76df16d591c3ae0f1becac7dc610060b526af957ed5",
+      "bytes": 399
+    },
+    {
+      "path": "RSC02-20261025-04/observations/RSC02-baseline.tracemalloc",
+      "sha256": "b62a3941f9b5690c4b9c87c081a8b892fd92ae1046d01c7065baf4dd7bd00cc3",
+      "bytes": 441456
+    },
+    {
+      "path": "RSC02-20261025-04/observations/RSC02-cycles.jsonl",
+      "sha256": "8f926b607f45f688013e3d3b54b060ea6719aa736544c9591da43f58f057da92",
+      "bytes": 37927
+    },
+    {
+      "path": "RSC02-20261025-04/observations/RSC02-interrupted.tracemalloc",
+      "sha256": "e35724aa393ad80e78af02997e1267ccd006e7a5925bdc05d46aff88a5b6049b",
+      "bytes": 470453
+    },
+    {
+      "path": "RSC02-20261025-04/observations/RSC02-rounds-progress.json",
+      "sha256": "224e9e49a17012ad8bec7ce56b72110a232ace5013af18f2300fc50d06f9aee0",
+      "bytes": 2090
+    },
+    {
+      "path": "RSC02-20261025-05/candidate_manifest.json",
+      "sha256": "9ab6795be6d3dbec67cd21785339e52d17e6f7b53eba13b78079c6de14af1a1e",
+      "bytes": 1251
+    },
+    {
+      "path": "RSC02-20261025-05/junit.xml",
+      "sha256": "04f45751c34cd2974da07219cf8b358da0f5f47b513e9dc367f6746fe2c384ec",
+      "bytes": 13821
+    },
+    {
+      "path": "RSC02-20261025-05/pytest.log",
+      "sha256": "8d26f867f8617809203802308dacb656a30f27fd1b58eeb565ee49633a1f1ae7",
+      "bytes": 14429
+    },
+    {
+      "path": "RSC02-20261025-05/source_manifest.json",
+      "sha256": "612c021bcdb8d0cc162cd5205ba8e5c4b1ea00fecb4701de313caaa7df584676",
+      "bytes": 25248
+    },
+    {
+      "path": "RSC02-20261025-05/summary.json",
+      "sha256": "998a79caa67b99bcb442c76df16d591c3ae0f1becac7dc610060b526af957ed5",
+      "bytes": 399
+    },
+    {
+      "path": "RSC02-20261025-05/observations/RSC02-baseline.tracemalloc",
+      "sha256": "9c70473ed817353ed9b43937da1399bdbe1dfecd58aaa41f50832d89ff7cf70a",
+      "bytes": 464369
+    },
+    {
+      "path": "RSC02-20261025-05/observations/RSC02-cycles.jsonl",
+      "sha256": "965f1570666832f170f23e0a5cb5de265a0037f2a76e9fb1bef5422ece573cd4",
+      "bytes": 48651
+    },
+    {
+      "path": "RSC02-20261025-05/observations/RSC02-interrupted.tracemalloc",
+      "sha256": "8849ef0f111edb4c9078094d0e00e2444ce23403003ea620e7d57fc1d4ee22b0",
+      "bytes": 657724
+    },
+    {
+      "path": "RSC02-20261025-05/observations/RSC02-rounds-progress.json",
+      "sha256": "e29e94520cc747a2270e8cc2bf52628821ece181ee85aa2c0ee46e224b22e786",
+      "bytes": 2113
+    },
+    {
+      "path": "RSC02-diagnostic-20261025-01/candidate_manifest.json",
+      "sha256": "126463248abd62e55861d07e214ab6832759acdb9da645d67a4f257b1fadba6c",
+      "bytes": 1251
+    },
+    {
+      "path": "RSC02-diagnostic-20261025-01/junit.xml",
+      "sha256": "d3c726bdab22fa7d223e4f6fa0a0a8ca91caa6071abf96744f66dd29dee71043",
+      "bytes": 609
+    },
+    {
+      "path": "RSC02-diagnostic-20261025-01/pytest.log",
+      "sha256": "fadfd41aff4edc5c01e46fb9e593ac7ac4e4b622eb2d2adfd0886bc8744c8464",
+      "bytes": 101
+    },
+    {
+      "path": "RSC02-diagnostic-20261025-01/source_manifest.json",
+      "sha256": "f4eeacefbdf11421b5212690dab9531647b3a2e7e6c096688db38f7ad1db39e7",
+      "bytes": 25248
+    },
+    {
+      "path": "RSC02-diagnostic-20261025-01/summary.json",
+      "sha256": "766d3c77988ced2036a147e469389f3c9a0b5d2981e968d6b0b35aee645ff39c",
+      "bytes": 404
+    },
+    {
+      "path": "RSC02-diagnostic-20261025-01/observations/RSC02-denied-diagnostic-close.json",
+      "sha256": "f10687326080f1fb27ff369086551f78583f3840e0fbf725856515522ea24c1a",
+      "bytes": 96
+    },
+    {
+      "path": "RSC02-diagnostic-20261025-01/observations/RSC02-denied-diagnostic-persistent.json",
+      "sha256": "ecaa4399b022caf39c74e5ea929b9e8f711429feeee4f526420cb33783420dec",
+      "bytes": 101
+    }
+  ]
+}

@@ -82,7 +82,7 @@ iOS/VoiceOver fora do escopo. Critérios originais mantidos.
 | RSC-01 | PENDING |
 | RSC-02 | PARTIAL_EXECUTED |
 | RSC-03 | PARTIAL_EXECUTED |
-| RSC-04 | PENDING |
+| RSC-04 | COMPLETED |
 | RSC-05 | PENDING |
 | RSC-06 | PENDING |
 | DLV-01 | COMPLETED |
@@ -94,7 +94,7 @@ iOS/VoiceOver fora do escopo. Critérios originais mantidos.
 | ACC-01 | PARTIAL_EXECUTED |
 | ACC-02 | PARTIAL_EXECUTED |
 | ACC-03 | PARTIAL_EXECUTED |
-| ACC-04 | PENDING |
+| ACC-04 | COMPLETED |
 | ACC-05 | PARTIAL_EXECUTED |
 | ACC-06 | PARTIAL_EXECUTED |
 | ACC-07 | PARTIAL_EXECUTED |

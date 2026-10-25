@@ -197,3 +197,26 @@ Os 12 testes de volume passaram. A auditoria de escopo reabriu temporariamente D
 ## LOAD-05 — concluído em 25/10/2026
 
 [Fanout, recursos, inbox e rastreabilidade](LOAD05-20261025-results.json). Seis testes passaram: componentes e TCP em 1/10/50 dispositivos, reconexão parcial e leitor pausado. Foram 762 leituras WS observadas; histórico/inbox mantiveram 13 mensagens por caso e nenhuma notificação cruzada no remetente. Destinatário quebrado não bloqueou os demais no teste do componente. Presence e pool ficaram livres após fechar sockets. Medições descritivas incluem filas/leitura deliberadamente atrasada; sem P99, ganho, saturação ou capacidade de produção.
+
+## Android físico — fonte, teclado e TalkBack, 25/10/2026
+
+A correção de `IllustratedProgress` está no Flutter `cf6cc8b`: a altura mínima permanece, enquanto o texto ampliado passa a determinar a altura necessária. Seis variantes de XP (duas larguras × fontes 1,0/1,3/2,0), cinco de Home e dez de cabeçalho passaram; as duas imagens com fonte normal são byte a byte iguais às anteriores. A fonte a 200% foi revalidada no celular após hot reload. Os 172 scripts da aplicação carregados no processo corresponderam às fontes atuais. O APK instalado não foi reconstruído nesta operação.
+
+Foram registradas capturas físicas de Home/Coleção/Social/Quintal com fontes 1,0/1,3/2,0, além de Home/Coleção em quatro classes de viewport com fonte 1,0/2,0. São configurações de um único Android, não quatro aparelhos ou um tablet físico. A busca com teclado exibiu o estado vazio para `qqq` e voltou aos 19 gatos após limpar. A classificação considera a aba selecionada efetiva: `collection-scale100` e os primeiros arquivos `network-*social` permaneceram em Home/Coleção, respectivamente, e não comprovam os percursos sugeridos por seus nomes. Capturas posteriores confirmam a Coleção padrão.
+
+O usuário confirmou sem problemas o roteiro TalkBack de cabeçalho, coleção/análise existente, galeria com cancelamento, notificação e ação do Quintal. É evidência humana, sem gravação de áudio. Na etapa final, o usuário também confirmou saída/entrada na conta, seleção efetiva de foto com cancelamento antes de Analisar/Salvar e envio de mensagem ao segundo usuário de desenvolvimento. ACC-04 está concluído no Android por avaliação humana explícita; iOS permanece excluído. Sobreposição de arte/texto de missões em fonte ampliada e alvos nativos pequenos do cabeçalho continuam pontos de avaliação; a correção do XP não certifica todas as telas de acessibilidade.
+
+## RSC-02 — execução parcial preservada
+
+[Rodadas, diagnóstico e hashes](RSC02-20261025-results.json). Uma rodada de 100 ciclos HTTP/foto/WS terminou com zero conexão PostgreSQL emprestada, zero socket próprio, duas threads, três tasks e 222 handles após repouso. A segunda rodada encontrou timeout no upload multipart negado no ciclo 28; o teste completo de três rodadas não passou. Dois diagnósticos adicionais executaram 200 uploads negados com conexão persistente e 200 com fechamento, sem reproduzir a falha. Isso não inocenta o percurso misto. As cinco tentativas anteriores, ajustes de observador/oráculo e evidências brutas continuam preservados. Não houve correção no produto nem alegação de ausência de vazamento da API.
+
+
+## RSC-04 / ACC-04 — concluídos no Android, 25/10/2026
+
+[Relatório, variantes, hashes e rastreabilidade](ANDROID-USB-20261025-results.json). Três ciclos de aquecimento e 30 ciclos medidos de câmera/cancelamento, detalhes, chat e Quintal concluídos no mesmo processo Android. Houve pausa após 17 ciclos durante reinício da API; a retomada preservou os ciclos anteriores, com espera limitada ajustada e referências do observador isoladas. Não é uma comparação estatística entre versões de executor. Após repouso/GC e inspeção independente, zero telas de detalhes, zero telas de conversa e zero controladores de conversa; um interpretador local e os estados persistentes esperados. O heap foi de 214,67 MiB aquecido para 215,44 MiB após repouso.
+
+A memória gráfica observada aumentou de 875.411 para 945.615 KiB; PSS total, de 1.379.442 para 1.448.404 KiB. O cache Flutter final tinha 41 entradas, 40 imagens vivas e zero pendentes, usando 94.922.664 bytes sob limite de 104.857.600. A atribuição do crescimento nativo permanece um achado aberto: requer perfil equivalente de texturas/renderização em profile/release antes de otimizar; o resultado não comprova vazamento nem ausência dele no subsistema gráfico.
+
+Social foi confirmado pela aba/estado efetivo, exibiu erro offline e recuperou sem erro após restaurar Wi-Fi/dados. Na redução de movimento, as flags efetivas passaram de 128 para 132 e `HabitatGame.reducedMotion` de false para true; vídeos pareados de seis segundos foram preservados. Celebrações e todos os efeitos ainda não foram certificados por esse complemento de ACC-06.
+
+O roteiro TalkBack original mais os três passos finais foram confirmados pelo usuário sem problemas. Nenhum áudio foi capturado remotamente. Fontes, resolução, densidade, animações, acessibilidade, Wi-Fi e dados móveis foram restaurados e comparados com os valores originais. Energia de 15 minutos e medições confirmatórias profile/release continuam pendentes, sem manter o USB ocupado nesta etapa.
