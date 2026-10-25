@@ -67,7 +67,7 @@ iOS/VoiceOver fora do escopo. Critérios originais mantidos.
 | SEC-03 | COMPLETED |
 | SEC-04 | PARTIAL_EXECUTED |
 | SEC-05 | COMPLETED |
-| SEC-06 | PARTIAL_EXECUTED |
+| SEC-06 | COMPLETED |
 | SEC-07 | COMPLETED |
 | SEC-08 | COMPLETED |
 | SEC-09 | PARTIAL_EXECUTED |

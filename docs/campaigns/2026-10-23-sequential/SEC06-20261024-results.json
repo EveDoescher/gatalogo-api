@@ -1,0 +1,190 @@
+{
+  "scenario": "SEC-06",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_sha": "f849ec86fd7ddbf739070b865e84a7deed554c9f",
+  "passed": 29,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes": false,
+  "executor": "scripts/run_security_regression.py --scenario SEC-06 --output <new private attempt>",
+  "coverage": [
+    "Analysis rejects empty, HTML falsely declared image/png, truncated PNG and excessive pixels before quality/model calls or writes.",
+    "Primary/reference/analysis reject oversize, missing file and malformed multipart; no photo bytes/revisions/jobs changed.",
+    "Preprocessor rejects unsupported format, undersized image and invalid bytes, with valid positive controls.",
+    "Invalid cursor and pagination limits/types; valid endpoints 1 and 500.",
+    "Empty/129-character device ID and 501-operation batch rejected without revisions.",
+    "Application reader accepts exact byte boundary and stops at bounded overflow."
+  ],
+  "cases": [
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.extended_cases::test_SEC06_bounded_upload_and_schema_limits",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_analysis_rejects_before_model_or_write[html-mime]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_analysis_rejects_before_model_or_write[empty]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_analysis_rejects_before_model_or_write[truncated]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_analysis_rejects_before_model_or_write[pixels]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_upload_transport_bounds[oversize-analysis]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_upload_transport_bounds[oversize-primary]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_upload_transport_bounds[oversize-reference]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_upload_transport_bounds[missing-file-analysis]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_upload_transport_bounds[missing-file-primary]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_upload_transport_bounds[missing-file-reference]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_upload_transport_bounds[malformed-multipart-analysis]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_upload_transport_bounds[malformed-multipart-primary]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_upload_transport_bounds[malformed-multipart-reference]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_pagination_invalid_and_positive_boundaries[limit=0]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_pagination_invalid_and_positive_boundaries[limit=501]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_pagination_invalid_and_positive_boundaries[limit=invalid]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_pagination_invalid_and_positive_boundaries[cursor=-1]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_pagination_invalid_and_positive_boundaries[cursor=invalid]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_sync_field_rejection_has_no_side_effect[]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_sync_field_rejection_has_no_side_effect[xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.input_bounds_cases::test_SEC06_analysis_reader_stops_after_bounded_overflow",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.image_cases::test_IMG05_SEC06_invalid_image_matrix[empty]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.image_cases::test_IMG05_SEC06_invalid_image_matrix[invalid]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.image_cases::test_IMG05_SEC06_invalid_image_matrix[truncated]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.image_cases::test_IMG05_SEC06_invalid_image_matrix[unsupported]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.image_cases::test_IMG05_SEC06_invalid_image_matrix[small]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.image_cases::test_IMG05_SEC06_invalid_image_matrix[pixels]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC06-20261024-02.executors.image_cases::test_IMG05_SEC06_invalid_image_matrix[bytes]",
+      "status": "PASS"
+    }
+  ],
+  "measurements": {
+    "pytest_seconds": 39.06,
+    "max_transport_probe_bytes": 1048577,
+    "max_reader_probe_bytes": 2097153,
+    "application_read_at_1MiB_limit": 2097152,
+    "generated_pixel_boundary": [
+      128,
+      128
+    ],
+    "generated_rejected_dimensions": [
+      129,
+      128
+    ]
+  },
+  "first_attempt": {
+    "path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC06-20261024-01",
+    "result": "23 PASS, 5 FAIL due to wrong expected status codes in new tests; preserved and excluded from product defect claims.",
+    "correction": "f849ec86fd7ddbf739070b865e84a7deed554c9f corrects test oracles to existing INVALID_IMAGE 400 contract; no product modification."
+  },
+  "limitations": [
+    "Only bounded probes; no load/capacity/percentile conclusions.",
+    "Sync stores media for later processing; content/MIME validation here is proven at analysis/preprocessing, not claimed as early rejection by all sync upload routes.",
+    "Multipart parsing occurs before route reads. These tests do not establish an ingress-wide request cap or disk-spool quota. Verify deployment proxy/server body/time limits separately before any larger upload campaign.",
+    "ASGI transport, isolated PostgreSQL/storage and no inference/provider calls; no physical-device security claim.",
+    "Three existing 413 alias deprecation warnings; no failures."
+  ],
+  "followup": {
+    "hypothesis": "Without ingress body and spool quotas, parsing may spend resources before application byte rejection.",
+    "recommended_validation": "Inspect deployment limits and run bounded transport/spool measurements in disposable server before increasing sizes.",
+    "optimization_applied": false
+  },
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC06-20261024-02/junit.xml",
+      "sha256": "aa0f91b6b7bab9a597f9e2f48286ab2ac8cec15c055016072a8aeb8cfc122b83"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC06-20261024-02/pytest.log",
+      "sha256": "ee39563773558ca4b71c81439a2d1955fb9518c0120b44f82943188acabe8ad6"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC06-20261024-02/summary.json",
+      "sha256": "f6de5d3cd195fc7d132f082688f7db80f58035d14a17bf491be5e639d0f64586"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC06-20261024-02/candidate_manifest.json",
+      "sha256": "3a3d2b3b628c1b56c6a80f51d5ca223ee7befeb8b61e02d21452df50043376a0"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC06-20261024-02/source_manifest.json",
+      "sha256": "7e02eaf750b1b6300be73f4ac8cb9d05e1501504a7c69a3f619c434b14f03e93"
+    }
+  ]
+}

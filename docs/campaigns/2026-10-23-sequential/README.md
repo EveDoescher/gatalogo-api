@@ -97,3 +97,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## ACC-05 — cabeçalhos corrigidos e revalidados
 
 [Antes/depois, hashes e limites](ACC05-header-20261024-results.json). Perfil e notificações agora têm nomes e papel de botão. Os 10 testes passaram, análise estática sem problemas e 10 imagens permaneceram idênticas byte a byte. Após hot reload confirmado pelo usuário, a árvore nativa Android confirmou os dois rótulos e limites inalterados. ACC-05 permanece parcial: demais componentes e navegação TalkBack ainda precisam de avaliação.
+
+## SEC-06 — concluído em 24/10/2026
+
+29 testes aprovados, sem mudança no produto. [Variantes, limites e evidências](SEC06-20261024-results.json). Rejeições de uploads/campos/paginação não alteraram arquivos, revisões ou jobs; MIME falso/pixels excedentes não chegaram aos modelos. O leitor de análise parou no overflow limitado. Limites globais de ingresso/spool continuam uma verificação de implantação separada; não foram presumidos a partir destes testes ASGI.
