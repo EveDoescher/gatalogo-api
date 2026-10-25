@@ -308,18 +308,23 @@ async def test_SEC08_provider_error_canary_redaction_characterization(
     )
     assert canary not in str(caught.value)
     leaked = canary in logs
+    import traceback
+
+    leaked_trace = canary in "".join(traceback.format_exception(caught.value))
     evidence(
         "SEC08-provider-log-canary",
         {
             "scenario": "SEC-08",
             "wrapped_error_redacted": True,
             "raw_exception_log_contains_synthetic_key": leaked,
+            "wrapped_trace_contains_synthetic_key": leaked_trace,
             "scope": "synthetic key and injected provider exception; no real credentials loaded or leaked",
             "finding": "logger.exception retains upstream raw exception despite redacted wrapped detail"
             if leaked
             else None,
         },
     )
+    assert not leaked and not leaked_trace
 
 
 def test_RES08_corrupt_private_cache_characterization(tmp_path):

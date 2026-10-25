@@ -1268,11 +1268,14 @@ async def test_SEC02_SEC08_export_and_favorites_owner_isolation(db, caplog):
 
 
 @pytest.mark.asyncio
-async def test_SEC08_export_owned_missing_report_contract(db):
+@pytest.mark.parametrize("deleted", [False, True])
+async def test_SEC08_export_owned_missing_report_contract(db, deleted):
     from app.persistence_models import MissingReport
 
     await seed(db)
     async with db.factory() as session:
+        if deleted:
+            (await session.get(RemoteCat, uid("matrix-cat"))).deleted_at = NOW
         session.add(
             MissingReport(
                 id=uid("export-report"),
@@ -1289,7 +1292,7 @@ async def test_SEC08_export_owned_missing_report_contract(db):
         response = await db.client.get("/app/account/export", headers=db.headers("B"))
     except AttributeError as error:
         evidence(
-            "SEC08-export-report-failure",
+            "SEC08-export-report-failure-" + str(deleted),
             {
                 "scenario": "SEC-08",
                 "own_reports": 1,
@@ -1300,11 +1303,14 @@ async def test_SEC08_export_owned_missing_report_contract(db):
         )
         raise
     evidence(
-        "SEC08-export-report",
+        "SEC08-export-report-" + str(deleted),
         {"scenario": "SEC-08", "own_reports": 1, "status": response.status_code},
     )
     assert response.status_code == 200
     assert len(response.json()["missing_reports"]) == 1
+    assert response.json()["missing_reports"][0]["cat_client_id"] == str(
+        uid("matrix-client")
+    )
 
 
 @pytest.mark.asyncio
