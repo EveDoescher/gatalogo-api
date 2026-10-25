@@ -158,3 +158,14 @@ async def test_RES08_missing_photo_returns_controlled_error_and_recovers(db):
     )
 
     await probe(db)
+
+
+@pytest.mark.asyncio
+async def test_RES08_valid_cache_hit_and_invalid_payload_regression(
+    tmp_path, monkeypatch
+):
+    from image_cases import (
+        test_IMG04_semantic_cache_hit_invalid_payload_and_missing_provider as probe,
+    )
+
+    await probe(tmp_path, monkeypatch)
