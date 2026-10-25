@@ -446,7 +446,7 @@
   },
   {
     "scenario": "IMG-02",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Analisar, editar metadado que deixe dirty, sync e reiniciar.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -454,11 +454,15 @@
     "local_runs": [
       "attempts/pipeline-01/critical_runs/pipeline-baseline/summary.json"
     ],
-    "limitation": "Novas variantes locais rastreadas; conferir escopo e pendências no relatório. Nenhuma aprovação integral ou correção de produto.",
+    "limitation": "Six desktop OS processes, real files/SQLite and own HTTP API; deterministic inference and platform/network adapters. Automatic normal retry verified; no phone radio/UI or real AI claim.",
     "followup_runs": [
       "attempts/offline-flow-01/critical_runs/offline-flow-baseline/summary.json",
       "attempts/offline-flow-02/critical_runs/offline-flow-baseline/summary.json"
-    ]
+    ],
+    "closure_evidence": [
+      "RES01-IMG02-20261025-results.json"
+    ],
+    "executor": "scripts/campaign/current_offline_cases.py"
   },
   {
     "scenario": "IMG-03",
@@ -789,7 +793,7 @@
   },
   {
     "scenario": "RES-01",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Capturar/editar offline, fechar/reabrir e recuperar rede.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -798,7 +802,11 @@
       "attempts/offline-flow-01/critical_runs/offline-flow-baseline/summary.json",
       "attempts/offline-flow-02/critical_runs/offline-flow-baseline/summary.json"
     ],
-    "limitation": "Novas variantes locais rastreadas; conferir escopo e pendências no relatório. Nenhuma aprovação integral ou correção de produto."
+    "limitation": "Six desktop OS processes, real files/SQLite and own HTTP API; deterministic inference and platform/network adapters. Automatic normal retry verified; no phone radio/UI or real AI claim.",
+    "closure_evidence": [
+      "RES01-IMG02-20261025-results.json"
+    ],
+    "executor": "scripts/campaign/current_offline_cases.py"
   },
   {
     "scenario": "RES-02",

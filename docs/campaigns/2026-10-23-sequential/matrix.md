@@ -31,7 +31,7 @@ iOS/VoiceOver fora do escopo. Critérios originais mantidos.
 | DB-06 | COMPLETED |
 | DB-07 | COMPLETED |
 | IMG-01 | PARTIAL_EXECUTED |
-| IMG-02 | PARTIAL_EXECUTED |
+| IMG-02 | COMPLETED |
 | IMG-03 | PARTIAL_EXECUTED |
 | IMG-04 | PARTIAL_EXECUTED |
 | IMG-05 | PARTIAL_EXECUTED |
@@ -54,7 +54,7 @@ iOS/VoiceOver fora do escopo. Critérios originais mantidos.
 | DATA-07 | COMPLETED |
 | DATA-08 | COMPLETED |
 | DATA-09 | COMPLETED |
-| RES-01 | PARTIAL_EXECUTED |
+| RES-01 | COMPLETED |
 | RES-02 | PARTIAL_EXECUTED |
 | RES-03 | COMPLETED |
 | RES-04 | COMPLETED |

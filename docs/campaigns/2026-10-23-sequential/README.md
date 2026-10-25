@@ -181,3 +181,7 @@ Os 12 testes de volume passaram. A auditoria de escopo reabriu temporariamente D
 ## DB-04 — concluído em 25/10/2026
 
 3 datasets aprovados e 9 avaliações de famílias de leitura em schema migrado; planos ANALYZE/BUFFERS, índices e versão registrados em transações READ ONLY. Sem otimização aplicada. [Variantes, fontes e evidências](DB04-20261025-results.json). Sem alteração no produto.
+
+## RES-01 / IMG-02 — concluídos em 25/10/2026
+
+[Seis processos, métricas e rastreabilidade](RES01-IMG02-20261025-results.json). Captura/edição offline, reabertura, análise real do protocolo com inferência controlada, sincronização, edição após análise, isolamento e reabertura final passaram. Fotos foram criadas pelo fluxo do cliente, sem PUT manual Python. A fase de retomada convergiu em 62,786 s com zero tentativa explícita, observando o timer normal de um minuto. Metadados preservaram a análise autoritativa. Tentativas de infraestrutura/oráculo anteriores permanecem preservadas; sem alegação de validação Android físico ou IA real.

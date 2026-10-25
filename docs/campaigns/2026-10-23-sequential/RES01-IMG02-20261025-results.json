@@ -1,0 +1,189 @@
+{
+  "scenarios": [
+    "RES-01",
+    "IMG-02"
+  ],
+  "state": "COMPLETED",
+  "date": "2026-10-25",
+  "api_source_sha": "98dfb3f9bc480ec9509b1844d625b6f32255393a",
+  "flutter_tested_sha": "bd85001832e6951577392c3a3f85735d246a26c3",
+  "flutter_style_followup_sha": "ad207a1ef7f22d06973a494cdbb332b5c0010a08",
+  "api_pytest_passed": 1,
+  "flutter_os_processes_passed": 6,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes_for_this_flow": false,
+  "executors": [
+    "scripts/run_security_regression.py --scenario RES-01",
+    "scripts/campaign/current_offline_cases.py",
+    "catlogue/tool/campaign_offline_capture_test.dart"
+  ],
+  "coverage": [
+    "Offline capture of owned/non-owned record; edited fields/dirty status, image bytes and pending analysis survive a new OS process.",
+    "Return of controlled network availability runs real client sync and analysis over own loopback API/migrated PostgreSQL; no manual HTTP photo upload by Python.",
+    "Automatic one-minute retry observed until both records synced; explicit sync attempts in this phase are zero.",
+    "Completed analysis then survives metadata edits, real sync, account B process isolation and final offline process restart.",
+    "Server authoritative analysis unchanged by metadata; owner reads both exact photo bytes (200), foreign account denied (404)."
+  ],
+  "measurements": [
+    {
+      "phase": "capture",
+      "visible": 2,
+      "sync_states": [
+        "dirty",
+        "dirty"
+      ],
+      "elapsed_ms_observed": 772,
+      "explicit_sync_attempts": 0
+    },
+    {
+      "phase": "reopen",
+      "visible": 2,
+      "sync_states": [
+        "dirty",
+        "dirty"
+      ],
+      "elapsed_ms_observed": 165,
+      "explicit_sync_attempts": 0
+    },
+    {
+      "phase": "sync",
+      "visible": 2,
+      "sync_states": [
+        "synced",
+        "synced"
+      ],
+      "elapsed_ms_observed": 62786,
+      "explicit_sync_attempts": 0
+    },
+    {
+      "phase": "metadata",
+      "visible": 2,
+      "sync_states": [
+        "synced",
+        "synced"
+      ],
+      "elapsed_ms_observed": 1786,
+      "explicit_sync_attempts": 2
+    },
+    {
+      "phase": "other",
+      "visible": 0,
+      "sync_states": [],
+      "elapsed_ms_observed": 109,
+      "explicit_sync_attempts": 0
+    },
+    {
+      "phase": "final",
+      "visible": 2,
+      "sync_states": [
+        "synced",
+        "synced"
+      ],
+      "elapsed_ms_observed": 322,
+      "explicit_sync_attempts": 0
+    }
+  ],
+  "limitations": [
+    "Desktop actual CatStore/SQLite/files/HTTP, controlled session/platform/network-availability adapters; not physical Android radio/background termination or UI rendering certification.",
+    "Classification/detection are local deterministic fixtures; preprocessing/cache/fusion and persistence real. No paid AI or real visual identity claim.",
+    "Observed sync phase 62.786 s includes the normal one-minute retry and client work; one observation, not API latency, P99 or gain estimate.",
+    "Metadata uses explicit public sync retries, with count recorded; no automatic metadata latency claim.",
+    "Style-only braces followup after the successful run; product lib hashes unchanged, no repeated multi-process campaign for formatting-only change."
+  ],
+  "preserved_attempts": [
+    {
+      "attempt": "RES01-20261025-01",
+      "classification": "INFRASTRUCTURE",
+      "reason": "60-second cold Flutter load timeout, before scenario body."
+    },
+    {
+      "attempt": "RES01-20261025-02",
+      "classification": "ORACLE_CORRECTED",
+      "reason": "Required immediate synced although normal scheduler interval is one minute; requests and analysis succeeded, dirty data preserved."
+    },
+    {
+      "attempt": "RES01-20261025-03",
+      "classification": "INFRASTRUCTURE",
+      "reason": "Flutter test framework default 30-second timeout could not observe a one-minute timer."
+    }
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES01-20261025-04/junit.xml",
+      "sha256": "1caf330cc0923c530c17337d1337a04e5307dc8eaff375402d3bbd6bdc20b4fe"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES01-20261025-04/pytest.log",
+      "sha256": "d296608694c3247179dadc09b625b5f92e12c13e719941244dd527b6e13e3032"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES01-20261025-04/summary.json",
+      "sha256": "165c9f356284d46fce67c273706bb47b3a0b56a2f01a73c8b2efefb553ed1580"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES01-20261025-04/source_manifest.json",
+      "sha256": "0eb5438722cac5c1c7c55c1fdb5c772d2e14aefbeb89b1034daaa4f06a2f7bd7"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES01-20261025-04/candidate_manifest.json",
+      "sha256": "de2e28b4ec692e17c79afa7f161d3883c111ee724993ce222403be0125f30e4c"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES01-20261025-04/observations/RES01-IMG02-current-client.json",
+      "sha256": "bc9c06e529da80f35e599ff23545aae9e0f4976e5dbbaaeac175ef0918948f68"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES01-20261025-04/observations/current-offline/capture.json",
+      "sha256": "5544ccea59144cc2be7054dfca9ad4767fac92de624dbb2b5a360d493c0c3f25"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES01-20261025-04/observations/current-offline/capture.jsonl",
+      "sha256": "efc0781313a74af257bdc65ecc800b2bb814e07d335b5dd25e4a0b0a31ede90a"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES01-20261025-04/observations/current-offline/client-source-manifest.json",
+      "sha256": "0ac6e9470084098ec9a764b90fbf587d7bf91250b0526d7a6684cf50a1fcda07"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES01-20261025-04/observations/current-offline/final.json",
+      "sha256": "07d0d35f8078da06e6893b6bb946f07cadafe69a544b5c39603c5baa91546079"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES01-20261025-04/observations/current-offline/final.jsonl",
+      "sha256": "f0457ddd470783b507c6b751b257b378cee32b8bb1ade4a48ab9ddc9a77d5b85"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES01-20261025-04/observations/current-offline/metadata.json",
+      "sha256": "e4b3d355ec9ce07f5b5a83e04f72e74c3dfd3c8a0cf24d23e289060ff7d9d41b"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES01-20261025-04/observations/current-offline/metadata.jsonl",
+      "sha256": "7cca5400a873921726a4bc7be9df1e891ca54c754855b524fde0954fa215369e"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES01-20261025-04/observations/current-offline/other.json",
+      "sha256": "4101a4d718889c6c4b848e5725df1309170483bcd4cf1c2d9aa087aa15533a8b"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES01-20261025-04/observations/current-offline/other.jsonl",
+      "sha256": "9f2595043608c20f9434991acea94a50bcb81af15e83cbfc58418da1cc38d195"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES01-20261025-04/observations/current-offline/reopen.json",
+      "sha256": "02d8be28f2b3bc87c4b05c5fc2e0a9c9831d95b39618ecc6243076ade5eed9de"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES01-20261025-04/observations/current-offline/reopen.jsonl",
+      "sha256": "2b841582a949f9a5c6a7c600e478b8903ef9d3aefb7895590d90f97698bba3f8"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES01-20261025-04/observations/current-offline/sync.json",
+      "sha256": "eb82bbb157b58d28c861441212f041b77aac61a372c7aff699aae2aa680ecb8f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES01-20261025-04/observations/current-offline/sync.jsonl",
+      "sha256": "895989974a17e67af02bb49e7791bcc4e6e1cda8492392f84bc7948ae6423c77"
+    }
+  ]
+}
