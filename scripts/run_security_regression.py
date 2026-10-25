@@ -86,6 +86,8 @@ def source_hashes():
         )
     )
     paths.extend(ROOT.glob("scripts/campaign/*.py"))
+    paths.extend(ROOT.glob("alembic/**/*.py"))
+    paths.append(ROOT / "alembic.ini")
     return {
         str(path.relative_to(ROOT)).replace("\\", "/"): hashlib.sha256(
             path.read_bytes()
@@ -168,6 +170,7 @@ def selection(scenario, output):
         "DB-03": "social_volume_cases.py",
         "DB-05": "pool_release_cases.py",
         "DB-03-HISTORY": "social_history_cases.py",
+        "DB-04": "migrated_plan_cases.py",
     }[scenario]
     if case_file:
         names.append(case_file)
@@ -571,6 +574,7 @@ if __name__ == "__main__":
             "DB-03",
             "DB-05",
             "DB-03-HISTORY",
+            "DB-04",
         ],
         default="SEC-01",
     )
