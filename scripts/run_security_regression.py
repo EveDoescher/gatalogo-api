@@ -80,6 +80,7 @@ def source_hashes():
             "test_conversation_events.py",
             "test_websocket_manager.py",
             "test_sync_query_performance.py",
+            "test_logging_security.py",
         )
     )
     paths.extend(ROOT.glob("scripts/campaign/*.py"))
@@ -159,7 +160,9 @@ def selection(scenario, output):
     if scenario == "SEC-07":
         names.append("delivery_cases.py")
     if scenario == "SEC-08":
-        names.extend(["delivery_cases.py", "image_cases.py"])
+        names.extend(
+            ["delivery_cases.py", "image_cases.py", "test_logging_security.py"]
+        )
     if scenario in ("DATA-03", "DATA-04"):
         names.append("idempotency_child.py")
     if scenario == "DB-02":
@@ -167,13 +170,7 @@ def selection(scenario, output):
     for name in names:
         destination = executors / name
         origin = (
-            ROOT
-            / (
-                "tests"
-                if name in ("test_auth_security.py", "test_sync_query_performance.py")
-                else "scripts/campaign"
-            )
-            / name
+            ROOT / ("tests" if name.startswith("test_") else "scripts/campaign") / name
         )
         shutil.copy2(origin, destination)
         hashes[name] = hashlib.sha256(destination.read_bytes()).hexdigest()
@@ -193,7 +190,9 @@ def selection(scenario, output):
     if scenario == "SEC-07":
         selected.append("delivery_cases.py")
     if scenario == "SEC-08":
-        selected.extend(["delivery_cases.py", "image_cases.py"])
+        selected.extend(
+            ["delivery_cases.py", "image_cases.py", "test_logging_security.py"]
+        )
     selectors = [str(executors / name) for name in selected]
     selectors += ["-k", scenario.replace("-", ""), "--confcutdir", str(executors)]
     return (

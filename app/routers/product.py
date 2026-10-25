@@ -420,7 +420,9 @@ async def share_achievement(achievement_id: str, user: User = Depends(current_us
 async def export_user_data(user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict:
     state = await _get_or_create_product_state(session, user)
     cats = (await session.execute(select(RemoteCat).where(RemoteCat.user_id == user.id, RemoteCat.deleted_at.is_(None)))).scalars().all()
-    reports = (await session.execute(select(MissingReport).where(MissingReport.user_id == user.id))).scalars().all()
+    reports = (await session.execute(select(MissingReport, RemoteCat.client_id).join(
+        RemoteCat, MissingReport.cat_id == RemoteCat.id).where(
+        MissingReport.user_id == user.id, RemoteCat.user_id == user.id))).all()
     sightings = (await session.execute(select(Sighting).where(Sighting.observer_id == user.id))).scalars().all()
 
     return {
@@ -449,14 +451,14 @@ async def export_user_data(user: User = Depends(current_user), session: AsyncSes
         "missing_reports": [
             {
                 "id": str(r.id),
-                "cat_client_id": str(r.cat_client_id),
+                "cat_client_id": str(cat_client_id),
                 "latitude": r.latitude,
                 "longitude": r.longitude,
                 "radius_meters": r.radius_meters,
                 "status": r.status,
                 "created_at": r.created_at.isoformat() if r.created_at else None,
             }
-            for r in reports
+            for r, cat_client_id in reports
         ],
         "sightings": [
             {

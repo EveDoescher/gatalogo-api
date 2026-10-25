@@ -13,6 +13,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import get_settings
+from app.logging_security import install_sensitive_query_filters
 from app.exceptions import (
     ColorAnalysisError,
     GeminiAnalysisError,
@@ -44,6 +45,8 @@ from app.database import get_session_factory
 from app.services.websocket_manager import ws_manager
 from app.services.quintal_scheduler import QuintalScheduler
 from app.services.reference_analysis import ReferenceAnalysisWorker
+
+install_sensitive_query_filters()
 
 
 @asynccontextmanager

@@ -50,7 +50,7 @@ async def test_SEC08_auth_upload_and_websocket_error_canaries(db, monkeypatch, c
     await seed(db)
     token_canary = "INVALID_TOKEN_CANARY_PRIVATE"
     body_canary = b"PRIVATE_PHOTO_BODY_CANARY"
-    monkeypatch.setattr(get_settings(), "max_image_bytes", 4)
+    monkeypatch.setattr(get_settings(), "max_image_mb", 1)
     monkeypatch.setattr(websocket, "get_session_factory", lambda: db.factory)
     with caplog.at_level(logging.INFO):
         auth = await db.client.get(
@@ -61,7 +61,13 @@ async def test_SEC08_auth_upload_and_websocket_error_canaries(db, monkeypatch, c
             f"/sync/cats/{uid('matrix-client')}/photo",
             headers=db.headers("B"),
             data={"updated_at": "2026-10-24T12:00:00Z", "device_id": "synthetic"},
-            files={"image": ("PRIVATE_FILENAME_CANARY.png", body_canary, "image/png")},
+            files={
+                "image": (
+                    "PRIVATE_FILENAME_CANARY.png",
+                    body_canary.ljust(1024 * 1024 + 1, b"x"),
+                    "image/png",
+                )
+            },
         )
         assert upload.status_code == 413
         async with Socket(token_canary) as denied:

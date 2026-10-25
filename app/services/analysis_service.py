@@ -390,13 +390,13 @@ class AnalysisService:
         except ValidationError as error:
             raise GeminiAnalysisError(
                 "A resposta do Gemini não corresponde ao schema esperado."
-            ) from error
+            ) from None
         except Exception as error:
-            logger.exception("Resposta do Gemini inválida após a chamada")
+            logger.error("Resposta do Gemini inválida após a chamada (%s)", type(error).__name__)
             raise GeminiAnalysisError(
                 "A resposta do Gemini não pôde ser interpretada "
                 f"({type(error).__name__}: {self._safe_error_detail(error)})."
-            ) from error
+            ) from None
 
     def _generate_content_with_retry(
         self,
@@ -431,15 +431,16 @@ class AnalysisService:
                     sleep(delay)
                     continue
 
-                logger.exception(
-                    "Falha na chamada ao Gemini (tentativas=%d)",
+                logger.error(
+                    "Falha na chamada ao Gemini (tentativas=%d; erro=%s)",
                     attempt + 1,
+                    type(error).__name__,
                 )
                 raise GeminiAnalysisError(
                     "Falha ao analisar a imagem com o Gemini "
                     f"({type(error).__name__}: "
                     f"{self._safe_error_detail(error)})."
-                ) from error
+                ) from None
 
         raise GeminiAnalysisError("Falha ao analisar a imagem com o Gemini.")
 
