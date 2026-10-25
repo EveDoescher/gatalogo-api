@@ -56,7 +56,7 @@ def execute_pytest(source, selectors, env, output, prefix=""):
             cwd=source,
             env=env,
             log=log,
-            timeout=360,
+            timeout=480 if env.get("QUALITY_LARGE_LOCAL_SYNC") == "true" else 360,
         )
 
 
@@ -173,6 +173,7 @@ def selection(scenario, output):
         "DB-03-HISTORY": "social_history_cases.py",
         "DB-04": "migrated_plan_cases.py",
         "RES-01": "current_offline_cases.py",
+        "LAT-04": "sync_batch_cases.py",
     }[scenario]
     if case_file:
         names.append(case_file)
@@ -200,6 +201,8 @@ def selection(scenario, output):
         names.extend(["image_cases.py", "pipeline_cases.py", "test_reference_analysis.py"])
     if scenario == "RES-01":
         names.extend(["image_cases.py", "critical_report.py", "subprocesses.py"])
+    if scenario == "LAT-04":
+        names.extend(["current_offline_cases.py", "image_cases.py", "critical_report.py", "subprocesses.py"])
     if scenario == "SEC-04":
         names.extend(["remaining_mechanism_cases.py", "social_volume_cases.py", "measurements.py"])
     if scenario == "LOAD-03":
@@ -265,6 +268,7 @@ def selection(scenario, output):
         source,
         selectors,
         dict(
+            QUALITY_LARGE_LOCAL_SYNC="true" if scenario == "LAT-04" else "false",
             QUALITY_CAMPAIGN_RUN=str(campaign),
             QUALITY_CAMPAIGN_ATTEMPT=str(output),
             QUALITY_TARGET_SOURCE=str(source),
@@ -581,6 +585,7 @@ if __name__ == "__main__":
             "DB-03-HISTORY",
             "DB-04",
             "RES-01",
+            "LAT-04",
         ],
         default="SEC-01",
     )
