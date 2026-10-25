@@ -8,6 +8,8 @@ from pathlib import Path
 import subprocess
 import sys
 
+from campaign.subprocesses import run_logged
+
 ROOT = Path(__file__).resolve().parents[1]
 FLUTTER = ROOT.parent / "catlogue"
 
@@ -56,12 +58,11 @@ def run(output, files, name=None):
         json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
     )
     with (output / "tests.jsonl").open("w", encoding="utf-8") as log:
-        result = subprocess.run(
+        result = run_logged(
             command,
             cwd=FLUTTER,
             env=dict(os.environ, PUB_ENVIRONMENT="quality-campaign"),
-            stdout=log,
-            stderr=subprocess.STDOUT,
+            log=log,
             timeout=240,
         )
     names, cases = {}, []
@@ -73,6 +74,8 @@ def run(output, files, name=None):
         try:
             item = json.loads(line)
         except ValueError:
+            continue
+        if not isinstance(item, dict):
             continue
         if item.get("type") == "testStart":
             names[item["test"]["id"]] = item["test"]["name"]
