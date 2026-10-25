@@ -140,6 +140,7 @@ def selection(scenario, output):
     case_file = {
         "SEC-02": "isolation_cases.py",
         "SEC-03": "websocket_cases.py",
+        "SEC-04": "audience_cases.py",
         "SEC-05": "storage_cases.py",
         "SEC-06": "input_bounds_cases.py",
         "SEC-07": "auth_flow_cases.py",
@@ -166,6 +167,8 @@ def selection(scenario, output):
         )
     if scenario == "SEC-06":
         names.append("image_cases.py")
+    if scenario == "SEC-04":
+        names.extend(["remaining_mechanism_cases.py", "social_volume_cases.py", "measurements.py"])
     if scenario in ("DATA-03", "DATA-04"):
         names.append("idempotency_child.py")
     if scenario == "DB-02":
@@ -198,6 +201,8 @@ def selection(scenario, output):
         )
     if scenario == "SEC-06":
         selected.append("image_cases.py")
+    if scenario == "SEC-04":
+        selected.extend(["remaining_mechanism_cases.py", "social_volume_cases.py"])
     selectors = [str(executors / name) for name in selected]
     selectors += ["-k", scenario.replace("-", ""), "--confcutdir", str(executors)]
     return (
@@ -491,6 +496,7 @@ if __name__ == "__main__":
             "SEC-01",
             "SEC-02",
             "SEC-03",
+            "SEC-04",
             "SEC-05",
             "SEC-06",
             "SEC-07",
