@@ -137,3 +137,24 @@ async def test_RES08_analysis_output_survives_cache_fault(tmp_path, monkeypatch,
     assert (
         len(calls) == 2
     )  # Both are cache misses; provider is a local deterministic fake.
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("fault", ["no-space", "permission"])
+async def test_RES08_photo_storage_failure_preserves_old_bytes_and_retries(
+    db, monkeypatch, fault
+):
+    from storage_resilience_cases import (
+        test_RES05_IMG07_storage_write_failure_rollback_and_retry as probe,
+    )
+
+    await probe(db, monkeypatch, fault)
+
+
+@pytest.mark.asyncio
+async def test_RES08_missing_photo_returns_controlled_error_and_recovers(db):
+    from storage_resilience_cases import (
+        test_IMG07_missing_private_file_then_restored as probe,
+    )
+
+    await probe(db)

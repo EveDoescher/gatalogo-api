@@ -333,14 +333,16 @@ def test_RES08_corrupt_private_cache_characterization(tmp_path):
     cache = AnalysisCache(str(tmp_path / "own"))
     cache.set("fixture", "payload")
     cache.path.write_bytes(b"controlled corrupted SQLite")
-    with pytest.raises(sqlite3.DatabaseError):
-        AnalysisCache(str(cache.path.parent))
+    recovered = AnalysisCache(str(cache.path.parent))
+    assert recovered.get("fixture") is None
+    recovered.set("new", "payload")
+    assert cache.path.read_bytes() == b"controlled corrupted SQLite"
     evidence(
         "RES08-corrupt-semantic-cache",
         {
             "scenario": "RES-08",
-            "corrupted_cache": "constructor raises DatabaseError",
-            "finding": "No automatic recovery observed for corrupted private semantic cache",
-            "scope": "own cache only; no recovery behavior asserted as safe",
+            "corrupted_cache": "optional cache bypassed without deleting raw file",
+            "finding": None,
+            "scope": "own derived cache only; authoritative user data is never reset",
         },
     )

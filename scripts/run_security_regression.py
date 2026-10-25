@@ -174,6 +174,8 @@ def selection(scenario, output):
         )
     if scenario in ("SEC-06", "RES-08"):
         names.append("image_cases.py")
+    if scenario == "RES-08":
+        names.append("storage_resilience_cases.py")
     if scenario == "SEC-04":
         names.extend(["remaining_mechanism_cases.py", "social_volume_cases.py", "measurements.py"])
     if scenario == "LOAD-03":
