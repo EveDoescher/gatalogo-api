@@ -89,3 +89,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## DB-02 — concluído em 24/10/2026
 
 4 testes aprovados e 1.448 execuções de página. [Datasets, SQL, variantes, planos e hashes](DB02-20261024-results.json). F-HIST 1/10/100 foi percorrido em limites 1/200/500, sempre primeira execução/repetição; extensão de 20.001 revisões percorreu 200/500 e amostrou bordas em limite 1. JSON/cursor igual ao legado e 4/1 SELECTs internos não vazio/vazio em todas as páginas. Conexão nova não significa buffer físico frio. Sem otimização nem alegação de ganho.
+
+## SEC-08 — concluído em 24/10/2026
+
+19 testes e 7 regressões de exceção aprovados. [Defeitos, correções, canários, fontes e hashes](SEC08-20261024-results.json). Exportação de relatos foi corrigida, inclusive com gato excluído logicamente. Canários do provedor não aparecem mais nos logs/traces testados; token de query não vaza nos logs reais do Uvicorn, incluindo nome percent-encoded. SMTP real isolado não loga OTP. O fluxo intencional de OTP de desenvolvimento com SMTP desligado permanece contextualizado, sem alegação de configuração de produção aprovada.

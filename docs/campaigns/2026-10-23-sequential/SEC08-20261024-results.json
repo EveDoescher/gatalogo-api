@@ -1,0 +1,180 @@
+{
+  "scenario": "SEC-08",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_sha": "74bc015522f26bd76ada106b55af794fe965803a",
+  "correction_commits": [
+    "a8e7100",
+    "74bc015522f26bd76ada106b55af794fe965803a"
+  ],
+  "passed": 19,
+  "failed": 0,
+  "skipped": 0,
+  "exception_regression_passed": 7,
+  "cases": [
+    {
+      "selector": "sequential.SEC08-20261024-03.executors.extended_cases::test_SEC02_SEC08_export_and_favorites_owner_isolation",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC08-20261024-03.executors.extended_cases::test_SEC08_export_owned_missing_report_contract[False]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC08-20261024-03.executors.extended_cases::test_SEC08_export_owned_missing_report_contract[True]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC08-20261024-03.executors.privacy_cases::test_SEC08_terminal_provider_error_has_no_secret_log_or_trace",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC08-20261024-03.executors.privacy_cases::test_SEC08_auth_upload_and_websocket_error_canaries",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC08-20261024-03.executors.privacy_cases::test_SEC08_real_uvicorn_websocket_access_log_redacts_query_credentials",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC08-20261024-03.executors.delivery_cases::test_SEC08_SMTP_enabled_does_not_log_otp",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC08-20261024-03.executors.image_cases::test_SEC08_provider_error_canary_redaction_characterization",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC08-20261024-03.executors.test_logging_security::test_SEC08_query_secret_is_absent_from_rendered_and_structured_log[token]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC08-20261024-03.executors.test_logging_security::test_SEC08_query_secret_is_absent_from_rendered_and_structured_log[access_token]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC08-20261024-03.executors.test_logging_security::test_SEC08_query_secret_is_absent_from_rendered_and_structured_log[refresh_token]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC08-20261024-03.executors.test_logging_security::test_SEC08_query_secret_is_absent_from_rendered_and_structured_log[api_key]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC08-20261024-03.executors.test_logging_security::test_SEC08_query_secret_is_absent_from_rendered_and_structured_log[key]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC08-20261024-03.executors.test_logging_security::test_SEC08_query_secret_is_absent_from_rendered_and_structured_log[password]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC08-20261024-03.executors.test_logging_security::test_SEC08_query_secret_is_absent_from_rendered_and_structured_log[code]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC08-20261024-03.executors.test_logging_security::test_SEC08_query_secret_is_absent_from_rendered_and_structured_log[%74oken]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC08-20261024-03.executors.test_logging_security::test_SEC08_query_secret_is_absent_from_rendered_and_structured_log[ToKeN]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC08-20261024-03.executors.test_logging_security::test_SEC08_nonsensitive_log_context_is_preserved",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC08-20261024-03.executors.test_logging_security::test_SEC08_repeated_secret_parameters_are_all_redacted",
+      "status": "PASS"
+    }
+  ],
+  "coverage": [
+    "Account export A with private B canary present excludes B; unauthorized export/auth rejected without raw credentials in response/log",
+    "Own missing report exports correct client ID for active and soft-deleted cat, without reading nonexistent MissingReport.cat_client_id",
+    "Injected provider call/parsing failures: wrapped public detail, captured logs and formatted exception traces exclude synthetic configured key",
+    "Actual separate loopback Uvicorn WebSocket upgrade rejections at /ws: token, percent-encoded token name and access_token do not leak in access/error logs; safe query context remains visible",
+    "Credential query names, mixed case, percent encoding and repeated keys redacted from rendered message and structured args; nonsensitive log unchanged",
+    "Oversized bounded synthetic multipart, invalid auth and ASGI WS failure paths contain no token/body/filename canary in captured errors/logs",
+    "Real isolated Mailpit/SMTP delivery logs no OTP; seven existing exception-contract regressions pass"
+  ],
+  "findings": [
+    {
+      "problem": "Export read nonexistent report.cat_client_id",
+      "before": "AttributeError for both active and deleted-cat report",
+      "change": "Resolve client ID through same-owner RemoteCat join, retaining soft-deleted report links"
+    },
+    {
+      "problem": "Provider raw exceptions leaked configured key through log traceback and chained public-error trace",
+      "before": "Two provider canary tests failed",
+      "change": "Log error class/attempt metadata and suppress unsafe upstream cause while retaining existing redacted public message"
+    },
+    {
+      "problem": "Uvicorn logs included WebSocket token query, including percent-encoded parameter name",
+      "before": "Real local server log contained synthetic credential",
+      "change": "Install idempotent query filters on uvicorn.error, uvicorn.access and httpx; preserve safe context and remove raw structured args"
+    }
+  ],
+  "fixture_correction": "Initial upload fixture attempted to set read-only max_image_bytes property. Corrected public max_image_mb to 1 and used bounded 1 MiB+1 body. This setup failure is excluded from product findings.",
+  "intentional_development_exception": "SMTP_DISABLED development OTP logging remains the existing local workflow, explicitly outside no-OTP assertion for SMTP_ENABLED delivery. Raw codes stay in private evidence; this report contains none. Deployment readiness requires separate SEC-09 configuration review; no blanket production-safe logging claim.",
+  "executor": "scripts/run_security_regression.py --scenario SEC-08 --output <new-directory-under-original-run>/sequential/<attempt>",
+  "executor_sha256": {
+    "security_cases.py": "de35705f692b00f80fe9c37e593bb601f20c5345b524910e2e26c382dfe20178",
+    "extended_cases.py": "807bd177c3f5526e710348cd50b75da278a7699bcc98b65c8371776f7b4cf832",
+    "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+    "privacy_cases.py": "e1f2c728cf1f0f9842d1ad630d73af70358d911409931693a26e88e220ae144a",
+    "test_auth_security.py": "6749261b11daf0b9e3ffdf82410b781c87bddb0f0af17671527169cb54aab743",
+    "delivery_cases.py": "5d5f6a8719ed55efdd9be1c0b202199837b0ce33eaa27fb7c522cfed4ab2ac96",
+    "image_cases.py": "493f88abd9175033ed2835d9d9d04b32ed4281af9b58d799256573038a7802e3",
+    "test_logging_security.py": "6561119eb3a62d77f70bceb8e7d62c7df49bd85ab92a521f67bf87a2df88481b"
+  },
+  "evidence_sha256": {
+    "sequential/SEC08-exception-regression-20261024-01.xml": "e1ddcd07345e234ee5d675ef313130d981d78279adb30853035f7e1b60571fd1",
+    "sequential/SEC08-20261024-01/junit.xml": "1de473ab255ccf54d2802bf2f79ec7e519cfd082680ff12dda43d2d9394ce72a",
+    "sequential/SEC08-20261024-01/pytest.log": "f30f8d6af84e9415591bd53307682caff943b0bd0a893add9338605c3d0acf97",
+    "sequential/SEC08-20261024-01/summary.json": "75300413c40229ac96b5958f6dcc74bbface6518e2be8f4075097398622f66eb",
+    "sequential/SEC08-20261024-01/candidate_manifest.json": "2cf63cb60ca39afb9ef0431b9c0ce7056b7074ad2f2d2854aefaf74e5edf7cc2",
+    "sequential/SEC08-20261024-01/source_manifest.json": "8c80111d7ce0d57afb32cd79a23357d377e9f16cb874af97d47966b2b7f52a18",
+    "sequential/SEC08-20261024-01/observations/SEC08-export-report-failure-False.json": "5157f269539716dd2f38fe0d974cd8bfbbb730c6148d71b4d1ae0379c4c1e37a",
+    "sequential/SEC08-20261024-01/observations/SEC08-export-report-failure-True.json": "5157f269539716dd2f38fe0d974cd8bfbbb730c6148d71b4d1ae0379c4c1e37a",
+    "sequential/SEC08-20261024-01/observations/SEC08-owner-export.json": "570898c388a0ac93c9f76b32abaaede29df899c58f15e38e727c657c0872af39",
+    "sequential/SEC08-20261024-01/observations/SEC08-provider-log-canary.json": "36266a9b0fc9e07e27df6cbec7f3ccd84cf463ba6854defd3ba257dd96e3ea7f",
+    "sequential/SEC08-20261024-01/observations/SEC08-smtp-log.json": "53822ae35538504392e5a05a28b1827158b9e4ce449a3517a82b2b0dac4fd81e",
+    "sequential/SEC08-20261024-01/observations/SEC08-uvicorn-query.json": "0895c97d5d38b34d76b9f465563b49fa1ccef8c87ced3ae9f9d98bd8a9bc6ef1",
+    "sequential/SEC08-20261024-01/observations/SEC08-uvicorn/uvicorn.log": "fca31453962e8cbd578ff728c722fce10bf482207970cdee67de1762e90b4b6c",
+    "sequential/SEC08-20261024-02/junit.xml": "12cc0497c8eb6cfad49826a5ca3b752839f8af8bd359c542c995088902cdd156",
+    "sequential/SEC08-20261024-02/pytest.log": "83d8c5a4513e2011dd4cc3b80d45e507ed34d6bf629b8f3848167112ece82ea8",
+    "sequential/SEC08-20261024-02/summary.json": "2ae1c9f87ea1c66891c9698eb2b2c83169e76f66d3e4b336ec01b8e85ab27bd7",
+    "sequential/SEC08-20261024-02/candidate_manifest.json": "08cd3fd649c833845f133be82fbbe6e88c42e23e189bef85188ce19f8f5aef67",
+    "sequential/SEC08-20261024-02/source_manifest.json": "b1fdf10757c0d563a767e7687133bcf48fcf72b6fe8e3bf4a486bc4db760bcf7",
+    "sequential/SEC08-20261024-02/observations/SEC08-error-canaries.json": "bdb7259ac1b1ec95006dec493f9bfc86ede63f1a8ab7078e06ae80dd408cb9ea",
+    "sequential/SEC08-20261024-02/observations/SEC08-export-report-False.json": "8ec0e88ad79cb2c6b5996b47de239967d1a64f6658c27037278693ee31759ba8",
+    "sequential/SEC08-20261024-02/observations/SEC08-export-report-True.json": "8ec0e88ad79cb2c6b5996b47de239967d1a64f6658c27037278693ee31759ba8",
+    "sequential/SEC08-20261024-02/observations/SEC08-owner-export.json": "570898c388a0ac93c9f76b32abaaede29df899c58f15e38e727c657c0872af39",
+    "sequential/SEC08-20261024-02/observations/SEC08-provider-log-canary.json": "4ec23568604e173935f1766142f3bc171376ccc12d1b2277173c2fbd52c0a484",
+    "sequential/SEC08-20261024-02/observations/SEC08-smtp-log.json": "53822ae35538504392e5a05a28b1827158b9e4ce449a3517a82b2b0dac4fd81e",
+    "sequential/SEC08-20261024-02/observations/SEC08-terminal-provider.json": "3a934517bb90ad7e1c66870d137c51415015bca0cdbc14c7836d614cbfb4a668",
+    "sequential/SEC08-20261024-02/observations/SEC08-uvicorn-query.json": "f0f1cb4bbd321d321a1a2ef791c555de5880cf7b4e0ab117bc1e9fcfc3ad11d3",
+    "sequential/SEC08-20261024-02/observations/SEC08-uvicorn/uvicorn.log": "e777bbb6b50c9ba64b16008cd67b857eb14febdac3d670fed10311f472f75470",
+    "sequential/SEC08-20261024-03/junit.xml": "7c8e408a1dc2ebc436624917f7223b34fd5f42e3b67f3b71e3723f03ab8f245a",
+    "sequential/SEC08-20261024-03/pytest.log": "2699317a5c97fba0156f0e9b217218ab477b4c6b20301942d4fea1121e7b03da",
+    "sequential/SEC08-20261024-03/summary.json": "2ae1c9f87ea1c66891c9698eb2b2c83169e76f66d3e4b336ec01b8e85ab27bd7",
+    "sequential/SEC08-20261024-03/candidate_manifest.json": "4d8d7ea3ffa5e2cd974066eb82ffe20a5e4964e6194f3e4fee16a57dbfa9f6e2",
+    "sequential/SEC08-20261024-03/source_manifest.json": "c35543778a7ad1de28fe686ed7ad43bfc75765f17577885410f261526dec3f3a",
+    "sequential/SEC08-20261024-03/observations/SEC08-error-canaries.json": "bdb7259ac1b1ec95006dec493f9bfc86ede63f1a8ab7078e06ae80dd408cb9ea",
+    "sequential/SEC08-20261024-03/observations/SEC08-export-report-False.json": "8ec0e88ad79cb2c6b5996b47de239967d1a64f6658c27037278693ee31759ba8",
+    "sequential/SEC08-20261024-03/observations/SEC08-export-report-True.json": "8ec0e88ad79cb2c6b5996b47de239967d1a64f6658c27037278693ee31759ba8",
+    "sequential/SEC08-20261024-03/observations/SEC08-owner-export.json": "570898c388a0ac93c9f76b32abaaede29df899c58f15e38e727c657c0872af39",
+    "sequential/SEC08-20261024-03/observations/SEC08-provider-log-canary.json": "4ec23568604e173935f1766142f3bc171376ccc12d1b2277173c2fbd52c0a484",
+    "sequential/SEC08-20261024-03/observations/SEC08-smtp-log.json": "53822ae35538504392e5a05a28b1827158b9e4ce449a3517a82b2b0dac4fd81e",
+    "sequential/SEC08-20261024-03/observations/SEC08-terminal-provider.json": "3a934517bb90ad7e1c66870d137c51415015bca0cdbc14c7836d614cbfb4a668",
+    "sequential/SEC08-20261024-03/observations/SEC08-uvicorn-query.json": "f0f1cb4bbd321d321a1a2ef791c555de5880cf7b4e0ab117bc1e9fcfc3ad11d3",
+    "sequential/SEC08-20261024-03/observations/SEC08-uvicorn/uvicorn.log": "3faf4e402d31057de37e2a07116afdb9b3af0f47b76ba616e14fc87268f97f3c"
+  },
+  "limitations": [
+    "Actual own PostgreSQL, own Mailpit SMTP and own local Uvicorn with lifespan disabled; provider failures injected, no paid IA or external recipient.",
+    "Scoped error/access-log tests do not prove absence of every possible secret in arbitrary third-party debug sinks or future log statements.",
+    "One existing Starlette deprecation warning for HTTP_413_REQUEST_ENTITY_TOO_LARGE alias; response remains 413. Not a failing assertion or product behavior change.",
+    "Valid-user Android round-trip not evaluated in this server privacy battery."
+  ]
+}

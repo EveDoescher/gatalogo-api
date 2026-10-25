@@ -1022,7 +1022,7 @@
   },
   {
     "scenario": "SEC-08",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Erros de auth/upload/WS/IA, logs com canários, export A com B no banco.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -1033,12 +1033,16 @@
       "attempts/privacy-02/critical_runs/official-export/summary.json",
       "attempts/privacy-02/critical_runs/privacy-baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "limitation": "Canários em fluxos auth/upload/WS/IA/export e SMTP real isolado; exceção intencional OTP dev/SMTP desligado registrada, sem aprovação geral de configuração de produção.",
     "local_runs": [
       "attempts/delivery-01/critical_runs/delivery-baseline/summary.json",
       "attempts/image-01/critical_runs/image-baseline/summary.json",
       "attempts/image-02/critical_runs/image-baseline/summary.json"
-    ]
+    ],
+    "closure_evidence": [
+      "SEC08-20261024-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario SEC-08 --output <new-directory-under-original-run>/sequential/<attempt>"
   },
   {
     "scenario": "SEC-09",
