@@ -79,6 +79,7 @@ def source_hashes():
             "test_auth_security.py",
             "test_conversation_events.py",
             "test_websocket_manager.py",
+            "test_sync_query_performance.py",
         )
     )
     paths.extend(ROOT.glob("scripts/campaign/*.py"))
@@ -148,6 +149,7 @@ def selection(scenario, output):
         "DATA-08": "social_order_cases.py",
         "DATA-03": "idempotency_cases.py",
         "DATA-04": "idempotency_cases.py",
+        "DB-02": "history_cases.py",
     }[scenario]
     if case_file:
         names.append(case_file)
@@ -157,11 +159,17 @@ def selection(scenario, output):
         names.append("delivery_cases.py")
     if scenario in ("DATA-03", "DATA-04"):
         names.append("idempotency_child.py")
+    if scenario == "DB-02":
+        names.append("test_sync_query_performance.py")
     for name in names:
         destination = executors / name
         origin = (
             ROOT
-            / ("tests" if name == "test_auth_security.py" else "scripts/campaign")
+            / (
+                "tests"
+                if name in ("test_auth_security.py", "test_sync_query_performance.py")
+                else "scripts/campaign"
+            )
             / name
         )
         shutil.copy2(origin, destination)
@@ -175,6 +183,8 @@ def selection(scenario, output):
         if scenario == "SEC-10"
         else ["security_cases.py", "extended_cases.py"]
     )
+    if scenario == "DB-02":
+        selected = []
     if case_file:
         selected.append(case_file)
     if scenario == "SEC-07":
@@ -482,6 +492,7 @@ if __name__ == "__main__":
             "DATA-08",
             "DATA-03",
             "DATA-04",
+            "DB-02",
         ],
         default="SEC-01",
     )
