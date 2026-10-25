@@ -387,7 +387,7 @@
   },
   {
     "scenario": "DB-06",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Upload/substituição/delete concorrem com finish de worker; compras/coleta simultâneas.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -395,7 +395,11 @@
     "local_runs": [
       "attempts/worker-race-01/critical_runs/worker-race-baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+    "limitation": "Actual own PostgreSQL row locks and HTTP mutation; worker progression is a spy in lock-order cases, with separate real financial contention oracles. Bounded forced interleavings, not probabilistic deadlock frequency or performance statistics.",
+    "closure_evidence": [
+      "DB06-20261025-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario DB-06 --output <new private attempt>"
   },
   {
     "scenario": "DB-07",

@@ -1,0 +1,126 @@
+{
+  "scenario": "DB-06",
+  "state": "COMPLETED",
+  "date": "2026-10-25",
+  "source_sha": "4d702cc55d0c69b31c3a2cd14e5e6ee03056afa0",
+  "passed": 10,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes": false,
+  "executor": "scripts/run_security_regression.py --scenario DB-06 --output <new private attempt>",
+  "coverage": [
+    "Reference replacement, photo delete and cat delete overlap worker finish in both lock-holder orders.",
+    "A second real PostgreSQL backend is observed waiting on a lock before releasing the first transaction; no old result overrides newer resource.",
+    "Old job completed only when finish owned first lock; mutation-first supersedes it. Deleted resources remain inaccessible.",
+    "2/10/25 distinct purchases compete for one balance: one item/receipt, no negative funds; concurrent collection grants one reward."
+  ],
+  "limitations": [
+    "Actual own PostgreSQL row locks and HTTP mutation; worker progression is a spy in lock-order cases, with separate real financial contention oracles.",
+    "Bounded forced interleavings, not probabilistic deadlock frequency or performance statistics."
+  ],
+  "measurements": [],
+  "cases": [
+    {
+      "selector": "sequential.DB06-20261025-01.executors.concurrent_catalog_cases::test_DB06_overlapping_catalog_mutation_and_worker_finish[mutation-replace]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DB06-20261025-01.executors.concurrent_catalog_cases::test_DB06_overlapping_catalog_mutation_and_worker_finish[mutation-photo-delete]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DB06-20261025-01.executors.concurrent_catalog_cases::test_DB06_overlapping_catalog_mutation_and_worker_finish[mutation-cat-delete]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DB06-20261025-01.executors.concurrent_catalog_cases::test_DB06_overlapping_catalog_mutation_and_worker_finish[finish-replace]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DB06-20261025-01.executors.concurrent_catalog_cases::test_DB06_overlapping_catalog_mutation_and_worker_finish[finish-photo-delete]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DB06-20261025-01.executors.concurrent_catalog_cases::test_DB06_overlapping_catalog_mutation_and_worker_finish[finish-cat-delete]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DB06-20261025-01.executors.concurrent_catalog_cases::test_DB06_purchase_contention_preserves_balance_and_one_receipt[2]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DB06-20261025-01.executors.concurrent_catalog_cases::test_DB06_purchase_contention_preserves_balance_and_one_receipt[10]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DB06-20261025-01.executors.concurrent_catalog_cases::test_DB06_purchase_contention_preserves_balance_and_one_receipt[25]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DB06-20261025-01.executors.concurrent_catalog_cases::test_DB06_collect_contention_gives_one_reward",
+      "status": "PASS"
+    }
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB06-20261025-01/junit.xml",
+      "sha256": "1e8d63d3fc832f459d5373a919e31f43dd997e1f93bdc4812c4546b7246b9965"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB06-20261025-01/pytest.log",
+      "sha256": "e2ee598d34f70602e7364d8d496a0682209a9ea44f85b7a23be2bf659561ed58"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB06-20261025-01/summary.json",
+      "sha256": "97529daf200ec9f9022faa020916d4d660ada4d5b795d07ba3b3f460c2f24236"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB06-20261025-01/source_manifest.json",
+      "sha256": "f148f0d47b344ac7e6831bd491a59bd963140921396a45262ca2471d1101cbfd"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB06-20261025-01/candidate_manifest.json",
+      "sha256": "0623aa4f78a4575d530ff564dc7a3193aadff1ddf5c1db27fe1699851400e1cd"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB06-20261025-01/observations/DATA07-double-collect.json",
+      "sha256": "f01bfe3e4566a8513357bef116da0c1cc5c41c0ace882a47ae76cd6a3e1b0969"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB06-20261025-01/observations/DB06-lock-cat-delete-finish.json",
+      "sha256": "800879acc5158948a18206c7b2a0e738a34cf3de1113610776e4391ded4f1485"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB06-20261025-01/observations/DB06-lock-cat-delete-mutation.json",
+      "sha256": "2c8936731e52b5461ce7ec4b9eac78500b31e545aaece887a0d9a66b12f62f0d"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB06-20261025-01/observations/DB06-lock-photo-delete-finish.json",
+      "sha256": "ee031ac2e8fa0e05b87e9ec07440df22e91166e8ce8d0cfb8ac6715dc4f14f61"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB06-20261025-01/observations/DB06-lock-photo-delete-mutation.json",
+      "sha256": "a7f882ea3a5e57206e6b16bf04d27e5765d81ed297d155e63bcb288440462a2a"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB06-20261025-01/observations/DB06-lock-replace-finish.json",
+      "sha256": "6de4348c24893f9e5920b7d2c49e191385515f154e6f5fd6f54c719c235c38e7"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB06-20261025-01/observations/DB06-lock-replace-mutation.json",
+      "sha256": "b0444eb8df88a734ac8ba2b81fc979190cd80045b306f409b34faa16f20c6884"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB06-20261025-01/observations/LOAD03-distinct-balance-10.json",
+      "sha256": "09ab82c9404c1f541dccdab403edfa2df4f4b9d540896c72d6a4cfdaca97a464"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB06-20261025-01/observations/LOAD03-distinct-balance-2.json",
+      "sha256": "e3cdf46d9ba7af1c4c6251c0e0a6428582a06a6f1872a47eb8630e86a6b8bc5a"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB06-20261025-01/observations/LOAD03-distinct-balance-25.json",
+      "sha256": "bc34178b58c38c2f6c3e5e2a0d7ff4a7831d40c979ce33530da72eb597154603"
+    }
+  ]
+}

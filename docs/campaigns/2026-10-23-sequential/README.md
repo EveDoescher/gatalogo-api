@@ -157,3 +157,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## DATA-09 — concluído em 25/10/2026
 
 5 testes aprovados: ciclo completo de busca/pista, replay de avistamento e confirmação concorrente, amizade/rollout, recompensa única, notificação após commit e retirada da busca resolvida. [Variantes, fontes e evidências](DATA09-20261025-results.json). Sem alteração no produto.
+
+## DB-06 — concluído em 25/10/2026
+
+10 testes aprovados: seis interleavings com espera real por lock em PostgreSQL, três rajadas de compra e uma coleta concorrente; sem sobrescrita obsoleta, débito ou recompensa duplicados. [Variantes, fontes e evidências](DB06-20261025-results.json). Sem alteração no produto.
