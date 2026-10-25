@@ -332,7 +332,7 @@
   },
   {
     "scenario": "DB-03",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "1/20/100 conversas e feed com autores repetidos/distintos.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -341,14 +341,18 @@
       "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
       "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json"
     ],
-    "limitation": "Novas variantes locais rastreadas; conferir escopo e pendências no relatório. Nenhuma aprovação integral ou correção de produto.",
+    "limitation": "Structural bounded probes with warm fixtures; three observations per dataset do not support P99, confidence intervals or latency gains. Observed SQL growth/N+1 is a performance finding, not a functional regression approval or an implemented optimization. Confirmatory optimization campaign remains separate.",
     "followup_runs": [
       "attempts/social-history-01/critical_runs/social-history-baseline/summary.json",
       "attempts/social-history-02/critical_runs/social-history-baseline/summary.json",
       "attempts/social-order-01/critical_runs/social-order-baseline/summary.json",
       "attempts/social-order-02/critical_runs/social-order-A/summary.json",
       "attempts/social-order-02/critical_runs/social-order-B/summary.json"
-    ]
+    ],
+    "closure_evidence": [
+      "DB03-20261025-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario DB-03 --output <new private attempt>"
   },
   {
     "scenario": "DB-04",

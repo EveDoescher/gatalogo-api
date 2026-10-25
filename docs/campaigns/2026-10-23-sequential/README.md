@@ -161,3 +161,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## DB-06 — concluído em 25/10/2026
 
 10 testes aprovados: seis interleavings com espera real por lock em PostgreSQL, três rajadas de compra e uma coleta concorrente; sem sobrescrita obsoleta, débito ou recompensa duplicados. [Variantes, fontes e evidências](DB06-20261025-results.json). Sem alteração no produto.
+
+## DB-03 — concluído em 25/10/2026
+
+12 testes de volume/isolamento/paginação aprovados em 1/20/100 itens, autores repetidos/distintos; consultas, bytes, tempo, CPU e RSS registrados. Crescimento SQL observado permanece oportunidade documentada, sem otimização aplicada. [Variantes, fontes e evidências](DB03-20261025-results.json). Sem alteração no produto.
