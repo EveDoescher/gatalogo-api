@@ -162,6 +162,7 @@ def selection(scenario, output):
         "RES-04": "worker_race_cases.py",
         "RES-08": "test_analysis_cache_resilience.py",
         "IMG-07": "storage_worker_cases.py",
+        "DATA-01": "data_snapshot_cases.py",
     }[scenario]
     if case_file:
         names.append(case_file)
@@ -179,6 +180,8 @@ def selection(scenario, output):
         names.append("storage_resilience_cases.py")
     if scenario == "IMG-07":
         names.extend(["storage_resilience_cases.py", "worker_race_cases.py", "test_reference_analysis.py", "subprocesses.py"])
+    if scenario == "DATA-01":
+        names.extend(["image_cases.py", "pipeline_cases.py"])
     if scenario == "SEC-04":
         names.extend(["remaining_mechanism_cases.py", "social_volume_cases.py", "measurements.py"])
     if scenario == "LOAD-03":
@@ -219,6 +222,8 @@ def selection(scenario, output):
         selected.append("image_cases.py")
     if scenario == "SEC-04":
         selected.extend(["remaining_mechanism_cases.py", "social_volume_cases.py"])
+    if scenario == "DATA-01":
+        selected.append("pipeline_cases.py")
     selectors = [str(executors / name) for name in selected]
     selectors += ["-k", scenario.replace("-", ""), "--confcutdir", str(executors)]
     if scenario == "RES-04":
@@ -542,6 +547,7 @@ if __name__ == "__main__":
             "RES-04",
             "RES-08",
             "IMG-07",
+            "DATA-01",
         ],
         default="SEC-01",
     )
