@@ -117,3 +117,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## RES-04 — concluído em 24/10/2026
 
 6 testes PostgreSQL aprovados: término de processo próprio, reclaim em novo processo, fencing, cancelamento, limite de tentativas e conexão liberada durante inferência. [Variantes, fontes e evidências](RES04-20261024-results.json). Sem alteração no produto.
+
+## DB-07 — concluído em 24/10/2026
+
+3 testes aprovados em SQLite real: abertura concorrente/falha temporária, página parcialmente aplicada e cursor preservado com reprocessamento sem perda/duplicação. [Fontes, variantes e evidências](DB07-20261024-results.json). Sem mudança no produto.

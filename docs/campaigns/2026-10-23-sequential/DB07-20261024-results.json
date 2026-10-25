@@ -1,0 +1,66 @@
+{
+  "scenario": "DB-07",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "flutter_source_sha": "eb484ac77ef7fe1d6df2c1940c57499891bb7519",
+  "passed": 3,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes": false,
+  "executor": "scripts/run_flutter_regression.py",
+  "command": [
+    "C:\\flutter\\bin\\cache\\dart-sdk\\bin\\dart.exe",
+    "C:\\flutter\\bin\\cache\\flutter_tools.snapshot",
+    "test",
+    "--no-pub",
+    "--machine",
+    "tool/campaign_resilience_test.dart",
+    "--name",
+    "DB07"
+  ],
+  "code": [
+    "catlogue/lib/data/cat_database.dart",
+    "catlogue/lib/services/catalog_sync_service.dart"
+  ],
+  "coverage": [
+    "Real SQLite file: interruption after first remote row, cursor remains old; new sync service retries the same cursor and converges without missing/duplicate rows.",
+    "Concurrent database opens share one failed connection future, then retry successfully with real SQLite sentinel data preserved.",
+    "Remote apply failure does not advance cursor across new service instances."
+  ],
+  "limitations": [
+    "Desktop SQLite FFI and mocked HTTP; no Android process kill or physical storage-fault claim.",
+    "New service instance is tested, not OS process restart; DB-07 does not require an OS crash.",
+    "First run raw tests passed but new runner failed parsing a JSON progress list; attempt preserved. Parser fixed in 0a0312b; final run includes completed source guard."
+  ],
+  "cases": [
+    {
+      "name": "DB07 persisted partial page retries after restart without skipped rows or duplicates",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB07 real SQLite concurrent opening shares failure then retries without discarding data",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB07 cursor remains unchanged if remote application fails and retry starts at same cursor",
+      "result": "success",
+      "skipped": false
+    }
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB07-20261024-02/tests.jsonl",
+      "sha256": "f690d509ae86c55d05450504a8ed8a57245c403c46e5a6d4c05c131cb51efa62"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB07-20261024-02/summary.json",
+      "sha256": "816d2805830fdcbd90e4462b3f6cd75fd17f19d086bfbc5cf1b3e49ccf0634c2"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB07-20261024-02/source_manifest.json",
+      "sha256": "d07c7a935db8dfd22489c85f240cbc385984635a8fdac9e90a108d787f5a3d17"
+    }
+  ]
+}
