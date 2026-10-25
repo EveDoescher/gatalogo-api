@@ -25,7 +25,8 @@ from security_cases import evidence
 from image_cases import configured, image_bytes, semantic
 from critical_report import flutter_tests
 from subprocesses import run_logged
-from app import main
+from app import database, main
+from app.routers import websocket as websocket_routes
 from app.persistence_models import HabitatWallet, RemoteCat, User
 from app.services.auth_service import issue_tokens
 from app.services.fcm_service import fcm_sender
@@ -53,6 +54,10 @@ async def own_api(tmp_path, monkeypatch):
     assert url == os.environ["DATABASE_URL"]
     engine = create_async_engine(url)
     factory = async_sessionmaker(engine, expire_on_commit=False)
+    # Each parametrized case has its own event loop and owns this pool's lifetime.
+    # Avoid carrying the application's cached asyncpg pool into the next loop.
+    monkeypatch.setattr(database, "get_session_factory", lambda: factory)
+    monkeypatch.setattr(websocket_routes, "get_session_factory", lambda: factory)
     ids = [uuid4(), uuid4()]
     async with factory() as session:
         users = [
