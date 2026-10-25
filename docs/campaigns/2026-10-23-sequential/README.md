@@ -173,3 +173,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## DB-03 — complemento de cobertura
 
 Os 12 testes de volume passaram. A auditoria de escopo reabriu temporariamente DB-03 para revalidar também os históricos F-SOC de 0/100/1.000 mensagens e lista vazia no candidato atual. A classificação inicial foi corrigida sem apagar as evidências.
+
+## DB-03 — complemento concluído em 25/10/2026
+
+19 testes adicionais passaram; total de 31 datasets e 147 observações de requests. [Históricos, consultas, bytes, tempo e recursos](DB03-history-20261025-results.json). Cobertos 0/100/1.000 mensagens, autores repetidos/distintos e lista própria vazia com histórico estrangeiro. Preservados unread/última mensagem/ordem/isolamento. A rota de histórico mantém seu contrato sem paginação; N+1 e payload integral continuam oportunidades documentadas, sem otimização ou alegação de ganho.
