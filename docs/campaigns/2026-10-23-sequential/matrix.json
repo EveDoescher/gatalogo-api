@@ -275,7 +275,7 @@
   },
   {
     "scenario": "DB-01",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "F-CAT nas bordas de 500, com G/B; snapshot real do coordinator.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [
@@ -293,10 +293,14 @@
       "attempts/probe-layout-01/flutter_results/03-B/test.jsonl",
       "attempts/probe-layout-01/flutter_results/04-A/test.jsonl"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "limitation": "Real desktop SQLite FFI and real coordinator.read; no phone UI, HTTP or cold disk IO claim. 42 single snapshot timing observations after fixture creation; no gain, percentile or confidence interval inferred.",
     "local_runs": [
       "attempts/flutter-catalog-01/flutter_catalog/summary.json"
-    ]
+    ],
+    "closure_evidence": [
+      "DB01-20261025-results.json"
+    ],
+    "executor": "scripts/run_flutter_regression.py"
   },
   {
     "scenario": "DB-02",

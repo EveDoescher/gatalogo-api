@@ -145,3 +145,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## IMG-07 — concluído em 25/10/2026
 
 5 testes aprovados: falha de espaço/permissão, recuperação de arquivo ausente e fencing de hash antes da análise em SQLite/PostgreSQL. [Variantes, fontes e evidências](IMG07-20261025-results.json). Sem alteração no produto.
+
+## DB-01 — concluído em 25/10/2026
+
+20 testes aprovados e 42 snapshots reais, de 0 a 2.000 gatos, com G/B. Mapas/ordem/referências preservados e contagem SQL exata nas bordas de 500. [Fontes, variantes e evidências](DB01-20261025-results.json). Sem mudança no produto.

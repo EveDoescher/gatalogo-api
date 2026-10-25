@@ -1,0 +1,576 @@
+{
+  "scenario": "DB-01",
+  "state": "COMPLETED",
+  "date": "2026-10-25",
+  "flutter_source_sha": "6c604f9d1af6a690987ac45123d850db77f4d4f5",
+  "passed": 20,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes": false,
+  "executor": "scripts/run_flutter_regression.py",
+  "command": [
+    "C:\\flutter\\bin\\cache\\dart-sdk\\bin\\dart.exe",
+    "C:\\flutter\\bin\\cache\\flutter_tools.snapshot",
+    "test",
+    "--no-pub",
+    "--machine",
+    "test/catalog_snapshot_boundaries_test.dart",
+    "tool/campaign_resilience_test.dart",
+    "--name",
+    "DB01"
+  ],
+  "code": [
+    "catlogue/lib/services/catalog_sync_coordinator.dart",
+    "catlogue/lib/data/repositories/catalog_repository.dart",
+    "catlogue/lib/data/repositories/reference_photo_repository.dart",
+    "catlogue/lib/data/sqlite_id_batches.dart"
+  ],
+  "coverage": [
+    "F-CAT 0/1/40/499/500/501/2000 owned rows, guest absent/present and foreign/tombstone rows.",
+    "42 real CatalogSyncCoordinator.read snapshots for owner A, guest and B preserve complete maps, descending capture order, missing/present analyses and four reference angles in kind order; tombstones excluded.",
+    "SQL reads exactly 1+2*ceil(V/500), or 1 if empty, including guest-induced crossings at 500/2000.",
+    "Six standalone batching cases cover duplicate IDs and 0/1/499/500/501/1001 sizes; unknown Cat payload field ignored and future analysis map data preserved."
+  ],
+  "limitations": [
+    "Real desktop SQLite FFI and real coordinator.read; no phone UI, HTTP or cold disk IO claim.",
+    "42 single snapshot timing observations after fixture creation; no gain, percentile or confidence interval inferred."
+  ],
+  "cases": [
+    {
+      "name": "DB01 batch boundary count=0 duplicates and missing IDs",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB01 batch boundary count=1 duplicates and missing IDs",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB01 batch boundary count=499 duplicates and missing IDs",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB01 batch boundary count=500 duplicates and missing IDs",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB01 batch boundary count=501 duplicates and missing IDs",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB01 batch boundary count=1001 duplicates and missing IDs",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB01 real coordinator snapshot count=0 guest=false",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB01 real coordinator snapshot count=0 guest=true",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB01 real coordinator snapshot count=1 guest=false",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB01 real coordinator snapshot count=1 guest=true",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB01 real coordinator snapshot count=40 guest=false",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB01 real coordinator snapshot count=40 guest=true",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB01 real coordinator snapshot count=499 guest=false",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB01 real coordinator snapshot count=499 guest=true",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB01 real coordinator snapshot count=500 guest=false",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB01 real coordinator snapshot count=500 guest=true",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB01 real coordinator snapshot count=501 guest=false",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB01 real coordinator snapshot count=501 guest=true",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB01 real coordinator snapshot count=2000 guest=false",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "DB01 real coordinator snapshot count=2000 guest=true",
+      "result": "success",
+      "skipped": false
+    }
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB01-20261025-02/tests.jsonl",
+      "sha256": "a591ec44c20d2e0660fb72fc1d4b2db4acb374becd9b2672e22ec903196033ae"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB01-20261025-02/summary.json",
+      "sha256": "0a638d7c4414b2344e0432ccbec6b62577a0c7608895123605bcfd0422a2b0d1"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB01-20261025-02/source_manifest.json",
+      "sha256": "5cb349be7986c76e54c6ec3776c45884ca45d4bd02aadd8ec588170ffea1cc51"
+    }
+  ],
+  "measurements": [
+    {
+      "scenario": "DB-01",
+      "owned": 0,
+      "guest": false,
+      "owner": "a",
+      "visible": 0,
+      "selects": 1,
+      "elapsed_us": 20614,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 0,
+      "guest": false,
+      "owner": null,
+      "visible": 0,
+      "selects": 1,
+      "elapsed_us": 2095,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 0,
+      "guest": false,
+      "owner": "b",
+      "visible": 1,
+      "selects": 3,
+      "elapsed_us": 13975,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 0,
+      "guest": true,
+      "owner": "a",
+      "visible": 1,
+      "selects": 3,
+      "elapsed_us": 3371,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 0,
+      "guest": true,
+      "owner": null,
+      "visible": 1,
+      "selects": 3,
+      "elapsed_us": 5883,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 0,
+      "guest": true,
+      "owner": "b",
+      "visible": 2,
+      "selects": 3,
+      "elapsed_us": 5082,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 1,
+      "guest": false,
+      "owner": "a",
+      "visible": 1,
+      "selects": 3,
+      "elapsed_us": 5389,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 1,
+      "guest": false,
+      "owner": null,
+      "visible": 0,
+      "selects": 1,
+      "elapsed_us": 2214,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 1,
+      "guest": false,
+      "owner": "b",
+      "visible": 1,
+      "selects": 3,
+      "elapsed_us": 4635,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 1,
+      "guest": true,
+      "owner": "a",
+      "visible": 2,
+      "selects": 3,
+      "elapsed_us": 6987,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 1,
+      "guest": true,
+      "owner": null,
+      "visible": 1,
+      "selects": 3,
+      "elapsed_us": 6161,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 1,
+      "guest": true,
+      "owner": "b",
+      "visible": 2,
+      "selects": 3,
+      "elapsed_us": 7050,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 40,
+      "guest": false,
+      "owner": "a",
+      "visible": 40,
+      "selects": 3,
+      "elapsed_us": 30782,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 40,
+      "guest": false,
+      "owner": null,
+      "visible": 0,
+      "selects": 1,
+      "elapsed_us": 3282,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 40,
+      "guest": false,
+      "owner": "b",
+      "visible": 1,
+      "selects": 3,
+      "elapsed_us": 6612,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 40,
+      "guest": true,
+      "owner": "a",
+      "visible": 41,
+      "selects": 3,
+      "elapsed_us": 10088,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 40,
+      "guest": true,
+      "owner": null,
+      "visible": 1,
+      "selects": 3,
+      "elapsed_us": 5563,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 40,
+      "guest": true,
+      "owner": "b",
+      "visible": 2,
+      "selects": 3,
+      "elapsed_us": 5621,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 499,
+      "guest": false,
+      "owner": "a",
+      "visible": 499,
+      "selects": 3,
+      "elapsed_us": 106579,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 499,
+      "guest": false,
+      "owner": null,
+      "visible": 0,
+      "selects": 1,
+      "elapsed_us": 1680,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 499,
+      "guest": false,
+      "owner": "b",
+      "visible": 1,
+      "selects": 3,
+      "elapsed_us": 5701,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 499,
+      "guest": true,
+      "owner": "a",
+      "visible": 500,
+      "selects": 3,
+      "elapsed_us": 53962,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 499,
+      "guest": true,
+      "owner": null,
+      "visible": 1,
+      "selects": 3,
+      "elapsed_us": 4544,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 499,
+      "guest": true,
+      "owner": "b",
+      "visible": 2,
+      "selects": 3,
+      "elapsed_us": 5835,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 500,
+      "guest": false,
+      "owner": "a",
+      "visible": 500,
+      "selects": 3,
+      "elapsed_us": 30120,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 500,
+      "guest": false,
+      "owner": null,
+      "visible": 0,
+      "selects": 1,
+      "elapsed_us": 1323,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 500,
+      "guest": false,
+      "owner": "b",
+      "visible": 1,
+      "selects": 3,
+      "elapsed_us": 4571,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 500,
+      "guest": true,
+      "owner": "a",
+      "visible": 501,
+      "selects": 5,
+      "elapsed_us": 31093,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 500,
+      "guest": true,
+      "owner": null,
+      "visible": 1,
+      "selects": 3,
+      "elapsed_us": 6569,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 500,
+      "guest": true,
+      "owner": "b",
+      "visible": 2,
+      "selects": 3,
+      "elapsed_us": 3242,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 501,
+      "guest": false,
+      "owner": "a",
+      "visible": 501,
+      "selects": 5,
+      "elapsed_us": 33361,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 501,
+      "guest": false,
+      "owner": null,
+      "visible": 0,
+      "selects": 1,
+      "elapsed_us": 1590,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 501,
+      "guest": false,
+      "owner": "b",
+      "visible": 1,
+      "selects": 3,
+      "elapsed_us": 3532,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 501,
+      "guest": true,
+      "owner": "a",
+      "visible": 502,
+      "selects": 5,
+      "elapsed_us": 26592,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 501,
+      "guest": true,
+      "owner": null,
+      "visible": 1,
+      "selects": 3,
+      "elapsed_us": 2848,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 501,
+      "guest": true,
+      "owner": "b",
+      "visible": 2,
+      "selects": 3,
+      "elapsed_us": 3629,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 2000,
+      "guest": false,
+      "owner": "a",
+      "visible": 2000,
+      "selects": 9,
+      "elapsed_us": 95813,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 2000,
+      "guest": false,
+      "owner": null,
+      "visible": 0,
+      "selects": 1,
+      "elapsed_us": 1917,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 2000,
+      "guest": false,
+      "owner": "b",
+      "visible": 1,
+      "selects": 3,
+      "elapsed_us": 6410,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 2000,
+      "guest": true,
+      "owner": "a",
+      "visible": 2001,
+      "selects": 11,
+      "elapsed_us": 91742,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 2000,
+      "guest": true,
+      "owner": null,
+      "visible": 1,
+      "selects": 3,
+      "elapsed_us": 3759,
+      "cache": "warm from fixture creation; no cold IO claim"
+    },
+    {
+      "scenario": "DB-01",
+      "owned": 2000,
+      "guest": true,
+      "owner": "b",
+      "visible": 2,
+      "selects": 3,
+      "elapsed_us": 3842,
+      "cache": "warm from fixture creation; no cold IO claim"
+    }
+  ]
+}
