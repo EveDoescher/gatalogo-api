@@ -133,3 +133,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## DLV-05 — concluído em 24/10/2026
 
 6 testes aprovados: WS/push nas duas ordens, requisições combinadas, paginação/leitura concorrentes, isolamento após troca de conta e descarte. [Fontes, variantes e evidências](DLV05-20261024-results.json). Sem mudança no produto.
+
+## DLV-04 — concluído em 25/10/2026
+
+12 testes aprovados: preferências, oito tipos, sucesso parcial, UNREGISTERED, erro transitório/rede, retry só dos devices pendentes e recibo PostgreSQL persistido. [Variantes, fontes e evidências](DLV04-20261025-results.json). Sem alteração no produto.

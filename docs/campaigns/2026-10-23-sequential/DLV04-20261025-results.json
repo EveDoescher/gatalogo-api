@@ -1,0 +1,143 @@
+{
+  "scenario": "DLV-04",
+  "state": "COMPLETED",
+  "date": "2026-10-25",
+  "source_sha": "926784806bd547939ad333a6cdf2a14a1a5d5df2",
+  "passed": 12,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes": false,
+  "executor": "scripts/run_security_regression.py --scenario DLV-04 --output <new private attempt>",
+  "coverage": [
+    "Eight notification types across per-device preferences, successful send, transient 503, network error, UNREGISTERED and non-token-invalidating 400.",
+    "Previously delivered and foreign account devices never resent; UNREGISTERED removed, other failed tokens retained; retry targets only three pending devices.",
+    "Account preference overrides device opt-in for Quintal, sightings and social groups.",
+    "Real PostgreSQL push receipt survives pool disposal; retry before 60-second deadline sends nothing, subsequent retry sends only pending device and persists final sent state."
+  ],
+  "limitations": [
+    "Real sender, SQL and durable receipt; provider HTTP and access token are local fixtures, never Google FCM.",
+    "No native arrival/background/permission claim. Native delivery remains a separate externally configured scenario.",
+    "Pool disposal proves new connections read persisted state; not an OS process crash experiment."
+  ],
+  "measurements": [],
+  "cases": [
+    {
+      "selector": "sequential.DLV04-20261024-01.executors.fcm_delivery_cases::test_DLV04_preferences_partial_success_and_targeted_retry[quintal_ready-quintal_notifications]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DLV04-20261024-01.executors.fcm_delivery_cases::test_DLV04_preferences_partial_success_and_targeted_retry[habitat_gift-quintal_notifications]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DLV04-20261024-01.executors.fcm_delivery_cases::test_DLV04_preferences_partial_success_and_targeted_retry[possible_match-sighting_notifications]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DLV04-20261024-01.executors.fcm_delivery_cases::test_DLV04_preferences_partial_success_and_targeted_retry[match_confirmed-sighting_notifications]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DLV04-20261024-01.executors.fcm_delivery_cases::test_DLV04_preferences_partial_success_and_targeted_retry[message-social_notifications]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DLV04-20261024-01.executors.fcm_delivery_cases::test_DLV04_preferences_partial_success_and_targeted_retry[friend_invite-social_notifications]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DLV04-20261024-01.executors.fcm_delivery_cases::test_DLV04_preferences_partial_success_and_targeted_retry[friend_accepted-social_notifications]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DLV04-20261024-01.executors.fcm_delivery_cases::test_DLV04_preferences_partial_success_and_targeted_retry[achievement-None]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DLV04-20261024-01.executors.fcm_delivery_cases::test_DLV04_account_preference_blocks_devices[quintal_ready-quintal_notifications]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DLV04-20261024-01.executors.fcm_delivery_cases::test_DLV04_account_preference_blocks_devices[possible_match-sighting_notifications]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DLV04-20261024-01.executors.fcm_delivery_cases::test_DLV04_account_preference_blocks_devices[message-social_notifications]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DLV04-20261024-01.executors.fcm_delivery_cases::test_DLV04_receipt_survives_connection_reset_and_retries_only_pending_device",
+      "status": "PASS"
+    }
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV04-20261024-01/junit.xml",
+      "sha256": "b9705de38db8758ab6b2879e6a5b76e8aae6c8aa71d4ab24f743e6837ebbee9b"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV04-20261024-01/pytest.log",
+      "sha256": "d2fd332a4659de8ed8d0aa0262ddbd98f823dbb245ea34633483b9b93501c7d5"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV04-20261024-01/summary.json",
+      "sha256": "4f570709b471725dc6b960c40363ed864584f338380a6b94bbd9636cbc26a877"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV04-20261024-01/source_manifest.json",
+      "sha256": "f74921c5ec713f0863cac05eb9af5706e5e39b802f2593bb4bd0365e0d2a3bf7"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV04-20261024-01/candidate_manifest.json",
+      "sha256": "89bc60fc570116a210c0acc0a38f139303e7b196dd8e4c5994f7e44b92fd2be5"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV04-20261024-01/observations/DLV04-account-message.json",
+      "sha256": "c16eb29955cec7230689b8d5f5763de3887f9f52a74ea3a57439fb4de4a1b185"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV04-20261024-01/observations/DLV04-account-possible_match.json",
+      "sha256": "56029bf731d35d62e1c87af9dbfc69b5b3595a67c5807158aff501dacf6ea9e4"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV04-20261024-01/observations/DLV04-account-quintal_ready.json",
+      "sha256": "8e353a5d3c4fd93da2e1304a0b19f271c9194ea6a76876e55cd454d972ed83e7"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV04-20261024-01/observations/DLV04-device-achievement.json",
+      "sha256": "5ab14d3ad59480ce5bfc8991a43383c5bcc407358d4a88940cb35bd9c1be6f24"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV04-20261024-01/observations/DLV04-device-friend_accepted.json",
+      "sha256": "a896517ac4f140b3d6d032d5141c16f4a558acd9c53bb71aa5738e4da3ee7b25"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV04-20261024-01/observations/DLV04-device-friend_invite.json",
+      "sha256": "16e7e0fd503b0a01a275e6e85116be0567dc1c889bcd6c385d22a1481e2cdb11"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV04-20261024-01/observations/DLV04-device-habitat_gift.json",
+      "sha256": "1fb32aadf93cfb3036a307a71bef26e386f7d32413a18e930902352fb4ab0d50"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV04-20261024-01/observations/DLV04-device-match_confirmed.json",
+      "sha256": "f3bbcf21d1d1414c780018f54f1365c5e61a4942778d6add723a043d9c83578c"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV04-20261024-01/observations/DLV04-device-message.json",
+      "sha256": "c53079060d07374b69b30efb46b14a333e13a1f0eccca3493987015bba77c7d4"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV04-20261024-01/observations/DLV04-device-possible_match.json",
+      "sha256": "f092b1fe826331d32afc9665fb90b0744e1c229d3c39ab96a53d927fe470b5ec"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV04-20261024-01/observations/DLV04-device-quintal_ready.json",
+      "sha256": "0a0d0b244fc92a9b3f7e56d7ab154883af6f85abe5a31fd4511d92c5b0fe2976"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV04-20261024-01/observations/DLV04-durable-retry.json",
+      "sha256": "9a9f0175135a05394e4551d4227ee63f2b16d3b09723874dd2dbf6ae16c0632c"
+    }
+  ]
+}

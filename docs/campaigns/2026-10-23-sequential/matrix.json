@@ -1262,12 +1262,16 @@
   },
   {
     "scenario": "DLV-04",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Devices com preferências diferentes, UNREGISTERED, erro transitório e sucesso parcial/retry.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
     "runs": [],
-    "limitation": "Transporte FCM mockado em testes existentes e MUT-26; entrega real em aparelho e sucesso parcial/retry completos pendentes."
+    "limitation": "Real sender, SQL and durable receipt; provider HTTP and access token are local fixtures, never Google FCM. No native arrival/background/permission claim. Native delivery remains a separate externally configured scenario. Pool disposal proves new connections read persisted state; not an OS process crash experiment.",
+    "closure_evidence": [
+      "DLV04-20261025-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario DLV-04 --output <new private attempt>"
   },
   {
     "scenario": "DLV-05",
