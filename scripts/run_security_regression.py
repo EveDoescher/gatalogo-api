@@ -82,6 +82,7 @@ def source_hashes():
             "test_sync_query_performance.py",
             "test_logging_security.py",
             "test_reference_analysis.py",
+            "test_analysis_cache_resilience.py",
         )
     )
     paths.extend(ROOT.glob("scripts/campaign/*.py"))
@@ -159,6 +160,7 @@ def selection(scenario, output):
         "DLV-04": "fcm_delivery_cases.py",
         "LOAD-03": "remaining_mechanism_cases.py",
         "RES-04": "worker_race_cases.py",
+        "RES-08": "test_analysis_cache_resilience.py",
     }[scenario]
     if case_file:
         names.append(case_file)
@@ -170,7 +172,7 @@ def selection(scenario, output):
         names.extend(
             ["delivery_cases.py", "image_cases.py", "test_logging_security.py"]
         )
-    if scenario == "SEC-06":
+    if scenario in ("SEC-06", "RES-08"):
         names.append("image_cases.py")
     if scenario == "SEC-04":
         names.extend(["remaining_mechanism_cases.py", "social_volume_cases.py", "measurements.py"])
@@ -208,7 +210,7 @@ def selection(scenario, output):
         selected.extend(
             ["delivery_cases.py", "image_cases.py", "test_logging_security.py"]
         )
-    if scenario == "SEC-06":
+    if scenario in ("SEC-06", "RES-08"):
         selected.append("image_cases.py")
     if scenario == "SEC-04":
         selected.extend(["remaining_mechanism_cases.py", "social_volume_cases.py"])
@@ -533,6 +535,7 @@ if __name__ == "__main__":
             "DLV-04",
             "LOAD-03",
             "RES-04",
+            "RES-08",
         ],
         default="SEC-01",
     )
