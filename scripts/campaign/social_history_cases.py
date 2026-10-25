@@ -19,6 +19,45 @@ from app.persistence_models import (
 
 
 @pytest.mark.asyncio
+async def test_DB03_empty_own_list_does_not_include_foreign_history(db):
+    ident = uid("empty-own-foreign-history")
+    async with db.factory() as session:
+        session.add(Conversation(id=ident))
+        await session.flush()
+        session.add_all(
+            [
+                ConversationMember(conversation_id=ident, user_id=uid(who))
+                for who in ("B", "C")
+            ]
+        )
+        session.add(
+            ConversationMessage(
+                conversation_id=ident,
+                sender_id=uid("B"),
+                body="FOREIGN_EMPTY_LIST_CANARY",
+            )
+        )
+        await session.commit()
+    response, samples = await measured(db, "/social/conversations")
+    assert response.json() == []
+    denied = await db.client.get(
+        f"/social/conversations/{ident}/messages", headers=db.headers("A")
+    )
+    assert denied.status_code == 403
+    evidence(
+        "DB03-empty-own-list",
+        {
+            "scenario": "DB-03",
+            "own_conversations": 0,
+            "foreign_conversations": 1,
+            "response": [],
+            "foreign_history": 403,
+            "samples": samples,
+        },
+    )
+
+
+@pytest.mark.asyncio
 @pytest.mark.parametrize("count", [1, 20, 100])
 @pytest.mark.parametrize("messages", [0, 100, 1000])
 @pytest.mark.parametrize("authors", ["repeated", "distinct"])

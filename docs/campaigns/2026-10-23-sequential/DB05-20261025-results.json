@@ -1,0 +1,82 @@
+{
+  "scenario": "DB-05",
+  "state": "COMPLETED",
+  "date": "2026-10-25",
+  "source_sha": "8449ed4bd274eff32a0bebc14225caeaba79b654",
+  "passed": 4,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes": false,
+  "executor": "scripts/run_security_regression.py --scenario DB-05 --output <new private attempt>",
+  "coverage": [
+    "Primary analysis pauses in fake provider while health/pull/conversations respond; no held connection and checkout/checkin balanced.",
+    "Real PostgreSQL reference worker pauses during inference with zero checked-out connections; separate fixture requests respond and job then completes.",
+    "Recognition extractor pauses with zero held connections; parallel requests respond, controlled extraction failure afterwards persists one retry.",
+    "Original primary read-connection regression retained."
+  ],
+  "limitations": [
+    "Controlled inference barriers, own pools/schemas; no paid model, capacity benchmark or pure pool-wait timing claim.",
+    "Recognition intentionally raises after pool observation to avoid model/embedding execution; retry persistence is verified."
+  ],
+  "measurements": [],
+  "cases": [
+    {
+      "selector": "sequential.DB05-20261025-01.executors.extended_cases::test_DB05_primary_inference_releases_read_connection",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DB05-20261025-01.executors.pool_release_cases::test_DB05_primary_analysis_releases_connection_and_serves_parallel_requests",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DB05-20261025-01.executors.pool_release_cases::test_DB05_worker_analysis_releases_connection_during_parallel_requests[reference-postgres]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DB05-20261025-01.executors.pool_release_cases::test_DB05_worker_analysis_releases_connection_during_parallel_requests[recognition-postgres]",
+      "status": "PASS"
+    }
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB05-20261025-01/junit.xml",
+      "sha256": "b3a5543fe59b555ceee052a0c6467ae6fce2962f65c24df1813adf9213fe0617"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB05-20261025-01/pytest.log",
+      "sha256": "0a87d189c57d2a78bb7a35b10ad16d849f6d5a5677e31a25d358945e9c4abc63"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB05-20261025-01/summary.json",
+      "sha256": "30bf2ced96f3cb7ead6589cf8b0283051f76d805155d75a6776e8321c2efa9e0"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB05-20261025-01/source_manifest.json",
+      "sha256": "d0c397027ad130320f4c332db9cba4d588dcb6074bb02e41b9f38b4fa303f49e"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB05-20261025-01/candidate_manifest.json",
+      "sha256": "bf5f9d986494db4b5829bf7ced969425e962bae6411e17226bd101fac7202eb8"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB05-20261025-01/observations/DB05-pool-recognition.json",
+      "sha256": "002605135effcd999f1d716e2e084867482b676869cbff06f859553804d1742b"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB05-20261025-01/observations/DB05-pool-reference.json",
+      "sha256": "8cbec98dc1963adc1a40b335732cc8d338b51e22da82e142b7174861fadb4bfe"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB05-20261025-01/observations/DB05-primary-pool.json",
+      "sha256": "2874f54ba31cb131c88ddc96bec48441ff469664172502edd1d050aabbbbe818"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB05-20261025-01/observations/DB05-read-release.json",
+      "sha256": "216766081a6b8a88b4762a4440e50fc87ad5fe16d2dcb526903ab66f88a2e34a"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB05-20261025-01/observations/LAT08-paused-inference.json",
+      "sha256": "87c1bf18e9f9eddd18a28d81014671f6fd4d97018dd8b1d0f9817ffb60dd4057"
+    }
+  ]
+}

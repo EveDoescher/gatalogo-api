@@ -1,6 +1,6 @@
 {
   "scenario": "DB-03",
-  "state": "COMPLETED",
+  "state": "PARTIAL_EXECUTED",
   "date": "2026-10-25",
   "source_sha": "c94b554cd2a49503f27492f658c218269e62cae3",
   "passed": 12,
@@ -137,5 +137,6 @@
       "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB03-20261025-01/observations/DB03-feed-repeated-20.json",
       "sha256": "a50bff316740fdff699161d075fe78fcd4d1734bcac290264b0daf6e9e5772a1"
     }
-  ]
+  ],
+  "scope_audit": "Initial 12 volume cases passed, but inherited F-SOC histories 0/100/1000 and empty-list control require supplemental candidate evidence. Previous closure classification corrected; raw results retained."
 }

@@ -332,7 +332,7 @@
   },
   {
     "scenario": "DB-03",
-    "state": "COMPLETED",
+    "state": "PARTIAL_EXECUTED",
     "scope": "1/20/100 conversas e feed com autores repetidos/distintos.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -341,7 +341,7 @@
       "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
       "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json"
     ],
-    "limitation": "Structural bounded probes with warm fixtures; three observations per dataset do not support P99, confidence intervals or latency gains. Observed SQL growth/N+1 is a performance finding, not a functional regression approval or an implemented optimization. Confirmatory optimization campaign remains separate.",
+    "limitation": "Volume probes passed; inherited F-SOC histories 0/100/1000 and empty-list control are being revalidated before whole-scenario closure.",
     "followup_runs": [
       "attempts/social-history-01/critical_runs/social-history-baseline/summary.json",
       "attempts/social-history-02/critical_runs/social-history-baseline/summary.json",
@@ -368,7 +368,7 @@
   },
   {
     "scenario": "DB-05",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Análise principal/referência/reconhecimento pausados na inferência; requests leves paralelos.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [
@@ -384,10 +384,14 @@
     "runs": [
       "attempts/extended-03/critical_runs/extended-baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "limitation": "Controlled inference barriers, own pools/schemas; no paid model, capacity benchmark or pure pool-wait timing claim. Recognition intentionally raises after pool observation to avoid model/embedding execution; retry persistence is verified.",
     "local_runs": [
       "attempts/pipeline-01/critical_runs/pipeline-baseline/summary.json"
-    ]
+    ],
+    "closure_evidence": [
+      "DB05-20261025-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario DB-05 --output <new private attempt>"
   },
   {
     "scenario": "DB-06",

@@ -167,6 +167,7 @@ def selection(scenario, output):
         "DB-06": "concurrent_catalog_cases.py",
         "DB-03": "social_volume_cases.py",
         "DB-05": "pool_release_cases.py",
+        "DB-03-HISTORY": "social_history_cases.py",
     }[scenario]
     if case_file:
         names.append(case_file)
@@ -198,6 +199,8 @@ def selection(scenario, output):
         names.append("measurements.py")
     if scenario == "DB-03":
         names.append("measurements.py")
+    if scenario == "DB-03-HISTORY":
+        names.extend(["social_volume_cases.py", "measurements.py"])
     if scenario == "RES-04":
         names.extend(["test_reference_analysis.py", "worker_child.py", "subprocesses.py"])
     if scenario in ("DATA-03", "DATA-04"):
@@ -239,7 +242,8 @@ def selection(scenario, output):
     if scenario == "DATA-09":
         selected.append("remaining_mechanism_cases.py")
     selectors = [str(executors / name) for name in selected]
-    selectors += ["-k", scenario.replace("-", ""), "--confcutdir", str(executors)]
+    expression = "DB03" if scenario == "DB-03-HISTORY" else scenario.replace("-", "")
+    selectors += ["-k", expression, "--confcutdir", str(executors)]
     if scenario == "RES-04":
         selectors = [str(executors / "worker_race_cases.py") + "::test_RES04_actual_worker_process_killed_after_claim_then_restarted[postgres]"]
         selectors.extend(str(executors / "test_reference_analysis.py") + "::" + name + "[postgres]" for name in (
@@ -566,6 +570,7 @@ if __name__ == "__main__":
             "DB-06",
             "DB-03",
             "DB-05",
+            "DB-03-HISTORY",
         ],
         default="SEC-01",
     )

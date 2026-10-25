@@ -165,3 +165,11 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## DB-03 — concluído em 25/10/2026
 
 12 testes de volume/isolamento/paginação aprovados em 1/20/100 itens, autores repetidos/distintos; consultas, bytes, tempo, CPU e RSS registrados. Crescimento SQL observado permanece oportunidade documentada, sem otimização aplicada. [Variantes, fontes e evidências](DB03-20261025-results.json). Sem alteração no produto.
+
+## DB-05 — concluído em 25/10/2026
+
+4 testes aprovados: análise principal, referência e reconhecimento liberam suas conexões durante a inferência controlada; health/pull/conversas respondem em paralelo, sem conexão retida. [Variantes, fontes e evidências](DB05-20261025-results.json). Sem alteração no produto.
+
+## DB-03 — complemento de cobertura
+
+Os 12 testes de volume passaram. A auditoria de escopo reabriu temporariamente DB-03 para revalidar também os históricos F-SOC de 0/100/1.000 mensagens e lista vazia no candidato atual. A classificação inicial foi corrigida sem apagar as evidências.
