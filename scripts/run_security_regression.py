@@ -161,6 +161,7 @@ def selection(scenario, output):
         "LOAD-03": "remaining_mechanism_cases.py",
         "RES-04": "worker_race_cases.py",
         "RES-08": "test_analysis_cache_resilience.py",
+        "IMG-07": "storage_worker_cases.py",
     }[scenario]
     if case_file:
         names.append(case_file)
@@ -176,6 +177,8 @@ def selection(scenario, output):
         names.append("image_cases.py")
     if scenario == "RES-08":
         names.append("storage_resilience_cases.py")
+    if scenario == "IMG-07":
+        names.extend(["storage_resilience_cases.py", "worker_race_cases.py", "test_reference_analysis.py", "subprocesses.py"])
     if scenario == "SEC-04":
         names.extend(["remaining_mechanism_cases.py", "social_volume_cases.py", "measurements.py"])
     if scenario == "LOAD-03":
@@ -538,6 +541,7 @@ if __name__ == "__main__":
             "LOAD-03",
             "RES-04",
             "RES-08",
+            "IMG-07",
         ],
         default="SEC-01",
     )
