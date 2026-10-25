@@ -633,7 +633,8 @@
     "runs": [],
     "limitation": "Ação/alvo/conteúdo e escopo entre contas cobertos; rejeição exigida por fingerprint, sem depender de outra regra de negócio.",
     "closure_evidence": [
-      "DATA04-20261024-results.json"
+      "DATA04-20261024-results.json",
+      "mutations-critical-20261024-results.json"
     ],
     "executor": "scripts/run_security_regression.py --scenario DATA-04 --output <new-directory-under-original-run>/sequential/<attempt>"
   },
@@ -653,7 +654,8 @@
     "limitation": "Função e HTTP/PG cobertos; não representa percurso de UI/offline móvel.",
     "closure_evidence": [
       "DATA05-20261024-results.json",
-      "DATA05-MUT03-20261024-results.json"
+      "DATA05-MUT03-20261024-results.json",
+      "mutations-critical-20261024-results.json"
     ],
     "executor": "scripts/run_security_regression.py --scenario DATA-05"
   },
@@ -677,7 +679,8 @@
       "attempts/worker-race-01/critical_runs/worker-race-baseline/summary.json"
     ],
     "closure_evidence": [
-      "DATA06-20261024-results.json"
+      "DATA06-20261024-results.json",
+      "mutations-critical-20261024-results.json"
     ],
     "executor": "scripts/run_security_regression.py --scenario DATA-06"
   },

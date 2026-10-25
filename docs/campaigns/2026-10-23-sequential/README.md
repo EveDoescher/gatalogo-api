@@ -77,3 +77,7 @@ As rejeições cobrem token ausente/malformado, assinatura/issuer/type inválido
 ## DATA-05 / MUT-03 — reforço do oráculo
 
 O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idêntico escondia uma revisão extra. [Ciclo completo e evidências](DATA05-MUT03-20261024-results.json). Foi acrescentado empate com o mesmo dispositivo e contagem exata de revisões por operação. O baseline passou em 8 testes e o mutante foi detectado por 3 asserções. Não houve correção no produto, que já tratava o empate corretamente. O sobrevivente histórico permanece preservado.
+
+## Mutação crítica — candidato atual
+
+[Resultados, receitas, seletores e hashes](mutations-critical-20261024-results.json). MUT-03 (empate), MUT-07 (attempt do worker) e MUT-12 (fingerprint) foram detectados, respectivamente por 3, 2 e 4 falhas esperadas; seus baselines passaram em 8, 9 e 4 testes. O sobrevivente inicial de MUT-03 foi preservado e levou ao reforço do teste, sem mudança no produto. Isso não substitui nem agrega indevidamente os resultados históricos das demais famílias.

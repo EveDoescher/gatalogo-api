@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-24",
+  "scope": "Three current critical mutation recipes, each in its own frozen candidate after an entirely green baseline",
+  "latest": [
+    {
+      "mutation": "MUT-03",
+      "source_sha": "fadde7cf0f80e0875a7a0c4c28df1b50f6e86ac1",
+      "classification": "KILLED",
+      "baseline_passed": 8,
+      "mutant_failed": 3,
+      "recipe": {
+        "path": "app/routers/sync.py",
+        "before_sha256": "6076fb79271e216583d684868f2c048aba2ea4fcf96ec04c20a080a6863234b3",
+        "after_sha256": "a828b2c80860fd1d4aa78ec256e7a37b6bdf42ff67c2ecb828fe003139a92d55"
+      },
+      "detecting_selectors": [
+        [
+          "sequential.MUT03-20261024-02.executors.security_cases",
+          "test_DATA05_conflict_and_tombstone[0-m-False-False]"
+        ],
+        [
+          "sequential.MUT03-20261024-02.executors.extended_cases",
+          "test_DATA05_http_conflicts_preserve_authoritative_analysis[ascending]"
+        ],
+        [
+          "sequential.MUT03-20261024-02.executors.extended_cases",
+          "test_DATA05_http_conflicts_preserve_authoritative_analysis[descending]"
+        ]
+      ]
+    },
+    {
+      "mutation": "MUT-07",
+      "source_sha": "fadde7cf0f80e0875a7a0c4c28df1b50f6e86ac1",
+      "classification": "KILLED",
+      "baseline_passed": 9,
+      "mutant_failed": 2,
+      "recipe": {
+        "path": "app/services/reference_analysis.py",
+        "before_sha256": "d544a11eeaf371d6cafcfa4581f1ec718b3cc61645af532b11a95175a4d251bb",
+        "after_sha256": "87d86d506666d458a39f5380c2ad15cc2639a0621128d609191003c33afd7b39"
+      },
+      "detecting_selectors": [
+        [
+          "sequential.MUT07-20261024-01.executors.security_cases",
+          "test_DATA06_old_finish_while_new_attempt_is_running"
+        ],
+        [
+          "sequential.MUT07-20261024-01.executors.fencing_cases",
+          "test_DATA06_reclaimed_attempt_discards_old_result_before_and_after_new_completion[False]"
+        ]
+      ]
+    },
+    {
+      "mutation": "MUT-12",
+      "source_sha": "446d871401def27a85ac662a03fe6d383eab8e6a",
+      "classification": "KILLED",
+      "baseline_passed": 4,
+      "mutant_failed": 4,
+      "recipe": {
+        "path": "app/services/quintal_production.py",
+        "before_sha256": "67fc260076d24ce43f8743be1f9e31a0af4de5b5f1c491a1ca2a5233c816da9e",
+        "after_sha256": "5d51368eb1e3509d0a03cb05e014af914febcd7a7f666eca83883055c8978e64"
+      },
+      "detecting_selectors": [
+        [
+          "sequential.MUT12-20261024-01.executors.security_cases",
+          "test_DATA03_DATA04_concurrent_intent_and_cross_account"
+        ],
+        [
+          "sequential.MUT12-20261024-01.executors.idempotency_cases",
+          "test_DATA04_fingerprint_conflict_and_cross_account_scope[action]"
+        ],
+        [
+          "sequential.MUT12-20261024-01.executors.idempotency_cases",
+          "test_DATA04_fingerprint_conflict_and_cross_account_scope[target]"
+        ],
+        [
+          "sequential.MUT12-20261024-01.executors.idempotency_cases",
+          "test_DATA04_fingerprint_conflict_and_cross_account_scope[data]"
+        ]
+      ]
+    }
+  ],
+  "baseline_case_executions": 21,
+  "mutant_failures": 9,
+  "current_survivors_in_this_selection": 0,
+  "historical_survivor": "MUT03-20261024-01 preserved; see DATA05-MUT03-20261024-results.json for test gap and correction",
+  "evidence_sha256": {
+    "sequential/MUT03-20261024-02/mutation.json": "a18193250a7e6b0ab8494f83c1f86894a2f7232ba69f2eeec17c7db6bee75a11",
+    "sequential/MUT03-20261024-02/mutation.diff": "de678a77a2c8dbdd98dd8eb6ffd06f18f278773db405310150627d3553efe790",
+    "sequential/MUT03-20261024-02/baseline-junit.xml": "3ee37fc1b099d5202c83ca2ccbfdbec68df18987c30a710b2e82119a09337bb8",
+    "sequential/MUT03-20261024-02/junit.xml": "87d9c36850f81eff562f9387f193565e77b6217684b0c40d5f9767312c435c56",
+    "sequential/MUT03-20261024-02/source_manifest.json": "86591dddf883096c0c93298a05701621d10d0d3815f313fed231e0a45cadf95c",
+    "sequential/MUT03-20261024-02/candidate_manifest.json": "9b5925d52fba0a07153f8a1f37fcff898466971e4c6f8f33a0db0e3232e36eeb",
+    "sequential/MUT03-20261024-02/summary.json": "cc07a68556dd6583f22e6b51e95d543e75eb54e18e6b603ec17cac6dac02f850",
+    "sequential/MUT07-20261024-01/mutation.json": "ea782045f284472644bebef0017dd236dc9d45716ce9382166ce2ba1d35287fd",
+    "sequential/MUT07-20261024-01/mutation.diff": "5f5e5f092d6bd83b9e03cf23928ed138fc98e844e028384b13db63a401b22847",
+    "sequential/MUT07-20261024-01/baseline-junit.xml": "5d69b234d385da359b10d9297ee25d9ff074a5014af026e72d4deaf6ff98c194",
+    "sequential/MUT07-20261024-01/junit.xml": "4615af4d8893299201289d3045984aeeaf9d09153af58e2c9988ea209174808c",
+    "sequential/MUT07-20261024-01/source_manifest.json": "86591dddf883096c0c93298a05701621d10d0d3815f313fed231e0a45cadf95c",
+    "sequential/MUT07-20261024-01/candidate_manifest.json": "2693c62ad150c2528646bce70ac95927fa822194f079ebb3a1f2dfd3f1d98be3",
+    "sequential/MUT07-20261024-01/summary.json": "92d31546ed4000f012f9d09adb45becd259285028840d142980bd23b55082d18",
+    "sequential/MUT12-20261024-01/mutation.json": "2ec1eb19961cb93e7fc9b14338c927d2a2b32d46cc9529148a032b8166cfdb8d",
+    "sequential/MUT12-20261024-01/mutation.diff": "ae651acf618ef6e40ca86cf02a591a239cafcf41a40995a094c42b643187a78b",
+    "sequential/MUT12-20261024-01/baseline-junit.xml": "080f08e67a49759ba8076f65912699c8db6ebcf7bd73bd46e78d783f0c46677c",
+    "sequential/MUT12-20261024-01/junit.xml": "221edd9dd3cd262f68d2537fb3f84ddb06cc43411f4f9dc75c11a9a831bd4fae",
+    "sequential/MUT12-20261024-01/source_manifest.json": "9737c48329725c64c4ec60d4d6e2dc782f1cc5baeb37fab188b731b125f1fbd9",
+    "sequential/MUT12-20261024-01/candidate_manifest.json": "392c936fa1d861aab7cdac18712b0f45aa5837790674ccbc87aac1c230fc2c1f",
+    "sequential/MUT12-20261024-01/summary.json": "4da7ce88d919636f9d627bbc2bb6909f96d7dc853e17baa32586232ad46f4dba"
+  },
+  "limitations": [
+    "No aggregate score mixing these runs with prior commits, recipes or inconclusive infrastructure runs.",
+    "A killed mutant must fail a selector that passed baseline, with an assertion; compilation/setup/errors/skips cannot be counted as a behavioral kill.",
+    "Only isolated candidate app files changed for mutations. Product checkout and both main branches preserved."
+  ]
+}
