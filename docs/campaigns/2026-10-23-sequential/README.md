@@ -125,3 +125,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## RES-07 — concluído em 24/10/2026
 
 9 testes aprovados: 2/8/25 gatilhos de sync, inbox e renovação de sessão compartilham uma operação; falha inicial libera o bloqueio e a próxima tentativa funciona. [Fontes, variantes e evidências](RES07-20261024-results.json). Sem mudança no produto.
+
+## RES-06 — concluído em 24/10/2026
+
+2 percursos completos aprovados: eventos antes/depois da queda, fallback de 30 s, falha transitória, reconexão, deduplicação e cancelamento ao descartar. [Fontes, variantes e evidências](RES06-20261024-results.json). Sem mudança no produto.

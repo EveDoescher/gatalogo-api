@@ -1,0 +1,58 @@
+{
+  "scenario": "RES-06",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "flutter_source_sha": "e6c14c6ef32d67008e3bb22b99ec06e9881b0829",
+  "passed": 2,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes": false,
+  "executor": "scripts/run_flutter_regression.py",
+  "command": [
+    "C:\\flutter\\bin\\cache\\dart-sdk\\bin\\dart.exe",
+    "C:\\flutter\\bin\\cache\\flutter_tools.snapshot",
+    "test",
+    "--no-pub",
+    "--machine",
+    "test/websocket_fallback_recovery_test.dart"
+  ],
+  "code": [
+    "catlogue/lib/controllers/conversation_controller.dart"
+  ],
+  "coverage": [
+    "Connected socket receives event before disconnect; no fallback before 30 seconds.",
+    "Disconnected controller polls at 30 seconds, fetches missed message, and survives an optional failed first poll.",
+    "Reconnect reloads history; new/duplicate events after reconnect merge without loss or duplication.",
+    "While connected, 60 seconds cause no fallback HTTP; second disconnect resumes polling and dispose cancels timers."
+  ],
+  "limitations": [
+    "Real controller with controlled socket transitions, HTTP fixture and Flutter virtual clock; no physical radio/network outage or real TCP reconnect claim.",
+    "Two interleaving variants (first poll succeeds/fails), not latency or availability statistics."
+  ],
+  "cases": [
+    {
+      "name": "RES06 fallback reconnect and events failedPoll=false",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "RES06 fallback reconnect and events failedPoll=true",
+      "result": "success",
+      "skipped": false
+    }
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES06-20261024-01/tests.jsonl",
+      "sha256": "a9bdb4d600b0359f0e614139d503791d77741df7810b49dc03331720c8e9c2c0"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES06-20261024-01/summary.json",
+      "sha256": "fb194d81d28826c31dc4fdd1b6e1bb65782b8cd7789f41e27832ff97eab660ec"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES06-20261024-01/source_manifest.json",
+      "sha256": "3e8003339c9cff3232e08ccc7ab91676e9c480866d6c6edbdb6316ffc65c1ec4"
+    }
+  ]
+}
