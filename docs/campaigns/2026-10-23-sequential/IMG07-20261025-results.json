@@ -1,0 +1,85 @@
+{
+  "scenario": "IMG-07",
+  "state": "COMPLETED",
+  "date": "2026-10-25",
+  "source_sha": "979878e5879ff0da00155316f115bfcea2bf360e",
+  "passed": 5,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes": false,
+  "executor": "scripts/run_security_regression.py --scenario IMG-07 --output <new private attempt>",
+  "coverage": [
+    "ENOSPC/EACCES injected during upload: old photo pointer/bytes retained, retry commits new bytes and owner download matches.",
+    "Missing private file returns controlled 404 and exact-byte read recovers after restoration.",
+    "SQLite and PostgreSQL worker claim/read content hash mismatch rejects changed bytes before inference; restored bytes complete one retry."
+  ],
+  "limitations": [
+    "Own storage, bounded OS exceptions and fake inference; no disk filling or changes to user ACLs.",
+    "First attempt completed functional assertions but collided on the shared evidence filename between SQLite/PostgreSQL; preserved and fixed by backend-specific filenames."
+  ],
+  "measurements": [],
+  "cases": [
+    {
+      "selector": "sequential.IMG07-20261025-02.executors.storage_worker_cases::test_IMG07_failed_write_preserves_committed_photo_and_retry[no-space]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.IMG07-20261025-02.executors.storage_worker_cases::test_IMG07_failed_write_preserves_committed_photo_and_retry[permission]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.IMG07-20261025-02.executors.storage_worker_cases::test_IMG07_missing_file_restored_with_same_owner_bytes",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.IMG07-20261025-02.executors.storage_worker_cases::test_IMG07_claim_hash_change_rejected_before_analysis_then_retried[sqlite]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.IMG07-20261025-02.executors.storage_worker_cases::test_IMG07_claim_hash_change_rejected_before_analysis_then_retried[postgres]",
+      "status": "PASS"
+    }
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/IMG07-20261025-02/junit.xml",
+      "sha256": "26a2ed440877c6c3fa50887a9352fe288f9c05eb16a377a60dea5befe2e68d4b"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/IMG07-20261025-02/pytest.log",
+      "sha256": "3270297e476a2af5a8906ed3e2a94d33283b7cd825b5f80e5cad929c52f0736f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/IMG07-20261025-02/summary.json",
+      "sha256": "b349c2c8854c65247d169827f130ceb6a15bfdf3340d08a1476002f3c39af13b"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/IMG07-20261025-02/source_manifest.json",
+      "sha256": "a4395369dc6243bc0287c879db465a9888059c6b5e609971ecb67cf5fa1bc1d5"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/IMG07-20261025-02/candidate_manifest.json",
+      "sha256": "a4ddfe5eb73d1a9462bf5febd13767f3d5555e9177e5f3233997e81c03fc9b7d"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/IMG07-20261025-02/observations/IMG07-claim-read-change-postgres.json",
+      "sha256": "789ea2c1e1ecee40489c9ec8fc1381cdb2e5f73e0d03e0a93ca1c1045a1d8f90"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/IMG07-20261025-02/observations/IMG07-claim-read-change-sqlite.json",
+      "sha256": "a254da870acbac36f38009b5fa677f497efe65903622294c0939e9e5a67d0858"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/IMG07-20261025-02/observations/IMG07-storage-restore.json",
+      "sha256": "6d255bc15cbcde04fbd7c4551ed3037bf900cc8e0579eb4d84056fb6fb07b67b"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/IMG07-20261025-02/observations/RES05-storage-no-space.json",
+      "sha256": "a64acc98c9dd907cd34492cb90d9a22760c403b65aa864da5181b77f777c5e02"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/IMG07-20261025-02/observations/RES05-storage-permission.json",
+      "sha256": "ef66c8980a1f321f7e09509cf7e3d2a7b7ec54ecc568531d6b5978f30e7ebe18"
+    }
+  ]
+}

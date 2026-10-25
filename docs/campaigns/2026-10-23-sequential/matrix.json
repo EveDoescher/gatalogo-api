@@ -488,7 +488,7 @@
   },
   {
     "scenario": "IMG-07",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Disco/permissão indisponível no storage próprio; arquivo muda entre claim e leitura.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -498,7 +498,11 @@
       "attempts/storage-resilience-02/critical_runs/storage-resilience-baseline/summary.json",
       "attempts/worker-race-01/critical_runs/worker-race-baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+    "limitation": "Own storage, bounded OS exceptions and fake inference; no disk filling or changes to user ACLs. First attempt completed functional assertions but collided on the shared evidence filename between SQLite/PostgreSQL; preserved and fixed by backend-specific filenames.",
+    "closure_evidence": [
+      "IMG07-20261025-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario IMG-07 --output <new private attempt>"
   },
   {
     "scenario": "REID-01",

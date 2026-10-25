@@ -141,3 +141,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## RES-08 — concluído em 25/10/2026
 
 22 testes API e 2 SQLite Flutter aprovados. [Defeito, correção, antes/depois e hashes](RES08-20261025-results.json). Cache opcional indisponível não interrompe mais a análise; arquivo original é preservado e resultados determinísticos permanecem iguais. SQLite autoritativo rejeita corrupção/escrita protegida sem apagar dados; restauração explícita do backup da fixture e retry preservaram foto, registro dirty e cursor. Interrupção durante página reutiliza evidência DB-07 com hashes de lib iguais.
+
+## IMG-07 — concluído em 25/10/2026
+
+5 testes aprovados: falha de espaço/permissão, recuperação de arquivo ausente e fencing de hash antes da análise em SQLite/PostgreSQL. [Variantes, fontes e evidências](IMG07-20261025-results.json). Sem alteração no produto.
