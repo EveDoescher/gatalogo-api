@@ -176,6 +176,8 @@ def selection(scenario, output):
         "LAT-04": "sync_batch_cases.py",
         "RES-02": "current_upload_transport_cases.py",
         "LOAD-05": "current_socket_fanout_cases.py",
+        "RSC-02": "resource_lifecycle_cases.py",
+        "RSC-02-DIAG": "resource_lifecycle_cases.py",
     }[scenario]
     if case_file:
         names.append(case_file)
@@ -209,6 +211,8 @@ def selection(scenario, output):
         names.extend(["current_offline_cases.py", "upload_transport_cases.py", "image_cases.py", "critical_report.py", "subprocesses.py"])
     if scenario == "LOAD-05":
         names.extend(["current_offline_cases.py", "current_upload_transport_cases.py", "upload_transport_cases.py", "socket_fanout_cases.py", "network_cases.py", "image_cases.py", "critical_report.py", "subprocesses.py", "measurements.py"])
+    if scenario in ("RSC-02", "RSC-02-DIAG"):
+        names.extend(["current_offline_cases.py", "current_upload_transport_cases.py", "upload_transport_cases.py", "network_cases.py", "image_cases.py", "critical_report.py", "subprocesses.py", "measurements.py"])
     if scenario == "SEC-04":
         names.extend(["remaining_mechanism_cases.py", "social_volume_cases.py", "measurements.py"])
     if scenario == "LOAD-03":
@@ -260,6 +264,8 @@ def selection(scenario, output):
     selectors = [str(executors / name) for name in selected]
     expression = "DB03" if scenario == "DB-03-HISTORY" else scenario.replace("-", "")
     selectors += ["-k", expression, "--confcutdir", str(executors)]
+    if scenario == "RSC-02-DIAG":
+        selectors = [str(executors / "resource_lifecycle_cases.py") + "::test_RSC02_diagnostic_denied_multipart_keepalive", "--confcutdir", str(executors)]
     if scenario == "RES-04":
         selectors = [str(executors / "worker_race_cases.py") + "::test_RES04_actual_worker_process_killed_after_claim_then_restarted[postgres]"]
         selectors.extend(str(executors / "test_reference_analysis.py") + "::" + name + "[postgres]" for name in (
@@ -275,6 +281,7 @@ def selection(scenario, output):
         selectors,
         dict(
             QUALITY_LARGE_LOCAL_SYNC="true" if scenario == "LAT-04" else "false",
+            QUALITY_API_KEEPALIVE_SECONDS="5" if scenario.startswith("RSC-02") else "1",
             QUALITY_CAMPAIGN_RUN=str(campaign),
             QUALITY_CAMPAIGN_ATTEMPT=str(output),
             QUALITY_TARGET_SOURCE=str(source),
@@ -594,6 +601,8 @@ if __name__ == "__main__":
             "LAT-04",
             "RES-02",
             "LOAD-05",
+            "RSC-02",
+            "RSC-02-DIAG",
         ],
         default="SEC-01",
     )

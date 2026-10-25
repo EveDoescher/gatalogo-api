@@ -9,7 +9,6 @@ import socket
 import subprocess
 from types import SimpleNamespace
 from uuid import uuid4
-from unittest.mock import AsyncMock
 
 import httpx
 import pytest
@@ -84,11 +83,11 @@ async def own_api(tmp_path, monkeypatch):
 
     monkeypatch.setattr(service, "_analyze_with_gemini", provider)
     monkeypatch.setattr(main, "AnalysisService", lambda _: service)
-    monkeypatch.setattr(
-        fcm_sender,
-        "send_notification",
-        AsyncMock(return_value={"delivered": [], "retry": False}),
-    )
+
+    async def no_external_push(**kwargs):
+        return {"delivered": [], "retry": False}
+
+    monkeypatch.setattr(fcm_sender, "send_notification", no_external_push)
     listener = socket.socket()
     listener.bind(("127.0.0.1", 0))
     listener.listen()
@@ -101,7 +100,9 @@ async def own_api(tmp_path, monkeypatch):
             port=port,
             lifespan="off",
             access_log=False,
-            timeout_keep_alive=1,
+            timeout_keep_alive=int(
+                os.environ.get("QUALITY_API_KEEPALIVE_SECONDS", "1")
+            ),
             timeout_graceful_shutdown=3,
         )
     )
