@@ -15,6 +15,8 @@ import time
 import xml.etree.ElementTree as ET
 from uuid import uuid4
 
+from campaign.subprocesses import run_logged
+
 ROOT = Path(__file__).resolve().parents[1]
 MUTATIONS = {
     "MUT-03": (
@@ -40,7 +42,7 @@ MUTATIONS = {
 
 def execute_pytest(source, selectors, env, output, prefix=""):
     with (output / (prefix + "pytest.log")).open("w", encoding="utf-8") as log:
-        return subprocess.run(
+        return run_logged(
             [
                 sys.executable,
                 "-m",
@@ -53,8 +55,7 @@ def execute_pytest(source, selectors, env, output, prefix=""):
             ],
             cwd=source,
             env=env,
-            stdout=log,
-            stderr=subprocess.STDOUT,
+            log=log,
             timeout=360,
         )
 

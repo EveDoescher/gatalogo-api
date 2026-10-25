@@ -180,7 +180,7 @@ async def test_RES01_IMG02_current_capture_analyze_edit_restart_and_account_isol
                 cwd=repo,
                 env=dict(os.environ, QUALITY_OFFLINE_FLOW=json.dumps(options)),
                 log=log,
-                timeout=120 if phase == "capture" else 60,
+                timeout=120 if phase in ("capture", "sync") else 60,
             )
         cases = flutter_tests(folder / (phase + ".jsonl"))
         assert (
