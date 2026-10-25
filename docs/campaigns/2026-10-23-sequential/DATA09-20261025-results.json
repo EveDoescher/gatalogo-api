@@ -1,0 +1,87 @@
+{
+  "scenario": "DATA-09",
+  "state": "COMPLETED",
+  "date": "2026-10-25",
+  "source_sha": "6b589429bdf852bd70160a0b90523c7fa74b2302",
+  "passed": 5,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes": false,
+  "executor": "scripts/run_security_regression.py --scenario DATA-09 --output <new private attempt>",
+  "coverage": [
+    "Create/replay/update/resolve report; sighting clientEventId replay returns one observation, conflicting payload rejected.",
+    "Dismiss/reopen leave rewards untouched; two concurrent confirmations produce 200/409, one clue grant and one notification.",
+    "Friend/non-friend x rollout 0/100: 0/1 conversation, 0/2 members, exact base clue XP/coins and wallet/ledger coherence.",
+    "External event observer sees committed notification and human-confirmed match; repeat decisions/resolution add no reward or notification.",
+    "Resolved search absent from active list and public photo denied; original poster/privacy lifecycle regression retained."
+  ],
+  "limitations": [
+    "Suggestions are synthetic inputs for human decisions, not confirmed visual identification or AI accuracy.",
+    "Own PostgreSQL/ASGI and stubbed matching/FCM, no real external recipient or paid inference."
+  ],
+  "measurements": [],
+  "cases": [
+    {
+      "selector": "sequential.DATA09-20261025-01.executors.report_lifecycle_cases::test_DATA09_report_transition_rewards_notifications_and_race[False-0]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DATA09-20261025-01.executors.report_lifecycle_cases::test_DATA09_report_transition_rewards_notifications_and_race[False-100]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DATA09-20261025-01.executors.report_lifecycle_cases::test_DATA09_report_transition_rewards_notifications_and_race[True-0]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DATA09-20261025-01.executors.report_lifecycle_cases::test_DATA09_report_transition_rewards_notifications_and_race[True-100]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DATA09-20261025-01.executors.remaining_mechanism_cases::test_DATA09_SEC04_missing_report_sighting_and_human_decision_lifecycle",
+      "status": "PASS"
+    }
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA09-20261025-01/junit.xml",
+      "sha256": "d343e24c466623c0c642fc1df8425622af3757a8006bf25bcb181b82483676ab"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA09-20261025-01/pytest.log",
+      "sha256": "77af67dcb02715eb186a42858142564e98e060a138cc290ea8b2e9d97d01d470"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA09-20261025-01/summary.json",
+      "sha256": "d858ee0d42aab19828072b7b8301fe1a277d3ca6c513c6d420d04b88ff1dc055"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA09-20261025-01/source_manifest.json",
+      "sha256": "d7fddc69b9ea013c9fa6e1298ee22331640a13027308b2452ca897d132664345"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA09-20261025-01/candidate_manifest.json",
+      "sha256": "91a0c4295a1c90026efda3249cf0ea4094e94bc8b4f3bf167e1cf701d6167074"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA09-20261025-01/observations/DATA09-report-lifecycle.json",
+      "sha256": "272fd1bca40cee34dffb216841ca6496f9d4676f28cfedda3088da6881c3ad18"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA09-20261025-01/observations/DATA09-transition-0-False.json",
+      "sha256": "cbdebb9d05ace9320639069c179d830ebc818cb3e5ed4c087284e029fde7b83b"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA09-20261025-01/observations/DATA09-transition-0-True.json",
+      "sha256": "a2d0b045033e934455a55536b83392d43f4cc352f13c5682ad07516e795e23f4"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA09-20261025-01/observations/DATA09-transition-100-False.json",
+      "sha256": "f074bd7dd806224a69685d4494214a849ba9fd195451d992110cbd4252efe920"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DATA09-20261025-01/observations/DATA09-transition-100-True.json",
+      "sha256": "aac593c778d6afae284a60c28d04711fe6391863cf2e5f54731d3551d079eec4"
+    }
+  ]
+}

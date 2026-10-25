@@ -153,3 +153,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## DATA-01 — concluído em 25/10/2026
 
 5 testes aprovados: snapshots completos de análise/metadados/job, rollout 0/100 e gato próprio/não próprio; revisões exatas, ledger/XP coerentes e eventos após commit. [Variantes, fontes e evidências](DATA01-20261025-results.json). Sem alteração no produto.
+
+## DATA-09 — concluído em 25/10/2026
+
+5 testes aprovados: ciclo completo de busca/pista, replay de avistamento e confirmação concorrente, amizade/rollout, recompensa única, notificação após commit e retirada da busca resolvida. [Variantes, fontes e evidências](DATA09-20261025-results.json). Sem alteração no produto.

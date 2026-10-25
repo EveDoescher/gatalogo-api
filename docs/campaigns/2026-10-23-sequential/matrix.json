@@ -756,7 +756,7 @@
   },
   {
     "scenario": "DATA-09",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Criar/alterar/resolver busca, repetir avistamento e confirmar/rejeitar pista.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -764,7 +764,11 @@
     "local_runs": [
       "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+    "limitation": "Suggestions are synthetic inputs for human decisions, not confirmed visual identification or AI accuracy. Own PostgreSQL/ASGI and stubbed matching/FCM, no real external recipient or paid inference.",
+    "closure_evidence": [
+      "DATA09-20261025-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario DATA-09 --output <new private attempt>"
   },
   {
     "scenario": "RES-01",
