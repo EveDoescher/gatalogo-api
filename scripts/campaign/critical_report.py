@@ -32,6 +32,8 @@ def flutter_tests(path):
             item = json.loads(line)
         except ValueError:
             continue
+        if not isinstance(item, dict):
+            continue
         if item.get("type") == "testStart":
             names[item["test"]["id"]] = item["test"]["name"]
         if item.get("type") == "testDone" and not item.get("hidden"):
