@@ -193,3 +193,7 @@ Os 12 testes de volume passaram. A auditoria de escopo reabriu temporariamente D
 ## RES-02 — concluído em 25/10/2026
 
 [Três janelas TCP e duas recuperações do cliente](RES02-20261025-results.json). Cinco casos passaram. Corpo parcial preservou estado anterior; barreira PostgreSQL comprovou desconexão antes do commit; proxy descartou resposta após commit real. Replay manteve hash/uma foto primária e isolamento 200/404. O cliente preservou fila/foto/cursor e retomou após reabrir SQLite. Desconexão antes do commit resultou em commit após liberar a barreira: não implica rollback nem exatamente uma revisão. A primeira tentativa com pool entre event loops foi preservada como falha do executor.
+
+## LOAD-05 — concluído em 25/10/2026
+
+[Fanout, recursos, inbox e rastreabilidade](LOAD05-20261025-results.json). Seis testes passaram: componentes e TCP em 1/10/50 dispositivos, reconexão parcial e leitor pausado. Foram 762 leituras WS observadas; histórico/inbox mantiveram 13 mensagens por caso e nenhuma notificação cruzada no remetente. Destinatário quebrado não bloqueou os demais no teste do componente. Presence e pool ficaram livres após fechar sockets. Medições descritivas incluem filas/leitura deliberadamente atrasada; sem P99, ganho, saturação ou capacidade de produção.

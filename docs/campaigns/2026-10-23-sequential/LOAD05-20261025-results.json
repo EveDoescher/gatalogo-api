@@ -1,0 +1,188 @@
+{
+  "scenario": "LOAD-05",
+  "state": "COMPLETED",
+  "date": "2026-10-25",
+  "api_source_sha": "6c3e3bc90cc1a81b8f113c4f4172a7227a206a5e",
+  "executor_commit": "fe16016af77b9acffb5b7ab8ca58bde97cc66a42",
+  "passed": 6,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes": false,
+  "executors": [
+    "scripts/campaign/current_socket_fanout_cases.py",
+    "scripts/campaign/socket_fanout_cases.py",
+    "scripts/campaign/extended_cases.py::test_LOAD05_manager_fanout_and_cleanup"
+  ],
+  "coverage": [
+    "1/10/50 actual loopback WebSockets, 13 committed messages per cohort, partial disconnect/reconnect and one paused receiving transport that drains all ten queued messages.",
+    "Component recipient raises OSError: broken socket removed, each healthy recipient receives one event; all remaining component sockets removed on close.",
+    "Member HTTP history contains all 13 message IDs, including offline interval. Recipient inbox has 13 corresponding notifications, sender inbox has none.",
+    "Application receipt observations, process CPU/RSS/handles before/during/rest; after all clients close, presence false and PostgreSQL checkout count zero."
+  ],
+  "observations": [
+    {
+      "devices": 1,
+      "received_frames": 12,
+      "application_read_ms_observed": {
+        "min": 42.150799999944866,
+        "median": 232.68945000017993,
+        "max": 509.62170000275364
+      },
+      "process_resources_before": {
+        "process_cpu_seconds": 9.609375,
+        "pid": 9412,
+        "rss_bytes": 152612864,
+        "peak_rss_bytes": 152616960,
+        "handles": 215
+      },
+      "process_resources_observed_peak": {
+        "rss_bytes": 156033024,
+        "handles": 220
+      },
+      "process_resources_rest": {
+        "process_cpu_seconds": 10.5625,
+        "pid": 9412,
+        "rss_bytes": 156405760,
+        "peak_rss_bytes": 156418048,
+        "handles": 220
+      },
+      "pool_checked_out_after_close": 0,
+      "persisted": {
+        "history_messages": 13,
+        "recipient_inbox": 13,
+        "sender_inbox": 0
+      }
+    },
+    {
+      "devices": 10,
+      "received_frames": 125,
+      "application_read_ms_observed": {
+        "min": 46.182799997041,
+        "median": 258.7567000009585,
+        "max": 792.2697000030894
+      },
+      "process_resources_before": {
+        "process_cpu_seconds": 11.625,
+        "pid": 9412,
+        "rss_bytes": 157900800,
+        "peak_rss_bytes": 157904896,
+        "handles": 215
+      },
+      "process_resources_observed_peak": {
+        "rss_bytes": 161673216,
+        "handles": 241
+      },
+      "process_resources_rest": {
+        "process_cpu_seconds": 12.90625,
+        "pid": 9412,
+        "rss_bytes": 161865728,
+        "peak_rss_bytes": 161902592,
+        "handles": 223
+      },
+      "pool_checked_out_after_close": 0,
+      "persisted": {
+        "history_messages": 13,
+        "recipient_inbox": 13,
+        "sender_inbox": 0
+      }
+    },
+    {
+      "devices": 50,
+      "received_frames": 625,
+      "application_read_ms_observed": {
+        "min": 51.8824000027962,
+        "median": 237.95929999323562,
+        "max": 574.1780000025756
+      },
+      "process_resources_before": {
+        "process_cpu_seconds": 13.984375,
+        "pid": 9412,
+        "rss_bytes": 162848768,
+        "peak_rss_bytes": 162852864,
+        "handles": 215
+      },
+      "process_resources_observed_peak": {
+        "rss_bytes": 180449280,
+        "handles": 321
+      },
+      "process_resources_rest": {
+        "process_cpu_seconds": 16.265625,
+        "pid": 9412,
+        "rss_bytes": 180981760,
+        "peak_rss_bytes": 181002240,
+        "handles": 223
+      },
+      "pool_checked_out_after_close": 0,
+      "persisted": {
+        "history_messages": 13,
+        "recipient_inbox": 13,
+        "sender_inbox": 0
+      }
+    }
+  ],
+  "limitations": [
+    "Bounded three functional bursts, not sustained load, saturated TCP buffers or production capacity. Slow reader pauses transport without filling system buffers.",
+    "Receipt latency starts before HTTP send and ends when application reads the queued frame; includes HTTP and deliberate delayed reads, not network RTT or provider delivery. Samples correlate within each burst; no P95/P99, CI or latency-gain claim.",
+    "Resource observations belong to combined own Python API/test process; no Android battery or leak-soak claim. RSC-02 repeated lifecycle campaign remains separate.",
+    "Real services are disposable and lifespan workers disabled; no paid AI or external delivery.",
+    "LOAD05-20261025-01 preserved as collection failure: wrong executor singleton import; no product experiment occurred."
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD05-20261025-02/candidate_manifest.json",
+      "sha256": "707935cd201c9bc429bf5ba4b6feed910c690d55bebdd6b64f6647e43bb67f10"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD05-20261025-02/junit.xml",
+      "sha256": "faf7a522b82d76e0ac4494689723af5c99c9494e71eb8d0f854870aaeafc2188"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD05-20261025-02/observations/LOAD05-manager-1.json",
+      "sha256": "e041610ddb36b47d11c034462872b5b9bf9d293f82148dfe1b587e5d09e81d78"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD05-20261025-02/observations/LOAD05-manager-10.json",
+      "sha256": "5f648947b58c6c940d23cabb29db553078ddc4c83ad03a0d847be9cd6c508c6f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD05-20261025-02/observations/LOAD05-manager-50.json",
+      "sha256": "1eab489fae78997e3a0b7df819d13b3c363a830b929bdb4db7621a1a42c2cfeb"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD05-20261025-02/observations/LOAD05-observed-1.json",
+      "sha256": "42d8929d1e39a5f5a66813937f5a915e7306b6b739c55db55cd20f353472db7c"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD05-20261025-02/observations/LOAD05-observed-10.json",
+      "sha256": "59fcad9e3a8f3c2fe1889d2fd5712d01175297ee8a3c3f0c5e6e4ee4aa66326d"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD05-20261025-02/observations/LOAD05-observed-50.json",
+      "sha256": "fac422aa4dfe5af237e75b50fe7a59eb365a56bcad73292daabc4c63ccca6970"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD05-20261025-02/observations/LOAD05-tcp-1.json",
+      "sha256": "d465bd36e36b257d83f1aebeed01f93b46d26de9ecdc99496479535d90133bbe"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD05-20261025-02/observations/LOAD05-tcp-10.json",
+      "sha256": "af71b1a26293b8c0d5b6e3a967a6332a8c6c2de7014b959406c39fea1d548ade"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD05-20261025-02/observations/LOAD05-tcp-50.json",
+      "sha256": "afcb9d4d284111988524836e2f6639fade062c30ae8d0d5e35e533e9724706d1"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD05-20261025-02/pytest.log",
+      "sha256": "e4baced198a234e68811abfad2453c8a26aafbecdddb65362b3789c930b5131b"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD05-20261025-02/source_manifest.json",
+      "sha256": "6d782230a4ed8a35dc45ae47b52ab9bfc9bacdd8d6ac76ad8be939e718d08129"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD05-20261025-02/summary.json",
+      "sha256": "19f8e21b5136b7f6a9a4e9b83caca9b5101d0a68e17ec78b3cdc0971a3c64c0e"
+    }
+  ]
+}

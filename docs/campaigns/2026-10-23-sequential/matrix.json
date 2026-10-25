@@ -257,18 +257,22 @@
   },
   {
     "scenario": "LOAD-05",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "1/10/50 sockets, consumidores lentos, mensagens e reconexão parcial.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
     "runs": [
       "attempts/queue-01/critical_runs/queue-baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "limitation": "Bounded real sockets 1/10/50, paused reader, reconnect, inbox/history and cleanup passed. No saturation, capacity or device claim.",
     "local_runs": [
       "attempts/socket-fanout-01/critical_runs/socket-fanout-baseline/summary.json",
       "attempts/socket-fanout-02/critical_runs/socket-fanout-baseline/summary.json"
-    ]
+    ],
+    "closure_evidence": [
+      "LOAD05-20261025-results.json"
+    ],
+    "executor": "scripts/campaign/current_socket_fanout_cases.py"
   },
   {
     "scenario": "LOAD-06",

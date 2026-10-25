@@ -21,7 +21,7 @@ iOS/VoiceOver fora do escopo. Critérios originais mantidos.
 | LOAD-02 | PENDING |
 | LOAD-03 | COMPLETED |
 | LOAD-04 | PARTIAL_EXECUTED |
-| LOAD-05 | PARTIAL_EXECUTED |
+| LOAD-05 | COMPLETED |
 | LOAD-06 | PENDING |
 | DB-01 | COMPLETED |
 | DB-02 | COMPLETED |
