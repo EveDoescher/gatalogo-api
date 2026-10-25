@@ -24,7 +24,7 @@ iOS/VoiceOver fora do escopo. Critérios originais mantidos.
 | LOAD-05 | PARTIAL_EXECUTED |
 | LOAD-06 | PENDING |
 | DB-01 | PARTIAL_EXECUTED |
-| DB-02 | PARTIAL_EXECUTED |
+| DB-02 | COMPLETED |
 | DB-03 | PARTIAL_EXECUTED |
 | DB-04 | PARTIAL_EXECUTED |
 | DB-05 | PARTIAL_EXECUTED |

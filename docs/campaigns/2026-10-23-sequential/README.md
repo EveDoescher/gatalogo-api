@@ -85,3 +85,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## SEC-10 — concluído em 24/10/2026
 
 4 testes aprovados com tempo real e intervalo padrão de 30 s. [Medições, variantes, fontes e hashes](SEC10-20261024-results.json). Revogação/expiração bloquearam o próximo frame em aproximadamente 6,03/1,49 ms nesta execução; conexões ociosas fecharam após 30,014/27,069 s desde a invalidação observada. Abertura posterior retornou 1008, HTTP 401 e outra conta permaneceu válida. Sem percentis ou inferência de ganho: são amostras pontuais ASGI, sem TCP/proxy/aparelho.
+
+## DB-02 — concluído em 24/10/2026
+
+4 testes aprovados e 1.448 execuções de página. [Datasets, SQL, variantes, planos e hashes](DB02-20261024-results.json). F-HIST 1/10/100 foi percorrido em limites 1/200/500, sempre primeira execução/repetição; extensão de 20.001 revisões percorreu 200/500 e amostrou bordas em limite 1. JSON/cursor igual ao legado e 4/1 SELECTs internos não vazio/vazio em todas as páginas. Conexão nova não significa buffer físico frio. Sem otimização nem alegação de ganho.

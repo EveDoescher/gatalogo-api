@@ -1,0 +1,113 @@
+{
+  "scenario": "DB-02",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_sha": "5bb0569efd5793e2958c2b756f2749a98ed61d32",
+  "product_changes": null,
+  "passed": 4,
+  "failed": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "selector": "sequential.DB02-20261024-01.executors.history_cases::test_DB02_history_full_json_cursor_sql_and_repeat[1]",
+      "status": "PASS",
+      "seconds": 3.325
+    },
+    {
+      "selector": "sequential.DB02-20261024-01.executors.history_cases::test_DB02_history_full_json_cursor_sql_and_repeat[10]",
+      "status": "PASS",
+      "seconds": 20.932
+    },
+    {
+      "selector": "sequential.DB02-20261024-01.executors.history_cases::test_DB02_history_full_json_cursor_sql_and_repeat[100]",
+      "status": "PASS",
+      "seconds": 182.293
+    },
+    {
+      "selector": "sequential.DB02-20261024-01.executors.history_cases::test_DB02_history_full_json_cursor_sql_and_repeat[1000]",
+      "status": "PASS",
+      "seconds": 78.024
+    }
+  ],
+  "datasets": [
+    {
+      "revisions_per_cat": 1,
+      "cats": 5,
+      "own_revisions": 6,
+      "service_page_executions": 22,
+      "full_traversal_limits": [
+        1,
+        200,
+        500
+      ],
+      "sampled_limit_one_boundary_pages": false
+    },
+    {
+      "revisions_per_cat": 10,
+      "cats": 5,
+      "own_revisions": 51,
+      "service_page_executions": 112,
+      "full_traversal_limits": [
+        1,
+        200,
+        500
+      ],
+      "sampled_limit_one_boundary_pages": false
+    },
+    {
+      "revisions_per_cat": 100,
+      "cats": 5,
+      "own_revisions": 501,
+      "service_page_executions": 1018,
+      "full_traversal_limits": [
+        1,
+        200,
+        500
+      ],
+      "sampled_limit_one_boundary_pages": false
+    },
+    {
+      "revisions_per_cat": 1000,
+      "cats": 20,
+      "own_revisions": 20001,
+      "service_page_executions": 296,
+      "full_traversal_limits": [
+        200,
+        500
+      ],
+      "sampled_limit_one_boundary_pages": true
+    }
+  ],
+  "service_page_executions": 1448,
+  "coverage": [
+    "Original F-HIST 1/10/100 revisions per cat: full traversal at limits 1/200/500, every page first and repeated",
+    "Additional 1000 revisions/cat across 20 cats: 20001 own revisions; full traversal at limits 200/500 and first/middle/last/empty boundary pages at limit 1",
+    "Every response entire JSON and consumed cursor equal independent legacy_pull oracle, including current MAX revision beyond page, reference media/tombstone fields and foreign-account exclusion",
+    "Exactly 4 SELECTs per nonempty page and 1 per empty page, auth excluded; EXPLAIN ANALYZE BUFFERS captured for MAX aggregation at every dataset size"
+  ],
+  "executor": "scripts/run_security_regression.py --scenario DB-02 --output <new-directory-under-original-run>/sequential/<attempt>",
+  "executor_sha256": {
+    "security_cases.py": "de35705f692b00f80fe9c37e593bb601f20c5345b524910e2e26c382dfe20178",
+    "extended_cases.py": "c39291312f5ffb4e156c44e07004226ca544e6a2dc0275a5a3840524da5ce9cc",
+    "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+    "history_cases.py": "ee1cfc5d29a9518ca9ee136144f202ee3023e9516be4f569894348b3d56c36e2",
+    "test_sync_query_performance.py": "93bc5097c6ecfb96bf9a4df219ed326f7a278a0d2188b57b93b09dde8be2624c"
+  },
+  "evidence_sha256": {
+    "sequential/DB02-20261024-01/junit.xml": "62d03d5940a5aa4e989a4bb09efde914f726a74fcb0b1638f6ab462382320317",
+    "sequential/DB02-20261024-01/pytest.log": "1fbd7f9ede75de3b5f6ac74dbdacbba95675d864143f688367694ef54ab3c352",
+    "sequential/DB02-20261024-01/summary.json": "b1f2d8ea6f5a8072ca1eee88fdf182479b13c636afd32e87bba700c535477dd3",
+    "sequential/DB02-20261024-01/candidate_manifest.json": "3ea5f7824c6ef40dde279fd829d43557960483adeb9381afc342ea73c9009a19",
+    "sequential/DB02-20261024-01/source_manifest.json": "927b7d27271103c12de1f752632cea185ca19e8f02c2a65b8f2ea086c01e93f1",
+    "sequential/DB02-20261024-01/observations/DB02-complete-history-1.json": "3c1fa0d57bf597915327814a7227cba55941646777fea14d0486ffde86db7ea2",
+    "sequential/DB02-20261024-01/observations/DB02-complete-history-10.json": "ccef4e3c556d6b91c7ed335520c637ecd8fe307a76857feb995c40670ab2a377",
+    "sequential/DB02-20261024-01/observations/DB02-complete-history-100.json": "6668480bffa603beb78d54497747c557d8eca759084cc9603e7040e8d3b7496c",
+    "sequential/DB02-20261024-01/observations/DB02-complete-history-1000.json": "e1d4f54e08065b4f188c7a1946606ee8c0b4cc25624ca7ff95283eba84cf3e37"
+  },
+  "limitations": [
+    "Serial bounded correctness experiment, not capacity/throughput load. Pytest duration 291.53s; no product optimization applied.",
+    "First page execution uses a new DB connection and prepared-statement cache; repeated execution reuses pool. PostgreSQL/OS buffers are warm from fixtures/oracle, not physical cold IO.",
+    "Extra 20001-row dataset does not traverse all 20001 limit-one pages: explicit boundary sampling avoids 40k repeated requests. All original F-HIST combinations traverse fully.",
+    "Service timings exclude independent oracle, but are dependent page observations under an uncontrolled development host. No confidence interval, P99 reliability or latency gain claimed."
+  ]
+}
