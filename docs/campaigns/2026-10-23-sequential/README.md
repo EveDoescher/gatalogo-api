@@ -65,3 +65,7 @@ As rejeições cobrem token ausente/malformado, assinatura/issuer/type inválido
 ## DATA-08 — concluído em 24/10/2026
 
 47 testes Flutter e 1 PostgreSQL aprovados. [Antes/depois, fontes e evidências](DATA08-20261024-results.json). Corrigidos envelope real do chat, desempate por horário/ID e regressão de recibos. Ecos HTTP/WS nas duas ordens, duplicatas, histórico atrasado e restauração de rascunho passaram. API e Flutter publicados na branch de qualidade, sem alterar a main.
+
+## DATA-03 — concluído em 24/10/2026
+
+3 testes aprovados. [Replays, processo independente, fila, fontes e hashes](DATA03-20261024-results.json). Perda de resposta injetada após commit real e repetição em novo interpretador conservaram um débito, uma tarefa, um recibo e o mesmo resultado. Repetição de preparo reservou uma única vaga/consumo, inclusive com fila cheia. Sem alteração do produto. ACC-04 foi reclassificado para pendente: Android está disponível; iOS/VoiceOver permanece excluído.

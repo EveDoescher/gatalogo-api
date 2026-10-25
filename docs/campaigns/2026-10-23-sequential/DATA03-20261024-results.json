@@ -1,0 +1,56 @@
+{
+  "scenario": "DATA-03",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_sha": "522ca4f8a9f862a32fe029ac87d8008d88b243fb",
+  "test_commit": "522ca4f8a9f862a32fe029ac87d8008d88b243fb",
+  "product_changes": null,
+  "passed": 3,
+  "failed": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "selector": "sequential.DATA03-20261024-01.executors.security_cases::test_DATA03_DATA04_concurrent_intent_and_cross_account",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DATA03-20261024-01.executors.idempotency_cases::test_DATA03_lost_response_after_commit_replays_in_fresh_api_process",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DATA03-20261024-01.executors.idempotency_cases::test_DATA03_same_cook_intent_reserves_only_one_queue_slot",
+      "status": "PASS"
+    }
+  ],
+  "coverage": [
+    "Serial and parallel same intent yield identical persisted outcome, one debit/receipt/task; account B using the same key has independent scope",
+    "Actual HTTP ASGI route commits PostgreSQL, then injected failure suppresses response. New independent API interpreter replays against same disposable schema with same authenticated request and gets original outcome",
+    "Replay again through original interpreter preserves balance 88, one order and one receipt",
+    "Concurrent/serial same cook intent consumes ingredients once and one queue slot; a second distinct intent fits; original replay works even when queue reaches capacity"
+  ],
+  "executor": "scripts/run_security_regression.py --scenario DATA-03 --output <new-directory-under-original-run>/sequential/<attempt>",
+  "executor_sha256": {
+    "security_cases.py": "29740245f414e7645404dce0e627c6a09087978b2478f265d928bf05737bc656",
+    "extended_cases.py": "fded2ef157c87ef30e188fe8435921d1d4402be354b30365498dc36fceb94fc4",
+    "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+    "idempotency_cases.py": "5b0bc8c8b3c1846e14979ca87428ec183c24060366798b9ea2abee5d42049523",
+    "idempotency_child.py": "928ae44d636ae05cc5d0b66ec316c8dba9164707ad4160318d2958038659a745"
+  },
+  "evidence_sha256": {
+    "sequential/DATA03-20261024-01/junit.xml": "12b67204b41c5fae81ccd9a12df58b515df98c0265fb28f464b098eb4e6ecb80",
+    "sequential/DATA03-20261024-01/pytest.log": "5de73e37c3bd6031e7689c7ec821b9ec81161e26f4cb4bd0cf2341c5ce6b4bc5",
+    "sequential/DATA03-20261024-01/summary.json": "494beb4daf50522f38e76ba265aa32e595969fa3733a62513f5be7329f548197",
+    "sequential/DATA03-20261024-01/candidate_manifest.json": "f2b63e2c856de1d5d46406cb05c42fb88b6ceedf984d1012168b17b6754f1680",
+    "sequential/DATA03-20261024-01/source_manifest.json": "b9053fa2174dcd58c233b01212c3a1e3f9c4d653159150aab0d1fa59f0b9b010",
+    "sequential/DATA03-20261024-01/observations/DATA03-postcommit-process-replay.json": "99feeac99fa9bf337cb6f7dcb53e06b5e7c4a5ca4325ae0fd1a34b95d8a213a5",
+    "sequential/DATA03-20261024-01/observations/DATA03-queue-replay.json": "3230c75e175371ac5ae03a5bbb5ee9c161b9943483c0de9cb62c2c29b680132b",
+    "sequential/DATA03-20261024-01/observations/DATA03-restart/child.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sequential/DATA03-20261024-01/observations/DATA03-restart/request.json": "1ed95b12441c08599f4cd946a7ed4587a12a411e9a0d41f773eecc982e00e9de",
+    "sequential/DATA03-20261024-01/observations/DATA03-restart/response.json": "9944230a5032aeb9d6d7de3bd9ae30af71021c07614f6361c0450977474e579f"
+  },
+  "limitations": [
+    "Response loss is injected immediately after successful real commit in ASGI; this is not TCP packet-drop evidence. Transport interruption is separately covered by RES-02.",
+    "New independent API interpreter runs actual replay endpoint without lifespan/providers against parent disposable schema; original test interpreter is not stopped. This validates persistence independent of process memory.",
+    "Short correctness contention, no throughput/latency gain claim. Synthetic request/response files including generated tokens remain private and are only hashed here."
+  ]
+}

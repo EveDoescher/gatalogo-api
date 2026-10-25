@@ -591,7 +591,7 @@
   },
   {
     "scenario": "DATA-03",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Replay serial/paralelo da chave Quintal; resposta perdida após commit e reinício.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [
@@ -608,7 +608,11 @@
     "runs": [
       "attempts/targeted-02/critical_runs/targeted-baseline/summary.json"
     ],
-    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+    "limitation": "Replay após commit validado em processo independente com PG; perda de resposta injetada em ASGI, sem alegação de pacote TCP perdido.",
+    "closure_evidence": [
+      "DATA03-20261024-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario DATA-03 --output <new-directory-under-original-run>/sequential/<attempt>"
   },
   {
     "scenario": "DATA-04",
@@ -1290,11 +1294,15 @@
   },
   {
     "scenario": "ACC-04",
-    "state": "BLOCKED_EXTERNAL_PREREQUISITES",
-    "scope": "TalkBack/VoiceOver: entrar, escolher foto, localizar gato, ouvir análise, enviar mensagem, ler notificação e operar uma ação do Quintal.",
+    "state": "PENDING",
+    "scope": "Android/TalkBack: entrar, escolher foto, localizar gato, ouvir análise, enviar mensagem, ler notificação e operar uma ação do Quintal.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
-    "runs": []
+    "runs": [],
+    "excluded": [
+      "iOS/VoiceOver por decisão do usuário"
+    ],
+    "limitation": "Android USB autorizado e app em primeiro plano confirmados em 24/10. Percursos com TalkBack ainda não executados; não é mais um bloqueio por ausência de aparelho."
   },
   {
     "scenario": "ACC-05",
