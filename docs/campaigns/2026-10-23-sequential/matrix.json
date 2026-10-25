@@ -871,7 +871,7 @@
   },
   {
     "scenario": "RES-08",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "SQLite/cache/storage próprios corrompidos/indisponíveis e interrupção durante página.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -880,11 +880,15 @@
       "attempts/flutter-resilience-03/flutter_resilience/baseline/summary.json",
       "attempts/flutter-resilience-04/flutter_resilience/baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "limitation": "Derived cache bypass corrected; authoritative SQLite errors preserve bytes and require deliberate backup restore. Real SQLite/service boundaries, not a physical OS crash.",
     "local_runs": [
       "attempts/image-01/critical_runs/image-baseline/summary.json",
       "attempts/image-02/critical_runs/image-baseline/summary.json"
-    ]
+    ],
+    "closure_evidence": [
+      "RES08-20261025-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py / scripts/run_flutter_regression.py"
   },
   {
     "scenario": "SEC-01",

@@ -76,5 +76,12 @@
       "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV05-20261024-03/source_manifest.json",
       "sha256": "1d41d7b44f6679abbc6653e82d8b0ec8d166ce6f5163fc13c2cc0e3b08428e5a"
     }
-  ]
+  ],
+  "style_followup": {
+    "date": "2026-10-25",
+    "passed": 6,
+    "flutter_sha": "68038a63b5b93ae3b599036fd4fcc54abb561126",
+    "summary_sha256": "65df913cd77f3cce928281974c51c2f56f120378c60f367636260d9fb9e60437",
+    "evidence": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV05-20261025-04"
+  }
 }

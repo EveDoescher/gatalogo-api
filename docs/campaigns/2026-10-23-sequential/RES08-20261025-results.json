@@ -1,0 +1,194 @@
+{
+  "scenario": "RES-08",
+  "state": "COMPLETED",
+  "date": "2026-10-25",
+  "source_sha": "f77c10596b0910f2fd52682a879f37b0150d0342",
+  "flutter_source_sha": "4ab2d5d5fe72c24bec3846ec9ded8cf7a1559bb3",
+  "correction_commit": "c58235a",
+  "api_passed": 22,
+  "flutter_passed": 2,
+  "failed": 0,
+  "skipped": 0,
+  "code": [
+    "app/services/analysis_cache.py",
+    "catlogue/lib/data/cat_database.dart",
+    "catlogue/lib/services/catalog_sync_service.dart"
+  ],
+  "executors": [
+    "scripts/run_security_regression.py --scenario RES-08",
+    "tests/test_analysis_cache_resilience.py",
+    "scripts/run_flutter_regression.py test/sqlite_storage_recovery_test.dart",
+    "catlogue/tool/campaign_resilience_test.dart (DB07 partial-page variant)"
+  ],
+  "cycle": {
+    "hypothesis": "An optional derived cache IO/SQLite failure escapes and aborts otherwise valid analysis.",
+    "before": "17 negative cache tests failed; original corrupt-cache characterization passed by expecting DatabaseError.",
+    "correction": "Shared cache execution guard bypasses unavailable cache, preserving original file and logging only error type; new instance can use repaired storage. Authoritative client SQLite is never silently recreated.",
+    "after": "22 API cases pass, including full deterministic output comparison (only analyzed_at excluded), valid-hit and malformed-payload controls; 2 real SQLite client cases pass."
+  },
+  "coverage": [
+    "Cache constructor corrupt file, parent obstruction and denied permissions; four cache operations under SQLite/permission faults; corruption after initialization; raw bytes preserved.",
+    "Full analysis under corrupt/read-only/permission/obstructed cache returns identical deterministic result without paid model calls.",
+    "Valid semantic cache hit still avoids provider, invalid JSON refetches, valid hit without API key remains usable.",
+    "Photo write ENOSPC/EACCES: old DB pointer and old bytes remain; retry succeeds and owner downloads exact new bytes. Missing file gives 404, restored file gives 200.",
+    "Authoritative SQLite corrupted header raises explicit DatabaseException, raw corruption/photo remain unchanged; explicit own-backup restore recovers same instance, dirty row and cursor 8.",
+    "Actual read-only SQLite rejects write, preserves bytes/cursor/row; writable reopening accepts retry.",
+    "DB07 partial-page evidence reused: cursor stays unchanged after partial apply; same cursor replay converges without duplicates. Product lib hashes match current Flutter run."
+  ],
+  "limitations": [
+    "Controlled cache/provider/OS fault injection and real disposable SQLite/PostgreSQL. No disk filling, real ACL changes, physical device storage fault or paid AI.",
+    "Corrupted authoritative SQLite still requires deliberate backup restoration; automatic data reconstruction/erasure was not added. Tests restore only their own synthetic closed fixture.",
+    "Unavailable cache is bypassed for that instance. Persistent corruption is preserved for diagnosis; cache misses may require normal recomputation.",
+    "Recovery tested at data/service boundaries; no new UI error dialog or Android OS crash claim."
+  ],
+  "cases": [
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_cache_initialization_preserves_unavailable_storage[corrupt]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_cache_initialization_preserves_unavailable_storage[parent-file]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_cache_initialization_preserves_unavailable_storage[permission]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_cache_operation_failure_is_optional_and_recoverable[sqlite-get]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_cache_operation_failure_is_optional_and_recoverable[sqlite-set]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_cache_operation_failure_is_optional_and_recoverable[sqlite-get_segmentation]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_cache_operation_failure_is_optional_and_recoverable[sqlite-set_segmentation]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_cache_operation_failure_is_optional_and_recoverable[permission-get]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_cache_operation_failure_is_optional_and_recoverable[permission-set]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_cache_operation_failure_is_optional_and_recoverable[permission-get_segmentation]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_cache_operation_failure_is_optional_and_recoverable[permission-set_segmentation]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_cache_corrupted_after_open_does_not_erase_evidence[get]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_cache_corrupted_after_open_does_not_erase_evidence[get_segmentation]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_analysis_output_survives_cache_fault[corrupt]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_analysis_output_survives_cache_fault[write-readonly]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_analysis_output_survives_cache_fault[read-permission]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_analysis_output_survives_cache_fault[parent-file]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_photo_storage_failure_preserves_old_bytes_and_retries[no-space]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_photo_storage_failure_preserves_old_bytes_and_retries[permission]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_missing_photo_returns_controlled_error_and_recovers",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.test_analysis_cache_resilience::test_RES08_valid_cache_hit_and_invalid_payload_regression",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES08-20261025-03.executors.image_cases::test_RES08_corrupt_private_cache_characterization",
+      "status": "PASS"
+    },
+    {
+      "name": "RES08 authoritative SQLite preserves data and recovers from corrupt",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "RES08 authoritative SQLite preserves data and recovers from readonly",
+      "result": "success",
+      "skipped": false
+    }
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES08-20261025-03/junit.xml",
+      "sha256": "46a3d9435a30fc3d9ed9250c7c7b2b0747562735af54a9a3b9d1cdb3ccf780b0"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES08-20261025-03/pytest.log",
+      "sha256": "65a0f59ab16abf0820be474b1948795d91f8a8cf5d0d5549ddcf3fb1123c9f65"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES08-20261025-03/summary.json",
+      "sha256": "d9faced0565f51883017f8e72258a58d112bb15340f9127fbb831ccff96613a6"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES08-20261025-03/source_manifest.json",
+      "sha256": "edf984ed78615c28a768b21a4e7e601107bb830fd3c22b1a4a4d2596b189d2c1"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES08-20261025-03/candidate_manifest.json",
+      "sha256": "f6810989a73d93755715f0c38d44f0873ddf7c9b6a2b3fc9d40e23424b0a6f09"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES08-flutter-20261025-01/tests.jsonl",
+      "sha256": "ac9cebdb79a2854324228fe300a2b208937d3d3f9526489ea42095cab126fed3"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES08-flutter-20261025-01/summary.json",
+      "sha256": "62661d3da746f4b22b0a2933ca810325d374e0bd7e408e73f08f0054660b6c29"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES08-flutter-20261025-01/source_manifest.json",
+      "sha256": "8641f5eb180de3bd114763f027c93b06f1d712ba7a3e079b60711bbd85aa89a8"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES08-20261025-01/junit.xml",
+      "sha256": "21493f835100b5e3bc200ff2db82785d1a229b679482eadea91b17e3640d30f9"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES08-20261025-01/summary.json",
+      "sha256": "05ec2b1986d16069d93163420d0730ccaa0c49c1c454a376c96de9e2a1f102dd"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB07-20261024-02/tests.jsonl",
+      "sha256": "f690d509ae86c55d05450504a8ed8a57245c403c46e5a6d4c05c131cb51efa62"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB07-20261024-02/source_manifest.json",
+      "sha256": "d07c7a935db8dfd22489c85f240cbc385984635a8fdac9e90a108d787f5a3d17"
+    }
+  ]
+}
