@@ -189,3 +189,7 @@ Os 12 testes de volume passaram. A auditoria de escopo reabriu temporariamente D
 ## IMG-03 concluído; LAT-04 ampliado — 25/10/2026
 
 [Correções, mutantes, medições e evidências](SYNC-IMG03-LAT04-20261025-results.json). 54 regressões passaram, incluindo sete variantes de mídia e dez de lotes. Quatro mutantes isolados foram detectados após baseline verde. A integração atual executou 17 casos Flutter com API/PostgreSQL próprios: lotes 500+1, histórico, aplicação multipágina e recuperação após 503 sem perda/duplicação. Corrigidos envio acima do limite e consumo de revisão após falha de mídia. LAT-04 permanece parcial para perfil separado de parse e confirmação estatística; não há alegação de ganho ou P99. Tentativas com falha de instrumentação/tempo permanecem preservadas e classificadas.
+
+## RES-02 — concluído em 25/10/2026
+
+[Três janelas TCP e duas recuperações do cliente](RES02-20261025-results.json). Cinco casos passaram. Corpo parcial preservou estado anterior; barreira PostgreSQL comprovou desconexão antes do commit; proxy descartou resposta após commit real. Replay manteve hash/uma foto primária e isolamento 200/404. O cliente preservou fila/foto/cursor e retomou após reabrir SQLite. Desconexão antes do commit resultou em commit após liberar a barreira: não implica rollback nem exatamente uma revisão. A primeira tentativa com pool entre event loops foi preservada como falha do executor.

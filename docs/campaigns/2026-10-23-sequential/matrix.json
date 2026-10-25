@@ -819,7 +819,7 @@
   },
   {
     "scenario": "RES-02",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Cortar upload no meio, resposta antes de commit e depois de commit em casos distintos com barreiras.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -827,7 +827,11 @@
     "followup_runs": [
       "attempts/upload-transport-01/critical_runs/upload-transport-baseline/summary.json"
     ],
-    "limitation": "Novas variantes locais rastreadas; conferir escopo e pendências no relatório. Nenhuma aprovação integral ou correção de produto."
+    "limitation": "Three actual TCP windows and two real-client/SQLite controlled transport cases passed; no physical phone radio or exactly-once claim.",
+    "closure_evidence": [
+      "RES02-20261025-results.json"
+    ],
+    "executor": "scripts/campaign/current_upload_transport_cases.py"
   },
   {
     "scenario": "RES-03",

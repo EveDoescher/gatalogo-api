@@ -1,0 +1,121 @@
+{
+  "scenario": "RES-02",
+  "state": "COMPLETED",
+  "date": "2026-10-25",
+  "api_source_sha": "6d6b8a0532076918dbbdfaa0044f1c185f7de3ff",
+  "api_executor_commit": "8296cb8059dbae80580abb72383afeddfbb0c4fd",
+  "flutter_executor_commit": "5f795f304d12bbbde25ca8d9ad32e9c6fd036b48",
+  "passed": 5,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes": false,
+  "executors": [
+    "scripts/campaign/current_upload_transport_cases.py",
+    "scripts/campaign/upload_transport_cases.py",
+    "catlogue/test/upload_client_recovery_test.dart"
+  ],
+  "coverage": [
+    "Actual loopback TCP partial multipart body: previous DB/file state unchanged, bounded replay succeeds.",
+    "Actual PostgreSQL row lock proves request reached pre-commit barrier; disconnect occurs while blocked. Outcome recorded after release, never inferred rollback from lost socket.",
+    "Owned proxy receives upstream 204 after commit then drops client response; HTTP client observes RemoteProtocolError.",
+    "All server variants: replay preserves final hash/one primary row, owner bytes 200, other account 404, health 200.",
+    "Actual Flutter CatalogSyncService and multipart with controlled HTTP disconnect before/after simulated commit: false result, dirty row/cursor 0/local photo bytes retained; SQLite closed/reopened and new service successfully replays then pulls synced revision 1."
+  ],
+  "server_observations": [
+    {
+      "window": "disconnect-before-commit",
+      "scenario": "RES-02",
+      "precommit_lock_observed": true,
+      "disconnect_outcome_before_retry": "COMMITTED",
+      "owner_photo": 200,
+      "other_photo": 404,
+      "scope": "real bounded loopback TCP/HTTP/PG; own photos and pending-analysis state, no inference. Revisions recorded rather than assumed exactly-once; primary/file-response integrity is the oracle, no full orphan-file inventory.",
+      "revision_counts": {
+        "before": 1,
+        "after_interruption": 2,
+        "after_retry": 2
+      },
+      "primary_rows_after_retry": 1
+    },
+    {
+      "window": "lost-response-after-commit",
+      "scenario": "RES-02",
+      "upstream_committed_before_response_drop": true,
+      "owner_photo": 200,
+      "other_photo": 404,
+      "scope": "real bounded loopback TCP/HTTP/PG; own photos and pending-analysis state, no inference. Revisions recorded rather than assumed exactly-once; primary/file-response integrity is the oracle, no full orphan-file inventory.",
+      "revision_counts": {
+        "before": 1,
+        "after_interruption": 2,
+        "after_retry": 2
+      },
+      "primary_rows_after_retry": 1
+    },
+    {
+      "window": "partial-body",
+      "scenario": "RES-02",
+      "partial_body_left_committed_state_unchanged": true,
+      "owner_photo": 200,
+      "other_photo": 404,
+      "scope": "real bounded loopback TCP/HTTP/PG; own photos and pending-analysis state, no inference. Revisions recorded rather than assumed exactly-once; primary/file-response integrity is the oracle, no full orphan-file inventory.",
+      "revision_counts": {
+        "before": 1,
+        "after_interruption": 1,
+        "after_retry": 2
+      },
+      "primary_rows_after_retry": 1
+    }
+  ],
+  "limitations": [
+    "TCP fault variants use an actual HTTP client; Flutter transport faults are controlled separately. This is not one end-to-end physical Android radio-disconnect experiment.",
+    "No strict exactly-once claim: revision counts are recorded. Disconnect-before-commit committed after release in this run; integrity and replay are the oracle.",
+    "No paid inference, external delivery, disk filling or full orphan inventory; orphan collection remains separate RSC-03.",
+    "RES02-tcp-20261025-01 preserved: one passed/two failed due executor retaining application asyncpg pool across per-case event loops. Fixture now owns and disposes its pool; no product change."
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES02-client-20261025-01/source_manifest.json",
+      "sha256": "af4b24aff99295bf4bb2817dc51db1a454f3c70a02309fdbe91c046c4935fffd"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES02-client-20261025-01/summary.json",
+      "sha256": "3cebdb95c5041ec23157392fc8ea94398a7d6b0bb84bf5605352cf619513b307"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES02-client-20261025-01/tests.jsonl",
+      "sha256": "c2622603e8aadbebfffb8135ab0b2093efba4f3dbbd54ed172df12f1bbd65ee7"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES02-tcp-20261025-02/candidate_manifest.json",
+      "sha256": "2fda2efd60d3715b20cd31e472126bb8f5768444794da6f1b4517a3f33dd3596"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES02-tcp-20261025-02/junit.xml",
+      "sha256": "3615b05e6d35a1bacf435340ff24bad602216df9096a554c6877473102f0fd29"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES02-tcp-20261025-02/observations/RES02-disconnect-before-commit.json",
+      "sha256": "7652e0f326ed3f5ca480b4fc0afb1439bd007c5aa7c24e07adcdaf407ba6cb45"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES02-tcp-20261025-02/observations/RES02-lost-response-after-commit.json",
+      "sha256": "23b6bdc7ccfcf6a55f29cbe7b331cdedf328b7a987a2dfe00e464aae7e530870"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES02-tcp-20261025-02/observations/RES02-partial-body.json",
+      "sha256": "96651505507ee5cb1c6f73a394cca37d8b3603b98491d5e4fe72452dbb599e8c"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES02-tcp-20261025-02/pytest.log",
+      "sha256": "b9d88283cd6f4ddca3e8272221d5e1f07a02921e3cdcfdec776e8e61cd127380"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES02-tcp-20261025-02/source_manifest.json",
+      "sha256": "60caa972e9174be21840fac05222cdca231c8208043b0e88765b77f1978b2137"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES02-tcp-20261025-02/summary.json",
+      "sha256": "4558d70a9092208b9a24a55ca38cdcb4314ed42178632da01c9011a05bc62b49"
+    }
+  ]
+}
