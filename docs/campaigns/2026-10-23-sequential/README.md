@@ -113,3 +113,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## LOAD-03 — concluído em 24/10/2026
 
 6 variantes de barreira (2/10/25, mesma intenção e intenções distintas) aprovadas; um único débito/recibo/efeito, sem saldo negativo ou alteração de outra conta. [Variantes, fontes e evidências](LOAD03-20261024-results.json). Sem alteração no produto.
+
+## RES-04 — concluído em 24/10/2026
+
+6 testes PostgreSQL aprovados: término de processo próprio, reclaim em novo processo, fencing, cancelamento, limite de tentativas e conexão liberada durante inferência. [Variantes, fontes e evidências](RES04-20261024-results.json). Sem alteração no produto.

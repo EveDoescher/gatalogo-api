@@ -1,0 +1,89 @@
+{
+  "scenario": "RES-04",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_sha": "87a9d5e1e9bead305e1e4bb665c5d90120a83da9",
+  "passed": 6,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes": false,
+  "executor": "scripts/run_security_regression.py --scenario RES-04 --output <new private attempt>",
+  "coverage": [
+    "Own OS worker killed after a committed claim, lease expired by controlled persisted timestamp, new OS process completes attempt 2.",
+    "Expired claim reclaimed and late old analysis fenced.",
+    "Cancellation releases claim and next consumer resumes.",
+    "Retry reaches configured maximum, terminal status and no further inference.",
+    "Expired final attempt fails without invoking inference again.",
+    "No checked-out database connection during paused inference."
+  ],
+  "limitations": [
+    "Real disposable PostgreSQL; fake bounded inference/progression and private own worker processes only.",
+    "Lease age advanced in persisted started_at rather than waiting wall-clock lease duration.",
+    "No user worker, paid model or live service stopped."
+  ],
+  "measurements": [],
+  "cases": [
+    {
+      "selector": "sequential.RES04-20261024-01.executors.worker_race_cases::test_RES04_actual_worker_process_killed_after_claim_then_restarted[postgres]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES04-20261024-01.executors.test_reference_analysis::test_expired_claim_is_recovered_and_late_result_cannot_overwrite[postgres]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES04-20261024-01.executors.test_reference_analysis::test_cancellation_releases_persisted_claim_and_next_process_resumes[postgres]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES04-20261024-01.executors.test_reference_analysis::test_failures_retry_then_mark_only_current_photo_failed[postgres]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES04-20261024-01.executors.test_reference_analysis::test_expired_final_attempt_fails_without_another_inference[postgres]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.RES04-20261024-01.executors.test_reference_analysis::test_inference_releases_database_connection[postgres]",
+      "status": "PASS"
+    }
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES04-20261024-01/junit.xml",
+      "sha256": "3ab119c1f6900b3cacfa7ef18f5c378005d70b62f9acbd1886f86ee3da1ff1e1"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES04-20261024-01/pytest.log",
+      "sha256": "a5a994761792b502be757fb57267494be8a9394e45c2054290eb14baf50630e7"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES04-20261024-01/summary.json",
+      "sha256": "4e8fc4fe129857b1cc8e39faa7702254d2c191c0aeff4fd198556f05c5744c21"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES04-20261024-01/source_manifest.json",
+      "sha256": "7f68b608981f9d47f98b1948db50819a74275a524dfa6eca6b56975df07d845a"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES04-20261024-01/candidate_manifest.json",
+      "sha256": "a987503fab1380d8c1f847c5fda71644dc8888e2693437bed4b3d2d372c0f165"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES04-20261024-01/observations/RES04-real-process-crash.json",
+      "sha256": "69e5fb093c7f955b719947812e8dfb326337c0fe09a3b15e7eaf7ad0a8ffd512"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES04-20261024-01/observations/worker-process/claim-ready.json",
+      "sha256": "2f71608490e6b9df8e8e66da2e47c55927d8d244ea1595577a08c4158597fb3c"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES04-20261024-01/observations/worker-process/claim.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES04-20261024-01/observations/worker-process/restart.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

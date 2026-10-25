@@ -800,7 +800,7 @@
   },
   {
     "scenario": "RES-04",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Encerrar worker próprio após claim, expirar lease e iniciar consumidor; resultado antigo tardio em caso separado.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -810,7 +810,11 @@
       "attempts/worker-race-02/critical_runs/worker-race-baseline/summary.json",
       "attempts/worker-race-03/critical_runs/worker-race-baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+    "limitation": "Real disposable PostgreSQL; fake bounded inference/progression and private own worker processes only. Lease age advanced in persisted started_at rather than waiting wall-clock lease duration. No user worker, paid model or live service stopped.",
+    "closure_evidence": [
+      "RES04-20261024-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario RES-04 --output <new private attempt>"
   },
   {
     "scenario": "RES-05",
