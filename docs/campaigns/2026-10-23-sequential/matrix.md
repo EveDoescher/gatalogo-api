@@ -48,7 +48,7 @@ iOS/VoiceOver fora do escopo. Critérios originais mantidos.
 | DATA-01 | PARTIAL_EXECUTED |
 | DATA-02 | COMPLETED |
 | DATA-03 | COMPLETED |
-| DATA-04 | PARTIAL_EXECUTED |
+| DATA-04 | COMPLETED |
 | DATA-05 | COMPLETED |
 | DATA-06 | COMPLETED |
 | DATA-07 | COMPLETED |

@@ -1,0 +1,57 @@
+{
+  "scenario": "DATA-04",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_sha": "13e4bce7d7ca2b37074ac7b43afe1b4c91a7ed58",
+  "test_commit": "522ca4f",
+  "product_changes": null,
+  "passed": 4,
+  "failed": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "selector": "sequential.DATA04-20261024-01.executors.security_cases::test_DATA03_DATA04_concurrent_intent_and_cross_account",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DATA04-20261024-01.executors.idempotency_cases::test_DATA04_fingerprint_conflict_and_cross_account_scope[action]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DATA04-20261024-01.executors.idempotency_cases::test_DATA04_fingerprint_conflict_and_cross_account_scope[target]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DATA04-20261024-01.executors.idempotency_cases::test_DATA04_fingerprint_conflict_and_cross_account_scope[data]",
+      "status": "PASS"
+    }
+  ],
+  "coverage": [
+    "Same key with changed action, target or request data must reject specifically for fingerprint conflict, not an unrelated business precondition",
+    "Conflict adds no debit/task/receipt; identical original request still replays original result",
+    "Same key under A/B has independent result and one receipt/task/debit per account",
+    "Concurrent identical intent still returns the same result"
+  ],
+  "executor": "scripts/run_security_regression.py --scenario DATA-04 --output <new-directory-under-original-run>/sequential/<attempt>",
+  "executor_sha256": {
+    "security_cases.py": "29740245f414e7645404dce0e627c6a09087978b2478f265d928bf05737bc656",
+    "extended_cases.py": "fded2ef157c87ef30e188fe8435921d1d4402be354b30365498dc36fceb94fc4",
+    "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+    "idempotency_cases.py": "5b0bc8c8b3c1846e14979ca87428ec183c24060366798b9ea2abee5d42049523",
+    "idempotency_child.py": "928ae44d636ae05cc5d0b66ec316c8dba9164707ad4160318d2958038659a745"
+  },
+  "evidence_sha256": {
+    "sequential/DATA04-20261024-01/junit.xml": "a3003991d28a408f4565dff87915bc636ffdf0fb63c5d9ab1816b8844a967746",
+    "sequential/DATA04-20261024-01/pytest.log": "a4baf5f48145789a8cdcf05fbd25de7fe501d0e4d5c1f3be1359cd70d9a73cec",
+    "sequential/DATA04-20261024-01/summary.json": "16611f2d11ea0afaa74dd23fc329ca52bac51dd7bbde3d6001938d5e13d184c2",
+    "sequential/DATA04-20261024-01/candidate_manifest.json": "6d95b0a8f04614f92d0eba6a1f35e558f23e63f57be1ffeb0d3ab5eb61cc7b1f",
+    "sequential/DATA04-20261024-01/source_manifest.json": "97ededc8705dfca9fca273ec84f5171f020b8475f354621a60727d85de956f7f",
+    "sequential/DATA04-20261024-01/observations/DATA04-fingerprint-action.json": "740d874f7cbe92f499a64f27bdb71fb2d41552d4e6b888856d29467ce77d82d8",
+    "sequential/DATA04-20261024-01/observations/DATA04-fingerprint-data.json": "90a42ef6b69273b5c021235801d5682dc0af6c8592c7f6a8a592e95784d9ae7a",
+    "sequential/DATA04-20261024-01/observations/DATA04-fingerprint-target.json": "092749fe20d575bef4fc2c1a8c51d130586188197f443844b7900e4eb3b67c14"
+  },
+  "limitations": [
+    "Real disposable PostgreSQL and actual production coordinator; no prolonged load or latency claim.",
+    "Strict conflict reason prevents invalid recipe/unlock/queue preconditions from masking a missing fingerprint guard."
+  ]
+}

@@ -69,3 +69,7 @@ As rejeições cobrem token ausente/malformado, assinatura/issuer/type inválido
 ## DATA-03 — concluído em 24/10/2026
 
 3 testes aprovados. [Replays, processo independente, fila, fontes e hashes](DATA03-20261024-results.json). Perda de resposta injetada após commit real e repetição em novo interpretador conservaram um débito, uma tarefa, um recibo e o mesmo resultado. Repetição de preparo reservou uma única vaga/consumo, inclusive com fila cheia. Sem alteração do produto. ACC-04 foi reclassificado para pendente: Android está disponível; iOS/VoiceOver permanece excluído.
+
+## DATA-04 — concluído em 24/10/2026
+
+4 testes aprovados, sem alteração do produto. [Fingerprint, escopo, fontes e hashes](DATA04-20261024-results.json). Mudanças de ação/alvo/conteúdo foram rejeitadas pelo motivo correto, sem efeitos extras; replay original e a mesma chave em outra conta permaneceram válidos.

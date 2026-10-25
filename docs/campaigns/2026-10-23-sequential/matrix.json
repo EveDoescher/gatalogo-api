@@ -616,7 +616,7 @@
   },
   {
     "scenario": "DATA-04",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Mesma chave com action/target/data diferente; mesma chave em A e B.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [
@@ -631,7 +631,11 @@
       "attempts\\pilot-03\\results\\04-A\\probe.json"
     ],
     "runs": [],
-    "limitation": "Selected variants only; see variant ledger and approved plan. No whole-scenario completion."
+    "limitation": "Ação/alvo/conteúdo e escopo entre contas cobertos; rejeição exigida por fingerprint, sem depender de outra regra de negócio.",
+    "closure_evidence": [
+      "DATA04-20261024-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario DATA-04 --output <new-directory-under-original-run>/sequential/<attempt>"
   },
   {
     "scenario": "DATA-05",
