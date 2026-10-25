@@ -121,3 +121,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## DB-07 — concluído em 24/10/2026
 
 3 testes aprovados em SQLite real: abertura concorrente/falha temporária, página parcialmente aplicada e cursor preservado com reprocessamento sem perda/duplicação. [Fontes, variantes e evidências](DB07-20261024-results.json). Sem mudança no produto.
+
+## RES-07 — concluído em 24/10/2026
+
+9 testes aprovados: 2/8/25 gatilhos de sync, inbox e renovação de sessão compartilham uma operação; falha inicial libera o bloqueio e a próxima tentativa funciona. [Fontes, variantes e evidências](RES07-20261024-results.json). Sem mudança no produto.

@@ -60,7 +60,7 @@ iOS/VoiceOver fora do escopo. Critérios originais mantidos.
 | RES-04 | COMPLETED |
 | RES-05 | PARTIAL_EXECUTED |
 | RES-06 | PARTIAL_EXECUTED |
-| RES-07 | PARTIAL_EXECUTED |
+| RES-07 | COMPLETED |
 | RES-08 | PARTIAL_EXECUTED |
 | SEC-01 | COMPLETED |
 | SEC-02 | COMPLETED |

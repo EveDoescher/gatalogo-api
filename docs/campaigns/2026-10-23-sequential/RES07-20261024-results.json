@@ -1,0 +1,94 @@
+{
+  "scenario": "RES-07",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "flutter_source_sha": "cce8b4ec85526ce458d53c82d5213f3f201c2397",
+  "passed": 9,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes": false,
+  "executor": "scripts/run_flutter_regression.py",
+  "command": [
+    "C:\\flutter\\bin\\cache\\dart-sdk\\bin\\dart.exe",
+    "C:\\flutter\\bin\\cache\\flutter_tools.snapshot",
+    "test",
+    "--no-pub",
+    "--machine",
+    "test/single_flight_recovery_test.dart"
+  ],
+  "code": [
+    "catlogue/lib/services/catalog_sync_service.dart",
+    "catlogue/lib/stores/notification_store.dart",
+    "catlogue/lib/stores/session_store.dart"
+  ],
+  "coverage": [
+    "2/8/25 concurrent triggers share exactly one catalog HTTP pull. First pull fails; next burst uses one new pull and succeeds.",
+    "2/8/25 inbox refresh triggers share one failed request; subsequent burst coalesces and produces one consistent unread snapshot.",
+    "2/8/25 access-token refreshes share one request; transient 503 retains account and next burst succeeds with rotated credentials."
+  ],
+  "limitations": [
+    "Desktop real service/store logic with controlled HTTP and secure-storage mocks; no physical-device timing or throughput inference.",
+    "Counts 2/8/25 are bounded interleaving probes, not a statistical latency sample."
+  ],
+  "cases": [
+    {
+      "name": "RES07 sync 2 triggers recover after failure",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "RES07 inbox 2 refreshes recover after failure",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "RES07 auth 2 renewals recover after transient failure",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "RES07 sync 8 triggers recover after failure",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "RES07 inbox 8 refreshes recover after failure",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "RES07 auth 8 renewals recover after transient failure",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "RES07 sync 25 triggers recover after failure",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "RES07 inbox 25 refreshes recover after failure",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "RES07 auth 25 renewals recover after transient failure",
+      "result": "success",
+      "skipped": false
+    }
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES07-20261024-01/tests.jsonl",
+      "sha256": "9dbd3a951ac499d5462dabfc3fa4552c172ffd932894137640ea1d49c8e466b8"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES07-20261024-01/summary.json",
+      "sha256": "ac7e3c0446b194a5228e5cacdb084958ba2bec80a27460a0611a6b09241f9ae9"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RES07-20261024-01/source_manifest.json",
+      "sha256": "0a08a4ed7675b036e667120fb41f97663c0d3f4e9a8b070fe60050431800f6c3"
+    }
+  ]
+}

@@ -849,7 +849,7 @@
   },
   {
     "scenario": "RES-07",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Muitos gatilhos simultâneos sync/refresh; primeira operação falha, seguinte funciona.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -859,7 +859,11 @@
       "attempts/flutter-resilience-04/flutter_resilience/baseline/summary.json",
       "attempts/probe-layout-01/flutter_results/RES-03/test.jsonl"
     ],
-    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+    "limitation": "Desktop real service/store logic with controlled HTTP and secure-storage mocks; no physical-device timing or throughput inference. Counts 2/8/25 are bounded interleaving probes, not a statistical latency sample.",
+    "closure_evidence": [
+      "RES07-20261024-results.json"
+    ],
+    "executor": "scripts/run_flutter_regression.py"
   },
   {
     "scenario": "RES-08",
