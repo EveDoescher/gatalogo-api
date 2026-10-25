@@ -1,0 +1,526 @@
+{
+  "scenario": "DATA-08",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_shas": {
+    "api": "eb69fb2ede40a9a49e1379dead24828d23f6041c",
+    "flutter": "e8f5b55650eed16ef096674aa905dd115734123a"
+  },
+  "correction_commits": {
+    "api": "eb69fb2ede40a9a49e1379dead24828d23f6041c",
+    "flutter": "e8f5b55650eed16ef096674aa905dd115734123a"
+  },
+  "passed": {
+    "flutter": 47,
+    "postgres": 1
+  },
+  "failed": 0,
+  "skipped": 0,
+  "flutter_cases": [
+    {
+      "selector": "widget_tester.dart::DATA08 real API envelope preserves message identity and content",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "widget_tester.dart::RES06 offline polling at 30s pauses online and resumes after disconnect",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "widget_tester.dart::DATA08 duplicate echo reconciles once order=ws-first",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "widget_tester.dart::DATA08 duplicate echo reconciles once order=http-first",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "widget_tester.dart::DATA08 equal timestamps are deterministic for [b, a]",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "widget_tester.dart::DATA08 equal timestamps are deterministic for [a, b]",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "widget_tester.dart::DATA08 read receipt survives delayed unread history and duplicate echo",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "widget_tester.dart::DATA08 live event survives late empty history snapshot",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "campaign_social_resilience_test.dart::DLV05 read acknowledgment from old owner cannot mark new owner inbox",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "campaign_social_resilience_test.dart::DLV05 concurrent refresh triggers converge on one unread notification",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "widget_tester.dart::reconnect reloads and dispose cancels subscriptions and fallback",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "widget_tester.dart::echo before HTTP response reconciles one confirmed message",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "widget_tester.dart::fallback retains optimistic send until HTTP confirms",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "widget_tester.dart::failure removes optimistic message and restores draft",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "widget_tester.dart::uploaded photo dispatches its message",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "widget_tester.dart::account change discards a late send and blocks subsequent commands",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 catalog response after switch cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 analysis-success response after switch cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 analysis-rejected response after switch cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 analysis-api-error response after switch cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 analysis-retry response after switch cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 chat history and event after switch are ignored",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 inbox response after switch is ignored",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 catalog response after logout cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 analysis-success response after logout cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 analysis-rejected response after logout cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 analysis-api-error response after logout cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 analysis-retry response after logout cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 chat history and event after logout are ignored",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 inbox response after logout is ignored",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 catalog response after dispose cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 analysis-success response after dispose cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 analysis-rejected response after dispose cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 analysis-api-error response after dispose cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 analysis-retry response after dispose cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 chat history and event after dispose are ignored",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 inbox response after dispose is ignored",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 catalog response after current cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 analysis-success response after current cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 analysis-rejected response after current cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 analysis-api-error response after current cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "account_scope_races_test.dart::RES03 analysis-retry response after current cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "notification_store_test.dart::pages merge in chronological order and do not duplicate IDs",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "notification_store_test.dart::all listeners see the same unread count immediately after reading",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "notification_store_test.dart::deduplicates refreshes and retains the snapshot on network failure",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "notification_store_test.dart::rejects stale requests after account switch and allows a fresh request",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "notification_store_test.dart::failed mark-read keeps the notification unread",
+      "status": "success",
+      "skipped": false
+    }
+  ],
+  "before_flutter": [
+    {
+      "selector": "widget_tester.dart::DATA08 duplicate echo reconciles once order=ws-first",
+      "status": "error",
+      "skipped": false
+    },
+    {
+      "selector": "widget_tester.dart::DATA08 duplicate echo reconciles once order=http-first",
+      "status": "error",
+      "skipped": false
+    },
+    {
+      "selector": "widget_tester.dart::DATA08 equal timestamps are deterministic for [b, a]",
+      "status": "error",
+      "skipped": false
+    },
+    {
+      "selector": "widget_tester.dart::DATA08 equal timestamps are deterministic for [a, b]",
+      "status": "error",
+      "skipped": false
+    },
+    {
+      "selector": "widget_tester.dart::DATA08 read receipt survives delayed unread history and duplicate echo",
+      "status": "error",
+      "skipped": false
+    },
+    {
+      "selector": "widget_tester.dart::DATA08 live event survives late empty history snapshot",
+      "status": "success",
+      "skipped": false
+    }
+  ],
+  "before_api": "1 tied-timestamp presentation failure; reverse physical insertion changed history and last message",
+  "before_wire": "Real API event was consumed with empty message ID/body",
+  "coverage": [
+    "Real archived API event preserves message ID/body/sender in current controller; producer/presenter/schema hashes remain identical to the event source B",
+    "HTTP-first and WS-first response/echo, repeated nested echoes, one confirmed identity and no optimistic leftovers",
+    "Opposite WS arrival order with equal timestamps and reversed delayed history yields the same ID order",
+    "Read receipt remains true and timestamp does not move backwards after stale unread snapshot, duplicate echo or delayed older receipt",
+    "Failed send removes optimistic message and restores draft; late history does not erase live message; existing account/lifecycle regressions pass",
+    "PostgreSQL logical rows unchanged after reverse reinsertion: history and last-message summary remain identical, unread count preserved"
+  ],
+  "findings": [
+    {
+      "problem": "Client parsed event envelope as message",
+      "change": "Read nested message, retain flat compatibility and reject missing identity or conflicting conversation"
+    },
+    {
+      "problem": "Database and client lacked deterministic ordering for equal timestamps",
+      "change": "Order by created_at then canonical ID; inbox uses the same descending last-message rule"
+    },
+    {
+      "problem": "Duplicate stale echo or older read receipt could regress read state",
+      "change": "Shared reconciliation deduplicates IDs and retains monotonic confirmed read state across history, echo and HTTP send"
+    }
+  ],
+  "executors": {
+    "api": "scripts/run_security_regression.py --scenario DATA-08 --output <new-directory-under-original-run>/sequential/<attempt>",
+    "flutter": "flutter test --no-pub --concurrency 1 tool/campaign_chat_wire_contract_test.dart tool/campaign_social_resilience_test.dart test/conversation_controller_test.dart test/account_scope_races_test.dart test/notification_store_test.dart; QUALITY_CHAT_WIRE_FILE=<archived actual event>; QUALITY_CHAT_CONSUMED_FILE=<new private output>"
+  },
+  "producer_sha256": {
+    "app/services/chat_commands.py": "07feacfa9a66001536747315f57235f5d0dd19e1aa6e9d7e75fa32fe9f15780a",
+    "app/services/chat_presenter.py": "ef4daf7bdcbb8456ccdd842ad9c2af9a584b849f49605d93dbeeb0061470d6c9",
+    "app/schemas.py": "ae5d1dec2340ff37279d22268ee8ee530abd375e5fa0632fba4fe921bee6d60a"
+  },
+  "flutter_evaluated_sha256": {
+    "lib/app.dart": "6d59154fd1cfc3e5fe740f4c450d4df314a09282639309caf43597ea56990124",
+    "lib/main.dart": "3f81e303b6887bb9dc49c1a9e1d442fd742460dd0385a9cc45ea1939a14b2f8a",
+    "lib/config/api_config.dart": "333188d6556b6e7ef872603c7f56a1e39908924ff634fb567f6221789221ff9c",
+    "lib/controllers/account_activity_controller.dart": "4eb13b3c9c5899a59dce3e95362f4ca340a60ed11b707006a43af75e9f1e3bef",
+    "lib/controllers/cat_details_controller.dart": "b9574ba331283219d0aa59e3a62b769ce38132645b733acbbc584fc48911c7d0",
+    "lib/controllers/conversation_controller.dart": "1274885ec33536233ba2dc233996d137a1b81dc582c3455089f91414f1cc480c",
+    "lib/controllers/habitat_interaction_state.dart": "d738c35efd9f225116d42133462020a2ba955c1c64a420244b8dc03349a7a2ab",
+    "lib/data/cat_database.dart": "a987a01332117247160fadbecbf4f7748095d8b659dea053c7640733654273c3",
+    "lib/data/cat_database_schema.dart": "4f3d480301202e5d26b3465d3b5ef6b2326a7e6f12521f4e02b8532e6a0ed70f",
+    "lib/data/habitat_repository.dart": "df11d16ad9a7c40268dd558fee5a96f1058a79a24960bc02fc0bc97d1b01090e",
+    "lib/data/sqlite_id_batches.dart": "aaa44f1694a45bcdb1021efb431bd4b41715d7771fde6b42e7191b04f58ef4d4",
+    "lib/formatters/app_dates.dart": "752b1e162ec0cffbff9808f4dea29c5a978d4b55912ea3b689406ee10dc7441c",
+    "lib/game/habitat_camera.dart": "96b465d25fc41096344d8007209ba04f92f3da56708806890f81c8fd46b7515b",
+    "lib/game/habitat_cat_animations.dart": "2e50ca2aeeab0ee72c101792a92b034b291ca04cb4f29d6c0171bb5ce39098df",
+    "lib/game/habitat_cat_coat.dart": "5340706ed0fa8dca926a1d35f3a452df3177ef1056a7674118676a440a5067e7",
+    "lib/game/habitat_cat_motion.dart": "dc5a744a0b75090d3f9948e1e44e6a045a21101e2e47a151aa8f06bd32285b55",
+    "lib/game/habitat_game.dart": "0cfc7956bc033dc92f9bac02a60aa627fb31ed2d0c13bf3e804635c7cc8b41d7",
+    "lib/game/habitat_interactions.dart": "b2cda6139c480c9c7c925e3f4f6aa1ff83a8f0be008c349c4da1346da4fab4ac",
+    "lib/game/habitat_palette.dart": "b76907f1ce3417411098141d26fac7eb0f6afa76cc20beab5bcfd71e0d3d195b",
+    "lib/game/habitat_path_style.dart": "5a22caa3c0359bc468b00565412e47b231bef01c5472d8f968e0164d879fc351",
+    "lib/game/habitat_river_palette.dart": "ba0940395f71e1a3e1558202c9574fd1a96127ec430c8d6a7deedfec68ab4463",
+    "lib/game/habitat_scene_selection.dart": "98887e64efd801720c20d8595c8c77cdc806b88ac268f6f6c4f18d48e0230650",
+    "lib/game/habitat_sprites.dart": "83a01dc10795177327e4200bd55a1f3bada744311ff092a5b68ba0b2ccb604c5",
+    "lib/game/habitat_visitor_sprites.dart": "8df5445dccc99faa6debecc17968fd85a9f51cce5d9fd0c44e73fb96cb6f363c",
+    "lib/game/habitat_visits.dart": "bb6d6b4c8c703149404d39bd0d57a5cd46b5b6b5c3bb1122dbfe2d7657433ba3",
+    "lib/game/habitat_world.dart": "63cba6275701484a513835e05e5c15e8b206ff87ef8a1ee7db9a52616fd92ed7",
+    "lib/game/quintal_action_effect.dart": "a6818a1aa3b6f41aae7711260d53264f6fdce286ca2d35a6c50a5d42ee27f1a7",
+    "lib/game/quintal_construction_preview.dart": "790d3e8f825c69e544b2a87c94abceec7a34334db4ddcb385687aba5cd7e5b83",
+    "lib/game/quintal_cooking_motion.dart": "d61831a5ea2e2a39c4eafdee2d4896c0ac1c778e52e84f5d518160e422bd14d6",
+    "lib/game/quintal_game_motion.dart": "bb18f7dcc40851086b391594f265711a0d93db16bad016119a89f7e59a21b6f0",
+    "lib/game/quintal_garden_motion.dart": "5ee8dfa47fc061a402724dae9511f2b1724b4f766bd2b27ac048113ac4190330",
+    "lib/game/quintal_play_field.dart": "4b0c3dec18ffdc4193a0af0324255714fd22cf9a06bb5ad877e524fab83629df",
+    "lib/game/quintal_play_lane.dart": "5e2b82d2b3e293f05cb03285c48f49ebd0981a13db8f9eef663b6be1e5d8369a",
+    "lib/game/quintal_play_motion.dart": "1423a4820384aece589d6d294f54b4c899ef49d45dbd9f41c2f931e510a8bf7d",
+    "lib/game/quintal_play_result.dart": "a4a6644b29440dc5ede374d078aee2ca1fa1ed97bddecd4f71acadaf9853ccb2",
+    "lib/game/quintal_production_scene.dart": "babfb48766b32e0bacbd02675ab7524788cbb4e8e2c060a131534da20dc9083d",
+    "lib/game/quintal_resident_motion.dart": "a9f02454b7b5c14227939fcaf99c5e359c5d3cc84d796c20087946afda35fbe2",
+    "lib/game/quintal_scene_target.dart": "0ffdefcf9fd5c72d3848f121f9118d5cf0ccd620dbf58f0a48d9942287070218",
+    "lib/game/quintal_timed_progress.dart": "c4b1a4e55686da68e8d2c3e929964b35c471c708f6ed6a76bddde54c48093b04",
+    "lib/models/auth_session.dart": "dc06b7ea88ab1b4bb2041260ebe303599e013b2112973e6baf218dd31d2534d7",
+    "lib/models/cat.dart": "df2bafe9dcd556a21f8d9e8797416878cd8e2f56458ca9f92aea3fe49d7fd706",
+    "lib/models/cat_analysis.dart": "0ba30e891e59b7fb6fa0b930c43004518cb5f6c4ab86ba7e686fde92c21a2a2d",
+    "lib/models/cat_collection.dart": "8de12d0e8ef48b84fcc673127c5b34f63c12de34e6418958941607dfeec012e8",
+    "lib/models/cat_reference_photo.dart": "73b400f0e88760cc74d7de6a8a2771350a850adc370314b9e090d47a3e225ac7",
+    "lib/models/chat_message.dart": "9e8b843738024e0ed1c3e21ceba1019ae364d1e1d8ad386e8ab2fe55425d8ac5",
+    "lib/models/conversation_summary.dart": "f6338d4f2a65f5d4a48d35f91f6800298688b4bbd04b37460b6c68624a44117f",
+    "lib/models/gamification.dart": "eb353daef262ab4492611a8cb1256eab85323da8cae1227f0a356e9373fda5ca",
+    "lib/models/habitat.dart": "6aaf026843ebc11c2a06995549c8c15c087e2a1959e980285ad5e48260e8fb55",
+    "lib/models/missing_poster.dart": "4899148321eae5c839bef48b2efd872b75b4cf7e895b7d6fcabe3d84502c9c5c",
+    "lib/models/quintal_snapshot.dart": "e5b8daa85fa2bd3bab9f84e4b8a10daa45177dd7fe904e50023603621da88459",
+    "lib/pages/auth_page.dart": "9ddb7e2e4da82b99a043bc766f31b691ed34133d56aaf463986a63b4008f753d",
+    "lib/pages/capture_page.dart": "5aab3572dd5db9007710bcb9bc1aa15a7713c264a72038cf9ba6677f32945ae9",
+    "lib/pages/cat_details_page.dart": "bdb040ca041d9fd0945e18e629a014f7d377ac82326e49a87f088de8236ed564",
+    "lib/pages/cat_gallery_page.dart": "439d38aff7c0c708eb4e30690765fb11cdc28932a57ada63f1efb5b9664b79c7",
+    "lib/pages/challenges_page.dart": "5742d2b8dc2024b6fd2c4050d98ffa90c8cfa39274c20f4f1506283f6d3ddc88",
+    "lib/pages/clues_page.dart": "e3f4b1bdada7d7a1c8f3bca49f6dba1a30915db8873e7ebaf3d89570c018b494",
+    "lib/pages/clue_detail_page.dart": "e0997d1c4140df3f62fd92e81d70bdd5ae6a4b4b163300278d9906518fdedccf",
+    "lib/pages/community_posters_page.dart": "5fcb6272fc442c9d2901b44e616abc679dc4d6cdb81048eb600032b2d8d2bcd5",
+    "lib/pages/conversation_page.dart": "78fcc132a2b66564d09ca40f5fcb1bb84b0d41edd885f8a2c8535fbe8e7d6ec7",
+    "lib/pages/create_missing_report_page.dart": "e412aa8e62e81b96c94a9228a64ad1f22db75ee51f06a0174bbec95737e8a636",
+    "lib/pages/discovery_result_page.dart": "66b00a5964437989324fbd2a1d48b9922f72ab2663bde21be88132746e561d2c",
+    "lib/pages/experience_settings_page.dart": "a82a047b71607a03f1e63da8245a9ca1e96c4bbb42763cb432f0afa855f7cddf",
+    "lib/pages/friends_page.dart": "0417b8992fc697580e3fb399a9c81a03fe1425a7787f5f64aede0557098f33a3",
+    "lib/pages/habitat_help_page.dart": "4d0cc85076b3560a56b75e49c4980f707a283895ec379c7e76927ed7ce76e8de",
+    "lib/pages/habitat_page.dart": "797478ce40783351c016f2e2461a5afa6cb64eba330a0e474f3c0b1373ee43a2",
+    "lib/pages/habitat_shop_page.dart": "04478a7519362c9b45afb1ad14701ffe9648bc62174673747d3b952af116470f",
+    "lib/pages/home_page.dart": "87b262530eb2de9c6d27e21b4a4685ff159aace0e2b6c47d5db3b3c2e839a70f",
+    "lib/pages/inbox_page.dart": "49aff95d1776aaf0f798115ff864890cb216c3a316f5806a8b3fc3a6448dbac6",
+    "lib/pages/journey_page.dart": "b6d6eab53a7638a1ef440981e07a82e2bbe1dd34e9d70c788c8255be8d89a6d5",
+    "lib/pages/library_page.dart": "38d495d6c0300dd17021ddb9ddadcc76d912967dfe26dc00e314b2152a8604e5",
+    "lib/pages/location_page.dart": "f97ec45687bcfd445094f9d5cb119ac15fb1bdb91be2c319c33ed78886484e43",
+    "lib/pages/missing_cats_page.dart": "c7dc25c5eb85a7026f8cfd9a62db7515ad57ce3cdbc0cb65dfa509fd711bcad7",
+    "lib/pages/missing_cat_poster_page.dart": "6dc41f1702ff7c80edb44a440293da78601b3ab21ba1191e4d9226c36898ac5a",
+    "lib/pages/missing_map_consolidated_page.dart": "497b9ea08df09aeb56c1f3a34ee77570a1b72d626a984c479c824e2a3a02a89e",
+    "lib/pages/missing_report_detail_page.dart": "99b138ebf1c9650a2277886e62d5be9822d1ff1c83b37565a69cf814fa87249d",
+    "lib/pages/my_cats_page.dart": "d39d3c71d68a5135aacb1a07f001bd4f5a19596b9f4a8c7549e09a605df06ede",
+    "lib/pages/notifications_page.dart": "0f6ad9a4834a60a5e36035fba964f6548cfb9e862292e2b9e00a797a92af2a5e",
+    "lib/pages/profile_page.dart": "bff335fba4bd46754ec444ec721f581bab41f402b63cfaf8ba39650f9b672fbd",
+    "lib/pages/public_profile_page.dart": "5a392128aced8a18284e6fa66c706b8fa383c8069a66bef6b60dc44756d66c75",
+    "lib/pages/quintal_game_page.dart": "d09cd80de746c99b315a7bf9df6c4643717d4347fd3adcaf6f8bf3b50821475f",
+    "lib/pages/result_history_page.dart": "dbb5354e5e620406a2e85f43e699f00c7eaf320c99e67722e5c061ded53306f9",
+    "lib/pages/settings_page.dart": "5808bdb1ea7c45253aaf8bac07adb7a490ec1317818911a9f0117ec3326fd3f2",
+    "lib/pages/social_page.dart": "e6ff012bc85d61dd64b97f7f97dabc129f1ebda8c53d375da241e9d1f14a83a1",
+    "lib/services/analysis_api_service.dart": "c1d366603a10ce1dab40f7d5a359734e6a5a0c90bf118aa30492d57a6eac835f",
+    "lib/services/authenticated_api_client.dart": "238deec50de691f482b7408a9dab1606d95b1352d726b9936201e221197db6a3",
+    "lib/services/auth_api_service.dart": "c3ae55a84876444cd3ec8fd44a6c0562399ccdba9228ac7cf71a8ee4a70c45ec",
+    "lib/services/catalog_sync_coordinator.dart": "a6d93f250e6bfe7867066c11e67bd705e12746c3b787f801732fddc1c0de06d5",
+    "lib/services/catalog_sync_service.dart": "23b8a3292c6874764022a99b47514b7023a002aa094d9ad6ee76d882e203410f",
+    "lib/services/cat_preflight_service.dart": "04552e357b6c6414fd9bd009b564cedd61af2f9d53b3e2b0c8989df1e28ce826",
+    "lib/services/cat_sharing_service.dart": "12747d0b5f771abe3fa108fa84c0cf028109b9f2a8211fe9da4e5ad0cb9d2d19",
+    "lib/services/experience_service.dart": "66aa07ab0359c3316e9395205b9138b17f44128b222c062f263befe2e93f4c7b",
+    "lib/services/favorites_manager.dart": "99db42c825b88a8900fff840679a6b10a7fcad3c393600c4c52b9b56ec52a8c1",
+    "lib/services/gamification_service.dart": "00a726fb4d452c484fabe7064c1f642d00285cd6695d0b1c3f1520a1e8cb52cc",
+    "lib/services/habitat_care.dart": "202d4bec6eedf7dbc65fb39438ef7e3805fac3380516aa856778647b75215d91",
+    "lib/services/habitat_catalog.g.dart": "34a8fb42b990753bc5ed2209310e5f7983f3d5baae6c837bde1eeed7c21a2f4b",
+    "lib/services/habitat_encounters.dart": "1dba1be299f8bda798850aca551a81536f02c76cecd27bf02c74d41fb69e8b71",
+    "lib/services/habitat_layout.dart": "3026d0b8fe652acff9428565c58eee2727211a3b2cfeb41e26dd5b4ac934ce62",
+    "lib/services/habitat_navigation.dart": "9034abe5d1aa45ef54d8f23cee6c0c88809b55a6ff79b0de9a9096dc3a19d9e5",
+    "lib/services/habitat_service.dart": "4b3c499f649a6652b7e57a3309e7f82398fb7bc1eca44050d4b044335600da89",
+    "lib/services/image_compression_service.dart": "9d2c569d1389f80b49822e31deabd8d196f90f1cd0036b373e314720d2d7fdf3",
+    "lib/services/location_service.dart": "79ba976c591a19cae002dddc9a91ea0d7e81f9247c72161b65704e2912a8a1a9",
+    "lib/services/missing_poster_export.dart": "e1389539faf1b7ff7f157ff1bea7aa35dd229cfc1c39fb29a7222336febae7d6",
+    "lib/services/product_api_service.dart": "a1a67985e0f2c67ed3073406740bd60762a841d2060e3844b05402b3c84e940c",
+    "lib/services/progress_service.dart": "d31ee3d567ab70e09cf0e81861c3680a6cb063c1465e1bf3e004602ede69451b",
+    "lib/services/push_notification_service.dart": "fa8b4d251d6c8f3a28de011d9441ce68a20e8ab7890b02e048b46f5744488d9a",
+    "lib/services/quintal_cat_meal.dart": "e35f11423dc2f6f6aa4bf864ae94ebe83efcbadd40478f8e38bff60395cac08c",
+    "lib/services/quintal_inventory.dart": "bcd0edffaadab89033f6e06b3d236eca13822209fe2d4fba60357bf2d6d086f4",
+    "lib/services/quintal_production.dart": "73776179e999e0a08978ab2cc09db353735d84e8415d14e6463f2029185664aa",
+    "lib/services/social_api_service.dart": "77b6b8cca8374afaba27c41b4da0ceda01335e5ffbef6cca678529605c44c8a7",
+    "lib/services/vision_api_service.dart": "74118de771621d21ef76d0201c49831f1c268df6dc1a15588e7c651553f27d6c",
+    "lib/services/websocket_service.dart": "2a11ea9ba857e81744a2957237e18016bb96ff338dc2992dc11f9a410620672b",
+    "lib/stores/cat_store.dart": "07988f617a5ceaec49c60fb9226ccd86faccbc810e45cc7460ac185d07d6b1d0",
+    "lib/stores/notification_store.dart": "ecad8d510c790a37cb3fdfb27179c8491aa32eb45faadefe624e5484f96c30d0",
+    "lib/stores/session_store.dart": "aeb6469b26f17fc5d1e31137e3d15975349880f62722d1193a13fcd826fe1b62",
+    "lib/theme/app_theme.dart": "a159c6676e9e3d58c2c51da08bbbbf4729bf3cb2413f9e48eca6b3569ed3db91",
+    "lib/widgets/active_search_proximity_card.dart": "22faac221cedb7d242b62ec9083f96216f85a6cebff23acb0d0ae804e26b3ffa",
+    "lib/widgets/app_header_actions.dart": "df193a55d73e20f68b18af1fd7443d6bfd5a109032519199ebdb1908a325d52e",
+    "lib/widgets/app_loading_screen.dart": "7d86f728c6c77934bff3f4572af592d7224db839389a3203a02445f7d62e0d09",
+    "lib/widgets/app_widgets.dart": "eba0092747f5ee2d31c0176149fa63acabd738b4f8fcee3a6cf175eda437e085",
+    "lib/widgets/avatar_choice_sheet.dart": "565b879079d61c0c4fd1a6d1f10d5505bcbd7d4180f06486a8825bab369266e0",
+    "lib/widgets/botanical_scene.dart": "d4a9ecf8109201b29fa62767b89ed0423683ed964a85f182fce92626f2f70876",
+    "lib/widgets/cat_analysis_card.dart": "81a96847bba7ba68c5727de5a47a01a010bb75899a6de1882c881b21eb0a1ec6",
+    "lib/widgets/cat_coat_color_item.dart": "f7962b848f8daa745cf6ccfe2b56b03a227a60d0541138c0e64e57b936acb1ae",
+    "lib/widgets/cat_history_photos.dart": "e05b91a9026ce7c4a1b952de6318309ec3c660184182ac8e87095fbd0a045ebf",
+    "lib/widgets/cat_name_dialog.dart": "019371be7987f16b0ab309e09cd82963d9a9c276ccd7b1ee22012ed4cc8e889e",
+    "lib/widgets/chat_message_bubble.dart": "e0b17cd90cc5bcc76ee61994905aa0e1c0b96d25245586940003bce72daf710c",
+    "lib/widgets/community_post_card.dart": "589e3667eed775c046040f9a6f15bdc13e42ffa876981aee0d6ed434201ef70d",
+    "lib/widgets/conversation_composer.dart": "68424428cd887989130f1e39bf7d58ef976a62c1bbf53bc5d8ffe64edfd31893",
+    "lib/widgets/feed_loading_placeholder.dart": "35e20bbc09ec93563c7dd87a3f47b6888f9af4a0caca41fcd2e4f0dc604a1e54",
+    "lib/widgets/game_components.dart": "39d99ebf96f64ad30cb734412728bd79557e6c132be3269f4d93e0226adc097c",
+    "lib/widgets/gatalogo_components.dart": "c1a8d0edbdc55eea14dc777addab44b446ecfed901c79ac5f79df24f51fc8368",
+    "lib/widgets/gatalogo_gamification.dart": "f293fb4ec657f862078adfafb4a54b81c94e3576f90e415a05534e4180c135be",
+    "lib/widgets/habitat_care_sheet.dart": "96844e4539146615bd6a186b0d29c6bc5c289924cb2d4a74bdbdb734906205a9",
+    "lib/widgets/habitat_cat_preview.dart": "04e89a1fc8574d335eda6f1299d76d71bab12846171b154d7550272cc9a34850",
+    "lib/widgets/habitat_coin_badge.dart": "e0121f198eef16a79c2ec9e6a479728ffa53bce65b4de9ced14ddd6b8e4d3e60",
+    "lib/widgets/habitat_ground_tools.dart": "2221c07e473027a11db32bf7e367f24b44198264c5849a446951124a358c8b03",
+    "lib/widgets/habitat_hud.dart": "41d6eaa0129cb80469cd0a39e69000620ff26d2bbc76ac24871e44a1c993c3aa",
+    "lib/widgets/habitat_object_balloon.dart": "dda7b705c26f515b061a598b1ad89a7ef23a9ec17397f2ace82eb123662e1f47",
+    "lib/widgets/habitat_reward_reveal.dart": "c498520027a2e60372aeaeb3ca52e2fb44c6e1c2f2e44fa8a80747f0f43f51c7",
+    "lib/widgets/habitat_sprite_preview.dart": "2d7a5b369622b1857265be46abc4709cf4b2e897e95d6645c81260fe8cdae935",
+    "lib/widgets/illustrated_home_components.dart": "f7ee6a130b763b39cc1cad1fdbab0464aaa050d6a2311d42733b12880a9e7be5",
+    "lib/widgets/inbox_button.dart": "215b8465d6712ac6051a2fcdf143865d4c5ddff7710cc46697d4a68a06e13abf",
+    "lib/widgets/milestone_widgets.dart": "30b477f293041b3ce6e2601aa7cdc0f539a91f66904b14e65dc1a6a31006fff4",
+    "lib/widgets/missing_poster_artwork.dart": "6273ccbec21914d6b3942b50fc050ee917d1c8bb9d2855f3a6bc088212447fb7",
+    "lib/widgets/poster_export_actions.dart": "9c028ea37af4527794ebc7f5c3eae98b120111c431b00e8cf57dd123d27d1ea3",
+    "lib/widgets/poster_settings_editor.dart": "2282bebb5d219cc11334b4d5c5ef9503843726bd9f542ae589f4187098d5837b",
+    "lib/widgets/post_composer.dart": "a5bbdf72a46ecba635e47fa144a70ad0e4ba66b9d255ee8404f0f6dd06f6bddd",
+    "lib/widgets/private_clue_photo.dart": "920e4b435fe2de928901b4e6cba9ccb4192ae5de12e59ac697c6af7f4b8c9453",
+    "lib/widgets/profile_qr_dialog.dart": "0ee0a795b1f674f886b89f73eb17d45c99a44462bc238bbd9eb7b45c4667b344",
+    "lib/widgets/progress_components.dart": "3aa4f730ee15806a2f375265abd84e22a7b655e8d8c84a0ff3836ce29b8b1679",
+    "lib/widgets/quintal_activity_result.dart": "5aed7915d3f7cf8df96625fe1ce6d503052e46f874b4e7308fe6f209a6168748",
+    "lib/widgets/quintal_bond_progress.dart": "29423f65a18a5f765e727f7251135642c14c502ecafadd7e99ca193a53f21502",
+    "lib/widgets/quintal_bottom_tray.dart": "613f51ed4fb571ada3124323d65231b3b0297d3ee3dd4befa1c08f1854354650",
+    "lib/widgets/quintal_clock_badge.dart": "30d42679a3836d3e9635055856a0a2ecc357a60a543b239f4130ef6cf149f373",
+    "lib/widgets/quintal_fishing_arena.dart": "8e79ce815c494a558230d65e9aec00069d6c9038648a421488678ebc3fba83d2",
+    "lib/widgets/quintal_game_action.dart": "982937d98a0dd1b6ef33dcd066c6072a359298f2eb0c0ab2f7b64b57d62b2057",
+    "lib/widgets/quintal_hold_control.dart": "84af00e5e07efa05b1d89344c8c911327d239469ec28f9e2a740282871108e69",
+    "lib/widgets/quintal_inventory_tray.dart": "47b6bb43cc819962871125bbfd432843fad0cb6039b599da3696be650a2e08e5",
+    "lib/widgets/quintal_object_actions.dart": "bdf51d89bef909fede5d0d38fd57e96a0620dad29a7502e6ab1c112d27a95503",
+    "lib/widgets/quintal_outlined_text.dart": "2c2297dab23eacea3e8b4e96925b3d40e55ee9f5c4cf16286a568aa98968e060",
+    "lib/widgets/quintal_play_arena.dart": "a8c17bea20a887deffbb3eb19e3440a5651597a50abb597e325be238d47c3419",
+    "lib/widgets/quintal_preparation_tile.dart": "22da28b1b67490eb1b3fe0bd8bd0e6d9bcb90ea9abf231621c7b76bcf43bb46f",
+    "lib/widgets/quintal_production_widgets.dart": "318c5abea771064e9a1bbec9239b6abc66979c1b2f240e27af98c8d9dbbc2632",
+    "lib/widgets/quintal_recipe_tile.dart": "fa8799e6b3028d922c0ae2cba68a403a2f1186f1a7a578b41bc868736d7d7932",
+    "lib/widgets/quintal_return_dialog.dart": "ed8057e88e9bdacbd72d65f82763409918f1da82f906abe360655255b6ddda77",
+    "lib/widgets/quintal_reward_celebration.dart": "ef81bf63e52e34abb163272a8d3a1e9d06fc3692d2e89b9ed92af4b14ec53f7e",
+    "lib/widgets/remote_avatar_image.dart": "8b8732c3675642daa76dc85774ce3da75135f791fd7ab7ddf66d151cb66ffba5",
+    "lib/widgets/social_publish_button.dart": "0eec328bc238542c750eaf8a0f5135919e146de034307bb19f6fd6c4d2b1fdd4",
+    "lib/data/repositories/catalog_repository.dart": "c3f77f17dcb7c7e848377033e339309005882a84436d17cc2c6dc1d77a81333c",
+    "lib/data/repositories/habitat_cache_repository.dart": "e5f13021214fa61339f33d714a470506c05525a2307e8dd2860c84620a126883",
+    "lib/data/repositories/reference_photo_repository.dart": "f03ddb280cd95598ff19f8db3e123e53b11c45248d702439383d732ad0655e24",
+    "lib/data/repositories/sync_metadata_repository.dart": "2aa08e8837f82e034c4359b66accdb7f1751dffb0935b09cb8e07f5e033b8884",
+    "tool/campaign_social_resilience_test.dart": "68d36618ac0420de40cbc83ecd0f8017f94cc190b0e8be7c81d101d0b4cfd8b9",
+    "tool/campaign_chat_wire_contract_test.dart": "28a343a795778426741db926a65e9ff41a43c9daf2d59158cd30c8f67bbdeae2",
+    "test/conversation_controller_test.dart": "95f1a55593581badc69da2497857a0266cd7c73cf5982945a3f6e335275ca8b8",
+    "test/account_scope_races_test.dart": "c53e681adc99d4d248fd196b130e766645a76510403db693cec58308f1f0b5dd",
+    "test/notification_store_test.dart": "e1913c7c7c7159c36fbf4fb3525e0711c46117c21bcde96e4fa959f13e288fc1"
+  },
+  "evidence_sha256": {
+    "sequential/DATA08-wire-before-20261024-01.jsonl": "64bb14f425ed4b9b445fae119a3b1e7f692c58fd5fe59a05ee992954475fcdc0",
+    "sequential/DATA08-social-before-20261024-01.jsonl": "3eb94c655e493d99449a2708c1062fe0f202d24b295d86091336a0ec0e0dbe55",
+    "sequential/DATA08-flutter-after-20261024-01.jsonl": "b6d5ce46dba0a9b1afe7cd95962b325ae958df4f3c9eba911724e4bd5eceed4d",
+    "sequential/DATA08-analyze-20261024-01.log": "6c818595a5ed6768ec605ba22ca79524ee522908cd8138ffdb1a125b54c6f6b6",
+    "sequential/DATA08-consumed-before-20261024-01.json": "9307692ddc0262135ce6aac7447ea53bbdb2a188ca6a48b486417ad7eebc2a43",
+    "sequential/DATA08-consumed-after-20261024-01.json": "60c5c38d99a7b4a64f95376d38d266076feffa0548d92e81a5ee2429dc02263e",
+    "attempts/wire-contract-03/critical_runs/wire-contract-baseline/observations/wire-contract/api-event.json": "4074559ecab44506114fa38a6e336580d9bd7eefd92b9c4ff0e778e7dfddb8ed",
+    "sequential/DATA08-api-20261024-01/junit.xml": "452b6b8c69c7a3c54867cf4e9fb5ad8d31907e821c872ae2f932a295190bc340",
+    "sequential/DATA08-api-20261024-01/summary.json": "318b2ae50b950e33b983cf8219728797a53ca92304461a39cca56b58f3091616",
+    "sequential/DATA08-api-20261024-01/source_manifest.json": "5d56694db089171d7a753581b7fc6d6f7aeba8df8483e1f5bc9c700a44b221ec",
+    "sequential/DATA08-api-20261024-01/candidate_manifest.json": "2de6d05d409141e84fd867aea172c061c468330e23bece02b774455bad7385bc",
+    "sequential/DATA08-api-20261024-01/observations/DATA08-chat-equal-time-physical-order.json": "c73f7ccc2e9f47647d31866c2ce8385e6663a95159dcbfdb0cde650564cba360",
+    "sequential/DATA08-api-20261024-02/junit.xml": "273cff8822ca8e4af60dbf8ef11bd79334b6767e48d1f964482adbdd86193684",
+    "sequential/DATA08-api-20261024-02/summary.json": "766cb5dc61d20293ecd7758a85a5f6d94227c86d247cd3b39a88d4263019c174",
+    "sequential/DATA08-api-20261024-02/source_manifest.json": "12fbe15fe15ff08356a099e9318b09fa47e9a198b1bad845dc0064b19603faa9",
+    "sequential/DATA08-api-20261024-02/candidate_manifest.json": "d8b4450f17c950d65c47ef6af274a22f0f03eb5d2e67d49c6a939b489a4e9717",
+    "sequential/DATA08-api-20261024-02/observations/DATA08-chat-equal-time-physical-order.json": "5d1f7b85cbe1f665d68f8bb352861dd8cd622375f7f2edb75c100888b2821bab"
+  },
+  "limitations": [
+    "Flutter component tests with synthetic real API event, not a new physical Android round-trip or throughput measurement.",
+    "API evaluated frozen commit with unchanged-source guard; Flutter evaluated checkout then recorded exact published source/test hashes after execution, without an automated pre/post source guard.",
+    "Tie-break affects previously unspecified ordering only when timestamps are equal; no schema or message identity changes.",
+    "Does not promise idempotent resend of chat commands: contract does not offer that mechanism.",
+    "No claims of lower latency from these correctness samples."
+  ]
+}

@@ -696,7 +696,7 @@
   },
   {
     "scenario": "DATA-08",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Leitura seguida de resposta atrasada; eco WS/HTTP nas duas ordens, evento duplicado e timestamps iguais.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -707,12 +707,16 @@
       "attempts/wire-contract-02/critical_runs/wire-contract-baseline/summary.json",
       "attempts/wire-contract-03/critical_runs/wire-contract-baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "limitation": "Contrato, reconciliação e desempate cobertos; sem alegação de Android físico, capacidade ou idempotência de reenvio de chat.",
     "followup_runs": [
       "attempts/social-order-01/critical_runs/social-order-baseline/summary.json",
       "attempts/social-order-02/critical_runs/social-order-A/summary.json",
       "attempts/social-order-02/critical_runs/social-order-B/summary.json"
-    ]
+    ],
+    "closure_evidence": [
+      "DATA08-20261024-results.json"
+    ],
+    "executor": "API isolated PG + Flutter real-event consumer and social/account regressions"
   },
   {
     "scenario": "DATA-09",
