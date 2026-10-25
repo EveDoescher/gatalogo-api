@@ -146,6 +146,12 @@ async def test_SEC04_public_search_revocation_and_resolved_media(db):
     assert page.headers["cache-control"] == "no-store"
     sanitized(await db.client.get(base + "/foto"))
     for actor in ("A", "B", "C"):
+        authenticated_photo = await db.client.get(
+            f"/app/reports/{uid('audience-report')}/photo",
+            headers=db.headers(actor),
+        )
+        sanitized(authenticated_photo)
+        assert authenticated_photo.headers["cache-control"] == "private, no-store"
         community = await db.client.get(
             f"/social/reports/{uid('audience-report')}", headers=db.headers(actor)
         )
@@ -169,6 +175,12 @@ async def test_SEC04_public_search_revocation_and_resolved_media(db):
     assert "<img" not in closed.text and "PRIVATE_" not in closed.text
     assert (await db.client.get(base + "/foto")).status_code == 404
     for actor in ("A", "B", "C"):
+        assert (
+            await db.client.get(
+                f"/app/reports/{uid('audience-report')}/photo",
+                headers=db.headers(actor),
+            )
+        ).status_code == 404
         details = await db.client.get(
             f"/social/reports/{uid('audience-report')}", headers=db.headers(actor)
         )
