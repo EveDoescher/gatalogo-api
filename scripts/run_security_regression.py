@@ -140,6 +140,7 @@ def selection(scenario, output):
         "SEC-03": "websocket_cases.py",
         "SEC-05": "storage_cases.py",
         "SEC-07": "auth_flow_cases.py",
+        "SEC-10": "revocation_cases.py",
         "DATA-02": "rollback_cases.py",
         "DATA-05": None,
         "DATA-06": "fencing_cases.py",
@@ -150,7 +151,7 @@ def selection(scenario, output):
     }[scenario]
     if case_file:
         names.append(case_file)
-    if scenario == "SEC-03":
+    if scenario in ("SEC-03", "SEC-10"):
         names.append("test_auth_security.py")
     if scenario == "SEC-07":
         names.append("delivery_cases.py")
@@ -169,7 +170,11 @@ def selection(scenario, output):
         json.dumps({"source_sha": sha, "executor_sha256": hashes}, indent=2) + "\n",
         encoding="utf-8",
     )
-    selected = ["security_cases.py", "extended_cases.py"]
+    selected = (
+        ["security_cases.py"]
+        if scenario == "SEC-10"
+        else ["security_cases.py", "extended_cases.py"]
+    )
     if case_file:
         selected.append(case_file)
     if scenario == "SEC-07":
@@ -469,6 +474,7 @@ if __name__ == "__main__":
             "SEC-03",
             "SEC-05",
             "SEC-07",
+            "SEC-10",
             "DATA-02",
             "DATA-05",
             "DATA-06",
