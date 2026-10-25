@@ -1,6 +1,7 @@
 """Run bounded security/integrity cases on disposable PostgreSQL and frozen sources."""
 
 import argparse
+import difflib
 import hashlib
 import json
 import os
@@ -11,9 +12,58 @@ import subprocess
 import sys
 import tarfile
 import time
+import xml.etree.ElementTree as ET
 from uuid import uuid4
 
 ROOT = Path(__file__).resolve().parents[1]
+MUTATIONS = {
+    "MUT-03": (
+        "DATA-05",
+        "app/routers/sync.py",
+        "return operation.device_id > existing.updated_by_device",
+        "return operation.device_id >= existing.updated_by_device",
+    ),
+    "MUT-07": (
+        "DATA-06",
+        "app/services/reference_analysis.py",
+        "job.attempts != claim.attempt",
+        "False",
+    ),
+    "MUT-12": (
+        "DATA-04",
+        "app/services/quintal_production.py",
+        'if old.details.get("request") != fingerprint:',
+        "if False:",
+    ),
+}
+
+
+def execute_pytest(source, selectors, env, output, prefix=""):
+    with (output / (prefix + "pytest.log")).open("w", encoding="utf-8") as log:
+        return subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "pytest",
+                "-q",
+                "-ra",
+                *selectors,
+                "--junitxml",
+                str(output / (prefix + "junit.xml")),
+            ],
+            cwd=source,
+            env=env,
+            stdout=log,
+            stderr=subprocess.STDOUT,
+            timeout=360,
+        )
+
+
+def junit_cases(path):
+    return {
+        (c.get("classname"), c.get("name")): c
+        for c in ET.parse(path).getroot().iter("testcase")
+    }
 
 
 def source_hashes():
@@ -138,7 +188,9 @@ def selection(scenario, output):
     )
 
 
-def run(output, scenario="SEC-01"):
+def run(output, scenario="SEC-01", mutation=None):
+    if mutation and MUTATIONS[mutation][0] != scenario:
+        raise ValueError("Mutation must use its declared scenario oracle")
     output = Path(output).resolve()
     if not output.is_relative_to(ROOT / ".tmp"):
         raise ValueError("Evidence must remain under .tmp")
@@ -265,28 +317,112 @@ def run(output, scenario="SEC-01"):
                 stdout=log,
                 stderr=subprocess.STDOUT,
             )
-        with (output / "pytest.log").open("w", encoding="utf-8") as log:
-            result = subprocess.run(
-                [
-                    sys.executable,
-                    "-m",
-                    "pytest",
-                    "-q",
-                    "-ra",
-                    *selectors,
-                    "--junitxml",
-                    str(output / "junit.xml"),
-                ],
-                cwd=source,
-                env=env,
-                stdout=log,
-                stderr=subprocess.STDOUT,
-                timeout=360,
+        baseline = None
+        recipe = None
+        if mutation:
+            baseline_result = execute_pytest(
+                source, selectors, env, output, "baseline-"
+            )
+            baseline = junit_cases(output / "baseline-junit.xml")
+            if (
+                baseline_result.returncode
+                or not baseline
+                or any(list(c) for c in baseline.values())
+            ):
+                (output / "mutation.json").write_text(
+                    json.dumps(
+                        dict(mutation=mutation, classification="INCONCLUSIVE_BASELINE"),
+                        indent=2,
+                    )
+                    + "\n",
+                    encoding="utf-8",
+                )
+                return 1
+            _, relative, old, new = MUTATIONS[mutation]
+            target = source / relative
+            original = target.read_text(encoding="utf-8")
+            if original.count(old) != 1:
+                raise ValueError("Mutation recipe must match exactly once")
+            changed = original.replace(old, new, 1)
+            target.write_text(changed, encoding="utf-8")
+            (output / "mutation.diff").write_text(
+                "".join(
+                    difflib.unified_diff(
+                        original.splitlines(True),
+                        changed.splitlines(True),
+                        fromfile=relative,
+                        tofile=relative,
+                    )
+                ),
+                encoding="utf-8",
+            )
+            recipe = dict(
+                path=relative,
+                before_sha256=hashlib.sha256(original.encode()).hexdigest(),
+                after_sha256=hashlib.sha256(target.read_bytes()).hexdigest(),
+            )
+            env["QUALITY_CASE_EVIDENCE"] = str(output / "mutant-observations")
+        result = execute_pytest(source, selectors, env, output)
+        classification = None
+        if mutation:
+            cases = junit_cases(output / "junit.xml")
+            killed = [
+                name
+                for name, c in cases.items()
+                if name in baseline
+                and c.find("failure") is not None
+                and any(
+                    marker in (c.find("failure").text or "")
+                    for marker in (
+                        "AssertionError",
+                        "DID NOT RAISE",
+                        "Regex pattern did not match",
+                    )
+                )
+            ]
+            infrastructure = (
+                set(cases) != set(baseline)
+                or result.returncode not in (0, 1)
+                or any(
+                    c.find("error") is not None or c.find("skipped") is not None
+                    for c in cases.values()
+                )
+            )
+            classification = (
+                "INCONCLUSIVE_INFRASTRUCTURE"
+                if infrastructure
+                else "KILLED"
+                if killed
+                else "SURVIVED"
+                if result.returncode == 0
+                else "INCONCLUSIVE_ORACLE"
+            )
+            assert (
+                recipe["after_sha256"]
+                == hashlib.sha256((source / recipe["path"]).read_bytes()).hexdigest()
+            )
+            (output / "mutation.json").write_text(
+                json.dumps(
+                    dict(
+                        mutation=mutation,
+                        classification=classification,
+                        recipe=recipe,
+                        failed_baseline_selectors=killed,
+                        baseline_passed=len(baseline),
+                        isolated_candidate=str(source.relative_to(source.parents[2])),
+                        product_checkout_unchanged=evaluated == source_hashes(),
+                    ),
+                    indent=2,
+                )
+                + "\n",
+                encoding="utf-8",
             )
         (output / "summary.json").write_text(
             json.dumps(
                 {
                     "scenario": scenario,
+                    "mutation": mutation,
+                    "classification": classification,
                     "exit_code": result.returncode,
                     "database": "own random-port PostgreSQL, migrations applied; fixture schema per case",
                     "providers": "local RSA/JWKS; no live identity provider"
@@ -307,7 +443,11 @@ def run(output, scenario="SEC-01"):
             json.dumps({"exit_code": result.returncode, "output": str(output)}),
             flush=True,
         )
-        return result.returncode if evaluated == source_hashes() else 2
+        if evaluated != source_hashes():
+            return 2
+        return (
+            (0 if classification == "KILLED" else 1) if mutation else result.returncode
+        )
     finally:
         if created:
             subprocess.run(
@@ -320,6 +460,7 @@ def run(output, scenario="SEC-01"):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", required=True)
+    parser.add_argument("--mutation", choices=sorted(MUTATIONS))
     parser.add_argument(
         "--scenario",
         choices=[
@@ -339,4 +480,4 @@ if __name__ == "__main__":
         default="SEC-01",
     )
     args = parser.parse_args()
-    raise SystemExit(run(args.output, args.scenario))
+    raise SystemExit(run(args.output, args.scenario, args.mutation))
