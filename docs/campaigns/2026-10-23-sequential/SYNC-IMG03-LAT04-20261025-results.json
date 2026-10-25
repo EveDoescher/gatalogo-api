@@ -1,0 +1,1215 @@
+{
+  "date": "2026-10-25",
+  "scenario_states": {
+    "IMG-03": "COMPLETED",
+    "LAT-04": "PARTIAL_EXECUTED"
+  },
+  "api_source_sha": "ab35039ea9ee3aafa427debf4c9ffb741dd344b3",
+  "flutter_correction_commit": "7ddc6f5146af6df2f2f3a82360fe61ef606f6b6b",
+  "executors": [
+    "catlogue/test/reference_media_sync_test.dart",
+    "catlogue/test/catalog_push_batches_test.dart",
+    "catlogue/tool/campaign_sync_batches_test.dart",
+    "scripts/campaign/sync_batch_cases.py",
+    "scripts/run_flutter_sync_mutations.py"
+  ],
+  "validation": {
+    "regressions_passed": 54,
+    "regressions_failed": 0,
+    "regressions_skipped": 0,
+    "isolated_mutation_baseline_passed": 17,
+    "real_api_flutter_cases_passed": 17,
+    "paid_calls": 0
+  },
+  "issues": [
+    {
+      "id": "SYNC-LIMIT-501",
+      "hypothesis": "The client sends all dirty operations while API caps one request at 500.",
+      "before": "First POST with 501 operations returned 422; local 501 rows remained dirty, cursor 0.",
+      "fix": "At most 500 operations/request; linear dependency order for multi-batch offline identity anchors; reject cycles before any request. Keep pending rows until authoritative pull.",
+      "correction_commit": "7ddc6f5146af6df2f2f3a82360fe61ef606f6b6b",
+      "revalidation": "0/1/499/500/501/1001 boundaries; chain/cycle, 401 refresh, second-batch 503; own actual API/SQLite 501 replay and empty-server partial creation recover without duplicates."
+    },
+    {
+      "id": "SYNC-REFERENCE-RETRY",
+      "hypothesis": "A missing reference download is silently skipped and its revision consumed.",
+      "before": "Five reference variants passed; 403/404 incorrectly returned sync success (two assertions failed).",
+      "fix": "Raise existing retryable HttpException when a listed reference cannot be downloaded; cursor remains unchanged, previous local bytes retained.",
+      "correction_commit": "7ddc6f5146af6df2f2f3a82360fe61ef606f6b6b",
+      "revalidation": "Both faults now return false with cursor 0/old bytes; retry succeeds with new bytes/cursor 1. Same image, new bytes at same timestamp, status-only, deleted reference and dirty local reference tested; offline SQLite reopen verifies persisted state."
+    },
+    {
+      "id": "SYNC-APPLY-COST",
+      "status": "OPEN_MEASUREMENT",
+      "observation": "Earlier 501-item replay converged in 100.959398 s, but crossed the test 100 s deadline; remains an unsuccessful test execution. Large cohorts now use one bounded trial with 180 s deadline.",
+      "recommendation": "Profile client application/database time and API replay before proposing changes; repeat controlled confirmatory runs. No optimization or phone-performance inference."
+    }
+  ],
+  "mutants": [
+    {
+      "id": "SYNC-BATCH-01",
+      "classification": "KILLED",
+      "detected_by": [
+        "push respects limit and preserves every operation at 501",
+        "push respects limit and preserves every operation at 1001",
+        "cross-batch identity chain is sent after its offline anchor",
+        "second-batch 401 preserves pending data and retries idempotently",
+        "second-batch 503 preserves pending data and retries idempotently",
+        "cyclic identities cannot commit a partial multi-batch push"
+      ]
+    },
+    {
+      "id": "SYNC-BATCH-02",
+      "classification": "KILLED",
+      "detected_by": [
+        "cross-batch identity chain is sent after its offline anchor",
+        "cyclic identities cannot commit a partial multi-batch push"
+      ]
+    },
+    {
+      "id": "SYNC-BATCH-03",
+      "classification": "KILLED",
+      "detected_by": [
+        "push respects limit and preserves every operation at 501",
+        "push respects limit and preserves every operation at 1001",
+        "cross-batch identity chain is sent after its offline anchor",
+        "second-batch 401 preserves pending data and retries idempotently",
+        "second-batch 503 preserves pending data and retries idempotently"
+      ]
+    },
+    {
+      "id": "SYNC-MEDIA-01",
+      "classification": "KILLED",
+      "detected_by": [
+        "IMG03 reference http403 preserves authorized bytes across offline reopen",
+        "IMG03 reference http404 preserves authorized bytes across offline reopen"
+      ]
+    }
+  ],
+  "img03_contract": {
+    "same_content_downloads": 1,
+    "new_bytes_same_timestamp_downloads": 1,
+    "status_only_downloads": 1,
+    "removed_reference_downloads": 0,
+    "dirty_reference_downloads": 0,
+    "failed_then_retry_downloads": 2,
+    "timestamp_not_used_as_content_validator": true,
+    "offline_reopen_all_variants": true
+  },
+  "related_existing_evidence": [
+    "SEC02-20261024-results.json",
+    "DB02-20261024-results.json",
+    "RES01-IMG02-20261025-results.json"
+  ],
+  "lat04_observations": [
+    {
+      "variant": "n0-h1-failure0",
+      "trial": 0,
+      "cycles": [
+        {
+          "ok": true,
+          "elapsed_us": 306678,
+          "dirty": 0,
+          "cursor": "0"
+        }
+      ],
+      "requests": [
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=0",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 30,
+          "elapsed_us": 180433,
+          "injected": false
+        }
+      ],
+      "elapsed_us": 320981,
+      "rss_bytes_observed": 139653120
+    },
+    {
+      "variant": "n0-h1-failure0",
+      "trial": 1,
+      "cycles": [
+        {
+          "ok": true,
+          "elapsed_us": 89471,
+          "dirty": 0,
+          "cursor": "0"
+        }
+      ],
+      "requests": [
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=0",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 30,
+          "elapsed_us": 19599,
+          "injected": false
+        }
+      ],
+      "elapsed_us": 93636,
+      "rss_bytes_observed": 142462976
+    },
+    {
+      "variant": "n0-h1-failure0",
+      "trial": 2,
+      "cycles": [
+        {
+          "ok": true,
+          "elapsed_us": 95984,
+          "dirty": 0,
+          "cursor": "0"
+        }
+      ],
+      "requests": [
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=0",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 30,
+          "elapsed_us": 18168,
+          "injected": false
+        }
+      ],
+      "elapsed_us": 100403,
+      "rss_bytes_observed": 142753792
+    },
+    {
+      "variant": "n1-h1-failure0",
+      "trial": 0,
+      "cycles": [
+        {
+          "ok": true,
+          "elapsed_us": 344047,
+          "dirty": 0,
+          "cursor": "1"
+        }
+      ],
+      "requests": [
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 1,
+          "status": 200,
+          "request_bytes": 495,
+          "response_bytes": 13,
+          "elapsed_us": 117073,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=0",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 354,
+          "elapsed_us": 53694,
+          "injected": false
+        }
+      ],
+      "elapsed_us": 348800,
+      "rss_bytes_observed": 144596992
+    },
+    {
+      "variant": "n1-h1-failure0",
+      "trial": 1,
+      "cycles": [
+        {
+          "ok": true,
+          "elapsed_us": 217875,
+          "dirty": 0,
+          "cursor": "1"
+        }
+      ],
+      "requests": [
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 1,
+          "status": 200,
+          "request_bytes": 495,
+          "response_bytes": 13,
+          "elapsed_us": 40531,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=0",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 354,
+          "elapsed_us": 23980,
+          "injected": false
+        }
+      ],
+      "elapsed_us": 221995,
+      "rss_bytes_observed": 146620416
+    },
+    {
+      "variant": "n1-h1-failure0",
+      "trial": 2,
+      "cycles": [
+        {
+          "ok": true,
+          "elapsed_us": 314900,
+          "dirty": 0,
+          "cursor": "1"
+        }
+      ],
+      "requests": [
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 1,
+          "status": 200,
+          "request_bytes": 495,
+          "response_bytes": 13,
+          "elapsed_us": 43655,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=0",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 354,
+          "elapsed_us": 23111,
+          "injected": false
+        }
+      ],
+      "elapsed_us": 318037,
+      "rss_bytes_observed": 146984960
+    },
+    {
+      "variant": "n40-h1-failure0",
+      "trial": 0,
+      "cycles": [
+        {
+          "ok": true,
+          "elapsed_us": 4679269,
+          "dirty": 0,
+          "cursor": "41"
+        }
+      ],
+      "requests": [
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 40,
+          "status": 200,
+          "request_bytes": 19237,
+          "response_bytes": 14,
+          "elapsed_us": 537439,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=0",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 13092,
+          "elapsed_us": 32555,
+          "injected": false
+        }
+      ],
+      "elapsed_us": 4690981,
+      "rss_bytes_observed": 149852160
+    },
+    {
+      "variant": "n40-h1-failure0",
+      "trial": 1,
+      "cycles": [
+        {
+          "ok": true,
+          "elapsed_us": 5188821,
+          "dirty": 0,
+          "cursor": "41"
+        }
+      ],
+      "requests": [
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 40,
+          "status": 200,
+          "request_bytes": 19237,
+          "response_bytes": 14,
+          "elapsed_us": 736912,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=0",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 13092,
+          "elapsed_us": 54869,
+          "injected": false
+        }
+      ],
+      "elapsed_us": 5197491,
+      "rss_bytes_observed": 151982080
+    },
+    {
+      "variant": "n40-h1-failure0",
+      "trial": 2,
+      "cycles": [
+        {
+          "ok": true,
+          "elapsed_us": 4826336,
+          "dirty": 0,
+          "cursor": "41"
+        }
+      ],
+      "requests": [
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 40,
+          "status": 200,
+          "request_bytes": 19237,
+          "response_bytes": 14,
+          "elapsed_us": 612645,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=0",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 13092,
+          "elapsed_us": 25927,
+          "injected": false
+        }
+      ],
+      "elapsed_us": 4833057,
+      "rss_bytes_observed": 154193920
+    },
+    {
+      "variant": "n5-h10-failure0",
+      "trial": 0,
+      "cycles": [
+        {
+          "ok": true,
+          "elapsed_us": 2504950,
+          "dirty": 0,
+          "cursor": "592"
+        }
+      ],
+      "requests": [
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 5,
+          "status": 200,
+          "request_bytes": 2411,
+          "response_bytes": 13,
+          "elapsed_us": 232142,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=0",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 1666,
+          "elapsed_us": 76273,
+          "injected": false
+        }
+      ],
+      "elapsed_us": 2508062,
+      "rss_bytes_observed": 180367360
+    },
+    {
+      "variant": "n5-h10-failure0",
+      "trial": 1,
+      "cycles": [
+        {
+          "ok": true,
+          "elapsed_us": 1921381,
+          "dirty": 0,
+          "cursor": "592"
+        }
+      ],
+      "requests": [
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 5,
+          "status": 200,
+          "request_bytes": 2411,
+          "response_bytes": 13,
+          "elapsed_us": 94480,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=0",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 1666,
+          "elapsed_us": 23634,
+          "injected": false
+        }
+      ],
+      "elapsed_us": 1929836,
+      "rss_bytes_observed": 180899840
+    },
+    {
+      "variant": "n5-h10-failure0",
+      "trial": 2,
+      "cycles": [
+        {
+          "ok": true,
+          "elapsed_us": 1351769,
+          "dirty": 0,
+          "cursor": "592"
+        }
+      ],
+      "requests": [
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 5,
+          "status": 200,
+          "request_bytes": 2411,
+          "response_bytes": 13,
+          "elapsed_us": 115600,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=0",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 1666,
+          "elapsed_us": 32806,
+          "injected": false
+        }
+      ],
+      "elapsed_us": 1356371,
+      "rss_bytes_observed": 180912128
+    },
+    {
+      "variant": "n5-h100-failure0",
+      "trial": 0,
+      "cycles": [
+        {
+          "ok": true,
+          "elapsed_us": 1026151,
+          "dirty": 3,
+          "cursor": "792"
+        },
+        {
+          "ok": true,
+          "elapsed_us": 809515,
+          "dirty": 1,
+          "cursor": "992"
+        },
+        {
+          "ok": true,
+          "elapsed_us": 472874,
+          "dirty": 0,
+          "cursor": "1092"
+        }
+      ],
+      "requests": [
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 5,
+          "status": 200,
+          "request_bytes": 2411,
+          "response_bytes": 13,
+          "elapsed_us": 117300,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=0",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 685,
+          "elapsed_us": 37885,
+          "injected": false
+        },
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 3,
+          "status": 200,
+          "request_bytes": 1453,
+          "response_bytes": 13,
+          "elapsed_us": 76906,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=792",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 685,
+          "elapsed_us": 30146,
+          "injected": false
+        },
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 1,
+          "status": 200,
+          "request_bytes": 495,
+          "response_bytes": 13,
+          "elapsed_us": 50347,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=992",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 360,
+          "elapsed_us": 33541,
+          "injected": false
+        }
+      ],
+      "elapsed_us": 2313731,
+      "rss_bytes_observed": 181030912
+    },
+    {
+      "variant": "n5-h100-failure0",
+      "trial": 1,
+      "cycles": [
+        {
+          "ok": true,
+          "elapsed_us": 849059,
+          "dirty": 3,
+          "cursor": "792"
+        },
+        {
+          "ok": true,
+          "elapsed_us": 609605,
+          "dirty": 1,
+          "cursor": "992"
+        },
+        {
+          "ok": true,
+          "elapsed_us": 538409,
+          "dirty": 0,
+          "cursor": "1092"
+        }
+      ],
+      "requests": [
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 5,
+          "status": 200,
+          "request_bytes": 2411,
+          "response_bytes": 13,
+          "elapsed_us": 165108,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=0",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 685,
+          "elapsed_us": 33242,
+          "injected": false
+        },
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 3,
+          "status": 200,
+          "request_bytes": 1453,
+          "response_bytes": 13,
+          "elapsed_us": 82561,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=792",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 685,
+          "elapsed_us": 35360,
+          "injected": false
+        },
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 1,
+          "status": 200,
+          "request_bytes": 495,
+          "response_bytes": 13,
+          "elapsed_us": 48117,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=992",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 360,
+          "elapsed_us": 32386,
+          "injected": false
+        }
+      ],
+      "elapsed_us": 2003263,
+      "rss_bytes_observed": 181084160
+    },
+    {
+      "variant": "n5-h100-failure0",
+      "trial": 2,
+      "cycles": [
+        {
+          "ok": true,
+          "elapsed_us": 1175287,
+          "dirty": 3,
+          "cursor": "792"
+        },
+        {
+          "ok": true,
+          "elapsed_us": 818427,
+          "dirty": 1,
+          "cursor": "992"
+        },
+        {
+          "ok": true,
+          "elapsed_us": 499313,
+          "dirty": 0,
+          "cursor": "1092"
+        }
+      ],
+      "requests": [
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 5,
+          "status": 200,
+          "request_bytes": 2411,
+          "response_bytes": 13,
+          "elapsed_us": 487239,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=0",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 685,
+          "elapsed_us": 140294,
+          "injected": false
+        },
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 3,
+          "status": 200,
+          "request_bytes": 1453,
+          "response_bytes": 13,
+          "elapsed_us": 63703,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=792",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 685,
+          "elapsed_us": 29909,
+          "injected": false
+        },
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 1,
+          "status": 200,
+          "request_bytes": 495,
+          "response_bytes": 13,
+          "elapsed_us": 52262,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=992",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 360,
+          "elapsed_us": 31688,
+          "injected": false
+        }
+      ],
+      "elapsed_us": 2501542,
+      "rss_bytes_observed": 181088256
+    },
+    {
+      "variant": "n501-h1-failure0",
+      "trial": 0,
+      "cycles": [
+        {
+          "ok": true,
+          "elapsed_us": 33095849,
+          "dirty": 301,
+          "cursor": "241"
+        },
+        {
+          "ok": true,
+          "elapsed_us": 30411726,
+          "dirty": 101,
+          "cursor": "441"
+        },
+        {
+          "ok": true,
+          "elapsed_us": 24153489,
+          "dirty": 0,
+          "cursor": "542"
+        }
+      ],
+      "requests": [
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 500,
+          "status": 200,
+          "request_bytes": 241298,
+          "response_bytes": 15,
+          "elapsed_us": 7969396,
+          "injected": false
+        },
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 1,
+          "status": 200,
+          "request_bytes": 499,
+          "response_bytes": 13,
+          "elapsed_us": 67057,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=0",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 65663,
+          "elapsed_us": 52777,
+          "injected": false
+        },
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 301,
+          "status": 200,
+          "request_bytes": 145399,
+          "response_bytes": 15,
+          "elapsed_us": 4760108,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=241",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 65831,
+          "elapsed_us": 58794,
+          "injected": false
+        },
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 101,
+          "status": 200,
+          "request_bytes": 48799,
+          "response_bytes": 15,
+          "elapsed_us": 1778122,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=441",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 33260,
+          "elapsed_us": 37683,
+          "injected": false
+        }
+      ],
+      "elapsed_us": 87728933,
+      "rss_bytes_observed": 180572160
+    },
+    {
+      "variant": "n501-h1-failure1",
+      "trial": 0,
+      "cycles": [
+        {
+          "ok": false,
+          "elapsed_us": 13681406,
+          "dirty": 501,
+          "cursor": "0"
+        },
+        {
+          "ok": true,
+          "elapsed_us": 34921067,
+          "dirty": 301,
+          "cursor": "1292"
+        },
+        {
+          "ok": true,
+          "elapsed_us": 33649249,
+          "dirty": 101,
+          "cursor": "1492"
+        },
+        {
+          "ok": true,
+          "elapsed_us": 17352041,
+          "dirty": 0,
+          "cursor": "1593"
+        }
+      ],
+      "requests": [
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 500,
+          "status": 200,
+          "request_bytes": 241298,
+          "response_bytes": 15,
+          "elapsed_us": 13619645,
+          "injected": false
+        },
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 1,
+          "status": 503,
+          "request_bytes": 499,
+          "response_bytes": 2,
+          "elapsed_us": 309,
+          "injected": true
+        },
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 500,
+          "status": 200,
+          "request_bytes": 241298,
+          "response_bytes": 15,
+          "elapsed_us": 7824479,
+          "injected": false
+        },
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 1,
+          "status": 200,
+          "request_bytes": 499,
+          "response_bytes": 13,
+          "elapsed_us": 68642,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=0",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 123014,
+          "elapsed_us": 105333,
+          "injected": false
+        },
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 301,
+          "status": 200,
+          "request_bytes": 145399,
+          "response_bytes": 15,
+          "elapsed_us": 5653273,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=1292",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 123232,
+          "elapsed_us": 88833,
+          "injected": false
+        },
+        {
+          "method": "POST",
+          "path_query": "/sync/push",
+          "operations": 101,
+          "status": 200,
+          "request_bytes": 48799,
+          "response_bytes": 15,
+          "elapsed_us": 1799267,
+          "injected": false
+        },
+        {
+          "method": "GET",
+          "path_query": "/sync/pull?cursor=1492",
+          "operations": 0,
+          "status": 200,
+          "request_bytes": 0,
+          "response_bytes": 62248,
+          "elapsed_us": 63661,
+          "injected": false
+        }
+      ],
+      "elapsed_us": 99656196,
+      "rss_bytes_observed": 185696256
+    }
+  ],
+  "limitations": [
+    "IMG-03 uses actual SQLite/files and controlled HTTP responses; real API owner/foreign access and exclusion of deleted/primary references are covered by linked SEC-02/DB-02 evidence. No physical Android radio/UI or paid inference certification.",
+    "Deleted reference is removed from the visible local catalog; physical orphan collection is separate RSC-03 and is not claimed fixed.",
+    "LAT-04 remains partial: bounded functional timing observations cover the metadata cohorts/history, but parse time is not separately instrumented and statistically controlled confirmatory latency distributions remain pending. Cycle minus measured HTTP is a combined client residual, not pure parse or SQLite time.",
+    "Three small-cohort trials share server replay state and use fresh local databases; each large cohort has one trial due observed time/cost. No P95/P99, confidence interval or gain claim.",
+    "Large failure cohort starts empty, first 500 rows commit, second POST is locally injected 503; client must preserve all dirty rows/cursor 0 and subsequent real API retry converges. This is not a TCP disconnect experiment.",
+    "No phone APK update, UI layout change or main modification."
+  ],
+  "preserved_attempts": [
+    {
+      "run": "LAT04-20261025-before",
+      "classification": "MIXED_PRODUCT_AND_EXECUTOR_FAILURE",
+      "passed": 3,
+      "failed": 18,
+      "reason": "501 POST 422 independently proves the ceiling bug; other failures include measuring client closed between HTTP helpers. Earlier commentary 15/6 was corrected."
+    },
+    {
+      "run": "LAT04-20261025-after",
+      "classification": "EXECUTOR_FAILURE",
+      "reason": "Shared measuring client closed after first successful HTTP helper; never evidence of product regression."
+    },
+    {
+      "run": "LAT04-20261025-after-02",
+      "classification": "INSUFFICIENT_TEST_BUDGET",
+      "reason": "100 s per-test deadline and 240 s process budget too small for repeated 501 actual SQLite applications. Owned process tree terminated, evidence retained."
+    }
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/IMG03-20261025-before/source_manifest.json",
+      "sha256": "71fe17c2443766f5800745de229c7453eef1bea7a145363c90b2107fc11f1a43"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/IMG03-20261025-before/summary.json",
+      "sha256": "94b6971b012af18777d69a0516f774ed5ccea2f1fb1a5080261acd3152eed819"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/IMG03-20261025-before/tests.jsonl",
+      "sha256": "a125b12d2917811e716f68bc22ca5aa1a2c26eda059c5ec1fef8f241bdcdfa20"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/IMG03-LAT04-20261025-after/source_manifest.json",
+      "sha256": "79b71a48c777c93103ec6bc3e62de5006658eea44aa2c1531b7cc81d8b48fdde"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/IMG03-LAT04-20261025-after/summary.json",
+      "sha256": "4e1779d650400d9de7603edd2b570778a7e370cdb59b227994ab4b92cf30276f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/IMG03-LAT04-20261025-after/tests.jsonl",
+      "sha256": "5a1a36fe0083dadc9e362d9d163ac629c527de47a1663ad95739f08715785d57"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/candidate_manifest.json",
+      "sha256": "a87e21061c786b069b06127b7dcbd2fd925d34be1f28e9a5b8af1ad4361daede"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/junit.xml",
+      "sha256": "6d8efc85fe186fc26aa5d16a6e75d5b92a905798ffa52f338e306537df95f69a"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/LAT04-client-batches.json",
+      "sha256": "a444db95cac9270724f4ea99273e1e0e5776295bc4a01f62ed5da7f2aa75c7f2"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/client-source-manifest.json",
+      "sha256": "156a809b897ed1103e5e681e44b3c38d07d03dbab3b7af5058ccaada22721d4b"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/fixtures.json",
+      "sha256": "7efbc12daf375124f5f401d791851023537b71102e1be81d53bc9e8696ff5445"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/flutter.jsonl",
+      "sha256": "4a605deafa344f041820364dcf4f615996e191ef18de44fa76ed755b9f38c1ae"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/n0-h1-failure0-0/metrics.json",
+      "sha256": "d906cd94a05ee6cc86d3e18583bb66acbcf1282254f517bfe36dde89457eec50"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/n0-h1-failure0-1/metrics.json",
+      "sha256": "b5de7ddb98ccdcb07c047658717c0fd6452da4af096664e7ef9ce80651de7daa"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/n0-h1-failure0-2/metrics.json",
+      "sha256": "0066feb8cf0c93b038b5778face19b9410d2576569211b1d814adb0e21e0d322"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/n1-h1-failure0-0/metrics.json",
+      "sha256": "f32129d213f8caa9daa69a65e5cdb27ac3e86ae7d37c850bf205c4316aad83b9"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/n1-h1-failure0-1/metrics.json",
+      "sha256": "8773b12c0bf381834d77352780d28bcd40d65c4b8b6ffc971f78eebf6f1ec4c2"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/n1-h1-failure0-2/metrics.json",
+      "sha256": "492acbc4b3e4340c09e3140a70415d10bbd88712f6691ac3540edeee9163a397"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/n40-h1-failure0-0/metrics.json",
+      "sha256": "f1d7923285a76decd5a427f49d5be51a35f9cd069b90ee313315c8b6e6129952"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/n40-h1-failure0-1/metrics.json",
+      "sha256": "4498578a3fc826582ca7f74b14f2299464bf408002cd2d30bcbc18335e493855"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/n40-h1-failure0-2/metrics.json",
+      "sha256": "e9311e20474f90040412012262776734b37041c10926e5e2e4f88afd19ea29dc"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/n5-h10-failure0-0/metrics.json",
+      "sha256": "3d1fb4773ed2bb36f98286a192cc2b4fdc32750f77cc5c09e49ee6bbcb0c3ac2"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/n5-h10-failure0-1/metrics.json",
+      "sha256": "f7dc33cca52ecfae1d8fb04b6800775911128425e922f8cc0cd7415989c7549f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/n5-h10-failure0-2/metrics.json",
+      "sha256": "1e2aed528bad3c17be0ecf9bf776a2db1d23d5d5e9e77c903ca756477548e56b"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/n5-h100-failure0-0/metrics.json",
+      "sha256": "bb32f23240402a321849f9931c05b20abc8642752e1742d7a56a2ab6131f0f61"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/n5-h100-failure0-1/metrics.json",
+      "sha256": "a6befc09b1226078acb41372a5737631d5993a71878bc3a8d108a4cde9c8345e"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/n5-h100-failure0-2/metrics.json",
+      "sha256": "cd5a51d495bf1349430f98ed3c0e7747a204cce3d7c37b51ab3630049cd84bf8"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/n501-h1-failure0-0/metrics.json",
+      "sha256": "fb9cee3a35ba523f9c76cd3c58785cfc831cdf704f202185bf41d1f1976d6f82"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/observations/sync-batches/n501-h1-failure1-0/metrics.json",
+      "sha256": "e2adb42c16d7567e860fa893c6af08d3e22b3f2662ea1d46f2d04d975a13bc14"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/pytest.log",
+      "sha256": "44abdb60afc8eee94525ed107eda8a8f045f8cb9ac33a0fcb293ac6b2fdaf262"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/source_manifest.json",
+      "sha256": "f34053fc7a1af5f7879fa59a95f212084b5ef065eedf1968e11f219e5eaed677"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LAT04-20261025-after-03/summary.json",
+      "sha256": "781b74950637058820d8a157deae7ace987f498816e8dffcd3b054830db8c382"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SYNC-mutation-20261025-01/baseline/summary.json",
+      "sha256": "37b278b1940e00bf5fdea71e2f600ace8cc583580993da864cee4eda8dc7ac1a"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SYNC-mutation-20261025-01/baseline/tests.jsonl",
+      "sha256": "9228ce233100ea4f6270ea5580d2aafae411e1e1a7bcb4cc6c16269a860df23f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SYNC-mutation-20261025-01/source_manifest.json",
+      "sha256": "68f655549ee21663c9a68e6f3afe166a9662e7848bffeee14efb2e88986ec01d"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SYNC-mutation-20261025-01/summary.json",
+      "sha256": "a4e3f6460def891338dcf513665f647d7a29d97ed3da023bfdc02911cd0f4b59"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SYNC-mutation-20261025-01/SYNC-BATCH-01/mutation.diff",
+      "sha256": "95dc11a4d85bc8ff8d348d545af381b69442b94cd2daf24e9722f3d7193ae50d"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SYNC-mutation-20261025-01/SYNC-BATCH-01/summary.json",
+      "sha256": "a1a8b70be54400ef03405c146814256c9373ebb3a2413c61d29a5ae07201963c"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SYNC-mutation-20261025-01/SYNC-BATCH-01/tests.jsonl",
+      "sha256": "7847ae570b8109683c5560ce993bfd61675e86fbae117673790adab24c44ebbb"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SYNC-mutation-20261025-01/SYNC-BATCH-02/mutation.diff",
+      "sha256": "ed0c0a7d76828ead6027696a9a1d71d34124403451939f599aae1e51519a11fa"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SYNC-mutation-20261025-01/SYNC-BATCH-02/summary.json",
+      "sha256": "204b72a8f16179b74492a85591fcd2695844b4e2d6b8f09d9a7b0a5294fcedbb"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SYNC-mutation-20261025-01/SYNC-BATCH-02/tests.jsonl",
+      "sha256": "da46552de3fdde22bca406e1867b06bf1014e4f2a54ee1ed6175f034891abf31"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SYNC-mutation-20261025-01/SYNC-BATCH-03/mutation.diff",
+      "sha256": "e0ec834ac7fc01e18d308fe0d90d0fc9e96c48d4711828de47abfc89745cea5f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SYNC-mutation-20261025-01/SYNC-BATCH-03/summary.json",
+      "sha256": "5a22111ff745a6bcf728be01f04734c78ebacf53872ca7a0c9afadce2396a422"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SYNC-mutation-20261025-01/SYNC-BATCH-03/tests.jsonl",
+      "sha256": "1989d83d937b7ac97b4519399ce9247d280fc8f0a669fa058ee136e1af36abc6"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SYNC-mutation-20261025-01/SYNC-MEDIA-01/mutation.diff",
+      "sha256": "18e14a769f1fd81927933213c238f827b19bc80342cd23edfd853bb5faa5e73f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SYNC-mutation-20261025-01/SYNC-MEDIA-01/summary.json",
+      "sha256": "5076a5aeb09f222aa446a843955e00b6b714affb2641ac3ee604cc1696b68885"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SYNC-mutation-20261025-01/SYNC-MEDIA-01/tests.jsonl",
+      "sha256": "cb364428141f332f7fbc953e7a91763c1378fd3e4f7c6ed9d24717234c818d08"
+    }
+  ]
+}

@@ -150,7 +150,12 @@
       "attempts\\pilot-03\\results\\03-B\\probe.json",
       "attempts\\pilot-03\\results\\04-A\\probe.json"
     ],
-    "runs": []
+    "runs": [],
+    "closure_evidence": [
+      "SYNC-IMG03-LAT04-20261025-results.json"
+    ],
+    "executor": "scripts/campaign/sync_batch_cases.py",
+    "limitation": "Functional cohorts and observed timings covered; separate parse profiling and controlled statistical confirmation still pending."
   },
   {
     "scenario": "LAT-05",
@@ -466,7 +471,7 @@
   },
   {
     "scenario": "IMG-03",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Referência igual, conteúdo novo no mesmo ângulo, só status alterado e tombstone; reabrir offline.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -474,7 +479,11 @@
       "attempts/extended-02/critical_runs/extended-baseline/summary.json",
       "attempts/extended-03/critical_runs/extended-baseline/summary.json"
     ],
-    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+    "limitation": "Controlled desktop client/SQLite/HTTP; full reference variants passed, no device UI claim.",
+    "closure_evidence": [
+      "SYNC-IMG03-LAT04-20261025-results.json"
+    ],
+    "executor": "catlogue/test/reference_media_sync_test.dart"
   },
   {
     "scenario": "IMG-04",

@@ -185,3 +185,7 @@ Os 12 testes de volume passaram. A auditoria de escopo reabriu temporariamente D
 ## RES-01 / IMG-02 — concluídos em 25/10/2026
 
 [Seis processos, métricas e rastreabilidade](RES01-IMG02-20261025-results.json). Captura/edição offline, reabertura, análise real do protocolo com inferência controlada, sincronização, edição após análise, isolamento e reabertura final passaram. Fotos foram criadas pelo fluxo do cliente, sem PUT manual Python. A fase de retomada convergiu em 62,786 s com zero tentativa explícita, observando o timer normal de um minuto. Metadados preservaram a análise autoritativa. Tentativas de infraestrutura/oráculo anteriores permanecem preservadas; sem alegação de validação Android físico ou IA real.
+
+## IMG-03 concluído; LAT-04 ampliado — 25/10/2026
+
+[Correções, mutantes, medições e evidências](SYNC-IMG03-LAT04-20261025-results.json). 54 regressões passaram, incluindo sete variantes de mídia e dez de lotes. Quatro mutantes isolados foram detectados após baseline verde. A integração atual executou 17 casos Flutter com API/PostgreSQL próprios: lotes 500+1, histórico, aplicação multipágina e recuperação após 503 sem perda/duplicação. Corrigidos envio acima do limite e consumo de revisão após falha de mídia. LAT-04 permanece parcial para perfil separado de parse e confirmação estatística; não há alegação de ganho ou P99. Tentativas com falha de instrumentação/tempo permanecem preservadas e classificadas.

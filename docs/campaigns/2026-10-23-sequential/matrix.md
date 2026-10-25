@@ -32,7 +32,7 @@ iOS/VoiceOver fora do escopo. Critérios originais mantidos.
 | DB-07 | COMPLETED |
 | IMG-01 | PARTIAL_EXECUTED |
 | IMG-02 | COMPLETED |
-| IMG-03 | PARTIAL_EXECUTED |
+| IMG-03 | COMPLETED |
 | IMG-04 | PARTIAL_EXECUTED |
 | IMG-05 | PARTIAL_EXECUTED |
 | IMG-06 | PENDING |
