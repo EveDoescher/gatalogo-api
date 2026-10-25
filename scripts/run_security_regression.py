@@ -95,6 +95,8 @@ def selection(scenario, output):
         "DATA-06": "fencing_cases.py",
         "DATA-07": "production_boundary_cases.py",
         "DATA-08": "social_order_cases.py",
+        "DATA-03": "idempotency_cases.py",
+        "DATA-04": "idempotency_cases.py",
     }[scenario]
     if case_file:
         names.append(case_file)
@@ -102,6 +104,8 @@ def selection(scenario, output):
         names.append("test_auth_security.py")
     if scenario == "SEC-07":
         names.append("delivery_cases.py")
+    if scenario in ("DATA-03", "DATA-04"):
+        names.append("idempotency_child.py")
     for name in names:
         destination = executors / name
         origin = (
@@ -329,6 +333,8 @@ if __name__ == "__main__":
             "DATA-06",
             "DATA-07",
             "DATA-08",
+            "DATA-03",
+            "DATA-04",
         ],
         default="SEC-01",
     )
