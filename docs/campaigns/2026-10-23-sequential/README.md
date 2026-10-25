@@ -57,3 +57,7 @@ As rejeições cobrem token ausente/malformado, assinatura/issuer/type inválido
 ## DATA-07 — concluído em 24/10/2026
 
 15 testes aprovados, sem alteração do produto. [Limites exatos, concorrência, HTTP, fontes e hashes](DATA07-20261024-results.json). Coleta em -1/0/+1 ms, replay e duas intenções concorrentes, saldos zero/insuficiente/exato/excedente e estoques abaixo/no/acima do mínimo passaram. Relógio forjado pelo cliente não antecipou coleta.
+
+## RES-03 — concluído em 24/10/2026
+
+48 testes aprovados, com hashes de fontes inalterados, e análise estática sem problemas. [Cobertura dos cinco fluxos, falhas, correções e evidências](RES03-20261024-results.json). Foram corrigidos carregamento do Quintal após descarte e gravação de rejeição de análise após troca/logout/descarte. Controles positivos preservam os estados normais. Correção Flutter: `af6e82b2bfad0c461261877d6f82a1cbea12a473`. São testes de componentes/SQLite, sem alegação de validação Android físico ou de contrato de eventos DATA-08.

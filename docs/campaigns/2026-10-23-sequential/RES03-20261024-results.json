@@ -1,0 +1,418 @@
+{
+  "scenario": "RES-03",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_sha": "af6e82b2bfad0c461261877d6f82a1cbea12a473",
+  "project": "Flutter",
+  "correction_commit": "af6e82b2bfad0c461261877d6f82a1cbea12a473",
+  "test_commit": "5e73c29",
+  "passed": 48,
+  "failed": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 catalog response after switch cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 analysis-success response after switch cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 analysis-rejected response after switch cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 analysis-api-error response after switch cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 analysis-retry response after switch cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 chat history and event after switch are ignored",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 inbox response after switch is ignored",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 catalog response after logout cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 analysis-success response after logout cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 analysis-rejected response after logout cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 analysis-api-error response after logout cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 analysis-retry response after logout cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 chat history and event after logout are ignored",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 inbox response after logout is ignored",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 catalog response after dispose cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 analysis-success response after dispose cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 analysis-rejected response after dispose cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 analysis-api-error response after dispose cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 analysis-retry response after dispose cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 chat history and event after dispose are ignored",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 inbox response after dispose is ignored",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 catalog response after current cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 analysis-success response after current cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 analysis-rejected response after current cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 analysis-api-error response after current cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/account_scope_races_test.dart::RES03 analysis-retry response after current cannot contaminate state",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/quintal_production_service_test.dart::RES03 Quintal late load after switch is ignored",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/quintal_production_service_test.dart::RES03 Quintal late produce after switch is ignored",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/quintal_production_service_test.dart::RES03 Quintal late load after logout is ignored",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/quintal_production_service_test.dart::RES03 Quintal late produce after logout is ignored",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/quintal_production_service_test.dart::RES03 Quintal late load after dispose is ignored",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/quintal_production_service_test.dart::RES03 Quintal late produce after dispose is ignored",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/quintal_production_service_test.dart::pet response updates affinity immediately and persists across restart",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/quintal_production_service_test.dart::reward receipts persist, refresh replaces the queue, and stale accounts cannot restore it",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/quintal_production_service_test.dart::a retry after restart retains its operation key",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/quintal_production_service_test.dart::an older projection cannot overwrite a completed action",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/quintal_production_service_test.dart::a response from a former account cannot change the new account",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/widget_tester.dart::reconnect reloads and dispose cancels subscriptions and fallback",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/widget_tester.dart::echo before HTTP response reconciles one confirmed message",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/widget_tester.dart::fallback retains optimistic send until HTTP confirms",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/widget_tester.dart::failure removes optimistic message and restores draft",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/widget_tester.dart::uploaded photo dispatches its message",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/widget_tester.dart::account change discards a late send and blocks subsequent commands",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/notification_store_test.dart::pages merge in chronological order and do not duplicate IDs",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/notification_store_test.dart::all listeners see the same unread count immediately after reading",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/notification_store_test.dart::deduplicates refreshes and retains the snapshot on network failure",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/notification_store_test.dart::rejects stale requests after account switch and allows a fresh request",
+      "status": "success",
+      "skipped": false
+    },
+    {
+      "selector": "test/notification_store_test.dart::failed mark-read keeps the notification unread",
+      "status": "success",
+      "skipped": false
+    }
+  ],
+  "before": {
+    "quintal": [
+      {
+        "selector": "test/quintal_production_service_test.dart::RES03 Quintal late load after switch is ignored",
+        "status": "success",
+        "skipped": false
+      },
+      {
+        "selector": "test/quintal_production_service_test.dart::RES03 Quintal late produce after switch is ignored",
+        "status": "success",
+        "skipped": false
+      },
+      {
+        "selector": "test/quintal_production_service_test.dart::RES03 Quintal late load after logout is ignored",
+        "status": "success",
+        "skipped": false
+      },
+      {
+        "selector": "test/quintal_production_service_test.dart::RES03 Quintal late produce after logout is ignored",
+        "status": "success",
+        "skipped": false
+      },
+      {
+        "selector": "test/quintal_production_service_test.dart::RES03 Quintal late load after dispose is ignored",
+        "status": "failure",
+        "skipped": false
+      },
+      {
+        "selector": "test/quintal_production_service_test.dart::RES03 Quintal late produce after dispose is ignored",
+        "status": "success",
+        "skipped": false
+      }
+    ],
+    "scope": [
+      {
+        "selector": "test/account_scope_races_test.dart::RES03 catalog response after switch cannot contaminate state",
+        "status": "success",
+        "skipped": false
+      },
+      {
+        "selector": "test/account_scope_races_test.dart::RES03 analysis-success response after switch cannot contaminate state",
+        "status": "success",
+        "skipped": false
+      },
+      {
+        "selector": "test/account_scope_races_test.dart::RES03 analysis-rejected response after switch cannot contaminate state",
+        "status": "failure",
+        "skipped": false
+      },
+      {
+        "selector": "test/account_scope_races_test.dart::RES03 analysis-retry response after switch cannot contaminate state",
+        "status": "success",
+        "skipped": false
+      },
+      {
+        "selector": "test/account_scope_races_test.dart::RES03 chat history and event after switch are ignored",
+        "status": "success",
+        "skipped": false
+      },
+      {
+        "selector": "test/account_scope_races_test.dart::RES03 inbox response after switch is ignored",
+        "status": "success",
+        "skipped": false
+      },
+      {
+        "selector": "test/account_scope_races_test.dart::RES03 catalog response after logout cannot contaminate state",
+        "status": "success",
+        "skipped": false
+      },
+      {
+        "selector": "test/account_scope_races_test.dart::RES03 analysis-success response after logout cannot contaminate state",
+        "status": "success",
+        "skipped": false
+      },
+      {
+        "selector": "test/account_scope_races_test.dart::RES03 analysis-rejected response after logout cannot contaminate state",
+        "status": "failure",
+        "skipped": false
+      },
+      {
+        "selector": "test/account_scope_races_test.dart::RES03 analysis-retry response after logout cannot contaminate state",
+        "status": "success",
+        "skipped": false
+      },
+      {
+        "selector": "test/account_scope_races_test.dart::RES03 chat history and event after logout are ignored",
+        "status": "success",
+        "skipped": false
+      },
+      {
+        "selector": "test/account_scope_races_test.dart::RES03 inbox response after logout is ignored",
+        "status": "success",
+        "skipped": false
+      },
+      {
+        "selector": "test/account_scope_races_test.dart::RES03 catalog response after dispose cannot contaminate state",
+        "status": "success",
+        "skipped": false
+      },
+      {
+        "selector": "test/account_scope_races_test.dart::RES03 analysis-success response after dispose cannot contaminate state",
+        "status": "success",
+        "skipped": false
+      },
+      {
+        "selector": "test/account_scope_races_test.dart::RES03 analysis-rejected response after dispose cannot contaminate state",
+        "status": "failure",
+        "skipped": false
+      },
+      {
+        "selector": "test/account_scope_races_test.dart::RES03 analysis-retry response after dispose cannot contaminate state",
+        "status": "success",
+        "skipped": false
+      },
+      {
+        "selector": "test/account_scope_races_test.dart::RES03 chat history and event after dispose are ignored",
+        "status": "success",
+        "skipped": false
+      },
+      {
+        "selector": "test/account_scope_races_test.dart::RES03 inbox response after dispose is ignored",
+        "status": "success",
+        "skipped": false
+      }
+    ]
+  },
+  "coverage": [
+    "Catalogue: hold synchronization, switch A to B/logout/dispose then release; no old snapshot or DB mutation applied",
+    "Analysis: hold actual multipart client response, then switch/logout/dispose. Test success, rejected-image, nonretryable API failure and retryable failure. Assert actual target row entered analyzing and is unchanged after obsolete result",
+    "Positive current-account controls preserve normal success, rejection, API-error and retry state transitions",
+    "Chat: delayed history and event after switch/logout/dispose produce no old-account messages or optimistic entries",
+    "Inbox: delayed snapshot after clear/logout/dispose cannot overwrite current items or notify after invalidation",
+    "Quintal: delayed load and command responses after switch/logout/dispose cannot change stock/cache; existing queue, reward and account regressions pass"
+  ],
+  "findings": [
+    {
+      "problem": "HabitatService.load applied an async response and notified after disposal",
+      "before": "1 of 6 directed Quintal cases failed",
+      "change": "Check disposal and captured owner after asynchronous boundaries; stale loads do not alter error/loading state or notify"
+    },
+    {
+      "problem": "Rejected analysis response after account change/logout/disposal still wrote failure state to cache/database",
+      "before": "3 of 18 isolated scope cases failed",
+      "change": "Apply current-photo/lifecycle guard to rejected and nonretryable analysis errors, matching successful-result behavior"
+    }
+  ],
+  "executor": "flutter test --no-pub --concurrency 1 --reporter json test/account_scope_races_test.dart test/quintal_production_service_test.dart test/conversation_controller_test.dart test/notification_store_test.dart",
+  "source_manifest": "sequential/RES03-confirmatory-20261024-02/source_manifest.json",
+  "evidence_sha256": {
+    "sequential/RES03-confirmatory-20261024-02/tests.jsonl": "528ae23d8dce86d29ec629ae63434783809dc566d733590c7edfca279f6436ea",
+    "sequential/RES03-confirmatory-20261024-02/summary.json": "3d167cae4d19d9d78bd89a77fdb3e030ff6f101be4c2ed78abc709c8dea59dc6",
+    "sequential/RES03-confirmatory-20261024-02/source_manifest.json": "224babe9e976b5f240dafb3f4c13f5f31412694aaf774fd72d2fe147474948a3",
+    "sequential/RES03-quintal-20261024-01.jsonl": "e1654c4b439edc94ed386b91ad96cec021f3cae0cb1d6902fe7dad481307062a",
+    "sequential/RES03-quintal-20261024-02.jsonl": "151bab920948d03a18221e83b85145741746f2cf80190a7bf18aea5b50de33c6",
+    "sequential/RES03-scope-20261024-03.jsonl": "6587054ab38dacc7b104820f9171bb5d6f2ad395c02797b7c6d44508b53d7602",
+    "sequential/RES03-analyze-20261024-03.log": "bbaf54b561ef71bc07a9c1ac830388162be6eac0acccec9482c0a39fa0cec61b"
+  },
+  "static_analysis": "No issues found in both corrected product files and directed test files",
+  "limitations": [
+    "Desktop Flutter component tests, own temporary SQLite and controlled HTTP responses, not physical Android/FCM or end-to-end latency evidence.",
+    "RES03-scope-01 had a fixture compile error; scope-02 shared old fixture rows and is excluded from approval. Scope-03 cleared rows per case and asserted the intended request/row before exposing 3 failures.",
+    "First confirmatory launcher failed setup before executing Flutter; retained as -01. Final -02 evaluated the published commit and verified source hashes unchanged.",
+    "Chat wire-envelope correctness is a separate DATA-08 finding; this closure validates account/lifecycle isolation and does not approve that contract."
+  ]
+}

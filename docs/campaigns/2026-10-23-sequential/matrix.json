@@ -753,9 +753,9 @@
   },
   {
     "scenario": "RES-03",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Pausar resposta A de catálogo/análise/chat/inbox/Quintal; trocar para B/logout/dispose; liberar A.",
-    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes.",
+    "limitation": "Cinco fluxos em componentes Flutter e SQLite próprios; não representa Android físico, FCM ou contrato DATA-08.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [
       "attempts/accessibility-03/accessibility/tests.jsonl",
@@ -768,7 +768,11 @@
       "attempts/flutter-resilience-03/flutter_resilience/baseline/summary.json",
       "attempts/flutter-resilience-04/flutter_resilience/baseline/summary.json",
       "attempts/probe-layout-01/flutter_results/RES-03/test.jsonl"
-    ]
+    ],
+    "closure_evidence": [
+      "RES03-20261024-results.json"
+    ],
+    "executor": "flutter test --no-pub --concurrency 1 --reporter json test/account_scope_races_test.dart test/quintal_production_service_test.dart test/conversation_controller_test.dart test/notification_store_test.dart"
   },
   {
     "scenario": "RES-04",
