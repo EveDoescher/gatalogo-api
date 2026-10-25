@@ -1,0 +1,93 @@
+{
+  "scenario": "LOAD-03",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_sha": "75538fab6306b8b7093f07932302366fed174e11",
+  "passed": 6,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes": false,
+  "executor": "scripts/run_security_regression.py --scenario LOAD-03 --output <new private attempt>",
+  "coverage": [
+    "Barrier bursts of 2/10/25 callers for one intent: identical results, exactly one debit, receipt and task.",
+    "Barrier bursts of 2/10/25 distinct HTTP purchase intents competing for funds for exactly one item: one success, N-1 insufficient-funds conflicts, exactly one item/receipt, no negative balance.",
+    "Other account wallet remains unchanged."
+  ],
+  "limitations": [
+    "Six bounded contention experiments; not a prolonged load or host-capacity benchmark.",
+    "Same-intent uses real service/transactions; distinct-intent uses ASGI HTTP. No TCP/mobile latency claim."
+  ],
+  "measurements": [],
+  "cases": [
+    {
+      "selector": "sequential.LOAD03-20261024-01.executors.extended_cases::test_LOAD03_same_intent_bounded_barrier[2]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.LOAD03-20261024-01.executors.extended_cases::test_LOAD03_same_intent_bounded_barrier[10]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.LOAD03-20261024-01.executors.extended_cases::test_LOAD03_same_intent_bounded_barrier[25]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.LOAD03-20261024-01.executors.remaining_mechanism_cases::test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[2]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.LOAD03-20261024-01.executors.remaining_mechanism_cases::test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[10]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.LOAD03-20261024-01.executors.remaining_mechanism_cases::test_LOAD03_DATA07_distinct_intents_compete_for_one_purchase_balance[25]",
+      "status": "PASS"
+    }
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD03-20261024-01/junit.xml",
+      "sha256": "9b6464b61399c532af8ba6eb7c97faaedb310985824c15f44f59e4bf56613298"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD03-20261024-01/pytest.log",
+      "sha256": "f5025148740b09d6ec16208e2ed92c4a25b5d3613733f1f745eb36e4f8c16547"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD03-20261024-01/summary.json",
+      "sha256": "5e34a203b5d41cc307a643f1abb0c3f1e5f7e8f25aebb4ddcf95a21e8067b560"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD03-20261024-01/source_manifest.json",
+      "sha256": "325c708751728512a45349c763827f1e6e860219160682426042c22b54618782"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD03-20261024-01/candidate_manifest.json",
+      "sha256": "e245d3f7fa6e7b1224a4e32c94cf35b4a0d76e4fe7a7732d5b35323f35392a12"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD03-20261024-01/observations/LOAD03-distinct-balance-10.json",
+      "sha256": "09ab82c9404c1f541dccdab403edfa2df4f4b9d540896c72d6a4cfdaca97a464"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD03-20261024-01/observations/LOAD03-distinct-balance-2.json",
+      "sha256": "e3cdf46d9ba7af1c4c6251c0e0a6428582a06a6f1872a47eb8630e86a6b8bc5a"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD03-20261024-01/observations/LOAD03-distinct-balance-25.json",
+      "sha256": "bc34178b58c38c2f6c3e5e2a0d7ff4a7831d40c979ce33530da72eb597154603"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD03-20261024-01/observations/LOAD03-same-intent-10.json",
+      "sha256": "910c28a9a392418de8436ed87bcaa5031dbe6233b8f141a4048145028bd38388"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD03-20261024-01/observations/LOAD03-same-intent-2.json",
+      "sha256": "c4c4a2d9aa40e9e53065b9d7a9adb3f90635787cd9d397b6b865b46f85aea5b7"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD03-20261024-01/observations/LOAD03-same-intent-25.json",
+      "sha256": "69e2caf281321928f4bf067b7795e3fddf7d83ee80f0fa38eee20413bdf0c0aa"
+    }
+  ]
+}

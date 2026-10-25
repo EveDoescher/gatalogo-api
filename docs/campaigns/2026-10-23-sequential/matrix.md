@@ -19,7 +19,7 @@ iOS/VoiceOver fora do escopo. Critérios originais mantidos.
 | LAT-08 | PARTIAL_EXECUTED |
 | LOAD-01 | PENDING |
 | LOAD-02 | PENDING |
-| LOAD-03 | PARTIAL_EXECUTED |
+| LOAD-03 | COMPLETED |
 | LOAD-04 | PARTIAL_EXECUTED |
 | LOAD-05 | PARTIAL_EXECUTED |
 | LOAD-06 | PENDING |

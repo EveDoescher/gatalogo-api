@@ -109,3 +109,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## DLV-01 — concluído em 24/10/2026
 
 3 testes de cadastro/recuperação passaram em SMTP real descartável, com destinatário, purpose, expiração e uso único verificados; tempos request→Mailpit observados sem inferência estatística. [Variantes, fontes e evidências](DLV01-20261024-results.json). Sem alteração no produto.
+
+## LOAD-03 — concluído em 24/10/2026
+
+6 variantes de barreira (2/10/25, mesma intenção e intenções distintas) aprovadas; um único débito/recibo/efeito, sem saldo negativo ou alteração de outra conta. [Variantes, fontes e evidências](LOAD03-20261024-results.json). Sem alteração no produto.

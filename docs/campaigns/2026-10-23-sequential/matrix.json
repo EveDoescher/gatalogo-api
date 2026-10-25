@@ -221,19 +221,23 @@
   },
   {
     "scenario": "LOAD-03",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "2/10/25 requests com barreira: mesma operação/chave; depois comandos distintos disputando saldo de uma compra.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
     "runs": [
       "attempts/targeted-02/critical_runs/targeted-baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "limitation": "Six bounded contention experiments; not a prolonged load or host-capacity benchmark. Same-intent uses real service/transactions; distinct-intent uses ASGI HTTP. No TCP/mobile latency claim.",
     "local_runs": [
       "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
       "attempts/mechanisms-02/critical_runs/mechanisms-baseline/summary.json",
       "attempts/mechanisms-03/critical_runs/mechanisms-baseline/summary.json"
-    ]
+    ],
+    "closure_evidence": [
+      "LOAD03-20261024-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario LOAD-03 --output <new private attempt>"
   },
   {
     "scenario": "LOAD-04",
