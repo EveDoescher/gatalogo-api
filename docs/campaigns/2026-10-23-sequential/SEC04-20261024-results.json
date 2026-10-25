@@ -1,0 +1,189 @@
+{
+  "scenario": "SEC-04",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_sha": "47e3d2ef5991d43fa71a2189a1b92829510c9187",
+  "passed": 21,
+  "failed": 0,
+  "skipped": 0,
+  "executor": "scripts/run_security_regression.py --scenario SEC-04 --output <new private attempt>",
+  "code": [
+    "app/services/audience.py",
+    "app/services/social_feed_queries.py",
+    "app/routers/public_search.py",
+    "app/services/report_media.py",
+    "app/routers/product.py::report_photo"
+  ],
+  "variants": [
+    "Gallery public/friends/private x owner/friend/stranger, anonymous denied; preference revocation effective for subsequent requests.",
+    "Feed public/private x owner/friend/stranger: JSON and media link agree; anonymous denied. Friendship revoked between pages with no private rows leaking.",
+    "Gallery/post/clue/public report media strip EXIF and apply orientation; no-store on evaluated shared media.",
+    "Clue location hidden until explicitly revealed; report owner positive, observer/stranger denied; stale link denied.",
+    "Anonymous public search active -> QR disabled -> resolved: private contacts/address/microchip/exact coordinates omitted, links revoked, closed page retains no image.",
+    "Community owner/friend/stranger projections omit disabled fields; resolved report absent from active list and media unavailable.",
+    "Authenticated report image avoids public shared cache and is denied after resolution."
+  ],
+  "cycle": {
+    "hypothesis": "Authenticated report photo declares public, max-age=300, allowing a shared cache to retain a response beyond permission/status changes.",
+    "test": "audience_cases::test_SEC04_public_search_revocation_and_resolved_media",
+    "before": "SEC04-20261024-02: 20 PASS, 1 assertion failure; response Cache-Control public, max-age=300.",
+    "problem": "Authenticated response explicitly permits shared-cache reuse and five-minute freshness.",
+    "correction": "Use private, no-store for authenticated report photos, consistent with revocable media. Image bytes, endpoints, authorization and UI unchanged.",
+    "correction_commit": "47e3d2ef5991d43fa71a2189a1b92829510c9187",
+    "revalidation": "SEC04-20261024-03: 21 PASS; three account roles receive sanitized image with private/no-store while active, then 404 after resolve."
+  },
+  "cases": [
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.extended_cases::test_SEC02_SEC04_clue_location_and_media_permissions",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.audience_cases::test_SEC04_feed_json_and_link_share_same_audience[A-False]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.audience_cases::test_SEC04_feed_json_and_link_share_same_audience[A-True]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.audience_cases::test_SEC04_feed_json_and_link_share_same_audience[B-False]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.audience_cases::test_SEC04_feed_json_and_link_share_same_audience[B-True]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.audience_cases::test_SEC04_feed_json_and_link_share_same_audience[C-False]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.audience_cases::test_SEC04_feed_json_and_link_share_same_audience[C-True]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.audience_cases::test_SEC04_gallery_strips_metadata_and_rotation",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.audience_cases::test_SEC04_public_search_revocation_and_resolved_media",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.remaining_mechanism_cases::test_SEC04_gallery_actor_audience_matrix[A-public]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.remaining_mechanism_cases::test_SEC04_gallery_actor_audience_matrix[A-friends]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.remaining_mechanism_cases::test_SEC04_gallery_actor_audience_matrix[A-private]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.remaining_mechanism_cases::test_SEC04_gallery_actor_audience_matrix[B-public]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.remaining_mechanism_cases::test_SEC04_gallery_actor_audience_matrix[B-friends]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.remaining_mechanism_cases::test_SEC04_gallery_actor_audience_matrix[B-private]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.remaining_mechanism_cases::test_SEC04_gallery_actor_audience_matrix[C-public]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.remaining_mechanism_cases::test_SEC04_gallery_actor_audience_matrix[C-friends]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.remaining_mechanism_cases::test_SEC04_gallery_actor_audience_matrix[C-private]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.remaining_mechanism_cases::test_SEC04_gallery_preference_revoked_between_requests",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.remaining_mechanism_cases::test_DATA09_SEC04_missing_report_sighting_and_human_decision_lifecycle",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC04-20261024-03.executors.social_volume_cases::test_SEC04_LAT07_privacy_changes_between_feed_pages",
+      "status": "PASS"
+    }
+  ],
+  "limitations": [
+    "ASGI with disposable PostgreSQL/storage; synthetic suggestion only, never evidence of confirmed cat reidentification.",
+    "Header policy tested directly; no claim that a real CDN cache exploit was reproduced or that already downloaded bytes can be remotely erased.",
+    "No physical-device/privacy proxy test, paid inference or external recipient.",
+    "First run SEC04-20261024-01 passed original 21 cases before strengthening the cache oracle; preserved separately."
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC04-20261024-01/junit.xml",
+      "sha256": "858e4c227e625ba5d3971a48d161d14b233430a6a7135b0b038af6f61ded8440"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC04-20261024-01/pytest.log",
+      "sha256": "9e72f92c2d0a71dc8f92f8f7e55efbb01b1fad0539e39db91002f3c1f5561313"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC04-20261024-01/summary.json",
+      "sha256": "f96b1ec4f3b965783ef424cd16adc615e2fba0b8c771d90495157913bdbe920c"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC04-20261024-01/candidate_manifest.json",
+      "sha256": "487016d55ef12cff7d18958ee1a7d681d33cd131b2a7662fc5d055ea84cb1d99"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC04-20261024-01/source_manifest.json",
+      "sha256": "037147b502e32d4a3d7d7aee5866edbbd5b50fa7e2369574a6e3a448dbe0904c"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC04-20261024-02/junit.xml",
+      "sha256": "4d8eb1cb068bd963bd5158eaf35ea4e328967f94a84eec8e23b663f77701f79b"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC04-20261024-02/pytest.log",
+      "sha256": "2fb8d567d808f15a951aa88f9f30c68c328caa404a91370ecb2ca8c5c9719ec1"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC04-20261024-02/summary.json",
+      "sha256": "4449e8af1afcb5620c33dc342c9576ed53e08e4a1d8aca5a9e8ee01c9038d4ad"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC04-20261024-02/candidate_manifest.json",
+      "sha256": "332cb763e3655ee510f92ae1416596afb2dd7a0cf061c9733cb1aefbda2dfbed"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC04-20261024-02/source_manifest.json",
+      "sha256": "1f664d41d1e190a39bf1b532ea38a37af28617e1e5910c293202b84b7a20eea3"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC04-20261024-03/junit.xml",
+      "sha256": "447ce7fcb0fc7af3e38c2a04013fc3d7d356a8f2d12785f14fc8e3f59bb709e5"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC04-20261024-03/pytest.log",
+      "sha256": "ffcba2b542eda7eaf286627e68ed70d047baee3a4cb2ebc09e9f7b71381abb9d"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC04-20261024-03/summary.json",
+      "sha256": "f96b1ec4f3b965783ef424cd16adc615e2fba0b8c771d90495157913bdbe920c"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC04-20261024-03/candidate_manifest.json",
+      "sha256": "31a57122d045958b806df63676d81ee246c588c74601f25cd4c80eb0a94decdd"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/SEC04-20261024-03/source_manifest.json",
+      "sha256": "0517f80f2b7db749b0a3f6f306d4aac963f20bb82cf4ba1811d485678abbd872"
+    }
+  ]
+}

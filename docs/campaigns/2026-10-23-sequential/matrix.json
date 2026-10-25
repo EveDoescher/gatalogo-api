@@ -953,7 +953,7 @@
   },
   {
     "scenario": "SEC-04",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Público/amigo/estranho no feed/galeria/pistas, preferência muda durante paginação; busca pública ativa/resolvida.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -961,12 +961,16 @@
       "attempts/privacy-01/critical_runs/privacy-baseline/summary.json",
       "attempts/privacy-02/critical_runs/privacy-baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "limitation": "Actor/audience, pagination revocation, EXIF/location and public search active/revoked/resolved variants passed. Shared-cache header defect fixed; real proxy cache not exercised.",
     "local_runs": [
       "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json",
       "attempts/social-volume-01/critical_runs/social-volume-baseline/summary.json",
       "attempts/social-volume-02/critical_runs/social-volume-baseline/summary.json"
-    ]
+    ],
+    "closure_evidence": [
+      "SEC04-20261024-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario SEC-04"
   },
   {
     "scenario": "SEC-05",

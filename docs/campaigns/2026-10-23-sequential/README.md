@@ -101,3 +101,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## SEC-06 — concluído em 24/10/2026
 
 29 testes aprovados, sem mudança no produto. [Variantes, limites e evidências](SEC06-20261024-results.json). Rejeições de uploads/campos/paginação não alteraram arquivos, revisões ou jobs; MIME falso/pixels excedentes não chegaram aos modelos. O leitor de análise parou no overflow limitado. Limites globais de ingresso/spool continuam uma verificação de implantação separada; não foram presumidos a partir destes testes ASGI.
+
+## SEC-04 — concluído em 24/10/2026
+
+21 testes aprovados. [Variantes, defeito, correção e hashes](SEC04-20261024-results.json). Feed/galeria/pistas respeitaram os atores, revogação entre páginas e remoção de EXIF; busca pública ativa, QR revogado e resolução preservaram privacidade. Corrigido cabeçalho da foto autenticada de busca para `private, no-store`; antes o teste reproduziu `public, max-age=300`. Sem mudança na imagem ou interface e sem alegação de exploração em proxy real.
