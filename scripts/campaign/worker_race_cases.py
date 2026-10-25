@@ -102,7 +102,7 @@ async def test_IMG07_bytes_changed_between_claim_and_read_then_retry(queue):
         }
     assert len(calls) == 1
     evidence(
-        "IMG07-claim-read-change",
+        "IMG07-claim-read-change-" + queue.backend,
         {
             "scenario": "IMG-07",
             "changed_content_detected_before_inference": True,
