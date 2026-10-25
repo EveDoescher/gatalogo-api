@@ -357,7 +357,7 @@
   },
   {
     "scenario": "DB-04",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Consultas críticas em volumes crescentes, estatísticas atualizadas.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -365,7 +365,11 @@
     "local_runs": [
       "attempts/query-plan-01/critical_runs/query-plan-baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+    "limitation": "Three explicitly scoped critical read families; not an exhaustive plan for every application query. Warm fixtures and single observation per SQL shape; no cold IO, auth cost, P99, statistical gain or index optimization claim. Runner generic database summary mentions per-case schema; actual test evidence uses the migrated public schema in the disposable database, with UUID/email-scoped cleanup.",
+    "closure_evidence": [
+      "DB04-20261025-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario DB-04 --output <new private attempt>"
   },
   {
     "scenario": "DB-05",

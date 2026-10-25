@@ -1,0 +1,71 @@
+{
+  "scenario": "DB-04",
+  "state": "COMPLETED",
+  "date": "2026-10-25",
+  "source_sha": "255a6ff906d4626c97d53e782fb6b7630f80d00e",
+  "passed": 3,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes": false,
+  "executor": "scripts/run_security_regression.py --scenario DB-04 --output <new private attempt>",
+  "coverage": [
+    "Migrated public tables in own random-port recognition_test database, schema version and indexes recorded; synthetic UUID accounts only.",
+    "Three growing datasets: 40/500/2000 cats, 400/5000/20000 revisions, 200/2500/10000 photo rows, 1/20/100 conversations and growing feed.",
+    "Actual service SELECT statements captured for sync, conversation list and feed; distinct SQL shapes explained with ANALYZE/BUFFERS/JSON after statistics refresh.",
+    "Every EXPLAIN transaction READ ONLY; no command or mutating domain GET explained."
+  ],
+  "limitations": [
+    "Three explicitly scoped critical read families; not an exhaustive plan for every application query.",
+    "Warm fixtures and single observation per SQL shape; no cold IO, auth cost, P99, statistical gain or index optimization claim.",
+    "Runner generic database summary mentions per-case schema; actual test evidence uses the migrated public schema in the disposable database, with UUID/email-scoped cleanup."
+  ],
+  "measurements": [],
+  "cases": [
+    {
+      "selector": "sequential.DB04-20261025-01.executors.migrated_plan_cases::test_DB04_migrated_catalog_conversation_and_feed_select_plans[40-1]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DB04-20261025-01.executors.migrated_plan_cases::test_DB04_migrated_catalog_conversation_and_feed_select_plans[500-20]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DB04-20261025-01.executors.migrated_plan_cases::test_DB04_migrated_catalog_conversation_and_feed_select_plans[2000-100]",
+      "status": "PASS"
+    }
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB04-20261025-01/junit.xml",
+      "sha256": "da2e4ac6653056381d8e2bf05a06789c9ed87618d17a056afecec99b09761b32"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB04-20261025-01/pytest.log",
+      "sha256": "7f933866a239c0bdccf0539e33dda934e4728bc2a67dbfa4bdbd1d366628dc7e"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB04-20261025-01/summary.json",
+      "sha256": "0b6be8eefd364a376aebbeda20f03854cfd30760c43300551ec4d9f6bce0e4b8"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB04-20261025-01/source_manifest.json",
+      "sha256": "348bb2de2d106d617aa38e40aca06a31e21ffc8a47b97a1fde32f4154ff7eaf3"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB04-20261025-01/candidate_manifest.json",
+      "sha256": "ae19a8ef44370e5297e74f199e38954fadb4b10699b3cc5c70662be5d5bf7f5d"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB04-20261025-01/observations/DB04-migrated-plans-2000.json",
+      "sha256": "392dcb61d0d502aba944aaf13dc2134f1c3fdb0c7865220f32b5312f5e35fb60"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB04-20261025-01/observations/DB04-migrated-plans-40.json",
+      "sha256": "f41bdc63733c2c4d8fbd72d571fdda4b647c83dcd7271c8e810d8dc1dd450275"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DB04-20261025-01/observations/DB04-migrated-plans-500.json",
+      "sha256": "72ad4b2d5599dd02480170e0db276d931568c63c03af4431d319ebd361f0560a"
+    }
+  ]
+}

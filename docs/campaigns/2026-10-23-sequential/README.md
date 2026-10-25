@@ -177,3 +177,7 @@ Os 12 testes de volume passaram. A auditoria de escopo reabriu temporariamente D
 ## DB-03 — complemento concluído em 25/10/2026
 
 19 testes adicionais passaram; total de 31 datasets e 147 observações de requests. [Históricos, consultas, bytes, tempo e recursos](DB03-history-20261025-results.json). Cobertos 0/100/1.000 mensagens, autores repetidos/distintos e lista própria vazia com histórico estrangeiro. Preservados unread/última mensagem/ordem/isolamento. A rota de histórico mantém seu contrato sem paginação; N+1 e payload integral continuam oportunidades documentadas, sem otimização ou alegação de ganho.
+
+## DB-04 — concluído em 25/10/2026
+
+3 datasets aprovados e 9 avaliações de famílias de leitura em schema migrado; planos ANALYZE/BUFFERS, índices e versão registrados em transações READ ONLY. Sem otimização aplicada. [Variantes, fontes e evidências](DB04-20261025-results.json). Sem alteração no produto.
