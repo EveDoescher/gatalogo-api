@@ -81,3 +81,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## Mutação crítica — candidato atual
 
 [Resultados, receitas, seletores e hashes](mutations-critical-20261024-results.json). MUT-03 (empate), MUT-07 (attempt do worker) e MUT-12 (fingerprint) foram detectados, respectivamente por 3, 2 e 4 falhas esperadas; seus baselines passaram em 8, 9 e 4 testes. O sobrevivente inicial de MUT-03 foi preservado e levou ao reforço do teste, sem mudança no produto. Isso não substitui nem agrega indevidamente os resultados históricos das demais famílias.
+
+## SEC-10 — concluído em 24/10/2026
+
+4 testes aprovados com tempo real e intervalo padrão de 30 s. [Medições, variantes, fontes e hashes](SEC10-20261024-results.json). Revogação/expiração bloquearam o próximo frame em aproximadamente 6,03/1,49 ms nesta execução; conexões ociosas fecharam após 30,014/27,069 s desde a invalidação observada. Abertura posterior retornou 1008, HTTP 401 e outra conta permaneceu válida. Sem percentis ou inferência de ganho: são amostras pontuais ASGI, sem TCP/proxy/aparelho.

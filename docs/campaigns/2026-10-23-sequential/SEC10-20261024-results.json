@@ -1,0 +1,110 @@
+{
+  "scenario": "SEC-10",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_sha": "468cf12d635eb3016f7b66b0e3cab69daa698b3c",
+  "product_correction_commit": "d6573b0401491ad350460d1054bdba414e53f873",
+  "new_product_changes": null,
+  "passed": 4,
+  "failed": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "selector": "sequential.SEC10-20261024-01.executors.revocation_cases::test_SEC10_real_default_revocation_window[idle-revoked]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC10-20261024-01.executors.revocation_cases::test_SEC10_real_default_revocation_window[idle-expired]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC10-20261024-01.executors.revocation_cases::test_SEC10_real_default_revocation_window[next-frame-revoked]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.SEC10-20261024-01.executors.revocation_cases::test_SEC10_real_default_revocation_window[next-frame-expired]",
+      "status": "PASS"
+    }
+  ],
+  "observations": [
+    {
+      "reason": "expired",
+      "mode": "idle",
+      "configured_idle_check_seconds": 30,
+      "seconds_from_invalidation_observed_to_close": 27.069078399999853,
+      "close_code": 1008,
+      "reopened_connection": 1008,
+      "http_after_invalidation": 401,
+      "other_account_http": 200,
+      "clock": "real monotonic; no shortened timeout or frozen wall clock",
+      "transport": "actual ASGI WebSocket protocol; excludes TCP/proxy scheduling"
+    },
+    {
+      "reason": "expired",
+      "mode": "next-frame",
+      "configured_idle_check_seconds": 30,
+      "seconds_from_invalidation_observed_to_close": 0.0014949000005799462,
+      "close_code": 1008,
+      "reopened_connection": 1008,
+      "http_after_invalidation": 401,
+      "other_account_http": 200,
+      "clock": "real monotonic; no shortened timeout or frozen wall clock",
+      "transport": "actual ASGI WebSocket protocol; excludes TCP/proxy scheduling"
+    },
+    {
+      "reason": "revoked",
+      "mode": "idle",
+      "configured_idle_check_seconds": 30,
+      "seconds_from_invalidation_observed_to_close": 30.014353200000187,
+      "close_code": 1008,
+      "reopened_connection": 1008,
+      "http_after_invalidation": 401,
+      "other_account_http": 200,
+      "clock": "real monotonic; no shortened timeout or frozen wall clock",
+      "transport": "actual ASGI WebSocket protocol; excludes TCP/proxy scheduling"
+    },
+    {
+      "reason": "revoked",
+      "mode": "next-frame",
+      "configured_idle_check_seconds": 30,
+      "seconds_from_invalidation_observed_to_close": 0.006033700000443787,
+      "close_code": 1008,
+      "reopened_connection": 1008,
+      "http_after_invalidation": 401,
+      "other_account_http": 200,
+      "clock": "real monotonic; no shortened timeout or frozen wall clock",
+      "transport": "actual ASGI WebSocket protocol; excludes TCP/proxy scheduling"
+    }
+  ],
+  "coverage": [
+    "Open valid WebSocket and confirm ping/pong; revoke persisted session or let real JWT expire",
+    "Next frame after invalidation is rejected with close 1008 before action/pong",
+    "Idle connection closes on unchanged default 30-second authentication recheck; real time, no shortened timeout",
+    "New connection after invalidation closes 1008, HTTP request returns 401, separate active account remains 200; no catalogue revision created"
+  ],
+  "executor": "scripts/run_security_regression.py --scenario SEC-10 --output <new-directory-under-original-run>/sequential/<attempt>",
+  "executor_sha256": {
+    "security_cases.py": "de35705f692b00f80fe9c37e593bb601f20c5345b524910e2e26c382dfe20178",
+    "extended_cases.py": "c39291312f5ffb4e156c44e07004226ca544e6a2dc0275a5a3840524da5ce9cc",
+    "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+    "revocation_cases.py": "c389fefbcd12843cae78c33272d3c21f692f5c16f14cd824b9e2dc9f441ae1e5",
+    "test_auth_security.py": "6749261b11daf0b9e3ffdf82410b781c87bddb0f0af17671527169cb54aab743"
+  },
+  "evidence_sha256": {
+    "sequential/SEC10-20261024-01/junit.xml": "7b419def98787f9d88345a31dca1cc99b119f42e0b391991f1cbae8ff5e4ed2b",
+    "sequential/SEC10-20261024-01/pytest.log": "e1c4904a2e08e9d680a3043ee899b6399d9ab353abc6bed5cc10d6b7bd7681ab",
+    "sequential/SEC10-20261024-01/summary.json": "3f02f250263f89edfaddc7bbd51276efdbdb1d5aadc31783a6fa792dbafa4cb9",
+    "sequential/SEC10-20261024-01/candidate_manifest.json": "a620ec759c91c77aa49bffd116a7227ebf1044df418a6b30ae9bea9f9da1b4c6",
+    "sequential/SEC10-20261024-01/source_manifest.json": "a7ee5e79b6ae3815074d4f69185a5bf513d4c979082e409c471aa1fc6b41e9e6",
+    "sequential/SEC10-20261024-01/observations/SEC10-real-window-expired-idle.json": "05e20639823011f60df14aac63a44eaa61010809a686bc4faf7b6bd0af134c49",
+    "sequential/SEC10-20261024-01/observations/SEC10-real-window-expired-next-frame.json": "5b5e9e03137508f1ec1a22835ffb098463d67afdb5c6eb75db34c8877d2be25b",
+    "sequential/SEC10-20261024-01/observations/SEC10-real-window-revoked-idle.json": "a683a09db74553c647bb32c7330dd915cd241c6bb43b5ebd5bf67f3f11639f41",
+    "sequential/SEC10-20261024-01/observations/SEC10-real-window-revoked-next-frame.json": "859fd950f7d581d0c7d36e2c7febea27c504fe538f4519f8ec8a62c86ae63ca9"
+  },
+  "limitations": [
+    "Actual ASGI protocol, real PostgreSQL and clocks, not external TCP/proxy/mobile transport latency.",
+    "One measurement per reason/mode: no P95/P99, statistical confidence or capacity claim.",
+    "Idle close is periodic rather than immediate; observed revoke-to-close 30.014s includes dispatch/database scheduling. JWT expiration occurred during idle period, so its measured remaining wait was 27.069s.",
+    "Earlier SEC-10 observation expected insecure legacy pong; preserved historically, excluded from current secure acceptance oracle."
+  ]
+}

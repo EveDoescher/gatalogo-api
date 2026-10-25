@@ -1057,7 +1057,7 @@
   },
   {
     "scenario": "SEC-10",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Abrir WS válido, revogar sessão/expirar token e tentar ações/novas conexões.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -1065,7 +1065,11 @@
       "attempts/network-01/critical_runs/network-baseline/summary.json",
       "attempts/targeted-02/critical_runs/targeted-baseline/summary.json"
     ],
-    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+    "limitation": "Janela real medida em ASGI: frame rejeitado antes da ação; conexão ociosa revalidada a cada 30s. Sem medição TCP/proxy/Android ou percentis.",
+    "closure_evidence": [
+      "SEC10-20261024-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario SEC-10 --output <new-directory-under-original-run>/sequential/<attempt>"
   },
   {
     "scenario": "UX-01",
