@@ -171,6 +171,7 @@ def selection(scenario, output):
         "DB-05": "pool_release_cases.py",
         "DB-03-HISTORY": "social_history_cases.py",
         "DB-04": "migrated_plan_cases.py",
+        "RES-01": "current_offline_cases.py",
     }[scenario]
     if case_file:
         names.append(case_file)
@@ -196,6 +197,8 @@ def selection(scenario, output):
         names.extend(["remaining_mechanism_cases.py", "production_boundary_cases.py", "measurements.py"])
     if scenario == "DB-05":
         names.extend(["image_cases.py", "pipeline_cases.py", "test_reference_analysis.py"])
+    if scenario == "RES-01":
+        names.extend(["image_cases.py", "critical_report.py", "subprocesses.py"])
     if scenario == "SEC-04":
         names.extend(["remaining_mechanism_cases.py", "social_volume_cases.py", "measurements.py"])
     if scenario == "LOAD-03":
@@ -265,6 +268,7 @@ def selection(scenario, output):
             QUALITY_CAMPAIGN_ATTEMPT=str(output),
             QUALITY_TARGET_SOURCE=str(source),
             QUALITY_CASE_EVIDENCE=str(output / "observations"),
+            QUALITY_FLUTTER_REPO=str(ROOT.parent / "catlogue"),
         ),
     )
 
@@ -575,6 +579,7 @@ if __name__ == "__main__":
             "DB-05",
             "DB-03-HISTORY",
             "DB-04",
+            "RES-01",
         ],
         default="SEC-01",
     )
