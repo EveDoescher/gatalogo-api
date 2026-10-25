@@ -105,3 +105,7 @@ O mutante `>=` no desempate sobreviveu aos 7 testes anteriores: o payload idênt
 ## SEC-04 — concluído em 24/10/2026
 
 21 testes aprovados. [Variantes, defeito, correção e hashes](SEC04-20261024-results.json). Feed/galeria/pistas respeitaram os atores, revogação entre páginas e remoção de EXIF; busca pública ativa, QR revogado e resolução preservaram privacidade. Corrigido cabeçalho da foto autenticada de busca para `private, no-store`; antes o teste reproduziu `public, max-age=300`. Sem mudança na imagem ou interface e sem alegação de exploração em proxy real.
+
+## DLV-01 — concluído em 24/10/2026
+
+3 testes de cadastro/recuperação passaram em SMTP real descartável, com destinatário, purpose, expiração e uso único verificados; tempos request→Mailpit observados sem inferência estatística. [Variantes, fontes e evidências](DLV01-20261024-results.json). Sem alteração no produto.

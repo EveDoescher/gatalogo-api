@@ -1201,17 +1201,21 @@
   },
   {
     "scenario": "DLV-01",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Registrar/recuperar conta sintética, SMTP habilitado em Mailpit próprio; receber e usar OTP.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
     "runs": [
       "attempts/extended-03/critical_runs/extended-baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "limitation": "Mailpit is SMTP acceptance/capture, not arrival at an external mailbox. Three directed timing observations, no percentile, throughput or performance gain inference. Expiration timestamp verified against request time/configuration; temporal rejection boundaries are separately covered by SEC-07.",
     "local_runs": [
       "attempts/delivery-01/critical_runs/delivery-baseline/summary.json"
-    ]
+    ],
+    "closure_evidence": [
+      "DLV01-20261024-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario DLV-01 --output <new private attempt>"
   },
   {
     "scenario": "DLV-02",

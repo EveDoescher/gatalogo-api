@@ -1,0 +1,83 @@
+{
+  "scenario": "DLV-01",
+  "state": "COMPLETED",
+  "date": "2026-10-24",
+  "source_sha": "c90a6b49f65406b5101113f73c2c61231072d101",
+  "passed": 3,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes": false,
+  "executor": "scripts/run_security_regression.py --scenario DLV-01 --output <new private attempt>",
+  "coverage": [
+    "Registration request delivered to isolated real Mailpit; recipient, verify_email purpose and configured expiration verified; OTP activates account once.",
+    "Password reset confirm and verify/grant/complete flows delivered to expected recipient with reset_password purpose and configured expiration.",
+    "Cooldown, replay, expired old sessions, old password rejection, new password acceptance and other account isolation."
+  ],
+  "limitations": [
+    "Mailpit is SMTP acceptance/capture, not arrival at an external mailbox.",
+    "Three directed timing observations, no percentile, throughput or performance gain inference.",
+    "Expiration timestamp verified against request time/configuration; temporal rejection boundaries are separately covered by SEC-07."
+  ],
+  "measurements": [
+    {
+      "observation": "DLV01-local-smtp.json",
+      "request_to_mailpit_observed_ms": 2090.3365000012855
+    },
+    {
+      "observation": "DLV01-recovery-confirm.json",
+      "request_to_mailpit_observed_ms": 1209.2028999995819
+    },
+    {
+      "observation": "DLV01-recovery-grant.json",
+      "request_to_mailpit_observed_ms": 1254.79070000074
+    }
+  ],
+  "cases": [
+    {
+      "selector": "sequential.DLV01-20261024-01.executors.extended_cases::test_DLV01_disposable_smtp_registration_and_consumption",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DLV01-20261024-01.executors.delivery_cases::test_DLV01_SEC07_smtp_password_recovery_complete_and_replay[confirm]",
+      "status": "PASS"
+    },
+    {
+      "selector": "sequential.DLV01-20261024-01.executors.delivery_cases::test_DLV01_SEC07_smtp_password_recovery_complete_and_replay[grant]",
+      "status": "PASS"
+    }
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV01-20261024-01/junit.xml",
+      "sha256": "eae3efd104fe29713409c4403de98cba03ebcb777d6194f329e1d9a12f60ac58"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV01-20261024-01/pytest.log",
+      "sha256": "8aef859e163df971f36e71ecaf9f1f62c68dc3645736044284dde747ff8d2b3a"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV01-20261024-01/summary.json",
+      "sha256": "0b0751bbf49f897ae4c6df18a2f04e3b1b670e3bc93abf5f8c97e87688123426"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV01-20261024-01/source_manifest.json",
+      "sha256": "d8cd3d376c3e33d4ba34a1cead3ac2a56ebf5c1c24860a77f980f4df414a746a"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV01-20261024-01/candidate_manifest.json",
+      "sha256": "21b60632b8cc52345859694a631c5b6a62bb28cc849b03ef2b5612faea853998"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV01-20261024-01/observations/DLV01-local-smtp.json",
+      "sha256": "e8dc9400c6e4d71c14fb341448de9d334cd9d41422a7401f76be8010549293d9"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV01-20261024-01/observations/DLV01-recovery-confirm.json",
+      "sha256": "2db1cce842ceb55f8f7544eb2094163030ef026477aaa94f78ed7928cb2dd204"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/DLV01-20261024-01/observations/DLV01-recovery-grant.json",
+      "sha256": "f9bcc7892987387e8bc73fd1af581e58a8ee94b219521883934d3eb8b15be1f8"
+    }
+  ]
+}
