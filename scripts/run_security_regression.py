@@ -70,7 +70,7 @@ def execute_pytest(source, selectors, env, output, prefix=""):
             cwd=source,
             env=env,
             log=log,
-            timeout=4600 if env.get("QUALITY_LONG_SCENARIO") == "LOAD-06" else 1500 if env.get("QUALITY_LONG_SCENARIO") in ("LOAD-01", "LOAD-02") else (1200 if env.get("QUALITY_SYNC_CONFIRMATION") == "true" or env.get("QUALITY_LOCAL_MODEL_RESOURCE") == "true" else 480 if env.get("QUALITY_LARGE_LOCAL_SYNC") == "true" else 360),
+            timeout=4600 if env.get("QUALITY_LONG_SCENARIO") == "LOAD-06" else 1500 if env.get("QUALITY_LONG_SCENARIO") in ("LOAD-01", "LOAD-02") else (1200 if env.get("QUALITY_SYNC_CONFIRMATION") == "true" or env.get("QUALITY_LOCAL_MODEL_RESOURCE") == "true" or env.get("QUALITY_REAL_REFERENCE_BATCH") == "true" else 480 if env.get("QUALITY_LARGE_LOCAL_SYNC") == "true" else 360),
         )
 
 
@@ -197,6 +197,7 @@ def selection(scenario, output):
         "DLV-02": "delivery_cases.py",
         "DLV-04": "fcm_delivery_cases.py",
         "LOAD-03": "remaining_mechanism_cases.py",
+        "LOAD-04-REAL": "real_reference_cases.py",
         "LOAD-01": "long_load_cases.py",
         "LOAD-02": "long_load_cases.py",
         "LOAD-06": "long_load_cases.py",
@@ -280,6 +281,9 @@ def selection(scenario, output):
             "critical_report.py", "subprocesses.py", "measurements.py",
             "latency_pressure_cases.py", "latency_probe_child.py", "windows_limits.py",
         ])
+    if scenario == "LOAD-04-REAL":
+        names.extend(["current_offline_cases.py", "image_cases.py", "critical_report.py",
+            "subprocesses.py", "measurements.py", "paid_provider.py"])
     if scenario in ("RSC-01", "RSC-01-BOOT"):
         names.extend([
             "local_model_probe_cases.py", "current_offline_cases.py", "image_cases.py",
@@ -311,7 +315,7 @@ def selection(scenario, output):
         )
         shutil.copy2(origin, destination)
         hashes[name] = hashlib.sha256(destination.read_bytes()).hexdigest()
-    if scenario in ("RSC-01", "RSC-01-BOOT", "IMG-05"):
+    if scenario in ("RSC-01", "RSC-01-BOOT", "IMG-05", "LOAD-04-REAL"):
         for name in ("chelsea.png", "README.md"):
             destination = executors / name
             shutil.copy2(ROOT / "tests/fixtures/local_models" / name, destination)
@@ -354,6 +358,8 @@ def selection(scenario, output):
         selectors = [str(executors / case_file) + "::test_RSC01_actual_lifespan_boot_and_shutdown", "--confcutdir", str(executors)]
     if scenario in LONG_SCENARIOS:
         selectors = [str(executors / case_file), "--confcutdir", str(executors)]
+    if scenario == "LOAD-04-REAL":
+        selectors = [str(executors / case_file), "--confcutdir", str(executors)]
     if scenario == "RES-04":
         selectors = [str(executors / "worker_race_cases.py") + "::test_RES04_actual_worker_process_killed_after_claim_then_restarted[postgres]"]
         selectors.extend(str(executors / "test_reference_analysis.py") + "::" + name + "[postgres]" for name in (
@@ -376,6 +382,7 @@ def selection(scenario, output):
             QUALITY_CASE_EVIDENCE=str(output / "observations"),
             QUALITY_FLUTTER_REPO=str(ROOT.parent / "catlogue"),
             QUALITY_LOCAL_MODEL_RESOURCE="true" if scenario == "RSC-01" else "false",
+            QUALITY_REAL_REFERENCE_BATCH="true" if scenario == "LOAD-04-REAL" else "false",
             QUALITY_MODEL_PHOTO=str(executors / "chelsea.png"),
             QUALITY_MODEL_CACHE=str(ROOT / ".model-cache"),
             QUALITY_LONG_SCENARIO=scenario if scenario in LONG_SCENARIOS else "",
@@ -645,6 +652,8 @@ def run(output, scenario="SEC-01", mutation=None):
                     if scenario == "SEC-01"
                     else "isolated local Mailpit/SMTP; generated JWTs; no external recipients or inference"
                     if scenario == "SEC-07"
+                    else "real cached detector/SAM and authorized bounded Google Gemini; public CC0 fixture; no external notifications"
+                    if scenario == "LOAD-04-REAL"
                     else "generated app JWTs; synthetic analysis/fault injection; no external delivery or inference",
                     "api_lifespan_started": False,
                     "physical_device": False,
@@ -704,6 +713,7 @@ if __name__ == "__main__":
             "DLV-02",
             "DLV-04",
             "LOAD-03",
+            "LOAD-04-REAL",
             "LOAD-01",
             "LOAD-02",
             "LOAD-06",
