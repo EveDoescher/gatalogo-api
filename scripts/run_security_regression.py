@@ -205,6 +205,7 @@ def selection(scenario, output):
         "RSC-02": "resource_lifecycle_cases.py",
         "RSC-06": "resource_caps_cases.py",
         "RSC-01": "local_model_resource_cases.py",
+        "RSC-01-BOOT": "local_model_resource_cases.py",
         "RSC-02-DIAG": "resource_lifecycle_cases.py",
     }[scenario]
     if case_file:
@@ -256,7 +257,7 @@ def selection(scenario, output):
             "critical_report.py", "subprocesses.py", "measurements.py",
             "latency_pressure_cases.py", "latency_probe_child.py", "windows_limits.py",
         ])
-    if scenario == "RSC-01":
+    if scenario in ("RSC-01", "RSC-01-BOOT"):
         names.extend([
             "local_model_probe_cases.py", "current_offline_cases.py", "image_cases.py",
             "critical_report.py", "subprocesses.py", "measurements.py", "windows_limits.py", "local_model_controls.py",
@@ -287,7 +288,7 @@ def selection(scenario, output):
         )
         shutil.copy2(origin, destination)
         hashes[name] = hashlib.sha256(destination.read_bytes()).hexdigest()
-    if scenario in ("RSC-01", "IMG-05"):
+    if scenario in ("RSC-01", "RSC-01-BOOT", "IMG-05"):
         for name in ("chelsea.png", "README.md"):
             destination = executors / name
             shutil.copy2(ROOT / "tests/fixtures/local_models" / name, destination)
@@ -326,6 +327,8 @@ def selection(scenario, output):
         selectors = [str(executors / "resource_lifecycle_cases.py") + "::test_RSC02_diagnostic_denied_multipart_keepalive", "--confcutdir", str(executors)]
     if scenario == "RSC-06":
         selectors = [str(executors / case_file), "-k", "postgres", "--confcutdir", str(executors)]
+    if scenario == "RSC-01-BOOT":
+        selectors = [str(executors / case_file) + "::test_RSC01_actual_lifespan_boot_and_shutdown", "--confcutdir", str(executors)]
     if scenario == "RES-04":
         selectors = [str(executors / "worker_race_cases.py") + "::test_RES04_actual_worker_process_killed_after_claim_then_restarted[postgres]"]
         selectors.extend(str(executors / "test_reference_analysis.py") + "::" + name + "[postgres]" for name in (
@@ -688,6 +691,7 @@ if __name__ == "__main__":
             "RSC-02",
             "RSC-06",
             "RSC-01",
+            "RSC-01-BOOT",
             "RSC-02-DIAG",
         ],
         default="SEC-01",

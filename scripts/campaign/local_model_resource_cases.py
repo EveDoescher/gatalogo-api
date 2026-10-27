@@ -12,6 +12,47 @@ import pytest
 from security_cases import evidence
 from subprocesses import run_logged
 
+pytest_plugins = ["current_offline_cases"]
+
+
+@pytest.mark.asyncio
+async def test_RSC01_actual_lifespan_boot_and_shutdown(own_api, monkeypatch):
+    import httpx
+    from sqlalchemy import func, select
+    from measurements import resources
+    from app import main
+    from app.persistence_models import VisionJob
+
+    monkeypatch.setattr(main, "get_session_factory", lambda: own_api.factory)
+    before_tasks = set(asyncio.all_tasks())
+    before = resources()
+    started = time.perf_counter()
+    async with main.lifespan(main.app):
+        boot_seconds = time.perf_counter() - started
+        async with httpx.AsyncClient(base_url=own_api.url, timeout=10) as client:
+            assert (await client.get("/health")).status_code == 200
+            assert (await client.get("/sync/pull", headers={
+                "Authorization": "Bearer " + own_api.bundles[0]["access_token"],
+            })).status_code == 200
+        await asyncio.sleep(2)
+        running = resources()
+        async with own_api.factory() as session:
+            assert await session.scalar(select(func.count()).select_from(VisionJob)) == 0
+        created = set(asyncio.all_tasks()) - before_tasks
+        assert len(created) >= 3, "Bridge, scheduler and reference worker must actually start"
+    await asyncio.sleep(0)
+    remaining = [task for task in created if not task.done()]
+    assert not remaining and own_api.factory.kw["bind"].pool.checkedout() == 0
+    assert own_api.provider_calls == []
+    evidence("RSC01-lifespan", {
+        "scenario": "RSC-01", "actual_lifespan_started": True,
+        "boot_seconds": boot_seconds, "startup_tasks_observed": len(created),
+        "health": 200, "authenticated_pull": 200, "background_jobs": 0,
+        "startup_tasks_remaining_after_shutdown": 0, "pool_checked_out_after_shutdown": 0,
+        "resources_before": before, "resources_running": running, "resources_after": resources(),
+        "paid_calls": 0, "scope": "Real lifespan bridge/scheduler/reference consumer, own migrated PostgreSQL and TCP API; two seconds idle. No model batch or universal startup SLA claim.",
+    })
+
 
 @pytest.mark.asyncio
 async def test_RSC01_fresh_api_and_worker_processes():
