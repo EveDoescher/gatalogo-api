@@ -29,8 +29,12 @@ async def test_LOAD04_real_reference_queue(own_api, monkeypatch, tmp_path, consu
     import torch
     torch.set_num_threads(2)
     root = Path(os.environ["QUALITY_MODEL_CACHE"]).parent
-    settings = Settings(_env_file=root / ".env", model_cache_dir=str(root / ".model-cache"),
-        sam2_checkpoint=str(root / ".model-cache/sam2.1_hiera_tiny.pt"), vision_device="cpu")
+    # The general disposable runner deliberately blanks the key. Read it only
+    # for this explicitly authorized client, then restore the runner environment.
+    with monkeypatch.context() as private_config:
+        private_config.delenv("GEMINI_API_KEY", raising=False)
+        settings = Settings(_env_file=root / ".env", model_cache_dir=str(root / ".model-cache"),
+            sam2_checkpoint=str(root / ".model-cache/sam2.1_hiera_tiny.pt"), vision_device="cpu")
     assert settings.vision_job_lease_seconds == 180, "Record an intentional different lease separately"
     data = Path(os.environ["QUALITY_MODEL_PHOTO"]).read_bytes()
     digest = hashlib.sha256(data).hexdigest()
