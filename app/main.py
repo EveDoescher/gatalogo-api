@@ -36,6 +36,7 @@ from app.routers.habitat import router as habitat_router
 from app.routers.quintal import router as quintal_router
 from app.routers.websocket import router as websocket_router
 from app.services.storage_service import photo_storage
+from app.services.photo_cleanup import PhotoCleanupWorker, queue_photo_cleanup, drain_photo_cleanup
 from app.services.vision_jobs import enqueue_recognition
 from app.services.analysis_service import AnalysisService
 from app.services.progression import confirm_photo, reject_photo, account as progress_account
@@ -56,9 +57,12 @@ async def lifespan(_: FastAPI):
     quintal_scheduler.start()
     reference_worker = ReferenceAnalysisWorker(get_session_factory())
     reference_worker.start()
+    cleanup_worker = PhotoCleanupWorker(get_session_factory())
+    cleanup_worker.start()
     try:
         yield
     finally:
+        await cleanup_worker.stop()
         await reference_worker.stop()
         await quintal_scheduler.stop()
         await ws_manager.stop_notification_bridge()
@@ -161,6 +165,7 @@ async def analyze_cat(
         ).scalar_one_or_none()
         if cat is None or cat.deleted_at is not None:
             raise HTTPException(409, "Sincronize o registro antes de solicitar a análise.")
+        queue_photo_cleanup(cat, [cat.photo_key])
         photo_key, photo_hash = photo_storage.save(
             user_id=user_id,
             cat_id=cat.id,
@@ -203,6 +208,7 @@ async def analyze_cat(
         await confirm_photo(session, cat, primary, result.model_dump(mode="json"))
         await session.commit()
         await publish_committed_events(session)
+        await drain_photo_cleanup(session)
         return result
 
     except MissingApiKeyError as error:

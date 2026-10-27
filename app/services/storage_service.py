@@ -134,7 +134,7 @@ class PrivatePhotoStorage:
             return
         path = self.absolute_path(key)
         if path.is_file():
-            path.unlink()
+            path.unlink(missing_ok=True)
 
 
 photo_storage = PrivatePhotoStorage()

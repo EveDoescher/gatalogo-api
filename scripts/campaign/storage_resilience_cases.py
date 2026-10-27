@@ -110,7 +110,7 @@ async def test_RES05_IMG07_storage_write_failure_rollback_and_retry(
 
 
 @pytest.mark.asyncio
-async def test_RES05_RSC03_delete_failure_after_commit_characterization(
+async def test_RES05_RSC03_delete_failure_after_commit_recovery(
     db, monkeypatch
 ):
     old, key, data = await own_primary(db)
@@ -121,16 +121,30 @@ async def test_RES05_RSC03_delete_failure_after_commit_characterization(
         raise PermissionError("controlled cleanup failure")
 
     monkeypatch.setattr(photo_storage, "delete", fail)
-    with pytest.raises(PermissionError):
-        await upload(db, data)
+    assert (await upload(db, data)).status_code == 204
     async with db.factory() as session:
         cat = await session.get(RemoteCat, uid("res-storage-cat"))
         newkey = cat.photo_key
         assert newkey != key and db.storage.open(newkey).read_bytes() == data
     assert db.storage.open(key).read_bytes() == old
+    pending = list(db.storage.absolute_path(".photo-cleanup").glob("*.json"))
+    assert len(pending) == 1
     monkeypatch.setattr(photo_storage, "delete", real)
+    from app.services.photo_cleanup import PhotoCleanupWorker
+
+    worker = PhotoCleanupWorker(db.factory, interval=0.05)
+    worker.start()
+    try:
+        for _ in range(60):
+            if not pending[0].exists():
+                break
+            await asyncio.sleep(0.05)
+        assert not pending[0].exists()
+    finally:
+        await worker.stop()
     assert (await upload(db, data)).status_code == 204
     orphan = photo_storage.absolute_path(key).is_file()
+    assert not orphan and db.storage.open(newkey).read_bytes() == data
     evidence(
         "RSC03-postcommit-cleanup",
         {
@@ -138,10 +152,9 @@ async def test_RES05_RSC03_delete_failure_after_commit_characterization(
             "new_content_committed_despite_error": True,
             "retry": 204,
             "old_file_remains_after_retry": orphan,
-            "finding": "Cleanup failure happens after commit; retry of same content does not revisit old key"
-            if orphan
-            else None,
-            "scope": "own files and injected delete error",
+            "deferred_candidate_persisted": True,
+            "recovered_by_new_worker_without_client_retry": True,
+            "scope": "own files, injected delete error and restarted cleanup task; no power-loss claim",
         },
     )
 

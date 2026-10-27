@@ -16,6 +16,7 @@ from app.dependencies import current_user
 from app.schemas import SyncCatRecord, SyncOperation, SyncPullResponse, SyncPushRequest
 from app.services.avatar_generation_service import rebuild_analysis_from_photos
 from app.services.storage_service import photo_storage
+from app.services.photo_cleanup import queue_photo_cleanup, drain_photo_cleanup
 from app.services.vision_jobs import enqueue_recognition, enqueue_reference_analysis
 from app.services.recognition_service import sync_catalog_sighting, refresh_cat_matches
 from app.services.realtime_events import publish_committed_events
@@ -108,8 +109,8 @@ def _ordered_operations(operations):
 @router.post("/push")
 async def push(payload: SyncPushRequest, user: User = Depends(current_user), session: AsyncSession = Depends(get_database_session)) -> dict[str, int]:
     applied = 0
-    photos_to_delete: list[str] = []
     for operation in _ordered_operations(payload.operations):
+        photos_to_delete: list[str] = []
         cat = await _apply_operation(session, user, operation)
         if cat.client_updated_at == _utc(operation.updated_at):
             applied += 1
@@ -126,12 +127,12 @@ async def push(payload: SyncPushRequest, user: User = Depends(current_user), ses
                     photos_to_delete.extend((avatar.texture_keys or {}).values())
                     if avatar.preview_key:
                         photos_to_delete.append(avatar.preview_key)
+        queue_photo_cleanup(cat, photos_to_delete)
     await session.commit()
     await publish_committed_events(session)
-    for key in photos_to_delete:
-        photo_storage.delete(key)
     await clean_expired_tombstones(session)
     await session.commit()
+    await drain_photo_cleanup(session)
     return {"applied": applied}
 
 
@@ -181,6 +182,7 @@ async def upload_photo(
         return
     suffix = Path(image.filename or "photo.jpg").suffix.lower() or ".jpg"
     old_key = cat.photo_key
+    queue_photo_cleanup(cat, [old_key])
     key, photo_hash = photo_storage.save(user_id=user.id, cat_id=cat.id, data=data, suffix=suffix)
     cat.photo_key = key
     cat.photo_hash = photo_hash
@@ -209,8 +211,7 @@ async def upload_photo(
         await refresh_cat_matches(session, cat=cat, settings=settings)
     await session.commit()
     await publish_committed_events(session)
-    if old_key and old_key != key:
-        photo_storage.delete(old_key)
+    await drain_photo_cleanup(session)
 
 
 @router.get("/cats/{client_id}/photo")
@@ -246,9 +247,9 @@ async def upload_reference_photo(
     if cat is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Gato não encontrado.")
     suffix = Path(image.filename or "reference.jpg").suffix.lower() or ".jpg"
-    key, content_hash = photo_storage.save_reference(user_id=user.id, cat_id=cat.id, kind=kind, data=data, suffix=suffix)
     photo = (await session.execute(select(CatPhoto).where(CatPhoto.cat_id == cat.id, CatPhoto.kind == kind).with_for_update())).scalar_one_or_none()
-    old_key = photo.storage_key if photo else None
+    queue_photo_cleanup(cat, [photo.storage_key if photo else None])
+    key, content_hash = photo_storage.save_reference(user_id=user.id, cat_id=cat.id, kind=kind, data=data, suffix=suffix)
     if photo is None:
         photo = CatPhoto(cat_id=cat.id, kind=kind, storage_key=key, content_hash=content_hash, content_type=image.content_type or "image/jpeg", status="analyzing")
         session.add(photo)
@@ -267,8 +268,7 @@ async def upload_reference_photo(
     await refresh_cat_matches(session, cat=cat, settings=get_settings())
     await session.commit()
     await publish_committed_events(session)
-    if old_key and old_key != key:
-        photo_storage.delete(old_key)
+    await drain_photo_cleanup(session)
     return {"status": "analyzing"}
 
 
@@ -291,6 +291,7 @@ async def delete_reference_photo(client_id: UUID, kind: str, user: User = Depend
     photo = (await session.execute(select(CatPhoto).join(RemoteCat, CatPhoto.cat_id == RemoteCat.id).where(RemoteCat.user_id == user.id, RemoteCat.client_id == client_id, CatPhoto.kind == kind, CatPhoto.deleted_at.is_(None)).with_for_update())).scalar_one_or_none()
     if cat is None or photo is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Foto de referência não encontrada.")
+    queue_photo_cleanup(cat, [photo.storage_key])
     photo.deleted_at = datetime.now(UTC)
     await session.execute(delete(CatVisualEmbedding).where(CatVisualEmbedding.photo_id == photo.id))
     await refresh_cat_matches(session, cat=cat, settings=get_settings())
@@ -298,7 +299,7 @@ async def delete_reference_photo(client_id: UUID, kind: str, user: User = Depend
     await _record_change(session, cat)
     await session.commit()
     await publish_committed_events(session)
-    photo_storage.delete(photo.storage_key)
+    await drain_photo_cleanup(session)
 
 
 @router.get("/cats/{client_id}/avatar/{asset_name}")
@@ -316,16 +317,16 @@ async def download_avatar_asset(client_id: UUID, asset_name: str, user: User = D
 
 async def clean_expired_tombstones(session: AsyncSession) -> int:
     cutoff = datetime.now(UTC) - timedelta(days=get_settings().tombstone_retention_days)
-    cats = (await session.execute(select(RemoteCat).where(RemoteCat.deleted_at.is_not(None), RemoteCat.deleted_at < cutoff))).scalars().all()
+    cats = (await session.execute(select(RemoteCat).where(RemoteCat.deleted_at.is_not(None), RemoteCat.deleted_at < cutoff).with_for_update())).scalars().all()
     for cat in cats:
-        photo_storage.delete(cat.photo_key)
+        keys = [cat.photo_key]
         references = (await session.execute(select(CatPhoto).where(CatPhoto.cat_id == cat.id))).scalars().all()
         for reference in references:
-            photo_storage.delete(reference.storage_key)
+            keys.append(reference.storage_key)
         avatar = await session.get(CatAvatar, cat.id)
         if avatar is not None:
-            for key in (avatar.texture_keys or {}).values():
-                photo_storage.delete(key)
-            photo_storage.delete(avatar.preview_key)
+            keys.extend((avatar.texture_keys or {}).values())
+            keys.append(avatar.preview_key)
+        queue_photo_cleanup(cat, keys)
         await session.delete(cat)
     return len(cats)

@@ -182,6 +182,7 @@ def selection(scenario, output):
         "LAT-04": "sync_batch_cases.py",
         "LAT-08": "latency_pressure_cases.py",
         "RES-02": "current_upload_transport_cases.py",
+        "RES-05": "service_recovery_cases.py",
         "LOAD-05": "current_socket_fanout_cases.py",
         "RSC-02": "resource_lifecycle_cases.py",
         "RSC-02-DIAG": "resource_lifecycle_cases.py",
@@ -218,6 +219,13 @@ def selection(scenario, output):
         names.extend(["current_offline_cases.py", "image_cases.py", "critical_report.py", "subprocesses.py", "measurements.py", "latency_probe_child.py"])
     if scenario == "RES-02":
         names.extend(["current_offline_cases.py", "upload_transport_cases.py", "image_cases.py", "critical_report.py", "subprocesses.py"])
+    if scenario == "RES-05":
+        names.extend([
+            "storage_resilience_cases.py", "image_cases.py", "pipeline_cases.py",
+            "delivery_cases.py", "fcm_delivery_cases.py", "current_upload_transport_cases.py",
+            "current_offline_cases.py", "upload_transport_cases.py", "critical_report.py",
+            "subprocesses.py", "test_quintal_live_api.py",
+        ])
     if scenario == "LOAD-05":
         names.extend(["current_offline_cases.py", "current_upload_transport_cases.py", "upload_transport_cases.py", "socket_fanout_cases.py", "network_cases.py", "image_cases.py", "critical_report.py", "subprocesses.py", "measurements.py"])
     if scenario in ("RSC-02", "RSC-02-DIAG"):
@@ -612,6 +620,7 @@ if __name__ == "__main__":
             "LAT-04",
             "LAT-08",
             "RES-02",
+            "RES-05",
             "LOAD-05",
             "RSC-02",
             "RSC-02-DIAG",
