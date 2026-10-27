@@ -1,0 +1,581 @@
+{
+  "scenario": "RSC-02",
+  "state": "COMPLETED",
+  "date": "2026-10-27",
+  "api_source_commit": "27bd5b347c5c5669ba8ed341f56998fdfe8ae9aa",
+  "product_changes": false,
+  "harness_changes_in_this_revalidation": false,
+  "passed": 3,
+  "failed": 0,
+  "skipped": 0,
+  "variants": [
+    {
+      "id": "RSC02-V1",
+      "state": "PASS",
+      "warmup_cycles": 10,
+      "measured_rounds": 3,
+      "cycles_per_round": 100,
+      "same_process": true,
+      "committed_messages": 310,
+      "paid_calls": 0
+    },
+    {
+      "id": "RSC02-V2",
+      "state": "PASS",
+      "transport": "persistent",
+      "denied_uploads": 200
+    },
+    {
+      "id": "RSC02-V3",
+      "state": "PASS",
+      "transport": "Connection: close",
+      "denied_uploads": 200
+    }
+  ],
+  "observations": {
+    "warmup_cycles": 10,
+    "rounds": [
+      {
+        "round": 1,
+        "cycles": 100,
+        "before": {
+          "process_cpu_seconds": 13.75,
+          "pid": 1468,
+          "rss_bytes": 167964672,
+          "peak_rss_bytes": 170070016,
+          "handles": 232,
+          "threads": 2,
+          "asyncio_tasks": 3,
+          "pool_checkedout": 0,
+          "pool_checkedin": 2,
+          "pool_connections": 2,
+          "http_connections": 2,
+          "own_active_sockets": 0,
+          "python_traced_bytes": 3719940
+        },
+        "observed_peak": {
+          "process_cpu_seconds": 13.75,
+          "pid": 1468,
+          "rss_bytes": 171565056,
+          "peak_rss_bytes": 170070016,
+          "handles": 234,
+          "threads": 2,
+          "asyncio_tasks": 7,
+          "pool_checkedout": 1,
+          "pool_checkedin": 2,
+          "pool_connections": 2,
+          "http_connections": 2,
+          "own_active_sockets": 0,
+          "python_traced_bytes": 3719940
+        },
+        "rest_after_gc": {
+          "process_cpu_seconds": 45.265625,
+          "pid": 1468,
+          "rss_bytes": 171515904,
+          "peak_rss_bytes": 171573248,
+          "handles": 232,
+          "threads": 2,
+          "asyncio_tasks": 3,
+          "pool_checkedout": 0,
+          "pool_checkedin": 2,
+          "pool_connections": 2,
+          "http_connections": 2,
+          "own_active_sockets": 0,
+          "python_traced_bytes": 3786144
+        },
+        "cycle_ms_observed": {
+          "min": 342.85809998982586,
+          "mean": 432.26688899856526,
+          "max": 727.1773999964353
+        }
+      },
+      {
+        "round": 2,
+        "cycles": 100,
+        "before": {
+          "process_cpu_seconds": 45.265625,
+          "pid": 1468,
+          "rss_bytes": 171515904,
+          "peak_rss_bytes": 171573248,
+          "handles": 232,
+          "threads": 2,
+          "asyncio_tasks": 3,
+          "pool_checkedout": 0,
+          "pool_checkedin": 2,
+          "pool_connections": 2,
+          "http_connections": 2,
+          "own_active_sockets": 0,
+          "python_traced_bytes": 3800176
+        },
+        "observed_peak": {
+          "process_cpu_seconds": 45.265625,
+          "pid": 1468,
+          "rss_bytes": 171626496,
+          "peak_rss_bytes": 171573248,
+          "handles": 232,
+          "threads": 2,
+          "asyncio_tasks": 7,
+          "pool_checkedout": 1,
+          "pool_checkedin": 2,
+          "pool_connections": 2,
+          "http_connections": 2,
+          "own_active_sockets": 0,
+          "python_traced_bytes": 3800176
+        },
+        "rest_after_gc": {
+          "process_cpu_seconds": 77.515625,
+          "pid": 1468,
+          "rss_bytes": 168718336,
+          "peak_rss_bytes": 171634688,
+          "handles": 229,
+          "threads": 2,
+          "asyncio_tasks": 3,
+          "pool_checkedout": 0,
+          "pool_checkedin": 2,
+          "pool_connections": 2,
+          "http_connections": 2,
+          "own_active_sockets": 0,
+          "python_traced_bytes": 3811276
+        },
+        "cycle_ms_observed": {
+          "min": 344.07250001095235,
+          "mean": 429.5125290003489,
+          "max": 787.8927999990992
+        }
+      },
+      {
+        "round": 3,
+        "cycles": 100,
+        "before": {
+          "process_cpu_seconds": 77.515625,
+          "pid": 1468,
+          "rss_bytes": 168718336,
+          "peak_rss_bytes": 171634688,
+          "handles": 229,
+          "threads": 2,
+          "asyncio_tasks": 3,
+          "pool_checkedout": 0,
+          "pool_checkedin": 2,
+          "pool_connections": 2,
+          "http_connections": 2,
+          "own_active_sockets": 0,
+          "python_traced_bytes": 3825587
+        },
+        "observed_peak": {
+          "process_cpu_seconds": 77.515625,
+          "pid": 1468,
+          "rss_bytes": 171233280,
+          "peak_rss_bytes": 171634688,
+          "handles": 231,
+          "threads": 2,
+          "asyncio_tasks": 7,
+          "pool_checkedout": 1,
+          "pool_checkedin": 2,
+          "pool_connections": 2,
+          "http_connections": 2,
+          "own_active_sockets": 0,
+          "python_traced_bytes": 3825587
+        },
+        "rest_after_gc": {
+          "process_cpu_seconds": 108.328125,
+          "pid": 1468,
+          "rss_bytes": 171229184,
+          "peak_rss_bytes": 171634688,
+          "handles": 221,
+          "threads": 2,
+          "asyncio_tasks": 3,
+          "pool_checkedout": 0,
+          "pool_checkedin": 2,
+          "pool_connections": 2,
+          "http_connections": 2,
+          "own_active_sockets": 0,
+          "python_traced_bytes": 3803594
+        },
+        "cycle_ms_observed": {
+          "min": 339.63260002201423,
+          "mean": 410.62234799959697,
+          "max": 829.4161000230815
+        }
+      }
+    ],
+    "same_process": true,
+    "baseline": {
+      "process_cpu_seconds": 13.75,
+      "pid": 1468,
+      "rss_bytes": 167964672,
+      "peak_rss_bytes": 170070016,
+      "handles": 232,
+      "threads": 2,
+      "asyncio_tasks": 3,
+      "pool_checkedout": 0,
+      "pool_checkedin": 2,
+      "pool_connections": 2,
+      "http_connections": 2,
+      "own_active_sockets": 0,
+      "python_traced_bytes": 3706608
+    },
+    "warm_observed_envelope": {
+      "handles": 234,
+      "threads": 2,
+      "asyncio_tasks": 7,
+      "http_connections": 2,
+      "pool_connections": 5
+    },
+    "tracemalloc_top_differences": [
+      {
+        "file": "C:\\Python313\\Lib\\urllib\\parse.py",
+        "line": 395,
+        "size_diff": 25088,
+        "count_diff": 228
+      },
+      {
+        "file": "C:\\Python313\\Lib\\urllib\\parse.py",
+        "line": 520,
+        "size_diff": 11643,
+        "count_diff": 228
+      },
+      {
+        "file": "<frozen abc>",
+        "line": 123,
+        "size_diff": -10945,
+        "count_diff": -199
+      },
+      {
+        "file": "<string>",
+        "line": 1,
+        "size_diff": 10032,
+        "count_diff": 114
+      },
+      {
+        "file": "C:\\Users\\Evelynn_Doescher\\Documents\\Projetos\\flutter\\gatalogo-ai-api\\.venv\\Lib\\site-packages\\httpx\\_urlparse.py",
+        "line": 202,
+        "size_diff": 9591,
+        "count_diff": 114
+      },
+      {
+        "file": "C:\\Python313\\Lib\\re\\__init__.py",
+        "line": 285,
+        "size_diff": 8789,
+        "count_diff": 187
+      },
+      {
+        "file": "C:\\Python313\\Lib\\asyncio\\base_events.py",
+        "line": 816,
+        "size_diff": -7280,
+        "count_diff": -61
+      },
+      {
+        "file": "C:\\Python313\\Lib\\urllib\\parse.py",
+        "line": 419,
+        "size_diff": 6384,
+        "count_diff": 114
+      },
+      {
+        "file": "C:\\Users\\Evelynn_Doescher\\Documents\\Projetos\\flutter\\gatalogo-ai-api\\.venv\\Lib\\site-packages\\asyncpg\\prepared_stmt.py",
+        "line": 257,
+        "size_diff": 5750,
+        "count_diff": 115
+      },
+      {
+        "file": "C:\\Python313\\Lib\\email\\utils.py",
+        "line": 275,
+        "size_diff": 5244,
+        "count_diff": 110
+      },
+      {
+        "file": "C:\\Python313\\Lib\\urllib\\parse.py",
+        "line": 509,
+        "size_diff": 5130,
+        "count_diff": 114
+      },
+      {
+        "file": "C:\\Python313\\Lib\\asyncio\\events.py",
+        "line": 89,
+        "size_diff": 4512,
+        "count_diff": 96
+      },
+      {
+        "file": "C:\\Python313\\Lib\\asyncio\\events.py",
+        "line": 38,
+        "size_diff": -3648,
+        "count_diff": -57
+      },
+      {
+        "file": "<candidate>\\app\\routers\\sync.py",
+        "line": 40,
+        "size_diff": 3500,
+        "count_diff": 70
+      },
+      {
+        "file": "C:\\Users\\Evelynn_Doescher\\Documents\\Projetos\\flutter\\gatalogo-ai-api\\.tmp\\quality-campaign\\20261021T194312Z-953aa74e\\sequential\\RSC02-20261027-01\\executors\\resource_lifecycle_cases.py",
+        "line": 69,
+        "size_diff": 3184,
+        "count_diff": 13
+      },
+      {
+        "file": "C:\\Python313\\Lib\\ctypes\\__init__.py",
+        "line": 408,
+        "size_diff": 2688,
+        "count_diff": 56
+      },
+      {
+        "file": "<candidate>\\app\\services\\milestones.py",
+        "line": 63,
+        "size_diff": 2650,
+        "count_diff": 53
+      },
+      {
+        "file": "C:\\Users\\Evelynn_Doescher\\Documents\\Projetos\\flutter\\gatalogo-ai-api\\.venv\\Lib\\site-packages\\sqlalchemy\\orm\\evaluator.py",
+        "line": 68,
+        "size_diff": 2633,
+        "count_diff": 49
+      },
+      {
+        "file": "C:\\Users\\Evelynn_Doescher\\Documents\\Projetos\\flutter\\gatalogo-ai-api\\.venv\\Lib\\site-packages\\sqlalchemy\\sql\\type_api.py",
+        "line": 621,
+        "size_diff": 2400,
+        "count_diff": 48
+      },
+      {
+        "file": "<candidate>\\app\\services\\milestones.py",
+        "line": 60,
+        "size_diff": 2400,
+        "count_diff": 48
+      }
+    ],
+    "elapsed_seconds": 137.2967618999828,
+    "committed_messages": 310,
+    "paid_calls": 0,
+    "resource_deviations": [],
+    "pool_idle_capacity": 5,
+    "keepalive_seconds": 5,
+    "tracemalloc_frames": 1,
+    "scope": "API/test Python process, own PostgreSQL/HTTP/WS/storage. RSS/heap descriptive, not proof that all leaks are absent. Rest GC applied consistently; successful request logs suppressed in test capture to avoid observer retention. Exact pool/socket closure and rest handles/threads/tasks/HTTP bounded by measured warm lifecycle envelope."
+  },
+  "environment": {
+    "totalRamBytes": 17073184768,
+    "cpuModel": "Intel(R) Core(TM) i3-3250 CPU @ 3.50GHz",
+    "observedUtc": "2026-10-27T13:23:38.1679785Z",
+    "observerCorrection": "psutil is not installed; native CIM counters used. No package installed.",
+    "logicalCpus": 4.0,
+    "cpuLoadPercent": 58.0,
+    "scope": "Observed near resource-run preparation; no APK build or device activity",
+    "availableRamBytes": 6108889088
+  },
+  "executors": [
+    "scripts/campaign/resource_lifecycle_cases.py::test_RSC02_three_rounds_of_100_lifecycles_without_process_restart",
+    "scripts/campaign/resource_lifecycle_cases.py::test_RSC02_diagnostic_denied_multipart_keepalive"
+  ],
+  "historical_report": "RSC02-20261025-results.json",
+  "historical_failure_status": "Earlier mixed-flow timeout was not reproduced. Its cause remains undetermined; this passing run is not a claim that the historical failure was explained or a product defect fixed.",
+  "limitations": [
+    "RSS/Python heap describe the API and test process together. Warmup includes caches and observer calibration.",
+    "Zero borrowed DB sessions and active own sockets after every cycle; rest handles/threads/tasks/HTTP connections within the measured warm envelope in all three rounds.",
+    "No universal no-leak, capacity, production load or before/after speed-gain claim.",
+    "CIM environmental counters were observed near startup, not certified idle; psutil observer import failed before measurement and was replaced without installing dependencies.",
+    "No phone, paid inference, external SMTP/FCM or development database mutation."
+  ],
+  "evidence_root_private": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential",
+  "evidence": [
+    {
+      "path": "RSC02-20261027-01/candidate.tar",
+      "sha256": "da18fb6ba50aa1dd81e8f7863d4c5d4410b1ec3d05c1c00927d20bc62a36a873",
+      "bytes": 1054720
+    },
+    {
+      "path": "RSC02-20261027-01/candidate_manifest.json",
+      "sha256": "54fa5ac2976b232ef60e92defe5644d81e85057e20f702939232c053586c519e",
+      "bytes": 1251
+    },
+    {
+      "path": "RSC02-20261027-01/executors/__pycache__/critical_report.cpython-313.pyc",
+      "sha256": "fb420a0e21b98e564109c1c7ae0d1de2a24396feec1538a4343c9316fe040fc7",
+      "bytes": 16824
+    },
+    {
+      "path": "RSC02-20261027-01/executors/__pycache__/current_offline_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "3ddc2c80eba0b50a32de05fcbf57e4aff4e34d4c61a5e91e0ea4035fe093ecac",
+      "bytes": 31320
+    },
+    {
+      "path": "RSC02-20261027-01/executors/__pycache__/current_upload_transport_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "6a2c4a652d36c9e50a55419c6e038856df52c2e2039e205c4c24d1285259ab5e",
+      "bytes": 3300
+    },
+    {
+      "path": "RSC02-20261027-01/executors/__pycache__/extended_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "6c1df37c92ed7c4850f2de77bc911c6a04252a9d436f5dda8bcb00af7caf6732",
+      "bytes": 150068
+    },
+    {
+      "path": "RSC02-20261027-01/executors/__pycache__/fixtures.cpython-313.pyc",
+      "sha256": "93d74cc9bb875bad54d022e3dc37963e6511160644a4d215fd1d08f800252979",
+      "bytes": 6506
+    },
+    {
+      "path": "RSC02-20261027-01/executors/__pycache__/image_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "da2431e9bb43a3010f779f3c95e8ccc7ed6d06fdbd9ad041eb7921e7549d20c7",
+      "bytes": 31634
+    },
+    {
+      "path": "RSC02-20261027-01/executors/__pycache__/measurements.cpython-313.pyc",
+      "sha256": "9c3c0ceafd19cfd847b42afffd63fb4ee1e80e58bbaafb189355768ee3461232",
+      "bytes": 4536
+    },
+    {
+      "path": "RSC02-20261027-01/executors/__pycache__/network_cases.cpython-313.pyc",
+      "sha256": "650373e95ec3a4e712a663daf0ad8f8f5232af3655d41c81770aeb5e123832b6",
+      "bytes": 12642
+    },
+    {
+      "path": "RSC02-20261027-01/executors/__pycache__/resource_lifecycle_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "9ebfd4ce12003a63534ada7180e0e2f4d96fac66bf9be3fc6ac42256724eba61",
+      "bytes": 34676
+    },
+    {
+      "path": "RSC02-20261027-01/executors/__pycache__/security_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "7c962f3343d1ff807032d247ed5bdee1c7d5aacdecb8c3257d8fffa522120f6f",
+      "bytes": 84769
+    },
+    {
+      "path": "RSC02-20261027-01/executors/__pycache__/subprocesses.cpython-313.pyc",
+      "sha256": "7d1dec4a687f517fa05369b5fa51a82e42686710c2e631425fa681e0971fe51b",
+      "bytes": 1991
+    },
+    {
+      "path": "RSC02-20261027-01/executors/__pycache__/upload_transport_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "57ccf649dd913cf813a64550efba10fc5e321aa140e72e5c84e6d7ffac5affc1",
+      "bytes": 31347
+    },
+    {
+      "path": "RSC02-20261027-01/executors/critical_report.py",
+      "sha256": "794293f87f45a616031d5d50265cf01d7dc060b959f2d8cf9208ff35a483bc2b",
+      "bytes": 11717
+    },
+    {
+      "path": "RSC02-20261027-01/executors/current_offline_cases.py",
+      "sha256": "63e9ceaca8b32cd8b0f3f3641527ea78a0b5aef484b7f6afd574f2c299991aa3",
+      "bytes": 9912
+    },
+    {
+      "path": "RSC02-20261027-01/executors/current_upload_transport_cases.py",
+      "sha256": "fa323438bbf067b6c21fb1441da255d5babcfac9e4e1a308a03385c00f3bae2f",
+      "bytes": 1308
+    },
+    {
+      "path": "RSC02-20261027-01/executors/extended_cases.py",
+      "sha256": "43a4aa7b44b7268ac0b5830a5941eff1d1737af8a353ece879e25c35ebce377b",
+      "bytes": 51070
+    },
+    {
+      "path": "RSC02-20261027-01/executors/fixtures.py",
+      "sha256": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+      "bytes": 4230
+    },
+    {
+      "path": "RSC02-20261027-01/executors/image_cases.py",
+      "sha256": "19958fd2cd733ca13231cca626a0c55c4a2f94efd54b793578e9b3e5d1999e6e",
+      "bytes": 12240
+    },
+    {
+      "path": "RSC02-20261027-01/executors/measurements.py",
+      "sha256": "90e8f0946abc010437d25b6191c60a26c5382343ba1cd94bb77ede7c5ef2031f",
+      "bytes": 2320
+    },
+    {
+      "path": "RSC02-20261027-01/executors/network_cases.py",
+      "sha256": "c48e2afec58c7d6f98069d24f8e0c9164fad7146cee612b304f4b39780e72a4b",
+      "bytes": 7139
+    },
+    {
+      "path": "RSC02-20261027-01/executors/resource_lifecycle_cases.py",
+      "sha256": "8ba25e7bec2b7ac0355a0d7ada2969d575fefb5d498c37a7db8e6faddd3ac78b",
+      "bytes": 16516
+    },
+    {
+      "path": "RSC02-20261027-01/executors/security_cases.py",
+      "sha256": "de35705f692b00f80fe9c37e593bb601f20c5345b524910e2e26c382dfe20178",
+      "bytes": 25796
+    },
+    {
+      "path": "RSC02-20261027-01/executors/subprocesses.py",
+      "sha256": "662914a55c1a282b389111628fd5ceb7bc5327ead4821ce1fd12720c13716274",
+      "bytes": 1200
+    },
+    {
+      "path": "RSC02-20261027-01/executors/upload_transport_cases.py",
+      "sha256": "c7a463270056e8b7c16e7d8d34ca2f96ab6d7b81a124c4790e95e590afc72ad0",
+      "bytes": 10659
+    },
+    {
+      "path": "RSC02-20261027-01/junit.xml",
+      "sha256": "e65f3e926a3d65f1963cf6e748f061b298c94ea510b76b47055e9a4fb9f12ac0",
+      "bytes": 764
+    },
+    {
+      "path": "RSC02-20261027-01/migrations.log",
+      "sha256": "a3b46d2f11f9b6e02caac2d03005d0237af6f6b915efdc0e4805c9d2bcafece2",
+      "bytes": 2168
+    },
+    {
+      "path": "RSC02-20261027-01/observations/RSC02-baseline.tracemalloc",
+      "sha256": "a561920957ce9a8d4fe8004c9605821a8b551985ae47a988eafa5cc1012a0718",
+      "bytes": 467337
+    },
+    {
+      "path": "RSC02-20261027-01/observations/RSC02-cycles.jsonl",
+      "sha256": "ce1656e42afe87b623dca221c7b924be61db7110eab5f74f04f6751c57a6018b",
+      "bytes": 113815
+    },
+    {
+      "path": "RSC02-20261027-01/observations/RSC02-denied-diagnostic-close.json",
+      "sha256": "f10687326080f1fb27ff369086551f78583f3840e0fbf725856515522ea24c1a",
+      "bytes": 96
+    },
+    {
+      "path": "RSC02-20261027-01/observations/RSC02-denied-diagnostic-persistent.json",
+      "sha256": "ecaa4399b022caf39c74e5ea929b9e8f711429feeee4f526420cb33783420dec",
+      "bytes": 101
+    },
+    {
+      "path": "RSC02-20261027-01/observations/RSC02-final.tracemalloc",
+      "sha256": "a67b7f427b0207f8f68750d3889a27538f1fb838febbb03f8bbeca55ce9d7028",
+      "bytes": 494678
+    },
+    {
+      "path": "RSC02-20261027-01/observations/RSC02-lifecycle.json",
+      "sha256": "d3c2be44666e734cdfbc4a6545d10f34b58a5d6f04e37a4993e3e7178035635e",
+      "bytes": 9120
+    },
+    {
+      "path": "RSC02-20261027-01/observations/RSC02-rounds-progress.json",
+      "sha256": "9e09ed736f4262b2a18b37dcd7a5b0b6a88fef2d3517bc9dad81a2e71bf4517c",
+      "bytes": 5182
+    },
+    {
+      "path": "RSC02-20261027-01/pytest.log",
+      "sha256": "54de25f6beb6cb362e268c2c95762ce232ba013a0003ab5af5e4fab3ead02a96",
+      "bytes": 127
+    },
+    {
+      "path": "RSC02-20261027-01/source_manifest.json",
+      "sha256": "7f9433da63a652ad1633f5b8957166b93d6691e19fd03c73d5e0d4719af59b82",
+      "bytes": 25485
+    },
+    {
+      "path": "RSC02-20261027-01/storage/users/766c96d3-e251-4124-aec9-91cab2677842/cats/e6c5def1-7e9d-48da-871b-731eb105a8f8-2fa87c85c64b823bba60c07e14d990e757915aa6a36a856a33399228e60a872b.png",
+      "sha256": "2fa87c85c64b823bba60c07e14d990e757915aa6a36a856a33399228e60a872b",
+      "bytes": 362
+    },
+    {
+      "path": "RSC02-20261027-01/summary.json",
+      "sha256": "f9c52983774da7ac5ebf409b714d18348075f16d9e3b0eb8a5df1d971fd6a70c",
+      "bytes": 399
+    },
+    {
+      "path": "RSC02-20261027-environment/before.json",
+      "sha256": "46478dff69ade7e03528b27282bbf47edc313e3119f26f3c1a9afc809252dc17",
+      "bytes": 420
+    }
+  ]
+}

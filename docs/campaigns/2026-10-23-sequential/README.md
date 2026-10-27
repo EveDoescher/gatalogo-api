@@ -220,3 +220,17 @@ A memória gráfica observada aumentou de 875.411 para 945.615 KiB; PSS total, d
 Social foi confirmado pela aba/estado efetivo, exibiu erro offline e recuperou sem erro após restaurar Wi-Fi/dados. Na redução de movimento, as flags efetivas passaram de 128 para 132 e `HabitatGame.reducedMotion` de false para true; vídeos pareados de seis segundos foram preservados. Celebrações e todos os efeitos ainda não foram certificados por esse complemento de ACC-06.
 
 O roteiro TalkBack original mais os três passos finais foram confirmados pelo usuário sem problemas. Nenhum áudio foi capturado remotamente. Fontes, resolução, densidade, animações, acessibilidade, Wi-Fi e dados móveis foram restaurados e comparados com os valores originais. Energia de 15 minutos e medições confirmatórias profile/release continuam pendentes, sem manter o USB ocupado nesta etapa.
+
+
+## SEC-09 — revisão local concluída em 27/10/2026
+
+[Variantes, inventário, configurações e hashes](SEC09-20261027-results.json). Superfície HTTP (um caso) e quatro contratos Flutter desktop aprovados. OSV consultado somente com o payload de 254 pacotes previamente autorizado; zero divergência com as versões atuais. Oito pacotes tiveram correspondências, agrupadas em 68 registros distintos. A revisão registra caminhos de dependência e fontes atuais, incluindo a correção anterior da validação Apple. Correspondência não comprova exploração.
+
+Docs/OpenAPI respondem 200 localmente; preflight não confiável respondeu 405 sem autorização CORS. Release exige URL explícita válida. Defaults de desenvolvimento JWT/OTP e ausência de lock de produção continuam achados de configuração/reprodutibilidade a revisar na implantação; valores reais não foram inspecionados. Conclusão da auditoria local não certifica implantação segura nem significa que avisos de dependência foram corrigidos.
+
+
+## RSC-02 — concluído em 27/10/2026
+
+[Três rodadas, diagnósticos, ambiente e hashes](RSC02-20261027-results.json). Três testes passaram: dez ciclos de aquecimento mais três rodadas de 100 ciclos mistos no mesmo processo e 400 uploads negados nos dois diagnósticos de transporte. Mantido o timeout HTTP de 10 s. Os 310 envios foram persistidos uma vez cada; não houve desvio do envelope de handles/threads/tasks/HTTP, e pool emprestado/sockets próprios voltaram a zero.
+
+Após repouso, as rodadas tiveram respectivamente 232/229/221 handles, duas threads, três tasks, duas conexões HTTP ociosas e RSS de 171.515.904/168.718.336/171.229.184 bytes. A repetição mista durou 137,3 s; a suíte inteira durou 168,07 s. São medidas do processo API/teste, sem alegação de ganho ou ausência universal de vazamento. O timeout histórico de 25/10 não reapareceu, mas sua causa continua indeterminada; evidências anteriores permanecem intactas.

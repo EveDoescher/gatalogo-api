@@ -1,0 +1,625 @@
+{
+  "scenario": "SEC-09",
+  "state": "COMPLETED",
+  "date": "2026-10-27",
+  "completion_scope": "E1/E2 local inventory and release/CORS/docs review as specified; not production-deployment or exploit certification.",
+  "executor_commit": "27bd5b3",
+  "api_source_commit": "27bd5b347c5c5669ba8ed341f56998fdfe8ae9aa",
+  "flutter_source_commit": "0ca3bd2e6bc09bdffcf79362956e73c5068a652d",
+  "product_changes": false,
+  "passed": {
+    "python_http_surface": 1,
+    "flutter_contracts": 4
+  },
+  "variants": [
+    {
+      "id": "SEC09-V1",
+      "state": "EXECUTED",
+      "description": "254 authorized OSV queries; all returned advisory IDs fetched, aliases grouped, current versions checked for drift."
+    },
+    {
+      "id": "SEC09-V2",
+      "state": "EXECUTED",
+      "description": "Current dependency paths, reachability review, Git pin and SDK inventory; corrected Apple validation recognized."
+    },
+    {
+      "id": "SEC09-V3",
+      "state": "PASS",
+      "description": "Actual docs/OpenAPI and untrusted-origin preflight on frozen API and disposable DB."
+    },
+    {
+      "id": "SEC09-V4",
+      "state": "PASS",
+      "description": "Release requires explicit API URL. HTTP/HTTPS accepted; missing/relative/FTP URLs, user info and query rejected. Four desktop contracts pass."
+    },
+    {
+      "id": "SEC09-V5",
+      "state": "EXECUTED",
+      "description": "Review development-secret defaults and production reproducibility without assuming deployed values."
+    }
+  ],
+  "http_surface": {
+    "scenario": "SEC-09",
+    "docs_http": 200,
+    "openapi_http": 200,
+    "cross_origin_preflight_http": 405,
+    "cross_origin_allow_header": false,
+    "default_secret_is_development_placeholder": true,
+    "default_otp_pepper_is_development_placeholder": true,
+    "scope": "frozen app defaults and disposable service only; deployment/reverse-proxy/release settings not certified"
+  },
+  "dependency_review": {
+    "scenario": "SEC-09",
+    "reviewed_at": "2026-10-27T13:20:22.098907+00:00",
+    "api_commit": "6a57a5b912baa26cd3d62accc160f59af9497a58",
+    "flutter_commit": "0ca3bd2e6bc09bdffcf79362956e73c5068a652d",
+    "current_inventory_count": 79,
+    "queries": 254,
+    "query_version_drift": [],
+    "missing_declared_distributions": [],
+    "direct_requirements": [
+      "alembic",
+      "asyncpg",
+      "email-validator",
+      "fastapi",
+      "google-auth",
+      "google-genai",
+      "httpx",
+      "numpy",
+      "opencv-python-headless",
+      "pgvector",
+      "pillow",
+      "pwdlib",
+      "pydantic",
+      "pydantic-settings",
+      "pyjwt",
+      "python-multipart",
+      "sam-2",
+      "sqlalchemy",
+      "tzdata",
+      "uvicorn"
+    ],
+    "matched_packages": [
+      {
+        "query": {
+          "package": {
+            "name": "certifi",
+            "ecosystem": "PyPI"
+          },
+          "version": "2026.7.22"
+        },
+        "installed_direct_requirement": false,
+        "declared_dependency_path": [
+          "httpx",
+          "certifi"
+        ],
+        "classification": "TRANSITIVE_TRUST_STORE_DEPENDENCY",
+        "rationale": "Certificate bundle is transitive; matched CA changes require upstream trust-store review, not an assumed application exploit.",
+        "reviewed_sources": [
+          {
+            "path": "requirements.txt",
+            "sha256": "4b273dd1a97a06247e316bc1430cd91d9879d1e4c369a9977b6d63675d38c12d"
+          }
+        ],
+        "advisory_ids": [
+          "GHSA-6q48-6c7w-9gw2",
+          "PYSEC-2026-4320"
+        ],
+        "confirmed_exploitation": false
+      },
+      {
+        "query": {
+          "package": {
+            "name": "filelock",
+            "ecosystem": "PyPI"
+          },
+          "version": "3.32.4"
+        },
+        "installed_direct_requirement": false,
+        "declared_dependency_path": [
+          "sam-2",
+          "torch",
+          "filelock"
+        ],
+        "classification": "TRANSITIVE_MODEL_OR_TOOLING_DEPENDENCY",
+        "rationale": "No direct app FileLock invocation found; model/download/tooling dependency path recorded below.",
+        "reviewed_sources": [
+          {
+            "path": "requirements.txt",
+            "sha256": "4b273dd1a97a06247e316bc1430cd91d9879d1e4c369a9977b6d63675d38c12d"
+          }
+        ],
+        "advisory_ids": [
+          "GHSA-567q-5qvw-pf92",
+          "GHSA-9vhv-jxww-xfm5",
+          "GHSA-v4x8-3wr5-3wq8"
+        ],
+        "confirmed_exploitation": false
+      },
+      {
+        "query": {
+          "package": {
+            "name": "hydra-core",
+            "ecosystem": "PyPI"
+          },
+          "version": "1.3.5"
+        },
+        "installed_direct_requirement": false,
+        "declared_dependency_path": [
+          "sam-2",
+          "hydra-core"
+        ],
+        "classification": "OPTIONAL_MODEL_CONFIGURATION_DEPENDENCY",
+        "rationale": "SAM-2/configuration path is included in declared requirements; no attacker-provided Hydra configuration was demonstrated.",
+        "reviewed_sources": [
+          {
+            "path": "app/services/segmentation_service.py",
+            "sha256": "eeeb986428abd8f83b6781e0a72302f82f543659218ee64acac71ec34d3707b3"
+          },
+          {
+            "path": "requirements.txt",
+            "sha256": "4b273dd1a97a06247e316bc1430cd91d9879d1e4c369a9977b6d63675d38c12d"
+          }
+        ],
+        "advisory_ids": [
+          "GHSA-c3wx-c55w-pxjq",
+          "GHSA-mwj6-rfh8-7qf4",
+          "GHSA-rqx7-p7vv-w7hr",
+          "PYSEC-2026-4221",
+          "PYSEC-2026-4222",
+          "PYSEC-2026-4223"
+        ],
+        "confirmed_exploitation": false
+      },
+      {
+        "query": {
+          "package": {
+            "name": "Mako",
+            "ecosystem": "PyPI"
+          },
+          "version": "1.4.1"
+        },
+        "installed_direct_requirement": false,
+        "declared_dependency_path": [
+          "alembic",
+          "mako"
+        ],
+        "classification": "MIGRATION_TOOLING_DEPENDENCY",
+        "rationale": "Present through migration tooling; no application-controlled Mako template lookup was found in app imports.",
+        "reviewed_sources": [
+          {
+            "path": "requirements.txt",
+            "sha256": "4b273dd1a97a06247e316bc1430cd91d9879d1e4c369a9977b6d63675d38c12d"
+          }
+        ],
+        "advisory_ids": [
+          "GHSA-5639-2j2p-m4mx",
+          "PYSEC-2026-4243"
+        ],
+        "confirmed_exploitation": false
+      },
+      {
+        "query": {
+          "package": {
+            "name": "pillow",
+            "ecosystem": "PyPI"
+          },
+          "version": "12.3.0"
+        },
+        "installed_direct_requirement": true,
+        "declared_dependency_path": [
+          "pillow"
+        ],
+        "classification": "INPUT_PARSER_REQUIRES_UPSTREAM_REMEDIATION_REVIEW",
+        "rationale": "Image.open handles supplied/stored bytes; parser reachability is present, but advisory-specific malformed files were not executed.",
+        "reviewed_sources": [
+          {
+            "path": "app/services/preprocessing_service.py",
+            "sha256": "2fc40e60a0fe8b8a7d582940d307ca33827cef3a6644994316b0f058138a4c39"
+          },
+          {
+            "path": "app/services/report_media.py",
+            "sha256": "951a779ec43b3e071fef71a708ab71892beffd36b28777e5ad8db3ed283216f5"
+          },
+          {
+            "path": "app/routers/sync.py",
+            "sha256": "39e3a199decf40bc55730ad6f3bbb167bb41d7e36416c0ea1454601c6fda4e46"
+          }
+        ],
+        "advisory_ids": [
+          "GHSA-22hg-r758-rrw9",
+          "GHSA-24rc-8hj2-v98c",
+          "GHSA-254f-3936-288h",
+          "GHSA-27h8-gf7j-v5hc",
+          "GHSA-332p-7hrc-92wf",
+          "GHSA-3j72-p6qg-6xp7",
+          "GHSA-4558-3h8r-v8xp",
+          "GHSA-462x-pgg6-55fp",
+          "GHSA-4rm8-3hmm-39fg",
+          "GHSA-4rr5-89j8-mwwm",
+          "GHSA-58r4-6rv3-gfh8",
+          "GHSA-5x8w-8jj5-q52h",
+          "GHSA-5xm2-6676-qcp9",
+          "GHSA-654x-cwwv-5j9c",
+          "GHSA-65qm-jvmh-6pqg",
+          "GHSA-74r2-7ff9-mjj2",
+          "GHSA-78g4-xqwv-q3g8",
+          "GHSA-7mwm-ghpf-9vrm",
+          "GHSA-8g5g-8vmr-9782",
+          "GHSA-9v9v-9qvf-h2hj",
+          "GHSA-c6hw-5grf-ff96",
+          "GHSA-cp9v-662q-vvx9",
+          "GHSA-f2g6-542v-9j58",
+          "GHSA-fc9g-5qg7-mf45",
+          "GHSA-g4qv-2jxx-769h",
+          "GHSA-g7cr-3p24-7wf7",
+          "GHSA-g842-9rc4-69pw",
+          "GHSA-gg2r-wvfm-q9rx",
+          "GHSA-j4m9-6w36-pw47",
+          "GHSA-jg86-v3jv-hrpm",
+          "GHSA-mrfp-p49p-3hf2",
+          "GHSA-p4wg-p73j-c528",
+          "GHSA-p8hx-v2p6-rp84",
+          "GHSA-pchr-8j38-3x4p",
+          "GHSA-q45j-58j2-45rg",
+          "GHSA-rfgq-q3w2-pmv2",
+          "GHSA-v9pv-5gc8-w2m6",
+          "GHSA-vx6w-vv9f-6gvg",
+          "GHSA-w889-685w-c8fh",
+          "GHSA-xgh8-jp6q-p5x8",
+          "GHSA-xvh5-g6gv-559v",
+          "PYSEC-2026-4326",
+          "PYSEC-2026-4327",
+          "PYSEC-2026-4328"
+        ],
+        "confirmed_exploitation": false
+      },
+      {
+        "query": {
+          "package": {
+            "name": "PyJWT",
+            "ecosystem": "PyPI"
+          },
+          "version": "2.13.0"
+        },
+        "installed_direct_requirement": true,
+        "declared_dependency_path": [
+          "pyjwt"
+        ],
+        "classification": "TOKEN_PARSER_WITH_EXPLICIT_ALGORITHMS",
+        "rationale": "Access tokens use HS256/issuer and persisted session checks; Apple now validates RS256/audience/issuer. Prior bypass wording is historical and is not asserted here. Advisory-specific prerequisites require individual review.",
+        "reviewed_sources": [
+          {
+            "path": "app/services/auth_service.py",
+            "sha256": "26df36bf9a385253a7dc0361a31f6bb6c92b170eb7ce610201dc9fbed44b3597"
+          },
+          {
+            "path": "app/services/apple_identity.py",
+            "sha256": "68fbe2e5a9e05e8e326d59a38f68bd4cf0790e976678f1157d98e2ebfc768d2a"
+          },
+          {
+            "path": "app/routers/auth.py",
+            "sha256": "777ef2eb0830f01c55741c9845ec4ef7b5cea3957b6f85e9022e78110e6b76ef"
+          }
+        ],
+        "advisory_ids": [
+          "GHSA-2gx3-rcp4-g85q",
+          "GHSA-42vr-xj54-vc7v",
+          "GHSA-8wjv-2p76-3863",
+          "GHSA-9j54-fg26-wv3r",
+          "GHSA-9v7f-9g4p-ffgj",
+          "GHSA-ffc3-869f-jxw9",
+          "GHSA-gvp8-978c-rx2q",
+          "GHSA-hxm8-2xgr-2p9m",
+          "GHSA-jwrc-g2q2-pq5p",
+          "GHSA-p4g4-x82p-q773",
+          "GHSA-pxh4-856f-4h89",
+          "GHSA-r6x4-923q-g947",
+          "GHSA-w2cx-738m-mc7w",
+          "GHSA-w6j9-cwv2-h6wq",
+          "GHSA-x33g-cr3x-6449",
+          "PYSEC-2026-4140",
+          "PYSEC-2026-4141",
+          "PYSEC-2026-4142",
+          "PYSEC-2026-4143",
+          "PYSEC-2026-4144",
+          "PYSEC-2026-4145",
+          "PYSEC-2026-4146",
+          "PYSEC-2026-4147",
+          "PYSEC-2026-4148",
+          "PYSEC-2026-4149",
+          "PYSEC-2026-4150",
+          "PYSEC-2026-4151",
+          "PYSEC-2026-4152",
+          "PYSEC-2026-4183"
+        ],
+        "confirmed_exploitation": false
+      },
+      {
+        "query": {
+          "package": {
+            "name": "setuptools",
+            "ecosystem": "PyPI"
+          },
+          "version": "84.0.0"
+        },
+        "installed_direct_requirement": false,
+        "declared_dependency_path": [
+          "sam-2",
+          "torch",
+          "setuptools"
+        ],
+        "classification": "ENVIRONMENT_BUILD_TOOLING",
+        "rationale": "Build tooling present in shared environment; production runtime reachability not established.",
+        "reviewed_sources": [
+          {
+            "path": "requirements.txt",
+            "sha256": "4b273dd1a97a06247e316bc1430cd91d9879d1e4c369a9977b6d63675d38c12d"
+          }
+        ],
+        "advisory_ids": [
+          "GHSA-xmj3-9gf7-h52w"
+        ],
+        "confirmed_exploitation": false
+      },
+      {
+        "query": {
+          "package": {
+            "name": "urllib3",
+            "ecosystem": "PyPI"
+          },
+          "version": "2.7.0"
+        },
+        "installed_direct_requirement": false,
+        "declared_dependency_path": [
+          "google-genai",
+          "requests",
+          "urllib3"
+        ],
+        "classification": "TRANSITIVE_NETWORK_DEPENDENCY",
+        "rationale": "Transitive runtime dependency; transport configuration and advisory-specific prerequisites are not established by a version match.",
+        "reviewed_sources": [
+          {
+            "path": "requirements.txt",
+            "sha256": "4b273dd1a97a06247e316bc1430cd91d9879d1e4c369a9977b6d63675d38c12d"
+          }
+        ],
+        "advisory_ids": [
+          "GHSA-8988-9cw3-xx77",
+          "GHSA-gh4c-6fx4-qh6g",
+          "GHSA-vxq7-64xx-v4gw",
+          "PYSEC-2026-4175",
+          "PYSEC-2026-4176",
+          "PYSEC-2026-4177"
+        ],
+        "confirmed_exploitation": false
+      }
+    ],
+    "raw_advisory_ids": 93,
+    "deduplicated_alias_groups": 68,
+    "withdrawn_ids": [],
+    "native_and_git_inventory": {
+      "SAM-2_requirement": "SAM-2 @ git+https://github.com/facebookresearch/sam2.git@2b90b9f5ceec907a1c18123530e92e794ad901a4",
+      "sdk_dependencies": {
+        "flutter": {
+          "dependency": "direct main",
+          "description": "flutter",
+          "source": "sdk",
+          "version": "0.0.0"
+        },
+        "flutter_test": {
+          "dependency": "direct dev",
+          "description": "flutter",
+          "source": "sdk",
+          "version": "0.0.0"
+        },
+        "flutter_web_plugins": {
+          "dependency": "transitive",
+          "description": "flutter",
+          "source": "sdk",
+          "version": "0.0.0"
+        },
+        "sky_engine": {
+          "dependency": "transitive",
+          "description": "flutter",
+          "source": "sdk",
+          "version": "0.0.0"
+        }
+      },
+      "native_plugins": "Resolved versions and native plugin graph are recorded by pubspec.lock and .flutter-plugins-dependencies; OSV hosted-package matching is not a native SDK binary audit."
+    },
+    "source_hashes": {
+      "requirements.txt": "4b273dd1a97a06247e316bc1430cd91d9879d1e4c369a9977b6d63675d38c12d",
+      "pubspec.lock": "6a156f557470a96a96d0efb4d3bd0c6718d825e2518419833a81fc6e1b441d53",
+      "app/config.py": "018c33c9b9a23890904dcf7afee06eaf413d945d9e981a59a623ae4595e80042",
+      "app/main.py": "b7e5a5dd237700420d2dceb65ccb358c8b312eafa777d223bef7210c9816b270",
+      "lib/config/api_config.dart": "333188d6556b6e7ef872603c7f56a1e39908924ff634fb567f6221789221ff9c"
+    },
+    "findings": [
+      {
+        "id": "SEC09-DEPENDENCY-VERSIONS",
+        "state": "OPEN_REVIEW",
+        "description": "Eight environment packages have OSV version matches. No exploit is demonstrated; dependency paths and aliases retained.",
+        "recommendation": "Select upstream fixed versions per advisory and validate the actual production dependency closure before an upgrade.",
+        "correction_commit": null
+      },
+      {
+        "id": "SEC09-DEFAULT-SECRETS",
+        "state": "OPEN_DEPLOYMENT_CONFIGURATION",
+        "description": "Settings retain explicit development JWT/OTP placeholders and the local app exposes docs/OpenAPI. Real deployment environment was not inspected.",
+        "recommendation": "Require independent non-placeholder secrets in deployment and explicitly decide docs exposure; no production exposure inferred from the local fixture.",
+        "correction_commit": null
+      },
+      {
+        "id": "SEC09-REPRODUCIBILITY",
+        "state": "OPEN_REPRODUCIBILITY",
+        "description": "API requirements primarily use lower bounds, so this shared installed environment is not a production lock.",
+        "recommendation": "Create platform-specific reproducible production resolution and validate it separately rather than treating all shared-environment packages as shipped."
+      }
+    ],
+    "limitations": [
+      "E1/E2 local review only; no production environment, reverse proxy, exploit, native SDK or release APK certification.",
+      "Eight version-matched packages are not eight confirmed exploitable product defects.",
+      "No code, credentials or user data were sent to OSV; only the exact previously authorized 254 package names/versions.",
+      "Historical frozen-source applicability findings remain preserved; current Apple verification correction is recognized."
+    ]
+  },
+  "executors": [
+    "scripts/run_security_regression.py --scenario SEC-09",
+    "scripts/campaign/dependency_advisories.py",
+    "scripts/campaign/advisory_review.py",
+    "scripts/campaign/current_dependency_review.py",
+    "test/architecture_contracts_test.dart"
+  ],
+  "open_findings": [
+    {
+      "id": "SEC09-DEPENDENCY-VERSIONS",
+      "state": "OPEN_REVIEW",
+      "description": "Eight environment packages have OSV version matches. No exploit is demonstrated; dependency paths and aliases retained.",
+      "recommendation": "Select upstream fixed versions per advisory and validate the actual production dependency closure before an upgrade.",
+      "correction_commit": null
+    },
+    {
+      "id": "SEC09-DEFAULT-SECRETS",
+      "state": "OPEN_DEPLOYMENT_CONFIGURATION",
+      "description": "Settings retain explicit development JWT/OTP placeholders and the local app exposes docs/OpenAPI. Real deployment environment was not inspected.",
+      "recommendation": "Require independent non-placeholder secrets in deployment and explicitly decide docs exposure; no production exposure inferred from the local fixture.",
+      "correction_commit": null
+    },
+    {
+      "id": "SEC09-REPRODUCIBILITY",
+      "state": "OPEN_REPRODUCIBILITY",
+      "description": "API requirements primarily use lower bounds, so this shared installed environment is not a production lock.",
+      "recommendation": "Create platform-specific reproducible production resolution and validate it separately rather than treating all shared-environment packages as shipped."
+    }
+  ],
+  "limitations": [
+    "E1/E2 local review only; no production environment, reverse proxy, exploit, native SDK or release APK certification.",
+    "Eight version-matched packages are not eight confirmed exploitable product defects.",
+    "No code, credentials or user data were sent to OSV; only the exact previously authorized 254 package names/versions.",
+    "Historical frozen-source applicability findings remain preserved; current Apple verification correction is recognized."
+  ],
+  "evidence_root_private": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential",
+  "evidence": [
+    {
+      "path": "SEC09-20261027/advisories.json",
+      "sha256": "f05d63d9841e815312e13e2e25674be81f65e39068de521529d4a606605d9190",
+      "bytes": 97550
+    },
+    {
+      "path": "SEC09-20261027/advisory-details.json",
+      "sha256": "20d98984258e5f18fa55ebeb2747ebeb21a6d46d882b72f5d777cad3c238ea3d",
+      "bytes": 325505
+    },
+    {
+      "path": "SEC09-20261027/current-review.json",
+      "sha256": "e6ca164ce51acf369c7eb8a9e40bbb1b26bab61925d8e4cfa7ec0cfc5f474243",
+      "bytes": 14124
+    },
+    {
+      "path": "SEC09-20261027/flutter-contracts.jsonl",
+      "sha256": "ff212983f699eefdd69dcc76d7935cd69ba1319d0ebfeef3e22defc59e11aafc",
+      "bytes": 2725
+    },
+    {
+      "path": "SEC09-20261027/prior-usb-checkpoint.json",
+      "sha256": "d5c2036c3b8d203ef08ca46b10ac699efe22db3408173623a945313937123413",
+      "bytes": 410
+    },
+    {
+      "path": "SEC09-20261027/prior-usb-executors.zip",
+      "sha256": "0cdd588293e5059ff64308c884a7d0170e208436c7137526e5a69444536c2688",
+      "bytes": 14454
+    },
+    {
+      "path": "SEC09-20261027/surface-01/candidate.tar",
+      "sha256": "f65c9c4542c2f4836e0bf65aec3dc09ea35048801150d1f5c2e4527ebf91cdc5",
+      "bytes": 1054720
+    },
+    {
+      "path": "SEC09-20261027/surface-01/candidate_manifest.json",
+      "sha256": "40a9006e179dcff148768095d700496e1fa0a31d357f89ecc91447dea37c59dd",
+      "bytes": 568
+    },
+    {
+      "path": "SEC09-20261027/surface-01/executors/__pycache__/extended_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "35fec0d9958d9d0a364decb51c7abfe34a28d0184a75ec2372ea919a81305480",
+      "bytes": 150076
+    },
+    {
+      "path": "SEC09-20261027/surface-01/executors/__pycache__/fixtures.cpython-313.pyc",
+      "sha256": "fdbaf98844446ff3e4f832551355ee432b137e71f346995f3026f5908732fe29",
+      "bytes": 6514
+    },
+    {
+      "path": "SEC09-20261027/surface-01/executors/__pycache__/measurements.cpython-313.pyc",
+      "sha256": "d34362f94d93aec232f4e4f9f1c3abfff2e1f1c10cc550a68cd87b439c420d05",
+      "bytes": 4544
+    },
+    {
+      "path": "SEC09-20261027/surface-01/executors/__pycache__/remaining_mechanism_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "666b0582a917b49c5f56632cb63299e74d1974abe049dd0516f5cacaf91879b6",
+      "bytes": 50053
+    },
+    {
+      "path": "SEC09-20261027/surface-01/executors/__pycache__/security_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "f1e50550ad72d36e96e7d31e2eb25b79ace0254f0ab2416318fea70ac019be8f",
+      "bytes": 84777
+    },
+    {
+      "path": "SEC09-20261027/surface-01/executors/extended_cases.py",
+      "sha256": "43a4aa7b44b7268ac0b5830a5941eff1d1737af8a353ece879e25c35ebce377b",
+      "bytes": 51070
+    },
+    {
+      "path": "SEC09-20261027/surface-01/executors/fixtures.py",
+      "sha256": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+      "bytes": 4230
+    },
+    {
+      "path": "SEC09-20261027/surface-01/executors/measurements.py",
+      "sha256": "90e8f0946abc010437d25b6191c60a26c5382343ba1cd94bb77ede7c5ef2031f",
+      "bytes": 2320
+    },
+    {
+      "path": "SEC09-20261027/surface-01/executors/remaining_mechanism_cases.py",
+      "sha256": "117498601cebca2e5bad86d9d8d9ab661dedc788540c68fd13170a74052d0286",
+      "bytes": 14734
+    },
+    {
+      "path": "SEC09-20261027/surface-01/executors/security_cases.py",
+      "sha256": "de35705f692b00f80fe9c37e593bb601f20c5345b524910e2e26c382dfe20178",
+      "bytes": 25796
+    },
+    {
+      "path": "SEC09-20261027/surface-01/junit.xml",
+      "sha256": "c530764b0734d38a8ad64ee4f53b006a9458bb53df03c6deb9d3bfb2a229d7eb",
+      "bytes": 413
+    },
+    {
+      "path": "SEC09-20261027/surface-01/migrations.log",
+      "sha256": "a3b46d2f11f9b6e02caac2d03005d0237af6f6b915efdc0e4805c9d2bcafece2",
+      "bytes": 2168
+    },
+    {
+      "path": "SEC09-20261027/surface-01/observations/SEC09-local-surface.json",
+      "sha256": "a2be4a0f2faa516f27fb24aeb7a734fe8cadbbbc658d0b88a06ab226b199a394",
+      "bytes": 385
+    },
+    {
+      "path": "SEC09-20261027/surface-01/pytest.log",
+      "sha256": "2d06c16834ba5393ab9304ab000c8725428782c11afa55533b1b3f3b8a944fcc",
+      "bytes": 116
+    },
+    {
+      "path": "SEC09-20261027/surface-01/source_manifest.json",
+      "sha256": "212b8ef6dd7dd36fc9f511a1fac82162b4bad675be7727c728a78d1d38c06241",
+      "bytes": 25363
+    },
+    {
+      "path": "SEC09-20261027/surface-01/summary.json",
+      "sha256": "19bfc032dd5cce83366dc36d2ee8b87432afd94e2f032763acd895c2b9fd9a4e",
+      "bytes": 399
+    }
+  ]
+}

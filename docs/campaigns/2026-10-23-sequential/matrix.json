@@ -1136,7 +1136,7 @@
   },
   {
     "scenario": "SEC-09",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Inventário de dependências/lockfiles, configuração release/CORS/docs expostas.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -1144,14 +1144,19 @@
       "dependency_advisories.json",
       "dependency_advisory_review.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "limitation": "Local E1/E2 review complete: 254 current queried versions match, eight packages with version matches and 68 alias groups. Advisory-specific exploitation, real deployment and production-lock remediation are separate open review findings; no secure-deployment claim.",
     "local_runs": [
       "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json"
     ],
     "followup_runs": [
       "attempts/dependency-static-01/dependency_static/review.json",
       "attempts/dependency-static-02/dependency_static/review.json"
-    ]
+    ],
+    "closure_evidence": [
+      "SEC09-20261027-results.json"
+    ],
+    "executor": "scripts/campaign/current_dependency_review.py + current HTTP surface and desktop Flutter contracts",
+    "findings": true
   },
   {
     "scenario": "SEC-10",
@@ -1235,7 +1240,7 @@
   },
   {
     "scenario": "RSC-02",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "100 ciclos de sync/foto/conversa/erro, 3 rodadas com repouso sem reiniciar.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -1243,10 +1248,12 @@
     "local_runs": [
       "attempts/mechanisms-01/critical_runs/mechanisms-baseline/summary.json"
     ],
-    "limitation": "One 100-cycle mixed round and 400 isolated denied-upload diagnostics passed; run 05 timed out in mixed round 2 cycle 28. Three-round stability not established.",
+    "limitation": "Current revalidation passed ten warmup cycles plus three rounds of 100 mixed lifecycles in one process and 400 denied-upload diagnostics, with original 10 s HTTP timeout. Earlier timeout remains historical/unexplained; no universal no-leak or speed-gain claim.",
     "closure_evidence": [
-      "RSC02-20261025-results.json"
-    ]
+      "RSC02-20261025-results.json",
+      "RSC02-20261027-results.json"
+    ],
+    "executor": "scripts/campaign/resource_lifecycle_cases.py"
   },
   {
     "scenario": "RSC-03",
