@@ -53,6 +53,9 @@ def trace_app(monkeypatch):
                 state["variant"] = options["variant"]
                 async with state["factory"]() as session:
                     user = await session.get(User, state["owner"])
+                    # AuthTokens validates EmailStr; .invalid is rejected even
+                    # though the original fixture only needed JWT-protected reads.
+                    user.email = f"analysis-errors-{user.id.hex}@example.com"
                     bundle = await issue_tokens(session, user=user, device_id="analysis-errors-fixture")
                     client_id, cat_id = uuid4(), uuid4()
                     session.add(RemoteCat(id=cat_id, user_id=user.id, client_id=client_id,
