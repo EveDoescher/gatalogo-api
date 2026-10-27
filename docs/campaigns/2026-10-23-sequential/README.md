@@ -12,6 +12,12 @@ O LOAD-01 registrou quatro falhas de transporte nos patamares 25/50 (ReadError, 
 
 [LAT-03 concluído: erro, refresh, tentativas e persistência](LAT03-20261027-results.json). Sete variantes, 35 amostras medidas e sete aquecimentos; sem alegar percentis confiáveis. Corrigido no Flutter o 503 HTML interpretado como falha permanente.
 
+- [IMG-04 concluído](IMG04-20261027-results.json): 32 variantes de caches independentes e presença/ausência de chave, quatro preparações reais e dois processos novos. Reutilização não chama provedor e conserva os atributos; tempos/avisos de cache são tratados separadamente.
+- [LOAD-04 concluído](LOAD04-20261027-results.json): quatro jobs reais detector/SAM/Gemini, com um e dois consumidores, persistência e efeitos de negócio reais; complementam os 244 jobs controlados já registrados. Nenhum job duplicado, tentativas iguais a um e trabalhos DINO separados preservados.
+- [Movimento e semântica locais](ACC-MOTION-20261027-results.json): 20 testes passaram; rótulo duplicado no Quintal corrigido sem alterar pintura. ACC-05/06 continuam parciais.
+
+Até o fechamento desses lotes foram registradas 51 gerações externas retornadas, com estimativa de US$ 0,1003581 pela tabela padrão, dentro do teto compartilhado de US$ 1/64 tentativas. O valor não representa conferência da cobrança efetiva. A avaliação de atributos e a repetição sem chamada externa terminaram; a etapa Oxford de máscaras ainda está em execução, portanto IMG-06 ainda não foi fechado.
+
 Nesta continuação, o usuário autorizou cargas prolongadas descartáveis e IA paga. Nenhum aparelho físico será utilizado nesta etapa, por USB ou Wi-Fi; iOS permanece fora do escopo. A autorização não substitui a execução: cenários físicos conservam seus critérios e não serão concluídos com evidência desktop. Os lotes pagos terão orçamento e contagem limitados, sem credenciais nos relatórios.
 
 As medições anteriores e seus limites ficam preservados abaixo.
