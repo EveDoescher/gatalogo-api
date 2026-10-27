@@ -57,7 +57,7 @@ async def queue_probe(queue):
                     jobs.append(job.id)
                     gpu_jobs.append(gpu.id)
                     photos.append(photo.id)
-                    clients.append(cat.client_id)
+                    clients.append(str(cat.client_id))
                 await session.commit()
             seen, inflight, peak = [], 0, 0
 
