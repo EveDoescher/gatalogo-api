@@ -36,6 +36,12 @@ def main():
                 "Raw latency distributions are empirical, without a claim of stable population P99.",
             ],
         }
+        report["transport_findings"] = [{"phase": p["phase"], "errors": p["errors"],
+            "offered": p["offered"],
+            "successful_valid_responses": sum(r["count"] for r in p["responses"] if r["status"] == "200" and r["valid"]),
+            "interpretation": "Transport failure observed, not an HTTP error response. Fixture forces 1s server keepalive; client defaults differ. Keepalive reuse race/resource scheduling are hypotheses, not proven product defects. Revalidate with aligned expiry and isolated timing before changing product."}
+            for p in observation["phases"] if p["errors"]]
+        report["completion_meaning"] = "Planned experiment variants executed and integrity checked; completion does not mean zero measured transport failures. Findings remain explicit."
         name = scenario.replace("-", "") + "-20261027-results.json"
         (DOC / name).write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         row = next(r for r in matrix if r["scenario"] == scenario)

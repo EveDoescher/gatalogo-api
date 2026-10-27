@@ -1744,5 +1744,27 @@
     "Refresh counts include warmup. Warmup requests are excluded from measured phase totals.",
     "Shared PC; a small real-provider transport probe ran during LOAD-01. No physical device.",
     "Raw latency distributions are empirical, without a claim of stable population P99."
-  ]
+  ],
+  "transport_findings": [
+    {
+      "phase": "closed-25",
+      "errors": {
+        "ReadError": 1
+      },
+      "offered": 4933,
+      "successful_valid_responses": 4932,
+      "interpretation": "Transport failure observed, not an HTTP error response. Fixture forces 1s server keepalive; client defaults differ. Keepalive reuse race/resource scheduling are hypotheses, not proven product defects. Revalidate with aligned expiry and isolated timing before changing product."
+    },
+    {
+      "phase": "closed-50",
+      "errors": {
+        "RemoteProtocolError": 2,
+        "ReadTimeout": 1
+      },
+      "offered": 5134,
+      "successful_valid_responses": 5131,
+      "interpretation": "Transport failure observed, not an HTTP error response. Fixture forces 1s server keepalive; client defaults differ. Keepalive reuse race/resource scheduling are hypotheses, not proven product defects. Revalidate with aligned expiry and isolated timing before changing product."
+    }
+  ],
+  "completion_meaning": "Planned experiment variants executed and integrity checked; completion does not mean zero measured transport failures. Findings remain explicit."
 }

@@ -6,6 +6,8 @@
 
 [LOAD-01 concluído](LOAD01-20261027-results.json): cinco patamares de concorrência (1/5/10/25/50), com 30 segundos de aquecimento e três minutos medidos em cada um; respostas, consultas SQL, recursos e integridade registrados. LOAD-02 e LOAD-06 permanecem em execução e não estão contabilizados como concluídos.
 
+O LOAD-01 registrou quatro falhas de transporte nos patamares 25/50 (ReadError, RemoteProtocolError e ReadTimeout). Não houve resposta HTTP de erro nem alteração de integridade. O servidor descartável força keepalive de um segundo; uma corrida de reutilização de conexão é hipótese a confirmar, sem atribuição automática ao produto. Concluir o experimento significa executar suas variantes e registrar também as falhas encontradas.
+
 [LAT-03 concluído: erro, refresh, tentativas e persistência](LAT03-20261027-results.json). Sete variantes, 35 amostras medidas e sete aquecimentos; sem alegar percentis confiáveis. Corrigido no Flutter o 503 HTML interpretado como falha permanente.
 
 Nesta continuação, o usuário autorizou cargas prolongadas descartáveis e IA paga. Nenhum aparelho físico será utilizado nesta etapa, por USB ou Wi-Fi; iOS permanece fora do escopo. A autorização não substitui a execução: cenários físicos conservam seus critérios e não serão concluídos com evidência desktop. Os lotes pagos terão orçamento e contagem limitados, sem credenciais nos relatórios.
