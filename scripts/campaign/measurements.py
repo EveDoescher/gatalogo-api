@@ -5,8 +5,25 @@ import hashlib
 import json
 import math
 import os
+import platform
 from pathlib import Path
 import time
+
+
+def hardware():
+    result = {"platform": platform.platform(), "logical_cpus": os.cpu_count()}
+    if os.name == "nt":
+        class MemoryStatus(ctypes.Structure):
+            _fields_ = [("length", ctypes.c_ulong), ("load", ctypes.c_ulong)] + [
+                (name, ctypes.c_ulonglong) for name in (
+                    "total_phys", "available_phys", "total_pagefile", "available_pagefile",
+                    "total_virtual", "available_virtual", "available_extended_virtual")]
+        status = MemoryStatus()
+        status.length = ctypes.sizeof(status)
+        if not ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(status)):
+            raise ctypes.WinError()
+        result["total_ram_bytes"] = status.total_phys
+    return result
 
 
 def resources():
