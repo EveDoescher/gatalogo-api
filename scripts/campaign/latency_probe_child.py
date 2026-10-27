@@ -2,6 +2,7 @@
 
 import argparse
 import asyncio
+from collections import Counter
 import json
 from pathlib import Path
 import time
@@ -57,13 +58,16 @@ async def run(config):
                     )
 
         paths = options["paths"]
-        await asyncio.gather(
+        warmed = await asyncio.gather(
             *(
                 request(kind, path, False)
                 for _ in range(warmup)
                 for kind, path in paths.items()
-            )
+            ), return_exceptions=True,
         )
+        warmup_errors = dict(Counter(type(r).__name__ for r in warmed if isinstance(r, BaseException)))
+        (out / "warmup-result.json").write_text(json.dumps({"failed_request_errors": warmup_errors})+"\n")
+        assert not warmup_errors, "Warmup failed; preserve warmup-result.json"
         (out / "warmed.json").write_text("{}\n")
         deadline = time.monotonic() + 60
         while not (out / "measure.json").exists():
@@ -71,13 +75,14 @@ async def run(config):
             await asyncio.sleep(0.01)
         before = resources()
         started = time.perf_counter()
-        await asyncio.gather(
+        completed = await asyncio.gather(
             *(
                 request(kind, path, True)
                 for _ in range(count)
                 for kind, path in paths.items()
-            )
+            ), return_exceptions=True,
         )
+        errors = dict(Counter(type(r).__name__ for r in completed if isinstance(r, BaseException)))
         result = {
             "warmup_per_route": warmup,
             "connection_configuration": {key: options.get(key) for key in (
@@ -88,10 +93,14 @@ async def run(config):
             "resources_before": before,
             "resources_after": resources(),
             "rows": rows,
+            "attempted": 3*count,
+            "completed_successful": len(rows),
+            "failed_request_errors": errors,
             "scope": "Client complete-body HTTP time excludes generator semaphore queue; generated fixture data only.",
         }
         (out / "generator-result.json").write_text(json.dumps(result, indent=2) + "\n")
         print(f"LAT08 generator: {len(rows)} successful requests", flush=True)
+        assert not errors, "Requests failed; preserve partial generator-result.json"
 
 
 if __name__ == "__main__":
