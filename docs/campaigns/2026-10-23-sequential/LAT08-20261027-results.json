@@ -1113,6 +1113,14 @@
       "path": "LAT08-20261027-02/summary.json",
       "sha256": "168a1742e806aab10fc67ac1dfe0900dde501199e17c3166c762278b8792f6d8",
       "bytes": 399
+    },
+    {
+      "path": "LAT08-20261027-02/analysis-recheck.json",
+      "sha256": "ae264cc5504a14633adbd6825101f35b192cd92c49d765108addef3a5fc62dc5",
+      "bytes": 15100
     }
-  ]
+  ],
+  "analysis_code_commit": "c0a59491daa674632ffcf397c46d3d9d0a18adb0",
+  "analysis_script_sha256": "cc39491a26725a0697787fbc1dce46138aaffdf55598b96ad09642b1d560ff6c",
+  "postprocessor_reproduced_identical_metrics": true
 }
