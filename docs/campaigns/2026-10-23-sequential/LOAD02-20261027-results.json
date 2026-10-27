@@ -1331,6 +1331,425 @@
     "paid_calls": 0,
     "scope": "Separate generator PID, own migrated PostgreSQL, real TCP/API, generated accounts. Fixed 30s warmups and planned full durations except explicitly labeled pilot. Shared host, no production capacity or causal speedup claims; percentiles are empirical and require separate uncertainty analysis."
   },
+  "descriptive_metrics": {
+    "phases": [
+      {
+        "phase": "open-1",
+        "offered": 180,
+        "completed_attempts": 180,
+        "successful_valid_responses": 180,
+        "failed_attempts": 0,
+        "not_started_safety_shed": 0,
+        "successful_rps_including_drain": 0.9999895928860683,
+        "successful_operation_ms": {
+          "feed": {
+            "n": 36,
+            "mean_ms": 28.472619444073644,
+            "median_ms": 24.32930000941269,
+            "q25_ms": 21.178474999032915,
+            "q75_ms": 34.02387501409976,
+            "empirical_p95_ms": 47.43975000747014,
+            "expected_observations_above_p95": 1.8,
+            "min_ms": 20.28620001510717,
+            "max_ms": 48.28379998798482,
+            "sample_stddev_ms": 9.400301998568809
+          },
+          "inbox": {
+            "n": 36,
+            "mean_ms": 36.446563889007344,
+            "median_ms": 38.317500017001294,
+            "q25_ms": 26.180524997471366,
+            "q75_ms": 42.838174995267764,
+            "empirical_p95_ms": 56.597625007270835,
+            "expected_observations_above_p95": 1.8,
+            "min_ms": 22.16469999984838,
+            "max_ms": 70.33779998891987,
+            "sample_stddev_ms": 12.081084805855049
+          },
+          "pull": {
+            "n": 72,
+            "mean_ms": 29.949715280963574,
+            "median_ms": 25.375000011990778,
+            "q25_ms": 21.676500015018973,
+            "q75_ms": 39.718275009363424,
+            "empirical_p95_ms": 46.140354993985966,
+            "expected_observations_above_p95": 3.6,
+            "min_ms": 19.643700012238696,
+            "max_ms": 53.865900001255795,
+            "sample_stddev_ms": 9.73470502939614
+          },
+          "yard": {
+            "n": 36,
+            "mean_ms": 150.02073889061447,
+            "median_ms": 121.28505000146106,
+            "q25_ms": 109.87237501103664,
+            "q75_ms": 158.6601250091917,
+            "empirical_p95_ms": 284.346149994235,
+            "expected_observations_above_p95": 1.8,
+            "min_ms": 95.46250000130385,
+            "max_ms": 422.82420000992715,
+            "sample_stddev_ms": 72.43305608731409
+          }
+        },
+        "failed_operation_ms": {
+          "n": 0
+        },
+        "generator_queue_ms": {
+          "n": 180,
+          "mean_ms": 8.297253895337539,
+          "median_ms": 8.212250002543442,
+          "q25_ms": 4.378875004476868,
+          "q75_ms": 12.30625000607688,
+          "empirical_p95_ms": 15.380550001282245,
+          "expected_observations_above_p95": 9.0,
+          "min_ms": 0.1736000122036785,
+          "max_ms": 17.052800016244873,
+          "sample_stddev_ms": 4.607019060819192
+        },
+        "offered_time_blocks_300s": [
+          {
+            "block": 0,
+            "completed": 180,
+            "failures": 0,
+            "operation_ms": {
+              "n": 180,
+              "mean_ms": 54.96787055712452,
+              "median_ms": 33.242750010685995,
+              "q25_ms": 22.758475002774503,
+              "q75_ms": 47.43975000747014,
+              "empirical_p95_ms": 153.2233050136706,
+              "expected_observations_above_p95": 9.0,
+              "min_ms": 19.643700012238696,
+              "max_ms": 422.82420000992715,
+              "sample_stddev_ms": 58.209169366348824
+            }
+          }
+        ]
+      },
+      {
+        "phase": "open-5",
+        "offered": 900,
+        "completed_attempts": 900,
+        "successful_valid_responses": 900,
+        "failed_attempts": 0,
+        "not_started_safety_shed": 0,
+        "successful_rps_including_drain": 4.986640432904707,
+        "successful_operation_ms": {
+          "feed": {
+            "n": 180,
+            "mean_ms": 47.28573777958647,
+            "median_ms": 30.759150002268143,
+            "q25_ms": 22.18607500253711,
+            "q75_ms": 48.1753749991185,
+            "empirical_p95_ms": 136.17045498540386,
+            "expected_observations_above_p95": 9.0,
+            "min_ms": 19.147899991367012,
+            "max_ms": 367.18820000533015,
+            "sample_stddev_ms": 51.05947032126071
+          },
+          "inbox": {
+            "n": 180,
+            "mean_ms": 54.00123111240747,
+            "median_ms": 33.15909999946598,
+            "q25_ms": 26.336425013141707,
+            "q75_ms": 56.002850011282135,
+            "empirical_p95_ms": 130.9985000130836,
+            "expected_observations_above_p95": 9.0,
+            "min_ms": 20.84919999470003,
+            "max_ms": 523.134300019592,
+            "sample_stddev_ms": 64.05704242055637
+          },
+          "pull": {
+            "n": 360,
+            "mean_ms": 44.06213027913408,
+            "median_ms": 27.904600006877445,
+            "q25_ms": 22.42390000174055,
+            "q75_ms": 42.34572500718059,
+            "empirical_p95_ms": 136.4048700022977,
+            "expected_observations_above_p95": 18.0,
+            "min_ms": 19.59889999125153,
+            "max_ms": 433.05789999431,
+            "sample_stddev_ms": 50.649791508150535
+          },
+          "yard": {
+            "n": 180,
+            "mean_ms": 216.6672838885764,
+            "median_ms": 132.20460001321044,
+            "q25_ms": 105.22777499863878,
+            "q75_ms": 260.177800017118,
+            "empirical_p95_ms": 554.9630700072156,
+            "expected_observations_above_p95": 9.0,
+            "min_ms": 94.87029997399077,
+            "max_ms": 1159.2993999947794,
+            "sample_stddev_ms": 183.3663072630304
+          }
+        },
+        "failed_operation_ms": {
+          "n": 0
+        },
+        "generator_queue_ms": {
+          "n": 900,
+          "mean_ms": 8.752647000817685,
+          "median_ms": 8.50005001120735,
+          "q25_ms": 4.6829749990138225,
+          "q75_ms": 12.27255000412697,
+          "empirical_p95_ms": 15.62328498403076,
+          "expected_observations_above_p95": 45.0,
+          "min_ms": 0.12320000678300858,
+          "max_ms": 63.09839998721145,
+          "sample_stddev_ms": 5.583751238190889
+        },
+        "offered_time_blocks_300s": [
+          {
+            "block": 0,
+            "completed": 900,
+            "failures": 0,
+            "operation_ms": {
+              "n": 900,
+              "mean_ms": 81.2157026677677,
+              "median_ms": 36.79190001275856,
+              "q25_ms": 24.511725001502782,
+              "q75_ms": 97.27947500505252,
+              "empirical_p95_ms": 302.64353999809805,
+              "expected_observations_above_p95": 45.0,
+              "min_ms": 19.147899991367012,
+              "max_ms": 1159.2993999947794,
+              "sample_stddev_ms": 116.8774738362992
+            }
+          }
+        ]
+      },
+      {
+        "phase": "open-10",
+        "offered": 1800,
+        "completed_attempts": 1800,
+        "successful_valid_responses": 1800,
+        "failed_attempts": 0,
+        "not_started_safety_shed": 0,
+        "successful_rps_including_drain": 9.999037309352742,
+        "successful_operation_ms": {
+          "feed": {
+            "n": 360,
+            "mean_ms": 327.07900833217235,
+            "median_ms": 43.979149995720945,
+            "q25_ms": 26.414425003167707,
+            "q75_ms": 206.83734998601722,
+            "empirical_p95_ms": 1979.335444986647,
+            "expected_observations_above_p95": 18.0,
+            "min_ms": 19.670499983476475,
+            "max_ms": 4293.413600011263,
+            "sample_stddev_ms": 687.6250382797555
+          },
+          "inbox": {
+            "n": 360,
+            "mean_ms": 391.4004866674077,
+            "median_ms": 65.57529998826794,
+            "q25_ms": 29.438699995807838,
+            "q75_ms": 283.21959999448154,
+            "empirical_p95_ms": 2369.5138199880603,
+            "expected_observations_above_p95": 18.0,
+            "min_ms": 21.279399981722236,
+            "max_ms": 4466.39449999202,
+            "sample_stddev_ms": 753.6985984217602
+          },
+          "pull": {
+            "n": 720,
+            "mean_ms": 348.27853777771656,
+            "median_ms": 56.863200006773695,
+            "q25_ms": 26.860749996558297,
+            "q75_ms": 259.42802498320816,
+            "empirical_p95_ms": 2027.0489150047026,
+            "expected_observations_above_p95": 36.0,
+            "min_ms": 19.384900020668283,
+            "max_ms": 3901.102499978151,
+            "sample_stddev_ms": 683.5992930214281
+          },
+          "yard": {
+            "n": 360,
+            "mean_ms": 1019.3625122225462,
+            "median_ms": 235.5972999939695,
+            "q25_ms": 126.48717500997009,
+            "q75_ms": 1325.136025014217,
+            "empirical_p95_ms": 4552.484700010974,
+            "expected_observations_above_p95": 18.0,
+            "min_ms": 93.44009999767877,
+            "max_ms": 6096.057099988684,
+            "sample_stddev_ms": 1429.4940336251043
+          }
+        },
+        "failed_operation_ms": {
+          "n": 0
+        },
+        "generator_queue_ms": {
+          "n": 1800,
+          "mean_ms": 11.254551614773744,
+          "median_ms": 8.854450003127567,
+          "q25_ms": 4.555075000098441,
+          "q75_ms": 13.606499982415698,
+          "empirical_p95_ms": 32.05165999097516,
+          "expected_observations_above_p95": 90.0,
+          "min_ms": 0.09560000034980476,
+          "max_ms": 180.19539999659173,
+          "sample_stddev_ms": 12.264034134987318
+        },
+        "offered_time_blocks_300s": [
+          {
+            "block": 0,
+            "completed": 1800,
+            "failures": 0,
+            "operation_ms": {
+              "n": 1800,
+              "mean_ms": 486.87981655551187,
+              "median_ms": 103.5109999938868,
+              "q25_ms": 30.41562499856809,
+              "q75_ms": 338.66864999436075,
+              "empirical_p95_ms": 2649.1772949811993,
+              "expected_observations_above_p95": 90.0,
+              "min_ms": 19.384900020668283,
+              "max_ms": 6096.057099988684,
+              "sample_stddev_ms": 934.6797358235422
+            }
+          }
+        ]
+      },
+      {
+        "phase": "open-25",
+        "offered": 4500,
+        "completed_attempts": 4441,
+        "successful_valid_responses": 4373,
+        "failed_attempts": 68,
+        "not_started_safety_shed": 59,
+        "successful_rps_including_drain": 23.013577033175302,
+        "successful_operation_ms": {
+          "feed": {
+            "n": 879,
+            "mean_ms": 3618.4603359498055,
+            "median_ms": 3325.828700006241,
+            "q25_ms": 388.59295001020655,
+            "q75_ms": 5265.245150003466,
+            "empirical_p95_ms": 9465.358289991853,
+            "expected_observations_above_p95": 43.95,
+            "min_ms": 23.205200006486848,
+            "max_ms": 15511.00790000055,
+            "sample_stddev_ms": 3132.037961895956
+          },
+          "inbox": {
+            "n": 875,
+            "mean_ms": 3443.0203179425694,
+            "median_ms": 3363.8284000044223,
+            "q25_ms": 439.6082000021124,
+            "q75_ms": 5099.042650006595,
+            "empirical_p95_ms": 9023.250080007703,
+            "expected_observations_above_p95": 43.75,
+            "min_ms": 22.38840001518838,
+            "max_ms": 14663.462399999844,
+            "sample_stddev_ms": 2848.52401763557
+          },
+          "pull": {
+            "n": 1751,
+            "mean_ms": 3570.237383152379,
+            "median_ms": 3337.2357999905944,
+            "q25_ms": 423.7157000025036,
+            "q75_ms": 5173.088649986312,
+            "empirical_p95_ms": 9721.91340001882,
+            "expected_observations_above_p95": 87.55000000000001,
+            "min_ms": 29.939700005343184,
+            "max_ms": 15622.43089999538,
+            "sample_stddev_ms": 3036.2696844208485
+          },
+          "yard": {
+            "n": 868,
+            "mean_ms": 4887.406880991058,
+            "median_ms": 4533.790250003221,
+            "q25_ms": 2302.189524991263,
+            "q75_ms": 6710.381000011694,
+            "empirical_p95_ms": 10810.001540003577,
+            "expected_observations_above_p95": 43.400000000000006,
+            "min_ms": 169.86710001947358,
+            "max_ms": 15005.782699998235,
+            "sample_stddev_ms": 2992.677939573334
+          }
+        },
+        "failed_operation_ms": {
+          "n": 68,
+          "mean_ms": 12527.306795588896,
+          "median_ms": 15009.38385000336,
+          "q25_ms": 10105.02212499705,
+          "q75_ms": 15015.61617499101,
+          "empirical_p95_ms": 15036.03699998348,
+          "expected_observations_above_p95": 3.4000000000000004,
+          "min_ms": 3658.0901999841444,
+          "max_ms": 15060.780500003602,
+          "sample_stddev_ms": 3934.0769643254575
+        },
+        "generator_queue_ms": {
+          "n": 4441,
+          "mean_ms": 9573.870644246039,
+          "median_ms": 11310.552599985385,
+          "q25_ms": 3057.5022000120953,
+          "q75_ms": 13886.74909999827,
+          "empirical_p95_ms": 17581.602299993392,
+          "expected_observations_above_p95": 222.05,
+          "min_ms": 0.17610000213608146,
+          "max_ms": 18323.888200015062,
+          "sample_stddev_ms": 5666.180438447318
+        },
+        "offered_time_blocks_300s": [
+          {
+            "block": 0,
+            "completed": 4441,
+            "failures": 68,
+            "operation_ms": {
+              "n": 4373,
+              "mean_ms": 3815.9213912873724,
+              "median_ms": 3499.5448000263423,
+              "q25_ms": 887.0126999972854,
+              "q75_ms": 5404.98569997726,
+              "empirical_p95_ms": 9855.095259996597,
+              "expected_observations_above_p95": 218.65,
+              "min_ms": 22.38840001518838,
+              "max_ms": 15622.43089999538,
+              "sample_stddev_ms": 3057.1283676489156
+            }
+          }
+        ]
+      }
+    ],
+    "api_and_test_coordinator_resources": {
+      "samples": 438,
+      "peak_rss_bytes": 255598592,
+      "peak_private_commit_bytes": 340033536,
+      "first": {
+        "phase": "open-1:warmup",
+        "monotonic": 243470.9441219,
+        "loop_lag_ms": 0.0026999914553016424,
+        "pool_checkedout": 0,
+        "active_http": 0,
+        "process_cpu_seconds": 14.421875,
+        "pid": 15836,
+        "rss_bytes": 156086272,
+        "peak_rss_bytes": 156090368,
+        "private_commit_bytes": 236560384,
+        "peak_private_commit_bytes": 236560384,
+        "handles": 224
+      },
+      "last": {
+        "phase": "rest",
+        "monotonic": 244356.7115524,
+        "loop_lag_ms": 11.770399985834956,
+        "pool_checkedout": 0,
+        "active_http": 0,
+        "process_cpu_seconds": 287.453125,
+        "pid": 15836,
+        "rss_bytes": 197677056,
+        "peak_rss_bytes": 257097728,
+        "private_commit_bytes": 280846336,
+        "peak_private_commit_bytes": 341393408,
+        "handles": 221
+      }
+    },
+    "method": "Linear empirical quantiles, sample SD and IQR. Successful and failed operations separated. Operation time includes token refresh and response validation; queue delay separate. Five-minute buckets describe temporal variation; last buckets may be partial. No population CI/P99 or causal branch difference: one local time series, dependent requests, shared host. Resources include the in-process API and pytest observer, not database CPU/RAM. RSS high-water/retention does not alone prove a memory leak."
+  },
   "evidence": [
     {
       "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/candidate.tar",

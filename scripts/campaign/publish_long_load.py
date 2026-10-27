@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from publish_no_usb_20261027 import ROOT, SEQ, DOC, read, sha, junit
+from load_metrics import summarize
 
 
 def main():
@@ -26,6 +27,7 @@ def main():
             "scenario": scenario, "state": "COMPLETED", "date": "2026-10-27",
             "source": read(folder / "candidate_manifest.json"),
             "summary": status, "tests": tests, "observations": observation,
+            "descriptive_metrics": summarize(folder, observation["phases"]),
             "evidence": evidence, "executor": "scripts/campaign/long_load_cases.py",
             "report_executor": "scripts/campaign/publish_long_load.py",
             "limitations": [
