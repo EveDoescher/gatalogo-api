@@ -550,11 +550,16 @@
   },
   {
     "scenario": "IMG-06",
-    "state": "PENDING",
+    "state": "COMPLETED",
     "scope": "Conjunto real rotulado antes/depois de mudança interna, modelo/prompt/seed registrados.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
-    "runs": []
+    "runs": [],
+    "executor": "scripts/campaign/real_quality_campaign.py --kind quality|replay|segmentation --output <new private run>",
+    "limitation": "Planned controlled and real local/provider variants executed; sample, ground-truth and shared-host limits remain explicit in IMG06-20261027-results.json",
+    "closure_evidence": [
+      "IMG06-20261027-results.json"
+    ]
   },
   {
     "scenario": "IMG-07",

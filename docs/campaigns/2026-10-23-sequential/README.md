@@ -2,7 +2,7 @@
 
 ## Meta de 85 — continuação autorizada em 27/10/2026
 
-**57 concluídos, 15 parciais, 13 pendentes e 10 bloqueados externos.**
+**58 concluídos, 15 parciais, 12 pendentes e 10 bloqueados externos.**
 
 [LOAD-01 concluído](LOAD01-20261027-results.json): cinco patamares de concorrência (1/5/10/25/50), com 30 segundos de aquecimento e três minutos medidos em cada um; respostas, consultas SQL, recursos e integridade registrados.
 
@@ -14,9 +14,10 @@ O LOAD-01 registrou quatro falhas de transporte nos patamares 25/50 (ReadError, 
 
 - [IMG-04 concluído](IMG04-20261027-results.json): 32 variantes de caches independentes e presença/ausência de chave, quatro preparações reais e dois processos novos. Reutilização não chama provedor e conserva os atributos; tempos/avisos de cache são tratados separadamente.
 - [LOAD-04 concluído](LOAD04-20261027-results.json): quatro jobs reais detector/SAM/Gemini, com um e dois consumidores, persistência e efeitos de negócio reais; complementam os 244 jobs controlados já registrados. Nenhum job duplicado, tentativas iguais a um e trabalhos DINO separados preservados.
+- [IMG-06 concluído](IMG06-20261027-results.json): 20 fotos rotuladas por versão e repetição sem chamada externa com 20 resultados normalizados iguais. Oxford: 12 positivos por versão, 11 detectados e um Sphynx não detectado em ambas; IoU médio de primeiro plano 0,8900 nas duas versões. Precisão/FPR/F1 não estimados sem negativos. As divergências com rótulos de pelagem continuam registradas para revisão, sem alterar modelo ou limiares.
 - [Movimento e semântica locais](ACC-MOTION-20261027-results.json): 20 testes passaram; rótulo duplicado no Quintal corrigido sem alterar pintura. ACC-05/06 continuam parciais.
 
-Até o fechamento desses lotes foram registradas 51 gerações externas retornadas, com estimativa de US$ 0,1003581 pela tabela padrão, dentro do teto compartilhado de US$ 1/64 tentativas. O valor não representa conferência da cobrança efetiva. A avaliação de atributos e a repetição sem chamada externa terminaram; a etapa Oxford de máscaras ainda está em execução, portanto IMG-06 ainda não foi fechado.
+Até o fechamento desses lotes foram registradas 51 gerações externas retornadas, com estimativa de US$ 0,1003581 pela tabela padrão, dentro do teto compartilhado de US$ 1/64 tentativas. O valor não representa conferência da cobrança efetiva. BR-02 recebe uma bateria TCP exploratória A/B/B/A com dados determinísticos, consultas e recursos; seu escopo completo permanece parcial enquanto faltarem as demais variantes.
 
 Nesta continuação, o usuário autorizou cargas prolongadas descartáveis e IA paga. Nenhum aparelho físico será utilizado nesta etapa, por USB ou Wi-Fi; iOS permanece fora do escopo. A autorização não substitui a execução: cenários físicos conservam seus critérios e não serão concluídos com evidência desktop. Os lotes pagos terão orçamento e contagem limitados, sem credenciais nos relatórios.
 
