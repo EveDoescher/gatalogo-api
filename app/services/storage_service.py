@@ -53,8 +53,10 @@ class PrivatePhotoStorage:
             raise ValueError("Chave de foto inválida.")
         return resolved
 
-    def save(self, *, user_id: UUID, cat_id: UUID, data: bytes, suffix: str,
-             before_write: Callable[[str], None] | None = None) -> tuple[str, str]:
+    def save(
+        self, *, user_id: UUID, cat_id: UUID, data: bytes, suffix: str,
+        before_write: Callable[[str], None] | None = None,
+    ) -> tuple[str, str]:
         return self._save_hashed_photo(self.key_for(user_id, cat_id, suffix), data, before_write)
 
     def save_reference(
@@ -104,8 +106,10 @@ class PrivatePhotoStorage:
     ) -> tuple[str, str]:
         return self._save_hashed_photo(self.post_photo_key_for(post_id, suffix), data)
 
-    def _save_hashed_photo(self, base_key: str, data: bytes,
-                           before_write: Callable[[str], None] | None = None) -> tuple[str, str]:
+    def _save_hashed_photo(
+        self, base_key: str, data: bytes,
+        before_write: Callable[[str], None] | None = None,
+    ) -> tuple[str, str]:
         content_hash = hashlib.sha256(data).hexdigest()
         base = Path(base_key)
         key = base.with_name(f"{base.stem}-{content_hash}{base.suffix}").as_posix()

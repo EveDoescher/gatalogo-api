@@ -179,8 +179,9 @@ async def test_DLV04_account_preference_blocks_devices(
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("all_unavailable", [False, True])
 async def test_DLV04_receipt_survives_connection_reset_and_retries_only_pending_device(
-    db, monkeypatch
+    db, monkeypatch, all_unavailable
 ):
     notice, receipt = uid("durable-notice"), uid("durable-receipt")
     async with db.factory() as session:
@@ -224,7 +225,7 @@ async def test_DLV04_receipt_survives_connection_reset_and_retries_only_pending_
         token = json.loads(request.content)["message"]["token"]
         calls.append(token)
         return httpx.Response(
-            503 if token.endswith("temporary") and not retry else 200, json={}
+            503 if (all_unavailable or token.endswith("temporary")) and not retry else 200, json={}
         )
 
     service = sender(db, monkeypatch, transport)
@@ -232,14 +233,15 @@ async def test_DLV04_receipt_survives_connection_reset_and_retries_only_pending_
     async with db.factory() as session:
         state = (await session.get(HabitatTransaction, receipt)).details
         assert state["state"] == "pending" and state["attempts"] == 1
-        assert state["delivered"] == [str(uid("durable-good"))]
+        assert state["delivered"] == ([] if all_unavailable else [str(uid("durable-good"))])
     await db.engine.dispose()
     calls.clear()
     retry = True
     await deliver_pending(db.factory, now=NOW + timedelta(seconds=59), sender=service)
     assert calls == []
     await deliver_pending(db.factory, now=NOW + timedelta(seconds=60), sender=service)
-    assert calls == ["synthetic-temporary"]
+    expected = ["synthetic-good", "synthetic-temporary"] if all_unavailable else ["synthetic-temporary"]
+    assert len(calls) == len(expected) and set(calls) == set(expected)
     async with db.factory() as session:
         state = (await session.get(HabitatTransaction, receipt)).details
         assert state["state"] == "sent" and state["attempts"] == 2
@@ -248,14 +250,14 @@ async def test_DLV04_receipt_survives_connection_reset_and_retries_only_pending_
             str(uid("durable-temporary")),
         }
     await deliver_pending(db.factory, now=NOW + timedelta(minutes=5), sender=service)
-    assert calls == ["synthetic-temporary"]
+    assert len(calls) == len(expected) and set(calls) == set(expected)
     evidence(
-        "DLV04-durable-retry",
+        "DLV04-durable-retry-" + ("all-unavailable" if all_unavailable else "partial"),
         {
             "database": "PostgreSQL",
             "pool_disposed_between_attempts": True,
-            "first_delivered_devices": 1,
-            "retry_only_pending_devices": 1,
+            "first_delivered_devices": 0 if all_unavailable else 1,
+            "retry_only_pending_devices": len(expected),
             "retry_before_deadline_calls": 0,
             "persisted_attempts": 2,
             "final_state": "sent",

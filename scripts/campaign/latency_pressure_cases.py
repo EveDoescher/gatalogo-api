@@ -84,7 +84,7 @@ async def test_LAT08_tcp_fixed_load_during_controlled_inference(
             async with own_api.factory() as db:
                 owner = User(
                     id=uuid4(),
-                    email=f"latency-{phase}@example.invalid",
+                    email=f"latency-{phase}-{uuid4().hex}@example.invalid",
                     status="active",
                 )
                 db.add(owner)
