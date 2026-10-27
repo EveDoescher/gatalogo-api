@@ -1,0 +1,69 @@
+"""Fresh A/B sources and paired private labeled photos; never edits main or old runs."""
+
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import shutil
+import subprocess
+import sys
+import tarfile
+
+ROOT = Path(__file__).resolve().parents[2]
+
+
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args()
+    output = args.output.resolve()
+    assert output.is_relative_to(ROOT / ".tmp/quality-campaign")
+    output.mkdir(exist_ok=False, parents=True)
+    executors = output / "executors"
+    executors.mkdir()
+    for name in ("real_quality_child.py", "paid_provider.py", "measurements.py"):
+        shutil.copy2(Path(__file__).with_name(name), executors / name)
+    shutil.copy2(ROOT / "scripts/run_own_cats_calibration.py", executors)
+    labels = ROOT / "data/own-cats/calibration_references.json"
+    refs = json.loads(labels.read_text(encoding="utf-8"))
+    inputs = {f"sample-{i+1:02}": digest(ROOT / r["image_path"]) for i, r in enumerate(refs)}
+    shared = output.parent.parent / "paid-provider-budget.sqlite3"
+    # The approved ledger lives at the campaign root, never a fresh per-run budget.
+    assert shared.exists(), shared
+    sources = {}
+    for role, ref in (("before-main", "main"), ("after-cleanup", "HEAD")):
+        sha = subprocess.check_output(["git", "rev-parse", ref], cwd=ROOT, text=True).strip()
+        if role == "before-main":
+            assert sha == "eced9c3873bc45c56343ce5d46dae6c1843f2a51"
+        archive, source = output / (role + ".tar"), output / (role + "-source")
+        subprocess.run(["git", "archive", "--format=tar", "-o", str(archive), sha], cwd=ROOT, check=True)
+        source.mkdir()
+        with tarfile.open(archive) as tar:
+            tar.extractall(source, filter="data")
+        sources[role] = {"sha": sha, "path": str(source), "archive_sha256": digest(archive)}
+    protected = [labels, *(ROOT / r["image_path"] for r in refs), *executors.glob("*.py")]
+    for source in sources.values():
+        protected.extend(Path(source["path"]).glob("app/**/*.py"))
+    before = {str(p): digest(p) for p in protected}
+    (output / "source_manifest.json").write_text(json.dumps({"sources": sources, "input_sha256": inputs,
+        "labels_sha256": digest(labels), "protected": before}, indent=2)+"\n", encoding="utf-8")
+    for role, source in sources.items():
+        config = {"root": str(ROOT), "source": source["path"], "source_sha": source["sha"],
+            "output": str(output / role), "ledger": str(shared), "role": "IMG06-" + role}
+        path = output / (role + "-config.json")
+        path.write_text(json.dumps(config), encoding="utf-8")
+        with (output / (role + ".log")).open("w", encoding="utf-8") as log:
+            result = subprocess.run([sys.executable, "-X", "utf8", str(executors / "real_quality_child.py"), str(path)],
+                cwd=source["path"], stdout=log, stderr=subprocess.STDOUT, timeout=1200)
+        assert result.returncode == 0, f"Preserve and inspect {role}.log"
+        assert all(digest(Path(p)) == sha for p, sha in before.items()), "Evaluated source or labeled input changed"
+    (output / "summary.json").write_text(json.dumps({"executed": True, "sources_and_inputs_unchanged": True,
+        "samples_per_version": len(refs), "paired_inputs": inputs}, indent=2)+"\n", encoding="utf-8")
+
+
+if __name__ == "__main__":
+    main()
