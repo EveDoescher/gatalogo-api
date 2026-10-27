@@ -19,7 +19,7 @@ from uuid import uuid4
 from campaign.subprocesses import run_logged
 
 ROOT = Path(__file__).resolve().parents[1]
-LONG_SCENARIOS = {"LOAD-01", "LOAD-02", "LOAD-06", "LOAD-PILOT"}
+LONG_SCENARIOS = {"LOAD-01", "LOAD-02", "LOAD-06", "LOAD-PILOT", "BR-02-TCP"}
 MUTATIONS = {
     "MUT-13": (
         "DLV-02",
@@ -198,6 +198,7 @@ def selection(scenario, output):
         "DLV-04": "fcm_delivery_cases.py",
         "LOAD-03": "remaining_mechanism_cases.py",
         "LOAD-04-REAL": "real_reference_cases.py",
+        "BR-02-TCP": "paired_tcp_cases.py",
         "LOAD-01": "long_load_cases.py",
         "LOAD-02": "long_load_cases.py",
         "LOAD-06": "long_load_cases.py",
@@ -284,6 +285,9 @@ def selection(scenario, output):
     if scenario == "LOAD-04-REAL":
         names.extend(["current_offline_cases.py", "image_cases.py", "critical_report.py",
             "subprocesses.py", "measurements.py", "paid_provider.py"])
+    if scenario == "BR-02-TCP":
+        names.extend(["current_offline_cases.py", "image_cases.py", "critical_report.py",
+            "subprocesses.py", "measurements.py", "latency_pressure_cases.py", "latency_probe_child.py"])
     if scenario in ("RSC-01", "RSC-01-BOOT"):
         names.extend([
             "local_model_probe_cases.py", "current_offline_cases.py", "image_cases.py",
@@ -714,6 +718,7 @@ if __name__ == "__main__":
             "DLV-04",
             "LOAD-03",
             "LOAD-04-REAL",
+            "BR-02-TCP",
             "LOAD-01",
             "LOAD-02",
             "LOAD-06",
