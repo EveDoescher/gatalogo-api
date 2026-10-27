@@ -18,6 +18,7 @@ from uuid import uuid4
 from campaign.subprocesses import run_logged
 
 ROOT = Path(__file__).resolve().parents[1]
+LONG_SCENARIOS = {"LOAD-01", "LOAD-02", "LOAD-06", "LOAD-PILOT"}
 MUTATIONS = {
     "MUT-13": (
         "DLV-02",
@@ -68,7 +69,7 @@ def execute_pytest(source, selectors, env, output, prefix=""):
             cwd=source,
             env=env,
             log=log,
-            timeout=(1200 if env.get("QUALITY_SYNC_CONFIRMATION") == "true" or env.get("QUALITY_LOCAL_MODEL_RESOURCE") == "true" else 480 if env.get("QUALITY_LARGE_LOCAL_SYNC") == "true" else 360),
+            timeout=4600 if env.get("QUALITY_LONG_SCENARIO") == "LOAD-06" else 1500 if env.get("QUALITY_LONG_SCENARIO") in ("LOAD-01", "LOAD-02") else (1200 if env.get("QUALITY_SYNC_CONFIRMATION") == "true" or env.get("QUALITY_LOCAL_MODEL_RESOURCE") == "true" else 480 if env.get("QUALITY_LARGE_LOCAL_SYNC") == "true" else 360),
         )
 
 
@@ -77,6 +78,13 @@ def junit_cases(path):
         (c.get("classname"), c.get("name")): c
         for c in ET.parse(path).getroot().iter("testcase")
     }
+
+
+def frozen_execution_hashes(source, output):
+    """Hash the actual immutable copies used by detached long experiments."""
+    files = [*source.glob("app/**/*.py"), *source.glob("alembic/**/*.py"), source / "alembic.ini"]
+    files.extend((output / "executors").glob("*.py"))
+    return {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files) if p.is_file()}
 
 
 def source_hashes():
@@ -185,6 +193,10 @@ def selection(scenario, output):
         "DLV-02": "delivery_cases.py",
         "DLV-04": "fcm_delivery_cases.py",
         "LOAD-03": "remaining_mechanism_cases.py",
+        "LOAD-01": "long_load_cases.py",
+        "LOAD-02": "long_load_cases.py",
+        "LOAD-06": "long_load_cases.py",
+        "LOAD-PILOT": "long_load_cases.py",
         "RES-04": "worker_race_cases.py",
         "RES-08": "test_analysis_cache_resilience.py",
         "IMG-07": "storage_worker_cases.py",
@@ -239,6 +251,10 @@ def selection(scenario, output):
         names.extend(["current_offline_cases.py", "image_cases.py", "critical_report.py", "subprocesses.py"])
     if scenario == "LAT-03":
         names.extend(["current_offline_cases.py", "image_cases.py", "critical_report.py", "subprocesses.py"])
+    if scenario in LONG_SCENARIOS:
+        names.extend(["current_offline_cases.py", "image_cases.py", "critical_report.py", "subprocesses.py", "measurements.py", "long_load_child.py"])
+        shutil.copytree(ROOT / "alembic", source / "alembic", ignore=shutil.ignore_patterns("__pycache__"))
+        shutil.copy2(ROOT / "alembic.ini", source / "alembic.ini")
     if scenario == "LAT-08":
         names.extend(["current_offline_cases.py", "image_cases.py", "critical_report.py", "subprocesses.py", "measurements.py", "latency_probe_child.py"])
     if scenario == "RES-02":
@@ -332,6 +348,8 @@ def selection(scenario, output):
         selectors = [str(executors / case_file), "-k", "postgres", "--confcutdir", str(executors)]
     if scenario == "RSC-01-BOOT":
         selectors = [str(executors / case_file) + "::test_RSC01_actual_lifespan_boot_and_shutdown", "--confcutdir", str(executors)]
+    if scenario in LONG_SCENARIOS:
+        selectors = [str(executors / case_file), "--confcutdir", str(executors)]
     if scenario == "RES-04":
         selectors = [str(executors / "worker_race_cases.py") + "::test_RES04_actual_worker_process_killed_after_claim_then_restarted[postgres]"]
         selectors.extend(str(executors / "test_reference_analysis.py") + "::" + name + "[postgres]" for name in (
@@ -356,6 +374,7 @@ def selection(scenario, output):
             QUALITY_LOCAL_MODEL_RESOURCE="true" if scenario == "RSC-01" else "false",
             QUALITY_MODEL_PHOTO=str(executors / "chelsea.png"),
             QUALITY_MODEL_CACHE=str(ROOT / ".model-cache"),
+            QUALITY_LONG_SCENARIO=scenario if scenario in LONG_SCENARIOS else "",
         ),
     )
 
@@ -383,6 +402,11 @@ def run(output, scenario="SEC-01", mutation=None):
         encoding="utf-8",
     )
     source, selectors, selection_env = selection(scenario, output)
+    frozen_before = None
+    if scenario in LONG_SCENARIOS:
+        shutil.copy2(Path(__file__), output / "executors/run_security_regression.snapshot.py")
+        frozen_before = frozen_execution_hashes(source, output)
+        (output / "frozen_execution_manifest.json").write_text(json.dumps(frozen_before, indent=2)+"\n", encoding="utf-8")
     # Recheck a green baseline for each mutant, focusing on its domain oracles.
     mutation_oracles = {
         "MUT-13": [
@@ -499,7 +523,7 @@ def run(output, scenario="SEC-01", mutation=None):
         with (output / "migrations.log").open("w", encoding="utf-8") as log:
             subprocess.run(
                 [sys.executable, "-m", "alembic", "upgrade", "head"],
-                cwd=ROOT,
+                cwd=source if scenario in LONG_SCENARIOS else ROOT,
                 env=env,
                 check=True,
                 stdout=log,
@@ -620,7 +644,9 @@ def run(output, scenario="SEC-01", mutation=None):
                     else "generated app JWTs; synthetic analysis/fault injection; no external delivery or inference",
                     "api_lifespan_started": False,
                     "physical_device": False,
-                    "evaluated_sources_unchanged": evaluated == source_hashes(),
+                    "evaluated_sources_unchanged": frozen_before == frozen_execution_hashes(source, output) if frozen_before is not None else evaluated == source_hashes(),
+                    "workspace_sources_unchanged": evaluated == source_hashes(),
+                    "isolation": "Frozen app, executors and migrations; original-workspace edits cannot affect this long run" if frozen_before is not None else "Original strict workspace guard",
                 },
                 indent=2,
             )
@@ -631,7 +657,7 @@ def run(output, scenario="SEC-01", mutation=None):
             json.dumps({"exit_code": result.returncode, "output": str(output)}),
             flush=True,
         )
-        if evaluated != source_hashes():
+        if (frozen_before is not None and frozen_before != frozen_execution_hashes(source, output)) or (frozen_before is None and evaluated != source_hashes()):
             return 2
         return (
             (0 if classification == "KILLED" else 1) if mutation else result.returncode
@@ -674,6 +700,10 @@ if __name__ == "__main__":
             "DLV-02",
             "DLV-04",
             "LOAD-03",
+            "LOAD-01",
+            "LOAD-02",
+            "LOAD-06",
+            "LOAD-PILOT",
             "RES-04",
             "RES-08",
             "IMG-07",
