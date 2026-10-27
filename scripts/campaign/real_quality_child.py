@@ -55,12 +55,14 @@ async def main():
             try:
                 value = _original(*args, **kwargs)
                 if _name == "segment_cat":
-                    mask = np.asarray(value.mask)
-                    np.savez_compressed(mask_folder / (active["sample_id"] + ".npz"), mask=mask)
+                    mask = np.asarray(value.mask) if value.mask is not None else None
+                    if mask is not None:
+                        np.savez_compressed(mask_folder / (active["sample_id"] + ".npz"), mask=mask)
                     active["segmentation"] = {"cat_count": value.cat_count,
                         "ambiguous_multiple_cats": value.ambiguous_multiple_cats,
                         "detector_confidence": float(value.detector_confidence or 0),
-                        "mask_shape": list(mask.shape), "mask_sha256": hashlib.sha256(mask.tobytes()).hexdigest()}
+                        "mask_shape": list(mask.shape) if mask is not None else None,
+                        "mask_sha256": hashlib.sha256(mask.tobytes()).hexdigest() if mask is not None else None}
                 return value
             finally:
                 active.setdefault("stages_seconds", {})[_name] = time.perf_counter() - started
