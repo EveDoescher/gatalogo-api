@@ -19,6 +19,18 @@ from campaign.subprocesses import run_logged
 
 ROOT = Path(__file__).resolve().parents[1]
 MUTATIONS = {
+    "MUT-13": (
+        "DLV-02",
+        "app/services/auth_service.py",
+        '    await session.commit()\n    await _send_otp(\n        email=delivery.email,\n        code=delivery.code,\n        purpose=delivery.purpose,\n        settings=delivery.settings,\n    )',
+        '    await _send_otp(\n        email=delivery.email,\n        code=delivery.code,\n        purpose=delivery.purpose,\n        settings=delivery.settings,\n    )\n    await session.commit()',
+    ),
+    "MUT-14": (
+        "RES-05",
+        "app/services/photo_cleanup.py",
+        "retained = await _referenced(check, key, cat)",
+        "retained = False",
+    ),
     "MUT-03": (
         "DATA-05",
         "app/routers/sync.py",
@@ -331,6 +343,22 @@ def run(output, scenario="SEC-01", mutation=None):
         encoding="utf-8",
     )
     source, selectors, selection_env = selection(scenario, output)
+    # Recheck a green baseline for each mutant, focusing on its domain oracles.
+    mutation_oracles = {
+        "MUT-13": [
+            "extended_cases.py::test_DLV02_commit_failure_prevents_smtp_acceptance",
+            "delivery_cases.py::test_DLV02_SMTP_ambiguous_acceptance_retry_and_cooldown",
+        ],
+        "MUT-14": [
+            "service_recovery_cases.py::test_RES05_cleanup_never_deletes_referenced_file",
+            "service_recovery_cases.py::test_RES05_upload_commit_failure_preserves_old_and_recovers_new_orphan",
+            "service_recovery_cases.py::test_RES05_cleanup_defers_while_writer_holds_cat_lock",
+        ],
+    }
+    if mutation in mutation_oracles:
+        executors = output / "executors"
+        selectors = [str(executors / oracle) for oracle in mutation_oracles[mutation]]
+        selectors.extend(["--confcutdir", str(executors)])
     name = "gatalogo-" + scenario.lower().replace("-", "") + "-" + uuid4().hex[:12]
     image = subprocess.check_output(
         ["docker", "inspect", "--format", "{{.Image}}", "gatalogo-postgres"], text=True
