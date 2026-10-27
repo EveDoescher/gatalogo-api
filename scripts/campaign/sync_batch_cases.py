@@ -11,6 +11,7 @@ from uuid import UUID, uuid4
 import pytest
 from sqlalchemy import select, func
 
+pytest.register_assert_rewrite("current_offline_cases")
 pytest_plugins = ["current_offline_cases"]
 from current_offline_cases import client_hashes
 from critical_report import flutter_tests
@@ -27,6 +28,8 @@ async def test_LAT04_current_client_large_dirty_batches_and_growing_history(own_
     repo = Path(os.environ["QUALITY_FLUTTER_REPO"]).resolve()
     before = client_hashes(repo)
     stamp = datetime(2026, 10, 25, tzinfo=UTC)
+    large_trials = int(os.environ.get("QUALITY_LARGE_BATCH_TRIALS", "1"))
+    assert 1 <= large_trials <= 5
     variants, accounts = [], []
     async with own_api.factory() as session:
         for count, history, failure in [
@@ -54,7 +57,7 @@ async def test_LAT04_current_client_large_dirty_batches_and_growing_history(own_
                     "ids": [str(i) for i in ids],
                     "history": history,
                     "failure": failure,
-                    "trials": 1 if count >= 500 else 3,
+                    "trials": (1 if failure else large_trials) if count >= 500 else 3,
                 }
             )
             if failure:
@@ -117,7 +120,7 @@ async def test_LAT04_current_client_large_dirty_batches_and_growing_history(own_
                 QUALITY_SYNC_ACCOUNTS=json.dumps(accounts),
             ),
             log=log,
-            timeout=360,
+            timeout=1050 if large_trials > 1 else 360,
         )
     cases = flutter_tests(folder / "flutter.jsonl")
     unchanged = client_hashes(repo) == before
@@ -128,14 +131,15 @@ async def test_LAT04_current_client_large_dirty_batches_and_growing_history(own_
             "client_sources_unchanged": unchanged,
             "cases": cases,
             "paid_calls": len(own_api.provider_calls),
-            "scope": "Real SQLite/client/own API; three fresh local databases per small dataset, one for each 501-item cohort due observed SQLite cost. Same server replay state; no statistical performance claim.",
+            "large_normal_trials": large_trials,
+            "scope": "Real SQLite/client/own API; fresh local databases, shared seeded server replay state. Five large normal trials in confirmation mode bound observed ~100 s/case cost while exposing variability. Small datasets use three trials; large fault cohort uses one functional recovery trial. No independent-cold-server, normality, P99 or performance-gain claim.",
         },
     )
     assert unchanged
     assert len(own_api.provider_calls) == 0
     assert (
         result.returncode == 0
-        and len(cases) == 17
+        and len(cases) == sum(v["trials"] for v in variants)
         and all(c["result"] == "success" and not c["skipped"] for c in cases)
     )
     async with own_api.factory() as session:

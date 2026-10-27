@@ -56,7 +56,7 @@ def execute_pytest(source, selectors, env, output, prefix=""):
             cwd=source,
             env=env,
             log=log,
-            timeout=480 if env.get("QUALITY_LARGE_LOCAL_SYNC") == "true" else 360,
+            timeout=(1200 if env.get("QUALITY_SYNC_CONFIRMATION") == "true" else 480 if env.get("QUALITY_LARGE_LOCAL_SYNC") == "true" else 360),
         )
 
 
