@@ -38,6 +38,9 @@ from app.services.auth_service import issue_tokens
 async def test_LAT08_tcp_fixed_load_during_controlled_inference(
     own_api, monkeypatch, caplog
 ):
+    count = int(os.environ.get("QUALITY_LATENCY_REQUESTS_PER_ROUTE", "1000"))
+    warmup = int(os.environ.get("QUALITY_LATENCY_WARMUP_PER_ROUTE", "30"))
+    assert 1 <= count <= 1000 and 1 <= warmup <= 30
     for logger in ("httpx", "httpcore", "uvicorn.access", "uvicorn.error"):
         caplog.set_level(logging.WARNING, logger=logger)
     root = Path(os.environ["QUALITY_CASE_EVIDENCE"]) / "latency"
@@ -181,6 +184,9 @@ async def test_LAT08_tcp_fixed_load_during_controlled_inference(
                         assert not any(p.done() for p in pending)
                         assert pool.checkedout() == 0
                     config = {
+                        "requests_per_route": count,
+                        "warmup_per_route": warmup,
+                        "generator_affinity_mask": int(os.environ.get("QUALITY_GENERATOR_AFFINITY_MASK", "0")),
                         "url": own_api.url,
                         "token": bundle["access_token"],
                         "output": str(folder),
@@ -244,10 +250,10 @@ async def test_LAT08_tcp_fixed_load_during_controlled_inference(
                     generated = json.loads(
                         (folder / "generator-result.json").read_text()
                     )
-                    assert len(generated["rows"]) == 3000
+                    assert len(generated["rows"]) == 3 * count
                     samples = {
                         "models_waiting": models,
-                        "http_samples": 3000,
+                        "http_samples": 3 * count,
                         "same_fixed_concurrency": 5,
                         "provider_wait_type": "thread event; I/O wait control, not real model CPU",
                         "server_elapsed_seconds": elapsed,
@@ -279,16 +285,18 @@ async def test_LAT08_tcp_fixed_load_during_controlled_inference(
                         isinstance(r, httpx.Response) and r.status_code == 200
                         for r in replies
                     ), "Controlled analyses must finish after gate release"
-            print(f"LAT08 phase models={models}: 3000 requests passed", flush=True)
+            print(f"LAT08 phase models={models}: {3 * count} requests passed", flush=True)
         assert len(own_api.provider_calls) == 6
         evidence(
             "LAT08-controlled-tcp",
             {
                 "phases": phases,
-                "passed_light_requests": 9000,
+                "passed_light_requests": 9 * count,
                 "completed_controlled_analyses": 6,
                 "paid_calls": 0,
-                "scope": "Real TCP/API/PostgreSQL. Generator is another OS process; server also hosts low-volume test coordination. Pool private acquisition hook is version-specific and includes connection creation; warmed with 30 requests per route. I/O-gated provider only; no real-model CPU, saturation or production-capacity claim.",
+                "warmup_per_route": warmup,
+                "samples_per_route": count,
+                "scope": "Real TCP/API/PostgreSQL. Generator is another OS process; server also hosts low-volume test coordination. Pool private acquisition hook is version-specific and includes connection creation. I/O-gated provider only; no real-model CPU, saturation or production-capacity claim.",
             },
         )
     finally:

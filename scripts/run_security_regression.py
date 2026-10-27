@@ -197,6 +197,7 @@ def selection(scenario, output):
         "RES-05": "service_recovery_cases.py",
         "LOAD-05": "current_socket_fanout_cases.py",
         "RSC-02": "resource_lifecycle_cases.py",
+        "RSC-06": "resource_caps_cases.py",
         "RSC-02-DIAG": "resource_lifecycle_cases.py",
     }[scenario]
     if case_file:
@@ -242,6 +243,12 @@ def selection(scenario, output):
         names.extend(["current_offline_cases.py", "current_upload_transport_cases.py", "upload_transport_cases.py", "socket_fanout_cases.py", "network_cases.py", "image_cases.py", "critical_report.py", "subprocesses.py", "measurements.py"])
     if scenario in ("RSC-02", "RSC-02-DIAG"):
         names.extend(["current_offline_cases.py", "current_upload_transport_cases.py", "upload_transport_cases.py", "network_cases.py", "image_cases.py", "critical_report.py", "subprocesses.py", "measurements.py"])
+    if scenario == "RSC-06":
+        names.extend([
+            "test_reference_analysis.py", "current_offline_cases.py", "image_cases.py",
+            "critical_report.py", "subprocesses.py", "measurements.py",
+            "latency_pressure_cases.py", "latency_probe_child.py", "windows_limits.py",
+        ])
     if scenario == "SEC-04":
         names.extend(["remaining_mechanism_cases.py", "social_volume_cases.py", "measurements.py"])
     if scenario in ("LOAD-03", "SEC-09"):
@@ -295,6 +302,8 @@ def selection(scenario, output):
     selectors += ["-k", expression, "--confcutdir", str(executors)]
     if scenario == "RSC-02-DIAG":
         selectors = [str(executors / "resource_lifecycle_cases.py") + "::test_RSC02_diagnostic_denied_multipart_keepalive", "--confcutdir", str(executors)]
+    if scenario == "RSC-06":
+        selectors = [str(executors / case_file), "-k", "postgres", "--confcutdir", str(executors)]
     if scenario == "RES-04":
         selectors = [str(executors / "worker_race_cases.py") + "::test_RES04_actual_worker_process_killed_after_claim_then_restarted[postgres]"]
         selectors.extend(str(executors / "test_reference_analysis.py") + "::" + name + "[postgres]" for name in (
@@ -651,6 +660,7 @@ if __name__ == "__main__":
             "RES-05",
             "LOAD-05",
             "RSC-02",
+            "RSC-06",
             "RSC-02-DIAG",
         ],
         default="SEC-01",

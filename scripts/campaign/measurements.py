@@ -31,6 +31,7 @@ def resources():
         psapi.GetProcessMemoryInfo.argtypes = [wintypes.HANDLE, ctypes.c_void_p, wintypes.DWORD]
         if psapi.GetProcessMemoryInfo(process, ctypes.byref(counters), counters.cb):
             result.update(rss_bytes=counters.WorkingSetSize, peak_rss_bytes=counters.PeakWorkingSetSize)
+            result.update(private_commit_bytes=counters.PagefileUsage, peak_private_commit_bytes=counters.PeakPagefileUsage)
         handles = wintypes.DWORD()
         kernel.GetProcessHandleCount.argtypes = [wintypes.HANDLE, ctypes.c_void_p]
         if kernel.GetProcessHandleCount(process, ctypes.byref(handles)):

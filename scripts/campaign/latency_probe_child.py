@@ -12,6 +12,12 @@ from measurements import resources
 
 async def run(config):
     options = json.loads(Path(config).read_text())
+    count = options.get("requests_per_route", 1000)
+    warmup = options.get("warmup_per_route", 30)
+    assert 1 <= count <= 1000 and 1 <= warmup <= 30
+    if options.get("generator_affinity_mask"):
+        from windows_limits import set_affinity
+        set_affinity(options["generator_affinity_mask"])
     url = urlsplit(options["url"])
     assert url.hostname == "127.0.0.1" and url.port != 8000
     out = Path(options["output"])
@@ -53,7 +59,7 @@ async def run(config):
         await asyncio.gather(
             *(
                 request(kind, path, False)
-                for _ in range(30)
+                for _ in range(warmup)
                 for kind, path in paths.items()
             )
         )
@@ -67,13 +73,13 @@ async def run(config):
         await asyncio.gather(
             *(
                 request(kind, path, True)
-                for _ in range(1000)
+                for _ in range(count)
                 for kind, path in paths.items()
             )
         )
         result = {
-            "warmup_per_route": 30,
-            "samples_per_route": 1000,
+            "warmup_per_route": warmup,
+            "samples_per_route": count,
             "concurrency": 5,
             "elapsed_seconds": time.perf_counter() - started,
             "resources_before": before,
@@ -82,7 +88,7 @@ async def run(config):
             "scope": "Client complete-body HTTP time excludes generator semaphore queue; generated fixture data only.",
         }
         (out / "generator-result.json").write_text(json.dumps(result, indent=2) + "\n")
-        print("LAT08 generator: 3000 successful requests", flush=True)
+        print(f"LAT08 generator: {len(rows)} successful requests", flush=True)
 
 
 if __name__ == "__main__":
