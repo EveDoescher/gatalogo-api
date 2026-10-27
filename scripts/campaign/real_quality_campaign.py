@@ -27,6 +27,7 @@ def main():
     output.mkdir(exist_ok=False, parents=True)
     executors = output / "executors"
     executors.mkdir()
+    shutil.copy2(__file__, executors / Path(__file__).name)
     child_name = "real_cache_child.py" if args.kind == "cache" else "real_quality_child.py"
     for name in (child_name, "paid_provider.py", "measurements.py"):
         shutil.copy2(Path(__file__).with_name(name), executors / name)
@@ -54,6 +55,8 @@ def main():
             tar.extractall(source, filter="data")
         sources[role] = {"sha": sha, "path": str(source), "archive_sha256": digest(archive)}
     protected = [labels, *(ROOT / r["image_path"] for r in refs), *executors.glob("*.py")]
+    protected.extend(ROOT / ".model-cache" / name for name in (
+        "sam2.1_hiera_tiny.pt", "checkpoints/fasterrcnn_mobilenet_v3_large_320_fpn-907ea3f9.pth"))
     for source in sources.values():
         protected.extend(Path(source["path"]).glob("app/**/*.py"))
     if args.kind == "replay":

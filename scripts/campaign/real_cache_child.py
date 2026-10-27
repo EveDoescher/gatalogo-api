@@ -3,6 +3,7 @@
 import asyncio
 import hashlib
 import itertools
+import importlib.metadata
 import json
 from pathlib import Path
 import shutil
@@ -99,6 +100,7 @@ async def main():
                 print(json.dumps({"trial": config["role"], **{k: row[k] for k in ("photo", "segmentation_full", "semantic_full", "provider_enabled", "outcome")}}), flush=True)
         (folder / "summary.json").write_text(json.dumps({"passed": True, "variants": len(rows)-len(photos),
             "seed_runs": len(photos), "source_sha": config["source_sha"], "model": settings.gemini_model,
+            "seed": None, "versions": {name: importlib.metadata.version(name) for name in ("torch", "torchvision", "google-genai", "numpy")},
             "prompt_sha256": hashlib.sha256(analysis_service.COAT_ANALYSIS_PROMPT.encode()).hexdigest(),
             "scope": "Real cached weights, CPU two threads, independent fresh/populated caches. Real provider returns may vary; exact result equality required for cache reuse only. One cold seed per fresh process; no tail percentile/speedup claim."}, indent=2)+"\n", encoding="utf-8")
     finally:

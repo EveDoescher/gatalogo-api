@@ -38,7 +38,7 @@ async def test_LOAD04_real_reference_queue(own_api, monkeypatch, tmp_path, consu
     assert settings.vision_job_lease_seconds == 180, "Record an intentional different lease separately"
     data = Path(os.environ["QUALITY_MODEL_PHOTO"]).read_bytes()
     digest = hashlib.sha256(data).hexdigest()
-    phase = f"LOAD04-real-consumers-{consumers}"
+    phase = f"{Path(os.environ['QUALITY_CAMPAIGN_ATTEMPT']).name}-consumers-{consumers}"
     ledger = Path(os.environ["QUALITY_CAMPAIGN_RUN"]) / "paid-provider-budget.sqlite3"
     client = PaidClient(api_key=settings.gemini_api_key, ledger=ledger, phase=phase)
     monkeypatch.setattr(analysis_service, "_get_gemini_client", lambda key: client)
