@@ -266,14 +266,18 @@
   },
   {
     "scenario": "LOAD-04",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "1/10/50 jobs de referência, 1/2 consumidores e inferência controlada; lote real menor separado.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
     "runs": [
       "attempts/queue-01/critical_runs/queue-baseline/summary.json"
     ],
-    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+    "limitation": "Planned controlled and real local/provider variants executed; sample, ground-truth and shared-host limits remain explicit in LOAD04-20261027-results.json",
+    "executor": "scripts/run_security_regression.py --scenario LOAD-04-REAL --output <new private run>",
+    "closure_evidence": [
+      "LOAD04-20261027-results.json"
+    ]
   },
   {
     "scenario": "LOAD-05",
@@ -511,7 +515,7 @@
   },
   {
     "scenario": "IMG-04",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Fotos fixas, processo frio/quente, caches semântico/segmentação vazios/cheios e caminho com/sem provedor.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -520,7 +524,11 @@
       "attempts/image-01/critical_runs/image-baseline/summary.json",
       "attempts/image-02/critical_runs/image-baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+    "limitation": "Planned controlled and real local/provider variants executed; sample, ground-truth and shared-host limits remain explicit in IMG04-20261027-results.json",
+    "executor": "scripts/campaign/real_quality_campaign.py --kind cache --output <new private run>",
+    "closure_evidence": [
+      "IMG04-20261027-results.json"
+    ]
   },
   {
     "scenario": "IMG-05",

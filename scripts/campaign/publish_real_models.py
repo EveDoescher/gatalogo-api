@@ -35,11 +35,13 @@ def species_summary(rows):
     fp = sum(not r["expected_cat"] and r["detected_cat"] for r in rows)
     fn = sum(r["expected_cat"] and not r["detected_cat"] for r in rows)
     tn = sum(not r["expected_cat"] and not r["detected_cat"] for r in rows)
-    precision = tp/(tp+fp) if tp+fp else None
+    negatives = any(not r["expected_cat"] for r in rows)
+    precision = tp/(tp+fp) if negatives and tp+fp else None
     recall = tp/(tp+fn) if tp+fn else None
     cat_rows = [r for r in rows if r["expected_cat"]]
-    return {"true_positive": tp, "false_positive": fp, "false_negative": fn, "true_negative": tn,
-        "precision": precision, "recall": recall, "f1": 2*tp/(2*tp+fp+fn) if 2*tp+fp+fn else None,
+    return {"true_positive": tp, "false_positive": fp if negatives else None, "false_negative": fn, "true_negative": tn if negatives else None,
+        "precision": precision, "recall": recall, "f1": 2*tp/(2*tp+fp+fn) if negatives and 2*tp+fp+fn else None,
+        "negative_controls_present": negatives,
         "foreground_mean_image_iou": float(np.mean([r["foreground_iou"] for r in cat_rows])),
         "foreground_pooled_iou": sum(r["intersection_pixels"] for r in cat_rows)/sum(r["union_pixels"] for r in cat_rows),
         "quality_gate_unusable": sum(not r["quality_usable"] for r in rows)}
@@ -47,7 +49,7 @@ def species_summary(rows):
 
 def real_quality():
     pair, replay, masks = (SEQ / name for name in (
-        "IMG06-20261027-real-paired", "IMG06-20261027-replay", "IMG06-20261027-masks"))
+        "IMG06-20261027-real-paired", "IMG06-20261027-replay", "IMG06-20261027-masks-02"))
     if not all((p / "summary.json").exists() for p in (pair, replay, masks)):
         return None
     assert all(read(p / "summary.json")["sources_and_inputs_unchanged"] for p in (pair, replay, masks))
@@ -88,7 +90,7 @@ def real_quality():
                     mask_pairs.append({"sample_id": old["sample_id"], "between_version_mask_iou":
                         int(np.count_nonzero(a & b))/union if union else None})
     ground_truth = {role: read(masks / role / "observations.json") for role in ("before-main", "after-cleanup")}
-    assert all(len(rows) == 9 for rows in ground_truth.values())
+    assert all(len(rows) == 12 for rows in ground_truth.values())
     return {"scenario": "IMG-06", "state": "COMPLETED", "date": "2026-10-27",
         "source": read(pair / "source_manifest.json")["sources"], "manifests": manifests,
         "attribute_results": {"before": attribute_summary(before), "after": attribute_summary(after)},
@@ -103,7 +105,7 @@ def real_quality():
         "evidence": [e for folder in (pair, replay, masks) for e in inputs(folder)],
         "limitations": ["Twenty authorial photos with pre-existing human attribute labels; correlated convenience sample. No defensible population confidence interval or tail percentile claim.",
             "Attribute matches are conditional on acceptance; rejection coverage is reported separately. Acceptance ground truth and individual identity labels are absent.",
-            "Oxford contributes species and foreground trimaps, never inferred coat or identity labels. Boundary label 3 excluded. Nine fixed images are diagnostic, not a general accuracy benchmark.",
+            "Oxford contributes species and foreground trimaps, never inferred coat or identity labels. Boundary label 3 excluded. Twelve fixed positive images are diagnostic; local subset contains no dogs, so precision/FPR/F1 are not estimable here. First fixture attempt expected unavailable full-corpus filenames and failed before inference; preserved separately.",
             "Between-version mask IoU measures consistency, not ground-truth quality; the separate Oxford section measures annotated foreground IoU.",
             "Real Gemini draws may differ despite equal model/prompt/configuration. Offline same-response replay separates code equivalence; no provider quality improvement claim.",
             "Replay equality excludes generated timestamps and warning lists: enabling semantic cache adds the existing cache warning. It does not certify identical entire JSON/UI across different cache states.",

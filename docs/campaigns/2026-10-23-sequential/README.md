@@ -2,7 +2,7 @@
 
 ## Meta de 85 — continuação autorizada em 27/10/2026
 
-**55 concluídos, 17 parciais, 13 pendentes e 10 bloqueados externos.**
+**57 concluídos, 15 parciais, 13 pendentes e 10 bloqueados externos.**
 
 [LOAD-01 concluído](LOAD01-20261027-results.json): cinco patamares de concorrência (1/5/10/25/50), com 30 segundos de aquecimento e três minutos medidos em cada um; respostas, consultas SQL, recursos e integridade registrados.
 

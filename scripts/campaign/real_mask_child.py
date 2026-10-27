@@ -31,17 +31,17 @@ def main():
     annotation = data / "annotations/list.txt"
     rows = [line.split() for line in annotation.read_text().splitlines() if line and not line.startswith("#")]
     selected = []
-    for species, count in (("1", 6), ("2", 3)):
+    for species, count in (("1", 12),):
         breeds = {}
         for row in sorted(rows):
-            if row[2] == species:
+            if row[2] == species and (data / "images" / (row[0]+".jpg")).exists() and (data / "annotations/trimaps" / (row[0]+".png")).exists():
                 breeds.setdefault(row[0].rsplit("_", 1)[0], row[0])
         selected.extend((name, species) for name in list(breeds.values())[:count])
-    assert len(selected) == 9
+    assert len(selected) == 12
     inputs = [{"image": name, "species": species,
         "image_sha256": sha(data / "images" / (name+".jpg")),
         "trimap_sha256": sha(data / "annotations/trimaps" / (name+".png"))} for name, species in selected]
-    (folder / "dataset.json").write_text(json.dumps({"selection": "Sorted first image per breed; first six cat and first three dog breeds. Fixed before inference; convenience diagnostic sample, no population accuracy claim.",
+    (folder / "dataset.json").write_text(json.dumps({"selection": "First locally available labeled image per each of the 12 cat breeds, sorted before inference. Local download contains only cats; no precision/FPR/negative-control claim. Convenience diagnostic sample, no population accuracy claim.",
         "annotation_sha256": sha(annotation), "inputs": inputs}, indent=2)+"\n", encoding="utf-8")
     torch.set_num_threads(2)
     def denied(*args, **kwargs):

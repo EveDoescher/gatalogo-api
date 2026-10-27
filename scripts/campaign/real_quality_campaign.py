@@ -85,7 +85,7 @@ def main():
         assert first == second, "A/B ground-truth inputs changed"
         inputs = first["inputs"]
     (output / "summary.json").write_text(json.dumps({"executed": True, "sources_and_inputs_unchanged": True,
-        "kind": args.kind, "samples_per_version": 2 if args.kind == "cache" else 9 if args.kind == "segmentation" else len(refs),
+        "kind": args.kind, "samples_per_version": 2 if args.kind == "cache" else len(inputs) if args.kind == "segmentation" else len(refs),
         "paired_inputs": inputs}, indent=2)+"\n", encoding="utf-8")
 
 

@@ -1,0 +1,355 @@
+{
+  "scenario": "LOAD-04",
+  "state": "COMPLETED",
+  "date": "2026-10-27",
+  "source": {
+    "source_sha": "e44e79ae3aa230b6e531395475f969d370b69e80",
+    "executor_sha256": {
+      "security_cases.py": "7c78314a8403b8cded8896bda345ca3e06c5305cc078fe9e42b6d273b8e539c8",
+      "extended_cases.py": "14499f8e9beb0e7ec9e1036824dd247e5dcd876eae209960e800802d76583415",
+      "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+      "real_reference_cases.py": "07c0fb031623df3a452f3607655170098fa90dcb4ec084208f859881be01f454",
+      "current_offline_cases.py": "63e9ceaca8b32cd8b0f3f3641527ea78a0b5aef484b7f6afd574f2c299991aa3",
+      "image_cases.py": "19958fd2cd733ca13231cca626a0c55c4a2f94efd54b793578e9b3e5d1999e6e",
+      "critical_report.py": "794293f87f45a616031d5d50265cf01d7dc060b959f2d8cf9208ff35a483bc2b",
+      "subprocesses.py": "662914a55c1a282b389111628fd5ceb7bc5327ead4821ce1fd12720c13716274",
+      "measurements.py": "6775d688520ffefa3735051fbbacedf20a7e13330be86ddea293e65efe94e23e",
+      "paid_provider.py": "c09958261dea9dc9f54d46e80bafcb3b09deaa287b6c94145f64060787183fc9",
+      "chelsea.png": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb",
+      "README.md": "1aab0f78a97a6cd3d03f7b0a61963c959c646b3b2c65ea6f68cc6add1be49131"
+    }
+  },
+  "tests": {
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "seconds": 95.412,
+    "selectors": [
+      "sequential.LOAD04-20261027-real.executors.real_reference_cases::test_LOAD04_real_reference_queue[1]",
+      "sequential.LOAD04-20261027-real.executors.real_reference_cases::test_LOAD04_real_reference_queue[2]"
+    ]
+  },
+  "real_reference_batches": [
+    {
+      "scenario": "LOAD-04",
+      "consumers": 1,
+      "completed_once": 2,
+      "paid_generation_attempts": 2,
+      "usage": [
+        {
+          "phase": "LOAD04-20261027-real-consumers-1",
+          "model": "gemini-3.5-flash-lite",
+          "state": "returned",
+          "reserved_usd": 0.1673674,
+          "charged_estimate_usd": 0.0019199,
+          "metadata": {
+            "sdk_generate_seconds": 2.5340789999754634,
+            "count_tokens_seconds": 0.5834770000074059,
+            "response_model_version": "gemini-3.5-flash-lite",
+            "usage": {
+              "prompt_token_count": 1758,
+              "candidates_token_count": 557,
+              "thoughts_token_count": 0,
+              "cached_content_token_count": 0,
+              "total_token_count": 2315
+            },
+            "finish_reasons": [
+              "FinishReason.STOP"
+            ]
+          }
+        },
+        {
+          "phase": "LOAD04-20261027-real-consumers-1",
+          "model": "gemini-3.5-flash-lite",
+          "state": "returned",
+          "reserved_usd": 0.1673674,
+          "charged_estimate_usd": 0.0017523999999999999,
+          "metadata": {
+            "sdk_generate_seconds": 2.1625016999896616,
+            "count_tokens_seconds": 0.47551729998667724,
+            "response_model_version": "gemini-3.5-flash-lite",
+            "usage": {
+              "prompt_token_count": 1758,
+              "candidates_token_count": 490,
+              "thoughts_token_count": 0,
+              "cached_content_token_count": 0,
+              "total_token_count": 2248
+            },
+            "finish_reasons": [
+              "FinishReason.STOP"
+            ]
+          }
+        }
+      ],
+      "timings": [
+        {
+          "enqueue_to_claim_ms": 96.108,
+          "claim_to_finish_ms": 27236.694,
+          "enqueue_to_finish_ms": 27332.802
+        },
+        {
+          "enqueue_to_claim_ms": 27341.421000000002,
+          "claim_to_finish_ms": 20905.142,
+          "enqueue_to_finish_ms": 48246.563
+        }
+      ],
+      "elapsed_seconds": 48.17774049998843,
+      "resources_before": {
+        "process_cpu_seconds": 12.453125,
+        "pid": 26128,
+        "rss_bytes": 306798592,
+        "peak_rss_bytes": 306806784,
+        "private_commit_bytes": 384868352,
+        "peak_private_commit_bytes": 384884736,
+        "handles": 231
+      },
+      "resources_after": {
+        "process_cpu_seconds": 82.0,
+        "pid": 26128,
+        "rss_bytes": 938278912,
+        "peak_rss_bytes": 1211432960,
+        "private_commit_bytes": 1145913344,
+        "peak_private_commit_bytes": 1490616320,
+        "handles": 284
+      },
+      "input_sha256": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb",
+      "model": "gemini-3.5-flash-lite",
+      "lease_seconds": 180,
+      "scope": "Real reference process_next, migrated own PostgreSQL and business effects, detector/SAM/Gemini. Separate DINO jobs remain pending. Two identical public CC0 photos per consumer setting; bounded consistency, not model accuracy or throughput inference."
+    },
+    {
+      "scenario": "LOAD-04",
+      "consumers": 2,
+      "completed_once": 2,
+      "paid_generation_attempts": 2,
+      "usage": [
+        {
+          "phase": "LOAD04-20261027-real-consumers-2",
+          "model": "gemini-3.5-flash-lite",
+          "state": "returned",
+          "reserved_usd": 0.1673674,
+          "charged_estimate_usd": 0.0020524000000000002,
+          "metadata": {
+            "sdk_generate_seconds": 3.079145800002152,
+            "count_tokens_seconds": 0.4741877999913413,
+            "response_model_version": "gemini-3.5-flash-lite",
+            "usage": {
+              "prompt_token_count": 1758,
+              "candidates_token_count": 610,
+              "thoughts_token_count": 0,
+              "cached_content_token_count": 0,
+              "total_token_count": 2368
+            },
+            "finish_reasons": [
+              "FinishReason.STOP"
+            ]
+          }
+        },
+        {
+          "phase": "LOAD04-20261027-real-consumers-2",
+          "model": "gemini-3.5-flash-lite",
+          "state": "returned",
+          "reserved_usd": 0.1673674,
+          "charged_estimate_usd": 0.0020499,
+          "metadata": {
+            "sdk_generate_seconds": 2.3358791999926325,
+            "count_tokens_seconds": 0.45843929998227395,
+            "response_model_version": "gemini-3.5-flash-lite",
+            "usage": {
+              "prompt_token_count": 1758,
+              "candidates_token_count": 609,
+              "thoughts_token_count": 0,
+              "cached_content_token_count": 0,
+              "total_token_count": 2367
+            },
+            "finish_reasons": [
+              "FinishReason.STOP"
+            ]
+          }
+        }
+      ],
+      "timings": [
+        {
+          "enqueue_to_claim_ms": 79.283,
+          "claim_to_finish_ms": 21728.548,
+          "enqueue_to_finish_ms": 21807.831000000002
+        },
+        {
+          "enqueue_to_claim_ms": 81.486,
+          "claim_to_finish_ms": 36897.217,
+          "enqueue_to_finish_ms": 36978.703
+        }
+      ],
+      "elapsed_seconds": 36.938665499998024,
+      "resources_before": {
+        "process_cpu_seconds": 83.015625,
+        "pid": 26128,
+        "rss_bytes": 870424576,
+        "peak_rss_bytes": 1211432960,
+        "private_commit_bytes": 1045041152,
+        "peak_private_commit_bytes": 1490616320,
+        "handles": 246
+      },
+      "resources_after": {
+        "process_cpu_seconds": 144.171875,
+        "pid": 26128,
+        "rss_bytes": 951820288,
+        "peak_rss_bytes": 1261654016,
+        "private_commit_bytes": 1132834816,
+        "peak_private_commit_bytes": 1554698240,
+        "handles": 284
+      },
+      "input_sha256": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb",
+      "model": "gemini-3.5-flash-lite",
+      "lease_seconds": 180,
+      "scope": "Real reference process_next, migrated own PostgreSQL and business effects, detector/SAM/Gemini. Separate DINO jobs remain pending. Two identical public CC0 photos per consumer setting; bounded consistency, not model accuracy or throughput inference."
+    }
+  ],
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/candidate.tar",
+      "sha256": "314ce801cd758d7fccd6d24f086875b45036b048a45f060847321765f1eb66e5"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/candidate_manifest.json",
+      "sha256": "9ad476ee7246e07797eb995abb3a6044f718f0a5f53ddd6c83bd56c812d36688"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/__pycache__/critical_report.cpython-313.pyc",
+      "sha256": "48af02c6580b0a36dbb2235928d609cedcf773093c9ce5f214226ee1c3a57ece"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/__pycache__/current_offline_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "37c68e95922e25ecfbee020f011d2748de7c16808fa49e52f8641676d997128c"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/__pycache__/fixtures.cpython-313.pyc",
+      "sha256": "97211479cb39b8895097caf36869beb7f7237fc2f80b80013a23905b65e00d59"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/__pycache__/image_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "e023bebdbfd57cf7b8c7f8c091f9221d17d8be37a860082eadc73f1bde5ee38f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/__pycache__/measurements.cpython-313.pyc",
+      "sha256": "66c57f546478dd7ebd4abbfca27b627f047db9c08ff925fa49ce1d93dd59b215"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/__pycache__/paid_provider.cpython-313.pyc",
+      "sha256": "634e4b11a8c0acd9e5c412179ef5233524099c14df9a4faca6c93c14263f9437"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/__pycache__/real_reference_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "90ffeced96b6e26ed9021804001b2b081c754309a9d1a78b0589f7384d1e374e"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/__pycache__/security_cases.cpython-313.pyc",
+      "sha256": "ecaa592e5e0e9e53a79100256d8a122517ec724b080694b07a1f19ce089c2dc3"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/__pycache__/subprocesses.cpython-313.pyc",
+      "sha256": "6ec6439f0909fa8a1cd14d3357a4df002b8a66ed6bd21a48245f340dc4dd086a"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/chelsea.png",
+      "sha256": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/critical_report.py",
+      "sha256": "794293f87f45a616031d5d50265cf01d7dc060b959f2d8cf9208ff35a483bc2b"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/current_offline_cases.py",
+      "sha256": "63e9ceaca8b32cd8b0f3f3641527ea78a0b5aef484b7f6afd574f2c299991aa3"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/extended_cases.py",
+      "sha256": "14499f8e9beb0e7ec9e1036824dd247e5dcd876eae209960e800802d76583415"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/fixtures.py",
+      "sha256": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/image_cases.py",
+      "sha256": "19958fd2cd733ca13231cca626a0c55c4a2f94efd54b793578e9b3e5d1999e6e"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/measurements.py",
+      "sha256": "6775d688520ffefa3735051fbbacedf20a7e13330be86ddea293e65efe94e23e"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/paid_provider.py",
+      "sha256": "c09958261dea9dc9f54d46e80bafcb3b09deaa287b6c94145f64060787183fc9"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/README.md",
+      "sha256": "1aab0f78a97a6cd3d03f7b0a61963c959c646b3b2c65ea6f68cc6add1be49131"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/real_reference_cases.py",
+      "sha256": "07c0fb031623df3a452f3607655170098fa90dcb4ec084208f859881be01f454"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/security_cases.py",
+      "sha256": "7c78314a8403b8cded8896bda345ca3e06c5305cc078fe9e42b6d273b8e539c8"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/executors/subprocesses.py",
+      "sha256": "662914a55c1a282b389111628fd5ceb7bc5327ead4821ce1fd12720c13716274"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/junit.xml",
+      "sha256": "9dc5608caa230c6f56c77fc5ab6cd9a2a2896ecfaf2975a26cc4fcc2d996ac26"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/migrations.log",
+      "sha256": "a3b46d2f11f9b6e02caac2d03005d0237af6f6b915efdc0e4805c9d2bcafece2"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/observations/LOAD04-real-1.json",
+      "sha256": "9393b077d39fd8ebdcf9f392b7946a738ce40657de9d1c15febee8608bb6c5fb"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/observations/LOAD04-real-2.json",
+      "sha256": "ab21956d0e20936b47b60ba3d9f96f99e06aaaadabd90bde4703a02a36178ff3"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/pytest.log",
+      "sha256": "21220cc12658ce2b354b616445ed92b89c516ac13e2725501f75e94feb9494c0"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/source_manifest.json",
+      "sha256": "6f4d460f83088eb8baf6ec5cbe249ff969b79dd3115ad5c5522a8353d9cc4f8d"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/storage/users/6e989db8-6314-407a-94d4-659bfcb08b0a/cats/29613088-be4a-4601-946e-40c86a5389a8-596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb.png",
+      "sha256": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/storage/users/6e989db8-6314-407a-94d4-659bfcb08b0a/cats/50e70606-9dfd-4262-b4ff-ebc1b05d1991-596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb.png",
+      "sha256": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/storage/users/75220151-0314-40aa-a855-f33987a4ced1/cats/663e1fcf-0416-4f8e-945b-8c3509f20084-596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb.png",
+      "sha256": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/storage/users/75220151-0314-40aa-a855-f33987a4ced1/cats/6f2a9bfb-4c1e-4dcb-8c3f-144f0feba9b0-596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb.png",
+      "sha256": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD04-20261027-real/summary.json",
+      "sha256": "9eb39d03243686ced8158ad33f25ef65e3f8e03ea6ae40ee2438b06ed904dc19"
+    }
+  ],
+  "controlled_batch_evidence": "RSC06-20261027-results.json",
+  "retry_fencing_superseded_evidence": "matrix.json: DATA-06, RES-04 and queue-baseline historical runs",
+  "executor": "scripts/run_security_regression.py --scenario LOAD-04-REAL --output <new private run>",
+  "scope": "Controlled 1/10/50 x 1/2 consumers revalidated under two resource settings (244 jobs), plus separate real detector/SAM/Gemini reference batches of two jobs each with 1/2 consumers. Real migrated DB and business result persistence, attempts exactly one, separate DINO jobs remain pending.",
+  "limitations": [
+    "Four real jobs use one repeated CC0 photo; consistency and queue mechanics, not model accuracy or production throughput. Shared CPU; no physical device."
+  ],
+  "report_executor": "scripts/campaign/publish_real_models.py"
+}
