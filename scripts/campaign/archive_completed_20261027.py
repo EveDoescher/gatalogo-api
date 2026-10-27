@@ -15,7 +15,7 @@ def main():
         summary = folder / "summary.json"
         if summary.exists():
             state = read(summary)
-            if state.get("exit_code") == 0 or state.get("executed") is True:
+            if isinstance(state.get("exit_code"), int) or state.get("executed") is True:
                 folders.append(folder)
         elif folder.name in ("ACC-MOTION-20261027-before", "ACC-MOTION-20261027-after", "PROVIDER-PILOT-20261027"):
             folders.append(folder)
@@ -31,6 +31,7 @@ def main():
     assert all(sha(path) == row["sha256"] for path, row in zip(files, manifest, strict=True)), "Evidence changed during archive"
     result = {"date": "2026-10-27", "originals_preserved": True, "local_only": True,
         "contains_disposable_tokens_and_private_derived_data": True,
+        "sealing_means_finished_not_passed": True,
         "archive": archive.relative_to(ROOT).as_posix(), "archive_sha256": sha(archive),
         "folders": [p.name for p in folders], "files": manifest}
     (DOC / "RAW-SEALED-20261027-manifest.json").write_text(json.dumps(result, indent=2)+"\n", encoding="utf-8")
