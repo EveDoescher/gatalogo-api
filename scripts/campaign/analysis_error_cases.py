@@ -70,6 +70,7 @@ def trace_app(monkeypatch):
                     "cat_id": cat_id, "measured": options["measured"], "requests": [], "analyzed_hashes": []})
                 return await JSONResponse({**bundle, "user_id": str(bundle["user_id"]), "client_id": str(client_id)})(scope, receive, send)
             started = time.perf_counter()
+            case = state["cases"][-1] if state["cases"] else None
             status = None
 
             async def record(message):
@@ -84,9 +85,9 @@ def trace_app(monkeypatch):
                 await JSONResponse({"detail": "Credenciais inválidas."}, status_code=401)(scope, receive, record)
             else:
                 await app(scope, receive, record)
-            if path in ("/analyze", "/auth/refresh") and state["cases"]:
+            if path in ("/analyze", "/auth/refresh") and case is not None:
                 item = {"path": path, "status": status, "elapsed_ms": (time.perf_counter() - started) * 1000}
-                state["cases"][-1]["requests"].append(item)
+                case["requests"].append(item)
     monkeypatch.setattr(main, "app", Trace())
     return state
 
