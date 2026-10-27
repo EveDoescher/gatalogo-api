@@ -47,7 +47,8 @@ class Sam2DinoWorker:
         self._segmenter = SegmentationService(worker_settings)
         torch.hub.set_dir(worker_settings.model_cache_dir)
         self._dino = (
-            torch.hub.load("facebookresearch/dinov2", self.settings.dinov2_model_name)
+            # Avoid default-branch discovery when the main repository is cached.
+            torch.hub.load("facebookresearch/dinov2:main", self.settings.dinov2_model_name)
             .eval()
             .to(self._device)
         )
