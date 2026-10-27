@@ -22,6 +22,9 @@ def main():
         elif (folder / "attempt-state.json").exists() and read(folder / "attempt-state.json").get("sealed"):
             folders.append(folder)
     files = sorted(p for folder in folders for p in folder.rglob("*") if p.is_file())
+    ledger = SEQ.parent / "paid-provider-budget.sqlite3"
+    if ledger.exists():
+        files.append(ledger)
     manifest = [{"private_path": p.relative_to(ROOT).as_posix(), "sha256": sha(p), "bytes": p.stat().st_size} for p in files]
     digest = hashlib.sha256(json.dumps(manifest, sort_keys=True).encode()).hexdigest()[:16]
     archive = ROOT / "artifacts/reports/quality-campaign/2026-10-27-no-usb" / ("sealed-"+digest+".zip")
