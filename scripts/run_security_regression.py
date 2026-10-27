@@ -78,6 +78,8 @@ def source_hashes():
         for name in (
             "test_apple_identity.py",
             "test_auth_security.py",
+            "test_otp_delivery.py",
+            "test_account_settings.py",
             "test_conversation_events.py",
             "test_websocket_manager.py",
             "test_sync_query_performance.py",
@@ -104,6 +106,8 @@ def selection(scenario, output):
             [
                 "tests/test_apple_identity.py",
                 "tests/test_auth_security.py",
+                "tests/test_otp_delivery.py",
+                "tests/test_account_settings.py",
                 "tests/test_conversation_events.py",
                 "tests/test_websocket_manager.py",
             ],

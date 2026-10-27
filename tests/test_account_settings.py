@@ -75,7 +75,10 @@ async def test_change_email_flow():
     exec_result.scalar_one_or_none.return_value = None
     session.execute = AsyncMock(return_value=exec_result)
 
-    with patch("app.routers.auth.create_otp", new_callable=AsyncMock) as mock_create_otp:
+    with (
+        patch("app.routers.auth.create_otp", new_callable=AsyncMock) as mock_create_otp,
+        patch("app.routers.auth.commit_and_send_otp", new_callable=AsyncMock) as mock_send,
+    ):
         req_res = await request_change_email(
             ChangeEmailRequest(new_email="novo@gatalogo.app"),
             user=user,
@@ -83,6 +86,7 @@ async def test_change_email_flow():
         )
         assert "Código de confirmação" in req_res["message"]
         mock_create_otp.assert_awaited_once()
+        mock_send.assert_awaited_once_with(session, mock_create_otp.return_value)
 
     with patch("app.routers.auth.consume_otp", new_callable=AsyncMock) as mock_consume_otp:
         conf_res = await confirm_change_email(

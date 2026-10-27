@@ -262,6 +262,10 @@ async def test_DLV02_local_socket_outage_cooldown_and_recovery(
     db, mailpit, smtp_settings, monkeypatch, failure
 ):
     released = threading.Event()
+    async with db.factory() as session:
+        user = await session.get(User, uid("A"))
+        user.password_hash = auth_service.password_hash.hash("Synthetic_recovery_2026!")
+        await session.commit()
 
     class Handler(socketserver.StreamRequestHandler):
         def handle(self):
