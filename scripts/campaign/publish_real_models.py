@@ -112,6 +112,15 @@ def real_quality():
             "Shared PC and concurrent disposable soak; elapsed times cannot establish branch latency gains. No physical device or reidentification certification."],
         "recommendations": ["Review the listed label disagreements before proposing prompt/model changes; do not auto-tune thresholds or convert suggestions into confirmed identity.",
             "A larger independently labeled set grouped by individual is needed for generalization and reidentification metrics."],
+        "issues": [{"id": "IMG06-ATTR-01", "state": "IDENTIFIED_NOT_CHANGED",
+            "description": "Several accepted photos disagree with existing human color/coat labels in both versions.",
+            "cause_hypothesis": "Semantic/model/fusion disagreement; stochastic responses demonstrably vary. Equal replay outcomes prevent attributing the observed aggregate difference to the refactor alone.",
+            "recommended_correction": "Review labels and masks independently, then validate any prompt/model/calibration proposal on a held-out set; preserve current thresholds meanwhile.",
+            "correction_commit": None},
+            {"id": "IMG06-DETECT-01", "state": "IDENTIFIED_NOT_CHANGED",
+            "missed_positive_images": {role: [r["image"] for r in rows if r["expected_cat"] and not r["detected_cat"]] for role, rows in ground_truth.items()},
+            "cause_hypothesis": "The local pipeline returned no cat for these labeled positives. Low cat scores, pose, exposure and domain coverage need separate diagnosis; no specific training-data cause is established.",
+            "recommended_correction": "Validate positive/negative cases before any threshold or model change; do not fit a correction to one image.", "correction_commit": None}],
     }
 
 

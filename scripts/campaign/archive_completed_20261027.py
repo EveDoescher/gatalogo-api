@@ -19,6 +19,8 @@ def main():
                 folders.append(folder)
         elif folder.name in ("ACC-MOTION-20261027-before", "ACC-MOTION-20261027-after", "PROVIDER-PILOT-20261027"):
             folders.append(folder)
+        elif (folder / "attempt-state.json").exists() and read(folder / "attempt-state.json").get("sealed"):
+            folders.append(folder)
     files = sorted(p for folder in folders for p in folder.rglob("*") if p.is_file())
     manifest = [{"private_path": p.relative_to(ROOT).as_posix(), "sha256": sha(p), "bytes": p.stat().st_size} for p in files]
     digest = hashlib.sha256(json.dumps(manifest, sort_keys=True).encode()).hexdigest()[:16]
