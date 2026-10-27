@@ -198,6 +198,7 @@ def selection(scenario, output):
         "DB-04": "migrated_plan_cases.py",
         "RES-01": "current_offline_cases.py",
         "LAT-04": "sync_batch_cases.py",
+        "LAT-03": "analysis_error_cases.py",
         "LAT-08": "latency_pressure_cases.py",
         "RES-02": "current_upload_transport_cases.py",
         "RES-05": "service_recovery_cases.py",
@@ -235,6 +236,8 @@ def selection(scenario, output):
     if scenario == "RES-01":
         names.extend(["image_cases.py", "critical_report.py", "subprocesses.py"])
     if scenario == "LAT-04":
+        names.extend(["current_offline_cases.py", "image_cases.py", "critical_report.py", "subprocesses.py"])
+    if scenario == "LAT-03":
         names.extend(["current_offline_cases.py", "image_cases.py", "critical_report.py", "subprocesses.py"])
     if scenario == "LAT-08":
         names.extend(["current_offline_cases.py", "image_cases.py", "critical_report.py", "subprocesses.py", "measurements.py", "latency_probe_child.py"])
@@ -684,6 +687,7 @@ if __name__ == "__main__":
             "DB-04",
             "RES-01",
             "LAT-04",
+            "LAT-03",
             "LAT-08",
             "RES-02",
             "RES-05",
