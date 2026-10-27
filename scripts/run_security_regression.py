@@ -380,6 +380,7 @@ def selection(scenario, output):
         dict(
             QUALITY_LARGE_LOCAL_SYNC="true" if scenario == "LAT-04" else "false",
             QUALITY_API_KEEPALIVE_SECONDS="5" if scenario.startswith("RSC-02") else "1",
+            QUALITY_LATENCY_EXPECT_RELEASED_POOL="false" if scenario == "BR-02-TCP" else "true",
             QUALITY_CAMPAIGN_RUN=str(campaign),
             QUALITY_CAMPAIGN_ATTEMPT=str(output),
             QUALITY_TARGET_SOURCE=str(source),

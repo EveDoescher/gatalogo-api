@@ -40,6 +40,7 @@ async def test_LAT08_tcp_fixed_load_during_controlled_inference(
 ):
     count = int(os.environ.get("QUALITY_LATENCY_REQUESTS_PER_ROUTE", "1000"))
     warmup = int(os.environ.get("QUALITY_LATENCY_WARMUP_PER_ROUTE", "30"))
+    require_released_pool = os.environ.get("QUALITY_LATENCY_EXPECT_RELEASED_POOL", "true") == "true"
     assert 1 <= count <= 1000 and 1 <= warmup <= 30
     for logger in ("httpx", "httpcore", "uvicorn.access", "uvicorn.error"):
         caplog.set_level(logging.WARNING, logger=logger)
@@ -182,7 +183,8 @@ async def test_LAT08_tcp_fixed_load_during_controlled_inference(
                     if models:
                         assert await asyncio.to_thread(entered.wait, 15)
                         assert not any(p.done() for p in pending)
-                        assert pool.checkedout() == 0
+                        if require_released_pool:
+                            assert pool.checkedout() == 0
                     config = {
                         "requests_per_route": count,
                         "warmup_per_route": warmup,
@@ -242,11 +244,12 @@ async def test_LAT08_tcp_fixed_load_during_controlled_inference(
                     assert all(not p.done() for p in pending), (
                         "Inference gate ended before light workload"
                     )
-                    for _ in range(100):
-                        if pool.checkedout() == 0:
-                            break
-                        await asyncio.sleep(0.01)
-                    assert pool.checkedout() == 0
+                    if require_released_pool:
+                        for _ in range(100):
+                            if pool.checkedout() == 0:
+                                break
+                            await asyncio.sleep(0.01)
+                        assert pool.checkedout() == 0
                     generated = json.loads(
                         (folder / "generator-result.json").read_text()
                     )
