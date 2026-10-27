@@ -1,5 +1,25 @@
 # Fechamento sequencial e correções
 
+<!-- no-usb-20261027:start -->
+## Atualização sem USB — 27/10/2026
+
+**52 concluídos, 18 parciais, 15 pendentes e 10 bloqueados externos; 95 cenários.**
+
+Concluídos nesta bateria: DLV-02, RES-05, RSC-06, RSC-01, IMG-05. Nenhum aparelho, teste iOS ou chamada de IA paga. A main permanece preservada.
+
+- [SMTP, resiliência, correções e regressões](DLV02-RES05-20261027-results.json): seis casos SMTP e 25 de resiliência, além de autenticação, acesso privado e rollback.
+- [Dois mutantes detectados](MUT13-MUT14-20261027-results.json): ordem commit/envio e proteção de arquivos referenciados, com baselines verdes e cópias isoladas.
+- [Limites de CPU/memória](RSC06-20261027-results.json): 244 jobs e 1.800 requisições medidas; controle de um núcleo/512 MiB verificado pelo Windows; sem alegação de ganho.
+- [Modelos locais reais](RSC01-20261027-results.json): quatro processos, 16 execuções, detector/SAM2 e DINOv2, oito jobs persistidos e repouso; sem Gemini real ou identificação confirmada.
+- [Rejeições reais e bordas](IMG05-20261027-results.json): cache de múltiplos gatos corrigido sem mudar coordenadas/limiares; repetição e efeitos de negócio preservados.
+
+[Quatro problemas corrigidos e recomendações restantes](ISSUES-20261027-results.json). Os 55 testes locais também passaram. [Índice do arquivo bruto local](RAW-20261027-manifest.json): ZIP e manifesto em `artifacts/reports/quality-campaign/2026-10-27-no-usb/`, fora do Git; nenhum original foi removido.
+
+As tentativas inválidas e os resultados anteriores foram preservados. Falhas de fixture não são resultados de desempenho. Fontes, SHAs, seletores, hashes das evidências, hipótese/correção e revalidação estão nos relatórios. SMTP não promete entrega exatamente uma vez; cliente com timeout não prova deadline SQL; amostras pequenas não sustentam P99.
+
+Fora desta execução continuam os percursos que exigem aparelho, entrega real FCM/credenciais externas, conjuntos rotulados independentes e variantes pagas de IA. LOAD-01/02/06 exigem carga prolongada, ainda excluída nesta etapa. BR-05 depende da comparação A/B completa. Modelos locais disponíveis e uma foto CC0 não substituem um conjunto de reidentificação.
+<!-- no-usb-20261027:end -->
+
 ## Escopo vigente
 
 Por orientação do usuário em 23/10/2026, esta etapa passa a permitir correções de defeitos encontrados, seguidas de revalidação. Não autoriza remover funcionalidades, alterar a aparência do aplicativo nem modificar `main`. Os relatórios anteriores permanecem históricos: a regra antiga de somente investigar não descreve esta nova etapa.

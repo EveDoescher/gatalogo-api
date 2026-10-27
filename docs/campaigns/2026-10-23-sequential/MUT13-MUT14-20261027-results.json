@@ -1,0 +1,311 @@
+{
+  "state": "COMPLETED",
+  "mutants": [
+    {
+      "attempt": "MUT13-20261027-otp-order",
+      "result": {
+        "mutation": "MUT-13",
+        "classification": "KILLED",
+        "recipe": {
+          "path": "app/services/auth_service.py",
+          "before_sha256": "72e1541547dffa51848634f214f3fc5db5c906ff17f6ff9c9612216fd0fae34e",
+          "after_sha256": "40abbe71657381a067935ed63072987f69790d48b585b822ab7471feeb1faffa"
+        },
+        "failed_baseline_selectors": [
+          [
+            "sequential.MUT13-20261027-otp-order.executors.extended_cases",
+            "test_DLV02_commit_failure_prevents_smtp_acceptance"
+          ],
+          [
+            "sequential.MUT13-20261027-otp-order.executors.delivery_cases",
+            "test_DLV02_SMTP_ambiguous_acceptance_retry_and_cooldown"
+          ]
+        ],
+        "baseline_passed": 2,
+        "isolated_candidate": "sources\\MUT13-20261027-otp-order\\api",
+        "product_checkout_unchanged": true
+      },
+      "baseline": {
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "seconds": 29.198999999999998,
+        "selectors": [
+          "sequential.MUT13-20261027-otp-order.executors.extended_cases::test_DLV02_commit_failure_prevents_smtp_acceptance",
+          "sequential.MUT13-20261027-otp-order.executors.delivery_cases::test_DLV02_SMTP_ambiguous_acceptance_retry_and_cooldown"
+        ]
+      },
+      "mutant": {
+        "tests": 2,
+        "failures": 2,
+        "errors": 0,
+        "skips": 0,
+        "seconds": 23.306,
+        "selectors": [
+          "sequential.MUT13-20261027-otp-order.executors.extended_cases::test_DLV02_commit_failure_prevents_smtp_acceptance",
+          "sequential.MUT13-20261027-otp-order.executors.delivery_cases::test_DLV02_SMTP_ambiguous_acceptance_retry_and_cooldown"
+        ]
+      },
+      "evidence": [
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT13-20261027-otp-order/baseline-junit.xml",
+          "sha256": "582e6575260b4922f137f39f37dc76679f6b71609f56e3c34ec2c9941094bc97"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT13-20261027-otp-order/baseline-pytest.log",
+          "sha256": "9305a09136ea4c9c15ed6c1bef1213e4f49a43ab7db3f1588f878fc1e0f336b5"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT13-20261027-otp-order/candidate_manifest.json",
+          "sha256": "18860894f49673aa27aabb1777e9980df83bf1b0b49c97a2dbfff6a41fc8a359"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT13-20261027-otp-order/executors/delivery_cases.py",
+          "sha256": "2a2a3fed9c37866443720582c18ee79457227517fbe1d611ac7598c3e9762b70"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT13-20261027-otp-order/executors/extended_cases.py",
+          "sha256": "14499f8e9beb0e7ec9e1036824dd247e5dcd876eae209960e800802d76583415"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT13-20261027-otp-order/executors/fixtures.py",
+          "sha256": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT13-20261027-otp-order/executors/security_cases.py",
+          "sha256": "7c78314a8403b8cded8896bda345ca3e06c5305cc078fe9e42b6d273b8e539c8"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT13-20261027-otp-order/junit.xml",
+          "sha256": "b4fcef955728a1d523572b1c121dfb0136c4266cdec10e914dd8c6607e171e3a"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT13-20261027-otp-order/migrations.log",
+          "sha256": "a3b46d2f11f9b6e02caac2d03005d0237af6f6b915efdc0e4805c9d2bcafece2"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT13-20261027-otp-order/mutation.diff",
+          "sha256": "6e660bd0f5aa7978b3ddd6573c9141ebd428026a54962f0c0902918eb9dea9a2"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT13-20261027-otp-order/mutation.json",
+          "sha256": "cd1927ae6d9ea500c807e27ea012deb9bc395a2389f6a42b8a613cf1b56960b4"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT13-20261027-otp-order/observations/DLV02-ambiguous-acceptance.json",
+          "sha256": "6b0a7811eebac46a1429b804d31ab7a0b1eaddff94ae2dd5653f963c2cb7ee38"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT13-20261027-otp-order/observations/DLV02-smtp-before-commit.json",
+          "sha256": "fb55198e785bef7a4796c1c1fa602af5a645c985004f4918765d5caf7c54bd8c"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT13-20261027-otp-order/pytest.log",
+          "sha256": "641a234bd7af726fdc219dc547094a96374d6a87851478c14073248960107d2b"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT13-20261027-otp-order/source_manifest.json",
+          "sha256": "ff599af387cba6612223354803c8cf1349b7ea6aece8c67eb09b4db691826609"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT13-20261027-otp-order/summary.json",
+          "sha256": "12532608e4f135e9d884d308a135a90dbc1227f9c133b86473d0059d77ac480c"
+        }
+      ]
+    },
+    {
+      "attempt": "MUT14-20261027-photo-references",
+      "result": {
+        "mutation": "MUT-14",
+        "classification": "KILLED",
+        "recipe": {
+          "path": "app/services/photo_cleanup.py",
+          "before_sha256": "50f6678cbcc508c314803542b24cf81e9cfa8adfa38b62b9bdf877192d8d57f6",
+          "after_sha256": "8b55e87d4adcc5ccf564eaac4ea541f45f78cfb210f3b0b7c4a6b28e2bfa6b4f"
+        },
+        "failed_baseline_selectors": [
+          [
+            "sequential.MUT14-20261027-photo-references.executors.service_recovery_cases",
+            "test_RES05_cleanup_never_deletes_referenced_file[primary]"
+          ],
+          [
+            "sequential.MUT14-20261027-photo-references.executors.service_recovery_cases",
+            "test_RES05_cleanup_never_deletes_referenced_file[reference]"
+          ],
+          [
+            "sequential.MUT14-20261027-photo-references.executors.service_recovery_cases",
+            "test_RES05_cleanup_never_deletes_referenced_file[legacy-separators]"
+          ],
+          [
+            "sequential.MUT14-20261027-photo-references.executors.service_recovery_cases",
+            "test_RES05_upload_commit_failure_preserves_old_and_recovers_new_orphan"
+          ],
+          [
+            "sequential.MUT14-20261027-photo-references.executors.service_recovery_cases",
+            "test_RES05_cleanup_defers_while_writer_holds_cat_lock"
+          ]
+        ],
+        "baseline_passed": 5,
+        "isolated_candidate": "sources\\MUT14-20261027-photo-references\\api",
+        "product_checkout_unchanged": true
+      },
+      "baseline": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "seconds": 13.370000000000001,
+        "selectors": [
+          "sequential.MUT14-20261027-photo-references.executors.service_recovery_cases::test_RES05_cleanup_never_deletes_referenced_file[primary]",
+          "sequential.MUT14-20261027-photo-references.executors.service_recovery_cases::test_RES05_cleanup_never_deletes_referenced_file[reference]",
+          "sequential.MUT14-20261027-photo-references.executors.service_recovery_cases::test_RES05_cleanup_never_deletes_referenced_file[legacy-separators]",
+          "sequential.MUT14-20261027-photo-references.executors.service_recovery_cases::test_RES05_upload_commit_failure_preserves_old_and_recovers_new_orphan",
+          "sequential.MUT14-20261027-photo-references.executors.service_recovery_cases::test_RES05_cleanup_defers_while_writer_holds_cat_lock"
+        ]
+      },
+      "mutant": {
+        "tests": 5,
+        "failures": 5,
+        "errors": 0,
+        "skips": 0,
+        "seconds": 6.359,
+        "selectors": [
+          "sequential.MUT14-20261027-photo-references.executors.service_recovery_cases::test_RES05_cleanup_never_deletes_referenced_file[primary]",
+          "sequential.MUT14-20261027-photo-references.executors.service_recovery_cases::test_RES05_cleanup_never_deletes_referenced_file[reference]",
+          "sequential.MUT14-20261027-photo-references.executors.service_recovery_cases::test_RES05_cleanup_never_deletes_referenced_file[legacy-separators]",
+          "sequential.MUT14-20261027-photo-references.executors.service_recovery_cases::test_RES05_upload_commit_failure_preserves_old_and_recovers_new_orphan",
+          "sequential.MUT14-20261027-photo-references.executors.service_recovery_cases::test_RES05_cleanup_defers_while_writer_holds_cat_lock"
+        ]
+      },
+      "evidence": [
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/baseline-junit.xml",
+          "sha256": "6a67e5750262c6aab46312ed1237fb58ae72340c935ab51859726e1c74d5a260"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/baseline-pytest.log",
+          "sha256": "cef5fc05169b50d93ebf568e166df860f05daa35ebff8d408139748b869b2d53"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/candidate_manifest.json",
+          "sha256": "ffe5fc88219f7d6c98264ea2eab267191e95e7bbacf4f3b60a4d01412d36d552"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/executors/critical_report.py",
+          "sha256": "794293f87f45a616031d5d50265cf01d7dc060b959f2d8cf9208ff35a483bc2b"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/executors/current_offline_cases.py",
+          "sha256": "63e9ceaca8b32cd8b0f3f3641527ea78a0b5aef484b7f6afd574f2c299991aa3"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/executors/current_upload_transport_cases.py",
+          "sha256": "fa323438bbf067b6c21fb1441da255d5babcfac9e4e1a308a03385c00f3bae2f"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/executors/delivery_cases.py",
+          "sha256": "2a2a3fed9c37866443720582c18ee79457227517fbe1d611ac7598c3e9762b70"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/executors/extended_cases.py",
+          "sha256": "14499f8e9beb0e7ec9e1036824dd247e5dcd876eae209960e800802d76583415"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/executors/fcm_delivery_cases.py",
+          "sha256": "543ec7ae8370d05f31e65c31d9e0bb89b8c0cb24a2690814e82620eacc98a0f4"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/executors/fixtures.py",
+          "sha256": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/executors/image_cases.py",
+          "sha256": "19958fd2cd733ca13231cca626a0c55c4a2f94efd54b793578e9b3e5d1999e6e"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/executors/pipeline_cases.py",
+          "sha256": "d14dd8f23da8b5a21eb17d5e616ea13396c16ebb5e7883a36c66d0dbf244e2a5"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/executors/security_cases.py",
+          "sha256": "7c78314a8403b8cded8896bda345ca3e06c5305cc078fe9e42b6d273b8e539c8"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/executors/service_recovery_cases.py",
+          "sha256": "c3ee0ae51bb36f8bb3e8088432cf267917ff485bfc6e1fceab54fe5b90165d02"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/executors/storage_resilience_cases.py",
+          "sha256": "b247fd669255b61b1c2ad06a6cb6adf91378e9b261bce0531f11efa0a234ca59"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/executors/subprocesses.py",
+          "sha256": "662914a55c1a282b389111628fd5ceb7bc5327ead4821ce1fd12720c13716274"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/executors/test_quintal_live_api.py",
+          "sha256": "386ef90b72192fc34bf2b94f8de672e5bccbf8bfef5799670a778c5638e98ac9"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/executors/upload_transport_cases.py",
+          "sha256": "c7a463270056e8b7c16e7d8d34ca2f96ab6d7b81a124c4790e95e590afc72ad0"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/junit.xml",
+          "sha256": "2e02089c287dc5371694faad9c20d23112fd3badc09cf2dae28923cffdbc5c29"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/migrations.log",
+          "sha256": "a3b46d2f11f9b6e02caac2d03005d0237af6f6b915efdc0e4805c9d2bcafece2"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/mutation.diff",
+          "sha256": "c6ee3789ebd6c7727cd34937a40614b7c03f02ecf159ae979948bcce5fa585fb"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/mutation.json",
+          "sha256": "c796478b0f3c85313eb740f252613ad0b891a3863ad0a898d2c3425680a938c6"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/observations/RES05-cleanup-writer-lock.json",
+          "sha256": "4d12f136948cec5ee73782855aecd996be684e02144d5aac0befb1a1ba4845f4"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/observations/RES05-retained-legacy-separators.json",
+          "sha256": "72ffd70d68ffb496429bef18ed5de922f9fe499c2206321a2c568079e749ba9f"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/observations/RES05-retained-primary.json",
+          "sha256": "1a110a91b622c4f65259f673871c891db7cc78fc42cfd12bffbf2235055464c6"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/observations/RES05-retained-reference.json",
+          "sha256": "2f552b1d6b909402d4b5353264393e8ad7d3b3ff1236f4771dfbfab2301594d3"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/observations/RES05-upload-commit-failure.json",
+          "sha256": "6a43877630d6db3311242dd13aa8afb930d3ad6d3837b568a9642fb13b60ebc4"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/pytest.log",
+          "sha256": "83993388d23600b8636a657bdceff140491b36ce89f7e7c3493c8cbb9588fdcf"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/source_manifest.json",
+          "sha256": "ff599af387cba6612223354803c8cf1349b7ea6aece8c67eb09b4db691826609"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/MUT14-20261027-photo-references/summary.json",
+          "sha256": "a1aa6f688fb6c37c522ac85a2f68f164c6528ac6fd186e1ce3388532c422ac4a"
+        }
+      ]
+    }
+  ],
+  "killed": 2,
+  "survived": 0,
+  "scope": "Two targeted mutants, each isolated and preceded by its own green baseline. No whole-product mutation score or unexecuted mutant claims.",
+  "date": "2026-10-27",
+  "report_executor": "scripts/campaign/publish_no_usb_20261027.py",
+  "report_executor_sha256": "706a6809353987429195e54168fbdeaf5f4670859f42bfbdd04ca213c4fec621"
+}

@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-27",
+  "correction_commits": {
+    "otp": "dab44821ce6b0331d1a53f6a96ba4dcb6224cfb6",
+    "cleanup": [
+      "f8fc7b86bbcf2a9296cd646fb91323e4f8a67ab5",
+      "2a7f2f2a34263d40b3dd336906a886ef44860ba7"
+    ],
+    "dino": "260fb8e31b1e58d3f674eb88d38b8b2dbca002db",
+    "numpy": "76f761c469fb177f4df79a097659f10d070ec072"
+  },
+  "resolved_local": [
+    {
+      "id": "DLV-F-COMMIT-ORDER",
+      "description": "SMTP before OTP commit",
+      "result": "Commit failure sends zero emails; uncertain delivery retains consumable code/cooldown",
+      "report": "DLV02-RES05-20261027-results.json"
+    },
+    {
+      "id": "RSC-F-CLEANUP",
+      "description": "Postcommit deletion failure and uncommitted photo orphan",
+      "result": "Persistent candidate reconciliation, reference/lock checks and worker restart validated",
+      "report": "DLV02-RES05-20261027-results.json"
+    },
+    {
+      "id": "RSC-F-DINO-DISCOVERY",
+      "description": "Unnecessary GitHub branch lookup with local cache",
+      "result": "Explicit same main ref; real queued inference completes with external networking forbidden",
+      "report": "RSC01-20261027-results.json"
+    },
+    {
+      "id": "IMG-F-NUMPY-BBOX",
+      "description": "NumPy int64 prevents serializing multiple-cat cache",
+      "result": "Coordinate values preserved as native ints; first/repeated actual rejection and cache unit regression pass",
+      "report": "IMG05-20261027-results.json"
+    }
+  ],
+  "remaining_recommendations": [
+    "Durable SMTP outbox/exactly-once semantics are not implemented; SMTP acceptance and a DB transaction cannot be treated as atomic.",
+    "Choose and validate API-side SQL deadlines; this campaign measured the client timeout and recovery, not a guaranteed server deadline.",
+    "Power-loss/temp-file crash recovery and object-storage reconciliation need separate experiments.",
+    "Dependency reachability/remediation remains in SEC-09; passing security tests is not clearance of all advisory findings.",
+    "DINO main is a named ref, not a supply-chain commit pin. Preserve/check cached code and model digests for future experiments."
+  ],
+  "historical_reports_unchanged": true,
+  "report_executor": "scripts/campaign/publish_no_usb_20261027.py",
+  "report_executor_sha256": "706a6809353987429195e54168fbdeaf5f4670859f42bfbdd04ca213c4fec621"
+}

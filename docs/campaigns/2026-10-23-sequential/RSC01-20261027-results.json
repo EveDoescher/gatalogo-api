@@ -1,0 +1,1751 @@
+{
+  "scenario": "RSC-01",
+  "state": "COMPLETED",
+  "trials": [
+    {
+      "role": "api",
+      "trial": 0,
+      "result": {
+        "scenario": "RSC-01",
+        "role": "api",
+        "pid": 14560,
+        "import_resources": {
+          "process_cpu_seconds": 2.265625,
+          "pid": 14560,
+          "rss_bytes": 49508352,
+          "peak_rss_bytes": 52940800,
+          "private_commit_bytes": 40034304,
+          "peak_private_commit_bytes": 44318720,
+          "handles": 128
+        },
+        "limits": {
+          "private_commit_limit_bytes": 2147483648,
+          "limit_verified_by_win32_query": true
+        },
+        "torch_import_seconds": 4.06440719999955,
+        "resources_before_torch_import": {
+          "process_cpu_seconds": 6.484375,
+          "pid": 14560,
+          "rss_bytes": 148414464,
+          "peak_rss_bytes": 148418560,
+          "private_commit_bytes": 229441536,
+          "peak_private_commit_bytes": 229441536,
+          "handles": 223
+        },
+        "resources_after_torch_import": {
+          "process_cpu_seconds": 10.21875,
+          "pid": 14560,
+          "rss_bytes": 302661632,
+          "peak_rss_bytes": 302665728,
+          "private_commit_bytes": 381308928,
+          "peak_private_commit_bytes": 381308928,
+          "handles": 232
+        },
+        "executions": [
+          {
+            "state": "model-cold",
+            "elapsed_seconds": 37.39543119998416,
+            "resources_before": {
+              "process_cpu_seconds": 10.75,
+              "pid": 14560,
+              "rss_bytes": 304422912,
+              "peak_rss_bytes": 304427008,
+              "private_commit_bytes": 381923328,
+              "peak_private_commit_bytes": 381923328,
+              "handles": 232
+            },
+            "resources_after": {
+              "process_cpu_seconds": 50.578125,
+              "pid": 14560,
+              "rss_bytes": 895393792,
+              "peak_rss_bytes": 1093423104,
+              "private_commit_bytes": 1071312896,
+              "peak_private_commit_bytes": 1399177216,
+              "handles": 259
+            },
+            "status": 200
+          },
+          {
+            "state": "warm",
+            "elapsed_seconds": 0.2741094999946654,
+            "resources_before": {
+              "process_cpu_seconds": 50.578125,
+              "pid": 14560,
+              "rss_bytes": 895393792,
+              "peak_rss_bytes": 1093423104,
+              "private_commit_bytes": 1071312896,
+              "peak_private_commit_bytes": 1399177216,
+              "handles": 259
+            },
+            "resources_after": {
+              "process_cpu_seconds": 50.828125,
+              "pid": 14560,
+              "rss_bytes": 896610304,
+              "peak_rss_bytes": 1093423104,
+              "private_commit_bytes": 1072300032,
+              "peak_private_commit_bytes": 1399177216,
+              "handles": 261
+            },
+            "status": 200
+          },
+          {
+            "state": "warm",
+            "elapsed_seconds": 0.23560549999820068,
+            "resources_before": {
+              "process_cpu_seconds": 50.828125,
+              "pid": 14560,
+              "rss_bytes": 896610304,
+              "peak_rss_bytes": 1093423104,
+              "private_commit_bytes": 1072300032,
+              "peak_private_commit_bytes": 1399177216,
+              "handles": 261
+            },
+            "resources_after": {
+              "process_cpu_seconds": 51.0,
+              "pid": 14560,
+              "rss_bytes": 897204224,
+              "peak_rss_bytes": 1093423104,
+              "private_commit_bytes": 1072922624,
+              "peak_private_commit_bytes": 1399177216,
+              "handles": 265
+            },
+            "status": 200
+          },
+          {
+            "state": "warm",
+            "elapsed_seconds": 0.2577826000051573,
+            "resources_before": {
+              "process_cpu_seconds": 51.0,
+              "pid": 14560,
+              "rss_bytes": 897204224,
+              "peak_rss_bytes": 1093423104,
+              "private_commit_bytes": 1072922624,
+              "peak_private_commit_bytes": 1399177216,
+              "handles": 265
+            },
+            "resources_after": {
+              "process_cpu_seconds": 51.203125,
+              "pid": 14560,
+              "rss_bytes": 897851392,
+              "peak_rss_bytes": 1093423104,
+              "private_commit_bytes": 1073623040,
+              "peak_private_commit_bytes": 1399177216,
+              "handles": 268
+            },
+            "status": 200
+          }
+        ],
+        "idle_seconds": 5.036327600013465,
+        "resources_after_idle": {
+          "process_cpu_seconds": 51.21875,
+          "pid": 14560,
+          "rss_bytes": 897970176,
+          "peak_rss_bytes": 1093423104,
+          "private_commit_bytes": 1073623040,
+          "peak_private_commit_bytes": 1399177216,
+          "handles": 266
+        },
+        "input_sha256": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb",
+        "paid_calls": 0,
+        "controlled_semantic_calls": 1,
+        "external_attempts_blocked": 0,
+        "output_consistency": true,
+        "torch_version": "2.13.0",
+        "torchvision_version": "0.28.0",
+        "scope": "Real Faster R-CNN/SAM2, plus DINOv2 in the actual queued worker. CPU. Semantic provider is controlled, not accuracy/cost/latency evidence for Gemini. Fresh process and empty application caches; OS file cache is not cleared. Repeated identical CC0 image is a consistency/resource fixture, not reidentification or general quality evaluation. Retained model caches are expected; five seconds idle do not certify absence of leaks."
+      },
+      "junit": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "seconds": 48.825,
+        "selectors": [
+          "sequential.RSC01-20261027-real-models-02.executors.local_model_probe_cases::test_RSC01_real_local_models[api]"
+        ]
+      },
+      "evidence": [
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-models-02/observations/api-0/junit.xml",
+          "sha256": "3e978cadd8172445b445e30206198758708ff64555a89cc059302cba3a378a56"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-models-02/observations/api-0/pytest.log",
+          "sha256": "cdc71410d4cda130c94e607ab51c1cc83885de094fc3d10325ec4eaa76d62591"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-models-02/observations/api-0/RSC01-local-models.json",
+          "sha256": "88b1506ee06a0c25807939cc719832447e3628b6a0d02e0429125c2a947adc9a"
+        }
+      ]
+    },
+    {
+      "role": "api",
+      "trial": 1,
+      "result": {
+        "scenario": "RSC-01",
+        "role": "api",
+        "pid": 13868,
+        "import_resources": {
+          "process_cpu_seconds": 1.703125,
+          "pid": 13868,
+          "rss_bytes": 49922048,
+          "peak_rss_bytes": 52314112,
+          "private_commit_bytes": 40968192,
+          "peak_private_commit_bytes": 43864064,
+          "handles": 128
+        },
+        "limits": {
+          "private_commit_limit_bytes": 2147483648,
+          "limit_verified_by_win32_query": true
+        },
+        "torch_import_seconds": 6.635357100021793,
+        "resources_before_torch_import": {
+          "process_cpu_seconds": 5.8125,
+          "pid": 13868,
+          "rss_bytes": 147709952,
+          "peak_rss_bytes": 147714048,
+          "private_commit_bytes": 228745216,
+          "peak_private_commit_bytes": 228745216,
+          "handles": 223
+        },
+        "resources_after_torch_import": {
+          "process_cpu_seconds": 10.5,
+          "pid": 13868,
+          "rss_bytes": 302624768,
+          "peak_rss_bytes": 302628864,
+          "private_commit_bytes": 381202432,
+          "peak_private_commit_bytes": 381202432,
+          "handles": 232
+        },
+        "executions": [
+          {
+            "state": "model-cold",
+            "elapsed_seconds": 43.87333190001664,
+            "resources_before": {
+              "process_cpu_seconds": 11.171875,
+              "pid": 13868,
+              "rss_bytes": 304816128,
+              "peak_rss_bytes": 304820224,
+              "private_commit_bytes": 382197760,
+              "peak_private_commit_bytes": 382197760,
+              "handles": 232
+            },
+            "resources_after": {
+              "process_cpu_seconds": 54.671875,
+              "pid": 13868,
+              "rss_bytes": 897368064,
+              "peak_rss_bytes": 1086521344,
+              "private_commit_bytes": 1072107520,
+              "peak_private_commit_bytes": 1432281088,
+              "handles": 260
+            },
+            "status": 200
+          },
+          {
+            "state": "warm",
+            "elapsed_seconds": 0.32486949997837655,
+            "resources_before": {
+              "process_cpu_seconds": 54.671875,
+              "pid": 13868,
+              "rss_bytes": 897368064,
+              "peak_rss_bytes": 1086521344,
+              "private_commit_bytes": 1072107520,
+              "peak_private_commit_bytes": 1432281088,
+              "handles": 260
+            },
+            "resources_after": {
+              "process_cpu_seconds": 54.890625,
+              "pid": 13868,
+              "rss_bytes": 899346432,
+              "peak_rss_bytes": 1086521344,
+              "private_commit_bytes": 1073876992,
+              "peak_private_commit_bytes": 1432281088,
+              "handles": 269
+            },
+            "status": 200
+          },
+          {
+            "state": "warm",
+            "elapsed_seconds": 1.5846446999930777,
+            "resources_before": {
+              "process_cpu_seconds": 54.890625,
+              "pid": 13868,
+              "rss_bytes": 899346432,
+              "peak_rss_bytes": 1086521344,
+              "private_commit_bytes": 1073876992,
+              "peak_private_commit_bytes": 1432281088,
+              "handles": 269
+            },
+            "resources_after": {
+              "process_cpu_seconds": 55.1875,
+              "pid": 13868,
+              "rss_bytes": 899358720,
+              "peak_rss_bytes": 1086521344,
+              "private_commit_bytes": 1073766400,
+              "peak_private_commit_bytes": 1432281088,
+              "handles": 269
+            },
+            "status": 200
+          },
+          {
+            "state": "warm",
+            "elapsed_seconds": 1.688241800002288,
+            "resources_before": {
+              "process_cpu_seconds": 55.1875,
+              "pid": 13868,
+              "rss_bytes": 899358720,
+              "peak_rss_bytes": 1086521344,
+              "private_commit_bytes": 1073766400,
+              "peak_private_commit_bytes": 1432281088,
+              "handles": 269
+            },
+            "resources_after": {
+              "process_cpu_seconds": 55.421875,
+              "pid": 13868,
+              "rss_bytes": 900141056,
+              "peak_rss_bytes": 1086521344,
+              "private_commit_bytes": 1074470912,
+              "peak_private_commit_bytes": 1432281088,
+              "handles": 266
+            },
+            "status": 200
+          }
+        ],
+        "idle_seconds": 5.031320400012191,
+        "resources_after_idle": {
+          "process_cpu_seconds": 55.5,
+          "pid": 13868,
+          "rss_bytes": 900231168,
+          "peak_rss_bytes": 1086521344,
+          "private_commit_bytes": 1074470912,
+          "peak_private_commit_bytes": 1432281088,
+          "handles": 264
+        },
+        "input_sha256": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb",
+        "paid_calls": 0,
+        "controlled_semantic_calls": 1,
+        "external_attempts_blocked": 0,
+        "output_consistency": true,
+        "torch_version": "2.13.0",
+        "torchvision_version": "0.28.0",
+        "scope": "Real Faster R-CNN/SAM2, plus DINOv2 in the actual queued worker. CPU. Semantic provider is controlled, not accuracy/cost/latency evidence for Gemini. Fresh process and empty application caches; OS file cache is not cleared. Repeated identical CC0 image is a consistency/resource fixture, not reidentification or general quality evaluation. Retained model caches are expected; five seconds idle do not certify absence of leaks."
+      },
+      "junit": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "seconds": 61.192,
+        "selectors": [
+          "sequential.RSC01-20261027-real-models-02.executors.local_model_probe_cases::test_RSC01_real_local_models[api]"
+        ]
+      },
+      "evidence": [
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-models-02/observations/api-1/junit.xml",
+          "sha256": "35aeee726a579fa8d2fdc928cee6b466294e26d937b3fd8642f5377223f9dbcc"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-models-02/observations/api-1/pytest.log",
+          "sha256": "36ae3e48386935f596e786e1a65068b93b77a38f252c1a1ad0f1c646515eb366"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-models-02/observations/api-1/RSC01-local-models.json",
+          "sha256": "7af198aaa6dee5fad3287a191cfc0b9380bad22349021869532958a5eb16d1df"
+        }
+      ]
+    },
+    {
+      "role": "worker",
+      "trial": 0,
+      "result": {
+        "scenario": "RSC-01",
+        "role": "worker",
+        "pid": 17968,
+        "import_resources": {
+          "process_cpu_seconds": 2.828125,
+          "pid": 17968,
+          "rss_bytes": 49967104,
+          "peak_rss_bytes": 52420608,
+          "private_commit_bytes": 40538112,
+          "peak_private_commit_bytes": 43806720,
+          "handles": 128
+        },
+        "limits": {
+          "private_commit_limit_bytes": 2147483648,
+          "limit_verified_by_win32_query": true
+        },
+        "torch_import_seconds": 4.252081999991788,
+        "resources_before_torch_import": {
+          "process_cpu_seconds": 7.234375,
+          "pid": 17968,
+          "rss_bytes": 147988480,
+          "peak_rss_bytes": 147992576,
+          "private_commit_bytes": 228909056,
+          "peak_private_commit_bytes": 228925440,
+          "handles": 223
+        },
+        "resources_after_torch_import": {
+          "process_cpu_seconds": 10.6875,
+          "pid": 17968,
+          "rss_bytes": 303087616,
+          "peak_rss_bytes": 303091712,
+          "private_commit_bytes": 381743104,
+          "peak_private_commit_bytes": 381743104,
+          "handles": 232
+        },
+        "executions": [
+          {
+            "state": "model-cold",
+            "elapsed_seconds": 43.00112539998372,
+            "resources_before": {
+              "process_cpu_seconds": 10.78125,
+              "pid": 17968,
+              "rss_bytes": 303480832,
+              "peak_rss_bytes": 303493120,
+              "private_commit_bytes": 381743104,
+              "peak_private_commit_bytes": 381759488,
+              "handles": 232
+            },
+            "resources_after": {
+              "process_cpu_seconds": 62.890625,
+              "pid": 17968,
+              "rss_bytes": 938237952,
+              "peak_rss_bytes": 1216851968,
+              "private_commit_bytes": 1180975104,
+              "peak_private_commit_bytes": 1596215296,
+              "handles": 266
+            }
+          },
+          {
+            "state": "warm",
+            "elapsed_seconds": 9.407949900021777,
+            "resources_before": {
+              "process_cpu_seconds": 62.921875,
+              "pid": 17968,
+              "rss_bytes": 938242048,
+              "peak_rss_bytes": 1216851968,
+              "private_commit_bytes": 1180975104,
+              "peak_private_commit_bytes": 1596215296,
+              "handles": 266
+            },
+            "resources_after": {
+              "process_cpu_seconds": 74.953125,
+              "pid": 17968,
+              "rss_bytes": 940576768,
+              "peak_rss_bytes": 1216851968,
+              "private_commit_bytes": 1182928896,
+              "peak_private_commit_bytes": 1596215296,
+              "handles": 263
+            }
+          },
+          {
+            "state": "warm",
+            "elapsed_seconds": 7.231022699997993,
+            "resources_before": {
+              "process_cpu_seconds": 74.96875,
+              "pid": 17968,
+              "rss_bytes": 940576768,
+              "peak_rss_bytes": 1216851968,
+              "private_commit_bytes": 1182928896,
+              "peak_private_commit_bytes": 1596215296,
+              "handles": 263
+            },
+            "resources_after": {
+              "process_cpu_seconds": 85.953125,
+              "pid": 17968,
+              "rss_bytes": 948346880,
+              "peak_rss_bytes": 1216851968,
+              "private_commit_bytes": 1191211008,
+              "peak_private_commit_bytes": 1596215296,
+              "handles": 263
+            }
+          },
+          {
+            "state": "warm",
+            "elapsed_seconds": 6.980500300007407,
+            "resources_before": {
+              "process_cpu_seconds": 85.984375,
+              "pid": 17968,
+              "rss_bytes": 948346880,
+              "peak_rss_bytes": 1216851968,
+              "private_commit_bytes": 1191211008,
+              "peak_private_commit_bytes": 1596215296,
+              "handles": 263
+            },
+            "resources_after": {
+              "process_cpu_seconds": 96.4375,
+              "pid": 17968,
+              "rss_bytes": 948264960,
+              "peak_rss_bytes": 1216851968,
+              "private_commit_bytes": 1191628800,
+              "peak_private_commit_bytes": 1596215296,
+              "handles": 263
+            }
+          }
+        ],
+        "idle_seconds": 5.014025699987542,
+        "resources_after_idle": {
+          "process_cpu_seconds": 96.765625,
+          "pid": 17968,
+          "rss_bytes": 949391360,
+          "peak_rss_bytes": 1216851968,
+          "private_commit_bytes": 1192681472,
+          "peak_private_commit_bytes": 1596215296,
+          "handles": 263
+        },
+        "input_sha256": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb",
+        "paid_calls": 0,
+        "controlled_semantic_calls": 0,
+        "external_attempts_blocked": 0,
+        "output_consistency": true,
+        "torch_version": "2.13.0",
+        "torchvision_version": "0.28.0",
+        "scope": "Real Faster R-CNN/SAM2, plus DINOv2 in the actual queued worker. CPU. Semantic provider is controlled, not accuracy/cost/latency evidence for Gemini. Fresh process and empty application caches; OS file cache is not cleared. Repeated identical CC0 image is a consistency/resource fixture, not reidentification or general quality evaluation. Retained model caches are expected; five seconds idle do not certify absence of leaks."
+      },
+      "junit": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "seconds": 77.487,
+        "selectors": [
+          "sequential.RSC01-20261027-real-worker-04.executors.local_model_probe_cases::test_RSC01_real_local_models[worker]"
+        ]
+      },
+      "evidence": [
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/observations/worker-0/junit.xml",
+          "sha256": "52852876edfe57dcfcbba30ba8eeab2d3d98c104c3418f7c439855187fed92e6"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/observations/worker-0/pytest.log",
+          "sha256": "d01d3c6f8639ff09e1b4b5b3af1fc3c99579fe5e30cb18683849ecc133003495"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/observations/worker-0/RSC01-local-models.json",
+          "sha256": "3a49cf3feb482959e2c6f6763262f4802ac9e6e612262fd126b3fe2be24379b3"
+        }
+      ]
+    },
+    {
+      "role": "worker",
+      "trial": 1,
+      "result": {
+        "scenario": "RSC-01",
+        "role": "worker",
+        "pid": 8440,
+        "import_resources": {
+          "process_cpu_seconds": 1.484375,
+          "pid": 8440,
+          "rss_bytes": 49766400,
+          "peak_rss_bytes": 51970048,
+          "private_commit_bytes": 40669184,
+          "peak_private_commit_bytes": 43466752,
+          "handles": 128
+        },
+        "limits": {
+          "private_commit_limit_bytes": 2147483648,
+          "limit_verified_by_win32_query": true
+        },
+        "torch_import_seconds": 4.747793500020634,
+        "resources_before_torch_import": {
+          "process_cpu_seconds": 5.328125,
+          "pid": 8440,
+          "rss_bytes": 147914752,
+          "peak_rss_bytes": 147918848,
+          "private_commit_bytes": 228810752,
+          "peak_private_commit_bytes": 228810752,
+          "handles": 223
+        },
+        "resources_after_torch_import": {
+          "process_cpu_seconds": 9.296875,
+          "pid": 8440,
+          "rss_bytes": 303173632,
+          "peak_rss_bytes": 303177728,
+          "private_commit_bytes": 381784064,
+          "peak_private_commit_bytes": 381784064,
+          "handles": 232
+        },
+        "executions": [
+          {
+            "state": "model-cold",
+            "elapsed_seconds": 68.93925320002018,
+            "resources_before": {
+              "process_cpu_seconds": 9.421875,
+              "pid": 8440,
+              "rss_bytes": 303550464,
+              "peak_rss_bytes": 303562752,
+              "private_commit_bytes": 381784064,
+              "peak_private_commit_bytes": 381800448,
+              "handles": 232
+            },
+            "resources_after": {
+              "process_cpu_seconds": 66.703125,
+              "pid": 8440,
+              "rss_bytes": 936394752,
+              "peak_rss_bytes": 1198141440,
+              "private_commit_bytes": 1163743232,
+              "peak_private_commit_bytes": 1592389632,
+              "handles": 255
+            }
+          },
+          {
+            "state": "warm",
+            "elapsed_seconds": 16.431292099994607,
+            "resources_before": {
+              "process_cpu_seconds": 66.703125,
+              "pid": 8440,
+              "rss_bytes": 936394752,
+              "peak_rss_bytes": 1198141440,
+              "private_commit_bytes": 1163743232,
+              "peak_private_commit_bytes": 1592389632,
+              "handles": 255
+            },
+            "resources_after": {
+              "process_cpu_seconds": 78.75,
+              "pid": 8440,
+              "rss_bytes": 941649920,
+              "peak_rss_bytes": 1198141440,
+              "private_commit_bytes": 1167630336,
+              "peak_private_commit_bytes": 1592389632,
+              "handles": 257
+            }
+          },
+          {
+            "state": "warm",
+            "elapsed_seconds": 9.490479100000812,
+            "resources_before": {
+              "process_cpu_seconds": 78.765625,
+              "pid": 8440,
+              "rss_bytes": 941649920,
+              "peak_rss_bytes": 1198141440,
+              "private_commit_bytes": 1167630336,
+              "peak_private_commit_bytes": 1592389632,
+              "handles": 257
+            },
+            "resources_after": {
+              "process_cpu_seconds": 90.796875,
+              "pid": 8440,
+              "rss_bytes": 936009728,
+              "peak_rss_bytes": 1198141440,
+              "private_commit_bytes": 1161596928,
+              "peak_private_commit_bytes": 1592389632,
+              "handles": 263
+            }
+          },
+          {
+            "state": "warm",
+            "elapsed_seconds": 10.183276800002204,
+            "resources_before": {
+              "process_cpu_seconds": 90.796875,
+              "pid": 8440,
+              "rss_bytes": 936009728,
+              "peak_rss_bytes": 1198141440,
+              "private_commit_bytes": 1161596928,
+              "peak_private_commit_bytes": 1592389632,
+              "handles": 263
+            },
+            "resources_after": {
+              "process_cpu_seconds": 102.6875,
+              "pid": 8440,
+              "rss_bytes": 940650496,
+              "peak_rss_bytes": 1198141440,
+              "private_commit_bytes": 1167257600,
+              "peak_private_commit_bytes": 1592389632,
+              "handles": 263
+            }
+          }
+        ],
+        "idle_seconds": 5.005181799991988,
+        "resources_after_idle": {
+          "process_cpu_seconds": 103.0,
+          "pid": 8440,
+          "rss_bytes": 941842432,
+          "peak_rss_bytes": 1198141440,
+          "private_commit_bytes": 1168306176,
+          "peak_private_commit_bytes": 1592389632,
+          "handles": 263
+        },
+        "input_sha256": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb",
+        "paid_calls": 0,
+        "controlled_semantic_calls": 0,
+        "external_attempts_blocked": 0,
+        "output_consistency": true,
+        "torch_version": "2.13.0",
+        "torchvision_version": "0.28.0",
+        "scope": "Real Faster R-CNN/SAM2, plus DINOv2 in the actual queued worker. CPU. Semantic provider is controlled, not accuracy/cost/latency evidence for Gemini. Fresh process and empty application caches; OS file cache is not cleared. Repeated identical CC0 image is a consistency/resource fixture, not reidentification or general quality evaluation. Retained model caches are expected; five seconds idle do not certify absence of leaks."
+      },
+      "junit": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "seconds": 116.267,
+        "selectors": [
+          "sequential.RSC01-20261027-real-worker-04.executors.local_model_probe_cases::test_RSC01_real_local_models[worker]"
+        ]
+      },
+      "evidence": [
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/observations/worker-1/junit.xml",
+          "sha256": "a0bc8d45b6f819450e04b5d749e67a792063e941b434d845206d2ea56f1ca76c"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/observations/worker-1/pytest.log",
+          "sha256": "a136fa898811233ef194d294075f79d1bb6fca21c113b3c7e7cc9083740b754f"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/observations/worker-1/RSC01-local-models.json",
+          "sha256": "3f29e499dd190ae5bb784109dcd91a9a97bd78384c4a07d3bc4d2d02234f85e6"
+        }
+      ]
+    }
+  ],
+  "actual_lifespan_startup_shutdown": {
+    "attempt": "RSC01-BOOT-20261027-02",
+    "junit": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 7.696,
+      "selectors": [
+        "sequential.RSC01-BOOT-20261027-02.executors.local_model_resource_cases::test_RSC01_actual_lifespan_boot_and_shutdown"
+      ]
+    },
+    "source": {
+      "git_head": "a7bc09702a4824dc0ada47195402adfff44b5900",
+      "evaluated_content_sha256": {
+        ".env.example": "aa4fbc4d819006e0b2130f1e980a19298205fcb72ac797e90231437bb2fba1b0",
+        "alembic/env.py": "f5dc90d3e89d4c1b6c64571dd4f9eba26aa78545241c8f5acc531fa01f5b3cb5",
+        "alembic/versions/20260827_01_accounts_sync.py": "9f41270ee3f23819b6e799df303ec05e74dde176ffb11aa430a127e05c6a9289",
+        "alembic/versions/20260827_02_cat_avatars.py": "c1978469e58ac92eb00ae88a4fd2395d804d04f7b714a45a6ad6e16a1857f67e",
+        "alembic/versions/20260828_03_recognition_social.py": "16bc15b981b1e55d319ce4a1b588093e12c4d22f15797c8091eaf50769c173b1",
+        "alembic/versions/20260908_04_recognition_evidence.py": "6d90f7aedbec1bdaa64b6c05bfb6cb37baa6ac6c6d52294e3df6cccb3b51eee3",
+        "alembic/versions/20260908_05_product.py": "ce5234fdb8e8f8d8aebd5ca8df9f773041f7b56495370a772e06ab9161e9b8ae",
+        "alembic/versions/20260916_06_chat_rescue.py": "de16780424bad8cab0744bb057952f31e95d267cd742e5c8fc87b5672a0252af",
+        "alembic/versions/20260922_07_report_poster.py": "1691922863c08b6971039a0b803bca302629d0d11331625e35003bdeddf877c6",
+        "alembic/versions/20260923_08_habitat.py": "85b84cd4c7a8e239a686efa0564e8223ebb76171a59063a6d5ff078d07295199",
+        "alembic/versions/20260923_09_habitat_yard.py": "0329e90f29e65f0cbcd2334cedf31d7b4bc3dc575c79c8845d62f71bb24045fb",
+        "alembic/versions/20260924_10_habitat_care.py": "ea14e4dbbd7845c85f881cfa03329fd18ec64479e42c98a0fa83522ef48e47e4",
+        "alembic/versions/20260927_11_progression.py": "f09f8778abdfaabcdeea0ecc2fff8e59c07b3889dba885d4cc539c9eb26dafe6",
+        "alembic/versions/20261006_12_quintal_production.py": "9dd9c087d05ff08dc5dc6e233321c029f012c97a72c3d87c0c5c5c772ce5af4d",
+        "alembic/versions/20261009_13_quintal_build_start.py": "80a32224013608d827545df5e292739ad8e3ca52a87aa1a6fb2436a461974c45",
+        "alembic/versions/20261018_14_session_rotation.py": "2d6802dbfd6eb7abee54cf652389ca80c5ce58157e21aeb5532e90f5e1118e6f",
+        "alembic.ini": "b2124b08e7a33aa9f0a5f17bb2f72a29647ad3891685633195d8642fccd2abcb",
+        "app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app/config.py": "018c33c9b9a23890904dcf7afee06eaf413d945d9e981a59a623ae4595e80042",
+        "app/database.py": "6dc06da28b1c65dc23dd063dd60a2c7fad65a65c9f0c5add6da5691a12b89eef",
+        "app/dependencies.py": "154f905f4b19d5cd409e26dc215c32b50392e37638c2f70ddbe3b09f7f4d1a44",
+        "app/exceptions.py": "566d5bad9f9dc5ff5d479ebb842401b6d3d984180c2c2c6e7fcee28c295a832a",
+        "app/logging_security.py": "c8a58922e58bbb6c5333e0c0e6b8106736a4fd95c155fb5d0766a32af4fd5153",
+        "app/main.py": "0864a23369fd73f34b2a1645072cd860a7ecb4d707c24442d8c076059b66b463",
+        "app/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app/models/analysis.py": "379311d17ba40ccff7ff0b978444689659e99a6592a08680218af323ae17551f",
+        "app/models/vision.py": "5f74cc910837962e257266b28537eca34ff47e1422fa7b7ad130f51d31aa49b9",
+        "app/persistence_models.py": "3c9e6ce745ae6fd789ec1c51880924fda2a79ddea4da90076044eac610dc958c",
+        "app/prompts/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app/prompts/coat_analysis.py": "8a6ff914071655662f96e331269094ef4d025879dc5399aad513ccab368b5aed",
+        "app/quintal_models.py": "3d915dfb18fffb307170eaca1fba7eb70f902b71a654f9c248957b2d1eb0536c",
+        "app/routers/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app/routers/auth.py": "c56b499995d930be18ac4c6b15c72896f6100b4568bfe8916058cbbcce869780",
+        "app/routers/habitat.py": "1b51738f08551ba56507540bf7430d9de2fc57d2c02e10ff9cc4112f09f20136",
+        "app/routers/product.py": "a7b6bbbf144c566631e0f2b21b24ec54f4ec0c82304d8eb566413027b47f534c",
+        "app/routers/progression.py": "2c631bf407fa28d6a16a6aae072574c9540dadd782c594e310c75ff25d2ed845",
+        "app/routers/public_search.py": "c29df4e4cc9c837be759dfb22db1cf94f646cd76e67e4069dedc124568813d4d",
+        "app/routers/quintal.py": "421db5787d103288ec3b02bedddd94ce0e61d59cf8f8855d47493aa5c7d7d343",
+        "app/routers/social.py": "fbc4a5ac9c2e9fdfc228d463ed0588785f18c9fe90cc48169db7df886f18ff42",
+        "app/routers/social_chat.py": "65a3a2c2bfaecee8c935b49c828cbd7d23379bf3e05291588ad80034173abce5",
+        "app/routers/social_devices.py": "a826fab2e9ccc9577e3a843e4f1e7fd03dcabde920408d75f2e62dcb19f9f5ee",
+        "app/routers/social_feed.py": "9d42120baf52d5fd91fd02ba85e79e2108f70b4eb2beaa9918776b96eea99b45",
+        "app/routers/social_friendships.py": "085b312b0a42131895bf7d00be00803649c80c0f0068fa2c1c6a51ddb5e6b9b2",
+        "app/routers/social_profiles.py": "5f347e148f20d837b250b8666bdae8bf0c6436cabeefe894628d25f0b22a6f31",
+        "app/routers/sync.py": "e0e3335cd9ce1996b21e9b840cbe4f6da8cf8cc921c97621dfa19410f275df5f",
+        "app/routers/vision.py": "1f50c3c367dcfb1f2f3e484ad73e71cf6a5c480e38f2160c9d46d2876c0abafe",
+        "app/routers/websocket.py": "e9b7cfbe2f2f0f16e50b7d26d26011a72f564038beae0bf7b8cdff85155860ad",
+        "app/schemas.py": "ae5d1dec2340ff37279d22268ee8ee530abd375e5fa0632fba4fe921bee6d60a",
+        "app/services/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app/services/analysis_cache.py": "c076ca5eacf5fb544db057195f3778386ef0747e9722ec1e33bf1ecebcda01a1",
+        "app/services/analysis_service.py": "32cf39a52127574eb1c6e83b650fb39c6fd91266e96c1995df87b53effc75b5a",
+        "app/services/apple_identity.py": "68fbe2e5a9e05e8e326d59a38f68bd4cf0790e976678f1157d98e2ebfc768d2a",
+        "app/services/audience.py": "fa12acea18f6ec2e14f4da102f570c105ef87411a9c3b3baf97c65f79db0990a",
+        "app/services/auth_service.py": "f141c63957f80d9cde3894c661b12bda6f1f28ded02e542c03f484b081f0f93f",
+        "app/services/avatar_generation_service.py": "8dac83793f4a54b9266d0ae7c461d34420ec2ceb3b9e1b6adb7ec8de006b4245",
+        "app/services/avatar_service.py": "c49f018ce4f1f2a060be31fd22dc6f6a7fda9832d1a528aba10d7ab3160b6102",
+        "app/services/catalog_changes.py": "229bcef613e8fac10ece90ee46cace53c6f3a061e55f415f30f2c5b850d27b9b",
+        "app/services/catalog_sync_queries.py": "eb81009a6cb6bfd1a14e62a09b38e585ace163aafa441beb965f69f4b1fe2d71",
+        "app/services/chat_commands.py": "07feacfa9a66001536747315f57235f5d0dd19e1aa6e9d7e75fa32fe9f15780a",
+        "app/services/chat_presenter.py": "ef4daf7bdcbb8456ccdd842ad9c2af9a584b849f49605d93dbeeb0061470d6c9",
+        "app/services/chat_queries.py": "6db5b436428e569aac907b5af786b671c5d954655974dc761ba4cbfd9231b7ef",
+        "app/services/color_service.py": "5ac2b285b80fed87ea095f44c6acdf20634f75e9b189c4861183f7575c577cbb",
+        "app/services/conversations.py": "85d4a783f56fce6626d400c1de893bb850b5f3fe193bbde58eefcdafcec60a5b",
+        "app/services/dense_features.py": "2f3f4442f2f29b4ea373839bb67b095bb0b86e72b12027af06fef42e39b9f9d1",
+        "app/services/fcm_service.py": "ccf6fa6fa106e8bea2bfbba336c9c67bb954e7cc849c02690354ac2edd1046a6",
+        "app/services/fusion_service.py": "39fd68133053f7e3d68e40b34eb93c9cca9617975394bb82b3c8ae32cd1059d9",
+        "app/services/habitat_encounters.py": "3cf31aed867639512b60becc23f223c0ca530f9b5832699d03cc55627ff9258a",
+        "app/services/habitat_interactions.py": "d7351b7410caf94be3a697e2d43b479856ad5d0d659cba452ae4d9dd2fc40a4f",
+        "app/services/habitat_presenter.py": "22a92359a4e3563e353bde9bc386ca9194001b296c5ae97584abd0b3bf90b687",
+        "app/services/habitat_pricing.py": "09bb94d7322a4a410a66619ced8bb6725507f0aa7fd2170377ff1977a2c195ed",
+        "app/services/habitat_service.py": "2a7b3245d73b3ff5875434005163cddbc88462f9d17147e6dbc939b8c1f94cca",
+        "app/services/milestones.py": "659dc78807de91a05d7f7c163fb3e1c4acbb53047c83e9fa66869889bc6bf805",
+        "app/services/missing_posters.py": "a1fd1cb5d1ebff2a75e695b9fcb1c952a3a8efa40f687027c298f25eef74986a",
+        "app/services/photo_cleanup.py": "50f6678cbcc508c314803542b24cf81e9cfa8adfa38b62b9bdf877192d8d57f6",
+        "app/services/preprocessing_service.py": "2fc40e60a0fe8b8a7d582940d307ca33827cef3a6644994316b0f058138a4c39",
+        "app/services/progression.py": "2f25f5041095282d2ea56b628be0906021e9f8e931deaeef55d09dcaa5ae8865",
+        "app/services/quality_service.py": "65b72c12b9bfea2691aa5f6e0172e05fa5a9d9f21744f5ff48ea7b5f2c61b10b",
+        "app/services/quintal_care.py": "1e7b9aaac74175f6576efeeef295d5cae6154794041f0a6cd69a7162ecc4ba6c",
+        "app/services/quintal_catalog.py": "50a268d0cff729ec909e08410621ed4e9008be19158036b095e8c3ee1ccf4150",
+        "app/services/quintal_clock.py": "6c61071ee7c669f1e5739d3355e826e5d9dc85e697433966ada5fb82816b7f0d",
+        "app/services/quintal_commands/__init__.py": "7a30fc9262d179b05e4d8b04c6a953858703c653e4fb2a0e049e9283360c70d3",
+        "app/services/quintal_commands/cats.py": "a5b0dd5046ea8eb613d64523f01abb98aafaa27af03177a61e88375dca4af350",
+        "app/services/quintal_commands/construction.py": "dd6f5fc453cea31f19a44ea26c89fb13c6924f7fb6cca5263c091f5a3bfed881",
+        "app/services/quintal_commands/context.py": "89c296fc1bd5e9a3de0a21acaec77bce6337b5aec8e8d077e4610e053d6918a0",
+        "app/services/quintal_commands/garden.py": "098c53700bb9718b4f18808f3447c738fd61d5a61ffaacfa54e3043a7b31a96b",
+        "app/services/quintal_commands/receipts.py": "d6f3cbb913174e36155e8f44e87684c40b1a71fcebe1ea4d7d9376ee4da0cce5",
+        "app/services/quintal_commands/residents.py": "a645a8916f693064c380a46359778a77e876738083902a5d97d455631d06800f",
+        "app/services/quintal_commands/tasks.py": "7c896f06b51cb4502091e6afb16cd7a73aaf7c2a5950e10824fb1e8d0b088cc5",
+        "app/services/quintal_games.py": "5ee0b035de1e27842a4b82b95875c450d9e37ef9d38939d8123807f5f9ff3b14",
+        "app/services/quintal_inventory.py": "e95d30f2635dfc7b1307d8034e8c1318320f8eb4e73ac6f68e7b0fd4cac31e23",
+        "app/services/quintal_notifications.py": "5246e8b0e20f6c2b396847fcb6126a875106272fbb88258f0ee38ec45dba68df",
+        "app/services/quintal_production.py": "f82ae8574f953d9852515409a2e26e438d454565e79ff0132d4a2553684572eb",
+        "app/services/quintal_progress.py": "bdc7f824aeb1917682b4227c3b1a69dbdbd58faefb9a619adee72bcf259f3d02",
+        "app/services/quintal_projection.py": "fad98ad44ff83f4e85589d7d4a74fd2d76bd29704038c6bf19e359c1fa6e69c1",
+        "app/services/quintal_push.py": "d7440d1237781d86a4a64e963dd21a1f4c62773e9c83e07e8fd47f46ba25efab",
+        "app/services/quintal_return.py": "abefc46ae67ec3ad3258ecfd568e6671909d6c39dab979dcc242c4283638b79f",
+        "app/services/quintal_rewards.py": "452153683f6d3bd915da7995ad90304214ef63fc73b8ed875ca900d441ac4a85",
+        "app/services/quintal_scheduler.py": "30f79e512e7fba8112ebfd231f66702fdbbcab67ef7f6566baa1e7912626c6a1",
+        "app/services/quintal_simulation.py": "f53189a9c2720727d4c3c44c44584edd9847a488834e78916cdce6ab4e02c9e6",
+        "app/services/realtime_events.py": "6da075769e0b481c9175b0f7487bc269f62f0dbcf27754bb8a758cfed797f3ca",
+        "app/services/recognition_features.py": "87c694795df0248d643fafa0d2acb30f2ee284a6a587755dca2ce6c39ef3efec",
+        "app/services/recognition_service.py": "5d3556a131d23ef529085d8d0879c19edc2ee41d59c7eaaf989c31b838552c81",
+        "app/services/reference_analysis.py": "3afdb96232365f16c5a8845b15617a7ef6c4664ac561412f63a482f92fb0eb1f",
+        "app/services/report_media.py": "951a779ec43b3e071fef71a708ab71892beffd36b28777e5ad8db3ed283216f5",
+        "app/services/report_presenter.py": "af11aa62e8ad6e0aee349ff648062769fbe891f115d8cc30bd8b5829f31374c0",
+        "app/services/segmentation_service.py": "0da1e4ddc47318a0a856b5462face801b6de63ddec9d6873de0c116bc74cd860",
+        "app/services/social_feed_commands.py": "869923ac08f2dd66ed0c9316999398d1cff19aae4a8352f8128d0cd52d6537b1",
+        "app/services/social_feed_queries.py": "8e919daacf1085c6cc09d5488efe1dcb74f39c47e4067c06e07e4711970e698f",
+        "app/services/social_graph.py": "4585e6a00a94eccc55dc566b6c4f3cabb57d3786c5e6c218cb04fe93a87f2cc8",
+        "app/services/social_presenter.py": "2dfd223841d1e96c9be0f73867a5fc0dfa111a2160de78fb778261127ae44be8",
+        "app/services/storage_service.py": "464f4da3c6d49597da66d74fae7fcc7f9ba4f7a523d27800d235653775ca7687",
+        "app/services/vision_jobs.py": "7d6b6a5689ff626983e3ca0786d3515b08c4014aad39d0e7c687df26a71136b2",
+        "app/services/vision_worker.py": "68757890d94f7751b996dc59aa27a9e016a8ddb42085da3ccc2c9c7e7d145de7",
+        "app/services/websocket_manager.py": "9918619e4ba07fb5462c4de425c1b41176ebf6c6202821ed30e84b9b933a9683",
+        "app/social_schemas.py": "b48fe613dd53aafbc9c25750263e747b099502fa8ee07e73a51374bb975df0d6",
+        "scripts/campaign/advisory_payload.py": "b09e580873e8395f93c0ffe58a4284a263503328df38ad9240bba53ac8b267a1",
+        "scripts/campaign/advisory_review.py": "6f4de287839832fbb6082206ef054834ea8bef68db43807427881cf1ab6ec2ba",
+        "scripts/campaign/android_live_cases.py": "de742c8c659de8ccc140a87776f4dd1f0dfebdfcee8ca8c62f47face4ad05069",
+        "scripts/campaign/api_probe.py": "747492cda96e55ad010313a4e7be0346477e25672421f6c57f94c717fa6009de",
+        "scripts/campaign/archive_evidence.py": "e2ab276dad0ebebc9cf1b4d474bc443d68cd3193d19e2d128468b55fe91c3a9a",
+        "scripts/campaign/audience_cases.py": "42c94e84a22a5b700e4557124a1377c9f1a200c664736d5d2850e42125c388de",
+        "scripts/campaign/auth_flow_cases.py": "0525d6469c3a8f0669d27b195e3bc53544cd1b2f6fcdce759665f7cd26e68383",
+        "scripts/campaign/concurrent_catalog_cases.py": "7a4e48acfccd5d97a00baf253fc7b03f00f4fc3bc88db8ad0b9dc925af1fd01c",
+        "scripts/campaign/continuation_report.py": "52ab2f18d4e0bfaaae28054e83f64d31305595886a6d32e15e5f8551b4387163",
+        "scripts/campaign/critical_report.py": "794293f87f45a616031d5d50265cf01d7dc060b959f2d8cf9208ff35a483bc2b",
+        "scripts/campaign/critical_suite.py": "bc80a07da210293ba2051b2a3235390ecc6840551d492c003da375a38e073527",
+        "scripts/campaign/crossed_cases.py": "fd4c1ea3fc6e00068a3e743db517905767c003a5d14025ba2d375b3c1f1e3f82",
+        "scripts/campaign/crossed_suite.py": "bcd94280b970bd36900d57b05d6233a1be437a1bfebccddfa3c39e66a9a84b67",
+        "scripts/campaign/current_dependency_review.py": "fbf8e10e3362c4fd532cccf934f608ba29a33ee74ba3d866b1d61b845fad19e7",
+        "scripts/campaign/current_offline_cases.py": "63e9ceaca8b32cd8b0f3f3641527ea78a0b5aef484b7f6afd574f2c299991aa3",
+        "scripts/campaign/current_socket_fanout_cases.py": "865f4127279291e73c38a752610aee444223d1b2c1f6e5d8ccd21825a6a9d7b7",
+        "scripts/campaign/current_upload_transport_cases.py": "fa323438bbf067b6c21fb1441da255d5babcfac9e4e1a308a03385c00f3bae2f",
+        "scripts/campaign/data_snapshot_cases.py": "493812bd0827b8e63196509264291e3ca1e737b7138c1031e7ab12bab4198ba2",
+        "scripts/campaign/delivery_cases.py": "2a2a3fed9c37866443720582c18ee79457227517fbe1d611ac7598c3e9762b70",
+        "scripts/campaign/delivery_suite.py": "179ed99f06fc91313c43bbbe8fce877bbc1e1d396be3e336cc0c9c4cf1ed30de",
+        "scripts/campaign/dependency_advisories.py": "d16b8e623cb30ad909fa949e9ebd1e770fd9ff29a05460667dfc35262de00bd5",
+        "scripts/campaign/dependency_applicability.py": "7493a647869787d59711ea5cf559588581dd4cad83dd6db1197b803420ac10ef",
+        "scripts/campaign/diagnostic_suite.py": "ab497d3f3c34f3bb0b59bf7db700167f8f5462235c880fb015ab509d4d98f1d8",
+        "scripts/campaign/extended_cases.py": "14499f8e9beb0e7ec9e1036824dd247e5dcd876eae209960e800802d76583415",
+        "scripts/campaign/extended_suite.py": "0e5ae47ad00d45e6b914094d745963247a8308980ee2058f1f49b98b9f929aa0",
+        "scripts/campaign/fault_proxy.py": "2e3593526fa104d69ffae3801323088b40826cfbf1635aadcacdb50daf24d046",
+        "scripts/campaign/fcm_delivery_cases.py": "18f5cffd3ad0719216b078b3176418821125a1364835430dd2eb4220b3a1aad2",
+        "scripts/campaign/fencing_cases.py": "80b3429751a0ee804e2bef79b18eb6eeb735085a6046598696adb3e0982332f1",
+        "scripts/campaign/fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+        "scripts/campaign/flutter_accessibility_flows.py": "ab51260c8e1c45121526eff8b53d4adf968924626f30ea8523c7e583c9665124",
+        "scripts/campaign/flutter_catalog.py": "1e20cd57bd0fa8b15d52785539cfc01956a5c407ae4e7620191443843270582c",
+        "scripts/campaign/flutter_full.py": "19672a59fe0698c765151edf557d2ae48344686985b94cf0bf4008f89e6d1d98",
+        "scripts/campaign/flutter_resilience.py": "89ec7ed85fd747f0ca2587f341f845d0c4d4ba7c484a43729fc2ebcce577e378",
+        "scripts/campaign/flutter_visual.py": "230d8985df3756c952a73928cc56b1cc0a3c649585c975da19e0538603727707",
+        "scripts/campaign/followup_report.py": "eb8f598878f4f4d25d0da4b1d2c1bb3d153e18e86ffe7595f90f9c55d23730dd",
+        "scripts/campaign/full_suite.py": "ec2442fcac6b50110fd979d0f146ef06aaa85a0d123d6825ad23229eb3148716",
+        "scripts/campaign/health_campaign.py": "fd69e08b22b4602fe627240e5973d66a530e17faa24dc36f6488e7980de5b144",
+        "scripts/campaign/health_probe.py": "33abb11bab4221db534ccfc921294eb1f14468d30893d7783e5b19e3212f5880",
+        "scripts/campaign/history_cases.py": "ee1cfc5d29a9518ca9ee136144f202ee3023e9516be4f569894348b3d56c36e2",
+        "scripts/campaign/idempotency_cases.py": "5b0bc8c8b3c1846e14979ca87428ec183c24060366798b9ea2abee5d42049523",
+        "scripts/campaign/idempotency_child.py": "928ae44d636ae05cc5d0b66ec316c8dba9164707ad4160318d2958038659a745",
+        "scripts/campaign/identity_cases.py": "b3aa60095c6c729918399c0f74fe6e4c8a9e563f1134178a0f2ad90dfce101fa",
+        "scripts/campaign/identity_controls_cases.py": "7c4dce17a0e41a435c072a829d0e61ddfdc961df2556c45192c938e495aaea40",
+        "scripts/campaign/identity_controls_suite.py": "e8a45ea6a52e8f5dc6a8fe5d99b4656d1027778c6a3f855bb956a6dc1bcda366",
+        "scripts/campaign/identity_suite.py": "2d68214b5c8bb27165dbb64a323778f6145da15bf4e5c08c698f00dda6e76895",
+        "scripts/campaign/image_cases.py": "19958fd2cd733ca13231cca626a0c55c4a2f94efd54b793578e9b3e5d1999e6e",
+        "scripts/campaign/image_rejection_cases.py": "760e9fb78f413dc1dfad8c588b54fa79954cec6f8d335b2d63daec40155c829f",
+        "scripts/campaign/image_suite.py": "f296d70e94b8b0ec3ba2b59650920c894f73008f2804051b2abc2af30fb69ea4",
+        "scripts/campaign/input_bounds_cases.py": "77941ad39f579198791b5caa763a033bfd99a4ec336b83be009f1c80f0404356",
+        "scripts/campaign/isolation_cases.py": "adf63beb8a199bcc6e9d03e9a1a6f6867879aa252a703567ab3a40c897903ef9",
+        "scripts/campaign/latency_pressure_cases.py": "2237c14f2f0014f117e90cc0ce1ba73061ea987d1f01052e3132b9e270b23a6e",
+        "scripts/campaign/latency_probe_child.py": "17c3ff5fcec7b6d0391f944e7e7c4cf2865a225ca9dd5d023816b2e21ea1ddb4",
+        "scripts/campaign/live_diagnostic_cases.py": "02acf5b833a40b8778f725435571f60b10fad3518d8d37ccb444cc42c7b8697e",
+        "scripts/campaign/live_suite.py": "75b4b11ae5e987797e32ac21df44506d02731b467743db398d58e0eb25635714",
+        "scripts/campaign/local_model_controls.py": "c461406fbb76fbf906e34f57128cffa17f95efcf15299c7afa489de15806c1a5",
+        "scripts/campaign/local_model_probe_cases.py": "d6faa9cf178316e709a46ac17237311820162ef647b8e1d66dc031194936ef1b",
+        "scripts/campaign/local_model_resource_cases.py": "4146ba377902314a322fe70f0e94329d73d6440e416964de243fb40968f4cb99",
+        "scripts/campaign/local_report.py": "94fc84465107b015b64e54eb13cc39a3a6514e7fdcae32ba881e2f20beb0f2c0",
+        "scripts/campaign/measurements.py": "6775d688520ffefa3735051fbbacedf20a7e13330be86ddea293e65efe94e23e",
+        "scripts/campaign/migrated_plan_cases.py": "e423206c949720b51a89b2c03c6c9b4847424d414585e4101875f57baa06e6b2",
+        "scripts/campaign/mutation_cases.py": "ad4b9621a64a92e8e55ce27ab8298a9590bdda60147cae9b7c7d14a1293ff71d",
+        "scripts/campaign/network_cases.py": "c48e2afec58c7d6f98069d24f8e0c9164fad7146cee612b304f4b39780e72a4b",
+        "scripts/campaign/network_suite.py": "0adad4df145d8d96b14ff4d8178ade4525936dc4727c22590a474e636187769d",
+        "scripts/campaign/offline_flow_cases.py": "6395a1ae2666a48a5f180cee6e6d602f90e33dfba85fede0856c681e85eea432",
+        "scripts/campaign/offline_flow_suite.py": "94a937d61aecff3d5badbb8bb698213a3b6bd06240f45e3afbc3f370a833939d",
+        "scripts/campaign/offline_inventory.py": "32a712253b88fc1c541e673aa6cec59851209bda4cd98c4514d2e166f6c67d75",
+        "scripts/campaign/pilot_cases.py": "a04df3402e66114651409ae61f6a74b1a987e69374cda594cd85d604cc410e6f",
+        "scripts/campaign/pipeline_cases.py": "d14dd8f23da8b5a21eb17d5e616ea13396c16ebb5e7883a36c66d0dbf244e2a5",
+        "scripts/campaign/pipeline_suite.py": "7b8662e37abdc4072fd331a49a0bdef4ec13c62fab4a51f7745eba1f89b006da",
+        "scripts/campaign/pool_release_cases.py": "b2a5d1fed4801d64f0c7d48da8f89965d5b5a6cb429e16f376757281fd3be571",
+        "scripts/campaign/preflight.py": "2e725bd7a898dc118f77c39aeb9a1f9c4af18f8557ea18c1b391185c61261c67",
+        "scripts/campaign/preparation_audit.py": "d1c86d5af68548390f33adb29ec874ab78bac7c60cd84e8996e8b9589fac246d",
+        "scripts/campaign/privacy_cases.py": "e1f2c728cf1f0f9842d1ad630d73af70358d911409931693a26e88e220ae144a",
+        "scripts/campaign/privacy_suite.py": "30fa3ab9beb6dd88de6c702c9ddae242620585837107b3ce4e9de8f0db717014",
+        "scripts/campaign/production_boundary_cases.py": "ff5a257d0132da8d4969fb5e6e01dba9f431aff432c358f68f8b7dd136c7d7ba",
+        "scripts/campaign/publish_no_usb_20261027.py": "7af12331f595602831b5a71c00df3d93580ebfee4ab071a838c8c077f8946752",
+        "scripts/campaign/query_plan_cases.py": "6b43aeb0a4c5d5359159b4fe24a89a9e4fde949d465a5e78bf9f7afed5c20f2d",
+        "scripts/campaign/query_plan_suite.py": "53ca97aba6cddbb6233045e87709a0a1a06558b896c44d6eb7e74d03a28af18a",
+        "scripts/campaign/queue_suite.py": "aeb9386d366d0662e83b4d384f230893a5e30b1f3619e29ca8dfc8001d15f21c",
+        "scripts/campaign/remaining_mechanism_cases.py": "117498601cebca2e5bad86d9d8d9ab661dedc788540c68fd13170a74052d0286",
+        "scripts/campaign/remaining_mechanism_suite.py": "1e91dc410d0261dd066e19d5500f53efed2222d4afb6d6ecf03fc3f4df47cea4",
+        "scripts/campaign/report.py": "0dd59e54a1227157150eb2fbd55e187882e36e38174918be514f5d517750a096",
+        "scripts/campaign/report_lifecycle_cases.py": "1597b8fab67b959dbc9f848723da28e2130a99592364a905458d034a05f2c3f8",
+        "scripts/campaign/resource_caps_cases.py": "84d0bbfb1477c2934101e88bd06c1d1ed65ecafc7e2f641316c4d89fc8bc479d",
+        "scripts/campaign/resource_lifecycle_cases.py": "8ba25e7bec2b7ac0355a0d7ada2969d575fefb5d498c37a7db8e6faddd3ac78b",
+        "scripts/campaign/review_flutter_mutations.py": "6029d8ed6bdaee90a99c3a0615d7482f5fb8218f7ecda290cb53a0666ed54a33",
+        "scripts/campaign/revocation_cases.py": "c389fefbcd12843cae78c33272d3c21f692f5c16f14cd824b9e2dc9f441ae1e5",
+        "scripts/campaign/rollback_cases.py": "a0134b14d048294f05999536cc94f6f2c904e88cdaa725723e10ed296560c5e7",
+        "scripts/campaign/security_cases.py": "7c78314a8403b8cded8896bda345ca3e06c5305cc078fe9e42b6d273b8e539c8",
+        "scripts/campaign/service_recovery_cases.py": "c3ee0ae51bb36f8bb3e8088432cf267917ff485bfc6e1fceab54fe5b90165d02",
+        "scripts/campaign/social_history_cases.py": "b5c01fa6237573bc266dded16e8201271a43bbfc5062af145a753e049d32cb69",
+        "scripts/campaign/social_history_suite.py": "49afefe1fc537b4153d922c0157e01e19deed7316c1b958156f207af5acd29d7",
+        "scripts/campaign/social_order_cases.py": "55bc3ede29834a8fabe34f98ea49b3360cb97f4f0106075644ba8b4002aa649f",
+        "scripts/campaign/social_order_suite.py": "1f141f773031be472ad78b396beeaf4dd9ac8e199dad789aa838506f0f944850",
+        "scripts/campaign/social_volume_cases.py": "eef3e642a89125407ffd7252f60c6dc955cd25c04354f85e31e5df0241656ae0",
+        "scripts/campaign/social_volume_suite.py": "014713ced9596a46ac734f25936e08aeda314822b6c202b1d8acf0dcf6e12a09",
+        "scripts/campaign/socket_fanout_cases.py": "2abd2e9914f9ada2f3d7704dde416d1c7fee76ab2bc496b10379a37af5af3d25",
+        "scripts/campaign/socket_fanout_suite.py": "f6ce0845affae15fba2df4ea6bce5e375d684aec775601ea6c1cf95f0ca78949",
+        "scripts/campaign/statistics_checks.py": "e83dc416b65d04b09fa3ea15a4ccbcee721a4ad0a5306a0f40591545d2ec23ce",
+        "scripts/campaign/storage_cases.py": "97d6f3618bebf2535c02a080aeef344fecac73d2ead291e67add510d64b78e7d",
+        "scripts/campaign/storage_resilience_cases.py": "b247fd669255b61b1c2ad06a6cb6adf91378e9b261bce0531f11efa0a234ca59",
+        "scripts/campaign/storage_resilience_suite.py": "48b5e95ffca50f530f42a52812a2e6340b3348c6cf5ebb728465072d943e4747",
+        "scripts/campaign/storage_worker_cases.py": "d2be4925f4e6ea828a8cdd8076952d8308e19d078068fbf4edca476d4518719a",
+        "scripts/campaign/subprocesses.py": "662914a55c1a282b389111628fd5ceb7bc5327ead4821ce1fd12720c13716274",
+        "scripts/campaign/summarize_latency_pressure.py": "cc39491a26725a0697787fbc1dce46138aaffdf55598b96ad09642b1d560ff6c",
+        "scripts/campaign/sync_batch_cases.py": "7778e23a7a2faa17f947e1303247716e4a165e207f41c5d616b769bd34b2cdb5",
+        "scripts/campaign/targeted_suite.py": "f7bd320ba47de9cd02045369c4082d430eeefed9b129e8f8f6e1722e39ad04a9",
+        "scripts/campaign/upload_transport_cases.py": "c7a463270056e8b7c16e7d8d34ca2f96ab6d7b81a124c4790e95e590afc72ad0",
+        "scripts/campaign/upload_transport_suite.py": "b4a78da641717cc786e4f4257326b33b957ac28d79bfb68802cd6e55c3569de4",
+        "scripts/campaign/verify_sources.py": "66d0c0a37dfb5a3827de95412298319ab99f0faf4669e99f102bcda532344710",
+        "scripts/campaign/websocket_cases.py": "4eda39a15cb0b98588eb24b4bfaec876dd431a5f3cd41f3517ad2e2cb44c7fac",
+        "scripts/campaign/windows_limits.py": "05ea33f3197d99e8f8c9b4adc58bdf6aa2024656cd526329bba750aadb371e58",
+        "scripts/campaign/wire_contract_cases.py": "3038788f21be7433986f6052a5f2544e641a476bfebda0ec566346c92dbeb6e2",
+        "scripts/campaign/wire_contract_suite.py": "20e0141b9eed8df03f6aa90e710b873f2de17db0b143a9d94d2a2143b2e5b0e5",
+        "scripts/campaign/worker_child.py": "9440cf8c869ab2fc61c67be3c1efe02b87571be1c9582f85e779a7fafb26cd7a",
+        "scripts/campaign/worker_race_cases.py": "75d331aa22b365f58d55c92c21f0708618d70b6b002ba61b8528fb4ca18f7a4f",
+        "scripts/campaign/worker_race_suite.py": "57529b2c84b3a299d622cb13bee54e7af52d0215d98988ebfa3a086cb4cac42b",
+        "scripts/run_security_regression.py": "8a7f08a0c384f1de0942db714fcb5d7689ce82e57eb2f7df0ad9d89987399535",
+        "tests/fixtures/local_models/chelsea.png": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb",
+        "tests/fixtures/local_models/README.md": "1aab0f78a97a6cd3d03f7b0a61963c959c646b3b2c65ea6f68cc6add1be49131",
+        "tests/test_account_settings.py": "52d4ab07a3a0b11d9a81e88f24773a580425d8920ba60fe0df4524f61c995278",
+        "tests/test_analysis_cache_resilience.py": "5cad7a35831e2f84799e07519afa418248cb3fe3ae5a64971ec44605b1509323",
+        "tests/test_apple_identity.py": "ff0becf5be87a8eac59084d25234a9ffac95ba80b9b3f835531587dc7799d5f8",
+        "tests/test_auth_security.py": "6749261b11daf0b9e3ffdf82410b781c87bddb0f0af17671527169cb54aab743",
+        "tests/test_conversation_events.py": "f995204f9c4c64d0f1bd1327c2dd189ba39646fe916fcf919058ab1293269250",
+        "tests/test_dense_features.py": "17b7f22c70b1762ebc6f270575c4475801dcef17d89d3a61b73d646a2459de3c",
+        "tests/test_logging_security.py": "6561119eb3a62d77f70bceb8e7d62c7df49bd85ab92a521f67bf87a2df88481b",
+        "tests/test_otp_delivery.py": "dc14a4aec78677a18da68ba19c8b3e4a6dc0317baa69808e7646294f57245f40",
+        "tests/test_recognition.py": "d0bcf6995520086167d6c9df1115ee259cd163d0a38963f8a96d6a10d1602fc8",
+        "tests/test_reference_analysis.py": "1dfc8fe22a26d3e159773f8e850c5c1772d836e85e6ff90cb8ddf7a45ef1bf07",
+        "tests/test_segmentation_service.py": "290fc94f5cf00627af42410a5263a2a032e0b7d173a742d831921a57e91ee411",
+        "tests/test_storage_service.py": "778bdb3102387b510fe631b45c1dede52be6672cc05722694c9119b3ac4cca9a",
+        "tests/test_sync_query_performance.py": "93bc5097c6ecfb96bf9a4df219ed326f7a278a0d2188b57b93b09dde8be2624c",
+        "tests/test_websocket_manager.py": "e2e2c571c63bbbb3120af75ae43b2368ef80be9214683fbd5f80f5dfa0762ffa"
+      },
+      "note": "Working candidate identified by content hashes; commit recorded after validation."
+    },
+    "observations": {
+      "RSC01-lifespan": {
+        "scenario": "RSC-01",
+        "actual_lifespan_started": true,
+        "boot_seconds": 0.0001309000072069466,
+        "startup_tasks_observed": 4,
+        "health": 200,
+        "authenticated_pull": 200,
+        "background_jobs": 0,
+        "startup_tasks_remaining_after_shutdown": 0,
+        "pool_checked_out_after_shutdown": 0,
+        "resources_before": {
+          "process_cpu_seconds": 7.71875,
+          "pid": 21036,
+          "rss_bytes": 148267008,
+          "peak_rss_bytes": 148271104,
+          "private_commit_bytes": 229040128,
+          "peak_private_commit_bytes": 229040128,
+          "handles": 222
+        },
+        "resources_running": {
+          "process_cpu_seconds": 9.5625,
+          "pid": 21036,
+          "rss_bytes": 153665536,
+          "peak_rss_bytes": 153673728,
+          "private_commit_bytes": 234287104,
+          "peak_private_commit_bytes": 234303488,
+          "handles": 224
+        },
+        "resources_after": {
+          "process_cpu_seconds": 9.5625,
+          "pid": 21036,
+          "rss_bytes": 153686016,
+          "peak_rss_bytes": 153694208,
+          "private_commit_bytes": 234287104,
+          "peak_private_commit_bytes": 234303488,
+          "handles": 224
+        },
+        "paid_calls": 0,
+        "scope": "Real lifespan bridge/scheduler/reference consumer, own migrated PostgreSQL and TCP API; two seconds idle. No model batch or universal startup SLA claim."
+      }
+    },
+    "evidence": [
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-BOOT-20261027-02/candidate_manifest.json",
+        "sha256": "683204e104a7bbd1a44e4c5de43c90100a79c2e9614062c91856c9821114a9e3"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-BOOT-20261027-02/executors/critical_report.py",
+        "sha256": "794293f87f45a616031d5d50265cf01d7dc060b959f2d8cf9208ff35a483bc2b"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-BOOT-20261027-02/executors/current_offline_cases.py",
+        "sha256": "63e9ceaca8b32cd8b0f3f3641527ea78a0b5aef484b7f6afd574f2c299991aa3"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-BOOT-20261027-02/executors/extended_cases.py",
+        "sha256": "14499f8e9beb0e7ec9e1036824dd247e5dcd876eae209960e800802d76583415"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-BOOT-20261027-02/executors/fixtures.py",
+        "sha256": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-BOOT-20261027-02/executors/image_cases.py",
+        "sha256": "19958fd2cd733ca13231cca626a0c55c4a2f94efd54b793578e9b3e5d1999e6e"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-BOOT-20261027-02/executors/local_model_controls.py",
+        "sha256": "c461406fbb76fbf906e34f57128cffa17f95efcf15299c7afa489de15806c1a5"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-BOOT-20261027-02/executors/local_model_probe_cases.py",
+        "sha256": "d6faa9cf178316e709a46ac17237311820162ef647b8e1d66dc031194936ef1b"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-BOOT-20261027-02/executors/local_model_resource_cases.py",
+        "sha256": "4146ba377902314a322fe70f0e94329d73d6440e416964de243fb40968f4cb99"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-BOOT-20261027-02/executors/measurements.py",
+        "sha256": "6775d688520ffefa3735051fbbacedf20a7e13330be86ddea293e65efe94e23e"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-BOOT-20261027-02/executors/security_cases.py",
+        "sha256": "7c78314a8403b8cded8896bda345ca3e06c5305cc078fe9e42b6d273b8e539c8"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-BOOT-20261027-02/executors/subprocesses.py",
+        "sha256": "662914a55c1a282b389111628fd5ceb7bc5327ead4821ce1fd12720c13716274"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-BOOT-20261027-02/executors/windows_limits.py",
+        "sha256": "05ea33f3197d99e8f8c9b4adc58bdf6aa2024656cd526329bba750aadb371e58"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-BOOT-20261027-02/junit.xml",
+        "sha256": "5d1d8d3ff5370cf436e5c8a8eb90db1dbf16fd29212eee0d2c3d1973df78be9c"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-BOOT-20261027-02/migrations.log",
+        "sha256": "a3b46d2f11f9b6e02caac2d03005d0237af6f6b915efdc0e4805c9d2bcafece2"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-BOOT-20261027-02/observations/RSC01-lifespan.json",
+        "sha256": "053330ac83dad05b5c558fb436f1cfc93312faa77e248d635ad9ee4fbdae57be"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-BOOT-20261027-02/pytest.log",
+        "sha256": "7990541b3c4c21ea758d2f77375be43caf64554d44db61a84292e231503ea782"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-BOOT-20261027-02/source_manifest.json",
+        "sha256": "f1804ff2eda3258e0dc12580167f07c40da11e376f09db4dd4ce3fd5e8c87b5e"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-BOOT-20261027-02/summary.json",
+        "sha256": "3ea2593c23a88abe311b3146d0702b02143ac473e9436b65c594cac7bc4f5ba7"
+      }
+    ]
+  },
+  "lifespan_timing_definition": "boot_seconds measures entering lifespan and scheduling its tasks, not complete server/model/database readiness. Four actual application service tasks were observed alive, HTTP/authenticated DB reads succeeded, and all four stopped with pool returned to zero. Fixture TCP accept loop is separately owned and intentionally remains until fixture teardown.",
+  "worker_run": {
+    "attempt": "RSC01-20261027-real-worker-04",
+    "junit": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 224.302,
+      "selectors": [
+        "sequential.RSC01-20261027-real-worker-04.executors.local_model_resource_cases::test_RSC01_fresh_api_and_worker_processes"
+      ]
+    },
+    "source": {
+      "git_head": "260fb8e31b1e58d3f674eb88d38b8b2dbca002db",
+      "evaluated_content_sha256": {
+        ".env.example": "aa4fbc4d819006e0b2130f1e980a19298205fcb72ac797e90231437bb2fba1b0",
+        "alembic/env.py": "f5dc90d3e89d4c1b6c64571dd4f9eba26aa78545241c8f5acc531fa01f5b3cb5",
+        "alembic/versions/20260827_01_accounts_sync.py": "9f41270ee3f23819b6e799df303ec05e74dde176ffb11aa430a127e05c6a9289",
+        "alembic/versions/20260827_02_cat_avatars.py": "c1978469e58ac92eb00ae88a4fd2395d804d04f7b714a45a6ad6e16a1857f67e",
+        "alembic/versions/20260828_03_recognition_social.py": "16bc15b981b1e55d319ce4a1b588093e12c4d22f15797c8091eaf50769c173b1",
+        "alembic/versions/20260908_04_recognition_evidence.py": "6d90f7aedbec1bdaa64b6c05bfb6cb37baa6ac6c6d52294e3df6cccb3b51eee3",
+        "alembic/versions/20260908_05_product.py": "ce5234fdb8e8f8d8aebd5ca8df9f773041f7b56495370a772e06ab9161e9b8ae",
+        "alembic/versions/20260916_06_chat_rescue.py": "de16780424bad8cab0744bb057952f31e95d267cd742e5c8fc87b5672a0252af",
+        "alembic/versions/20260922_07_report_poster.py": "1691922863c08b6971039a0b803bca302629d0d11331625e35003bdeddf877c6",
+        "alembic/versions/20260923_08_habitat.py": "85b84cd4c7a8e239a686efa0564e8223ebb76171a59063a6d5ff078d07295199",
+        "alembic/versions/20260923_09_habitat_yard.py": "0329e90f29e65f0cbcd2334cedf31d7b4bc3dc575c79c8845d62f71bb24045fb",
+        "alembic/versions/20260924_10_habitat_care.py": "ea14e4dbbd7845c85f881cfa03329fd18ec64479e42c98a0fa83522ef48e47e4",
+        "alembic/versions/20260927_11_progression.py": "f09f8778abdfaabcdeea0ecc2fff8e59c07b3889dba885d4cc539c9eb26dafe6",
+        "alembic/versions/20261006_12_quintal_production.py": "9dd9c087d05ff08dc5dc6e233321c029f012c97a72c3d87c0c5c5c772ce5af4d",
+        "alembic/versions/20261009_13_quintal_build_start.py": "80a32224013608d827545df5e292739ad8e3ca52a87aa1a6fb2436a461974c45",
+        "alembic/versions/20261018_14_session_rotation.py": "2d6802dbfd6eb7abee54cf652389ca80c5ce58157e21aeb5532e90f5e1118e6f",
+        "alembic.ini": "b2124b08e7a33aa9f0a5f17bb2f72a29647ad3891685633195d8642fccd2abcb",
+        "app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app/config.py": "018c33c9b9a23890904dcf7afee06eaf413d945d9e981a59a623ae4595e80042",
+        "app/database.py": "6dc06da28b1c65dc23dd063dd60a2c7fad65a65c9f0c5add6da5691a12b89eef",
+        "app/dependencies.py": "154f905f4b19d5cd409e26dc215c32b50392e37638c2f70ddbe3b09f7f4d1a44",
+        "app/exceptions.py": "566d5bad9f9dc5ff5d479ebb842401b6d3d984180c2c2c6e7fcee28c295a832a",
+        "app/logging_security.py": "c8a58922e58bbb6c5333e0c0e6b8106736a4fd95c155fb5d0766a32af4fd5153",
+        "app/main.py": "0864a23369fd73f34b2a1645072cd860a7ecb4d707c24442d8c076059b66b463",
+        "app/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app/models/analysis.py": "379311d17ba40ccff7ff0b978444689659e99a6592a08680218af323ae17551f",
+        "app/models/vision.py": "5f74cc910837962e257266b28537eca34ff47e1422fa7b7ad130f51d31aa49b9",
+        "app/persistence_models.py": "3c9e6ce745ae6fd789ec1c51880924fda2a79ddea4da90076044eac610dc958c",
+        "app/prompts/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app/prompts/coat_analysis.py": "8a6ff914071655662f96e331269094ef4d025879dc5399aad513ccab368b5aed",
+        "app/quintal_models.py": "3d915dfb18fffb307170eaca1fba7eb70f902b71a654f9c248957b2d1eb0536c",
+        "app/routers/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app/routers/auth.py": "c56b499995d930be18ac4c6b15c72896f6100b4568bfe8916058cbbcce869780",
+        "app/routers/habitat.py": "1b51738f08551ba56507540bf7430d9de2fc57d2c02e10ff9cc4112f09f20136",
+        "app/routers/product.py": "a7b6bbbf144c566631e0f2b21b24ec54f4ec0c82304d8eb566413027b47f534c",
+        "app/routers/progression.py": "2c631bf407fa28d6a16a6aae072574c9540dadd782c594e310c75ff25d2ed845",
+        "app/routers/public_search.py": "c29df4e4cc9c837be759dfb22db1cf94f646cd76e67e4069dedc124568813d4d",
+        "app/routers/quintal.py": "421db5787d103288ec3b02bedddd94ce0e61d59cf8f8855d47493aa5c7d7d343",
+        "app/routers/social.py": "fbc4a5ac9c2e9fdfc228d463ed0588785f18c9fe90cc48169db7df886f18ff42",
+        "app/routers/social_chat.py": "65a3a2c2bfaecee8c935b49c828cbd7d23379bf3e05291588ad80034173abce5",
+        "app/routers/social_devices.py": "a826fab2e9ccc9577e3a843e4f1e7fd03dcabde920408d75f2e62dcb19f9f5ee",
+        "app/routers/social_feed.py": "9d42120baf52d5fd91fd02ba85e79e2108f70b4eb2beaa9918776b96eea99b45",
+        "app/routers/social_friendships.py": "085b312b0a42131895bf7d00be00803649c80c0f0068fa2c1c6a51ddb5e6b9b2",
+        "app/routers/social_profiles.py": "5f347e148f20d837b250b8666bdae8bf0c6436cabeefe894628d25f0b22a6f31",
+        "app/routers/sync.py": "e0e3335cd9ce1996b21e9b840cbe4f6da8cf8cc921c97621dfa19410f275df5f",
+        "app/routers/vision.py": "1f50c3c367dcfb1f2f3e484ad73e71cf6a5c480e38f2160c9d46d2876c0abafe",
+        "app/routers/websocket.py": "e9b7cfbe2f2f0f16e50b7d26d26011a72f564038beae0bf7b8cdff85155860ad",
+        "app/schemas.py": "ae5d1dec2340ff37279d22268ee8ee530abd375e5fa0632fba4fe921bee6d60a",
+        "app/services/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "app/services/analysis_cache.py": "c076ca5eacf5fb544db057195f3778386ef0747e9722ec1e33bf1ecebcda01a1",
+        "app/services/analysis_service.py": "32cf39a52127574eb1c6e83b650fb39c6fd91266e96c1995df87b53effc75b5a",
+        "app/services/apple_identity.py": "68fbe2e5a9e05e8e326d59a38f68bd4cf0790e976678f1157d98e2ebfc768d2a",
+        "app/services/audience.py": "fa12acea18f6ec2e14f4da102f570c105ef87411a9c3b3baf97c65f79db0990a",
+        "app/services/auth_service.py": "f141c63957f80d9cde3894c661b12bda6f1f28ded02e542c03f484b081f0f93f",
+        "app/services/avatar_generation_service.py": "8dac83793f4a54b9266d0ae7c461d34420ec2ceb3b9e1b6adb7ec8de006b4245",
+        "app/services/avatar_service.py": "c49f018ce4f1f2a060be31fd22dc6f6a7fda9832d1a528aba10d7ab3160b6102",
+        "app/services/catalog_changes.py": "229bcef613e8fac10ece90ee46cace53c6f3a061e55f415f30f2c5b850d27b9b",
+        "app/services/catalog_sync_queries.py": "eb81009a6cb6bfd1a14e62a09b38e585ace163aafa441beb965f69f4b1fe2d71",
+        "app/services/chat_commands.py": "07feacfa9a66001536747315f57235f5d0dd19e1aa6e9d7e75fa32fe9f15780a",
+        "app/services/chat_presenter.py": "ef4daf7bdcbb8456ccdd842ad9c2af9a584b849f49605d93dbeeb0061470d6c9",
+        "app/services/chat_queries.py": "6db5b436428e569aac907b5af786b671c5d954655974dc761ba4cbfd9231b7ef",
+        "app/services/color_service.py": "5ac2b285b80fed87ea095f44c6acdf20634f75e9b189c4861183f7575c577cbb",
+        "app/services/conversations.py": "85d4a783f56fce6626d400c1de893bb850b5f3fe193bbde58eefcdafcec60a5b",
+        "app/services/dense_features.py": "2f3f4442f2f29b4ea373839bb67b095bb0b86e72b12027af06fef42e39b9f9d1",
+        "app/services/fcm_service.py": "ccf6fa6fa106e8bea2bfbba336c9c67bb954e7cc849c02690354ac2edd1046a6",
+        "app/services/fusion_service.py": "39fd68133053f7e3d68e40b34eb93c9cca9617975394bb82b3c8ae32cd1059d9",
+        "app/services/habitat_encounters.py": "3cf31aed867639512b60becc23f223c0ca530f9b5832699d03cc55627ff9258a",
+        "app/services/habitat_interactions.py": "d7351b7410caf94be3a697e2d43b479856ad5d0d659cba452ae4d9dd2fc40a4f",
+        "app/services/habitat_presenter.py": "22a92359a4e3563e353bde9bc386ca9194001b296c5ae97584abd0b3bf90b687",
+        "app/services/habitat_pricing.py": "09bb94d7322a4a410a66619ced8bb6725507f0aa7fd2170377ff1977a2c195ed",
+        "app/services/habitat_service.py": "2a7b3245d73b3ff5875434005163cddbc88462f9d17147e6dbc939b8c1f94cca",
+        "app/services/milestones.py": "659dc78807de91a05d7f7c163fb3e1c4acbb53047c83e9fa66869889bc6bf805",
+        "app/services/missing_posters.py": "a1fd1cb5d1ebff2a75e695b9fcb1c952a3a8efa40f687027c298f25eef74986a",
+        "app/services/photo_cleanup.py": "50f6678cbcc508c314803542b24cf81e9cfa8adfa38b62b9bdf877192d8d57f6",
+        "app/services/preprocessing_service.py": "2fc40e60a0fe8b8a7d582940d307ca33827cef3a6644994316b0f058138a4c39",
+        "app/services/progression.py": "2f25f5041095282d2ea56b628be0906021e9f8e931deaeef55d09dcaa5ae8865",
+        "app/services/quality_service.py": "65b72c12b9bfea2691aa5f6e0172e05fa5a9d9f21744f5ff48ea7b5f2c61b10b",
+        "app/services/quintal_care.py": "1e7b9aaac74175f6576efeeef295d5cae6154794041f0a6cd69a7162ecc4ba6c",
+        "app/services/quintal_catalog.py": "50a268d0cff729ec909e08410621ed4e9008be19158036b095e8c3ee1ccf4150",
+        "app/services/quintal_clock.py": "6c61071ee7c669f1e5739d3355e826e5d9dc85e697433966ada5fb82816b7f0d",
+        "app/services/quintal_commands/__init__.py": "7a30fc9262d179b05e4d8b04c6a953858703c653e4fb2a0e049e9283360c70d3",
+        "app/services/quintal_commands/cats.py": "a5b0dd5046ea8eb613d64523f01abb98aafaa27af03177a61e88375dca4af350",
+        "app/services/quintal_commands/construction.py": "dd6f5fc453cea31f19a44ea26c89fb13c6924f7fb6cca5263c091f5a3bfed881",
+        "app/services/quintal_commands/context.py": "89c296fc1bd5e9a3de0a21acaec77bce6337b5aec8e8d077e4610e053d6918a0",
+        "app/services/quintal_commands/garden.py": "098c53700bb9718b4f18808f3447c738fd61d5a61ffaacfa54e3043a7b31a96b",
+        "app/services/quintal_commands/receipts.py": "d6f3cbb913174e36155e8f44e87684c40b1a71fcebe1ea4d7d9376ee4da0cce5",
+        "app/services/quintal_commands/residents.py": "a645a8916f693064c380a46359778a77e876738083902a5d97d455631d06800f",
+        "app/services/quintal_commands/tasks.py": "7c896f06b51cb4502091e6afb16cd7a73aaf7c2a5950e10824fb1e8d0b088cc5",
+        "app/services/quintal_games.py": "5ee0b035de1e27842a4b82b95875c450d9e37ef9d38939d8123807f5f9ff3b14",
+        "app/services/quintal_inventory.py": "e95d30f2635dfc7b1307d8034e8c1318320f8eb4e73ac6f68e7b0fd4cac31e23",
+        "app/services/quintal_notifications.py": "5246e8b0e20f6c2b396847fcb6126a875106272fbb88258f0ee38ec45dba68df",
+        "app/services/quintal_production.py": "f82ae8574f953d9852515409a2e26e438d454565e79ff0132d4a2553684572eb",
+        "app/services/quintal_progress.py": "bdc7f824aeb1917682b4227c3b1a69dbdbd58faefb9a619adee72bcf259f3d02",
+        "app/services/quintal_projection.py": "fad98ad44ff83f4e85589d7d4a74fd2d76bd29704038c6bf19e359c1fa6e69c1",
+        "app/services/quintal_push.py": "d7440d1237781d86a4a64e963dd21a1f4c62773e9c83e07e8fd47f46ba25efab",
+        "app/services/quintal_return.py": "abefc46ae67ec3ad3258ecfd568e6671909d6c39dab979dcc242c4283638b79f",
+        "app/services/quintal_rewards.py": "452153683f6d3bd915da7995ad90304214ef63fc73b8ed875ca900d441ac4a85",
+        "app/services/quintal_scheduler.py": "30f79e512e7fba8112ebfd231f66702fdbbcab67ef7f6566baa1e7912626c6a1",
+        "app/services/quintal_simulation.py": "f53189a9c2720727d4c3c44c44584edd9847a488834e78916cdce6ab4e02c9e6",
+        "app/services/realtime_events.py": "6da075769e0b481c9175b0f7487bc269f62f0dbcf27754bb8a758cfed797f3ca",
+        "app/services/recognition_features.py": "87c694795df0248d643fafa0d2acb30f2ee284a6a587755dca2ce6c39ef3efec",
+        "app/services/recognition_service.py": "5d3556a131d23ef529085d8d0879c19edc2ee41d59c7eaaf989c31b838552c81",
+        "app/services/reference_analysis.py": "3afdb96232365f16c5a8845b15617a7ef6c4664ac561412f63a482f92fb0eb1f",
+        "app/services/report_media.py": "951a779ec43b3e071fef71a708ab71892beffd36b28777e5ad8db3ed283216f5",
+        "app/services/report_presenter.py": "af11aa62e8ad6e0aee349ff648062769fbe891f115d8cc30bd8b5829f31374c0",
+        "app/services/segmentation_service.py": "eeeb986428abd8f83b6781e0a72302f82f543659218ee64acac71ec34d3707b3",
+        "app/services/social_feed_commands.py": "869923ac08f2dd66ed0c9316999398d1cff19aae4a8352f8128d0cd52d6537b1",
+        "app/services/social_feed_queries.py": "8e919daacf1085c6cc09d5488efe1dcb74f39c47e4067c06e07e4711970e698f",
+        "app/services/social_graph.py": "4585e6a00a94eccc55dc566b6c4f3cabb57d3786c5e6c218cb04fe93a87f2cc8",
+        "app/services/social_presenter.py": "2dfd223841d1e96c9be0f73867a5fc0dfa111a2160de78fb778261127ae44be8",
+        "app/services/storage_service.py": "464f4da3c6d49597da66d74fae7fcc7f9ba4f7a523d27800d235653775ca7687",
+        "app/services/vision_jobs.py": "7d6b6a5689ff626983e3ca0786d3515b08c4014aad39d0e7c687df26a71136b2",
+        "app/services/vision_worker.py": "68757890d94f7751b996dc59aa27a9e016a8ddb42085da3ccc2c9c7e7d145de7",
+        "app/services/websocket_manager.py": "9918619e4ba07fb5462c4de425c1b41176ebf6c6202821ed30e84b9b933a9683",
+        "app/social_schemas.py": "b48fe613dd53aafbc9c25750263e747b099502fa8ee07e73a51374bb975df0d6",
+        "scripts/campaign/advisory_payload.py": "b09e580873e8395f93c0ffe58a4284a263503328df38ad9240bba53ac8b267a1",
+        "scripts/campaign/advisory_review.py": "6f4de287839832fbb6082206ef054834ea8bef68db43807427881cf1ab6ec2ba",
+        "scripts/campaign/android_live_cases.py": "de742c8c659de8ccc140a87776f4dd1f0dfebdfcee8ca8c62f47face4ad05069",
+        "scripts/campaign/api_probe.py": "747492cda96e55ad010313a4e7be0346477e25672421f6c57f94c717fa6009de",
+        "scripts/campaign/archive_evidence.py": "e2ab276dad0ebebc9cf1b4d474bc443d68cd3193d19e2d128468b55fe91c3a9a",
+        "scripts/campaign/audience_cases.py": "42c94e84a22a5b700e4557124a1377c9f1a200c664736d5d2850e42125c388de",
+        "scripts/campaign/auth_flow_cases.py": "0525d6469c3a8f0669d27b195e3bc53544cd1b2f6fcdce759665f7cd26e68383",
+        "scripts/campaign/concurrent_catalog_cases.py": "7a4e48acfccd5d97a00baf253fc7b03f00f4fc3bc88db8ad0b9dc925af1fd01c",
+        "scripts/campaign/continuation_report.py": "52ab2f18d4e0bfaaae28054e83f64d31305595886a6d32e15e5f8551b4387163",
+        "scripts/campaign/critical_report.py": "794293f87f45a616031d5d50265cf01d7dc060b959f2d8cf9208ff35a483bc2b",
+        "scripts/campaign/critical_suite.py": "bc80a07da210293ba2051b2a3235390ecc6840551d492c003da375a38e073527",
+        "scripts/campaign/crossed_cases.py": "fd4c1ea3fc6e00068a3e743db517905767c003a5d14025ba2d375b3c1f1e3f82",
+        "scripts/campaign/crossed_suite.py": "bcd94280b970bd36900d57b05d6233a1be437a1bfebccddfa3c39e66a9a84b67",
+        "scripts/campaign/current_dependency_review.py": "fbf8e10e3362c4fd532cccf934f608ba29a33ee74ba3d866b1d61b845fad19e7",
+        "scripts/campaign/current_offline_cases.py": "63e9ceaca8b32cd8b0f3f3641527ea78a0b5aef484b7f6afd574f2c299991aa3",
+        "scripts/campaign/current_socket_fanout_cases.py": "865f4127279291e73c38a752610aee444223d1b2c1f6e5d8ccd21825a6a9d7b7",
+        "scripts/campaign/current_upload_transport_cases.py": "fa323438bbf067b6c21fb1441da255d5babcfac9e4e1a308a03385c00f3bae2f",
+        "scripts/campaign/data_snapshot_cases.py": "493812bd0827b8e63196509264291e3ca1e737b7138c1031e7ab12bab4198ba2",
+        "scripts/campaign/delivery_cases.py": "2a2a3fed9c37866443720582c18ee79457227517fbe1d611ac7598c3e9762b70",
+        "scripts/campaign/delivery_suite.py": "179ed99f06fc91313c43bbbe8fce877bbc1e1d396be3e336cc0c9c4cf1ed30de",
+        "scripts/campaign/dependency_advisories.py": "d16b8e623cb30ad909fa949e9ebd1e770fd9ff29a05460667dfc35262de00bd5",
+        "scripts/campaign/dependency_applicability.py": "7493a647869787d59711ea5cf559588581dd4cad83dd6db1197b803420ac10ef",
+        "scripts/campaign/diagnostic_suite.py": "ab497d3f3c34f3bb0b59bf7db700167f8f5462235c880fb015ab509d4d98f1d8",
+        "scripts/campaign/extended_cases.py": "14499f8e9beb0e7ec9e1036824dd247e5dcd876eae209960e800802d76583415",
+        "scripts/campaign/extended_suite.py": "0e5ae47ad00d45e6b914094d745963247a8308980ee2058f1f49b98b9f929aa0",
+        "scripts/campaign/fault_proxy.py": "2e3593526fa104d69ffae3801323088b40826cfbf1635aadcacdb50daf24d046",
+        "scripts/campaign/fcm_delivery_cases.py": "18f5cffd3ad0719216b078b3176418821125a1364835430dd2eb4220b3a1aad2",
+        "scripts/campaign/fencing_cases.py": "80b3429751a0ee804e2bef79b18eb6eeb735085a6046598696adb3e0982332f1",
+        "scripts/campaign/fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+        "scripts/campaign/flutter_accessibility_flows.py": "ab51260c8e1c45121526eff8b53d4adf968924626f30ea8523c7e583c9665124",
+        "scripts/campaign/flutter_catalog.py": "1e20cd57bd0fa8b15d52785539cfc01956a5c407ae4e7620191443843270582c",
+        "scripts/campaign/flutter_full.py": "19672a59fe0698c765151edf557d2ae48344686985b94cf0bf4008f89e6d1d98",
+        "scripts/campaign/flutter_resilience.py": "89ec7ed85fd747f0ca2587f341f845d0c4d4ba7c484a43729fc2ebcce577e378",
+        "scripts/campaign/flutter_visual.py": "230d8985df3756c952a73928cc56b1cc0a3c649585c975da19e0538603727707",
+        "scripts/campaign/followup_report.py": "eb8f598878f4f4d25d0da4b1d2c1bb3d153e18e86ffe7595f90f9c55d23730dd",
+        "scripts/campaign/full_suite.py": "ec2442fcac6b50110fd979d0f146ef06aaa85a0d123d6825ad23229eb3148716",
+        "scripts/campaign/health_campaign.py": "fd69e08b22b4602fe627240e5973d66a530e17faa24dc36f6488e7980de5b144",
+        "scripts/campaign/health_probe.py": "33abb11bab4221db534ccfc921294eb1f14468d30893d7783e5b19e3212f5880",
+        "scripts/campaign/history_cases.py": "ee1cfc5d29a9518ca9ee136144f202ee3023e9516be4f569894348b3d56c36e2",
+        "scripts/campaign/idempotency_cases.py": "5b0bc8c8b3c1846e14979ca87428ec183c24060366798b9ea2abee5d42049523",
+        "scripts/campaign/idempotency_child.py": "928ae44d636ae05cc5d0b66ec316c8dba9164707ad4160318d2958038659a745",
+        "scripts/campaign/identity_cases.py": "b3aa60095c6c729918399c0f74fe6e4c8a9e563f1134178a0f2ad90dfce101fa",
+        "scripts/campaign/identity_controls_cases.py": "7c4dce17a0e41a435c072a829d0e61ddfdc961df2556c45192c938e495aaea40",
+        "scripts/campaign/identity_controls_suite.py": "e8a45ea6a52e8f5dc6a8fe5d99b4656d1027778c6a3f855bb956a6dc1bcda366",
+        "scripts/campaign/identity_suite.py": "2d68214b5c8bb27165dbb64a323778f6145da15bf4e5c08c698f00dda6e76895",
+        "scripts/campaign/image_cases.py": "19958fd2cd733ca13231cca626a0c55c4a2f94efd54b793578e9b3e5d1999e6e",
+        "scripts/campaign/image_suite.py": "f296d70e94b8b0ec3ba2b59650920c894f73008f2804051b2abc2af30fb69ea4",
+        "scripts/campaign/input_bounds_cases.py": "77941ad39f579198791b5caa763a033bfd99a4ec336b83be009f1c80f0404356",
+        "scripts/campaign/isolation_cases.py": "adf63beb8a199bcc6e9d03e9a1a6f6867879aa252a703567ab3a40c897903ef9",
+        "scripts/campaign/latency_pressure_cases.py": "2237c14f2f0014f117e90cc0ce1ba73061ea987d1f01052e3132b9e270b23a6e",
+        "scripts/campaign/latency_probe_child.py": "17c3ff5fcec7b6d0391f944e7e7c4cf2865a225ca9dd5d023816b2e21ea1ddb4",
+        "scripts/campaign/live_diagnostic_cases.py": "02acf5b833a40b8778f725435571f60b10fad3518d8d37ccb444cc42c7b8697e",
+        "scripts/campaign/live_suite.py": "75b4b11ae5e987797e32ac21df44506d02731b467743db398d58e0eb25635714",
+        "scripts/campaign/local_model_probe_cases.py": "47127dd0a68689339c0156cfaa1dbd82e4adb250015248a1ca6325b2abdda20e",
+        "scripts/campaign/local_model_resource_cases.py": "60e1c2cd9668299f08b04fb402056dcc3322202ce7abd142b3a052031424b968",
+        "scripts/campaign/local_report.py": "94fc84465107b015b64e54eb13cc39a3a6514e7fdcae32ba881e2f20beb0f2c0",
+        "scripts/campaign/measurements.py": "6775d688520ffefa3735051fbbacedf20a7e13330be86ddea293e65efe94e23e",
+        "scripts/campaign/migrated_plan_cases.py": "e423206c949720b51a89b2c03c6c9b4847424d414585e4101875f57baa06e6b2",
+        "scripts/campaign/mutation_cases.py": "ad4b9621a64a92e8e55ce27ab8298a9590bdda60147cae9b7c7d14a1293ff71d",
+        "scripts/campaign/network_cases.py": "c48e2afec58c7d6f98069d24f8e0c9164fad7146cee612b304f4b39780e72a4b",
+        "scripts/campaign/network_suite.py": "0adad4df145d8d96b14ff4d8178ade4525936dc4727c22590a474e636187769d",
+        "scripts/campaign/offline_flow_cases.py": "6395a1ae2666a48a5f180cee6e6d602f90e33dfba85fede0856c681e85eea432",
+        "scripts/campaign/offline_flow_suite.py": "94a937d61aecff3d5badbb8bb698213a3b6bd06240f45e3afbc3f370a833939d",
+        "scripts/campaign/offline_inventory.py": "32a712253b88fc1c541e673aa6cec59851209bda4cd98c4514d2e166f6c67d75",
+        "scripts/campaign/pilot_cases.py": "a04df3402e66114651409ae61f6a74b1a987e69374cda594cd85d604cc410e6f",
+        "scripts/campaign/pipeline_cases.py": "d14dd8f23da8b5a21eb17d5e616ea13396c16ebb5e7883a36c66d0dbf244e2a5",
+        "scripts/campaign/pipeline_suite.py": "7b8662e37abdc4072fd331a49a0bdef4ec13c62fab4a51f7745eba1f89b006da",
+        "scripts/campaign/pool_release_cases.py": "b2a5d1fed4801d64f0c7d48da8f89965d5b5a6cb429e16f376757281fd3be571",
+        "scripts/campaign/preflight.py": "2e725bd7a898dc118f77c39aeb9a1f9c4af18f8557ea18c1b391185c61261c67",
+        "scripts/campaign/preparation_audit.py": "d1c86d5af68548390f33adb29ec874ab78bac7c60cd84e8996e8b9589fac246d",
+        "scripts/campaign/privacy_cases.py": "e1f2c728cf1f0f9842d1ad630d73af70358d911409931693a26e88e220ae144a",
+        "scripts/campaign/privacy_suite.py": "30fa3ab9beb6dd88de6c702c9ddae242620585837107b3ce4e9de8f0db717014",
+        "scripts/campaign/production_boundary_cases.py": "ff5a257d0132da8d4969fb5e6e01dba9f431aff432c358f68f8b7dd136c7d7ba",
+        "scripts/campaign/query_plan_cases.py": "6b43aeb0a4c5d5359159b4fe24a89a9e4fde949d465a5e78bf9f7afed5c20f2d",
+        "scripts/campaign/query_plan_suite.py": "53ca97aba6cddbb6233045e87709a0a1a06558b896c44d6eb7e74d03a28af18a",
+        "scripts/campaign/queue_suite.py": "aeb9386d366d0662e83b4d384f230893a5e30b1f3619e29ca8dfc8001d15f21c",
+        "scripts/campaign/remaining_mechanism_cases.py": "117498601cebca2e5bad86d9d8d9ab661dedc788540c68fd13170a74052d0286",
+        "scripts/campaign/remaining_mechanism_suite.py": "1e91dc410d0261dd066e19d5500f53efed2222d4afb6d6ecf03fc3f4df47cea4",
+        "scripts/campaign/report.py": "0dd59e54a1227157150eb2fbd55e187882e36e38174918be514f5d517750a096",
+        "scripts/campaign/report_lifecycle_cases.py": "1597b8fab67b959dbc9f848723da28e2130a99592364a905458d034a05f2c3f8",
+        "scripts/campaign/resource_caps_cases.py": "84d0bbfb1477c2934101e88bd06c1d1ed65ecafc7e2f641316c4d89fc8bc479d",
+        "scripts/campaign/resource_lifecycle_cases.py": "8ba25e7bec2b7ac0355a0d7ada2969d575fefb5d498c37a7db8e6faddd3ac78b",
+        "scripts/campaign/review_flutter_mutations.py": "6029d8ed6bdaee90a99c3a0615d7482f5fb8218f7ecda290cb53a0666ed54a33",
+        "scripts/campaign/revocation_cases.py": "c389fefbcd12843cae78c33272d3c21f692f5c16f14cd824b9e2dc9f441ae1e5",
+        "scripts/campaign/rollback_cases.py": "a0134b14d048294f05999536cc94f6f2c904e88cdaa725723e10ed296560c5e7",
+        "scripts/campaign/security_cases.py": "7c78314a8403b8cded8896bda345ca3e06c5305cc078fe9e42b6d273b8e539c8",
+        "scripts/campaign/service_recovery_cases.py": "c3ee0ae51bb36f8bb3e8088432cf267917ff485bfc6e1fceab54fe5b90165d02",
+        "scripts/campaign/social_history_cases.py": "b5c01fa6237573bc266dded16e8201271a43bbfc5062af145a753e049d32cb69",
+        "scripts/campaign/social_history_suite.py": "49afefe1fc537b4153d922c0157e01e19deed7316c1b958156f207af5acd29d7",
+        "scripts/campaign/social_order_cases.py": "55bc3ede29834a8fabe34f98ea49b3360cb97f4f0106075644ba8b4002aa649f",
+        "scripts/campaign/social_order_suite.py": "1f141f773031be472ad78b396beeaf4dd9ac8e199dad789aa838506f0f944850",
+        "scripts/campaign/social_volume_cases.py": "eef3e642a89125407ffd7252f60c6dc955cd25c04354f85e31e5df0241656ae0",
+        "scripts/campaign/social_volume_suite.py": "014713ced9596a46ac734f25936e08aeda314822b6c202b1d8acf0dcf6e12a09",
+        "scripts/campaign/socket_fanout_cases.py": "2abd2e9914f9ada2f3d7704dde416d1c7fee76ab2bc496b10379a37af5af3d25",
+        "scripts/campaign/socket_fanout_suite.py": "f6ce0845affae15fba2df4ea6bce5e375d684aec775601ea6c1cf95f0ca78949",
+        "scripts/campaign/statistics_checks.py": "e83dc416b65d04b09fa3ea15a4ccbcee721a4ad0a5306a0f40591545d2ec23ce",
+        "scripts/campaign/storage_cases.py": "97d6f3618bebf2535c02a080aeef344fecac73d2ead291e67add510d64b78e7d",
+        "scripts/campaign/storage_resilience_cases.py": "b247fd669255b61b1c2ad06a6cb6adf91378e9b261bce0531f11efa0a234ca59",
+        "scripts/campaign/storage_resilience_suite.py": "48b5e95ffca50f530f42a52812a2e6340b3348c6cf5ebb728465072d943e4747",
+        "scripts/campaign/storage_worker_cases.py": "d2be4925f4e6ea828a8cdd8076952d8308e19d078068fbf4edca476d4518719a",
+        "scripts/campaign/subprocesses.py": "662914a55c1a282b389111628fd5ceb7bc5327ead4821ce1fd12720c13716274",
+        "scripts/campaign/summarize_latency_pressure.py": "cc39491a26725a0697787fbc1dce46138aaffdf55598b96ad09642b1d560ff6c",
+        "scripts/campaign/sync_batch_cases.py": "7778e23a7a2faa17f947e1303247716e4a165e207f41c5d616b769bd34b2cdb5",
+        "scripts/campaign/targeted_suite.py": "f7bd320ba47de9cd02045369c4082d430eeefed9b129e8f8f6e1722e39ad04a9",
+        "scripts/campaign/upload_transport_cases.py": "c7a463270056e8b7c16e7d8d34ca2f96ab6d7b81a124c4790e95e590afc72ad0",
+        "scripts/campaign/upload_transport_suite.py": "b4a78da641717cc786e4f4257326b33b957ac28d79bfb68802cd6e55c3569de4",
+        "scripts/campaign/verify_sources.py": "66d0c0a37dfb5a3827de95412298319ab99f0faf4669e99f102bcda532344710",
+        "scripts/campaign/websocket_cases.py": "4eda39a15cb0b98588eb24b4bfaec876dd431a5f3cd41f3517ad2e2cb44c7fac",
+        "scripts/campaign/windows_limits.py": "05ea33f3197d99e8f8c9b4adc58bdf6aa2024656cd526329bba750aadb371e58",
+        "scripts/campaign/wire_contract_cases.py": "3038788f21be7433986f6052a5f2544e641a476bfebda0ec566346c92dbeb6e2",
+        "scripts/campaign/wire_contract_suite.py": "20e0141b9eed8df03f6aa90e710b873f2de17db0b143a9d94d2a2143b2e5b0e5",
+        "scripts/campaign/worker_child.py": "9440cf8c869ab2fc61c67be3c1efe02b87571be1c9582f85e779a7fafb26cd7a",
+        "scripts/campaign/worker_race_cases.py": "75d331aa22b365f58d55c92c21f0708618d70b6b002ba61b8528fb4ca18f7a4f",
+        "scripts/campaign/worker_race_suite.py": "57529b2c84b3a299d622cb13bee54e7af52d0215d98988ebfa3a086cb4cac42b",
+        "scripts/run_security_regression.py": "60920126efe926cabb83842aaa836d13771f9ce551cbddca88c563ddeed75109",
+        "tests/fixtures/local_models/chelsea.png": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb",
+        "tests/fixtures/local_models/README.md": "1aab0f78a97a6cd3d03f7b0a61963c959c646b3b2c65ea6f68cc6add1be49131",
+        "tests/test_account_settings.py": "52d4ab07a3a0b11d9a81e88f24773a580425d8920ba60fe0df4524f61c995278",
+        "tests/test_analysis_cache_resilience.py": "5cad7a35831e2f84799e07519afa418248cb3fe3ae5a64971ec44605b1509323",
+        "tests/test_apple_identity.py": "ff0becf5be87a8eac59084d25234a9ffac95ba80b9b3f835531587dc7799d5f8",
+        "tests/test_auth_security.py": "6749261b11daf0b9e3ffdf82410b781c87bddb0f0af17671527169cb54aab743",
+        "tests/test_conversation_events.py": "f995204f9c4c64d0f1bd1327c2dd189ba39646fe916fcf919058ab1293269250",
+        "tests/test_logging_security.py": "6561119eb3a62d77f70bceb8e7d62c7df49bd85ab92a521f67bf87a2df88481b",
+        "tests/test_otp_delivery.py": "dc14a4aec78677a18da68ba19c8b3e4a6dc0317baa69808e7646294f57245f40",
+        "tests/test_reference_analysis.py": "1dfc8fe22a26d3e159773f8e850c5c1772d836e85e6ff90cb8ddf7a45ef1bf07",
+        "tests/test_sync_query_performance.py": "93bc5097c6ecfb96bf9a4df219ed326f7a278a0d2188b57b93b09dde8be2624c",
+        "tests/test_websocket_manager.py": "e2e2c571c63bbbb3120af75ae43b2368ef80be9214683fbd5f80f5dfa0762ffa"
+      },
+      "note": "Working candidate identified by content hashes; commit recorded after validation."
+    },
+    "observations": {
+      "roles": [
+        "worker"
+      ],
+      "processes": 2,
+      "weights_sha256": {
+        "sam2.1_hiera_tiny.pt": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+        "dinov2_vits14_pretrain.pth": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9",
+        "fasterrcnn_mobilenet_v3_large_320_fpn-907ea3f9.pth": "907ea3f91ff92242bc1baea8049276a3e76bca48ce7560bd268cc029f37977b5"
+      },
+      "sampling": "Two fresh process trials per role; one cold and three warm executions each; 5s idle at 10Hz. Bounded resource observations, no inferential percentile/speedup claims. OS file cache remains warm, including SHA preflight reads."
+    },
+    "evidence": [
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/candidate_manifest.json",
+        "sha256": "2d48ca333386b3bb36c1e5983f72d8b1852600e451f43e0019d485b8331afa09"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/executors/critical_report.py",
+        "sha256": "794293f87f45a616031d5d50265cf01d7dc060b959f2d8cf9208ff35a483bc2b"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/executors/current_offline_cases.py",
+        "sha256": "63e9ceaca8b32cd8b0f3f3641527ea78a0b5aef484b7f6afd574f2c299991aa3"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/executors/extended_cases.py",
+        "sha256": "14499f8e9beb0e7ec9e1036824dd247e5dcd876eae209960e800802d76583415"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/executors/fixtures.py",
+        "sha256": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/executors/image_cases.py",
+        "sha256": "19958fd2cd733ca13231cca626a0c55c4a2f94efd54b793578e9b3e5d1999e6e"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/executors/local_model_probe_cases.py",
+        "sha256": "47127dd0a68689339c0156cfaa1dbd82e4adb250015248a1ca6325b2abdda20e"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/executors/local_model_resource_cases.py",
+        "sha256": "60e1c2cd9668299f08b04fb402056dcc3322202ce7abd142b3a052031424b968"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/executors/measurements.py",
+        "sha256": "6775d688520ffefa3735051fbbacedf20a7e13330be86ddea293e65efe94e23e"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/executors/security_cases.py",
+        "sha256": "7c78314a8403b8cded8896bda345ca3e06c5305cc078fe9e42b6d273b8e539c8"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/executors/subprocesses.py",
+        "sha256": "662914a55c1a282b389111628fd5ceb7bc5327ead4821ce1fd12720c13716274"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/executors/windows_limits.py",
+        "sha256": "05ea33f3197d99e8f8c9b4adc58bdf6aa2024656cd526329bba750aadb371e58"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/junit.xml",
+        "sha256": "19bc4629c0663e1c1c79d843c0f8ab38179fd11c6db84c0a9a49cc36b3abe79d"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/migrations.log",
+        "sha256": "a3b46d2f11f9b6e02caac2d03005d0237af6f6b915efdc0e4805c9d2bcafece2"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/observations/RSC01-fresh-processes.json",
+        "sha256": "e1917ced117f9cff7dd4a4f3902c0db915aa8139d98523197d382b8bb88cfaca"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/observations/worker-0/junit.xml",
+        "sha256": "52852876edfe57dcfcbba30ba8eeab2d3d98c104c3418f7c439855187fed92e6"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/observations/worker-0/pytest.log",
+        "sha256": "d01d3c6f8639ff09e1b4b5b3af1fc3c99579fe5e30cb18683849ecc133003495"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/observations/worker-0/RSC01-local-models.json",
+        "sha256": "3a49cf3feb482959e2c6f6763262f4802ac9e6e612262fd126b3fe2be24379b3"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/observations/worker-1/junit.xml",
+        "sha256": "a0bc8d45b6f819450e04b5d749e67a792063e941b434d845206d2ea56f1ca76c"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/observations/worker-1/pytest.log",
+        "sha256": "a136fa898811233ef194d294075f79d1bb6fca21c113b3c7e7cc9083740b754f"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/observations/worker-1/RSC01-local-models.json",
+        "sha256": "3f29e499dd190ae5bb784109dcd91a9a97bd78384c4a07d3bc4d2d02234f85e6"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/pytest.log",
+        "sha256": "ee15cdd168a8cbba7d642115c362ec454517a3d80cab6dea4f20e3cf047c4113"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/source_manifest.json",
+        "sha256": "a952348ce310bedb5b808cdf78fec8ba2c1256e0f9161d855bef5d655988fb7c"
+      },
+      {
+        "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-worker-04/summary.json",
+        "sha256": "3609ffc7582aaa70682cb7002f441054c412d0d6fb3730ecd22c5be840813f65"
+      }
+    ]
+  },
+  "api_source": {
+    "git_head": "fb5ef4abe211c4f1c50bb8d4c0f843d7f0ac6058",
+    "evaluated_content_sha256": {
+      ".env.example": "aa4fbc4d819006e0b2130f1e980a19298205fcb72ac797e90231437bb2fba1b0",
+      "alembic/env.py": "f5dc90d3e89d4c1b6c64571dd4f9eba26aa78545241c8f5acc531fa01f5b3cb5",
+      "alembic/versions/20260827_01_accounts_sync.py": "9f41270ee3f23819b6e799df303ec05e74dde176ffb11aa430a127e05c6a9289",
+      "alembic/versions/20260827_02_cat_avatars.py": "c1978469e58ac92eb00ae88a4fd2395d804d04f7b714a45a6ad6e16a1857f67e",
+      "alembic/versions/20260828_03_recognition_social.py": "16bc15b981b1e55d319ce4a1b588093e12c4d22f15797c8091eaf50769c173b1",
+      "alembic/versions/20260908_04_recognition_evidence.py": "6d90f7aedbec1bdaa64b6c05bfb6cb37baa6ac6c6d52294e3df6cccb3b51eee3",
+      "alembic/versions/20260908_05_product.py": "ce5234fdb8e8f8d8aebd5ca8df9f773041f7b56495370a772e06ab9161e9b8ae",
+      "alembic/versions/20260916_06_chat_rescue.py": "de16780424bad8cab0744bb057952f31e95d267cd742e5c8fc87b5672a0252af",
+      "alembic/versions/20260922_07_report_poster.py": "1691922863c08b6971039a0b803bca302629d0d11331625e35003bdeddf877c6",
+      "alembic/versions/20260923_08_habitat.py": "85b84cd4c7a8e239a686efa0564e8223ebb76171a59063a6d5ff078d07295199",
+      "alembic/versions/20260923_09_habitat_yard.py": "0329e90f29e65f0cbcd2334cedf31d7b4bc3dc575c79c8845d62f71bb24045fb",
+      "alembic/versions/20260924_10_habitat_care.py": "ea14e4dbbd7845c85f881cfa03329fd18ec64479e42c98a0fa83522ef48e47e4",
+      "alembic/versions/20260927_11_progression.py": "f09f8778abdfaabcdeea0ecc2fff8e59c07b3889dba885d4cc539c9eb26dafe6",
+      "alembic/versions/20261006_12_quintal_production.py": "9dd9c087d05ff08dc5dc6e233321c029f012c97a72c3d87c0c5c5c772ce5af4d",
+      "alembic/versions/20261009_13_quintal_build_start.py": "80a32224013608d827545df5e292739ad8e3ca52a87aa1a6fb2436a461974c45",
+      "alembic/versions/20261018_14_session_rotation.py": "2d6802dbfd6eb7abee54cf652389ca80c5ce58157e21aeb5532e90f5e1118e6f",
+      "alembic.ini": "b2124b08e7a33aa9f0a5f17bb2f72a29647ad3891685633195d8642fccd2abcb",
+      "app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/config.py": "018c33c9b9a23890904dcf7afee06eaf413d945d9e981a59a623ae4595e80042",
+      "app/database.py": "6dc06da28b1c65dc23dd063dd60a2c7fad65a65c9f0c5add6da5691a12b89eef",
+      "app/dependencies.py": "154f905f4b19d5cd409e26dc215c32b50392e37638c2f70ddbe3b09f7f4d1a44",
+      "app/exceptions.py": "566d5bad9f9dc5ff5d479ebb842401b6d3d984180c2c2c6e7fcee28c295a832a",
+      "app/logging_security.py": "c8a58922e58bbb6c5333e0c0e6b8106736a4fd95c155fb5d0766a32af4fd5153",
+      "app/main.py": "0864a23369fd73f34b2a1645072cd860a7ecb4d707c24442d8c076059b66b463",
+      "app/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/models/analysis.py": "379311d17ba40ccff7ff0b978444689659e99a6592a08680218af323ae17551f",
+      "app/models/vision.py": "5f74cc910837962e257266b28537eca34ff47e1422fa7b7ad130f51d31aa49b9",
+      "app/persistence_models.py": "3c9e6ce745ae6fd789ec1c51880924fda2a79ddea4da90076044eac610dc958c",
+      "app/prompts/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/prompts/coat_analysis.py": "8a6ff914071655662f96e331269094ef4d025879dc5399aad513ccab368b5aed",
+      "app/quintal_models.py": "3d915dfb18fffb307170eaca1fba7eb70f902b71a654f9c248957b2d1eb0536c",
+      "app/routers/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/routers/auth.py": "c56b499995d930be18ac4c6b15c72896f6100b4568bfe8916058cbbcce869780",
+      "app/routers/habitat.py": "1b51738f08551ba56507540bf7430d9de2fc57d2c02e10ff9cc4112f09f20136",
+      "app/routers/product.py": "a7b6bbbf144c566631e0f2b21b24ec54f4ec0c82304d8eb566413027b47f534c",
+      "app/routers/progression.py": "2c631bf407fa28d6a16a6aae072574c9540dadd782c594e310c75ff25d2ed845",
+      "app/routers/public_search.py": "c29df4e4cc9c837be759dfb22db1cf94f646cd76e67e4069dedc124568813d4d",
+      "app/routers/quintal.py": "421db5787d103288ec3b02bedddd94ce0e61d59cf8f8855d47493aa5c7d7d343",
+      "app/routers/social.py": "fbc4a5ac9c2e9fdfc228d463ed0588785f18c9fe90cc48169db7df886f18ff42",
+      "app/routers/social_chat.py": "65a3a2c2bfaecee8c935b49c828cbd7d23379bf3e05291588ad80034173abce5",
+      "app/routers/social_devices.py": "a826fab2e9ccc9577e3a843e4f1e7fd03dcabde920408d75f2e62dcb19f9f5ee",
+      "app/routers/social_feed.py": "9d42120baf52d5fd91fd02ba85e79e2108f70b4eb2beaa9918776b96eea99b45",
+      "app/routers/social_friendships.py": "085b312b0a42131895bf7d00be00803649c80c0f0068fa2c1c6a51ddb5e6b9b2",
+      "app/routers/social_profiles.py": "5f347e148f20d837b250b8666bdae8bf0c6436cabeefe894628d25f0b22a6f31",
+      "app/routers/sync.py": "e0e3335cd9ce1996b21e9b840cbe4f6da8cf8cc921c97621dfa19410f275df5f",
+      "app/routers/vision.py": "1f50c3c367dcfb1f2f3e484ad73e71cf6a5c480e38f2160c9d46d2876c0abafe",
+      "app/routers/websocket.py": "e9b7cfbe2f2f0f16e50b7d26d26011a72f564038beae0bf7b8cdff85155860ad",
+      "app/schemas.py": "ae5d1dec2340ff37279d22268ee8ee530abd375e5fa0632fba4fe921bee6d60a",
+      "app/services/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/services/analysis_cache.py": "c076ca5eacf5fb544db057195f3778386ef0747e9722ec1e33bf1ecebcda01a1",
+      "app/services/analysis_service.py": "32cf39a52127574eb1c6e83b650fb39c6fd91266e96c1995df87b53effc75b5a",
+      "app/services/apple_identity.py": "68fbe2e5a9e05e8e326d59a38f68bd4cf0790e976678f1157d98e2ebfc768d2a",
+      "app/services/audience.py": "fa12acea18f6ec2e14f4da102f570c105ef87411a9c3b3baf97c65f79db0990a",
+      "app/services/auth_service.py": "f141c63957f80d9cde3894c661b12bda6f1f28ded02e542c03f484b081f0f93f",
+      "app/services/avatar_generation_service.py": "8dac83793f4a54b9266d0ae7c461d34420ec2ceb3b9e1b6adb7ec8de006b4245",
+      "app/services/avatar_service.py": "c49f018ce4f1f2a060be31fd22dc6f6a7fda9832d1a528aba10d7ab3160b6102",
+      "app/services/catalog_changes.py": "229bcef613e8fac10ece90ee46cace53c6f3a061e55f415f30f2c5b850d27b9b",
+      "app/services/catalog_sync_queries.py": "eb81009a6cb6bfd1a14e62a09b38e585ace163aafa441beb965f69f4b1fe2d71",
+      "app/services/chat_commands.py": "07feacfa9a66001536747315f57235f5d0dd19e1aa6e9d7e75fa32fe9f15780a",
+      "app/services/chat_presenter.py": "ef4daf7bdcbb8456ccdd842ad9c2af9a584b849f49605d93dbeeb0061470d6c9",
+      "app/services/chat_queries.py": "6db5b436428e569aac907b5af786b671c5d954655974dc761ba4cbfd9231b7ef",
+      "app/services/color_service.py": "5ac2b285b80fed87ea095f44c6acdf20634f75e9b189c4861183f7575c577cbb",
+      "app/services/conversations.py": "85d4a783f56fce6626d400c1de893bb850b5f3fe193bbde58eefcdafcec60a5b",
+      "app/services/dense_features.py": "2f3f4442f2f29b4ea373839bb67b095bb0b86e72b12027af06fef42e39b9f9d1",
+      "app/services/fcm_service.py": "ccf6fa6fa106e8bea2bfbba336c9c67bb954e7cc849c02690354ac2edd1046a6",
+      "app/services/fusion_service.py": "39fd68133053f7e3d68e40b34eb93c9cca9617975394bb82b3c8ae32cd1059d9",
+      "app/services/habitat_encounters.py": "3cf31aed867639512b60becc23f223c0ca530f9b5832699d03cc55627ff9258a",
+      "app/services/habitat_interactions.py": "d7351b7410caf94be3a697e2d43b479856ad5d0d659cba452ae4d9dd2fc40a4f",
+      "app/services/habitat_presenter.py": "22a92359a4e3563e353bde9bc386ca9194001b296c5ae97584abd0b3bf90b687",
+      "app/services/habitat_pricing.py": "09bb94d7322a4a410a66619ced8bb6725507f0aa7fd2170377ff1977a2c195ed",
+      "app/services/habitat_service.py": "2a7b3245d73b3ff5875434005163cddbc88462f9d17147e6dbc939b8c1f94cca",
+      "app/services/milestones.py": "659dc78807de91a05d7f7c163fb3e1c4acbb53047c83e9fa66869889bc6bf805",
+      "app/services/missing_posters.py": "a1fd1cb5d1ebff2a75e695b9fcb1c952a3a8efa40f687027c298f25eef74986a",
+      "app/services/photo_cleanup.py": "50f6678cbcc508c314803542b24cf81e9cfa8adfa38b62b9bdf877192d8d57f6",
+      "app/services/preprocessing_service.py": "2fc40e60a0fe8b8a7d582940d307ca33827cef3a6644994316b0f058138a4c39",
+      "app/services/progression.py": "2f25f5041095282d2ea56b628be0906021e9f8e931deaeef55d09dcaa5ae8865",
+      "app/services/quality_service.py": "65b72c12b9bfea2691aa5f6e0172e05fa5a9d9f21744f5ff48ea7b5f2c61b10b",
+      "app/services/quintal_care.py": "1e7b9aaac74175f6576efeeef295d5cae6154794041f0a6cd69a7162ecc4ba6c",
+      "app/services/quintal_catalog.py": "50a268d0cff729ec909e08410621ed4e9008be19158036b095e8c3ee1ccf4150",
+      "app/services/quintal_clock.py": "6c61071ee7c669f1e5739d3355e826e5d9dc85e697433966ada5fb82816b7f0d",
+      "app/services/quintal_commands/__init__.py": "7a30fc9262d179b05e4d8b04c6a953858703c653e4fb2a0e049e9283360c70d3",
+      "app/services/quintal_commands/cats.py": "a5b0dd5046ea8eb613d64523f01abb98aafaa27af03177a61e88375dca4af350",
+      "app/services/quintal_commands/construction.py": "dd6f5fc453cea31f19a44ea26c89fb13c6924f7fb6cca5263c091f5a3bfed881",
+      "app/services/quintal_commands/context.py": "89c296fc1bd5e9a3de0a21acaec77bce6337b5aec8e8d077e4610e053d6918a0",
+      "app/services/quintal_commands/garden.py": "098c53700bb9718b4f18808f3447c738fd61d5a61ffaacfa54e3043a7b31a96b",
+      "app/services/quintal_commands/receipts.py": "d6f3cbb913174e36155e8f44e87684c40b1a71fcebe1ea4d7d9376ee4da0cce5",
+      "app/services/quintal_commands/residents.py": "a645a8916f693064c380a46359778a77e876738083902a5d97d455631d06800f",
+      "app/services/quintal_commands/tasks.py": "7c896f06b51cb4502091e6afb16cd7a73aaf7c2a5950e10824fb1e8d0b088cc5",
+      "app/services/quintal_games.py": "5ee0b035de1e27842a4b82b95875c450d9e37ef9d38939d8123807f5f9ff3b14",
+      "app/services/quintal_inventory.py": "e95d30f2635dfc7b1307d8034e8c1318320f8eb4e73ac6f68e7b0fd4cac31e23",
+      "app/services/quintal_notifications.py": "5246e8b0e20f6c2b396847fcb6126a875106272fbb88258f0ee38ec45dba68df",
+      "app/services/quintal_production.py": "f82ae8574f953d9852515409a2e26e438d454565e79ff0132d4a2553684572eb",
+      "app/services/quintal_progress.py": "bdc7f824aeb1917682b4227c3b1a69dbdbd58faefb9a619adee72bcf259f3d02",
+      "app/services/quintal_projection.py": "fad98ad44ff83f4e85589d7d4a74fd2d76bd29704038c6bf19e359c1fa6e69c1",
+      "app/services/quintal_push.py": "d7440d1237781d86a4a64e963dd21a1f4c62773e9c83e07e8fd47f46ba25efab",
+      "app/services/quintal_return.py": "abefc46ae67ec3ad3258ecfd568e6671909d6c39dab979dcc242c4283638b79f",
+      "app/services/quintal_rewards.py": "452153683f6d3bd915da7995ad90304214ef63fc73b8ed875ca900d441ac4a85",
+      "app/services/quintal_scheduler.py": "30f79e512e7fba8112ebfd231f66702fdbbcab67ef7f6566baa1e7912626c6a1",
+      "app/services/quintal_simulation.py": "f53189a9c2720727d4c3c44c44584edd9847a488834e78916cdce6ab4e02c9e6",
+      "app/services/realtime_events.py": "6da075769e0b481c9175b0f7487bc269f62f0dbcf27754bb8a758cfed797f3ca",
+      "app/services/recognition_features.py": "87c694795df0248d643fafa0d2acb30f2ee284a6a587755dca2ce6c39ef3efec",
+      "app/services/recognition_service.py": "5d3556a131d23ef529085d8d0879c19edc2ee41d59c7eaaf989c31b838552c81",
+      "app/services/reference_analysis.py": "3afdb96232365f16c5a8845b15617a7ef6c4664ac561412f63a482f92fb0eb1f",
+      "app/services/report_media.py": "951a779ec43b3e071fef71a708ab71892beffd36b28777e5ad8db3ed283216f5",
+      "app/services/report_presenter.py": "af11aa62e8ad6e0aee349ff648062769fbe891f115d8cc30bd8b5829f31374c0",
+      "app/services/segmentation_service.py": "eeeb986428abd8f83b6781e0a72302f82f543659218ee64acac71ec34d3707b3",
+      "app/services/social_feed_commands.py": "869923ac08f2dd66ed0c9316999398d1cff19aae4a8352f8128d0cd52d6537b1",
+      "app/services/social_feed_queries.py": "8e919daacf1085c6cc09d5488efe1dcb74f39c47e4067c06e07e4711970e698f",
+      "app/services/social_graph.py": "4585e6a00a94eccc55dc566b6c4f3cabb57d3786c5e6c218cb04fe93a87f2cc8",
+      "app/services/social_presenter.py": "2dfd223841d1e96c9be0f73867a5fc0dfa111a2160de78fb778261127ae44be8",
+      "app/services/storage_service.py": "464f4da3c6d49597da66d74fae7fcc7f9ba4f7a523d27800d235653775ca7687",
+      "app/services/vision_jobs.py": "7d6b6a5689ff626983e3ca0786d3515b08c4014aad39d0e7c687df26a71136b2",
+      "app/services/vision_worker.py": "9d2fc69f35387bbeca4905f4f0c1d541b5447f51862ef88cd975d17d8dcf9a77",
+      "app/services/websocket_manager.py": "9918619e4ba07fb5462c4de425c1b41176ebf6c6202821ed30e84b9b933a9683",
+      "app/social_schemas.py": "b48fe613dd53aafbc9c25750263e747b099502fa8ee07e73a51374bb975df0d6",
+      "scripts/campaign/advisory_payload.py": "b09e580873e8395f93c0ffe58a4284a263503328df38ad9240bba53ac8b267a1",
+      "scripts/campaign/advisory_review.py": "6f4de287839832fbb6082206ef054834ea8bef68db43807427881cf1ab6ec2ba",
+      "scripts/campaign/android_live_cases.py": "de742c8c659de8ccc140a87776f4dd1f0dfebdfcee8ca8c62f47face4ad05069",
+      "scripts/campaign/api_probe.py": "747492cda96e55ad010313a4e7be0346477e25672421f6c57f94c717fa6009de",
+      "scripts/campaign/archive_evidence.py": "e2ab276dad0ebebc9cf1b4d474bc443d68cd3193d19e2d128468b55fe91c3a9a",
+      "scripts/campaign/audience_cases.py": "42c94e84a22a5b700e4557124a1377c9f1a200c664736d5d2850e42125c388de",
+      "scripts/campaign/auth_flow_cases.py": "0525d6469c3a8f0669d27b195e3bc53544cd1b2f6fcdce759665f7cd26e68383",
+      "scripts/campaign/concurrent_catalog_cases.py": "7a4e48acfccd5d97a00baf253fc7b03f00f4fc3bc88db8ad0b9dc925af1fd01c",
+      "scripts/campaign/continuation_report.py": "52ab2f18d4e0bfaaae28054e83f64d31305595886a6d32e15e5f8551b4387163",
+      "scripts/campaign/critical_report.py": "794293f87f45a616031d5d50265cf01d7dc060b959f2d8cf9208ff35a483bc2b",
+      "scripts/campaign/critical_suite.py": "bc80a07da210293ba2051b2a3235390ecc6840551d492c003da375a38e073527",
+      "scripts/campaign/crossed_cases.py": "fd4c1ea3fc6e00068a3e743db517905767c003a5d14025ba2d375b3c1f1e3f82",
+      "scripts/campaign/crossed_suite.py": "bcd94280b970bd36900d57b05d6233a1be437a1bfebccddfa3c39e66a9a84b67",
+      "scripts/campaign/current_dependency_review.py": "fbf8e10e3362c4fd532cccf934f608ba29a33ee74ba3d866b1d61b845fad19e7",
+      "scripts/campaign/current_offline_cases.py": "63e9ceaca8b32cd8b0f3f3641527ea78a0b5aef484b7f6afd574f2c299991aa3",
+      "scripts/campaign/current_socket_fanout_cases.py": "865f4127279291e73c38a752610aee444223d1b2c1f6e5d8ccd21825a6a9d7b7",
+      "scripts/campaign/current_upload_transport_cases.py": "fa323438bbf067b6c21fb1441da255d5babcfac9e4e1a308a03385c00f3bae2f",
+      "scripts/campaign/data_snapshot_cases.py": "493812bd0827b8e63196509264291e3ca1e737b7138c1031e7ab12bab4198ba2",
+      "scripts/campaign/delivery_cases.py": "2a2a3fed9c37866443720582c18ee79457227517fbe1d611ac7598c3e9762b70",
+      "scripts/campaign/delivery_suite.py": "179ed99f06fc91313c43bbbe8fce877bbc1e1d396be3e336cc0c9c4cf1ed30de",
+      "scripts/campaign/dependency_advisories.py": "d16b8e623cb30ad909fa949e9ebd1e770fd9ff29a05460667dfc35262de00bd5",
+      "scripts/campaign/dependency_applicability.py": "7493a647869787d59711ea5cf559588581dd4cad83dd6db1197b803420ac10ef",
+      "scripts/campaign/diagnostic_suite.py": "ab497d3f3c34f3bb0b59bf7db700167f8f5462235c880fb015ab509d4d98f1d8",
+      "scripts/campaign/extended_cases.py": "14499f8e9beb0e7ec9e1036824dd247e5dcd876eae209960e800802d76583415",
+      "scripts/campaign/extended_suite.py": "0e5ae47ad00d45e6b914094d745963247a8308980ee2058f1f49b98b9f929aa0",
+      "scripts/campaign/fault_proxy.py": "2e3593526fa104d69ffae3801323088b40826cfbf1635aadcacdb50daf24d046",
+      "scripts/campaign/fcm_delivery_cases.py": "18f5cffd3ad0719216b078b3176418821125a1364835430dd2eb4220b3a1aad2",
+      "scripts/campaign/fencing_cases.py": "80b3429751a0ee804e2bef79b18eb6eeb735085a6046598696adb3e0982332f1",
+      "scripts/campaign/fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+      "scripts/campaign/flutter_accessibility_flows.py": "ab51260c8e1c45121526eff8b53d4adf968924626f30ea8523c7e583c9665124",
+      "scripts/campaign/flutter_catalog.py": "1e20cd57bd0fa8b15d52785539cfc01956a5c407ae4e7620191443843270582c",
+      "scripts/campaign/flutter_full.py": "19672a59fe0698c765151edf557d2ae48344686985b94cf0bf4008f89e6d1d98",
+      "scripts/campaign/flutter_resilience.py": "89ec7ed85fd747f0ca2587f341f845d0c4d4ba7c484a43729fc2ebcce577e378",
+      "scripts/campaign/flutter_visual.py": "230d8985df3756c952a73928cc56b1cc0a3c649585c975da19e0538603727707",
+      "scripts/campaign/followup_report.py": "eb8f598878f4f4d25d0da4b1d2c1bb3d153e18e86ffe7595f90f9c55d23730dd",
+      "scripts/campaign/full_suite.py": "ec2442fcac6b50110fd979d0f146ef06aaa85a0d123d6825ad23229eb3148716",
+      "scripts/campaign/health_campaign.py": "fd69e08b22b4602fe627240e5973d66a530e17faa24dc36f6488e7980de5b144",
+      "scripts/campaign/health_probe.py": "33abb11bab4221db534ccfc921294eb1f14468d30893d7783e5b19e3212f5880",
+      "scripts/campaign/history_cases.py": "ee1cfc5d29a9518ca9ee136144f202ee3023e9516be4f569894348b3d56c36e2",
+      "scripts/campaign/idempotency_cases.py": "5b0bc8c8b3c1846e14979ca87428ec183c24060366798b9ea2abee5d42049523",
+      "scripts/campaign/idempotency_child.py": "928ae44d636ae05cc5d0b66ec316c8dba9164707ad4160318d2958038659a745",
+      "scripts/campaign/identity_cases.py": "b3aa60095c6c729918399c0f74fe6e4c8a9e563f1134178a0f2ad90dfce101fa",
+      "scripts/campaign/identity_controls_cases.py": "7c4dce17a0e41a435c072a829d0e61ddfdc961df2556c45192c938e495aaea40",
+      "scripts/campaign/identity_controls_suite.py": "e8a45ea6a52e8f5dc6a8fe5d99b4656d1027778c6a3f855bb956a6dc1bcda366",
+      "scripts/campaign/identity_suite.py": "2d68214b5c8bb27165dbb64a323778f6145da15bf4e5c08c698f00dda6e76895",
+      "scripts/campaign/image_cases.py": "19958fd2cd733ca13231cca626a0c55c4a2f94efd54b793578e9b3e5d1999e6e",
+      "scripts/campaign/image_suite.py": "f296d70e94b8b0ec3ba2b59650920c894f73008f2804051b2abc2af30fb69ea4",
+      "scripts/campaign/input_bounds_cases.py": "77941ad39f579198791b5caa763a033bfd99a4ec336b83be009f1c80f0404356",
+      "scripts/campaign/isolation_cases.py": "adf63beb8a199bcc6e9d03e9a1a6f6867879aa252a703567ab3a40c897903ef9",
+      "scripts/campaign/latency_pressure_cases.py": "2237c14f2f0014f117e90cc0ce1ba73061ea987d1f01052e3132b9e270b23a6e",
+      "scripts/campaign/latency_probe_child.py": "17c3ff5fcec7b6d0391f944e7e7c4cf2865a225ca9dd5d023816b2e21ea1ddb4",
+      "scripts/campaign/live_diagnostic_cases.py": "02acf5b833a40b8778f725435571f60b10fad3518d8d37ccb444cc42c7b8697e",
+      "scripts/campaign/live_suite.py": "75b4b11ae5e987797e32ac21df44506d02731b467743db398d58e0eb25635714",
+      "scripts/campaign/local_model_probe_cases.py": "9fad979f5aa8f34bbf21e80a09614ed6e04137ba65c8eda047a0d7c679d483d8",
+      "scripts/campaign/local_model_resource_cases.py": "69d1fb20188016eafdb321e7096d8c78dc4ca46490274d9952b0a9ce080f20e6",
+      "scripts/campaign/local_report.py": "94fc84465107b015b64e54eb13cc39a3a6514e7fdcae32ba881e2f20beb0f2c0",
+      "scripts/campaign/measurements.py": "6775d688520ffefa3735051fbbacedf20a7e13330be86ddea293e65efe94e23e",
+      "scripts/campaign/migrated_plan_cases.py": "e423206c949720b51a89b2c03c6c9b4847424d414585e4101875f57baa06e6b2",
+      "scripts/campaign/mutation_cases.py": "ad4b9621a64a92e8e55ce27ab8298a9590bdda60147cae9b7c7d14a1293ff71d",
+      "scripts/campaign/network_cases.py": "c48e2afec58c7d6f98069d24f8e0c9164fad7146cee612b304f4b39780e72a4b",
+      "scripts/campaign/network_suite.py": "0adad4df145d8d96b14ff4d8178ade4525936dc4727c22590a474e636187769d",
+      "scripts/campaign/offline_flow_cases.py": "6395a1ae2666a48a5f180cee6e6d602f90e33dfba85fede0856c681e85eea432",
+      "scripts/campaign/offline_flow_suite.py": "94a937d61aecff3d5badbb8bb698213a3b6bd06240f45e3afbc3f370a833939d",
+      "scripts/campaign/offline_inventory.py": "32a712253b88fc1c541e673aa6cec59851209bda4cd98c4514d2e166f6c67d75",
+      "scripts/campaign/pilot_cases.py": "a04df3402e66114651409ae61f6a74b1a987e69374cda594cd85d604cc410e6f",
+      "scripts/campaign/pipeline_cases.py": "d14dd8f23da8b5a21eb17d5e616ea13396c16ebb5e7883a36c66d0dbf244e2a5",
+      "scripts/campaign/pipeline_suite.py": "7b8662e37abdc4072fd331a49a0bdef4ec13c62fab4a51f7745eba1f89b006da",
+      "scripts/campaign/pool_release_cases.py": "b2a5d1fed4801d64f0c7d48da8f89965d5b5a6cb429e16f376757281fd3be571",
+      "scripts/campaign/preflight.py": "2e725bd7a898dc118f77c39aeb9a1f9c4af18f8557ea18c1b391185c61261c67",
+      "scripts/campaign/preparation_audit.py": "d1c86d5af68548390f33adb29ec874ab78bac7c60cd84e8996e8b9589fac246d",
+      "scripts/campaign/privacy_cases.py": "e1f2c728cf1f0f9842d1ad630d73af70358d911409931693a26e88e220ae144a",
+      "scripts/campaign/privacy_suite.py": "30fa3ab9beb6dd88de6c702c9ddae242620585837107b3ce4e9de8f0db717014",
+      "scripts/campaign/production_boundary_cases.py": "ff5a257d0132da8d4969fb5e6e01dba9f431aff432c358f68f8b7dd136c7d7ba",
+      "scripts/campaign/query_plan_cases.py": "6b43aeb0a4c5d5359159b4fe24a89a9e4fde949d465a5e78bf9f7afed5c20f2d",
+      "scripts/campaign/query_plan_suite.py": "53ca97aba6cddbb6233045e87709a0a1a06558b896c44d6eb7e74d03a28af18a",
+      "scripts/campaign/queue_suite.py": "aeb9386d366d0662e83b4d384f230893a5e30b1f3619e29ca8dfc8001d15f21c",
+      "scripts/campaign/remaining_mechanism_cases.py": "117498601cebca2e5bad86d9d8d9ab661dedc788540c68fd13170a74052d0286",
+      "scripts/campaign/remaining_mechanism_suite.py": "1e91dc410d0261dd066e19d5500f53efed2222d4afb6d6ecf03fc3f4df47cea4",
+      "scripts/campaign/report.py": "0dd59e54a1227157150eb2fbd55e187882e36e38174918be514f5d517750a096",
+      "scripts/campaign/report_lifecycle_cases.py": "1597b8fab67b959dbc9f848723da28e2130a99592364a905458d034a05f2c3f8",
+      "scripts/campaign/resource_caps_cases.py": "84d0bbfb1477c2934101e88bd06c1d1ed65ecafc7e2f641316c4d89fc8bc479d",
+      "scripts/campaign/resource_lifecycle_cases.py": "8ba25e7bec2b7ac0355a0d7ada2969d575fefb5d498c37a7db8e6faddd3ac78b",
+      "scripts/campaign/review_flutter_mutations.py": "6029d8ed6bdaee90a99c3a0615d7482f5fb8218f7ecda290cb53a0666ed54a33",
+      "scripts/campaign/revocation_cases.py": "c389fefbcd12843cae78c33272d3c21f692f5c16f14cd824b9e2dc9f441ae1e5",
+      "scripts/campaign/rollback_cases.py": "a0134b14d048294f05999536cc94f6f2c904e88cdaa725723e10ed296560c5e7",
+      "scripts/campaign/security_cases.py": "7c78314a8403b8cded8896bda345ca3e06c5305cc078fe9e42b6d273b8e539c8",
+      "scripts/campaign/service_recovery_cases.py": "c3ee0ae51bb36f8bb3e8088432cf267917ff485bfc6e1fceab54fe5b90165d02",
+      "scripts/campaign/social_history_cases.py": "b5c01fa6237573bc266dded16e8201271a43bbfc5062af145a753e049d32cb69",
+      "scripts/campaign/social_history_suite.py": "49afefe1fc537b4153d922c0157e01e19deed7316c1b958156f207af5acd29d7",
+      "scripts/campaign/social_order_cases.py": "55bc3ede29834a8fabe34f98ea49b3360cb97f4f0106075644ba8b4002aa649f",
+      "scripts/campaign/social_order_suite.py": "1f141f773031be472ad78b396beeaf4dd9ac8e199dad789aa838506f0f944850",
+      "scripts/campaign/social_volume_cases.py": "eef3e642a89125407ffd7252f60c6dc955cd25c04354f85e31e5df0241656ae0",
+      "scripts/campaign/social_volume_suite.py": "014713ced9596a46ac734f25936e08aeda314822b6c202b1d8acf0dcf6e12a09",
+      "scripts/campaign/socket_fanout_cases.py": "2abd2e9914f9ada2f3d7704dde416d1c7fee76ab2bc496b10379a37af5af3d25",
+      "scripts/campaign/socket_fanout_suite.py": "f6ce0845affae15fba2df4ea6bce5e375d684aec775601ea6c1cf95f0ca78949",
+      "scripts/campaign/statistics_checks.py": "e83dc416b65d04b09fa3ea15a4ccbcee721a4ad0a5306a0f40591545d2ec23ce",
+      "scripts/campaign/storage_cases.py": "97d6f3618bebf2535c02a080aeef344fecac73d2ead291e67add510d64b78e7d",
+      "scripts/campaign/storage_resilience_cases.py": "b247fd669255b61b1c2ad06a6cb6adf91378e9b261bce0531f11efa0a234ca59",
+      "scripts/campaign/storage_resilience_suite.py": "48b5e95ffca50f530f42a52812a2e6340b3348c6cf5ebb728465072d943e4747",
+      "scripts/campaign/storage_worker_cases.py": "d2be4925f4e6ea828a8cdd8076952d8308e19d078068fbf4edca476d4518719a",
+      "scripts/campaign/subprocesses.py": "662914a55c1a282b389111628fd5ceb7bc5327ead4821ce1fd12720c13716274",
+      "scripts/campaign/summarize_latency_pressure.py": "cc39491a26725a0697787fbc1dce46138aaffdf55598b96ad09642b1d560ff6c",
+      "scripts/campaign/sync_batch_cases.py": "7778e23a7a2faa17f947e1303247716e4a165e207f41c5d616b769bd34b2cdb5",
+      "scripts/campaign/targeted_suite.py": "f7bd320ba47de9cd02045369c4082d430eeefed9b129e8f8f6e1722e39ad04a9",
+      "scripts/campaign/upload_transport_cases.py": "c7a463270056e8b7c16e7d8d34ca2f96ab6d7b81a124c4790e95e590afc72ad0",
+      "scripts/campaign/upload_transport_suite.py": "b4a78da641717cc786e4f4257326b33b957ac28d79bfb68802cd6e55c3569de4",
+      "scripts/campaign/verify_sources.py": "66d0c0a37dfb5a3827de95412298319ab99f0faf4669e99f102bcda532344710",
+      "scripts/campaign/websocket_cases.py": "4eda39a15cb0b98588eb24b4bfaec876dd431a5f3cd41f3517ad2e2cb44c7fac",
+      "scripts/campaign/windows_limits.py": "05ea33f3197d99e8f8c9b4adc58bdf6aa2024656cd526329bba750aadb371e58",
+      "scripts/campaign/wire_contract_cases.py": "3038788f21be7433986f6052a5f2544e641a476bfebda0ec566346c92dbeb6e2",
+      "scripts/campaign/wire_contract_suite.py": "20e0141b9eed8df03f6aa90e710b873f2de17db0b143a9d94d2a2143b2e5b0e5",
+      "scripts/campaign/worker_child.py": "9440cf8c869ab2fc61c67be3c1efe02b87571be1c9582f85e779a7fafb26cd7a",
+      "scripts/campaign/worker_race_cases.py": "75d331aa22b365f58d55c92c21f0708618d70b6b002ba61b8528fb4ca18f7a4f",
+      "scripts/campaign/worker_race_suite.py": "57529b2c84b3a299d622cb13bee54e7af52d0215d98988ebfa3a086cb4cac42b",
+      "scripts/run_security_regression.py": "60920126efe926cabb83842aaa836d13771f9ce551cbddca88c563ddeed75109",
+      "tests/fixtures/local_models/chelsea.png": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb",
+      "tests/fixtures/local_models/README.md": "1aab0f78a97a6cd3d03f7b0a61963c959c646b3b2c65ea6f68cc6add1be49131",
+      "tests/test_account_settings.py": "52d4ab07a3a0b11d9a81e88f24773a580425d8920ba60fe0df4524f61c995278",
+      "tests/test_analysis_cache_resilience.py": "5cad7a35831e2f84799e07519afa418248cb3fe3ae5a64971ec44605b1509323",
+      "tests/test_apple_identity.py": "ff0becf5be87a8eac59084d25234a9ffac95ba80b9b3f835531587dc7799d5f8",
+      "tests/test_auth_security.py": "6749261b11daf0b9e3ffdf82410b781c87bddb0f0af17671527169cb54aab743",
+      "tests/test_conversation_events.py": "f995204f9c4c64d0f1bd1327c2dd189ba39646fe916fcf919058ab1293269250",
+      "tests/test_logging_security.py": "6561119eb3a62d77f70bceb8e7d62c7df49bd85ab92a521f67bf87a2df88481b",
+      "tests/test_otp_delivery.py": "dc14a4aec78677a18da68ba19c8b3e4a6dc0317baa69808e7646294f57245f40",
+      "tests/test_reference_analysis.py": "1dfc8fe22a26d3e159773f8e850c5c1772d836e85e6ff90cb8ddf7a45ef1bf07",
+      "tests/test_sync_query_performance.py": "93bc5097c6ecfb96bf9a4df219ed326f7a278a0d2188b57b93b09dde8be2624c",
+      "tests/test_websocket_manager.py": "e2e2c571c63bbbb3120af75ae43b2368ef80be9214683fbd5f80f5dfa0762ffa"
+    },
+    "note": "Working candidate identified by content hashes; commit recorded after validation."
+  },
+  "api_children_reused_from_failed_parent_attempt": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/RSC01-20261027-real-models-02",
+  "reuse_justification": "Both API child JUnit runs passed. Parent failed in a separate worker fixture. The only app module difference is vision_worker.py, which the web path does not import. Its offline-loader defect is corrected and verified in the two new worker processes. Failed parent is not represented as a green full suite.",
+  "api_to_worker_changed_app_modules": [
+    "app/services/vision_worker.py"
+  ],
+  "corrections": {
+    "otp": "dab44821ce6b0331d1a53f6a96ba4dcb6224cfb6",
+    "cleanup": [
+      "f8fc7b86bbcf2a9296cd646fb91323e4f8a67ab5",
+      "2a7f2f2a34263d40b3dd336906a886ef44860ba7"
+    ],
+    "dino": "260fb8e31b1e58d3f674eb88d38b8b2dbca002db",
+    "numpy": "76f761c469fb177f4df79a097659f10d070ec072"
+  },
+  "dataset": {
+    "fixture": "tests/fixtures/local_models/chelsea.png",
+    "sha256": "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb",
+    "source": "https://raw.githubusercontent.com/scikit-image/scikit-image/v0.18.3/skimage/data/chelsea.png",
+    "license": "CC0, Stefan van der Walt",
+    "license_source": "https://scikit-image.org/docs/stable/api/skimage.data.html#skimage.data.chelsea"
+  },
+  "cycle": {
+    "problem": "An unqualified torch.hub repository triggers default-branch discovery even with cached code/weights",
+    "fix_commit": "260fb8e31b1e58d3f674eb88d38b8b2dbca002db",
+    "before": "RSC01-20261027-real-worker-03: network guard stopped the default-branch request",
+    "after": "Two new worker processes: eight actual model jobs completed, no external attempt, unit-norm finite 384-dimensional vectors consistent for identical bytes",
+    "qualification": "PyTorch has a URLError cache fallback; this does not claim that every offline environment previously failed. A named main ref avoids discovery, but is not an immutable supply-chain revision pin."
+  },
+  "limitations": [
+    "Two fresh processes per role, one model-cold and three warm executions each, five seconds idle at 10Hz. Descriptive resource observations; no P99, population accuracy, confidence-bound speedup or leak certification.",
+    "Faster R-CNN/SAM2 are real; DINOv2 is real in the persisted worker. API semantics are controlled and network blocked. No paid-provider latency, classifications or confirmed reidentification claim.",
+    "PyTorch import is recorded separately before the first model-cold execution. OS filesystem cache was not cleared, and preflight SHA reads warm file cache. Existing 2 GiB per-process private-commit guard was applied to each child.",
+    "Checkpoint hashes are in the successful worker preflight/result. API children used the same existing cached files and prohibited downloads; they were collected before the worker-only correction. Resource results are source-versioned historical baselines, not measurements of every later correction."
+  ],
+  "date": "2026-10-27",
+  "report_executor": "scripts/campaign/publish_no_usb_20261027.py",
+  "report_executor_sha256": "706a6809353987429195e54168fbdeaf5f4670859f42bfbdd04ca213c4fec621"
+}

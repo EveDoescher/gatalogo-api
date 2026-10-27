@@ -510,7 +510,7 @@
   },
   {
     "scenario": "IMG-05",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Sem gato/múltiplos/escura/borrada, bytes/pixels nas bordas, arquivo inválido.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -520,7 +520,11 @@
       "attempts/image-02/critical_runs/image-baseline/summary.json",
       "attempts/pipeline-01/critical_runs/pipeline-baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+    "limitation": "All planned variants executed for the documented local scope; exact sources, controls, findings and limitations are in IMG05-20261027-results.json",
+    "closure_evidence": [
+      "IMG05-20261027-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario IMG-05 --output <new private attempt>"
   },
   {
     "scenario": "IMG-06",
@@ -886,7 +890,7 @@
   },
   {
     "scenario": "RES-05",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Queda/retorno de DB/storage próprios; Gemini lento/503/JSON inválido; SMTP/FCM indisponível separadamente.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -897,7 +901,11 @@
       "attempts/storage-resilience-01/critical_runs/storage-resilience-baseline/summary.json",
       "attempts/storage-resilience-02/critical_runs/storage-resilience-baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+    "limitation": "All planned variants executed for the documented local scope; exact sources, controls, findings and limitations are in DLV02-RES05-20261027-results.json",
+    "closure_evidence": [
+      "DLV02-RES05-20261027-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario RES-05 --output <new private attempt>"
   },
   {
     "scenario": "RES-06",
@@ -1238,11 +1246,16 @@
   },
   {
     "scenario": "RSC-01",
-    "state": "PENDING",
+    "state": "COMPLETED",
     "scope": "Iniciar API/worker, lote fixo frio/quente e repouso.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
-    "runs": []
+    "runs": [],
+    "closure_evidence": [
+      "RSC01-20261027-results.json"
+    ],
+    "limitation": "All planned variants executed for the documented local scope; exact sources, controls, findings and limitations are in RSC01-20261027-results.json",
+    "executor": "scripts/run_security_regression.py --scenario RSC-01 --output <new private attempt>"
   },
   {
     "scenario": "RSC-02",
@@ -1296,11 +1309,16 @@
   },
   {
     "scenario": "RSC-06",
-    "state": "PENDING",
+    "state": "COMPLETED",
     "scope": "LOAD-04/LAT-08 com limites CPU/RAM e concorrência constantes.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
-    "runs": []
+    "runs": [],
+    "closure_evidence": [
+      "RSC06-20261027-results.json"
+    ],
+    "limitation": "All planned variants executed for the documented local scope; exact sources, controls, findings and limitations are in RSC06-20261027-results.json",
+    "executor": "scripts/run_security_regression.py --scenario RSC-06 --output <new private attempt>"
   },
   {
     "scenario": "DLV-01",
@@ -1322,7 +1340,7 @@
   },
   {
     "scenario": "DLV-02",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "SMTP lento/recusa/queda, falha antes/depois de envio e repetição respeitando cooldown.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -1330,10 +1348,14 @@
       "attempts/extended-03/critical_runs/extended-baseline/summary.json",
       "attempts/targeted-02/critical_runs/targeted-baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação.",
+    "limitation": "All planned variants executed for the documented local scope; exact sources, controls, findings and limitations are in DLV02-RES05-20261027-results.json",
     "local_runs": [
       "attempts/delivery-01/critical_runs/delivery-baseline/summary.json"
-    ]
+    ],
+    "closure_evidence": [
+      "DLV02-RES05-20261027-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario DLV-02 --output <new private attempt>"
   },
   {
     "scenario": "DLV-03",
