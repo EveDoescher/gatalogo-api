@@ -5,6 +5,7 @@ import hmac
 import logging
 import secrets
 import smtplib
+from dataclasses import dataclass, field
 from datetime import UTC, datetime, timedelta
 from email.message import EmailMessage
 from uuid import UUID
@@ -43,6 +44,14 @@ def invalid_credentials() -> HTTPException:
     return HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Credenciais inválidas.")
 
 
+@dataclass(frozen=True, repr=False)
+class OtpDelivery:
+    email: str
+    purpose: str
+    code: str = field(repr=False)
+    settings: Settings = field(repr=False)
+
+
 async def create_otp(
     session: AsyncSession,
     *,
@@ -50,7 +59,8 @@ async def create_otp(
     purpose: str,
     user_id: UUID | None = None,
     settings: Settings | None = None,
-) -> None:
+) -> OtpDelivery:
+    """Prepare an OTP in the caller transaction, without sending uncommitted data."""
     settings = settings or get_settings()
     normalized = normalize_email(email)
     if session.bind is not None and session.bind.dialect.name == "postgresql":
@@ -82,7 +92,22 @@ async def create_otp(
         )
     )
     await session.flush()
-    await _send_otp(email=normalized, code=code, purpose=purpose, settings=settings)
+    return OtpDelivery(normalized, purpose, code, settings)
+
+
+async def commit_and_send_otp(session: AsyncSession, delivery: OtpDelivery) -> None:
+    """Persist the code and cooldown before attempting the external SMTP effect.
+
+    Delivery failures propagate, but cannot roll back a code already accepted by
+    SMTP. This does not promise exactly-once delivery or retry after process exit.
+    """
+    await session.commit()
+    await _send_otp(
+        email=delivery.email,
+        code=delivery.code,
+        purpose=delivery.purpose,
+        settings=delivery.settings,
+    )
 
 
 async def consume_otp(

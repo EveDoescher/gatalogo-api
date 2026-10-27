@@ -3,6 +3,7 @@
 import asyncio
 import re
 import smtplib
+import socketserver
 import threading
 import time
 from datetime import timedelta
@@ -157,23 +158,18 @@ async def test_DLV02_SMTP_ambiguous_acceptance_retry_and_cooldown(
     monkeypatch.setattr(auth_service.smtplib, "SMTP", LostAcknowledgment)
     async with db.factory() as session:
         with pytest.raises(smtplib.SMTPServerDisconnected):
-            await auth_service.create_otp(
+            delivery = await auth_service.create_otp(
                 session,
                 email="a@example.com",
                 purpose="reset_password",
                 user_id=uid("A"),
             )
+            await auth_service.commit_and_send_otp(session, delivery)
         await session.rollback()
     assert len(messages(mailpit)) == 1
     async with db.factory() as session:
-        assert await session.scalar(select(func.count()).select_from(EmailOtp)) == 0
+        assert await session.scalar(select(func.count()).select_from(EmailOtp)) == 1
     monkeypatch.setattr(auth_service.smtplib, "SMTP", real)
-    async with db.factory() as session:
-        await auth_service.create_otp(
-            session, email="a@example.com", purpose="reset_password", user_id=uid("A")
-        )
-        await session.commit()
-    assert len(messages(mailpit)) == 2
     async with db.factory() as session:
         with pytest.raises(Exception) as rejected:
             await auth_service.create_otp(
@@ -185,15 +181,23 @@ async def test_DLV02_SMTP_ambiguous_acceptance_retry_and_cooldown(
         assert rejected.value.status_code == 429
         await session.rollback()
         assert await session.scalar(select(func.count()).select_from(EmailOtp)) == 1
+    assert len(messages(mailpit)) == 1
+    async with db.factory() as session:
+        accepted = await auth_service.consume_otp(
+            session, email="a@example.com", purpose="reset_password",
+            code=code(mailpit, messages(mailpit)[0]),
+        )
+        assert accepted.consumed_at is not None
+        await session.commit()
     evidence(
         "DLV02-ambiguous-acceptance",
         {
             "scenario": "DLV-02",
-            "accepted_messages": 2,
+            "accepted_messages": 1,
             "persisted_otps": 1,
-            "immediate_retry_after_rollback": "allowed",
+            "immediate_retry_after_rollback": 429,
             "retry_after_commit": 429,
-            "finding": "Acceptance uncertainty plus rollback permits a second email immediately; first code has no persisted record",
+            "accepted_code_consumable": True,
             "scope": "real SMTP delivery followed by injected client exception, not a physical network outage",
         },
     )
@@ -217,13 +221,13 @@ async def test_DLV02_LAT08_slow_SMTP_does_not_block_event_loop(
 
     async def send():
         async with db.factory() as session:
-            await auth_service.create_otp(
+            delivery = await auth_service.create_otp(
                 session,
                 email="a@example.com",
                 purpose="reset_password",
                 user_id=uid("A"),
             )
-            await session.commit()
+            await auth_service.commit_and_send_otp(session, delivery)
 
     pending = asyncio.create_task(send())
     try:
@@ -234,6 +238,7 @@ async def test_DLV02_LAT08_slow_SMTP_does_not_block_event_loop(
         )
         assert health.status_code == pull.status_code == 200 and not pending.done()
         held = db.engine.pool.checkedout()
+        assert held == 0
     finally:
         released.set()
         await asyncio.wait_for(pending, 5)
@@ -252,18 +257,100 @@ async def test_DLV02_LAT08_slow_SMTP_does_not_block_event_loop(
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("failure", ["greeting-timeout", "drop-before-data"])
+async def test_DLV02_local_socket_outage_cooldown_and_recovery(
+    db, mailpit, smtp_settings, monkeypatch, failure
+):
+    released = threading.Event()
+
+    class Handler(socketserver.StreamRequestHandler):
+        def handle(self):
+            if failure == "greeting-timeout":
+                released.wait(25)
+                return
+            self.wfile.write(b"220 disposable test SMTP\r\n")
+            for expected in (b"ehlo", b"mail", b"rcpt", b"data"):
+                line = self.rfile.readline().lower()
+                assert line.startswith(expected)
+                if expected == b"data":
+                    return
+                self.wfile.write(b"250 OK\r\n")
+
+    class Server(socketserver.ThreadingTCPServer):
+        daemon_threads = True
+
+    with Server(("127.0.0.1", 0), Handler) as server:
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        monkeypatch.setattr(smtp_settings, "smtp_port", server.server_address[1])
+        started = time.perf_counter()
+        try:
+            async with db.factory() as session:
+                delivery = await auth_service.create_otp(
+                    session, email="a@example.com", purpose="reset_password",
+                    user_id=uid("A"),
+                )
+                with pytest.raises(smtplib.SMTPServerDisconnected):
+                    await asyncio.wait_for(
+                        auth_service.commit_and_send_otp(session, delivery), 22,
+                    )
+                await session.rollback()
+            elapsed = time.perf_counter() - started
+        finally:
+            released.set()
+            server.shutdown()
+            thread.join(timeout=3)
+    if failure == "greeting-timeout":
+        assert 14 <= elapsed < 22
+    async with db.factory() as session:
+        row = await session.scalar(select(EmailOtp))
+        assert row is not None and row.consumed_at is None
+        with pytest.raises(Exception) as rejected:
+            await auth_service.create_otp(
+                session, email="a@example.com", purpose="reset_password",
+                user_id=uid("A"),
+            )
+        assert rejected.value.status_code == 429
+        row.created_at -= timedelta(seconds=61)
+        await session.commit()
+    monkeypatch.setattr(smtp_settings, "smtp_port", mailpit["port"])
+    response = await db.client.post(
+        "/auth/password-reset/request", json={"email": "a@example.com"},
+    )
+    assert response.status_code == 202 and len(messages(mailpit)) == 1
+    async with db.factory() as session:
+        row = await auth_service.consume_otp(
+            session, email="a@example.com", purpose="reset_password",
+            code=code(mailpit, messages(mailpit)[0]),
+        )
+        assert row.consumed_at is not None
+        await session.commit()
+    evidence(
+        "DLV02-socket-" + failure,
+        {
+            "scenario": "DLV-02", "failure": failure,
+            "elapsed_seconds": elapsed, "configured_socket_timeout_seconds": 15,
+            "committed_otp_survives_failure": True, "immediate_retry": 429,
+            "retry_after_cooldown": 202, "accepted_messages_after_recovery": 1,
+            "recovery_code_consumable": True,
+            "scope": "Real loopback SMTP socket; own Mailpit recovery; no external delivery",
+        },
+    )
+
+
+@pytest.mark.asyncio
 async def test_SEC08_SMTP_enabled_does_not_log_otp(db, mailpit, smtp_settings, caplog):
     import logging
 
     with caplog.at_level(logging.DEBUG, logger="app.services.auth_service"):
         async with db.factory() as session:
-            await auth_service.create_otp(
+            delivery = await auth_service.create_otp(
                 session,
                 email="a@example.com",
                 purpose="reset_password",
                 user_id=uid("A"),
             )
-            await session.commit()
+            await auth_service.commit_and_send_otp(session, delivery)
     secret = code(mailpit, messages(mailpit)[0])
     application_logs = "\n".join(
         r.getMessage() for r in caplog.records if r.name.startswith("app.")

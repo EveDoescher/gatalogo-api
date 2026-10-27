@@ -791,7 +791,7 @@ async def test_DLV01_disposable_smtp_registration_and_consumption(
 
 
 @pytest.mark.asyncio
-async def test_DLV02_smtp_failure_does_not_persist_otp(db, monkeypatch):
+async def test_DLV02_smtp_failure_preserves_committed_otp(db, monkeypatch):
     from app.services import auth_service
     from app.config import Settings
     import smtplib
@@ -816,13 +816,14 @@ async def test_DLV02_smtp_failure_does_not_persist_otp(db, monkeypatch):
     )
     async with db.factory() as session:
         with pytest.raises(smtplib.SMTPConnectError):
-            await auth_service.create_otp(
+            delivery = await auth_service.create_otp(
                 session,
                 email="a@example.com",
                 purpose="smtp_failure",
                 user_id=uid("A"),
                 settings=settings,
             )
+            await auth_service.commit_and_send_otp(session, delivery)
         await session.rollback()
     from app.persistence_models import EmailOtp
 
@@ -833,15 +834,15 @@ async def test_DLV02_smtp_failure_does_not_persist_otp(db, monkeypatch):
                 .select_from(EmailOtp)
                 .where(EmailOtp.purpose == "smtp_failure")
             )
-            == 0
+            == 1
         )
     evidence(
         "DLV02-refusal",
         {
             "scenario": "DLV-02",
             "failure": "simulated SMTP refusal before acceptance",
-            "persisted_otps": 0,
-            "scope": "No slow/drop-after-acceptance experiment; those variants pending",
+            "persisted_otps": 1,
+            "scope": "Injected connect refusal; committed OTP remains valid and cooldown persists",
         },
     )
 
@@ -1179,7 +1180,7 @@ async def test_LOAD05_manager_fanout_and_cleanup(db, count):
 
 
 @pytest.mark.asyncio
-async def test_DLV02_smtp_accepted_before_database_commit_failure(
+async def test_DLV02_commit_failure_prevents_smtp_acceptance(
     db, mailpit, monkeypatch
 ):
     from app.services import auth_service
@@ -1195,7 +1196,7 @@ async def test_DLV02_smtp_accepted_before_database_commit_failure(
         smtp_from="campaign@example.com",
     )
     async with db.factory() as session:
-        await auth_service.create_otp(
+        delivery = await auth_service.create_otp(
             session,
             email="a@example.com",
             purpose="post_smtp_failure",
@@ -1210,7 +1211,7 @@ async def test_DLV02_smtp_accepted_before_database_commit_failure(
             ),
         )
         with pytest.raises(RuntimeError, match="injected commit"):
-            await session.commit()
+            await auth_service.commit_and_send_otp(session, delivery)
         await session.rollback()
     async with db.factory() as session:
         stored = await session.scalar(
@@ -1219,14 +1220,14 @@ async def test_DLV02_smtp_accepted_before_database_commit_failure(
             .where(EmailOtp.purpose == "post_smtp_failure")
         )
     messages = mailpit["get"]("/api/v1/messages")["messages"]
-    assert stored == 0 and len(messages) == 1
+    assert stored == 0 and len(messages) == 0
     evidence(
         "DLV02-smtp-before-commit",
         {
             "scenario": "DLV-02",
-            "smtp_accepted_messages": 1,
+            "smtp_accepted_messages": 0,
             "persisted_otps": 0,
-            "finding": "SMTP acceptance precedes the caller commit; a commit failure can leave a delivered but unusable code",
+            "commit_failure_prevents_external_effect": True,
             "scope": "Actual disposable SMTP with injected DB commit failure; code omitted, no external email sent",
         },
     )

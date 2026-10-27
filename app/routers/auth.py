@@ -35,6 +35,7 @@ from app.schemas import (
 )
 from app.services.auth_service import (
     consume_otp,
+    commit_and_send_otp,
     create_otp,
     hash_refresh_token,
     invalid_credentials,
@@ -62,8 +63,8 @@ class NewPasswordRequest(BaseModel):
 async def resend_verification(payload: PasswordResetRequest, session: AsyncSession = Depends(get_database_session)) -> dict:
     user = (await session.execute(select(User).where(User.email == normalize_email(str(payload.email))))).scalar_one_or_none()
     if user is not None and user.status in {"pending", "deactivated"}:
-        await create_otp(session, email=user.email, purpose="verify_email", user_id=user.id)
-        await session.commit()
+        delivery = await create_otp(session, email=user.email, purpose="verify_email", user_id=user.id)
+        await commit_and_send_otp(session, delivery)
     return {"message": "Se houver uma conta aguardando confirmação, enviamos um novo código."}
 
 
@@ -130,8 +131,8 @@ async def register(payload: RegisterRequest, session: AsyncSession = Depends(get
         user.password_hash = password_hash.hash(payload.password)
         user.status = "pending"
         user.deactivated_at = None
-    await create_otp(session, email=email, purpose="verify_email", user_id=user.id)
-    await session.commit()
+    delivery = await create_otp(session, email=email, purpose="verify_email", user_id=user.id)
+    await commit_and_send_otp(session, delivery)
     return {"message": "Enviamos um código de verificação para seu e-mail."}
 
 
@@ -283,8 +284,8 @@ async def me(user: User = Depends(current_user)) -> User:
 async def request_password_reset(payload: PasswordResetRequest, session: AsyncSession = Depends(get_database_session)) -> dict[str, str]:
     user = (await session.execute(select(User).where(User.email == normalize_email(str(payload.email))))).scalar_one_or_none()
     if user is not None and user.status == "active" and user.password_hash is not None:
-        await create_otp(session, email=user.email, purpose="reset_password", user_id=user.id)
-        await session.commit()
+        delivery = await create_otp(session, email=user.email, purpose="reset_password", user_id=user.id)
+        await commit_and_send_otp(session, delivery)
     return {"message": "Se houver uma conta compatível, enviamos um código para o e-mail."}
 
 
@@ -304,8 +305,8 @@ async def request_deactivate(
     user: User = Depends(current_user),
     session: AsyncSession = Depends(get_database_session),
 ) -> dict[str, str]:
-    await create_otp(session, email=user.email, purpose="deactivate_account", user_id=user.id)
-    await session.commit()
+    delivery = await create_otp(session, email=user.email, purpose="deactivate_account", user_id=user.id)
+    await commit_and_send_otp(session, delivery)
     return {"message": "Enviamos um código de confirmação para seu e-mail."}
 
 
@@ -358,8 +359,8 @@ async def request_change_email(
     existing = (await session.execute(select(User).where(User.email == normalized, User.id != user.id))).scalar_one_or_none()
     if existing is not None:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Este e-mail já está em uso.")
-    await create_otp(session, email=normalized, purpose="change_email", user_id=user.id)
-    await session.commit()
+    delivery = await create_otp(session, email=normalized, purpose="change_email", user_id=user.id)
+    await commit_and_send_otp(session, delivery)
     return {"message": "Código de confirmação enviado para o novo e-mail."}
 
 

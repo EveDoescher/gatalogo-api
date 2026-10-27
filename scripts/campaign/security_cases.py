@@ -250,18 +250,18 @@ async def test_SEC07_resend_cooldown_invalidates_previous(db, monkeypatch):
     sender = AsyncMock()
     monkeypatch.setattr(auth_service, "_send_otp", sender)
     async with db.factory() as session:
-        await auth_service.create_otp(session, email="a@example.com", purpose="resend", user_id=uid("A"))
+        delivery = await auth_service.create_otp(session, email="a@example.com", purpose="resend", user_id=uid("A"))
         rows = list((await session.scalars(select(EmailOtp))).all())
         rows[0].created_at = NOW
-        await session.commit()
+        await auth_service.commit_and_send_otp(session, delivery)
     async with db.factory() as session:
         with pytest.raises(HTTPException) as rejected:
             await auth_service.create_otp(session, email="a@example.com", purpose="resend")
         assert rejected.value.status_code == 429
     monkeypatch.setattr(auth_service, "utc_now", lambda: NOW+timedelta(seconds=61))
     async with db.factory() as session:
-        await auth_service.create_otp(session, email="a@example.com", purpose="resend", user_id=uid("A"))
-        await session.commit()
+        delivery = await auth_service.create_otp(session, email="a@example.com", purpose="resend", user_id=uid("A"))
+        await auth_service.commit_and_send_otp(session, delivery)
         rows = list((await session.scalars(select(EmailOtp))).all())
         assert len(rows) == 2 and sum(row.consumed_at is None for row in rows) == 1
     assert sender.await_count == 2
