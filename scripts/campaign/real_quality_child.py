@@ -7,6 +7,7 @@ import json
 import logging
 import os
 from pathlib import Path
+import shutil
 import sys
 import time
 import urllib.request
@@ -33,7 +34,11 @@ async def main():
         analysis_cache_dir=str(output / "cache"), vision_device="cpu")
     assert settings.gemini_model == "gemini-3.5-flash-lite"
     assert settings.gemini_max_output_tokens == 1024
-    client = PaidClient(api_key=settings.gemini_api_key, ledger=config["ledger"], phase=config["role"])
+    replay = config.get("replay_cache")
+    if replay:
+        shutil.copytree(replay, output / "cache")
+        settings = settings.model_copy(update={"gemini_api_key": None})
+    client = None if replay else PaidClient(api_key=settings.gemini_api_key, ledger=config["ledger"], phase=config["role"])
     analysis_service._get_gemini_client = lambda key: client
     # Existing weights only. Provider HTTP is separately restricted by PaidClient.
     def deny(*args, **kwargs):
@@ -89,7 +94,8 @@ async def main():
             (output / "samples.json").write_text(json.dumps(observations, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
             print(json.dumps({"role": config["role"], "sample": active["sample_id"], "outcome": active["outcome"]}), flush=True)
     finally:
-        client.close()
+        if client is not None:
+            client.close()
     safe_fields = ("gemini_model", "gemini_max_output_tokens", "gemini_max_retries", "vision_device",
         "vision_max_side", "gemini_max_side", "jpeg_quality", "detector_confidence", "detector_fallback_confidence")
     manifest = {"role": config["role"], "source_sha": config["source_sha"], "pid": os.getpid(),
@@ -97,7 +103,10 @@ async def main():
         "torch_threads": torch.get_num_threads(), "prompt_sha256": hashlib.sha256(analysis_service.COAT_ANALYSIS_PROMPT.encode()).hexdigest(),
         "versions": {name: importlib.metadata.version(name) for name in ("torch", "torchvision", "google-genai", "numpy")},
         "usage": [r for r in ledger_summary(config["ledger"]) if r["phase"] == config["role"]],
-        "samples": len(observations), "scope": "Authorial pre-existing human attribute labels; no individual identity labels, no reidentification claim. One observation per version/image; stochastic provider; no reliable tail percentile or accuracy generalization."}
+        "samples": len(observations), "semantic_replay": bool(replay),
+        "scope": "Authorial pre-existing human attribute labels; no individual identity labels, no reidentification claim. One observation per version/image; stochastic provider; no reliable tail percentile or accuracy generalization."}
+    if replay:
+        assert not manifest["usage"], "Replay must not call an external provider"
     (output / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
 
 

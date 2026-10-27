@@ -19,14 +19,15 @@ def digest(path):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--kind", choices=("quality", "cache"), default="quality")
+    parser.add_argument("--kind", choices=("quality", "cache", "replay"), default="quality")
+    parser.add_argument("--replay-from", type=Path)
     args = parser.parse_args()
     output = args.output.resolve()
     assert output.is_relative_to(ROOT / ".tmp/quality-campaign")
     output.mkdir(exist_ok=False, parents=True)
     executors = output / "executors"
     executors.mkdir()
-    child_name = "real_quality_child.py" if args.kind == "quality" else "real_cache_child.py"
+    child_name = "real_cache_child.py" if args.kind == "cache" else "real_quality_child.py"
     for name in (child_name, "paid_provider.py", "measurements.py"):
         shutil.copy2(Path(__file__).with_name(name), executors / name)
     shutil.copy2(ROOT / "scripts/run_own_cats_calibration.py", executors)
@@ -38,6 +39,10 @@ def main():
     assert shared.exists(), shared
     sources = {}
     roles = (("before-main", "main"), ("after-cleanup", "HEAD")) if args.kind == "quality" else (("cache-process-0", "HEAD"), ("cache-process-1", "HEAD"))
+    if args.kind == "replay":
+        assert args.replay_from and args.replay_from.resolve().is_relative_to(ROOT / ".tmp/quality-campaign")
+        assert (args.replay_from / "gemini_semantic.sqlite3").exists()
+        roles = (("after-replay", "HEAD"),)
     for role, ref in roles:
         sha = subprocess.check_output(["git", "rev-parse", ref], cwd=ROOT, text=True).strip()
         if role == "before-main":
@@ -51,12 +56,16 @@ def main():
     protected = [labels, *(ROOT / r["image_path"] for r in refs), *executors.glob("*.py")]
     for source in sources.values():
         protected.extend(Path(source["path"]).glob("app/**/*.py"))
+    if args.kind == "replay":
+        protected.extend(args.replay_from.rglob("*sqlite3"))
     before = {str(p): digest(p) for p in protected}
     (output / "source_manifest.json").write_text(json.dumps({"sources": sources, "input_sha256": inputs,
         "labels_sha256": digest(labels), "protected": before}, indent=2)+"\n", encoding="utf-8")
     for role, source in sources.items():
         config = {"root": str(ROOT), "source": source["path"], "source_sha": source["sha"],
             "output": str(output / role), "ledger": str(shared), "role": ("IMG06-" if args.kind == "quality" else "IMG04-") + role}
+        if args.kind == "replay":
+            config.update(replay_cache=str(args.replay_from.resolve()), role="IMG06-semantic-replay")
         path = output / (role + "-config.json")
         path.write_text(json.dumps(config), encoding="utf-8")
         with (output / (role + ".log")).open("w", encoding="utf-8") as log:
@@ -65,7 +74,7 @@ def main():
         assert result.returncode == 0, f"Preserve and inspect {role}.log"
         assert all(digest(Path(p)) == sha for p, sha in before.items()), "Evaluated source or labeled input changed"
     (output / "summary.json").write_text(json.dumps({"executed": True, "sources_and_inputs_unchanged": True,
-        "kind": args.kind, "samples_per_version": len(refs) if args.kind == "quality" else 2,
+        "kind": args.kind, "samples_per_version": 2 if args.kind == "cache" else len(refs),
         "paired_inputs": inputs}, indent=2)+"\n", encoding="utf-8")
 
 
