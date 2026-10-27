@@ -38,8 +38,15 @@ async def test_RSC01_actual_lifespan_boot_and_shutdown(own_api, monkeypatch):
         running = resources()
         async with own_api.factory() as session:
             assert await session.scalar(select(func.count()).select_from(VisionJob)) == 0
-        created = set(asyncio.all_tasks()) - before_tasks
-        assert len(created) >= 3, "Bridge, scheduler and reference worker must actually start"
+        expected = {
+            "ConnectionManager._notification_bridge", "QuintalScheduler._run",
+            "ReferenceAnalysisWorker._run", "PhotoCleanupWorker._run",
+        }
+        # The fixture's TCP accept loop remains alive outside the app lifespan.
+        # Track the four actual application services, not the test server owner.
+        created = {task for task in set(asyncio.all_tasks()) - before_tasks
+            if task.get_coro().__qualname__ in expected}
+        assert {task.get_coro().__qualname__ for task in created} == expected
     await asyncio.sleep(0)
     remaining = [task for task in created if not task.done()]
     assert not remaining and own_api.factory.kw["bind"].pool.checkedout() == 0
