@@ -151,6 +151,7 @@ def selection(scenario, output):
         "SEC-07": "auth_flow_cases.py",
         "SEC-10": "revocation_cases.py",
         "SEC-08": "privacy_cases.py",
+        "SEC-09": "remaining_mechanism_cases.py",
         "DATA-02": "rollback_cases.py",
         "DATA-05": None,
         "DATA-06": "fencing_cases.py",
@@ -215,7 +216,7 @@ def selection(scenario, output):
         names.extend(["current_offline_cases.py", "current_upload_transport_cases.py", "upload_transport_cases.py", "network_cases.py", "image_cases.py", "critical_report.py", "subprocesses.py", "measurements.py"])
     if scenario == "SEC-04":
         names.extend(["remaining_mechanism_cases.py", "social_volume_cases.py", "measurements.py"])
-    if scenario == "LOAD-03":
+    if scenario in ("LOAD-03", "SEC-09"):
         names.append("measurements.py")
     if scenario == "DB-03":
         names.append("measurements.py")
@@ -576,6 +577,7 @@ if __name__ == "__main__":
             "SEC-07",
             "SEC-10",
             "SEC-08",
+            "SEC-09",
             "DATA-02",
             "DATA-05",
             "DATA-06",
