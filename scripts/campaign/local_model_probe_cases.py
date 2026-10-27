@@ -5,7 +5,7 @@ from contextlib import suppress
 from datetime import UTC, datetime
 import hashlib
 import importlib.metadata
-import json
+import re
 import os
 from pathlib import Path
 import time
@@ -24,6 +24,7 @@ from security_cases import evidence
 from image_cases import semantic
 from app import main
 from app.config import Settings
+from app.models.analysis import GeminiCoatAnalysis
 from app.persistence_models import CatPhoto, CatVisualEmbedding, RemoteCat, VisionJob
 from app.services.analysis_service import AnalysisService
 from app.services import analysis_service, vision_worker
@@ -55,7 +56,11 @@ async def test_RSC01_real_local_models(own_api, monkeypatch, tmp_path, role):
         raise AssertionError("External downloads/inference prohibited in this resource experiment")
 
     import urllib.request
+    runtime_before = resources()
+    runtime_started = time.perf_counter()
     import torch
+    runtime_import_seconds = time.perf_counter() - runtime_started
+    runtime_after = resources()
     monkeypatch.setattr(torch.hub, "download_url_to_file", denied)
     monkeypatch.setattr(urllib.request, "urlopen", denied)
     monkeypatch.setattr(torch.hub, "urlopen", denied)
@@ -73,9 +78,14 @@ async def test_RSC01_real_local_models(own_api, monkeypatch, tmp_path, role):
         if role == "api":
             service = AnalysisService(settings)
 
-            def controlled_semantics(*args):
+            def controlled_semantics(image_bytes, mime_type, context):
                 provider_calls.append(1)
-                return semantic()
+                payload = semantic().model_dump()
+                payload["color_assignments"] = [
+                    {"cluster_index": int(index), "name": "Marrom"}
+                    for index in re.findall(r"cluster_index=(\d+);", context)
+                ]
+                return GeminiCoatAnalysis.model_validate(payload)
 
             monkeypatch.setattr(service, "_analyze_with_gemini", controlled_semantics)
             monkeypatch.setattr(main, "AnalysisService", lambda _: service)
@@ -103,7 +113,7 @@ async def test_RSC01_real_local_models(own_api, monkeypatch, tmp_path, role):
                     body.pop("analyzed_at")
                     body.pop("warnings")
                     cold_outputs.append(body)
-                    executions.append({"state": "process-cold" if index == 0 else "warm",
+                    executions.append({"state": "model-cold" if index == 0 else "warm",
                         "elapsed_seconds": time.perf_counter() - started,
                         "resources_before": before, "resources_after": resources(),
                         "status": response.status_code})
@@ -142,7 +152,7 @@ async def test_RSC01_real_local_models(own_api, monkeypatch, tmp_path, role):
                 before = resources()
                 started = time.perf_counter()
                 await real_process(job_id)
-                executions.append({"state": "process-cold" if not executions else "warm",
+                executions.append({"state": "model-cold" if not executions else "warm",
                     "elapsed_seconds": time.perf_counter() - started,
                     "resources_before": before, "resources_after": resources()})
                 if len(executions) == 4:
@@ -174,6 +184,9 @@ async def test_RSC01_real_local_models(own_api, monkeypatch, tmp_path, role):
         evidence("RSC01-local-models", {
             "scenario": "RSC-01", "role": role, "pid": os.getpid(),
             "import_resources": IMPORT_RESOURCES, "limits": limits,
+            "torch_import_seconds": runtime_import_seconds,
+            "resources_before_torch_import": runtime_before,
+            "resources_after_torch_import": runtime_after,
             "executions": executions, "idle_seconds": time.perf_counter() - idle_start,
             "resources_after_idle": after_idle, "resource_trace": trace,
             "input_sha256": photo_hash, "paid_calls": 0,
