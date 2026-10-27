@@ -24,7 +24,9 @@ async def test_RSC01_fresh_api_and_worker_processes():
     )]
     hashes = {path.name: hashlib.sha256(path.read_bytes()).hexdigest() for path in weights}
     results = []
-    for role in ("api", "worker"):
+    roles = json.loads(os.environ.get("QUALITY_LOCAL_MODEL_ROLES", '["api", "worker"]'))
+    assert roles in (["api", "worker"], ["api"], ["worker"])
+    for role in roles:
         for trial in range(2):
             folder = root / f"{role}-{trial}"
             folder.mkdir()
@@ -47,10 +49,10 @@ async def test_RSC01_fresh_api_and_worker_processes():
             observation["process_wall_seconds_including_import_startup_and_teardown"] = time.perf_counter() - started
             results.append(observation)
             print(f"RSC01 {role}/{trial}: cold + three warm + idle passed", flush=True)
-    assert len({row["pid"] for row in results}) == 4
+    assert len({row["pid"] for row in results}) == 2 * len(roles)
     assert all(hashlib.sha256(path.read_bytes()).hexdigest() == hashes[path.name] for path in weights)
     evidence("RSC01-fresh-processes", {
         "scenario": "RSC-01", "weights_sha256": hashes, "trials": results,
-        "paid_calls": 0, "processes": 4,
+        "paid_calls": 0, "processes": len(results), "roles": roles,
         "sampling": "Two fresh process trials per role; one cold and three warm executions each; 5s idle at 10Hz. Bounded resource observations, no inferential percentile/speedup claims. OS file cache remains warm, including SHA preflight reads.",
     })

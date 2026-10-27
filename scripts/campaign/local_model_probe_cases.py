@@ -1,7 +1,6 @@
 """One fresh OS process per role/trial. Real cached CPU models, no paid AI."""
 
 import asyncio
-from contextlib import suppress
 from datetime import UTC, datetime
 import hashlib
 import importlib.metadata
@@ -17,7 +16,7 @@ IMPORT_RESOURCES = resources()
 import httpx
 import numpy as np
 import pytest
-from sqlalchemy import select
+from sqlalchemy import delete, func, select
 
 pytest_plugins = ["current_offline_cases"]
 from security_cases import evidence
@@ -25,7 +24,7 @@ from image_cases import semantic
 from app import main
 from app.config import Settings
 from app.models.analysis import GeminiCoatAnalysis
-from app.persistence_models import CatPhoto, CatVisualEmbedding, RemoteCat, VisionJob
+from app.persistence_models import CatPhoto, CatVisualEmbedding, RemoteCat, User, VisionJob
 from app.services.analysis_service import AnalysisService
 from app.services import analysis_service, vision_worker
 from app.services.storage_service import photo_storage
@@ -36,6 +35,14 @@ from windows_limits import cap_private_commit
 @pytest.mark.asyncio
 @pytest.mark.parametrize("role", ["api", "worker"])
 async def test_RSC01_real_local_models(own_api, monkeypatch, tmp_path, role):
+    # This container is disposable and exclusive to RSC-01. Remove previous
+    # child fixtures so the real global worker can only claim this trial's jobs.
+    async with own_api.factory() as session:
+        await session.execute(delete(User).where(
+            User.email.like("offline-%@example.invalid"),
+            User.id.not_in(own_api.ids),
+        ))
+        await session.commit()
     source = Path(os.environ["QUALITY_MODEL_CACHE"])
     fixture = Path(os.environ["QUALITY_MODEL_PHOTO"])
     data = fixture.read_bytes()
@@ -145,13 +152,21 @@ async def test_RSC01_real_local_models(own_api, monkeypatch, tmp_path, role):
                     job = await enqueue_recognition(session, cat=cat, photo=photo)
                     jobs.append((job.id, photo.id))
                 await session.commit()
+                assert await session.scalar(select(func.count()).select_from(VisionJob).where(
+                    VisionJob.status.in_(("pending", "running")),
+                )) == 4
             done = asyncio.Event()
             real_process = service.process
+            expected_jobs = {job_id for job_id, _ in jobs}
 
             async def process(job_id):
+                assert job_id in expected_jobs, "The worker must only claim this child fixture"
                 before = resources()
                 started = time.perf_counter()
                 await real_process(job_id)
+                async with own_api.factory() as session:
+                    state = await session.get(VisionJob, job_id)
+                    assert state.status == "completed" and state.attempts == 0, (state.status, state.error_message)
                 executions.append({"state": "model-cold" if not executions else "warm",
                     "elapsed_seconds": time.perf_counter() - started,
                     "resources_before": before, "resources_after": resources()})
@@ -160,12 +175,17 @@ async def test_RSC01_real_local_models(own_api, monkeypatch, tmp_path, role):
 
             monkeypatch.setattr(service, "process", process)
             consumer = asyncio.create_task(service.run_forever())
+            waiter = asyncio.create_task(done.wait())
             try:
-                await asyncio.wait_for(done.wait(), 210)
+                finished, _ = await asyncio.wait({consumer, waiter}, timeout=210, return_when=asyncio.FIRST_COMPLETED)
+                assert finished, "Local model worker exceeded its bounded test deadline"
+                if consumer in finished:
+                    await consumer
+                assert done.is_set()
             finally:
                 consumer.cancel()
-                with suppress(asyncio.CancelledError):
-                    await consumer
+                waiter.cancel()
+                await asyncio.gather(consumer, waiter, return_exceptions=True)
             async with own_api.factory() as session:
                 for job_id, photo_id in jobs:
                     job = await session.get(VisionJob, job_id)
