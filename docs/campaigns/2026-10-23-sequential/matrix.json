@@ -220,11 +220,16 @@
   },
   {
     "scenario": "LOAD-01",
-    "state": "PENDING",
+    "state": "COMPLETED",
     "scope": "Leituras por contas distintas, concorrência 1/5/10/25/50; patamares de 3 min aquecidos.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
-    "runs": []
+    "runs": [],
+    "limitation": "Full planned disposable E2 load variants executed; shared-host exploratory measurements, no speedup/production SLA claim.",
+    "executor": "scripts/campaign/long_load_cases.py",
+    "closure_evidence": [
+      "LOAD01-20261027-results.json"
+    ]
   },
   {
     "scenario": "LOAD-02",

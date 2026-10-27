@@ -2,11 +2,13 @@
 
 ## Meta de 85 — continuação autorizada em 27/10/2026
 
-**53 concluídos, 17 parciais, 15 pendentes e 10 bloqueados externos.**
+**54 concluídos, 17 parciais, 14 pendentes e 10 bloqueados externos.**
+
+[LOAD-01 concluído](LOAD01-20261027-results.json): cinco patamares de concorrência (1/5/10/25/50), com 30 segundos de aquecimento e três minutos medidos em cada um; respostas, consultas SQL, recursos e integridade registrados. LOAD-02 e LOAD-06 permanecem em execução e não estão contabilizados como concluídos.
 
 [LAT-03 concluído: erro, refresh, tentativas e persistência](LAT03-20261027-results.json). Sete variantes, 35 amostras medidas e sete aquecimentos; sem alegar percentis confiáveis. Corrigido no Flutter o 503 HTML interpretado como falha permanente.
 
-Nesta continuação, o usuário autorizou cargas prolongadas descartáveis e IA paga. USB permanece excluído e iOS fora do escopo. A autorização não substitui a execução: cenários físicos conservam seus critérios e não serão concluídos com evidência desktop. Os lotes pagos terão orçamento e contagem limitados, sem credenciais nos relatórios.
+Nesta continuação, o usuário autorizou cargas prolongadas descartáveis e IA paga. Nenhum aparelho físico será utilizado nesta etapa, por USB ou Wi-Fi; iOS permanece fora do escopo. A autorização não substitui a execução: cenários físicos conservam seus critérios e não serão concluídos com evidência desktop. Os lotes pagos terão orçamento e contagem limitados, sem credenciais nos relatórios.
 
 As medições anteriores e seus limites ficam preservados abaixo.
 

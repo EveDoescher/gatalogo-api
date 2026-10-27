@@ -1,0 +1,1748 @@
+{
+  "scenario": "LOAD-01",
+  "state": "COMPLETED",
+  "date": "2026-10-27",
+  "source": {
+    "source_sha": "4356c2c1a7b9a726564c6c20d816decf193a69a7",
+    "executor_sha256": {
+      "security_cases.py": "7c78314a8403b8cded8896bda345ca3e06c5305cc078fe9e42b6d273b8e539c8",
+      "extended_cases.py": "14499f8e9beb0e7ec9e1036824dd247e5dcd876eae209960e800802d76583415",
+      "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+      "long_load_cases.py": "abd38b320a7d89ab51437bac03f35f1e7f7f4bc0a34bf9c512afde0ada6c7aa4",
+      "current_offline_cases.py": "63e9ceaca8b32cd8b0f3f3641527ea78a0b5aef484b7f6afd574f2c299991aa3",
+      "image_cases.py": "19958fd2cd733ca13231cca626a0c55c4a2f94efd54b793578e9b3e5d1999e6e",
+      "critical_report.py": "794293f87f45a616031d5d50265cf01d7dc060b959f2d8cf9208ff35a483bc2b",
+      "subprocesses.py": "662914a55c1a282b389111628fd5ceb7bc5327ead4821ce1fd12720c13716274",
+      "measurements.py": "6775d688520ffefa3735051fbbacedf20a7e13330be86ddea293e65efe94e23e",
+      "long_load_child.py": "5a4696424caa09d8629b662d98fd687168fa182584b11967a6de304fb3548146"
+    }
+  },
+  "summary": {
+    "scenario": "LOAD-01",
+    "mutation": null,
+    "classification": null,
+    "exit_code": 0,
+    "database": "own random-port PostgreSQL, migrations applied; fixture schema per case",
+    "providers": "generated app JWTs; synthetic analysis/fault injection; no external delivery or inference",
+    "api_lifespan_started": false,
+    "physical_device": false,
+    "evaluated_sources_unchanged": true,
+    "workspace_sources_unchanged": true,
+    "isolation": "Frozen app, executors and migrations; original-workspace edits cannot affect this long run"
+  },
+  "tests": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "seconds": 1098.811,
+    "selectors": [
+      "sequential.LOAD01-20261027-full.executors.long_load_cases::test_LOAD_authorized_long_campaign"
+    ]
+  },
+  "observations": {
+    "scenario": "LOAD-01",
+    "pilot_only": false,
+    "phases": [
+      {
+        "mode": "closed",
+        "concurrency": 1,
+        "rate": 1,
+        "duration_seconds": 180,
+        "warmup_seconds": 30,
+        "elapsed_including_drain_seconds": 180.0352753000043,
+        "offered": 2852,
+        "completed": 2852,
+        "offered_rps": 15.844444444444445,
+        "completed_rps_including_drain": 15.841339955447786,
+        "responses": [
+          {
+            "kind": "pull",
+            "status": "200",
+            "valid": true,
+            "count": 713
+          },
+          {
+            "kind": "inbox",
+            "status": "200",
+            "valid": true,
+            "count": 713
+          },
+          {
+            "kind": "feed",
+            "status": "200",
+            "valid": true,
+            "count": 713
+          },
+          {
+            "kind": "yard",
+            "status": "200",
+            "valid": true,
+            "count": 713
+          }
+        ],
+        "errors": {},
+        "refresh_statuses": {},
+        "pending_peak": 0,
+        "resources_before": {
+          "process_cpu_seconds": 2.5625,
+          "pid": 23556,
+          "rss_bytes": 40656896,
+          "peak_rss_bytes": 40660992,
+          "private_commit_bytes": 30474240,
+          "peak_private_commit_bytes": 30474240,
+          "handles": 137
+        },
+        "resources_after": {
+          "process_cpu_seconds": 10.453125,
+          "pid": 23556,
+          "rss_bytes": 40919040,
+          "peak_rss_bytes": 40923136,
+          "private_commit_bytes": 30363648,
+          "peak_private_commit_bytes": 30474240,
+          "handles": 136
+        },
+        "scope": "Local exploratory load; raw client times and generator delay separated; no causal improvement or production-capacity claim",
+        "phase": "closed-1",
+        "server_resources_before": {
+          "process_cpu_seconds": 31.890625,
+          "pid": 17192,
+          "rss_bytes": 156909568,
+          "peak_rss_bytes": 156925952,
+          "private_commit_bytes": 237002752,
+          "peak_private_commit_bytes": 237035520,
+          "handles": 230
+        },
+        "server_resources_after": {
+          "process_cpu_seconds": 109.359375,
+          "pid": 17192,
+          "rss_bytes": 157052928,
+          "peak_rss_bytes": 157057024,
+          "private_commit_bytes": 237858816,
+          "peak_private_commit_bytes": 237858816,
+          "handles": 219
+        }
+      },
+      {
+        "mode": "closed",
+        "concurrency": 5,
+        "rate": 1,
+        "duration_seconds": 180,
+        "warmup_seconds": 30,
+        "elapsed_including_drain_seconds": 180.12840829999186,
+        "offered": 5142,
+        "completed": 5142,
+        "offered_rps": 28.566666666666666,
+        "completed_rps_including_drain": 28.54630232137699,
+        "responses": [
+          {
+            "kind": "pull",
+            "status": "200",
+            "valid": true,
+            "count": 1287
+          },
+          {
+            "kind": "inbox",
+            "status": "200",
+            "valid": true,
+            "count": 1286
+          },
+          {
+            "kind": "feed",
+            "status": "200",
+            "valid": true,
+            "count": 1285
+          },
+          {
+            "kind": "yard",
+            "status": "200",
+            "valid": true,
+            "count": 1284
+          }
+        ],
+        "errors": {},
+        "refresh_statuses": {},
+        "pending_peak": 0,
+        "resources_before": {
+          "process_cpu_seconds": 4.625,
+          "pid": 10428,
+          "rss_bytes": 40890368,
+          "peak_rss_bytes": 40894464,
+          "private_commit_bytes": 30560256,
+          "peak_private_commit_bytes": 30560256,
+          "handles": 141
+        },
+        "resources_after": {
+          "process_cpu_seconds": 20.96875,
+          "pid": 10428,
+          "rss_bytes": 40816640,
+          "peak_rss_bytes": 41295872,
+          "private_commit_bytes": 30801920,
+          "peak_private_commit_bytes": 30801920,
+          "handles": 140
+        },
+        "scope": "Local exploratory load; raw client times and generator delay separated; no causal improvement or production-capacity claim",
+        "phase": "closed-5",
+        "server_resources_before": {
+          "process_cpu_seconds": 135.953125,
+          "pid": 17192,
+          "rss_bytes": 158326784,
+          "peak_rss_bytes": 158371840,
+          "private_commit_bytes": 237998080,
+          "peak_private_commit_bytes": 238112768,
+          "handles": 228
+        },
+        "server_resources_after": {
+          "process_cpu_seconds": 288.75,
+          "pid": 17192,
+          "rss_bytes": 157097984,
+          "peak_rss_bytes": 158986240,
+          "private_commit_bytes": 239718400,
+          "peak_private_commit_bytes": 239718400,
+          "handles": 221
+        }
+      },
+      {
+        "mode": "closed",
+        "concurrency": 10,
+        "rate": 1,
+        "duration_seconds": 180,
+        "warmup_seconds": 30,
+        "elapsed_including_drain_seconds": 180.32989770002314,
+        "offered": 5085,
+        "completed": 5085,
+        "offered_rps": 28.25,
+        "completed_rps_including_drain": 28.198319107676994,
+        "responses": [
+          {
+            "kind": "pull",
+            "status": "200",
+            "valid": true,
+            "count": 1273
+          },
+          {
+            "kind": "inbox",
+            "status": "200",
+            "valid": true,
+            "count": 1271
+          },
+          {
+            "kind": "feed",
+            "status": "200",
+            "valid": true,
+            "count": 1271
+          },
+          {
+            "kind": "yard",
+            "status": "200",
+            "valid": true,
+            "count": 1270
+          }
+        ],
+        "errors": {},
+        "refresh_statuses": {},
+        "pending_peak": 0,
+        "resources_before": {
+          "process_cpu_seconds": 4.5,
+          "pid": 23624,
+          "rss_bytes": 41365504,
+          "peak_rss_bytes": 41369600,
+          "private_commit_bytes": 30842880,
+          "peak_private_commit_bytes": 30842880,
+          "handles": 146
+        },
+        "resources_after": {
+          "process_cpu_seconds": 21.546875,
+          "pid": 23624,
+          "rss_bytes": 42160128,
+          "peak_rss_bytes": 42164224,
+          "private_commit_bytes": 31252480,
+          "peak_private_commit_bytes": 31252480,
+          "handles": 145
+        },
+        "scope": "Local exploratory load; raw client times and generator delay separated; no causal improvement or production-capacity claim",
+        "phase": "closed-10",
+        "server_resources_before": {
+          "process_cpu_seconds": 313.84375,
+          "pid": 17192,
+          "rss_bytes": 159817728,
+          "peak_rss_bytes": 159899648,
+          "private_commit_bytes": 242089984,
+          "peak_private_commit_bytes": 242319360,
+          "handles": 232
+        },
+        "server_resources_after": {
+          "process_cpu_seconds": 466.90625,
+          "pid": 17192,
+          "rss_bytes": 160538624,
+          "peak_rss_bytes": 160542720,
+          "private_commit_bytes": 242671616,
+          "peak_private_commit_bytes": 242671616,
+          "handles": 221
+        }
+      },
+      {
+        "mode": "closed",
+        "concurrency": 25,
+        "rate": 1,
+        "duration_seconds": 180,
+        "warmup_seconds": 30,
+        "elapsed_including_drain_seconds": 180.63404370000353,
+        "offered": 4933,
+        "completed": 4933,
+        "offered_rps": 27.405555555555555,
+        "completed_rps_including_drain": 27.309359293272045,
+        "responses": [
+          {
+            "kind": "pull",
+            "status": "200",
+            "valid": true,
+            "count": 1240
+          },
+          {
+            "kind": "pull",
+            "status": "0",
+            "valid": false,
+            "count": 1
+          },
+          {
+            "kind": "inbox",
+            "status": "200",
+            "valid": true,
+            "count": 1237
+          },
+          {
+            "kind": "feed",
+            "status": "200",
+            "valid": true,
+            "count": 1232
+          },
+          {
+            "kind": "yard",
+            "status": "200",
+            "valid": true,
+            "count": 1223
+          }
+        ],
+        "errors": {
+          "ReadError": 1
+        },
+        "refresh_statuses": {
+          "200": 25
+        },
+        "pending_peak": 0,
+        "resources_before": {
+          "process_cpu_seconds": 4.359375,
+          "pid": 4152,
+          "rss_bytes": 42700800,
+          "peak_rss_bytes": 42704896,
+          "private_commit_bytes": 31834112,
+          "peak_private_commit_bytes": 31834112,
+          "handles": 161
+        },
+        "resources_after": {
+          "process_cpu_seconds": 21.65625,
+          "pid": 4152,
+          "rss_bytes": 43507712,
+          "peak_rss_bytes": 43511808,
+          "private_commit_bytes": 33263616,
+          "peak_private_commit_bytes": 33263616,
+          "handles": 160
+        },
+        "scope": "Local exploratory load; raw client times and generator delay separated; no causal improvement or production-capacity claim",
+        "phase": "closed-25",
+        "server_resources_before": {
+          "process_cpu_seconds": 493.609375,
+          "pid": 17192,
+          "rss_bytes": 163663872,
+          "peak_rss_bytes": 163811328,
+          "private_commit_bytes": 246206464,
+          "peak_private_commit_bytes": 246677504,
+          "handles": 247
+        },
+        "server_resources_after": {
+          "process_cpu_seconds": 641.953125,
+          "pid": 17192,
+          "rss_bytes": 165019648,
+          "peak_rss_bytes": 165158912,
+          "private_commit_bytes": 247386112,
+          "peak_private_commit_bytes": 247861248,
+          "handles": 221
+        }
+      },
+      {
+        "mode": "closed",
+        "concurrency": 50,
+        "rate": 1,
+        "duration_seconds": 180,
+        "warmup_seconds": 30,
+        "elapsed_including_drain_seconds": 181.75012660000357,
+        "offered": 5134,
+        "completed": 5134,
+        "offered_rps": 28.522222222222222,
+        "completed_rps_including_drain": 28.24757317115343,
+        "responses": [
+          {
+            "kind": "pull",
+            "status": "200",
+            "valid": true,
+            "count": 1300
+          },
+          {
+            "kind": "inbox",
+            "status": "200",
+            "valid": true,
+            "count": 1283
+          },
+          {
+            "kind": "feed",
+            "status": "200",
+            "valid": true,
+            "count": 1277
+          },
+          {
+            "kind": "pull",
+            "status": "0",
+            "valid": false,
+            "count": 3
+          },
+          {
+            "kind": "yard",
+            "status": "200",
+            "valid": true,
+            "count": 1271
+          }
+        ],
+        "errors": {
+          "RemoteProtocolError": 2,
+          "ReadTimeout": 1
+        },
+        "refresh_statuses": {
+          "200": 25
+        },
+        "pending_peak": 0,
+        "resources_before": {
+          "process_cpu_seconds": 4.875,
+          "pid": 7616,
+          "rss_bytes": 45150208,
+          "peak_rss_bytes": 45154304,
+          "private_commit_bytes": 34910208,
+          "peak_private_commit_bytes": 34910208,
+          "handles": 181
+        },
+        "resources_after": {
+          "process_cpu_seconds": 23.6875,
+          "pid": 7616,
+          "rss_bytes": 46211072,
+          "peak_rss_bytes": 46215168,
+          "private_commit_bytes": 35184640,
+          "peak_private_commit_bytes": 35295232,
+          "handles": 168
+        },
+        "scope": "Local exploratory load; raw client times and generator delay separated; no causal improvement or production-capacity claim",
+        "phase": "closed-50",
+        "server_resources_before": {
+          "process_cpu_seconds": 669.6875,
+          "pid": 17192,
+          "rss_bytes": 168456192,
+          "peak_rss_bytes": 168706048,
+          "private_commit_bytes": 250388480,
+          "peak_private_commit_bytes": 251256832,
+          "handles": 265
+        },
+        "server_resources_after": {
+          "process_cpu_seconds": 823.625,
+          "pid": 17192,
+          "rss_bytes": 168132608,
+          "peak_rss_bytes": 171610112,
+          "private_commit_bytes": 250888192,
+          "peak_private_commit_bytes": 254816256,
+          "handles": 221
+        }
+      }
+    ],
+    "before": {
+      "rows": {
+        "users": 53,
+        "cats": 250,
+        "sync_changes": 250,
+        "conversations": 50,
+        "conversation_members": 100,
+        "conversation_messages": 50,
+        "feed_items": 100,
+        "vision_jobs": 0
+      },
+      "wallets": [
+        [
+          "024b4594-4cfc-5af9-aef1-81d9b8d97a9d",
+          1000000
+        ],
+        [
+          "06a74315-d758-5bfd-90b3-9ed7d94ad4f5",
+          1000000
+        ],
+        [
+          "0b7dc50c-7150-5008-88a8-3b35387b041a",
+          1000000
+        ],
+        [
+          "0be939c5-5896-5a86-ad9f-dc0a8c3c08f6",
+          1000000
+        ],
+        [
+          "0ed71448-5c4c-52ec-8021-83c5bbcb1f52",
+          1000000
+        ],
+        [
+          "1a2d336e-8ad2-5846-bf36-37d141a5c99f",
+          1000000
+        ],
+        [
+          "23c187b9-be36-598b-bad5-203cd6019b33",
+          1000000
+        ],
+        [
+          "24058dfe-9ac6-52fd-a025-86b41c605c2a",
+          1000000
+        ],
+        [
+          "26893a73-38d0-5b97-87ba-88cb352b5d7f",
+          1000000
+        ],
+        [
+          "28c9d6ef-2e50-5bef-90df-17324aade6d4",
+          1000000
+        ],
+        [
+          "316aa5dc-ed48-5e60-a857-3f459c582396",
+          1000000
+        ],
+        [
+          "33a31ba9-d865-5959-b946-a072e9659c69",
+          1000000
+        ],
+        [
+          "3421bbe4-5bf0-5356-bf8f-41edd245ecf5",
+          1000000
+        ],
+        [
+          "34be872c-4bf8-5d6d-aece-963937e9490a",
+          1000000
+        ],
+        [
+          "36b4566e-988c-5bec-a732-44cb9ae1cb5a",
+          1000000
+        ],
+        [
+          "38273a03-5cff-5dec-a361-214d6d89be19",
+          1000000
+        ],
+        [
+          "3896407a-91ab-59e1-9056-0a38e168ed0c",
+          1000000
+        ],
+        [
+          "3a4e8479-3fe5-5afa-9779-7abdd9054ded",
+          1000000
+        ],
+        [
+          "403463d6-facc-5468-b941-1327477e1428",
+          1000000
+        ],
+        [
+          "41cbf525-3a8b-59c3-b9b4-b15ee581aae8",
+          1000000
+        ],
+        [
+          "487ac640-3b93-53fb-b6de-93351d92b3ad",
+          1000000
+        ],
+        [
+          "4e81811b-4fa4-54ba-abc1-57d640cf80ef",
+          1000000
+        ],
+        [
+          "4ede055c-75a2-5595-bd99-ef4087e2bcc3",
+          1000000
+        ],
+        [
+          "5821b3cd-c25a-53a5-ab76-24e8b611c8bb",
+          1000000
+        ],
+        [
+          "58e3bfde-fa2d-567b-bc7b-2e34c151fc1c",
+          1000000
+        ],
+        [
+          "68bed8b7-904d-565e-8bae-196685391e29",
+          1000000
+        ],
+        [
+          "6e6cd10a-3147-5a49-8ae2-3c737a44549b",
+          1000000
+        ],
+        [
+          "76543235-9082-5737-be3b-174a9ca75b6c",
+          1000000
+        ],
+        [
+          "766fbc3b-6058-5ebe-a486-1921b8a5e3ab",
+          1000000
+        ],
+        [
+          "7b94fe80-53dd-5af8-b083-2e3b9cf1d101",
+          1000000
+        ],
+        [
+          "8988dd14-00de-53b3-9c9f-74f81f2509b5",
+          1000000
+        ],
+        [
+          "9184e018-379a-53c6-b060-46573b9eb09c",
+          1000000
+        ],
+        [
+          "9d0f484f-3314-5cf9-a152-5223eb04544f",
+          1000000
+        ],
+        [
+          "a2bec1b5-5be9-5765-9b85-e9520adb0877",
+          1000000
+        ],
+        [
+          "a8233ecf-21a5-53c0-a62f-196b722e753e",
+          1000000
+        ],
+        [
+          "aa0f87ed-3611-56c7-a233-15b6a2c6193b",
+          1000000
+        ],
+        [
+          "ab61d621-c45c-5f90-aef6-208e1e7b764a",
+          1000000
+        ],
+        [
+          "ab7fb412-74e8-46da-9b42-68a59ae8caee",
+          100
+        ],
+        [
+          "aea8518d-4d56-5ebd-b2fd-c2d315191109",
+          1000000
+        ],
+        [
+          "b708a606-ad31-5419-8ade-30086ec76968",
+          1000000
+        ],
+        [
+          "c1be3410-a884-59be-a635-620d494032ab",
+          1000000
+        ],
+        [
+          "c2eec0e2-51b1-405c-9acb-32f22d85bcbe",
+          100
+        ],
+        [
+          "c5fd432a-260a-5222-aabf-57b6f8e4f4da",
+          1000000
+        ],
+        [
+          "c9446860-a988-54a1-b233-91aeb40b4823",
+          1000000
+        ],
+        [
+          "d6b3dbb7-d98f-593e-aed9-2c3b7fc3dede",
+          1000000
+        ],
+        [
+          "d700095b-0810-57fd-b951-b4d07d78e0a7",
+          1000000
+        ],
+        [
+          "da940497-4e8a-5c81-a659-dedb886b6377",
+          1000000
+        ],
+        [
+          "db64b43a-13c8-5101-aa66-4b5fcddfed14",
+          1000000
+        ],
+        [
+          "dbdd112c-5022-55fb-940a-ec7141e40712",
+          1000000
+        ],
+        [
+          "ecd8b67b-ca09-51c2-8ed3-91b87a804e7e",
+          1000000
+        ],
+        [
+          "f712c861-db6d-5f13-abc6-83ae97a7dafb",
+          1000000
+        ],
+        [
+          "fb82357d-4d4d-5dfb-a2ad-853b04785fdc",
+          1000000
+        ]
+      ],
+      "ledger_rows": 0
+    },
+    "after": {
+      "rows": {
+        "users": 53,
+        "cats": 250,
+        "sync_changes": 250,
+        "conversations": 50,
+        "conversation_members": 100,
+        "conversation_messages": 50,
+        "feed_items": 100,
+        "vision_jobs": 0
+      },
+      "wallets": [
+        [
+          "024b4594-4cfc-5af9-aef1-81d9b8d97a9d",
+          1000000
+        ],
+        [
+          "06a74315-d758-5bfd-90b3-9ed7d94ad4f5",
+          1000000
+        ],
+        [
+          "0b7dc50c-7150-5008-88a8-3b35387b041a",
+          1000000
+        ],
+        [
+          "0be939c5-5896-5a86-ad9f-dc0a8c3c08f6",
+          1000000
+        ],
+        [
+          "0ed71448-5c4c-52ec-8021-83c5bbcb1f52",
+          1000000
+        ],
+        [
+          "1a2d336e-8ad2-5846-bf36-37d141a5c99f",
+          1000000
+        ],
+        [
+          "23c187b9-be36-598b-bad5-203cd6019b33",
+          1000000
+        ],
+        [
+          "24058dfe-9ac6-52fd-a025-86b41c605c2a",
+          1000000
+        ],
+        [
+          "26893a73-38d0-5b97-87ba-88cb352b5d7f",
+          1000000
+        ],
+        [
+          "28c9d6ef-2e50-5bef-90df-17324aade6d4",
+          1000000
+        ],
+        [
+          "316aa5dc-ed48-5e60-a857-3f459c582396",
+          1000000
+        ],
+        [
+          "33a31ba9-d865-5959-b946-a072e9659c69",
+          1000000
+        ],
+        [
+          "3421bbe4-5bf0-5356-bf8f-41edd245ecf5",
+          1000000
+        ],
+        [
+          "34be872c-4bf8-5d6d-aece-963937e9490a",
+          1000000
+        ],
+        [
+          "36b4566e-988c-5bec-a732-44cb9ae1cb5a",
+          1000000
+        ],
+        [
+          "38273a03-5cff-5dec-a361-214d6d89be19",
+          1000000
+        ],
+        [
+          "3896407a-91ab-59e1-9056-0a38e168ed0c",
+          1000000
+        ],
+        [
+          "3a4e8479-3fe5-5afa-9779-7abdd9054ded",
+          1000000
+        ],
+        [
+          "403463d6-facc-5468-b941-1327477e1428",
+          1000000
+        ],
+        [
+          "41cbf525-3a8b-59c3-b9b4-b15ee581aae8",
+          1000000
+        ],
+        [
+          "487ac640-3b93-53fb-b6de-93351d92b3ad",
+          1000000
+        ],
+        [
+          "4e81811b-4fa4-54ba-abc1-57d640cf80ef",
+          1000000
+        ],
+        [
+          "4ede055c-75a2-5595-bd99-ef4087e2bcc3",
+          1000000
+        ],
+        [
+          "5821b3cd-c25a-53a5-ab76-24e8b611c8bb",
+          1000000
+        ],
+        [
+          "58e3bfde-fa2d-567b-bc7b-2e34c151fc1c",
+          1000000
+        ],
+        [
+          "68bed8b7-904d-565e-8bae-196685391e29",
+          1000000
+        ],
+        [
+          "6e6cd10a-3147-5a49-8ae2-3c737a44549b",
+          1000000
+        ],
+        [
+          "76543235-9082-5737-be3b-174a9ca75b6c",
+          1000000
+        ],
+        [
+          "766fbc3b-6058-5ebe-a486-1921b8a5e3ab",
+          1000000
+        ],
+        [
+          "7b94fe80-53dd-5af8-b083-2e3b9cf1d101",
+          1000000
+        ],
+        [
+          "8988dd14-00de-53b3-9c9f-74f81f2509b5",
+          1000000
+        ],
+        [
+          "9184e018-379a-53c6-b060-46573b9eb09c",
+          1000000
+        ],
+        [
+          "9d0f484f-3314-5cf9-a152-5223eb04544f",
+          1000000
+        ],
+        [
+          "a2bec1b5-5be9-5765-9b85-e9520adb0877",
+          1000000
+        ],
+        [
+          "a8233ecf-21a5-53c0-a62f-196b722e753e",
+          1000000
+        ],
+        [
+          "aa0f87ed-3611-56c7-a233-15b6a2c6193b",
+          1000000
+        ],
+        [
+          "ab61d621-c45c-5f90-aef6-208e1e7b764a",
+          1000000
+        ],
+        [
+          "ab7fb412-74e8-46da-9b42-68a59ae8caee",
+          100
+        ],
+        [
+          "aea8518d-4d56-5ebd-b2fd-c2d315191109",
+          1000000
+        ],
+        [
+          "b708a606-ad31-5419-8ade-30086ec76968",
+          1000000
+        ],
+        [
+          "c1be3410-a884-59be-a635-620d494032ab",
+          1000000
+        ],
+        [
+          "c2eec0e2-51b1-405c-9acb-32f22d85bcbe",
+          100
+        ],
+        [
+          "c5fd432a-260a-5222-aabf-57b6f8e4f4da",
+          1000000
+        ],
+        [
+          "c9446860-a988-54a1-b233-91aeb40b4823",
+          1000000
+        ],
+        [
+          "d6b3dbb7-d98f-593e-aed9-2c3b7fc3dede",
+          1000000
+        ],
+        [
+          "d700095b-0810-57fd-b951-b4d07d78e0a7",
+          1000000
+        ],
+        [
+          "da940497-4e8a-5c81-a659-dedb886b6377",
+          1000000
+        ],
+        [
+          "db64b43a-13c8-5101-aa66-4b5fcddfed14",
+          1000000
+        ],
+        [
+          "dbdd112c-5022-55fb-940a-ec7141e40712",
+          1000000
+        ],
+        [
+          "ecd8b67b-ca09-51c2-8ed3-91b87a804e7e",
+          1000000
+        ],
+        [
+          "f712c861-db6d-5f13-abc6-83ae97a7dafb",
+          1000000
+        ],
+        [
+          "fb82357d-4d4d-5dfb-a2ad-853b04785fdc",
+          1000000
+        ]
+      ],
+      "ledger_rows": 0
+    },
+    "pool_checkedout_after_rest": 0,
+    "server_http": [
+      {
+        "phase": "setup",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 50
+      },
+      {
+        "phase": "setup",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 50
+      },
+      {
+        "phase": "setup",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 50
+      },
+      {
+        "phase": "setup",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 50
+      },
+      {
+        "phase": "closed-1:warmup",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 170
+      },
+      {
+        "phase": "closed-1:warmup",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 170
+      },
+      {
+        "phase": "closed-1:warmup",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 169
+      },
+      {
+        "phase": "closed-1:warmup",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 169
+      },
+      {
+        "phase": "closed-1:measured",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 713
+      },
+      {
+        "phase": "closed-1:measured",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 713
+      },
+      {
+        "phase": "closed-1:measured",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 713
+      },
+      {
+        "phase": "closed-1:measured",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 713
+      },
+      {
+        "phase": "closed-5:warmup",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 234
+      },
+      {
+        "phase": "closed-5:warmup",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 233
+      },
+      {
+        "phase": "closed-5:warmup",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 231
+      },
+      {
+        "phase": "closed-5:warmup",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 231
+      },
+      {
+        "phase": "closed-5:measured",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 1287
+      },
+      {
+        "phase": "closed-5:measured",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 1286
+      },
+      {
+        "phase": "closed-5:measured",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 1285
+      },
+      {
+        "phase": "closed-5:measured",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 1284
+      },
+      {
+        "phase": "closed-10:warmup",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 192
+      },
+      {
+        "phase": "closed-10:warmup",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 189
+      },
+      {
+        "phase": "closed-10:warmup",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 188
+      },
+      {
+        "phase": "closed-10:warmup",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 188
+      },
+      {
+        "phase": "closed-10:measured",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 1273
+      },
+      {
+        "phase": "closed-10:measured",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 1271
+      },
+      {
+        "phase": "closed-10:measured",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 1271
+      },
+      {
+        "phase": "closed-10:measured",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 1270
+      },
+      {
+        "phase": "closed-25:warmup",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 222
+      },
+      {
+        "phase": "closed-25:warmup",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 213
+      },
+      {
+        "phase": "closed-25:warmup",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 211
+      },
+      {
+        "phase": "closed-25:warmup",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 207
+      },
+      {
+        "phase": "closed-25:measured",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 1240
+      },
+      {
+        "phase": "closed-25:measured",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 1237
+      },
+      {
+        "phase": "closed-25:measured",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 1232
+      },
+      {
+        "phase": "closed-25:measured",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 1223
+      },
+      {
+        "phase": "closed-25:measured",
+        "route": "/auth/refresh",
+        "status": 200,
+        "count": 25
+      },
+      {
+        "phase": "closed-50:warmup",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 259
+      },
+      {
+        "phase": "closed-50:warmup",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 240
+      },
+      {
+        "phase": "closed-50:warmup",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 230
+      },
+      {
+        "phase": "closed-50:warmup",
+        "route": "/auth/refresh",
+        "status": 200,
+        "count": 25
+      },
+      {
+        "phase": "closed-50:warmup",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 220
+      },
+      {
+        "phase": "closed-50:measured",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 1301
+      },
+      {
+        "phase": "closed-50:measured",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 1283
+      },
+      {
+        "phase": "closed-50:measured",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 1277
+      },
+      {
+        "phase": "closed-50:measured",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 1271
+      }
+    ],
+    "server_sql": [
+      {
+        "phase": "closed-1:warmup",
+        "route": "/sync/pull",
+        "verb": "SELECT",
+        "count": 1020
+      },
+      {
+        "phase": "closed-1:warmup",
+        "route": "/social/conversations",
+        "verb": "SELECT",
+        "count": 1190
+      },
+      {
+        "phase": "closed-1:warmup",
+        "route": "/social/feed",
+        "verb": "SELECT",
+        "count": 845
+      },
+      {
+        "phase": "closed-1:warmup",
+        "route": "/app/quintal",
+        "verb": "SELECT",
+        "count": 6422
+      },
+      {
+        "phase": "closed-1:measured",
+        "route": "/sync/pull",
+        "verb": "SELECT",
+        "count": 4278
+      },
+      {
+        "phase": "closed-1:measured",
+        "route": "/social/conversations",
+        "verb": "SELECT",
+        "count": 4991
+      },
+      {
+        "phase": "closed-1:measured",
+        "route": "/social/feed",
+        "verb": "SELECT",
+        "count": 3565
+      },
+      {
+        "phase": "closed-1:measured",
+        "route": "/app/quintal",
+        "verb": "SELECT",
+        "count": 27094
+      },
+      {
+        "phase": "closed-5:warmup",
+        "route": "/sync/pull",
+        "verb": "SELECT",
+        "count": 1404
+      },
+      {
+        "phase": "closed-5:warmup",
+        "route": "/social/conversations",
+        "verb": "SELECT",
+        "count": 1631
+      },
+      {
+        "phase": "closed-5:warmup",
+        "route": "/social/feed",
+        "verb": "SELECT",
+        "count": 1155
+      },
+      {
+        "phase": "closed-5:warmup",
+        "route": "/app/quintal",
+        "verb": "SELECT",
+        "count": 8778
+      },
+      {
+        "phase": "closed-5:measured",
+        "route": "/sync/pull",
+        "verb": "SELECT",
+        "count": 7722
+      },
+      {
+        "phase": "closed-5:measured",
+        "route": "/social/conversations",
+        "verb": "SELECT",
+        "count": 9002
+      },
+      {
+        "phase": "closed-5:measured",
+        "route": "/social/feed",
+        "verb": "SELECT",
+        "count": 6425
+      },
+      {
+        "phase": "closed-5:measured",
+        "route": "/app/quintal",
+        "verb": "SELECT",
+        "count": 48792
+      },
+      {
+        "phase": "closed-10:warmup",
+        "route": "/sync/pull",
+        "verb": "SELECT",
+        "count": 1152
+      },
+      {
+        "phase": "closed-10:warmup",
+        "route": "/social/conversations",
+        "verb": "SELECT",
+        "count": 1323
+      },
+      {
+        "phase": "closed-10:warmup",
+        "route": "/social/feed",
+        "verb": "SELECT",
+        "count": 940
+      },
+      {
+        "phase": "closed-10:warmup",
+        "route": "/app/quintal",
+        "verb": "SELECT",
+        "count": 7144
+      },
+      {
+        "phase": "closed-10:measured",
+        "route": "/sync/pull",
+        "verb": "SELECT",
+        "count": 7638
+      },
+      {
+        "phase": "closed-10:measured",
+        "route": "/social/conversations",
+        "verb": "SELECT",
+        "count": 8897
+      },
+      {
+        "phase": "closed-10:measured",
+        "route": "/social/feed",
+        "verb": "SELECT",
+        "count": 6355
+      },
+      {
+        "phase": "closed-10:measured",
+        "route": "/app/quintal",
+        "verb": "SELECT",
+        "count": 48260
+      },
+      {
+        "phase": "closed-25:warmup",
+        "route": "/sync/pull",
+        "verb": "SELECT",
+        "count": 1332
+      },
+      {
+        "phase": "closed-25:warmup",
+        "route": "/social/conversations",
+        "verb": "SELECT",
+        "count": 1491
+      },
+      {
+        "phase": "closed-25:warmup",
+        "route": "/social/feed",
+        "verb": "SELECT",
+        "count": 1055
+      },
+      {
+        "phase": "closed-25:warmup",
+        "route": "/app/quintal",
+        "verb": "SELECT",
+        "count": 7866
+      },
+      {
+        "phase": "closed-25:measured",
+        "route": "/sync/pull",
+        "verb": "SELECT",
+        "count": 7440
+      },
+      {
+        "phase": "closed-25:measured",
+        "route": "/social/conversations",
+        "verb": "SELECT",
+        "count": 8659
+      },
+      {
+        "phase": "closed-25:measured",
+        "route": "/social/feed",
+        "verb": "SELECT",
+        "count": 6160
+      },
+      {
+        "phase": "closed-25:measured",
+        "route": "/app/quintal",
+        "verb": "SELECT",
+        "count": 46474
+      },
+      {
+        "phase": "closed-25:measured",
+        "route": "/auth/refresh",
+        "verb": "SELECT",
+        "count": 50
+      },
+      {
+        "phase": "closed-25:measured",
+        "route": "/auth/refresh",
+        "verb": "UPDATE",
+        "count": 25
+      },
+      {
+        "phase": "closed-25:measured",
+        "route": "/auth/refresh",
+        "verb": "INSERT",
+        "count": 25
+      },
+      {
+        "phase": "closed-50:warmup",
+        "route": "/sync/pull",
+        "verb": "SELECT",
+        "count": 1554
+      },
+      {
+        "phase": "closed-50:warmup",
+        "route": "/social/conversations",
+        "verb": "SELECT",
+        "count": 1680
+      },
+      {
+        "phase": "closed-50:warmup",
+        "route": "/social/feed",
+        "verb": "SELECT",
+        "count": 1150
+      },
+      {
+        "phase": "closed-50:warmup",
+        "route": "/auth/refresh",
+        "verb": "SELECT",
+        "count": 50
+      },
+      {
+        "phase": "closed-50:warmup",
+        "route": "/auth/refresh",
+        "verb": "UPDATE",
+        "count": 25
+      },
+      {
+        "phase": "closed-50:warmup",
+        "route": "/app/quintal",
+        "verb": "SELECT",
+        "count": 8360
+      },
+      {
+        "phase": "closed-50:warmup",
+        "route": "/auth/refresh",
+        "verb": "INSERT",
+        "count": 25
+      },
+      {
+        "phase": "closed-50:measured",
+        "route": "/sync/pull",
+        "verb": "SELECT",
+        "count": 7806
+      },
+      {
+        "phase": "closed-50:measured",
+        "route": "/social/conversations",
+        "verb": "SELECT",
+        "count": 8981
+      },
+      {
+        "phase": "closed-50:measured",
+        "route": "/social/feed",
+        "verb": "SELECT",
+        "count": 6385
+      },
+      {
+        "phase": "closed-50:measured",
+        "route": "/app/quintal",
+        "verb": "SELECT",
+        "count": 48298
+      },
+      {
+        "phase": "setup",
+        "route": "none",
+        "verb": "SELECT",
+        "count": 10
+      }
+    ],
+    "peak_active_http": 57,
+    "paid_calls": 0,
+    "scope": "Separate generator PID, own migrated PostgreSQL, real TCP/API, generated accounts. Fixed 30s warmups and planned full durations except explicitly labeled pilot. Shared host, no production capacity or causal speedup claims; percentiles are empirical and require separate uncertainty analysis."
+  },
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/candidate.tar",
+      "sha256": "6479348683cfeaa190fbbd9fa9ba4d916e34c44e68b517ac345ce3fecb465cc0"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/candidate_manifest.json",
+      "sha256": "4c0be2d2b414742173c49cbc3fa13fa74d57a442d0059d9d69351a1a07c3a492"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/executors/__pycache__/critical_report.cpython-313.pyc",
+      "sha256": "010496099c9074a2bd6f31a82db9c5bed48c8258dfbe6f9a4aa3121b5bb0ff45"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/executors/__pycache__/current_offline_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "4ef6f90a78caaaff8fbfd9e85a7e16c7b710b687004b327c5572eda9200cdac9"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/executors/__pycache__/fixtures.cpython-313.pyc",
+      "sha256": "13e3df264c79aa0614c2bd08686936e69aaa4e50cd0dc23909e1cc0f1da02bf7"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/executors/__pycache__/image_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "6e7630fe1601ff5cf307f754cd7fd136d4748677eec8ff8ada60f4fe2b210486"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/executors/__pycache__/long_load_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "50af6b9fdcd9df9178980cff2aa4206e8ae4a541697e4621747583da1fc62f43"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/executors/__pycache__/measurements.cpython-313.pyc",
+      "sha256": "0a15fa41710b42b330b2c398f0b036bd3722b63be32fde486e7662cc9c38398d"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/executors/__pycache__/security_cases.cpython-313.pyc",
+      "sha256": "c962c3933efd9ae86c3a6c028bc79f7b53d79fc45415f0136e1f2b9d6b7ddb42"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/executors/__pycache__/subprocesses.cpython-313.pyc",
+      "sha256": "b269f0fa3f90fa213368cce1e0c2d6ba673cd67c6b9c010cce2b7b09851eec18"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/executors/critical_report.py",
+      "sha256": "794293f87f45a616031d5d50265cf01d7dc060b959f2d8cf9208ff35a483bc2b"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/executors/current_offline_cases.py",
+      "sha256": "63e9ceaca8b32cd8b0f3f3641527ea78a0b5aef484b7f6afd574f2c299991aa3"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/executors/extended_cases.py",
+      "sha256": "14499f8e9beb0e7ec9e1036824dd247e5dcd876eae209960e800802d76583415"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/executors/fixtures.py",
+      "sha256": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/executors/image_cases.py",
+      "sha256": "19958fd2cd733ca13231cca626a0c55c4a2f94efd54b793578e9b3e5d1999e6e"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/executors/long_load_cases.py",
+      "sha256": "abd38b320a7d89ab51437bac03f35f1e7f7f4bc0a34bf9c512afde0ada6c7aa4"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/executors/long_load_child.py",
+      "sha256": "5a4696424caa09d8629b662d98fd687168fa182584b11967a6de304fb3548146"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/executors/measurements.py",
+      "sha256": "6775d688520ffefa3735051fbbacedf20a7e13330be86ddea293e65efe94e23e"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/executors/run_security_regression.snapshot.py",
+      "sha256": "beaa42ed8bdbcf43d5c16e99f3f2384ecdbcf05b4249f90e9daceb9b26f8b2ab"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/executors/security_cases.py",
+      "sha256": "7c78314a8403b8cded8896bda345ca3e06c5305cc078fe9e42b6d273b8e539c8"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/executors/subprocesses.py",
+      "sha256": "662914a55c1a282b389111628fd5ceb7bc5327ead4821ce1fd12720c13716274"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/frozen_execution_manifest.json",
+      "sha256": "4223d083e2a46f00263a80156a917e1213a7fad9f9a3bf09052854fcebc4980e"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/junit.xml",
+      "sha256": "ae7f833303da3200c25defb03a723051d0b708430d003749b2c96dc1f5de1bbc"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/migrations.log",
+      "sha256": "a3b46d2f11f9b6e02caac2d03005d0237af6f6b915efdc0e4805c9d2bcafece2"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-1/generator.log",
+      "sha256": "e7ad5bc2511fd4c6f29a1a8a6553385a4edca6c89f6c7735cc941fe13c79307b"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-1/measure.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-1/private-accounts.json",
+      "sha256": "d8a139f290a7e68686662d598d6da5d7fd5f0fa587f50ad4bc76e8f315313f30"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-1/private-config.json",
+      "sha256": "83e78ac259457813747fd32a982564ce116c7724c78060403e00d4e9d6883f89"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-1/requests.csv",
+      "sha256": "cc927e23ccd06da2c18a34969febae741b1b17ca6fbf9cdbb41fd4af5e06f57f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-1/result.json",
+      "sha256": "f3304b98056893701ab6303b4b631f2dce4a09c1b4895b48ec1306847ce20f7f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-1/warmed.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-10/generator.log",
+      "sha256": "00f6531641f4cb4f9b4f7e7fb5dd3a20e3d4ab3e6472ed8a478e119036ef35b0"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-10/measure.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-10/private-accounts.json",
+      "sha256": "d8a139f290a7e68686662d598d6da5d7fd5f0fa587f50ad4bc76e8f315313f30"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-10/private-config.json",
+      "sha256": "744cdccc19085ae7076f92439f7e7af835fb29eee0ab03372d88c3384909487e"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-10/requests.csv",
+      "sha256": "b9603509194e1076c1fc9acb78c169d0edb3f05e6c9619ff2906fd9b85eb1831"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-10/result.json",
+      "sha256": "26d77717a47ccd7dbc500d5b2a18909f95f4a9e57549330b7329093ded8f6dbd"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-10/warmed.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-25/generator.log",
+      "sha256": "74f2cef3a05e89a63aa53ba6b5903f789829000aade50a3135663a5d19301538"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-25/measure.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-25/private-accounts.json",
+      "sha256": "1c829465cee3f4f4575e26589cabfa6209d8035183a89fc4f12fea109cd149e5"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-25/private-config.json",
+      "sha256": "984b1e8e0bd08dfe3e4108ce83a9015f61aab53b80e58d84a99962f20cf0dea3"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-25/requests.csv",
+      "sha256": "4c8ea43448b428943cf6150100dad32f40796c9f68f4e3fa6d1932b3c72fc617"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-25/result.json",
+      "sha256": "566d1665df3fc5ab0ad7e16061c657f9ca28bc4e89a37cb44c4c834738fbde8b"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-25/warmed.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-5/generator.log",
+      "sha256": "186bc08817fecdb5520ae85efdb55668dfd4f8b48b94a27334775da2b18566aa"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-5/measure.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-5/private-accounts.json",
+      "sha256": "d8a139f290a7e68686662d598d6da5d7fd5f0fa587f50ad4bc76e8f315313f30"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-5/private-config.json",
+      "sha256": "078061ca3dd859745ef331bcfe2569bd5d1c9be9e6e7cfcc189ac23e995910e1"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-5/requests.csv",
+      "sha256": "d39246c1139ce3d8a8c7af29ca3c56b39a985fe4bf45d86730c7f90cdce30df0"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-5/result.json",
+      "sha256": "2070ac67a539070a275bfa10c4edc33e0d0a81a445e3261d252c62836066ea63"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-5/warmed.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-50/generator.log",
+      "sha256": "2595ed756381bc92c959807463b722515f7c47ff436212154dfafbfd90038487"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-50/measure.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-50/private-accounts.json",
+      "sha256": "190447af1d29fc7d7876eac5d84d832bf91b982197255630dd218a94ac65fdcc"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-50/private-config.json",
+      "sha256": "ad543c8648862ad7c89c7cc30978d56a611f5c44d3996540759d02b8fce7eb2a"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-50/requests.csv",
+      "sha256": "559f6510a63122cc27ddf2ed612ed67e228420b3d56d496bb08d4f79430c06f9"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-50/result.json",
+      "sha256": "2cb51aa6e11dafbeb52cbeb0067846197493c0d4da36d9949fcae1240ca7fcf5"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/closed-50/warmed.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/long-load.json",
+      "sha256": "250183303941513e7229cb1d46cfe9ab2b247347679408ed66bef65fe2d1f703"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/progress.json",
+      "sha256": "8e11913a7c4e63f7c42f8b513717a4eda0ffe4a57194a67d432d849a32e8f9ef"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/observations/server-resources.jsonl",
+      "sha256": "65a2c12f62052385230584190db011c45a35dc20409a25246a6b79bdbb0ce9b8"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/pytest.log",
+      "sha256": "e788a5cdb16518ffb665a5eaec9aad01283d42a197e0fbda643d970112619ae2"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/source_manifest.json",
+      "sha256": "984973545e9cde63b90a406245eeb123b2053db1ca8631cf3739c8f6d955d489"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD01-20261027-full/summary.json",
+      "sha256": "5126cb7a95f7cd92b70988152b4afd23d6df5455126c90b95f3a32c3926f817a"
+    }
+  ],
+  "executor": "scripts/campaign/long_load_cases.py",
+  "report_executor": "scripts/campaign/publish_long_load.py",
+  "limitations": [
+    "One local execution per plateau; no causal branch comparison or production capacity claim.",
+    "Client operation times include token refresh when required; generator queue delay is separate.",
+    "Refresh counts include warmup. Warmup requests are excluded from measured phase totals.",
+    "Shared PC; a small real-provider transport probe ran during LOAD-01. No physical device.",
+    "Raw latency distributions are empirical, without a claim of stable population P99."
+  ]
+}

@@ -1,9 +1,7 @@
-# Matriz de fechamento sequencial
-
-iOS/VoiceOver fora do escopo. Critérios originais mantidos.
+# Matriz sequencial
 
 | Cenário | Estado |
-|---|---|
+| --- | --- |
 | BR-01 | COMPLETED |
 | BR-02 | PARTIAL_EXECUTED |
 | BR-03 | PARTIAL_EXECUTED |
@@ -17,7 +15,7 @@ iOS/VoiceOver fora do escopo. Critérios originais mantidos.
 | LAT-06 | PENDING |
 | LAT-07 | PARTIAL_EXECUTED |
 | LAT-08 | COMPLETED |
-| LOAD-01 | PENDING |
+| LOAD-01 | COMPLETED |
 | LOAD-02 | PENDING |
 | LOAD-03 | COMPLETED |
 | LOAD-04 | PARTIAL_EXECUTED |
