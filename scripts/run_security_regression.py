@@ -184,6 +184,7 @@ def selection(scenario, output):
         "RES-04": "worker_race_cases.py",
         "RES-08": "test_analysis_cache_resilience.py",
         "IMG-07": "storage_worker_cases.py",
+        "IMG-05": "image_rejection_cases.py",
         "DATA-01": "data_snapshot_cases.py",
         "DATA-09": "report_lifecycle_cases.py",
         "DB-06": "concurrent_catalog_cases.py",
@@ -254,7 +255,12 @@ def selection(scenario, output):
     if scenario == "RSC-01":
         names.extend([
             "local_model_probe_cases.py", "current_offline_cases.py", "image_cases.py",
-            "critical_report.py", "subprocesses.py", "measurements.py", "windows_limits.py",
+            "critical_report.py", "subprocesses.py", "measurements.py", "windows_limits.py", "local_model_controls.py",
+        ])
+    if scenario == "IMG-05":
+        names.extend([
+            "image_cases.py", "pipeline_cases.py", "input_bounds_cases.py",
+            "local_model_controls.py", "measurements.py", "windows_limits.py",
         ])
     if scenario == "SEC-04":
         names.extend(["remaining_mechanism_cases.py", "social_volume_cases.py", "measurements.py"])
@@ -277,7 +283,7 @@ def selection(scenario, output):
         )
         shutil.copy2(origin, destination)
         hashes[name] = hashlib.sha256(destination.read_bytes()).hexdigest()
-    if scenario == "RSC-01":
+    if scenario in ("RSC-01", "IMG-05"):
         for name in ("chelsea.png", "README.md"):
             destination = executors / name
             shutil.copy2(ROOT / "tests/fixtures/local_models" / name, destination)
@@ -661,6 +667,7 @@ if __name__ == "__main__":
             "RES-04",
             "RES-08",
             "IMG-07",
+            "IMG-05",
             "DATA-01",
             "DATA-09",
             "DB-06",

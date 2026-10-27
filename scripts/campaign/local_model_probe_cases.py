@@ -4,7 +4,6 @@ import asyncio
 from datetime import UTC, datetime
 import hashlib
 import importlib.metadata
-import re
 import os
 from pathlib import Path
 import time
@@ -20,16 +19,14 @@ from sqlalchemy import delete, func, select
 
 pytest_plugins = ["current_offline_cases"]
 from security_cases import evidence
-from image_cases import semantic
 from app import main
-from app.config import Settings
-from app.models.analysis import GeminiCoatAnalysis
 from app.persistence_models import CatPhoto, CatVisualEmbedding, RemoteCat, User, VisionJob
 from app.services.analysis_service import AnalysisService
-from app.services import analysis_service, vision_worker
+from app.services import vision_worker
 from app.services.storage_service import photo_storage
 from app.services.vision_jobs import enqueue_recognition
 from windows_limits import cap_private_commit
+from local_model_controls import model_settings, palette_semantics, prohibit_external_models
 
 
 @pytest.mark.asyncio
@@ -49,29 +46,13 @@ async def test_RSC01_real_local_models(own_api, monkeypatch, tmp_path, role):
     photo_hash = hashlib.sha256(data).hexdigest()
     assert photo_hash == "596aa1e7cb875eb79f437e310381d26b338a81c2da23439704a73c4651e8c4bb"
     limits = cap_private_commit(2 * 1024 * 1024 * 1024)
-    settings = Settings(
-        _env_file=None, model_cache_dir=str(source),
-        sam2_checkpoint=str(source / "sam2.1_hiera_tiny.pt"),
-        vision_device="cpu", analysis_cache_dir=str(tmp_path / "analysis-cache"),
-        gemini_api_key="controlled-provider-never-sent", smtp_enabled=False,
-        vision_worker_poll_seconds=0.05,
-    )
-    network_attempts, provider_calls = [], []
-
-    def denied(*args, **kwargs):
-        network_attempts.append("external-model-or-provider-request")
-        raise AssertionError("External downloads/inference prohibited in this resource experiment")
-
-    import urllib.request
+    settings = model_settings(source, tmp_path / "analysis-cache")
+    provider_calls = []
     runtime_before = resources()
     runtime_started = time.perf_counter()
-    import torch
+    network_attempts = prohibit_external_models(monkeypatch)
     runtime_import_seconds = time.perf_counter() - runtime_started
     runtime_after = resources()
-    monkeypatch.setattr(torch.hub, "download_url_to_file", denied)
-    monkeypatch.setattr(urllib.request, "urlopen", denied)
-    monkeypatch.setattr(torch.hub, "urlopen", denied)
-    monkeypatch.setattr(analysis_service, "_get_gemini_client", denied)
     trace, executions = [], []
 
     async def sample():
@@ -87,12 +68,7 @@ async def test_RSC01_real_local_models(own_api, monkeypatch, tmp_path, role):
 
             def controlled_semantics(image_bytes, mime_type, context):
                 provider_calls.append(1)
-                payload = semantic().model_dump()
-                payload["color_assignments"] = [
-                    {"cluster_index": int(index), "name": "Marrom"}
-                    for index in re.findall(r"cluster_index=(\d+);", context)
-                ]
-                return GeminiCoatAnalysis.model_validate(payload)
+                return palette_semantics(image_bytes, mime_type, context)
 
             monkeypatch.setattr(service, "_analyze_with_gemini", controlled_semantics)
             monkeypatch.setattr(main, "AnalysisService", lambda _: service)
