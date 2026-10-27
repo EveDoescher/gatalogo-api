@@ -115,7 +115,7 @@
   },
   {
     "scenario": "LAT-03",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Foto rejeitada, 503 controlado, 401 com refresh bem/malsucedido.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [
@@ -133,7 +133,11 @@
       "attempts/flutter-resilience-03/flutter_resilience/baseline/summary.json",
       "attempts/flutter-resilience-04/flutter_resilience/baseline/summary.json"
     ],
-    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes."
+    "limitation": "Seven client/API variants; five measured repetitions each, one warmup; real refresh and persistence controls. Descriptive latency only.",
+    "closure_evidence": [
+      "LAT03-20261027-results.json"
+    ],
+    "executor": "scripts/run_security_regression.py --scenario LAT-03 --output <new private attempt>"
   },
   {
     "scenario": "LAT-04",

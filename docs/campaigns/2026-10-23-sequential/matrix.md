@@ -11,7 +11,7 @@ iOS/VoiceOver fora do escopo. Critérios originais mantidos.
 | BR-05 | PENDING |
 | LAT-01 | PARTIAL_EXECUTED |
 | LAT-02 | PENDING |
-| LAT-03 | PARTIAL_EXECUTED |
+| LAT-03 | COMPLETED |
 | LAT-04 | COMPLETED |
 | LAT-05 | PARTIAL_EXECUTED |
 | LAT-06 | PENDING |

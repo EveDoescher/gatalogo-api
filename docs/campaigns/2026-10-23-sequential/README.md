@@ -1,5 +1,15 @@
 # Fechamento sequencial e correções
 
+## Meta de 85 — continuação autorizada em 27/10/2026
+
+**53 concluídos, 17 parciais, 15 pendentes e 10 bloqueados externos.**
+
+[LAT-03 concluído: erro, refresh, tentativas e persistência](LAT03-20261027-results.json). Sete variantes, 35 amostras medidas e sete aquecimentos; sem alegar percentis confiáveis. Corrigido no Flutter o 503 HTML interpretado como falha permanente.
+
+Nesta continuação, o usuário autorizou cargas prolongadas descartáveis e IA paga. USB permanece excluído e iOS fora do escopo. A autorização não substitui a execução: cenários físicos conservam seus critérios e não serão concluídos com evidência desktop. Os lotes pagos terão orçamento e contagem limitados, sem credenciais nos relatórios.
+
+As medições anteriores e seus limites ficam preservados abaixo.
+
 <!-- no-usb-20261027:start -->
 ## Atualização sem USB — 27/10/2026
 
