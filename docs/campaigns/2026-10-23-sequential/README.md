@@ -2,11 +2,13 @@
 
 ## Meta de 85 — continuação autorizada em 27/10/2026
 
-**58 concluídos, 15 parciais, 12 pendentes e 10 bloqueados externos.**
+**58 concluídos, 16 parciais, 11 pendentes e 10 bloqueados externos.**
 
 [LOAD-01 concluído](LOAD01-20261027-results.json): cinco patamares de concorrência (1/5/10/25/50), com 30 segundos de aquecimento e três minutos medidos em cada um; respostas, consultas SQL, recursos e integridade registrados.
 
-[LOAD-02 concluído](LOAD02-20261027-results.json): patamares abertos de 1/5/10/25 req/s. A 25 req/s ocorreram 45 timeouts e 59 descartes pelo teto de segurança do gerador; 1/5/10 req/s sem essas falhas. O teste de estabilidade LOAD-06 usa 8 req/s (80% do maior patamar sem falhas), ainda em execução e sem fechamento antecipado. O host é compartilhado: compilação Flutter e inferência local real começaram após LOAD-02; LOAD-06 deve ser interpretado como estabilidade sob essa atividade concorrente, sem comparação causal de latência ou certificação de capacidade.
+[LOAD-02 concluído](LOAD02-20261027-results.json): patamares abertos de 1/5/10/25 req/s. A 25 req/s ocorreram 45 timeouts e 59 descartes pelo teto de segurança do gerador; 1/5/10 req/s sem essas falhas.
+
+[LOAD-06 parcial](LOAD06-20261027-results.json): a hora a 8 req/s terminou com 28.800 tentativas, 26.851 respostas válidas, 76 ReadTimeout, dois ReadError e 1.871 rejeições de renovação no gerador. O servidor registrou 190 renovações HTTP 200 e o cliente 185; cinco atores ficaram com credenciais desatualizadas. Dados de negócio e pool foram preservados. A execução concorrente de outras baterias comprometeu o isolamento e impede certificar estabilidade. A confirmação repetirá rajada, drenagem e hora completa sem outras baterias/arquivamentos, com keepalive servidor 5s (padrão instalado) e cliente 4s. São duas mudanças de condições; não permitem atribuir a causa a um único fator. O caso permanece parcial até a confirmação sem falhas.
 
 O LOAD-01 registrou quatro falhas de transporte nos patamares 25/50 (ReadError, RemoteProtocolError e ReadTimeout). Não houve resposta HTTP de erro nem alteração de integridade. O servidor descartável força keepalive de um segundo; uma corrida de reutilização de conexão é hipótese a confirmar, sem atribuição automática ao produto. Concluir o experimento significa executar suas variantes e registrar também as falhas encontradas.
 
@@ -18,6 +20,8 @@ O LOAD-01 registrou quatro falhas de transporte nos patamares 25/50 (ReadError, 
 - [Movimento e semântica locais](ACC-MOTION-20261027-results.json): 20 testes passaram; rótulo duplicado no Quintal corrigido sem alterar pintura. ACC-05/06 continuam parciais.
 
 Até o fechamento desses lotes foram registradas 51 gerações externas retornadas, com estimativa de US$ 0,1003581 pela tabela padrão, dentro do teto compartilhado de US$ 1/64 tentativas. O valor não representa conferência da cobrança efetiva. BR-02 recebe uma bateria TCP exploratória A/B/B/A com dados determinísticos, consultas e recursos; seu escopo completo permanece parcial enquanto faltarem as demais variantes.
+
+[Piloto BR-02 A/B/B/A](BR02-TCP-20261027-results.json): quatro blocos completos após o soak, 7.200 amostras medidas e 720 aquecimentos. Nos quatro blocos, mesmos totais finais (seis fotos, 15 gatos, 21 mudanças, seis jobs); SELECT totais da carga/fixtures/aquecimento foram 16.685 em cada A e 8.777 em cada B. Durante IA controlada, conexões retidas foram 0/1/5 em A e 0/0/0 em B. São contagens observadas nesse recorte, sem conclusão de ganho definitivo de latência. A tentativa anterior de maior volume teve dois blocos completos e ReadTimeout no terceiro; foi preservada e não foi combinada com o piloto. BR-02 continua parcial para as demais variantes.
 
 Nesta continuação, o usuário autorizou cargas prolongadas descartáveis e IA paga. Nenhum aparelho físico será utilizado nesta etapa, por USB ou Wi-Fi; iOS permanece fora do escopo. A autorização não substitui a execução: cenários físicos conservam seus critérios e não serão concluídos com evidência desktop. Os lotes pagos terão orçamento e contagem limitados, sem credenciais nos relatórios.
 

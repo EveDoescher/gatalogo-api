@@ -19,7 +19,7 @@
     "scenario": "BR-02",
     "state": "PARTIAL_EXECUTED",
     "scope": "Repetir LAT/LOAD/DB/RSC aplicáveis em blocos pareados nas duas versões.",
-    "limitation": "Common external ASGI client and separate desktop SQLite component probes; not full mobile/API bundle comparison",
+    "limitation": "Common TCP/SQL/resource pilot on pinned main/cleanup with deterministic fixtures; executed/failed/missing blocks explicit. Previous full-size protocol failed with ReadTimeout. No full LAT/LOAD/DB/RSC or mobile bundle certification. See BR02-TCP-20261027-results.json.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [
       "attempts\\pilot-02\\results\\01-A\\probe.json",
@@ -35,7 +35,10 @@
       "results\\03-B\\probe.json",
       "results\\04-A\\probe.json"
     ],
-    "runs": []
+    "runs": [],
+    "closure_evidence": [
+      "BR02-TCP-20261027-results.json"
+    ]
   },
   {
     "scenario": "BR-03",
@@ -225,7 +228,7 @@
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
     "runs": [],
-    "limitation": "Full planned disposable E2 load variants executed; shared-host exploratory measurements, no speedup/production SLA claim.",
+    "limitation": "Full planned disposable E2 load variants executed; shared-host exploratory measurements, no speedup/production SLA claim. Original mixed-load failures retained; see isolated confirmation when applicable.",
     "executor": "scripts/campaign/long_load_cases.py",
     "closure_evidence": [
       "LOAD01-20261027-results.json"
@@ -238,7 +241,7 @@
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
     "runs": [],
-    "limitation": "Full planned disposable E2 load variants executed; shared-host exploratory measurements, no speedup/production SLA claim.",
+    "limitation": "Full planned disposable E2 load variants executed; shared-host exploratory measurements, no speedup/production SLA claim. Original mixed-load failures retained; see isolated confirmation when applicable.",
     "executor": "scripts/campaign/long_load_cases.py",
     "closure_evidence": [
       "LOAD02-20261027-results.json"
@@ -300,11 +303,16 @@
   },
   {
     "scenario": "LOAD-06",
-    "state": "PENDING",
+    "state": "PARTIAL_EXECUTED",
     "scope": "Rajada de 30 s sobre carga sustentável medida; 5 min para drenar; soak de 60 min sustentável.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
-    "runs": []
+    "runs": [],
+    "limitation": "Full-duration run recorded errors and expired/rejected fixture refreshes under overlapping heavy experiments. Integrity passed, but isolated confirmatory soak required; not closed.",
+    "executor": "scripts/campaign/long_load_cases.py",
+    "closure_evidence": [
+      "LOAD06-20261027-results.json"
+    ]
   },
   {
     "scenario": "DB-01",

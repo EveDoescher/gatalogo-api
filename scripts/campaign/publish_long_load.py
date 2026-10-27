@@ -29,11 +29,16 @@ def main():
                 confirm_status = read(isolated / "summary.json")
                 if confirm_status["exit_code"] == 0 and confirm_status["evaluated_sources_unchanged"]:
                     confirm_observation = read(isolated / "observations/long-load.json")
-                    closed = not any(p["errors"] for p in confirm_observation["phases"])
+                    closed = all(not p["errors"] and p["offered"] == p["completed"]
+                        and p["responses"] and all(r["status"] == "200" and r["valid"] for r in p["responses"])
+                        for p in confirm_observation["phases"])
+                    closed = bool(closed and confirm_observation["before"] == confirm_observation["after"]
+                        and confirm_observation["pool_checkedout_after_rest"] == 0
+                        and any(p["phase"] == "soak-3600s" and p["duration_seconds"] == 3600 for p in confirm_observation["phases"]))
                     confirmation = {"summary": confirm_status, "source": read(isolated / "candidate_manifest.json"),
                         "observations": confirm_observation, "tests": junit(isolated / "junit.xml"),
                         "descriptive_metrics": summarize(isolated, confirm_observation["phases"]),
-                        "conditions": "No other campaign load/model/Flutter test or archive job during this confirmation; regular user services preserved. Shared PC, not a controlled lab.",
+                        "conditions": "No other campaign load/model/Flutter test or archive job during this confirmation; regular user services preserved. Framework default server keepalive 5s and client expiry 4s, compared with original 1s/5s. These two protocol/environment changes prevent causal attribution to only one factor. Shared PC, not a controlled lab.",
                         "closed": closed,
                         "evidence": [{"private_path": p.relative_to(ROOT).as_posix(), "sha256": sha(p)} for p in sorted(isolated.rglob("*")) if p.is_file()]}
         tests = junit(folder / "junit.xml")

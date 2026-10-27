@@ -1,0 +1,1604 @@
+{
+  "scenario": "BR-02",
+  "state": "PARTIAL_EXECUTED",
+  "date": "2026-10-27",
+  "blocks": [
+    {
+      "block": "01-A",
+      "source": {
+        "source_sha": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+        "executor_sha256": {
+          "security_cases.py": "7c78314a8403b8cded8896bda345ca3e06c5305cc078fe9e42b6d273b8e539c8",
+          "extended_cases.py": "14499f8e9beb0e7ec9e1036824dd247e5dcd876eae209960e800802d76583415",
+          "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+          "paired_tcp_cases.py": "26a5b3be8b65f638e6fe0b93bd9ac89ae5088d8ebde49e386afb3746f10deb57",
+          "current_offline_cases.py": "63e9ceaca8b32cd8b0f3f3641527ea78a0b5aef484b7f6afd574f2c299991aa3",
+          "image_cases.py": "19958fd2cd733ca13231cca626a0c55c4a2f94efd54b793578e9b3e5d1999e6e",
+          "critical_report.py": "794293f87f45a616031d5d50265cf01d7dc060b959f2d8cf9208ff35a483bc2b",
+          "subprocesses.py": "662914a55c1a282b389111628fd5ceb7bc5327ead4821ce1fd12720c13716274",
+          "measurements.py": "0f96923ba3628525d8f3eadb5e988a2789be0def3596e70b2a4d13af98646c18",
+          "long_load_child.py": "5a4696424caa09d8629b662d98fd687168fa182584b11967a6de304fb3548146",
+          "latency_pressure_cases.py": "238286c38e87560b55c8fa92016a9b1e3cfa90cb8b37637f507bcf168d3cba68",
+          "latency_probe_child.py": "4146111e9cf239aa65838574eaceb0ac91e568dda97d44b1b6c3ff8bad8a1995"
+        }
+      },
+      "junit": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "seconds": 59.644,
+        "selectors": [
+          "sequential.BR02-20261027-tcp3-01-A.executors.paired_tcp_cases::test_BR02_common_tcp_workload"
+        ]
+      },
+      "observed": {
+        "scenario": "BR-02",
+        "elapsed_seconds": 58.68150629999582,
+        "http": [
+          {
+            "route": "/analyze",
+            "status": 200,
+            "count": 6
+          },
+          {
+            "route": "/health",
+            "status": 200,
+            "count": 660
+          },
+          {
+            "route": "/social/conversations/075e911a-1d03-5e92-80ed-25950fdce9fd/messages",
+            "status": 200,
+            "count": 220
+          },
+          {
+            "route": "/social/conversations/1b6a70b2-8f54-5398-b14d-bb7d2d583a04/messages",
+            "status": 200,
+            "count": 220
+          },
+          {
+            "route": "/social/conversations/9680a5de-28a9-5a50-ba63-7c6af541fbc8/messages",
+            "status": 200,
+            "count": 220
+          },
+          {
+            "route": "/sync/pull",
+            "status": 200,
+            "count": 660
+          }
+        ],
+        "sql": [
+          {
+            "route": "/analyze",
+            "verb": "INSERT",
+            "count": 28
+          },
+          {
+            "route": "/analyze",
+            "verb": "SELECT",
+            "count": 180
+          },
+          {
+            "route": "/analyze",
+            "verb": "UPDATE",
+            "count": 22
+          },
+          {
+            "route": "/social/conversations/075e911a-1d03-5e92-80ed-25950fdce9fd/messages",
+            "verb": "SELECT",
+            "count": 1540
+          },
+          {
+            "route": "/social/conversations/1b6a70b2-8f54-5398-b14d-bb7d2d583a04/messages",
+            "verb": "SELECT",
+            "count": 1540
+          },
+          {
+            "route": "/social/conversations/9680a5de-28a9-5a50-ba63-7c6af541fbc8/messages",
+            "verb": "SELECT",
+            "count": 1540
+          },
+          {
+            "route": "/sync/pull",
+            "verb": "SELECT",
+            "count": 11880
+          },
+          {
+            "route": "fixture",
+            "verb": "INSERT",
+            "count": 51
+          },
+          {
+            "route": "fixture",
+            "verb": "SELECT",
+            "count": 5
+          }
+        ],
+        "final_counts": {
+          "CatPhoto": 6,
+          "RemoteCat": 15,
+          "SyncChange": 21,
+          "VisionJob": 6
+        },
+        "database_version": "PostgreSQL 17.11 (Debian 17.11-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+        "hardware": {
+          "platform": "Windows-10-10.0.19045-SP0",
+          "logical_cpus": 4,
+          "total_ram_bytes": 17073184768
+        },
+        "fixture_id_strategy": "UUIDv5 deterministic counter reset per block; same catalog/history data and controlled analysis, fresh disposable credentials.",
+        "scope": "Three routes x configured fixed sample count x 0/1/5 I/O-gated analyses; C5 and fixed warmups. Separate generator, actual TCP, pool/lag/CPU/RSS/SQL observations. New internal reference worker is absent on main and is not imported by this common workload. Shared host; background conditions recorded by campaign. No causal gain, population P99 or complete mobile/full BR-02 certification."
+      },
+      "phases": [
+        {
+          "controlled_inflight": 0,
+          "samples": 600,
+          "successful_rps": 44.21957838930082,
+          "connection_configuration": {
+            "request_timeout_seconds": 30,
+            "client_keepalive_seconds": 15.0,
+            "server_keepalive_seconds": 120
+          },
+          "latency_by_route": {
+            "health": {
+              "n": 200,
+              "mean_ms": 12.323147500865161,
+              "median_ms": 12.225300000864081,
+              "q25_ms": 10.415525001008064,
+              "q75_ms": 14.097825005592313,
+              "empirical_p95_ms": 18.583339980978053,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 4.461700009414926,
+              "max_ms": 23.900500003946945,
+              "sample_stddev_ms": 3.4019601726356647
+            },
+            "history": {
+              "n": 200,
+              "mean_ms": 102.8836655007035,
+              "median_ms": 92.80339999531861,
+              "q25_ms": 87.18622500600759,
+              "q75_ms": 103.93890000705142,
+              "empirical_p95_ms": 146.6422750003403,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 69.47039999067783,
+              "max_ms": 362.8445000213105,
+              "sample_stddev_ms": 37.69174748095177
+            },
+            "pull": {
+              "n": 200,
+              "mean_ms": 222.113525000168,
+              "median_ms": 206.95294998586178,
+              "q25_ms": 192.5860249903053,
+              "q75_ms": 228.85227501683403,
+              "empirical_p95_ms": 324.73641499236686,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 133.71639998513274,
+              "max_ms": 704.3220999767072,
+              "sample_stddev_ms": 62.30935035903323
+            }
+          },
+          "server_resources_before": {
+            "process_cpu_seconds": 8.34375,
+            "pid": 20940,
+            "rss_bytes": 154574848,
+            "peak_rss_bytes": 154578944,
+            "private_commit_bytes": 234901504,
+            "peak_private_commit_bytes": 234991616,
+            "handles": 237
+          },
+          "server_resources_after": {
+            "process_cpu_seconds": 19.828125,
+            "pid": 20940,
+            "rss_bytes": 155140096,
+            "peak_rss_bytes": 155185152,
+            "private_commit_bytes": 236019712,
+            "peak_private_commit_bytes": 236134400,
+            "handles": 232
+          },
+          "pool_checkedout_before_release": 0,
+          "pool_checkedout_peak_observed": 7
+        },
+        {
+          "controlled_inflight": 1,
+          "samples": 600,
+          "successful_rps": 45.02732179088945,
+          "connection_configuration": {
+            "request_timeout_seconds": 30,
+            "client_keepalive_seconds": 15.0,
+            "server_keepalive_seconds": 120
+          },
+          "latency_by_route": {
+            "health": {
+              "n": 200,
+              "mean_ms": 11.361958998895716,
+              "median_ms": 10.823100004927255,
+              "q25_ms": 9.096099995076656,
+              "q75_ms": 13.37862499349285,
+              "empirical_p95_ms": 18.297910007822782,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 4.372600000351667,
+              "max_ms": 27.401900006225333,
+              "sample_stddev_ms": 3.7172194214368393
+            },
+            "history": {
+              "n": 200,
+              "mean_ms": 100.64876050062594,
+              "median_ms": 91.27145000093151,
+              "q25_ms": 73.76762501371559,
+              "q75_ms": 112.60319999564672,
+              "empirical_p95_ms": 173.52045498992084,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 54.55830000573769,
+              "max_ms": 303.36990000796504,
+              "sample_stddev_ms": 38.67072264652988
+            },
+            "pull": {
+              "n": 200,
+              "mean_ms": 219.64570249954704,
+              "median_ms": 203.24664999498054,
+              "q25_ms": 164.93842501949985,
+              "q75_ms": 260.46835001034196,
+              "empirical_p95_ms": 334.5781950018136,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 104.08819999429397,
+              "max_ms": 607.1236999996472,
+              "sample_stddev_ms": 69.07567963060785
+            }
+          },
+          "server_resources_before": {
+            "process_cpu_seconds": 21.859375,
+            "pid": 20940,
+            "rss_bytes": 158679040,
+            "peak_rss_bytes": 158715904,
+            "private_commit_bytes": 238047232,
+            "peak_private_commit_bytes": 238145536,
+            "handles": 248
+          },
+          "server_resources_after": {
+            "process_cpu_seconds": 32.921875,
+            "pid": 20940,
+            "rss_bytes": 159064064,
+            "peak_rss_bytes": 159105024,
+            "private_commit_bytes": 239169536,
+            "peak_private_commit_bytes": 239284224,
+            "handles": 242
+          },
+          "pool_checkedout_before_release": 1,
+          "pool_checkedout_peak_observed": 7
+        },
+        {
+          "controlled_inflight": 5,
+          "samples": 600,
+          "successful_rps": 36.68165721685056,
+          "connection_configuration": {
+            "request_timeout_seconds": 30,
+            "client_keepalive_seconds": 15.0,
+            "server_keepalive_seconds": 120
+          },
+          "latency_by_route": {
+            "health": {
+              "n": 200,
+              "mean_ms": 14.973402001051,
+              "median_ms": 12.11880000482779,
+              "q25_ms": 10.232874992652796,
+              "q75_ms": 14.85650001995964,
+              "empirical_p95_ms": 34.514419986226024,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 4.37219999730587,
+              "max_ms": 110.31050002202392,
+              "sample_stddev_ms": 11.356496058518797
+            },
+            "history": {
+              "n": 200,
+              "mean_ms": 121.94015899978695,
+              "median_ms": 90.97104999818839,
+              "q25_ms": 76.04237498890143,
+              "q75_ms": 126.40600000304403,
+              "empirical_p95_ms": 286.0236950087707,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 66.41919998219237,
+              "max_ms": 737.5585999980103,
+              "sample_stddev_ms": 94.95552041022758
+            },
+            "pull": {
+              "n": 200,
+              "mean_ms": 266.07214100062265,
+              "median_ms": 201.59499999135733,
+              "q25_ms": 167.2957999908249,
+              "q75_ms": 279.2680749989813,
+              "empirical_p95_ms": 621.5541249985106,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 150.8674000215251,
+              "max_ms": 1096.7418000218458,
+              "sample_stddev_ms": 160.70722588652973
+            }
+          },
+          "server_resources_before": {
+            "process_cpu_seconds": 35.359375,
+            "pid": 20940,
+            "rss_bytes": 163069952,
+            "peak_rss_bytes": 163102720,
+            "private_commit_bytes": 242315264,
+            "peak_private_commit_bytes": 242413568,
+            "handles": 274
+          },
+          "server_resources_after": {
+            "process_cpu_seconds": 46.4375,
+            "pid": 20940,
+            "rss_bytes": 163291136,
+            "peak_rss_bytes": 163368960,
+            "private_commit_bytes": 243245056,
+            "peak_private_commit_bytes": 243462144,
+            "handles": 265
+          },
+          "pool_checkedout_before_release": 5,
+          "pool_checkedout_peak_observed": 12
+        }
+      ],
+      "evidence": [
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-01-A/summary.json",
+          "sha256": "b82cba4766bfdcf414f1e7d7c80d1db0598daf8980926d227df6c201f41e60cb"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-01-A/junit.xml",
+          "sha256": "17873cd8295771f6ed9fa5ffae1518a81084b25d857082b920176f7592ef19d9"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-01-A/candidate_manifest.json",
+          "sha256": "2ef1d324d3fc3cbaa936076ddd2c3185d2446c9548f0eb7a6690b974d8043591"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-01-A/frozen_execution_manifest.json",
+          "sha256": "e1112c9b9b3278d5b9e548a599a63200ae99035668a703cab5f89ee39fe28172"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-01-A/observations/BR02-tcp.json",
+          "sha256": "c2e509ba0d627cfb6ba10ed8485a21e1a03f37118b6b6db574b73134e33e5535"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-01-A/observations/latency/models-0/generator-result.json",
+          "sha256": "6be1e7bb1c1f26e6915895ceba20a962996560e30b267182fa95f9733e91c245"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-01-A/observations/latency/models-0/server-result.json",
+          "sha256": "b718278decc7da1a7cca2918625097ccf2ce522e1aae49ea4276a37a166e3be6"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-01-A/observations/latency/models-0/private-generator-config.json",
+          "sha256": "54960bc6edc55884b0c4ba2fee6a224ded78503c30211caafed5eb424b227089"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-01-A/observations/latency/models-1/generator-result.json",
+          "sha256": "f6dc0fa5e9b2bf1af45565c1cd4bdd36e33d06bf8b62130799f759f84820cc7a"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-01-A/observations/latency/models-1/server-result.json",
+          "sha256": "56a2b926c4b1d65217c672500a20d1051251385b616476025cfc27e56b98f645"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-01-A/observations/latency/models-1/private-generator-config.json",
+          "sha256": "80208df7a4b0f136bf7145d9261a6d828943573d5f717c281f3ef558eead192c"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-01-A/observations/latency/models-5/generator-result.json",
+          "sha256": "a9175b69cabc3f47f2630b8dd6dbc9a965c7be8cda7449106da53e334e59c5e1"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-01-A/observations/latency/models-5/server-result.json",
+          "sha256": "755af70224af1680fa67a325871a252f355861a70ea0c2c5fe7069719a399f65"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-01-A/observations/latency/models-5/private-generator-config.json",
+          "sha256": "b4eda0dd7c40422ff062d9b92ce6208f9a58c195f03429505afa94b7a581e1cf"
+        }
+      ]
+    },
+    {
+      "block": "02-B",
+      "source": {
+        "source_sha": "92f9a7e948ce2fd22580028182c9b415fc47a65b",
+        "executor_sha256": {
+          "security_cases.py": "7c78314a8403b8cded8896bda345ca3e06c5305cc078fe9e42b6d273b8e539c8",
+          "extended_cases.py": "14499f8e9beb0e7ec9e1036824dd247e5dcd876eae209960e800802d76583415",
+          "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+          "paired_tcp_cases.py": "26a5b3be8b65f638e6fe0b93bd9ac89ae5088d8ebde49e386afb3746f10deb57",
+          "current_offline_cases.py": "63e9ceaca8b32cd8b0f3f3641527ea78a0b5aef484b7f6afd574f2c299991aa3",
+          "image_cases.py": "19958fd2cd733ca13231cca626a0c55c4a2f94efd54b793578e9b3e5d1999e6e",
+          "critical_report.py": "794293f87f45a616031d5d50265cf01d7dc060b959f2d8cf9208ff35a483bc2b",
+          "subprocesses.py": "662914a55c1a282b389111628fd5ceb7bc5327ead4821ce1fd12720c13716274",
+          "measurements.py": "0f96923ba3628525d8f3eadb5e988a2789be0def3596e70b2a4d13af98646c18",
+          "long_load_child.py": "5a4696424caa09d8629b662d98fd687168fa182584b11967a6de304fb3548146",
+          "latency_pressure_cases.py": "238286c38e87560b55c8fa92016a9b1e3cfa90cb8b37637f507bcf168d3cba68",
+          "latency_probe_child.py": "4146111e9cf239aa65838574eaceb0ac91e568dda97d44b1b6c3ff8bad8a1995"
+        }
+      },
+      "junit": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "seconds": 66.329,
+        "selectors": [
+          "sequential.BR02-20261027-tcp3-02-B.executors.paired_tcp_cases::test_BR02_common_tcp_workload"
+        ]
+      },
+      "observed": {
+        "scenario": "BR-02",
+        "elapsed_seconds": 65.03640449998784,
+        "http": [
+          {
+            "route": "/analyze",
+            "status": 200,
+            "count": 6
+          },
+          {
+            "route": "/health",
+            "status": 200,
+            "count": 660
+          },
+          {
+            "route": "/social/conversations/075e911a-1d03-5e92-80ed-25950fdce9fd/messages",
+            "status": 200,
+            "count": 220
+          },
+          {
+            "route": "/social/conversations/1b6a70b2-8f54-5398-b14d-bb7d2d583a04/messages",
+            "status": 200,
+            "count": 220
+          },
+          {
+            "route": "/social/conversations/9680a5de-28a9-5a50-ba63-7c6af541fbc8/messages",
+            "status": 200,
+            "count": 220
+          },
+          {
+            "route": "/sync/pull",
+            "status": 200,
+            "count": 660
+          }
+        ],
+        "sql": [
+          {
+            "route": "/analyze",
+            "verb": "INSERT",
+            "count": 28
+          },
+          {
+            "route": "/analyze",
+            "verb": "SELECT",
+            "count": 192
+          },
+          {
+            "route": "/analyze",
+            "verb": "UPDATE",
+            "count": 22
+          },
+          {
+            "route": "/social/conversations/075e911a-1d03-5e92-80ed-25950fdce9fd/messages",
+            "verb": "SELECT",
+            "count": 1540
+          },
+          {
+            "route": "/social/conversations/1b6a70b2-8f54-5398-b14d-bb7d2d583a04/messages",
+            "verb": "SELECT",
+            "count": 1540
+          },
+          {
+            "route": "/social/conversations/9680a5de-28a9-5a50-ba63-7c6af541fbc8/messages",
+            "verb": "SELECT",
+            "count": 1540
+          },
+          {
+            "route": "/sync/pull",
+            "verb": "SELECT",
+            "count": 3960
+          },
+          {
+            "route": "fixture",
+            "verb": "INSERT",
+            "count": 51
+          },
+          {
+            "route": "fixture",
+            "verb": "SELECT",
+            "count": 5
+          }
+        ],
+        "final_counts": {
+          "CatPhoto": 6,
+          "RemoteCat": 15,
+          "SyncChange": 21,
+          "VisionJob": 6
+        },
+        "database_version": "PostgreSQL 17.11 (Debian 17.11-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+        "hardware": {
+          "platform": "Windows-10-10.0.19045-SP0",
+          "logical_cpus": 4,
+          "total_ram_bytes": 17073184768
+        },
+        "fixture_id_strategy": "UUIDv5 deterministic counter reset per block; same catalog/history data and controlled analysis, fresh disposable credentials.",
+        "scope": "Three routes x configured fixed sample count x 0/1/5 I/O-gated analyses; C5 and fixed warmups. Separate generator, actual TCP, pool/lag/CPU/RSS/SQL observations. New internal reference worker is absent on main and is not imported by this common workload. Shared host; background conditions recorded by campaign. No causal gain, population P99 or complete mobile/full BR-02 certification."
+      },
+      "phases": [
+        {
+          "controlled_inflight": 0,
+          "samples": 600,
+          "successful_rps": 32.44434055769189,
+          "connection_configuration": {
+            "request_timeout_seconds": 30,
+            "client_keepalive_seconds": 15.0,
+            "server_keepalive_seconds": 120
+          },
+          "latency_by_route": {
+            "health": {
+              "n": 200,
+              "mean_ms": 12.260515500820475,
+              "median_ms": 10.370100004365668,
+              "q25_ms": 7.082149997586384,
+              "q75_ms": 14.822924997133669,
+              "empirical_p95_ms": 24.1426349923131,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 4.058899998199195,
+              "max_ms": 87.37000002292916,
+              "sample_stddev_ms": 8.680732202104625
+            },
+            "history": {
+              "n": 200,
+              "mean_ms": 238.61357799978578,
+              "median_ms": 156.9798999989871,
+              "q25_ms": 102.8215749975061,
+              "q75_ms": 300.0471249833936,
+              "empirical_p95_ms": 730.6712700112254,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 73.83339997613803,
+              "max_ms": 1256.5200999961235,
+              "sample_stddev_ms": 210.224176349277
+            },
+            "pull": {
+              "n": 200,
+              "mean_ms": 209.66587549817632,
+              "median_ms": 133.10345000354573,
+              "q25_ms": 89.30897500977153,
+              "q75_ms": 257.2195999819087,
+              "empirical_p95_ms": 600.822485015667,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 62.97820000327192,
+              "max_ms": 1271.1453000083566,
+              "sample_stddev_ms": 197.84392671877936
+            }
+          },
+          "server_resources_before": {
+            "process_cpu_seconds": 11.875,
+            "pid": 12756,
+            "rss_bytes": 155426816,
+            "peak_rss_bytes": 155430912,
+            "private_commit_bytes": 236068864,
+            "peak_private_commit_bytes": 236158976,
+            "handles": 236
+          },
+          "server_resources_after": {
+            "process_cpu_seconds": 19.78125,
+            "pid": 12756,
+            "rss_bytes": 156499968,
+            "peak_rss_bytes": 156540928,
+            "private_commit_bytes": 236351488,
+            "peak_private_commit_bytes": 236482560,
+            "handles": 231
+          },
+          "pool_checkedout_before_release": 0,
+          "pool_checkedout_peak_observed": 8
+        },
+        {
+          "controlled_inflight": 1,
+          "samples": 600,
+          "successful_rps": 50.34669785027154,
+          "connection_configuration": {
+            "request_timeout_seconds": 30,
+            "client_keepalive_seconds": 15.0,
+            "server_keepalive_seconds": 120
+          },
+          "latency_by_route": {
+            "health": {
+              "n": 200,
+              "mean_ms": 16.30524050196982,
+              "median_ms": 14.590449995012023,
+              "q25_ms": 11.227125018194783,
+              "q75_ms": 17.9098249936942,
+              "empirical_p95_ms": 30.4117350024171,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 4.516899993177503,
+              "max_ms": 134.73930000327528,
+              "sample_stddev_ms": 10.90843652388429
+            },
+            "history": {
+              "n": 200,
+              "mean_ms": 149.07824149966473,
+              "median_ms": 132.47020001290366,
+              "q25_ms": 121.0593499999959,
+              "q75_ms": 157.62787499988917,
+              "empirical_p95_ms": 242.33443501289003,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 96.61709997453727,
+              "max_ms": 612.3831999721006,
+              "sample_stddev_ms": 55.79324547906285
+            },
+            "pull": {
+              "n": 200,
+              "mean_ms": 130.8131754992064,
+              "median_ms": 115.03445000562351,
+              "q25_ms": 103.38282500015339,
+              "q75_ms": 138.71735000429908,
+              "empirical_p95_ms": 210.32517499261303,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 83.40650002355687,
+              "max_ms": 423.51170000620186,
+              "sample_stddev_ms": 49.329271286270604
+            }
+          },
+          "server_resources_before": {
+            "process_cpu_seconds": 21.515625,
+            "pid": 12756,
+            "rss_bytes": 159715328,
+            "peak_rss_bytes": 159739904,
+            "private_commit_bytes": 239255552,
+            "peak_private_commit_bytes": 239337472,
+            "handles": 245
+          },
+          "server_resources_after": {
+            "process_cpu_seconds": 29.515625,
+            "pid": 12756,
+            "rss_bytes": 159989760,
+            "peak_rss_bytes": 160038912,
+            "private_commit_bytes": 239239168,
+            "peak_private_commit_bytes": 239353856,
+            "handles": 238
+          },
+          "pool_checkedout_before_release": 0,
+          "pool_checkedout_peak_observed": 7
+        },
+        {
+          "controlled_inflight": 5,
+          "samples": 600,
+          "successful_rps": 47.08573367242229,
+          "connection_configuration": {
+            "request_timeout_seconds": 30,
+            "client_keepalive_seconds": 15.0,
+            "server_keepalive_seconds": 120
+          },
+          "latency_by_route": {
+            "health": {
+              "n": 200,
+              "mean_ms": 14.487743499630596,
+              "median_ms": 13.927250009146519,
+              "q25_ms": 10.142025021195877,
+              "q75_ms": 16.870274994289503,
+              "empirical_p95_ms": 26.525519999268,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 4.3154000013601035,
+              "max_ms": 45.37899998831563,
+              "sample_stddev_ms": 6.9475275788521165
+            },
+            "history": {
+              "n": 200,
+              "mean_ms": 162.5614714997937,
+              "median_ms": 136.802599998191,
+              "q25_ms": 114.69559999386547,
+              "q75_ms": 175.02135000540875,
+              "empirical_p95_ms": 282.59365499543446,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 80.4890000144951,
+              "max_ms": 978.6906999943312,
+              "sample_stddev_ms": 101.14699075235434
+            },
+            "pull": {
+              "n": 200,
+              "mean_ms": 139.71872899885057,
+              "median_ms": 117.08984998404048,
+              "q25_ms": 102.21392500534421,
+              "q75_ms": 152.31219999986934,
+              "empirical_p95_ms": 235.22622998134463,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 73.09159997384995,
+              "max_ms": 952.9991000017617,
+              "sample_stddev_ms": 85.97504460618306
+            }
+          },
+          "server_resources_before": {
+            "process_cpu_seconds": 31.640625,
+            "pid": 12756,
+            "rss_bytes": 163999744,
+            "peak_rss_bytes": 164032512,
+            "private_commit_bytes": 243589120,
+            "peak_private_commit_bytes": 243720192,
+            "handles": 267
+          },
+          "server_resources_after": {
+            "process_cpu_seconds": 39.765625,
+            "pid": 12756,
+            "rss_bytes": 164229120,
+            "peak_rss_bytes": 164274176,
+            "private_commit_bytes": 243589120,
+            "peak_private_commit_bytes": 243720192,
+            "handles": 260
+          },
+          "pool_checkedout_before_release": 0,
+          "pool_checkedout_peak_observed": 7
+        }
+      ],
+      "evidence": [
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-02-B/summary.json",
+          "sha256": "b82cba4766bfdcf414f1e7d7c80d1db0598daf8980926d227df6c201f41e60cb"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-02-B/junit.xml",
+          "sha256": "4e9723658101651ad6f850e79e912dea9403848119dcbf56b738243b514a6621"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-02-B/candidate_manifest.json",
+          "sha256": "183120ef665edef6958b8dc88604f5f890f4cc65eafc042bdcfabe18963c0e05"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-02-B/frozen_execution_manifest.json",
+          "sha256": "77608fb5b7916e56ef8648c34bbb6552b7eda49f5c302924c3d8ecdd7cf0007c"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-02-B/observations/BR02-tcp.json",
+          "sha256": "828da5ee49ffbfbd6f9d15e72187ba352e8453b4e92e3b2825569c82becd5082"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-02-B/observations/latency/models-0/generator-result.json",
+          "sha256": "d5c09ca8bb040dfb18ad42b9f5a2f0da1835535c1737ff7477ee07c9432ae935"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-02-B/observations/latency/models-0/server-result.json",
+          "sha256": "8b8488f226ab0e30ba5fea74649339bdf549ca20cf3e7ee42e26fcd8554e9880"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-02-B/observations/latency/models-0/private-generator-config.json",
+          "sha256": "00488e0a1268a993e7871f89d0e980f9c6a856d6790945e1df835929a94e7388"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-02-B/observations/latency/models-1/generator-result.json",
+          "sha256": "bf77bb45e9371275af52588dce4d85ea68adadc014908d992a93c328c4022eda"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-02-B/observations/latency/models-1/server-result.json",
+          "sha256": "1bc2aff5dece6c31fccc5d2f47b7456920a73ee8e765a47756958e492befd401"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-02-B/observations/latency/models-1/private-generator-config.json",
+          "sha256": "8a679133eb93fccefbe4f2731b52e26eacfe5e182c45b941d18701717b6f8059"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-02-B/observations/latency/models-5/generator-result.json",
+          "sha256": "9b5d455d87dac899b003feb88234cba0861a8c86c79d6a6f501c8cb5d3bf2822"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-02-B/observations/latency/models-5/server-result.json",
+          "sha256": "de5d4a0c5122350837d08ca268b0aaf9d38fad40ff6f74116a5c2a295199f6cd"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-02-B/observations/latency/models-5/private-generator-config.json",
+          "sha256": "08afbedad7f756f6ea1cce6d9e14aed90df59606fe6bf7260fcd18ef3dae0794"
+        }
+      ]
+    },
+    {
+      "block": "03-B",
+      "source": {
+        "source_sha": "92f9a7e948ce2fd22580028182c9b415fc47a65b",
+        "executor_sha256": {
+          "security_cases.py": "7c78314a8403b8cded8896bda345ca3e06c5305cc078fe9e42b6d273b8e539c8",
+          "extended_cases.py": "14499f8e9beb0e7ec9e1036824dd247e5dcd876eae209960e800802d76583415",
+          "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+          "paired_tcp_cases.py": "26a5b3be8b65f638e6fe0b93bd9ac89ae5088d8ebde49e386afb3746f10deb57",
+          "current_offline_cases.py": "63e9ceaca8b32cd8b0f3f3641527ea78a0b5aef484b7f6afd574f2c299991aa3",
+          "image_cases.py": "19958fd2cd733ca13231cca626a0c55c4a2f94efd54b793578e9b3e5d1999e6e",
+          "critical_report.py": "794293f87f45a616031d5d50265cf01d7dc060b959f2d8cf9208ff35a483bc2b",
+          "subprocesses.py": "662914a55c1a282b389111628fd5ceb7bc5327ead4821ce1fd12720c13716274",
+          "measurements.py": "0f96923ba3628525d8f3eadb5e988a2789be0def3596e70b2a4d13af98646c18",
+          "long_load_child.py": "5a4696424caa09d8629b662d98fd687168fa182584b11967a6de304fb3548146",
+          "latency_pressure_cases.py": "238286c38e87560b55c8fa92016a9b1e3cfa90cb8b37637f507bcf168d3cba68",
+          "latency_probe_child.py": "4146111e9cf239aa65838574eaceb0ac91e568dda97d44b1b6c3ff8bad8a1995"
+        }
+      },
+      "junit": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "seconds": 68.737,
+        "selectors": [
+          "sequential.BR02-20261027-tcp3-03-B.executors.paired_tcp_cases::test_BR02_common_tcp_workload"
+        ]
+      },
+      "observed": {
+        "scenario": "BR-02",
+        "elapsed_seconds": 66.5173167999892,
+        "http": [
+          {
+            "route": "/analyze",
+            "status": 200,
+            "count": 6
+          },
+          {
+            "route": "/health",
+            "status": 200,
+            "count": 660
+          },
+          {
+            "route": "/social/conversations/075e911a-1d03-5e92-80ed-25950fdce9fd/messages",
+            "status": 200,
+            "count": 220
+          },
+          {
+            "route": "/social/conversations/1b6a70b2-8f54-5398-b14d-bb7d2d583a04/messages",
+            "status": 200,
+            "count": 220
+          },
+          {
+            "route": "/social/conversations/9680a5de-28a9-5a50-ba63-7c6af541fbc8/messages",
+            "status": 200,
+            "count": 220
+          },
+          {
+            "route": "/sync/pull",
+            "status": 200,
+            "count": 660
+          }
+        ],
+        "sql": [
+          {
+            "route": "/analyze",
+            "verb": "INSERT",
+            "count": 28
+          },
+          {
+            "route": "/analyze",
+            "verb": "SELECT",
+            "count": 192
+          },
+          {
+            "route": "/analyze",
+            "verb": "UPDATE",
+            "count": 22
+          },
+          {
+            "route": "/social/conversations/075e911a-1d03-5e92-80ed-25950fdce9fd/messages",
+            "verb": "SELECT",
+            "count": 1540
+          },
+          {
+            "route": "/social/conversations/1b6a70b2-8f54-5398-b14d-bb7d2d583a04/messages",
+            "verb": "SELECT",
+            "count": 1540
+          },
+          {
+            "route": "/social/conversations/9680a5de-28a9-5a50-ba63-7c6af541fbc8/messages",
+            "verb": "SELECT",
+            "count": 1540
+          },
+          {
+            "route": "/sync/pull",
+            "verb": "SELECT",
+            "count": 3960
+          },
+          {
+            "route": "fixture",
+            "verb": "INSERT",
+            "count": 51
+          },
+          {
+            "route": "fixture",
+            "verb": "SELECT",
+            "count": 5
+          }
+        ],
+        "final_counts": {
+          "CatPhoto": 6,
+          "RemoteCat": 15,
+          "SyncChange": 21,
+          "VisionJob": 6
+        },
+        "database_version": "PostgreSQL 17.11 (Debian 17.11-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+        "hardware": {
+          "platform": "Windows-10-10.0.19045-SP0",
+          "logical_cpus": 4,
+          "total_ram_bytes": 17073184768
+        },
+        "fixture_id_strategy": "UUIDv5 deterministic counter reset per block; same catalog/history data and controlled analysis, fresh disposable credentials.",
+        "scope": "Three routes x configured fixed sample count x 0/1/5 I/O-gated analyses; C5 and fixed warmups. Separate generator, actual TCP, pool/lag/CPU/RSS/SQL observations. New internal reference worker is absent on main and is not imported by this common workload. Shared host; background conditions recorded by campaign. No causal gain, population P99 or complete mobile/full BR-02 certification."
+      },
+      "phases": [
+        {
+          "controlled_inflight": 0,
+          "samples": 600,
+          "successful_rps": 39.93397130825992,
+          "connection_configuration": {
+            "request_timeout_seconds": 30,
+            "client_keepalive_seconds": 15.0,
+            "server_keepalive_seconds": 120
+          },
+          "latency_by_route": {
+            "health": {
+              "n": 200,
+              "mean_ms": 15.182805000222288,
+              "median_ms": 13.56399999349378,
+              "q25_ms": 9.04294999781996,
+              "q75_ms": 16.91595000011148,
+              "empirical_p95_ms": 35.48482002515805,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 4.079699981957674,
+              "max_ms": 85.57329999166541,
+              "sample_stddev_ms": 10.873356064438516
+            },
+            "history": {
+              "n": 200,
+              "mean_ms": 192.58915549959056,
+              "median_ms": 166.9347500137519,
+              "q25_ms": 133.7209499833989,
+              "q75_ms": 216.8036750081228,
+              "empirical_p95_ms": 357.18618001264974,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 83.5289999959059,
+              "max_ms": 970.6906999927014,
+              "sample_stddev_ms": 101.4306057584297
+            },
+            "pull": {
+              "n": 200,
+              "mean_ms": 166.0639684984926,
+              "median_ms": 144.31299999705516,
+              "q25_ms": 114.37084999488434,
+              "q75_ms": 180.0247749997652,
+              "empirical_p95_ms": 314.43510501121625,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 75.58510001399554,
+              "max_ms": 696.3119999854825,
+              "sample_stddev_ms": 85.32293553156002
+            }
+          },
+          "server_resources_before": {
+            "process_cpu_seconds": 12.734375,
+            "pid": 19288,
+            "rss_bytes": 155828224,
+            "peak_rss_bytes": 155832320,
+            "private_commit_bytes": 236294144,
+            "peak_private_commit_bytes": 236367872,
+            "handles": 237
+          },
+          "server_resources_after": {
+            "process_cpu_seconds": 21.1875,
+            "pid": 19288,
+            "rss_bytes": 156643328,
+            "peak_rss_bytes": 156684288,
+            "private_commit_bytes": 236564480,
+            "peak_private_commit_bytes": 236695552,
+            "handles": 232
+          },
+          "pool_checkedout_before_release": 0,
+          "pool_checkedout_peak_observed": 8
+        },
+        {
+          "controlled_inflight": 1,
+          "samples": 600,
+          "successful_rps": 39.79225946914675,
+          "connection_configuration": {
+            "request_timeout_seconds": 30,
+            "client_keepalive_seconds": 15.0,
+            "server_keepalive_seconds": 120
+          },
+          "latency_by_route": {
+            "health": {
+              "n": 200,
+              "mean_ms": 16.90634800004773,
+              "median_ms": 14.380149994394742,
+              "q25_ms": 11.543374996108469,
+              "q75_ms": 18.320850002055522,
+              "empirical_p95_ms": 30.224615000770417,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 4.428699990967289,
+              "max_ms": 89.92329999455251,
+              "sample_stddev_ms": 10.761918464671664
+            },
+            "history": {
+              "n": 200,
+              "mean_ms": 189.5556909996958,
+              "median_ms": 160.68504998111166,
+              "q25_ms": 133.9434000183246,
+              "q75_ms": 205.7935000048019,
+              "empirical_p95_ms": 346.3386249844912,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 92.0380000025034,
+              "max_ms": 1081.3638000108767,
+              "sample_stddev_ms": 118.63834664762865
+            },
+            "pull": {
+              "n": 200,
+              "mean_ms": 168.8738904996717,
+              "median_ms": 142.55709999997634,
+              "q25_ms": 116.97822499991162,
+              "q75_ms": 187.03937501413748,
+              "empirical_p95_ms": 292.50218000088347,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 69.60000001708977,
+              "max_ms": 834.0087000105996,
+              "sample_stddev_ms": 107.02622663707835
+            }
+          },
+          "server_resources_before": {
+            "process_cpu_seconds": 23.046875,
+            "pid": 19288,
+            "rss_bytes": 159600640,
+            "peak_rss_bytes": 159637504,
+            "private_commit_bytes": 239177728,
+            "peak_private_commit_bytes": 239259648,
+            "handles": 248
+          },
+          "server_resources_after": {
+            "process_cpu_seconds": 31.625,
+            "pid": 19288,
+            "rss_bytes": 160055296,
+            "peak_rss_bytes": 160104448,
+            "private_commit_bytes": 239308800,
+            "peak_private_commit_bytes": 239501312,
+            "handles": 242
+          },
+          "pool_checkedout_before_release": 0,
+          "pool_checkedout_peak_observed": 8
+        },
+        {
+          "controlled_inflight": 5,
+          "samples": 600,
+          "successful_rps": 36.133701198527575,
+          "connection_configuration": {
+            "request_timeout_seconds": 30,
+            "client_keepalive_seconds": 15.0,
+            "server_keepalive_seconds": 120
+          },
+          "latency_by_route": {
+            "health": {
+              "n": 200,
+              "mean_ms": 13.243975000077626,
+              "median_ms": 11.416199995437637,
+              "q25_ms": 7.975149994308595,
+              "q75_ms": 15.132900007301942,
+              "empirical_p95_ms": 23.640709981555094,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 4.3997000029776245,
+              "max_ms": 130.67600000067614,
+              "sample_stddev_ms": 11.452827127999095
+            },
+            "history": {
+              "n": 200,
+              "mean_ms": 215.67321300011827,
+              "median_ms": 177.1075500000734,
+              "q25_ms": 136.84557499800576,
+              "q75_ms": 241.53139999543782,
+              "empirical_p95_ms": 451.5015449971542,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 76.75569999264553,
+              "max_ms": 905.6626999808941,
+              "sample_stddev_ms": 127.08273565715248
+            },
+            "pull": {
+              "n": 200,
+              "mean_ms": 184.56533099888475,
+              "median_ms": 153.87125001871027,
+              "q25_ms": 116.51525000343099,
+              "q75_ms": 209.78964998357696,
+              "empirical_p95_ms": 379.141679992608,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 66.03330001235008,
+              "max_ms": 873.3394000155386,
+              "sample_stddev_ms": 110.03545596684671
+            }
+          },
+          "server_resources_before": {
+            "process_cpu_seconds": 33.515625,
+            "pid": 19288,
+            "rss_bytes": 163934208,
+            "peak_rss_bytes": 163966976,
+            "private_commit_bytes": 243507200,
+            "peak_private_commit_bytes": 243621888,
+            "handles": 269
+          },
+          "server_resources_after": {
+            "process_cpu_seconds": 42.421875,
+            "pid": 19288,
+            "rss_bytes": 164376576,
+            "peak_rss_bytes": 164417536,
+            "private_commit_bytes": 243507200,
+            "peak_private_commit_bytes": 243654656,
+            "handles": 263
+          },
+          "pool_checkedout_before_release": 0,
+          "pool_checkedout_peak_observed": 8
+        }
+      ],
+      "evidence": [
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-03-B/summary.json",
+          "sha256": "288bd941fe94273f9959d5bb37747ac3241694371b7238d2a754733b987cbb07"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-03-B/junit.xml",
+          "sha256": "8b01378869bcb376ad152cdaa8dd9b463e91c3b495b774ddb3604aff795da631"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-03-B/candidate_manifest.json",
+          "sha256": "183120ef665edef6958b8dc88604f5f890f4cc65eafc042bdcfabe18963c0e05"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-03-B/frozen_execution_manifest.json",
+          "sha256": "d5ec3f92c4cce5858d84da0dec6f91e525d8a19b92534d541866eb7e3214119b"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-03-B/observations/BR02-tcp.json",
+          "sha256": "24956369d009a94b039df9c294484749568701803592b7e4aaa15efcb1cef2f6"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-03-B/observations/latency/models-0/generator-result.json",
+          "sha256": "ff96405f86198fd157767ce383e650a7dfd76cb2e46c2bb8d22cbcaa6f4d9872"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-03-B/observations/latency/models-0/server-result.json",
+          "sha256": "6bc8951b54336d305058b6a68e93dde5a42e8019f051d2ed999708b7ca24677d"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-03-B/observations/latency/models-0/private-generator-config.json",
+          "sha256": "be0b6821e7eaf299298d976ffa1c5401ac9e1f21e3b7319235ad2f20f437f7a7"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-03-B/observations/latency/models-1/generator-result.json",
+          "sha256": "b578d0292d447665b369f8366f31db9ce866df630d62a90a8f6dd33f0a58ff14"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-03-B/observations/latency/models-1/server-result.json",
+          "sha256": "7f3bd952ba06509c204bc2410d4f566a4593dddf30fe969f5e427d6e20a8b8e3"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-03-B/observations/latency/models-1/private-generator-config.json",
+          "sha256": "eeb90465dd435ecbb92ee4ee0ec0b955c5423e3a438e0eb81f05a3563405b5a5"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-03-B/observations/latency/models-5/generator-result.json",
+          "sha256": "92e203aa985350d8b2964e424bbf56a768b8b06b8a5e18faa11f4697ebb5c17a"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-03-B/observations/latency/models-5/server-result.json",
+          "sha256": "c26377e0b1774026fc49bdd09e3b3bd42188900c81571ab1bb2c382b06469f8b"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-03-B/observations/latency/models-5/private-generator-config.json",
+          "sha256": "3a11483d23dfb98af5ef7a20c4c50d416ac07ce2f199424c27548ac88a857f12"
+        }
+      ]
+    },
+    {
+      "block": "04-A",
+      "source": {
+        "source_sha": "eced9c3873bc45c56343ce5d46dae6c1843f2a51",
+        "executor_sha256": {
+          "security_cases.py": "7c78314a8403b8cded8896bda345ca3e06c5305cc078fe9e42b6d273b8e539c8",
+          "extended_cases.py": "14499f8e9beb0e7ec9e1036824dd247e5dcd876eae209960e800802d76583415",
+          "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+          "paired_tcp_cases.py": "26a5b3be8b65f638e6fe0b93bd9ac89ae5088d8ebde49e386afb3746f10deb57",
+          "current_offline_cases.py": "63e9ceaca8b32cd8b0f3f3641527ea78a0b5aef484b7f6afd574f2c299991aa3",
+          "image_cases.py": "19958fd2cd733ca13231cca626a0c55c4a2f94efd54b793578e9b3e5d1999e6e",
+          "critical_report.py": "794293f87f45a616031d5d50265cf01d7dc060b959f2d8cf9208ff35a483bc2b",
+          "subprocesses.py": "662914a55c1a282b389111628fd5ceb7bc5327ead4821ce1fd12720c13716274",
+          "measurements.py": "0f96923ba3628525d8f3eadb5e988a2789be0def3596e70b2a4d13af98646c18",
+          "long_load_child.py": "5a4696424caa09d8629b662d98fd687168fa182584b11967a6de304fb3548146",
+          "latency_pressure_cases.py": "238286c38e87560b55c8fa92016a9b1e3cfa90cb8b37637f507bcf168d3cba68",
+          "latency_probe_child.py": "4146111e9cf239aa65838574eaceb0ac91e568dda97d44b1b6c3ff8bad8a1995"
+        }
+      },
+      "junit": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "seconds": 80.744,
+        "selectors": [
+          "sequential.BR02-20261027-tcp3-04-A.executors.paired_tcp_cases::test_BR02_common_tcp_workload"
+        ]
+      },
+      "observed": {
+        "scenario": "BR-02",
+        "elapsed_seconds": 77.65923640000983,
+        "http": [
+          {
+            "route": "/analyze",
+            "status": 200,
+            "count": 6
+          },
+          {
+            "route": "/health",
+            "status": 200,
+            "count": 660
+          },
+          {
+            "route": "/social/conversations/075e911a-1d03-5e92-80ed-25950fdce9fd/messages",
+            "status": 200,
+            "count": 220
+          },
+          {
+            "route": "/social/conversations/1b6a70b2-8f54-5398-b14d-bb7d2d583a04/messages",
+            "status": 200,
+            "count": 220
+          },
+          {
+            "route": "/social/conversations/9680a5de-28a9-5a50-ba63-7c6af541fbc8/messages",
+            "status": 200,
+            "count": 220
+          },
+          {
+            "route": "/sync/pull",
+            "status": 200,
+            "count": 660
+          }
+        ],
+        "sql": [
+          {
+            "route": "/analyze",
+            "verb": "INSERT",
+            "count": 28
+          },
+          {
+            "route": "/analyze",
+            "verb": "SELECT",
+            "count": 180
+          },
+          {
+            "route": "/analyze",
+            "verb": "UPDATE",
+            "count": 22
+          },
+          {
+            "route": "/social/conversations/075e911a-1d03-5e92-80ed-25950fdce9fd/messages",
+            "verb": "SELECT",
+            "count": 1540
+          },
+          {
+            "route": "/social/conversations/1b6a70b2-8f54-5398-b14d-bb7d2d583a04/messages",
+            "verb": "SELECT",
+            "count": 1540
+          },
+          {
+            "route": "/social/conversations/9680a5de-28a9-5a50-ba63-7c6af541fbc8/messages",
+            "verb": "SELECT",
+            "count": 1540
+          },
+          {
+            "route": "/sync/pull",
+            "verb": "SELECT",
+            "count": 11880
+          },
+          {
+            "route": "fixture",
+            "verb": "INSERT",
+            "count": 51
+          },
+          {
+            "route": "fixture",
+            "verb": "SELECT",
+            "count": 5
+          }
+        ],
+        "final_counts": {
+          "CatPhoto": 6,
+          "RemoteCat": 15,
+          "SyncChange": 21,
+          "VisionJob": 6
+        },
+        "database_version": "PostgreSQL 17.11 (Debian 17.11-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+        "hardware": {
+          "platform": "Windows-10-10.0.19045-SP0",
+          "logical_cpus": 4,
+          "total_ram_bytes": 17073184768
+        },
+        "fixture_id_strategy": "UUIDv5 deterministic counter reset per block; same catalog/history data and controlled analysis, fresh disposable credentials.",
+        "scope": "Three routes x configured fixed sample count x 0/1/5 I/O-gated analyses; C5 and fixed warmups. Separate generator, actual TCP, pool/lag/CPU/RSS/SQL observations. New internal reference worker is absent on main and is not imported by this common workload. Shared host; background conditions recorded by campaign. No causal gain, population P99 or complete mobile/full BR-02 certification."
+      },
+      "phases": [
+        {
+          "controlled_inflight": 0,
+          "samples": 600,
+          "successful_rps": 23.624416847505405,
+          "connection_configuration": {
+            "request_timeout_seconds": 30,
+            "client_keepalive_seconds": 15.0,
+            "server_keepalive_seconds": 120
+          },
+          "latency_by_route": {
+            "health": {
+              "n": 200,
+              "mean_ms": 18.5691300003964,
+              "median_ms": 12.637899999390356,
+              "q25_ms": 10.177425006986596,
+              "q75_ms": 17.55532500828849,
+              "empirical_p95_ms": 55.93694499548291,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 4.18399999034591,
+              "max_ms": 231.61340001388453,
+              "sample_stddev_ms": 23.334312515262813
+            },
+            "history": {
+              "n": 200,
+              "mean_ms": 190.34979500051122,
+              "median_ms": 137.41455000126734,
+              "q25_ms": 99.78047500771936,
+              "q75_ms": 211.9715999942855,
+              "empirical_p95_ms": 506.67706000531274,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 66.21329998597503,
+              "max_ms": 1154.0577000123449,
+              "sample_stddev_ms": 158.01182663344693
+            },
+            "pull": {
+              "n": 200,
+              "mean_ms": 419.62643100036075,
+              "median_ms": 308.28420001489576,
+              "q25_ms": 243.55227498017484,
+              "q75_ms": 504.91227499151137,
+              "empirical_p95_ms": 969.4164550121053,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 148.47019998705946,
+              "max_ms": 1654.7824000008404,
+              "sample_stddev_ms": 280.6814359915411
+            }
+          },
+          "server_resources_before": {
+            "process_cpu_seconds": 11.84375,
+            "pid": 14560,
+            "rss_bytes": 154918912,
+            "peak_rss_bytes": 154923008,
+            "private_commit_bytes": 235106304,
+            "peak_private_commit_bytes": 235229184,
+            "handles": 237
+          },
+          "server_resources_after": {
+            "process_cpu_seconds": 23.890625,
+            "pid": 14560,
+            "rss_bytes": 155328512,
+            "peak_rss_bytes": 155377664,
+            "private_commit_bytes": 236208128,
+            "peak_private_commit_bytes": 236322816,
+            "handles": 232
+          },
+          "pool_checkedout_before_release": 0,
+          "pool_checkedout_peak_observed": 7
+        },
+        {
+          "controlled_inflight": 1,
+          "samples": 600,
+          "successful_rps": 43.09330587001133,
+          "connection_configuration": {
+            "request_timeout_seconds": 30,
+            "client_keepalive_seconds": 15.0,
+            "server_keepalive_seconds": 120
+          },
+          "latency_by_route": {
+            "health": {
+              "n": 200,
+              "mean_ms": 12.644156500464305,
+              "median_ms": 11.784949994762428,
+              "q25_ms": 10.152250004466623,
+              "q75_ms": 13.85182500234805,
+              "empirical_p95_ms": 19.526874997245603,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 4.735299997264519,
+              "max_ms": 66.74350000685081,
+              "sample_stddev_ms": 5.397174742306241
+            },
+            "history": {
+              "n": 200,
+              "mean_ms": 103.89869600039674,
+              "median_ms": 90.457049998804,
+              "q25_ms": 78.5420750034973,
+              "q75_ms": 110.89027499838267,
+              "empirical_p95_ms": 187.7997349874931,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 68.28540001879446,
+              "max_ms": 395.36590001080185,
+              "sample_stddev_ms": 44.75153375368314
+            },
+            "pull": {
+              "n": 200,
+              "mean_ms": 229.72642949956935,
+              "median_ms": 200.96794998971745,
+              "q25_ms": 174.6254250028869,
+              "q75_ms": 248.56767498567933,
+              "empirical_p95_ms": 396.1506799809285,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 158.72430001036264,
+              "max_ms": 776.7410000087693,
+              "sample_stddev_ms": 88.42629196839889
+            }
+          },
+          "server_resources_before": {
+            "process_cpu_seconds": 26.234375,
+            "pid": 14560,
+            "rss_bytes": 158720000,
+            "peak_rss_bytes": 158765056,
+            "private_commit_bytes": 237740032,
+            "peak_private_commit_bytes": 237912064,
+            "handles": 250
+          },
+          "server_resources_after": {
+            "process_cpu_seconds": 37.59375,
+            "pid": 14560,
+            "rss_bytes": 158953472,
+            "peak_rss_bytes": 158998528,
+            "private_commit_bytes": 238862336,
+            "peak_private_commit_bytes": 238960640,
+            "handles": 241
+          },
+          "pool_checkedout_before_release": 1,
+          "pool_checkedout_peak_observed": 8
+        },
+        {
+          "controlled_inflight": 5,
+          "samples": 600,
+          "successful_rps": 37.48538023316663,
+          "connection_configuration": {
+            "request_timeout_seconds": 30,
+            "client_keepalive_seconds": 15.0,
+            "server_keepalive_seconds": 120
+          },
+          "latency_by_route": {
+            "health": {
+              "n": 200,
+              "mean_ms": 13.9767150003172,
+              "median_ms": 12.235350004630163,
+              "q25_ms": 9.887149986752775,
+              "q75_ms": 15.015499979199376,
+              "empirical_p95_ms": 25.908204997540423,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 4.306000017095357,
+              "max_ms": 93.48809998482466,
+              "sample_stddev_ms": 8.716218030892271
+            },
+            "history": {
+              "n": 200,
+              "mean_ms": 117.68180100058089,
+              "median_ms": 101.37309998390265,
+              "q25_ms": 82.48805000766879,
+              "q75_ms": 124.0666749945376,
+              "empirical_p95_ms": 199.7112999888486,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 63.86169997858815,
+              "max_ms": 510.83850002032705,
+              "sample_stddev_ms": 59.76522604188652
+            },
+            "pull": {
+              "n": 200,
+              "mean_ms": 266.5723185009847,
+              "median_ms": 230.6595499976538,
+              "q25_ms": 190.85400000039954,
+              "q75_ms": 298.22049999347655,
+              "empirical_p95_ms": 490.5675949892608,
+              "expected_observations_above_p95": 10.0,
+              "min_ms": 106.49760000524111,
+              "max_ms": 1022.2159000113606,
+              "sample_stddev_ms": 124.25438271294944
+            }
+          },
+          "server_resources_before": {
+            "process_cpu_seconds": 40.265625,
+            "pid": 14560,
+            "rss_bytes": 162729984,
+            "peak_rss_bytes": 162766848,
+            "private_commit_bytes": 241881088,
+            "peak_private_commit_bytes": 241979392,
+            "handles": 273
+          },
+          "server_resources_after": {
+            "process_cpu_seconds": 51.5,
+            "pid": 14560,
+            "rss_bytes": 163119104,
+            "peak_rss_bytes": 163164160,
+            "private_commit_bytes": 242929664,
+            "peak_private_commit_bytes": 243044352,
+            "handles": 266
+          },
+          "pool_checkedout_before_release": 5,
+          "pool_checkedout_peak_observed": 12
+        }
+      ],
+      "evidence": [
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-04-A/summary.json",
+          "sha256": "b82cba4766bfdcf414f1e7d7c80d1db0598daf8980926d227df6c201f41e60cb"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-04-A/junit.xml",
+          "sha256": "60d15f90633e661e3aa5c98482b40b339c0bddef913334c3de2754b37f374e47"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-04-A/candidate_manifest.json",
+          "sha256": "2ef1d324d3fc3cbaa936076ddd2c3185d2446c9548f0eb7a6690b974d8043591"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-04-A/frozen_execution_manifest.json",
+          "sha256": "66ae023d006a90c6cd18b40747a76e2f7f3e7b8e143c888ebfe4f4f555e8b176"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-04-A/observations/BR02-tcp.json",
+          "sha256": "de9b286a694261b081ad58583582e01d837ea3b02cf8c01b75a8666dcfd8c785"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-04-A/observations/latency/models-0/generator-result.json",
+          "sha256": "c3e5a9c658971d12b1b1ba8ed154b90cf8f22eb1a9674be9162371ed45d10ae5"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-04-A/observations/latency/models-0/server-result.json",
+          "sha256": "ab68497b93a680efb79c238fa818d59cad6ee90f5c08131ad9df6f716abf1f1f"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-04-A/observations/latency/models-0/private-generator-config.json",
+          "sha256": "1452f278ba6823c6d9d0397e4414d44c022ba55f516c67e4e8ded3d170b84362"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-04-A/observations/latency/models-1/generator-result.json",
+          "sha256": "b598b45c4ac9de1568a997903d612d4045cecefcd1b1b2987c4b9fc8514ac870"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-04-A/observations/latency/models-1/server-result.json",
+          "sha256": "de1cbb094bdb2d056713368ac5ab026adedb05a13cb71f0d7e5539e40da983b3"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-04-A/observations/latency/models-1/private-generator-config.json",
+          "sha256": "f027aa9d7e92c76872adb3bb050861e3d550a0f043738d1a8f0dd2ab12f2fdf5"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-04-A/observations/latency/models-5/generator-result.json",
+          "sha256": "dd6e4424fa72101ee8b0bf2e89ca805d37a7fb2b0efc3373051202a2f548f321"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-04-A/observations/latency/models-5/server-result.json",
+          "sha256": "0d7eaabf72717ec1987566188cf7c14da2e4980e1bb43c871c9ba55ac624c42a"
+        },
+        {
+          "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/BR02-20261027-tcp3-04-A/observations/latency/models-5/private-generator-config.json",
+          "sha256": "00b61585be56462cd5590115f2f361cb3c9b451f08b46c102267df27743c9687"
+        }
+      ]
+    }
+  ],
+  "measured_requests": 7200,
+  "warmups": 720,
+  "controlled_analysis_completions": 24,
+  "coverage": {
+    "complete_blocks": 4,
+    "failed_blocks": [],
+    "not_finalized_blocks": [],
+    "full_ABBA_completed": true
+  },
+  "equal_final_counts": true,
+  "flutter_refs_not_executed": {
+    "main": "0ed31b211f31873d6f905116a0f0ccc5588e01c1",
+    "HEAD": "9936e80fe07a0675bf9ec50afbada750cd19ba80"
+  },
+  "shared_runtime_inspected_after_runs": {
+    "python": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+    "packages": {
+      "fastapi": "0.141.1",
+      "httpx": "0.28.1",
+      "sqlalchemy": "2.0.52",
+      "asyncpg": "0.31.0"
+    }
+  },
+  "limitations": [
+    "ABBA order, two observations per version, common deterministic initial data and identical frozen executors; no dependency changes during blocks.",
+    "Actual TCP read workloads, 0/1/5 I/O-gated analyses, SQL and process resources; not real model CPU or all LAT/LOAD/DB/RSC scenarios. Internal reference worker absent on main is not imported.",
+    "Final pilot scheduled after the disposable soak finishes: fixed 200 samples and 20 warmups per route, C5, 30s request timeout, 15s client keepalive and 120s server keepalive. Shared PC; two paired blocks do not establish causal latency gain or a population P99/CI.",
+    "Full planned BR-02 variants remain partial; Flutter refs are recorded but this executor is Python, not Flutter or a physical Android.",
+    "Initial attempt lacked optional psutil and failed before collection; fixed using existing Win32 runtime, no package installed. Failed evidence remains preserved.",
+    "Previous 1000-request/cell protocol had two full blocks and ReadTimeout in third B, so fourth was not run. Preserved separately and never pooled with this reduced pilot. Longer deadline/changed keepalive does not prove that timeout cause was fixed."
+  ],
+  "executor": "scripts/run_security_regression.py --scenario BR-02-TCP with pinned QUALITY_API_SOURCE_REF, ABBA",
+  "report_executor": "scripts/campaign/publish_paired_tcp.py"
+}
