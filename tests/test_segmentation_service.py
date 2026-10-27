@@ -201,6 +201,28 @@ class SegmentationServiceTests(unittest.TestCase):
     def test_clamp_bbox_bounds_coordinates_to_image_shape(self) -> None:
         clamped = _clamp_bbox(np.array([-5.0, 10.2, 250.9, 80.7]), (100, 200))
         self.assertEqual(clamped, (0, 10, 200, 80))
+        self.assertTrue(all(type(value) is int for value in clamped))
+
+    def test_numpy_bbox_ambiguous_result_roundtrips_cache(self) -> None:
+        with tempfile.TemporaryDirectory() as cache_dir:
+            detector = FakeDetector([
+                CatDetection(_clamp_bbox(np.array([10., 10., 50., 50.]), (100, 200)), 0.9),
+                CatDetection(_clamp_bbox(np.array([120., 50., 160., 90.]), (100, 200)), 0.8),
+            ])
+            refiner = FakeRefiner(np.ones((100, 200), dtype=np.uint8))
+            service = SegmentationService(
+                self.settings, detector=detector, refiner=refiner,
+                cache=AnalysisCache(cache_dir),
+            )
+            first = service.segment_cat(self.image)
+            repeated = service.segment_cat(self.image)
+            self.assertEqual(first.cat_count, 2)
+            self.assertEqual(repeated.cat_count, 2)
+            self.assertEqual(first.bbox, repeated.bbox)
+            self.assertTrue(first.ambiguous_multiple_cats)
+            self.assertTrue(repeated.ambiguous_multiple_cats)
+            self.assertEqual(detector.calls, 1)
+            self.assertEqual(refiner.calls, 0)
 
 
 if __name__ == "__main__":

@@ -450,7 +450,8 @@ def _clamp_bbox(
     image_shape: tuple[int, int],
 ) -> tuple[int, int, int, int]:
     height, width = image_shape
-    x1, y1, x2, y2 = box.astype(int)
+    # NumPy scalar coordinates cannot be serialized in ambiguous-result caches.
+    x1, y1, x2, y2 = map(int, box)
     x1, x2 = sorted((max(0, x1), min(width, x2)))
     y1, y2 = sorted((max(0, y1), min(height, y2)))
     if x1 >= x2 or y1 >= y2:

@@ -93,7 +93,8 @@ async def test_IMG05_real_local_rejection_and_repeat_integrity(db, tmp_path, mon
             assert not list(db.storage.root.rglob("*.png")) and not list(db.storage.root.rglob("*.jpg"))
         else:
             assert stored.analysis is not None and photos == jobs == 1
-            assert len(events) == 1 and events[0].evidence["eligible"] is True
+            # The fixture is an owned cat: accepting its photo is not a discovery reward.
+            assert len(events) == 1 and events[0].evidence["eligible"] is False
             assert len(calls) <= 1
     assert network == []
     evidence("IMG05-real-" + defect, {
