@@ -68,7 +68,7 @@ def execute_pytest(source, selectors, env, output, prefix=""):
             cwd=source,
             env=env,
             log=log,
-            timeout=(1200 if env.get("QUALITY_SYNC_CONFIRMATION") == "true" else 480 if env.get("QUALITY_LARGE_LOCAL_SYNC") == "true" else 360),
+            timeout=(1200 if env.get("QUALITY_SYNC_CONFIRMATION") == "true" or env.get("QUALITY_LOCAL_MODEL_RESOURCE") == "true" else 480 if env.get("QUALITY_LARGE_LOCAL_SYNC") == "true" else 360),
         )
 
 
@@ -102,6 +102,7 @@ def source_hashes():
     )
     paths.extend(ROOT.glob("scripts/campaign/*.py"))
     paths.extend(ROOT.glob("alembic/**/*.py"))
+    paths.extend(ROOT.glob("tests/fixtures/local_models/*"))
     paths.append(ROOT / "alembic.ini")
     return {
         str(path.relative_to(ROOT)).replace("\\", "/"): hashlib.sha256(
@@ -198,6 +199,7 @@ def selection(scenario, output):
         "LOAD-05": "current_socket_fanout_cases.py",
         "RSC-02": "resource_lifecycle_cases.py",
         "RSC-06": "resource_caps_cases.py",
+        "RSC-01": "local_model_resource_cases.py",
         "RSC-02-DIAG": "resource_lifecycle_cases.py",
     }[scenario]
     if case_file:
@@ -249,6 +251,11 @@ def selection(scenario, output):
             "critical_report.py", "subprocesses.py", "measurements.py",
             "latency_pressure_cases.py", "latency_probe_child.py", "windows_limits.py",
         ])
+    if scenario == "RSC-01":
+        names.extend([
+            "local_model_probe_cases.py", "current_offline_cases.py", "image_cases.py",
+            "critical_report.py", "subprocesses.py", "measurements.py", "windows_limits.py",
+        ])
     if scenario == "SEC-04":
         names.extend(["remaining_mechanism_cases.py", "social_volume_cases.py", "measurements.py"])
     if scenario in ("LOAD-03", "SEC-09"):
@@ -270,6 +277,11 @@ def selection(scenario, output):
         )
         shutil.copy2(origin, destination)
         hashes[name] = hashlib.sha256(destination.read_bytes()).hexdigest()
+    if scenario == "RSC-01":
+        for name in ("chelsea.png", "README.md"):
+            destination = executors / name
+            shutil.copy2(ROOT / "tests/fixtures/local_models" / name, destination)
+            hashes[name] = hashlib.sha256(destination.read_bytes()).hexdigest()
     (output / "candidate_manifest.json").write_text(
         json.dumps({"source_sha": sha, "executor_sha256": hashes}, indent=2) + "\n",
         encoding="utf-8",
@@ -325,6 +337,9 @@ def selection(scenario, output):
             QUALITY_TARGET_SOURCE=str(source),
             QUALITY_CASE_EVIDENCE=str(output / "observations"),
             QUALITY_FLUTTER_REPO=str(ROOT.parent / "catlogue"),
+            QUALITY_LOCAL_MODEL_RESOURCE="true" if scenario == "RSC-01" else "false",
+            QUALITY_MODEL_PHOTO=str(executors / "chelsea.png"),
+            QUALITY_MODEL_CACHE=str(ROOT / ".model-cache"),
         ),
     )
 
@@ -661,6 +676,7 @@ if __name__ == "__main__":
             "LOAD-05",
             "RSC-02",
             "RSC-06",
+            "RSC-01",
             "RSC-02-DIAG",
         ],
         default="SEC-01",
