@@ -137,7 +137,7 @@
   },
   {
     "scenario": "LAT-04",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Sync com 0/1/40/501 dirty, pull vazio/multipágina e histórico crescente.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [
@@ -152,10 +152,11 @@
     ],
     "runs": [],
     "closure_evidence": [
-      "SYNC-IMG03-LAT04-20261025-results.json"
+      "SYNC-IMG03-LAT04-20261025-results.json",
+      "LAT04-20261027-results.json"
     ],
-    "executor": "scripts/campaign/sync_batch_cases.py",
-    "limitation": "Functional cohorts and observed timings covered; separate parse profiling and controlled statistical confirmation still pending."
+    "executor": "scripts/campaign/sync_batch_cases.py + tool/campaign_sync_batches_test.dart",
+    "limitation": "E2 baseline measured in 21 desktop cases: five large normal repetitions, separate JSON and production apply profiles, full cursor/queue/integrity checks. Confidence bounds are conditional on IID; no reliable P99, mobile performance or before/after gain claim."
   },
   {
     "scenario": "LAT-05",
@@ -197,7 +198,7 @@
   },
   {
     "scenario": "LAT-08",
-    "state": "PARTIAL_EXECUTED",
+    "state": "COMPLETED",
     "scope": "Análise lenta em paralelo com health, pull e conversa sob carga fixa.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
@@ -206,7 +207,12 @@
       "attempts/delivery-01/critical_runs/delivery-baseline/summary.json",
       "attempts/pipeline-01/critical_runs/pipeline-baseline/summary.json"
     ],
-    "limitation": "Somente variantes rastreadas; demais condições do plano continuam pendentes. Falhas e caracterizações não são aprovação."
+    "limitation": "E2 fixed-load experiment complete: 9000 measured requests, separate generator PID, 0/1/5 waiting controlled analyses, loop lag/pool acquisition/CPU/RSS. Six analyses finish after release. Conditional P95 intervals only; no real-model CPU, P99, capacity or causal before/after gain claim.",
+    "closure_evidence": [
+      "DB05-20261025-results.json",
+      "LAT08-20261027-results.json"
+    ],
+    "executor": "scripts/campaign/latency_pressure_cases.py + latency_probe_child.py + summarize_latency_pressure.py"
   },
   {
     "scenario": "LOAD-01",

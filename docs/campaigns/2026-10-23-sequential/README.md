@@ -234,3 +234,17 @@ Docs/OpenAPI respondem 200 localmente; preflight não confiável respondeu 405 s
 [Três rodadas, diagnósticos, ambiente e hashes](RSC02-20261027-results.json). Três testes passaram: dez ciclos de aquecimento mais três rodadas de 100 ciclos mistos no mesmo processo e 400 uploads negados nos dois diagnósticos de transporte. Mantido o timeout HTTP de 10 s. Os 310 envios foram persistidos uma vez cada; não houve desvio do envelope de handles/threads/tasks/HTTP, e pool emprestado/sockets próprios voltaram a zero.
 
 Após repouso, as rodadas tiveram respectivamente 232/229/221 handles, duas threads, três tasks, duas conexões HTTP ociosas e RSS de 171.515.904/168.718.336/171.229.184 bytes. A repetição mista durou 137,3 s; a suíte inteira durou 168,07 s. São medidas do processo API/teste, sem alegação de ganho ou ausência universal de vazamento. O timeout histórico de 25/10 não reapareceu, mas sua causa continua indeterminada; evidências anteriores permanecem intactas.
+
+
+## LAT-04 — baseline E2 concluída em 27/10/2026
+
+[21 casos, decomposição e amostragem](LAT04-20261027-results.json). Cobertos 0/1/40/501 dirty, pull vazio/multipágina, histórico crescente e recuperação após 503 no segundo lote. Cinco bancos SQLite novos para o lote normal de 501 tiveram ciclos de 82,426–98,545 s, mediana 93,701 s; a mediana da aplicação em `replaceCatFromSync` foi 68,422 s. IDs, nomes, foto original, fila e cursor foram conferidos com o servidor em todos os casos. JSON/UTF8 foi perfilado fora do cronômetro do sync; a aplicação executou o método real de produção.
+
+A amostra grande foi limitada pelo custo do piloto, com cinco repetições e um caso adicional de recuperação. Limites de confiança da mediana são apresentados apenas sob hipóteses explícitas de IID/estacionariedade, não comprovadas por repetições no mesmo processo/servidor; P95 empírico é descritivo e P99 não foi apresentado. Nenhum ganho ou desempenho Android é inferido desses tempos Windows/SQLite FFI. Os dados indicam onde investigar transações/aplicação antes de qualquer otimização.
+
+
+## LAT-08 — concluído em 27/10/2026
+
+[Gerador isolado, percentis, loop lag, pool e recursos](LAT08-20261027-results.json). Passaram 9.000 requisições medidas mais 270 de aquecimento, em três fases com 0/1/5 análises controladas aguardando. Cada rota — health, pull de cinco registros e histórico de vinte mensagens — recebeu 1.000 amostras por fase, com concorrência fixa cinco. O gerador rodou em PIDs distintos do servidor. Todas as leituras terminaram antes de liberar a inferência; as seis análises concluíram 200 após a liberação e o pool voltou a zero. Nenhuma chamada paga.
+
+P95 observado: health 24,45–29,59 ms, pull 441,62–633,32 ms e histórico 492,13–727,04 ms. Também foram coletados atraso do event loop, aquisição do pool e CPU/RSS de servidor/gerador. Os intervalos reutilizam o cálculo binomial por estatísticas de ordem, condicionado a IID/estacionariedade não certificados. Fases não são blocos aleatórios pareados e houve geração de relatórios no host; diferenças não são atribuídas causalmente à quantidade de análises. Não há afirmação de P99, ganho, saturação ou capacidade de produção. A primeira tentativa, interrompida por ausência de amizade nas fixtures, permanece preservada.

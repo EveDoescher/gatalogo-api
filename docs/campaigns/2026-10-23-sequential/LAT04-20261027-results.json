@@ -1,0 +1,1621 @@
+{
+  "scenario": "LAT-04",
+  "state": "COMPLETED",
+  "date": "2026-10-27",
+  "api_source": {
+    "git_head": "27bd5b347c5c5669ba8ed341f56998fdfe8ae9aa",
+    "evaluated_content_sha256": {
+      ".env.example": "aa4fbc4d819006e0b2130f1e980a19298205fcb72ac797e90231437bb2fba1b0",
+      "alembic/env.py": "f5dc90d3e89d4c1b6c64571dd4f9eba26aa78545241c8f5acc531fa01f5b3cb5",
+      "alembic/versions/20260827_01_accounts_sync.py": "9f41270ee3f23819b6e799df303ec05e74dde176ffb11aa430a127e05c6a9289",
+      "alembic/versions/20260827_02_cat_avatars.py": "c1978469e58ac92eb00ae88a4fd2395d804d04f7b714a45a6ad6e16a1857f67e",
+      "alembic/versions/20260828_03_recognition_social.py": "16bc15b981b1e55d319ce4a1b588093e12c4d22f15797c8091eaf50769c173b1",
+      "alembic/versions/20260908_04_recognition_evidence.py": "6d90f7aedbec1bdaa64b6c05bfb6cb37baa6ac6c6d52294e3df6cccb3b51eee3",
+      "alembic/versions/20260908_05_product.py": "ce5234fdb8e8f8d8aebd5ca8df9f773041f7b56495370a772e06ab9161e9b8ae",
+      "alembic/versions/20260916_06_chat_rescue.py": "de16780424bad8cab0744bb057952f31e95d267cd742e5c8fc87b5672a0252af",
+      "alembic/versions/20260922_07_report_poster.py": "1691922863c08b6971039a0b803bca302629d0d11331625e35003bdeddf877c6",
+      "alembic/versions/20260923_08_habitat.py": "85b84cd4c7a8e239a686efa0564e8223ebb76171a59063a6d5ff078d07295199",
+      "alembic/versions/20260923_09_habitat_yard.py": "0329e90f29e65f0cbcd2334cedf31d7b4bc3dc575c79c8845d62f71bb24045fb",
+      "alembic/versions/20260924_10_habitat_care.py": "ea14e4dbbd7845c85f881cfa03329fd18ec64479e42c98a0fa83522ef48e47e4",
+      "alembic/versions/20260927_11_progression.py": "f09f8778abdfaabcdeea0ecc2fff8e59c07b3889dba885d4cc539c9eb26dafe6",
+      "alembic/versions/20261006_12_quintal_production.py": "9dd9c087d05ff08dc5dc6e233321c029f012c97a72c3d87c0c5c5c772ce5af4d",
+      "alembic/versions/20261009_13_quintal_build_start.py": "80a32224013608d827545df5e292739ad8e3ca52a87aa1a6fb2436a461974c45",
+      "alembic/versions/20261018_14_session_rotation.py": "2d6802dbfd6eb7abee54cf652389ca80c5ce58157e21aeb5532e90f5e1118e6f",
+      "alembic.ini": "b2124b08e7a33aa9f0a5f17bb2f72a29647ad3891685633195d8642fccd2abcb",
+      "app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/config.py": "018c33c9b9a23890904dcf7afee06eaf413d945d9e981a59a623ae4595e80042",
+      "app/database.py": "6dc06da28b1c65dc23dd063dd60a2c7fad65a65c9f0c5add6da5691a12b89eef",
+      "app/dependencies.py": "154f905f4b19d5cd409e26dc215c32b50392e37638c2f70ddbe3b09f7f4d1a44",
+      "app/exceptions.py": "566d5bad9f9dc5ff5d479ebb842401b6d3d984180c2c2c6e7fcee28c295a832a",
+      "app/logging_security.py": "c8a58922e58bbb6c5333e0c0e6b8106736a4fd95c155fb5d0766a32af4fd5153",
+      "app/main.py": "b7e5a5dd237700420d2dceb65ccb358c8b312eafa777d223bef7210c9816b270",
+      "app/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/models/analysis.py": "379311d17ba40ccff7ff0b978444689659e99a6592a08680218af323ae17551f",
+      "app/models/vision.py": "5f74cc910837962e257266b28537eca34ff47e1422fa7b7ad130f51d31aa49b9",
+      "app/persistence_models.py": "3c9e6ce745ae6fd789ec1c51880924fda2a79ddea4da90076044eac610dc958c",
+      "app/prompts/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/prompts/coat_analysis.py": "8a6ff914071655662f96e331269094ef4d025879dc5399aad513ccab368b5aed",
+      "app/quintal_models.py": "3d915dfb18fffb307170eaca1fba7eb70f902b71a654f9c248957b2d1eb0536c",
+      "app/routers/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/routers/auth.py": "777ef2eb0830f01c55741c9845ec4ef7b5cea3957b6f85e9022e78110e6b76ef",
+      "app/routers/habitat.py": "1b51738f08551ba56507540bf7430d9de2fc57d2c02e10ff9cc4112f09f20136",
+      "app/routers/product.py": "a7b6bbbf144c566631e0f2b21b24ec54f4ec0c82304d8eb566413027b47f534c",
+      "app/routers/progression.py": "2c631bf407fa28d6a16a6aae072574c9540dadd782c594e310c75ff25d2ed845",
+      "app/routers/public_search.py": "c29df4e4cc9c837be759dfb22db1cf94f646cd76e67e4069dedc124568813d4d",
+      "app/routers/quintal.py": "421db5787d103288ec3b02bedddd94ce0e61d59cf8f8855d47493aa5c7d7d343",
+      "app/routers/social.py": "fbc4a5ac9c2e9fdfc228d463ed0588785f18c9fe90cc48169db7df886f18ff42",
+      "app/routers/social_chat.py": "65a3a2c2bfaecee8c935b49c828cbd7d23379bf3e05291588ad80034173abce5",
+      "app/routers/social_devices.py": "a826fab2e9ccc9577e3a843e4f1e7fd03dcabde920408d75f2e62dcb19f9f5ee",
+      "app/routers/social_feed.py": "9d42120baf52d5fd91fd02ba85e79e2108f70b4eb2beaa9918776b96eea99b45",
+      "app/routers/social_friendships.py": "085b312b0a42131895bf7d00be00803649c80c0f0068fa2c1c6a51ddb5e6b9b2",
+      "app/routers/social_profiles.py": "5f347e148f20d837b250b8666bdae8bf0c6436cabeefe894628d25f0b22a6f31",
+      "app/routers/sync.py": "39e3a199decf40bc55730ad6f3bbb167bb41d7e36416c0ea1454601c6fda4e46",
+      "app/routers/vision.py": "1f50c3c367dcfb1f2f3e484ad73e71cf6a5c480e38f2160c9d46d2876c0abafe",
+      "app/routers/websocket.py": "e9b7cfbe2f2f0f16e50b7d26d26011a72f564038beae0bf7b8cdff85155860ad",
+      "app/schemas.py": "ae5d1dec2340ff37279d22268ee8ee530abd375e5fa0632fba4fe921bee6d60a",
+      "app/services/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "app/services/analysis_cache.py": "c076ca5eacf5fb544db057195f3778386ef0747e9722ec1e33bf1ecebcda01a1",
+      "app/services/analysis_service.py": "32cf39a52127574eb1c6e83b650fb39c6fd91266e96c1995df87b53effc75b5a",
+      "app/services/apple_identity.py": "68fbe2e5a9e05e8e326d59a38f68bd4cf0790e976678f1157d98e2ebfc768d2a",
+      "app/services/audience.py": "fa12acea18f6ec2e14f4da102f570c105ef87411a9c3b3baf97c65f79db0990a",
+      "app/services/auth_service.py": "26df36bf9a385253a7dc0361a31f6bb6c92b170eb7ce610201dc9fbed44b3597",
+      "app/services/avatar_generation_service.py": "8dac83793f4a54b9266d0ae7c461d34420ec2ceb3b9e1b6adb7ec8de006b4245",
+      "app/services/avatar_service.py": "c49f018ce4f1f2a060be31fd22dc6f6a7fda9832d1a528aba10d7ab3160b6102",
+      "app/services/catalog_changes.py": "229bcef613e8fac10ece90ee46cace53c6f3a061e55f415f30f2c5b850d27b9b",
+      "app/services/catalog_sync_queries.py": "eb81009a6cb6bfd1a14e62a09b38e585ace163aafa441beb965f69f4b1fe2d71",
+      "app/services/chat_commands.py": "07feacfa9a66001536747315f57235f5d0dd19e1aa6e9d7e75fa32fe9f15780a",
+      "app/services/chat_presenter.py": "ef4daf7bdcbb8456ccdd842ad9c2af9a584b849f49605d93dbeeb0061470d6c9",
+      "app/services/chat_queries.py": "6db5b436428e569aac907b5af786b671c5d954655974dc761ba4cbfd9231b7ef",
+      "app/services/color_service.py": "5ac2b285b80fed87ea095f44c6acdf20634f75e9b189c4861183f7575c577cbb",
+      "app/services/conversations.py": "85d4a783f56fce6626d400c1de893bb850b5f3fe193bbde58eefcdafcec60a5b",
+      "app/services/dense_features.py": "2f3f4442f2f29b4ea373839bb67b095bb0b86e72b12027af06fef42e39b9f9d1",
+      "app/services/fcm_service.py": "ccf6fa6fa106e8bea2bfbba336c9c67bb954e7cc849c02690354ac2edd1046a6",
+      "app/services/fusion_service.py": "39fd68133053f7e3d68e40b34eb93c9cca9617975394bb82b3c8ae32cd1059d9",
+      "app/services/habitat_encounters.py": "3cf31aed867639512b60becc23f223c0ca530f9b5832699d03cc55627ff9258a",
+      "app/services/habitat_interactions.py": "d7351b7410caf94be3a697e2d43b479856ad5d0d659cba452ae4d9dd2fc40a4f",
+      "app/services/habitat_presenter.py": "22a92359a4e3563e353bde9bc386ca9194001b296c5ae97584abd0b3bf90b687",
+      "app/services/habitat_pricing.py": "09bb94d7322a4a410a66619ced8bb6725507f0aa7fd2170377ff1977a2c195ed",
+      "app/services/habitat_service.py": "2a7b3245d73b3ff5875434005163cddbc88462f9d17147e6dbc939b8c1f94cca",
+      "app/services/milestones.py": "659dc78807de91a05d7f7c163fb3e1c4acbb53047c83e9fa66869889bc6bf805",
+      "app/services/missing_posters.py": "a1fd1cb5d1ebff2a75e695b9fcb1c952a3a8efa40f687027c298f25eef74986a",
+      "app/services/preprocessing_service.py": "2fc40e60a0fe8b8a7d582940d307ca33827cef3a6644994316b0f058138a4c39",
+      "app/services/progression.py": "2f25f5041095282d2ea56b628be0906021e9f8e931deaeef55d09dcaa5ae8865",
+      "app/services/quality_service.py": "65b72c12b9bfea2691aa5f6e0172e05fa5a9d9f21744f5ff48ea7b5f2c61b10b",
+      "app/services/quintal_care.py": "1e7b9aaac74175f6576efeeef295d5cae6154794041f0a6cd69a7162ecc4ba6c",
+      "app/services/quintal_catalog.py": "50a268d0cff729ec909e08410621ed4e9008be19158036b095e8c3ee1ccf4150",
+      "app/services/quintal_clock.py": "6c61071ee7c669f1e5739d3355e826e5d9dc85e697433966ada5fb82816b7f0d",
+      "app/services/quintal_commands/__init__.py": "7a30fc9262d179b05e4d8b04c6a953858703c653e4fb2a0e049e9283360c70d3",
+      "app/services/quintal_commands/cats.py": "a5b0dd5046ea8eb613d64523f01abb98aafaa27af03177a61e88375dca4af350",
+      "app/services/quintal_commands/construction.py": "dd6f5fc453cea31f19a44ea26c89fb13c6924f7fb6cca5263c091f5a3bfed881",
+      "app/services/quintal_commands/context.py": "89c296fc1bd5e9a3de0a21acaec77bce6337b5aec8e8d077e4610e053d6918a0",
+      "app/services/quintal_commands/garden.py": "098c53700bb9718b4f18808f3447c738fd61d5a61ffaacfa54e3043a7b31a96b",
+      "app/services/quintal_commands/receipts.py": "d6f3cbb913174e36155e8f44e87684c40b1a71fcebe1ea4d7d9376ee4da0cce5",
+      "app/services/quintal_commands/residents.py": "a645a8916f693064c380a46359778a77e876738083902a5d97d455631d06800f",
+      "app/services/quintal_commands/tasks.py": "7c896f06b51cb4502091e6afb16cd7a73aaf7c2a5950e10824fb1e8d0b088cc5",
+      "app/services/quintal_games.py": "5ee0b035de1e27842a4b82b95875c450d9e37ef9d38939d8123807f5f9ff3b14",
+      "app/services/quintal_inventory.py": "e95d30f2635dfc7b1307d8034e8c1318320f8eb4e73ac6f68e7b0fd4cac31e23",
+      "app/services/quintal_notifications.py": "5246e8b0e20f6c2b396847fcb6126a875106272fbb88258f0ee38ec45dba68df",
+      "app/services/quintal_production.py": "f82ae8574f953d9852515409a2e26e438d454565e79ff0132d4a2553684572eb",
+      "app/services/quintal_progress.py": "bdc7f824aeb1917682b4227c3b1a69dbdbd58faefb9a619adee72bcf259f3d02",
+      "app/services/quintal_projection.py": "fad98ad44ff83f4e85589d7d4a74fd2d76bd29704038c6bf19e359c1fa6e69c1",
+      "app/services/quintal_push.py": "d7440d1237781d86a4a64e963dd21a1f4c62773e9c83e07e8fd47f46ba25efab",
+      "app/services/quintal_return.py": "abefc46ae67ec3ad3258ecfd568e6671909d6c39dab979dcc242c4283638b79f",
+      "app/services/quintal_rewards.py": "452153683f6d3bd915da7995ad90304214ef63fc73b8ed875ca900d441ac4a85",
+      "app/services/quintal_scheduler.py": "30f79e512e7fba8112ebfd231f66702fdbbcab67ef7f6566baa1e7912626c6a1",
+      "app/services/quintal_simulation.py": "f53189a9c2720727d4c3c44c44584edd9847a488834e78916cdce6ab4e02c9e6",
+      "app/services/realtime_events.py": "6da075769e0b481c9175b0f7487bc269f62f0dbcf27754bb8a758cfed797f3ca",
+      "app/services/recognition_features.py": "87c694795df0248d643fafa0d2acb30f2ee284a6a587755dca2ce6c39ef3efec",
+      "app/services/recognition_service.py": "5d3556a131d23ef529085d8d0879c19edc2ee41d59c7eaaf989c31b838552c81",
+      "app/services/reference_analysis.py": "3afdb96232365f16c5a8845b15617a7ef6c4664ac561412f63a482f92fb0eb1f",
+      "app/services/report_media.py": "951a779ec43b3e071fef71a708ab71892beffd36b28777e5ad8db3ed283216f5",
+      "app/services/report_presenter.py": "af11aa62e8ad6e0aee349ff648062769fbe891f115d8cc30bd8b5829f31374c0",
+      "app/services/segmentation_service.py": "eeeb986428abd8f83b6781e0a72302f82f543659218ee64acac71ec34d3707b3",
+      "app/services/social_feed_commands.py": "869923ac08f2dd66ed0c9316999398d1cff19aae4a8352f8128d0cd52d6537b1",
+      "app/services/social_feed_queries.py": "8e919daacf1085c6cc09d5488efe1dcb74f39c47e4067c06e07e4711970e698f",
+      "app/services/social_graph.py": "4585e6a00a94eccc55dc566b6c4f3cabb57d3786c5e6c218cb04fe93a87f2cc8",
+      "app/services/social_presenter.py": "2dfd223841d1e96c9be0f73867a5fc0dfa111a2160de78fb778261127ae44be8",
+      "app/services/storage_service.py": "9deb2244cbf579e3a93fbc4fa2656701ef5a36e2f9262050d9bebb75daa18839",
+      "app/services/vision_jobs.py": "7d6b6a5689ff626983e3ca0786d3515b08c4014aad39d0e7c687df26a71136b2",
+      "app/services/vision_worker.py": "9d2fc69f35387bbeca4905f4f0c1d541b5447f51862ef88cd975d17d8dcf9a77",
+      "app/services/websocket_manager.py": "9918619e4ba07fb5462c4de425c1b41176ebf6c6202821ed30e84b9b933a9683",
+      "app/social_schemas.py": "b48fe613dd53aafbc9c25750263e747b099502fa8ee07e73a51374bb975df0d6",
+      "scripts/campaign/advisory_payload.py": "b09e580873e8395f93c0ffe58a4284a263503328df38ad9240bba53ac8b267a1",
+      "scripts/campaign/advisory_review.py": "6f4de287839832fbb6082206ef054834ea8bef68db43807427881cf1ab6ec2ba",
+      "scripts/campaign/android_live_cases.py": "de742c8c659de8ccc140a87776f4dd1f0dfebdfcee8ca8c62f47face4ad05069",
+      "scripts/campaign/api_probe.py": "747492cda96e55ad010313a4e7be0346477e25672421f6c57f94c717fa6009de",
+      "scripts/campaign/archive_evidence.py": "e2ab276dad0ebebc9cf1b4d474bc443d68cd3193d19e2d128468b55fe91c3a9a",
+      "scripts/campaign/audience_cases.py": "42c94e84a22a5b700e4557124a1377c9f1a200c664736d5d2850e42125c388de",
+      "scripts/campaign/auth_flow_cases.py": "0525d6469c3a8f0669d27b195e3bc53544cd1b2f6fcdce759665f7cd26e68383",
+      "scripts/campaign/concurrent_catalog_cases.py": "7a4e48acfccd5d97a00baf253fc7b03f00f4fc3bc88db8ad0b9dc925af1fd01c",
+      "scripts/campaign/continuation_report.py": "52ab2f18d4e0bfaaae28054e83f64d31305595886a6d32e15e5f8551b4387163",
+      "scripts/campaign/critical_report.py": "794293f87f45a616031d5d50265cf01d7dc060b959f2d8cf9208ff35a483bc2b",
+      "scripts/campaign/critical_suite.py": "bc80a07da210293ba2051b2a3235390ecc6840551d492c003da375a38e073527",
+      "scripts/campaign/crossed_cases.py": "fd4c1ea3fc6e00068a3e743db517905767c003a5d14025ba2d375b3c1f1e3f82",
+      "scripts/campaign/crossed_suite.py": "bcd94280b970bd36900d57b05d6233a1be437a1bfebccddfa3c39e66a9a84b67",
+      "scripts/campaign/current_dependency_review.py": "fbf8e10e3362c4fd532cccf934f608ba29a33ee74ba3d866b1d61b845fad19e7",
+      "scripts/campaign/current_offline_cases.py": "63e9ceaca8b32cd8b0f3f3641527ea78a0b5aef484b7f6afd574f2c299991aa3",
+      "scripts/campaign/current_socket_fanout_cases.py": "865f4127279291e73c38a752610aee444223d1b2c1f6e5d8ccd21825a6a9d7b7",
+      "scripts/campaign/current_upload_transport_cases.py": "fa323438bbf067b6c21fb1441da255d5babcfac9e4e1a308a03385c00f3bae2f",
+      "scripts/campaign/data_snapshot_cases.py": "493812bd0827b8e63196509264291e3ca1e737b7138c1031e7ab12bab4198ba2",
+      "scripts/campaign/delivery_cases.py": "a8be82d85fa84b2b42c1aaf7ed38c3c8729585799021e848e19ad3eb58115860",
+      "scripts/campaign/delivery_suite.py": "179ed99f06fc91313c43bbbe8fce877bbc1e1d396be3e336cc0c9c4cf1ed30de",
+      "scripts/campaign/dependency_advisories.py": "d16b8e623cb30ad909fa949e9ebd1e770fd9ff29a05460667dfc35262de00bd5",
+      "scripts/campaign/dependency_applicability.py": "7493a647869787d59711ea5cf559588581dd4cad83dd6db1197b803420ac10ef",
+      "scripts/campaign/diagnostic_suite.py": "ab497d3f3c34f3bb0b59bf7db700167f8f5462235c880fb015ab509d4d98f1d8",
+      "scripts/campaign/extended_cases.py": "43a4aa7b44b7268ac0b5830a5941eff1d1737af8a353ece879e25c35ebce377b",
+      "scripts/campaign/extended_suite.py": "0e5ae47ad00d45e6b914094d745963247a8308980ee2058f1f49b98b9f929aa0",
+      "scripts/campaign/fault_proxy.py": "2e3593526fa104d69ffae3801323088b40826cfbf1635aadcacdb50daf24d046",
+      "scripts/campaign/fcm_delivery_cases.py": "543ec7ae8370d05f31e65c31d9e0bb89b8c0cb24a2690814e82620eacc98a0f4",
+      "scripts/campaign/fencing_cases.py": "80b3429751a0ee804e2bef79b18eb6eeb735085a6046598696adb3e0982332f1",
+      "scripts/campaign/fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+      "scripts/campaign/flutter_accessibility_flows.py": "ab51260c8e1c45121526eff8b53d4adf968924626f30ea8523c7e583c9665124",
+      "scripts/campaign/flutter_catalog.py": "1e20cd57bd0fa8b15d52785539cfc01956a5c407ae4e7620191443843270582c",
+      "scripts/campaign/flutter_full.py": "19672a59fe0698c765151edf557d2ae48344686985b94cf0bf4008f89e6d1d98",
+      "scripts/campaign/flutter_resilience.py": "89ec7ed85fd747f0ca2587f341f845d0c4d4ba7c484a43729fc2ebcce577e378",
+      "scripts/campaign/flutter_visual.py": "230d8985df3756c952a73928cc56b1cc0a3c649585c975da19e0538603727707",
+      "scripts/campaign/followup_report.py": "eb8f598878f4f4d25d0da4b1d2c1bb3d153e18e86ffe7595f90f9c55d23730dd",
+      "scripts/campaign/full_suite.py": "ec2442fcac6b50110fd979d0f146ef06aaa85a0d123d6825ad23229eb3148716",
+      "scripts/campaign/health_campaign.py": "fd69e08b22b4602fe627240e5973d66a530e17faa24dc36f6488e7980de5b144",
+      "scripts/campaign/health_probe.py": "33abb11bab4221db534ccfc921294eb1f14468d30893d7783e5b19e3212f5880",
+      "scripts/campaign/history_cases.py": "ee1cfc5d29a9518ca9ee136144f202ee3023e9516be4f569894348b3d56c36e2",
+      "scripts/campaign/idempotency_cases.py": "5b0bc8c8b3c1846e14979ca87428ec183c24060366798b9ea2abee5d42049523",
+      "scripts/campaign/idempotency_child.py": "928ae44d636ae05cc5d0b66ec316c8dba9164707ad4160318d2958038659a745",
+      "scripts/campaign/identity_cases.py": "b3aa60095c6c729918399c0f74fe6e4c8a9e563f1134178a0f2ad90dfce101fa",
+      "scripts/campaign/identity_controls_cases.py": "7c4dce17a0e41a435c072a829d0e61ddfdc961df2556c45192c938e495aaea40",
+      "scripts/campaign/identity_controls_suite.py": "e8a45ea6a52e8f5dc6a8fe5d99b4656d1027778c6a3f855bb956a6dc1bcda366",
+      "scripts/campaign/identity_suite.py": "2d68214b5c8bb27165dbb64a323778f6145da15bf4e5c08c698f00dda6e76895",
+      "scripts/campaign/image_cases.py": "19958fd2cd733ca13231cca626a0c55c4a2f94efd54b793578e9b3e5d1999e6e",
+      "scripts/campaign/image_suite.py": "f296d70e94b8b0ec3ba2b59650920c894f73008f2804051b2abc2af30fb69ea4",
+      "scripts/campaign/input_bounds_cases.py": "77941ad39f579198791b5caa763a033bfd99a4ec336b83be009f1c80f0404356",
+      "scripts/campaign/isolation_cases.py": "adf63beb8a199bcc6e9d03e9a1a6f6867879aa252a703567ab3a40c897903ef9",
+      "scripts/campaign/live_diagnostic_cases.py": "02acf5b833a40b8778f725435571f60b10fad3518d8d37ccb444cc42c7b8697e",
+      "scripts/campaign/live_suite.py": "75b4b11ae5e987797e32ac21df44506d02731b467743db398d58e0eb25635714",
+      "scripts/campaign/local_report.py": "94fc84465107b015b64e54eb13cc39a3a6514e7fdcae32ba881e2f20beb0f2c0",
+      "scripts/campaign/measurements.py": "90e8f0946abc010437d25b6191c60a26c5382343ba1cd94bb77ede7c5ef2031f",
+      "scripts/campaign/migrated_plan_cases.py": "e423206c949720b51a89b2c03c6c9b4847424d414585e4101875f57baa06e6b2",
+      "scripts/campaign/mutation_cases.py": "ad4b9621a64a92e8e55ce27ab8298a9590bdda60147cae9b7c7d14a1293ff71d",
+      "scripts/campaign/network_cases.py": "c48e2afec58c7d6f98069d24f8e0c9164fad7146cee612b304f4b39780e72a4b",
+      "scripts/campaign/network_suite.py": "0adad4df145d8d96b14ff4d8178ade4525936dc4727c22590a474e636187769d",
+      "scripts/campaign/offline_flow_cases.py": "6395a1ae2666a48a5f180cee6e6d602f90e33dfba85fede0856c681e85eea432",
+      "scripts/campaign/offline_flow_suite.py": "94a937d61aecff3d5badbb8bb698213a3b6bd06240f45e3afbc3f370a833939d",
+      "scripts/campaign/offline_inventory.py": "32a712253b88fc1c541e673aa6cec59851209bda4cd98c4514d2e166f6c67d75",
+      "scripts/campaign/pilot_cases.py": "a04df3402e66114651409ae61f6a74b1a987e69374cda594cd85d604cc410e6f",
+      "scripts/campaign/pipeline_cases.py": "d14dd8f23da8b5a21eb17d5e616ea13396c16ebb5e7883a36c66d0dbf244e2a5",
+      "scripts/campaign/pipeline_suite.py": "7b8662e37abdc4072fd331a49a0bdef4ec13c62fab4a51f7745eba1f89b006da",
+      "scripts/campaign/pool_release_cases.py": "b2a5d1fed4801d64f0c7d48da8f89965d5b5a6cb429e16f376757281fd3be571",
+      "scripts/campaign/preflight.py": "2e725bd7a898dc118f77c39aeb9a1f9c4af18f8557ea18c1b391185c61261c67",
+      "scripts/campaign/preparation_audit.py": "d1c86d5af68548390f33adb29ec874ab78bac7c60cd84e8996e8b9589fac246d",
+      "scripts/campaign/privacy_cases.py": "e1f2c728cf1f0f9842d1ad630d73af70358d911409931693a26e88e220ae144a",
+      "scripts/campaign/privacy_suite.py": "30fa3ab9beb6dd88de6c702c9ddae242620585837107b3ce4e9de8f0db717014",
+      "scripts/campaign/production_boundary_cases.py": "ff5a257d0132da8d4969fb5e6e01dba9f431aff432c358f68f8b7dd136c7d7ba",
+      "scripts/campaign/query_plan_cases.py": "6b43aeb0a4c5d5359159b4fe24a89a9e4fde949d465a5e78bf9f7afed5c20f2d",
+      "scripts/campaign/query_plan_suite.py": "53ca97aba6cddbb6233045e87709a0a1a06558b896c44d6eb7e74d03a28af18a",
+      "scripts/campaign/queue_suite.py": "aeb9386d366d0662e83b4d384f230893a5e30b1f3619e29ca8dfc8001d15f21c",
+      "scripts/campaign/remaining_mechanism_cases.py": "117498601cebca2e5bad86d9d8d9ab661dedc788540c68fd13170a74052d0286",
+      "scripts/campaign/remaining_mechanism_suite.py": "1e91dc410d0261dd066e19d5500f53efed2222d4afb6d6ecf03fc3f4df47cea4",
+      "scripts/campaign/report.py": "0dd59e54a1227157150eb2fbd55e187882e36e38174918be514f5d517750a096",
+      "scripts/campaign/report_lifecycle_cases.py": "1597b8fab67b959dbc9f848723da28e2130a99592364a905458d034a05f2c3f8",
+      "scripts/campaign/resource_lifecycle_cases.py": "8ba25e7bec2b7ac0355a0d7ada2969d575fefb5d498c37a7db8e6faddd3ac78b",
+      "scripts/campaign/review_flutter_mutations.py": "6029d8ed6bdaee90a99c3a0615d7482f5fb8218f7ecda290cb53a0666ed54a33",
+      "scripts/campaign/revocation_cases.py": "c389fefbcd12843cae78c33272d3c21f692f5c16f14cd824b9e2dc9f441ae1e5",
+      "scripts/campaign/rollback_cases.py": "a0134b14d048294f05999536cc94f6f2c904e88cdaa725723e10ed296560c5e7",
+      "scripts/campaign/security_cases.py": "de35705f692b00f80fe9c37e593bb601f20c5345b524910e2e26c382dfe20178",
+      "scripts/campaign/social_history_cases.py": "b5c01fa6237573bc266dded16e8201271a43bbfc5062af145a753e049d32cb69",
+      "scripts/campaign/social_history_suite.py": "49afefe1fc537b4153d922c0157e01e19deed7316c1b958156f207af5acd29d7",
+      "scripts/campaign/social_order_cases.py": "55bc3ede29834a8fabe34f98ea49b3360cb97f4f0106075644ba8b4002aa649f",
+      "scripts/campaign/social_order_suite.py": "1f141f773031be472ad78b396beeaf4dd9ac8e199dad789aa838506f0f944850",
+      "scripts/campaign/social_volume_cases.py": "eef3e642a89125407ffd7252f60c6dc955cd25c04354f85e31e5df0241656ae0",
+      "scripts/campaign/social_volume_suite.py": "014713ced9596a46ac734f25936e08aeda314822b6c202b1d8acf0dcf6e12a09",
+      "scripts/campaign/socket_fanout_cases.py": "2abd2e9914f9ada2f3d7704dde416d1c7fee76ab2bc496b10379a37af5af3d25",
+      "scripts/campaign/socket_fanout_suite.py": "f6ce0845affae15fba2df4ea6bce5e375d684aec775601ea6c1cf95f0ca78949",
+      "scripts/campaign/statistics_checks.py": "e83dc416b65d04b09fa3ea15a4ccbcee721a4ad0a5306a0f40591545d2ec23ce",
+      "scripts/campaign/storage_cases.py": "97d6f3618bebf2535c02a080aeef344fecac73d2ead291e67add510d64b78e7d",
+      "scripts/campaign/storage_resilience_cases.py": "3453d849475dd64fbdd80ab3ce44804b53fc997022668f7878e16e831b741bbb",
+      "scripts/campaign/storage_resilience_suite.py": "48b5e95ffca50f530f42a52812a2e6340b3348c6cf5ebb728465072d943e4747",
+      "scripts/campaign/storage_worker_cases.py": "d2be4925f4e6ea828a8cdd8076952d8308e19d078068fbf4edca476d4518719a",
+      "scripts/campaign/subprocesses.py": "662914a55c1a282b389111628fd5ceb7bc5327ead4821ce1fd12720c13716274",
+      "scripts/campaign/sync_batch_cases.py": "f73aa3c037c4662e1fae6342c8c359f8e3e9bcdd0a097c35cccb550adebc0685",
+      "scripts/campaign/targeted_suite.py": "f7bd320ba47de9cd02045369c4082d430eeefed9b129e8f8f6e1722e39ad04a9",
+      "scripts/campaign/upload_transport_cases.py": "c7a463270056e8b7c16e7d8d34ca2f96ab6d7b81a124c4790e95e590afc72ad0",
+      "scripts/campaign/upload_transport_suite.py": "b4a78da641717cc786e4f4257326b33b957ac28d79bfb68802cd6e55c3569de4",
+      "scripts/campaign/verify_sources.py": "66d0c0a37dfb5a3827de95412298319ab99f0faf4669e99f102bcda532344710",
+      "scripts/campaign/websocket_cases.py": "4eda39a15cb0b98588eb24b4bfaec876dd431a5f3cd41f3517ad2e2cb44c7fac",
+      "scripts/campaign/wire_contract_cases.py": "3038788f21be7433986f6052a5f2544e641a476bfebda0ec566346c92dbeb6e2",
+      "scripts/campaign/wire_contract_suite.py": "20e0141b9eed8df03f6aa90e710b873f2de17db0b143a9d94d2a2143b2e5b0e5",
+      "scripts/campaign/worker_child.py": "9440cf8c869ab2fc61c67be3c1efe02b87571be1c9582f85e779a7fafb26cd7a",
+      "scripts/campaign/worker_race_cases.py": "75d331aa22b365f58d55c92c21f0708618d70b6b002ba61b8528fb4ca18f7a4f",
+      "scripts/campaign/worker_race_suite.py": "57529b2c84b3a299d622cb13bee54e7af52d0215d98988ebfa3a086cb4cac42b",
+      "scripts/run_security_regression.py": "06281799ee2b4bb62ed353be2e9d7f40e3b9ac5ab9688b18e77909cdf3b0dd3c",
+      "tests/test_analysis_cache_resilience.py": "5cad7a35831e2f84799e07519afa418248cb3fe3ae5a64971ec44605b1509323",
+      "tests/test_apple_identity.py": "ff0becf5be87a8eac59084d25234a9ffac95ba80b9b3f835531587dc7799d5f8",
+      "tests/test_auth_security.py": "6749261b11daf0b9e3ffdf82410b781c87bddb0f0af17671527169cb54aab743",
+      "tests/test_conversation_events.py": "f995204f9c4c64d0f1bd1327c2dd189ba39646fe916fcf919058ab1293269250",
+      "tests/test_logging_security.py": "6561119eb3a62d77f70bceb8e7d62c7df49bd85ab92a521f67bf87a2df88481b",
+      "tests/test_reference_analysis.py": "1dfc8fe22a26d3e159773f8e850c5c1772d836e85e6ff90cb8ddf7a45ef1bf07",
+      "tests/test_sync_query_performance.py": "93bc5097c6ecfb96bf9a4df219ed326f7a278a0d2188b57b93b09dde8be2624c",
+      "tests/test_websocket_manager.py": "e2e2c571c63bbbb3120af75ae43b2368ef80be9214683fbd5f80f5dfa0762ffa"
+    },
+    "note": "Working candidate identified by content hashes; commit recorded after validation."
+  },
+  "client_source": {
+    "flutter_sha": "0ca3bd2e6bc09bdffcf79362956e73c5068a652d",
+    "evaluated_content_sha256": {
+      "lib/app.dart": "6d59154fd1cfc3e5fe740f4c450d4df314a09282639309caf43597ea56990124",
+      "lib/config/api_config.dart": "333188d6556b6e7ef872603c7f56a1e39908924ff634fb567f6221789221ff9c",
+      "lib/controllers/account_activity_controller.dart": "4eb13b3c9c5899a59dce3e95362f4ca340a60ed11b707006a43af75e9f1e3bef",
+      "lib/controllers/cat_details_controller.dart": "b9574ba331283219d0aa59e3a62b769ce38132645b733acbbc584fc48911c7d0",
+      "lib/controllers/conversation_controller.dart": "1274885ec33536233ba2dc233996d137a1b81dc582c3455089f91414f1cc480c",
+      "lib/controllers/habitat_interaction_state.dart": "d738c35efd9f225116d42133462020a2ba955c1c64a420244b8dc03349a7a2ab",
+      "lib/data/cat_database.dart": "a987a01332117247160fadbecbf4f7748095d8b659dea053c7640733654273c3",
+      "lib/data/cat_database_schema.dart": "4f3d480301202e5d26b3465d3b5ef6b2326a7e6f12521f4e02b8532e6a0ed70f",
+      "lib/data/habitat_repository.dart": "df11d16ad9a7c40268dd558fee5a96f1058a79a24960bc02fc0bc97d1b01090e",
+      "lib/data/repositories/catalog_repository.dart": "c3f77f17dcb7c7e848377033e339309005882a84436d17cc2c6dc1d77a81333c",
+      "lib/data/repositories/habitat_cache_repository.dart": "e5f13021214fa61339f33d714a470506c05525a2307e8dd2860c84620a126883",
+      "lib/data/repositories/reference_photo_repository.dart": "f03ddb280cd95598ff19f8db3e123e53b11c45248d702439383d732ad0655e24",
+      "lib/data/repositories/sync_metadata_repository.dart": "2aa08e8837f82e034c4359b66accdb7f1751dffb0935b09cb8e07f5e033b8884",
+      "lib/data/sqlite_id_batches.dart": "aaa44f1694a45bcdb1021efb431bd4b41715d7771fde6b42e7191b04f58ef4d4",
+      "lib/formatters/app_dates.dart": "752b1e162ec0cffbff9808f4dea29c5a978d4b55912ea3b689406ee10dc7441c",
+      "lib/game/habitat_camera.dart": "96b465d25fc41096344d8007209ba04f92f3da56708806890f81c8fd46b7515b",
+      "lib/game/habitat_cat_animations.dart": "2e50ca2aeeab0ee72c101792a92b034b291ca04cb4f29d6c0171bb5ce39098df",
+      "lib/game/habitat_cat_coat.dart": "5340706ed0fa8dca926a1d35f3a452df3177ef1056a7674118676a440a5067e7",
+      "lib/game/habitat_cat_motion.dart": "dc5a744a0b75090d3f9948e1e44e6a045a21101e2e47a151aa8f06bd32285b55",
+      "lib/game/habitat_game.dart": "0cfc7956bc033dc92f9bac02a60aa627fb31ed2d0c13bf3e804635c7cc8b41d7",
+      "lib/game/habitat_interactions.dart": "b2cda6139c480c9c7c925e3f4f6aa1ff83a8f0be008c349c4da1346da4fab4ac",
+      "lib/game/habitat_palette.dart": "b76907f1ce3417411098141d26fac7eb0f6afa76cc20beab5bcfd71e0d3d195b",
+      "lib/game/habitat_path_style.dart": "5a22caa3c0359bc468b00565412e47b231bef01c5472d8f968e0164d879fc351",
+      "lib/game/habitat_river_palette.dart": "ba0940395f71e1a3e1558202c9574fd1a96127ec430c8d6a7deedfec68ab4463",
+      "lib/game/habitat_scene_selection.dart": "98887e64efd801720c20d8595c8c77cdc806b88ac268f6f6c4f18d48e0230650",
+      "lib/game/habitat_sprites.dart": "83a01dc10795177327e4200bd55a1f3bada744311ff092a5b68ba0b2ccb604c5",
+      "lib/game/habitat_visitor_sprites.dart": "8df5445dccc99faa6debecc17968fd85a9f51cce5d9fd0c44e73fb96cb6f363c",
+      "lib/game/habitat_visits.dart": "bb6d6b4c8c703149404d39bd0d57a5cd46b5b6b5c3bb1122dbfe2d7657433ba3",
+      "lib/game/habitat_world.dart": "63cba6275701484a513835e05e5c15e8b206ff87ef8a1ee7db9a52616fd92ed7",
+      "lib/game/quintal_action_effect.dart": "a6818a1aa3b6f41aae7711260d53264f6fdce286ca2d35a6c50a5d42ee27f1a7",
+      "lib/game/quintal_construction_preview.dart": "790d3e8f825c69e544b2a87c94abceec7a34334db4ddcb385687aba5cd7e5b83",
+      "lib/game/quintal_cooking_motion.dart": "d61831a5ea2e2a39c4eafdee2d4896c0ac1c778e52e84f5d518160e422bd14d6",
+      "lib/game/quintal_game_motion.dart": "bb18f7dcc40851086b391594f265711a0d93db16bad016119a89f7e59a21b6f0",
+      "lib/game/quintal_garden_motion.dart": "5ee8dfa47fc061a402724dae9511f2b1724b4f766bd2b27ac048113ac4190330",
+      "lib/game/quintal_play_field.dart": "4b0c3dec18ffdc4193a0af0324255714fd22cf9a06bb5ad877e524fab83629df",
+      "lib/game/quintal_play_lane.dart": "5e2b82d2b3e293f05cb03285c48f49ebd0981a13db8f9eef663b6be1e5d8369a",
+      "lib/game/quintal_play_motion.dart": "1423a4820384aece589d6d294f54b4c899ef49d45dbd9f41c2f931e510a8bf7d",
+      "lib/game/quintal_play_result.dart": "a4a6644b29440dc5ede374d078aee2ca1fa1ed97bddecd4f71acadaf9853ccb2",
+      "lib/game/quintal_production_scene.dart": "babfb48766b32e0bacbd02675ab7524788cbb4e8e2c060a131534da20dc9083d",
+      "lib/game/quintal_resident_motion.dart": "a9f02454b7b5c14227939fcaf99c5e359c5d3cc84d796c20087946afda35fbe2",
+      "lib/game/quintal_scene_target.dart": "0ffdefcf9fd5c72d3848f121f9118d5cf0ccd620dbf58f0a48d9942287070218",
+      "lib/game/quintal_timed_progress.dart": "c4b1a4e55686da68e8d2c3e929964b35c471c708f6ed6a76bddde54c48093b04",
+      "lib/main.dart": "3f81e303b6887bb9dc49c1a9e1d442fd742460dd0385a9cc45ea1939a14b2f8a",
+      "lib/models/auth_session.dart": "dc06b7ea88ab1b4bb2041260ebe303599e013b2112973e6baf218dd31d2534d7",
+      "lib/models/cat.dart": "df2bafe9dcd556a21f8d9e8797416878cd8e2f56458ca9f92aea3fe49d7fd706",
+      "lib/models/cat_analysis.dart": "0ba30e891e59b7fb6fa0b930c43004518cb5f6c4ab86ba7e686fde92c21a2a2d",
+      "lib/models/cat_collection.dart": "8de12d0e8ef48b84fcc673127c5b34f63c12de34e6418958941607dfeec012e8",
+      "lib/models/cat_reference_photo.dart": "73b400f0e88760cc74d7de6a8a2771350a850adc370314b9e090d47a3e225ac7",
+      "lib/models/chat_message.dart": "9e8b843738024e0ed1c3e21ceba1019ae364d1e1d8ad386e8ab2fe55425d8ac5",
+      "lib/models/conversation_summary.dart": "f6338d4f2a65f5d4a48d35f91f6800298688b4bbd04b37460b6c68624a44117f",
+      "lib/models/gamification.dart": "eb353daef262ab4492611a8cb1256eab85323da8cae1227f0a356e9373fda5ca",
+      "lib/models/habitat.dart": "6aaf026843ebc11c2a06995549c8c15c087e2a1959e980285ad5e48260e8fb55",
+      "lib/models/missing_poster.dart": "4899148321eae5c839bef48b2efd872b75b4cf7e895b7d6fcabe3d84502c9c5c",
+      "lib/models/quintal_snapshot.dart": "e5b8daa85fa2bd3bab9f84e4b8a10daa45177dd7fe904e50023603621da88459",
+      "lib/pages/auth_page.dart": "9ddb7e2e4da82b99a043bc766f31b691ed34133d56aaf463986a63b4008f753d",
+      "lib/pages/capture_page.dart": "5aab3572dd5db9007710bcb9bc1aa15a7713c264a72038cf9ba6677f32945ae9",
+      "lib/pages/cat_details_page.dart": "bdb040ca041d9fd0945e18e629a014f7d377ac82326e49a87f088de8236ed564",
+      "lib/pages/cat_gallery_page.dart": "439d38aff7c0c708eb4e30690765fb11cdc28932a57ada63f1efb5b9664b79c7",
+      "lib/pages/challenges_page.dart": "5742d2b8dc2024b6fd2c4050d98ffa90c8cfa39274c20f4f1506283f6d3ddc88",
+      "lib/pages/clue_detail_page.dart": "e0997d1c4140df3f62fd92e81d70bdd5ae6a4b4b163300278d9906518fdedccf",
+      "lib/pages/clues_page.dart": "e3f4b1bdada7d7a1c8f3bca49f6dba1a30915db8873e7ebaf3d89570c018b494",
+      "lib/pages/community_posters_page.dart": "5fcb6272fc442c9d2901b44e616abc679dc4d6cdb81048eb600032b2d8d2bcd5",
+      "lib/pages/conversation_page.dart": "78fcc132a2b66564d09ca40f5fcb1bb84b0d41edd885f8a2c8535fbe8e7d6ec7",
+      "lib/pages/create_missing_report_page.dart": "e412aa8e62e81b96c94a9228a64ad1f22db75ee51f06a0174bbec95737e8a636",
+      "lib/pages/discovery_result_page.dart": "66b00a5964437989324fbd2a1d48b9922f72ab2663bde21be88132746e561d2c",
+      "lib/pages/experience_settings_page.dart": "a82a047b71607a03f1e63da8245a9ca1e96c4bbb42763cb432f0afa855f7cddf",
+      "lib/pages/friends_page.dart": "0417b8992fc697580e3fb399a9c81a03fe1425a7787f5f64aede0557098f33a3",
+      "lib/pages/habitat_help_page.dart": "4d0cc85076b3560a56b75e49c4980f707a283895ec379c7e76927ed7ce76e8de",
+      "lib/pages/habitat_page.dart": "797478ce40783351c016f2e2461a5afa6cb64eba330a0e474f3c0b1373ee43a2",
+      "lib/pages/habitat_shop_page.dart": "04478a7519362c9b45afb1ad14701ffe9648bc62174673747d3b952af116470f",
+      "lib/pages/home_page.dart": "87b262530eb2de9c6d27e21b4a4685ff159aace0e2b6c47d5db3b3c2e839a70f",
+      "lib/pages/inbox_page.dart": "49aff95d1776aaf0f798115ff864890cb216c3a316f5806a8b3fc3a6448dbac6",
+      "lib/pages/journey_page.dart": "b6d6eab53a7638a1ef440981e07a82e2bbe1dd34e9d70c788c8255be8d89a6d5",
+      "lib/pages/library_page.dart": "38d495d6c0300dd17021ddb9ddadcc76d912967dfe26dc00e314b2152a8604e5",
+      "lib/pages/location_page.dart": "f97ec45687bcfd445094f9d5cb119ac15fb1bdb91be2c319c33ed78886484e43",
+      "lib/pages/missing_cat_poster_page.dart": "6dc41f1702ff7c80edb44a440293da78601b3ab21ba1191e4d9226c36898ac5a",
+      "lib/pages/missing_cats_page.dart": "c7dc25c5eb85a7026f8cfd9a62db7515ad57ce3cdbc0cb65dfa509fd711bcad7",
+      "lib/pages/missing_map_consolidated_page.dart": "497b9ea08df09aeb56c1f3a34ee77570a1b72d626a984c479c824e2a3a02a89e",
+      "lib/pages/missing_report_detail_page.dart": "99b138ebf1c9650a2277886e62d5be9822d1ff1c83b37565a69cf814fa87249d",
+      "lib/pages/my_cats_page.dart": "d39d3c71d68a5135aacb1a07f001bd4f5a19596b9f4a8c7549e09a605df06ede",
+      "lib/pages/notifications_page.dart": "0f6ad9a4834a60a5e36035fba964f6548cfb9e862292e2b9e00a797a92af2a5e",
+      "lib/pages/profile_page.dart": "bff335fba4bd46754ec444ec721f581bab41f402b63cfaf8ba39650f9b672fbd",
+      "lib/pages/public_profile_page.dart": "5a392128aced8a18284e6fa66c706b8fa383c8069a66bef6b60dc44756d66c75",
+      "lib/pages/quintal_game_page.dart": "d09cd80de746c99b315a7bf9df6c4643717d4347fd3adcaf6f8bf3b50821475f",
+      "lib/pages/result_history_page.dart": "dbb5354e5e620406a2e85f43e699f00c7eaf320c99e67722e5c061ded53306f9",
+      "lib/pages/settings_page.dart": "5808bdb1ea7c45253aaf8bac07adb7a490ec1317818911a9f0117ec3326fd3f2",
+      "lib/pages/social_page.dart": "e6ff012bc85d61dd64b97f7f97dabc129f1ebda8c53d375da241e9d1f14a83a1",
+      "lib/services/analysis_api_service.dart": "c1d366603a10ce1dab40f7d5a359734e6a5a0c90bf118aa30492d57a6eac835f",
+      "lib/services/auth_api_service.dart": "c3ae55a84876444cd3ec8fd44a6c0562399ccdba9228ac7cf71a8ee4a70c45ec",
+      "lib/services/authenticated_api_client.dart": "238deec50de691f482b7408a9dab1606d95b1352d726b9936201e221197db6a3",
+      "lib/services/cat_preflight_service.dart": "04552e357b6c6414fd9bd009b564cedd61af2f9d53b3e2b0c8989df1e28ce826",
+      "lib/services/cat_sharing_service.dart": "12747d0b5f771abe3fa108fa84c0cf028109b9f2a8211fe9da4e5ad0cb9d2d19",
+      "lib/services/catalog_sync_coordinator.dart": "a6d93f250e6bfe7867066c11e67bd705e12746c3b787f801732fddc1c0de06d5",
+      "lib/services/catalog_sync_service.dart": "b4c27d54e9851e316171f6dca7b12d7d8b05619fffc3adc8fadae381ec442da0",
+      "lib/services/experience_service.dart": "66aa07ab0359c3316e9395205b9138b17f44128b222c062f263befe2e93f4c7b",
+      "lib/services/favorites_manager.dart": "99db42c825b88a8900fff840679a6b10a7fcad3c393600c4c52b9b56ec52a8c1",
+      "lib/services/gamification_service.dart": "00a726fb4d452c484fabe7064c1f642d00285cd6695d0b1c3f1520a1e8cb52cc",
+      "lib/services/habitat_care.dart": "202d4bec6eedf7dbc65fb39438ef7e3805fac3380516aa856778647b75215d91",
+      "lib/services/habitat_catalog.g.dart": "34a8fb42b990753bc5ed2209310e5f7983f3d5baae6c837bde1eeed7c21a2f4b",
+      "lib/services/habitat_encounters.dart": "1dba1be299f8bda798850aca551a81536f02c76cecd27bf02c74d41fb69e8b71",
+      "lib/services/habitat_layout.dart": "3026d0b8fe652acff9428565c58eee2727211a3b2cfeb41e26dd5b4ac934ce62",
+      "lib/services/habitat_navigation.dart": "9034abe5d1aa45ef54d8f23cee6c0c88809b55a6ff79b0de9a9096dc3a19d9e5",
+      "lib/services/habitat_service.dart": "4b3c499f649a6652b7e57a3309e7f82398fb7bc1eca44050d4b044335600da89",
+      "lib/services/image_compression_service.dart": "9d2c569d1389f80b49822e31deabd8d196f90f1cd0036b373e314720d2d7fdf3",
+      "lib/services/location_service.dart": "79ba976c591a19cae002dddc9a91ea0d7e81f9247c72161b65704e2912a8a1a9",
+      "lib/services/missing_poster_export.dart": "e1389539faf1b7ff7f157ff1bea7aa35dd229cfc1c39fb29a7222336febae7d6",
+      "lib/services/product_api_service.dart": "a1a67985e0f2c67ed3073406740bd60762a841d2060e3844b05402b3c84e940c",
+      "lib/services/progress_service.dart": "d31ee3d567ab70e09cf0e81861c3680a6cb063c1465e1bf3e004602ede69451b",
+      "lib/services/push_notification_service.dart": "fa8b4d251d6c8f3a28de011d9441ce68a20e8ab7890b02e048b46f5744488d9a",
+      "lib/services/quintal_cat_meal.dart": "e35f11423dc2f6f6aa4bf864ae94ebe83efcbadd40478f8e38bff60395cac08c",
+      "lib/services/quintal_inventory.dart": "bcd0edffaadab89033f6e06b3d236eca13822209fe2d4fba60357bf2d6d086f4",
+      "lib/services/quintal_production.dart": "73776179e999e0a08978ab2cc09db353735d84e8415d14e6463f2029185664aa",
+      "lib/services/social_api_service.dart": "77b6b8cca8374afaba27c41b4da0ceda01335e5ffbef6cca678529605c44c8a7",
+      "lib/services/vision_api_service.dart": "74118de771621d21ef76d0201c49831f1c268df6dc1a15588e7c651553f27d6c",
+      "lib/services/websocket_service.dart": "2a11ea9ba857e81744a2957237e18016bb96ff338dc2992dc11f9a410620672b",
+      "lib/stores/cat_store.dart": "07988f617a5ceaec49c60fb9226ccd86faccbc810e45cc7460ac185d07d6b1d0",
+      "lib/stores/notification_store.dart": "ecad8d510c790a37cb3fdfb27179c8491aa32eb45faadefe624e5484f96c30d0",
+      "lib/stores/session_store.dart": "aeb6469b26f17fc5d1e31137e3d15975349880f62722d1193a13fcd826fe1b62",
+      "lib/theme/app_theme.dart": "a159c6676e9e3d58c2c51da08bbbbf4729bf3cb2413f9e48eca6b3569ed3db91",
+      "lib/widgets/active_search_proximity_card.dart": "22faac221cedb7d242b62ec9083f96216f85a6cebff23acb0d0ae804e26b3ffa",
+      "lib/widgets/app_header_actions.dart": "df193a55d73e20f68b18af1fd7443d6bfd5a109032519199ebdb1908a325d52e",
+      "lib/widgets/app_loading_screen.dart": "7d86f728c6c77934bff3f4572af592d7224db839389a3203a02445f7d62e0d09",
+      "lib/widgets/app_widgets.dart": "c86ba46123c2bcfdd34949f9a8a0899fa4d9e19f6facdb8b600167ffb51ba68b",
+      "lib/widgets/avatar_choice_sheet.dart": "565b879079d61c0c4fd1a6d1f10d5505bcbd7d4180f06486a8825bab369266e0",
+      "lib/widgets/botanical_scene.dart": "d4a9ecf8109201b29fa62767b89ed0423683ed964a85f182fce92626f2f70876",
+      "lib/widgets/cat_analysis_card.dart": "81a96847bba7ba68c5727de5a47a01a010bb75899a6de1882c881b21eb0a1ec6",
+      "lib/widgets/cat_coat_color_item.dart": "f7962b848f8daa745cf6ccfe2b56b03a227a60d0541138c0e64e57b936acb1ae",
+      "lib/widgets/cat_history_photos.dart": "e05b91a9026ce7c4a1b952de6318309ec3c660184182ac8e87095fbd0a045ebf",
+      "lib/widgets/cat_name_dialog.dart": "019371be7987f16b0ab309e09cd82963d9a9c276ccd7b1ee22012ed4cc8e889e",
+      "lib/widgets/chat_message_bubble.dart": "e0b17cd90cc5bcc76ee61994905aa0e1c0b96d25245586940003bce72daf710c",
+      "lib/widgets/community_post_card.dart": "589e3667eed775c046040f9a6f15bdc13e42ffa876981aee0d6ed434201ef70d",
+      "lib/widgets/conversation_composer.dart": "68424428cd887989130f1e39bf7d58ef976a62c1bbf53bc5d8ffe64edfd31893",
+      "lib/widgets/feed_loading_placeholder.dart": "35e20bbc09ec93563c7dd87a3f47b6888f9af4a0caca41fcd2e4f0dc604a1e54",
+      "lib/widgets/game_components.dart": "39d99ebf96f64ad30cb734412728bd79557e6c132be3269f4d93e0226adc097c",
+      "lib/widgets/gatalogo_components.dart": "c1a8d0edbdc55eea14dc777addab44b446ecfed901c79ac5f79df24f51fc8368",
+      "lib/widgets/gatalogo_gamification.dart": "f293fb4ec657f862078adfafb4a54b81c94e3576f90e415a05534e4180c135be",
+      "lib/widgets/habitat_care_sheet.dart": "96844e4539146615bd6a186b0d29c6bc5c289924cb2d4a74bdbdb734906205a9",
+      "lib/widgets/habitat_cat_preview.dart": "04e89a1fc8574d335eda6f1299d76d71bab12846171b154d7550272cc9a34850",
+      "lib/widgets/habitat_coin_badge.dart": "e0121f198eef16a79c2ec9e6a479728ffa53bce65b4de9ced14ddd6b8e4d3e60",
+      "lib/widgets/habitat_ground_tools.dart": "2221c07e473027a11db32bf7e367f24b44198264c5849a446951124a358c8b03",
+      "lib/widgets/habitat_hud.dart": "41d6eaa0129cb80469cd0a39e69000620ff26d2bbc76ac24871e44a1c993c3aa",
+      "lib/widgets/habitat_object_balloon.dart": "dda7b705c26f515b061a598b1ad89a7ef23a9ec17397f2ace82eb123662e1f47",
+      "lib/widgets/habitat_reward_reveal.dart": "c498520027a2e60372aeaeb3ca52e2fb44c6e1c2f2e44fa8a80747f0f43f51c7",
+      "lib/widgets/habitat_sprite_preview.dart": "2d7a5b369622b1857265be46abc4709cf4b2e897e95d6645c81260fe8cdae935",
+      "lib/widgets/illustrated_home_components.dart": "4ac5a9139e7d3da88d811bd3f115f43edeb80628af7ade6deeb12c7e7f93e294",
+      "lib/widgets/inbox_button.dart": "129f90b8947b862dfec175588324bc9caa49f3a1e42fde495c7f23e504b0d290",
+      "lib/widgets/milestone_widgets.dart": "30b477f293041b3ce6e2601aa7cdc0f539a91f66904b14e65dc1a6a31006fff4",
+      "lib/widgets/missing_poster_artwork.dart": "6273ccbec21914d6b3942b50fc050ee917d1c8bb9d2855f3a6bc088212447fb7",
+      "lib/widgets/post_composer.dart": "a5bbdf72a46ecba635e47fa144a70ad0e4ba66b9d255ee8404f0f6dd06f6bddd",
+      "lib/widgets/poster_export_actions.dart": "9c028ea37af4527794ebc7f5c3eae98b120111c431b00e8cf57dd123d27d1ea3",
+      "lib/widgets/poster_settings_editor.dart": "2282bebb5d219cc11334b4d5c5ef9503843726bd9f542ae589f4187098d5837b",
+      "lib/widgets/private_clue_photo.dart": "920e4b435fe2de928901b4e6cba9ccb4192ae5de12e59ac697c6af7f4b8c9453",
+      "lib/widgets/profile_qr_dialog.dart": "0ee0a795b1f674f886b89f73eb17d45c99a44462bc238bbd9eb7b45c4667b344",
+      "lib/widgets/progress_components.dart": "3aa4f730ee15806a2f375265abd84e22a7b655e8d8c84a0ff3836ce29b8b1679",
+      "lib/widgets/quintal_activity_result.dart": "5aed7915d3f7cf8df96625fe1ce6d503052e46f874b4e7308fe6f209a6168748",
+      "lib/widgets/quintal_bond_progress.dart": "29423f65a18a5f765e727f7251135642c14c502ecafadd7e99ca193a53f21502",
+      "lib/widgets/quintal_bottom_tray.dart": "613f51ed4fb571ada3124323d65231b3b0297d3ee3dd4befa1c08f1854354650",
+      "lib/widgets/quintal_clock_badge.dart": "30d42679a3836d3e9635055856a0a2ecc357a60a543b239f4130ef6cf149f373",
+      "lib/widgets/quintal_fishing_arena.dart": "8e79ce815c494a558230d65e9aec00069d6c9038648a421488678ebc3fba83d2",
+      "lib/widgets/quintal_game_action.dart": "982937d98a0dd1b6ef33dcd066c6072a359298f2eb0c0ab2f7b64b57d62b2057",
+      "lib/widgets/quintal_hold_control.dart": "84af00e5e07efa05b1d89344c8c911327d239469ec28f9e2a740282871108e69",
+      "lib/widgets/quintal_inventory_tray.dart": "47b6bb43cc819962871125bbfd432843fad0cb6039b599da3696be650a2e08e5",
+      "lib/widgets/quintal_object_actions.dart": "bdf51d89bef909fede5d0d38fd57e96a0620dad29a7502e6ab1c112d27a95503",
+      "lib/widgets/quintal_outlined_text.dart": "2c2297dab23eacea3e8b4e96925b3d40e55ee9f5c4cf16286a568aa98968e060",
+      "lib/widgets/quintal_play_arena.dart": "a8c17bea20a887deffbb3eb19e3440a5651597a50abb597e325be238d47c3419",
+      "lib/widgets/quintal_preparation_tile.dart": "22da28b1b67490eb1b3fe0bd8bd0e6d9bcb90ea9abf231621c7b76bcf43bb46f",
+      "lib/widgets/quintal_production_widgets.dart": "318c5abea771064e9a1bbec9239b6abc66979c1b2f240e27af98c8d9dbbc2632",
+      "lib/widgets/quintal_recipe_tile.dart": "fa8799e6b3028d922c0ae2cba68a403a2f1186f1a7a578b41bc868736d7d7932",
+      "lib/widgets/quintal_return_dialog.dart": "ed8057e88e9bdacbd72d65f82763409918f1da82f906abe360655255b6ddda77",
+      "lib/widgets/quintal_reward_celebration.dart": "ef81bf63e52e34abb163272a8d3a1e9d06fc3692d2e89b9ed92af4b14ec53f7e",
+      "lib/widgets/remote_avatar_image.dart": "8b8732c3675642daa76dc85774ce3da75135f791fd7ab7ddf66d151cb66ffba5",
+      "lib/widgets/social_publish_button.dart": "0eec328bc238542c750eaf8a0f5135919e146de034307bb19f6fd6c4d2b1fdd4",
+      "pubspec.lock": "6a156f557470a96a96d0efb4d3bd0c6718d825e2518419833a81fc6e1b441d53",
+      "pubspec.yaml": "958f69efb8d519d94fbd7f4a028e4ede8f6999bab2ec5363771f9ea9ade0d139",
+      "test/account_scope_races_test.dart": "c53e681adc99d4d248fd196b130e766645a76510403db693cec58308f1f0b5dd",
+      "test/app_dates_test.dart": "f460f18ba16cb13acb4525a09d52928c1d0d42d5bd26beda3c3688a527884b21",
+      "test/architecture_contracts_test.dart": "65533f209c9cf3be461122c59acfb90f877c4ef8005dd74bd8ff0dcfb11a026b",
+      "test/auth_page_test.dart": "a7b346e6d5bd8cb0f6aa48cdd5940871d0854a7a25f8d68d2428f874a5186a5b",
+      "test/authenticated_api_client_test.dart": "2648d50b60b54c86335666c5b425d889f5e7b6aa5565e42e760b865f5091ceb6",
+      "test/auto_sync_test.dart": "8e607fd88e25edeaed6c69a2d3c6a966351521dcc54bb6010b6ac958260e293e",
+      "test/cat_details_page_test.dart": "d5b3c69143edded11ad4f39a9b03765637bddff4a8468e7f48fa7edff14f4e18",
+      "test/cat_preflight_service_test.dart": "72fc26cfbaf3a5dc9a4a2e6cba800d2381092e78cc80f761e810ee109f6f3634",
+      "test/cat_sharing_service_test.dart": "9a81d3dc69bd51d732f0e5b4d402acb259252b592ecfd342fc7505f43533be77",
+      "test/catalog_push_batches_test.dart": "b7b291f010e5523a0664403996350c3996eb577c4c9eb9d0f3a615b3571fb71f",
+      "test/catalog_read_performance_test.dart": "97d5980810ba9d68b36fc1c8ffee3fefcfe3a2f5d490a1846fe710465f6588ec",
+      "test/catalog_snapshot_boundaries_test.dart": "30af478125958b0415dd020ccb79a6c23915d42704375b8dbd0d6adc12625ac7",
+      "test/chat_rescue_test.dart": "dacf9fca42f98ed06da7404635708a2bde34e42e894ce5f9cc57573223a51165",
+      "test/conversation_controller_test.dart": "95f1a55593581badc69da2497857a0266cd7c73cf5982945a3f6e335275ca8b8",
+      "test/corrections_preview_test.dart": "43c09c94d8a158bdad243baf94f72c3ecd727aca41839580fa949c9dc58d89d9",
+      "test/feed_social_test.dart": "b2fdd15f0b0a15f0b20f7f7c98a0ac923d1ae8f13ab0e1bdc04db692dcaac744",
+      "test/friends_discovery_test.dart": "3fb5bfc83b1d3b35b1f8c55af3dc1052a1c53f4398f0edd983995c2543c5d47d",
+      "test/gamification_service_test.dart": "dd602f44dca67271558c6205f6dc1a52ea5dc5f16f15ddce591c12af6bd79069",
+      "test/gamification_test.dart": "19cc2dc648028e5e46facbe2ea9005ca753644e47a2a03880ad8e6b5aaafaad4",
+      "test/habitat_care_sheet_test.dart": "5b651923492f1ac26a791b288b0ceb39823e95730504cc32de5d6f7db8c53333",
+      "test/habitat_cat_coat_test.dart": "fd54fce5fc65c0bd4e28005c9e5618a245e1578c9d3bedb6c10a99f115e325e7",
+      "test/habitat_game_test.dart": "a9dcbc9565083b24fb24afc3f75563858916dda5573b68ab478fd380a04cee56",
+      "test/habitat_interactions_test.dart": "66d448a563d8f5b77c65d2eb7eadc108a22003e4a9aa987977ae9901198a9674",
+      "test/habitat_object_balloon_test.dart": "68f3d4026d337c0921f16047b3f5203da7c3e2b80433b20e3d4a6fa2965b9987",
+      "test/habitat_page_test.dart": "aea4c9923c87b629219e6464724066215f9eb3c53f6892c591a20d01a8ee6fa2",
+      "test/habitat_service_test.dart": "6ab70c529a448c2bf9e0729e7dbea28241032560ce689f9f52bed9e0b2c2d621",
+      "test/habitat_visit_capture_test.dart": "d2a98fef87f6bdd8cb7c39e27ebb748030008afc121fef549d9bd543cad8afee",
+      "test/habitat_world_test.dart": "ab0962d1ad397cd3cf950af12da42a19830cbeb246593d8165d35d174d400a30",
+      "test/header_accessibility_test.dart": "3dcbf3eda4c9b9c56de5934ed1985c04c2da741de43504af2e698de2c3050212",
+      "test/home_reference_test.dart": "45380f83c56d0b2d4d0ba30f685e5d180b887ead565d19c5e59c9e40f534d356",
+      "test/illustrated_progress_accessibility_test.dart": "e3b00391a8aa663d6da9b28e6b5449395329c36e48f048fac56a6c8630a2fdf2",
+      "test/library_filters_test.dart": "b67a3cfdbd2bef0d6c18eceb1ccde56c990694f2d8926ffacda5eaab90f532ca",
+      "test/local_database_test.dart": "d485284ec3715500379b3c4c1d1d98f43ce2049f337930787c78a9acec8bd4de",
+      "test/missing_poster_test.dart": "f2bccffd993a3624fcb1bed5d9d6b242323445609ca9e4dbcbd8b477d2ee4559",
+      "test/navigation_background_test.dart": "da23379535cf6e8705f033ec27f28a58e648d0a4861e6300544c5f4fd7d2ac3c",
+      "test/navigation_levels_test.dart": "2f6ed31356802dd581802acd63de48b5f1ba9f244dda790295a3f3f2e7d09b70",
+      "test/notification_delivery_races_test.dart": "6047109543bb63e88da9dc670b4fb8dd6851b41fee866b84805a99737e7bc02a",
+      "test/notification_store_test.dart": "e1913c7c7c7159c36fbf4fb3525e0711c46117c21bcde96e4fa959f13e288fc1",
+      "test/post_composer_test.dart": "7e383803c97681fad2fa15d8a98f992023c0db8771fa1656a9bd65001c24d7bd",
+      "test/product_api_service_test.dart": "6800856a4467e9c422fc9130bac76fd282ed6315e98c70d8fe3b85406b16cdc0",
+      "test/product_flows_test.dart": "4840f558937fdee4fc49a038ffb747479266e8101d77a96017db9a733f7c16b3",
+      "test/product_preview_test.dart": "f8c2aeb0a0b4739019d908e50cc27828b71755323bf587f5003935361ff269ed",
+      "test/progress_store_test.dart": "2b2acc028cfeb1702b77f9e659ab8c3dae6e19d5364cb71633042b0ccde7c046",
+      "test/push_notification_service_test.dart": "95a5ad5d1a38549bcb6e5470f1f1efda1abe100975b0341be843f3186a3273b4",
+      "test/quintal_action_effect_test.dart": "0353989ba0312158fa6a526f3baf24d2cedb4963cdf18cd0f92b8192e022eb12",
+      "test/quintal_bottom_tray_test.dart": "7a2c79382d2d66d7d4407f9e8142919779334922697419db4d42c2e7a895635a",
+      "test/quintal_camera_matrix_test.dart": "b26ef1f6b48ccfde1185f0f45bb71371a696ace92c5fd8bbe8d9b032fe448bb4",
+      "test/quintal_cat_meal_test.dart": "ba4f6b9ab2901fcdc7cf7bee7c128082b89f282e873030b29679e5df6e320933",
+      "test/quintal_cooking_motion_test.dart": "f3f2d373d4d2ed1e115660927e31be101a936a6e511d8d2a650f0c96c5ffe7eb",
+      "test/quintal_fishing_arena_test.dart": "9ba3ce4a35d0a990c3130b5c3bcb5a2ee9f7de9a7a295c84be30a2d52179d259",
+      "test/quintal_game_motion_test.dart": "af8217a76009c28ceb2673dde30e05f60576162be0108983c53f278fbe9e224b",
+      "test/quintal_game_page_test.dart": "462e099aa5990bb8501ec56f1c5a5d54844722836d458cf3f8c9c29647eaf040",
+      "test/quintal_garden_motion_test.dart": "67b671c6de7108bcd1115b22fbc9eed797dec02a538720d6bf1b20787b4977e5",
+      "test/quintal_garden_visual_test.dart": "66e974bdbff43c4ff918bab3b1469c17c810252532875fa10976438594becce4",
+      "test/quintal_hold_control_test.dart": "e771d1ddcacf2d6c0d7cb36c1d312089089054f4f72eebd87a9352ae03487e17",
+      "test/quintal_inventory_test.dart": "a7b5e84911df0e141556dd485dbfbca1398f42581120bae7d5b4c2c3623e51c5",
+      "test/quintal_kitchen_visual_test.dart": "d04f66fe82a124b7b56c73e997c610dcda41f6e9751ec61b5dec07de1897f36e",
+      "test/quintal_live_client_test.dart": "40241f25b177de9c70311dfd2017b3b9e5da86cfed5c32edadc5d8a221396775",
+      "test/quintal_market_visual_test.dart": "bf382b430f75a84ee1892b7f8b5e3c441cdbc5eb542c52a2b046a642b3fb252d",
+      "test/quintal_meals_visual_test.dart": "dbfeb92efea6bb6d5e0f0a2266b8dba5ded22fa0ce5f26c9dc92ef49df91facd",
+      "test/quintal_notifications_visual_test.dart": "2bf8c97632f4b5deb81ffc2a6e693fdf4d19751895efc0d2a12107f2941ec73c",
+      "test/quintal_object_actions_test.dart": "02fbdd43e1dec1804401c2c16eedd83f67bfafabfe0d64f5e00ecdea3bc5ff99",
+      "test/quintal_orchard_visual_test.dart": "9e55562a41e7fe1daaf16f3e8fceab2eb88542f6833faf0f02d82670355952c2",
+      "test/quintal_play_field_test.dart": "c50aed2a50c56e298253e12b916c987db7e89583e1625fde5e4d93a75e67ae12",
+      "test/quintal_play_lane_test.dart": "12f6eb951c51f7fe79e9f4a74f224e2a428361a7cd643640136421ad96f8bf9a",
+      "test/quintal_play_motion_test.dart": "705419621df59b5e4c3f9fb181c61cd32949e24f034207a56f1946687d04d3fb",
+      "test/quintal_play_result_test.dart": "3b27f9938eefc598588a2c3808902ff811d8febf85ce2bc7e3a38ec2277101c3",
+      "test/quintal_production_service_test.dart": "4ea088c38f9f3af0992e399291981c6f26a2b85f63de61234d89186d864ce46c",
+      "test/quintal_production_visual_test.dart": "cbc99e5f5d6e98336571ffd48fc956c991b9539ad2fb54429025ca170d3e8e53",
+      "test/quintal_rewards_visual_test.dart": "e823d1b06483f446a3b869b0eccb96874fc20508baa439b8f94d1d6086cebee6",
+      "test/quintal_rewards_widgets_test.dart": "18c4e08d2359a22241b253ed1d01521dbee9588eca24b3899aacf4eda7fdb36a",
+      "test/quintal_routines_test.dart": "fe7d291faf5bf43eaa3288bb76f22e71aff568e0c04070cf3d3416fe09c8aed0",
+      "test/quintal_timed_progress_test.dart": "e7f826b97f42acc22ef736b15f0460bbb7323edadf1c554e0f8fca6e2e44bb35",
+      "test/quintal_visual_validation_test.dart": "e1f17572d9a4cc154ca6223e32f07b16d38793daa2c18f601d8ee2fa4a6e5da6",
+      "test/quintal_world_rules_test.dart": "8efa2b6ff7bf0ca8a541e75a8cfaf74acad9164125307fae82b8cfe4a39ac8d9",
+      "test/reference_media_sync_test.dart": "82a375ed258a47fe698fee5d2bfbd41c55a1b5ac1314731231d2c9591cefd7a8",
+      "test/remote_avatar_image_test.dart": "5db18ba97a2b52f0c61b6c4e853888b734906dbc717209a2effa0a33b9846d43",
+      "test/restructure_test.dart": "1a5c01a077e1c9d5f282bffb8bde4f1dfb7091fad7af824b5515048685a3a6a9",
+      "test/screen_corrections_test.dart": "da74d4937537a685f653396852ff7a325707e91a2708b0644d600bca26445583",
+      "test/session_store_test.dart": "b63e6942b484adc93b9ab796d0bd1999eb3aab3f30ce702d760a0ba97598bbb3",
+      "test/single_flight_recovery_test.dart": "ee716fdc207eefb0ae020dfb6100441428834bd7a2c0d46b3ec40c50d6f7613d",
+      "test/social_publish_visual_test.dart": "e45dad767606c8865ab20309516444c4609442ecfd6baf117e794460c74a57f8",
+      "test/social_reference_test.dart": "b440ccad9a0a78e9778f5191e5e66ca8580cbe3728fa26ba1337fa7a24f47a04",
+      "test/sqlite_storage_recovery_test.dart": "003ac87f0e3af85656018e2e9987fd00ebd4303eeea56da32b31695af99cd158",
+      "test/support/fixture_image_client.dart": "e34050f49672388e07331f05ef1c08f6c7497b1733b8a0c1e69c4aba87a49e52",
+      "test/support/habitat_ready.dart": "5337bb72a721da7c04dd633758340920a33df27b9ab433844d3059b47b692435",
+      "test/support/visual_gallery.dart": "c92ba807fc78ea057cc938e35d673dce6b93dc6888b63dc7d8af5f2046242177",
+      "test/theme_and_settings_test.dart": "46b14c3bca8284cf1935d6a88145f0fc9dcf494a18e06fab2d60699a0a6c35c2",
+      "test/upload_client_recovery_test.dart": "b7b44134de4d10e44f3020661238843a4d0bf48ae246886ee951a37bdefa2e8f",
+      "test/visual_validation_capture_test.dart": "e44197b3df96ae7c0f555e46f421db5f95087504e3df8ed4e3fcd9d86168de72",
+      "test/websocket_fallback_recovery_test.dart": "68c796209fe38825d52a4d21036107cfd81a1ff640985d3c8aa97397e2a71635",
+      "test/widget_test.dart": "600d2cbefa6e8e5f2a1237cdaf00b29f5e4c62f8370619f6ec6da0c6d9c3fd8b",
+      "tool/android_campaign_main.dart": "8da46040ef0198ad006f5b1e60b3902311b2a309a41fac68b4ad3e4427668596",
+      "tool/campaign_accessibility_test.dart": "dbc47d624a89c7607beaea9662732ab4764c009f443be178dae874a4aa66f9f3",
+      "tool/campaign_chat_wire_contract_test.dart": "28a343a795778426741db926a65e9ff41a43c9daf2d59158cd30c8f67bbdeae2",
+      "tool/campaign_collection_ui_test.dart": "344c30cbc5950953fdfacb8207a4bea782ad3576022b1c52414062bc5661698a",
+      "tool/campaign_crossed_client_test.dart": "6de0664bb9b98964d091825a61bc2a5f1ff0209ad8522ddbddbfb8d8194263eb",
+      "tool/campaign_flow_accessibility_test.dart": "0d89b756e0b96b0a06b8fbec1721b59a78615b7c9c599b653c69797e5c9886dd",
+      "tool/campaign_notification_races_test.dart": "fe391fe197b1299670dc781e44b6aa1c9e84cc14b34a0043fe7c2acac931aa51",
+      "tool/campaign_offline_capture_test.dart": "55a858f6226aa7b74d4416bb8242abee02faf7a172757056a3c2385e5ee14aee",
+      "tool/campaign_probe_test.dart": "56e7713caca0c2035b0e247af032619779c8e357c7845b933af322d791f653d5",
+      "tool/campaign_resilience_test.dart": "dec1bafa1df0cf32ade74dac8b2d480a13e8fcaa2d0ca201ba51a0e060a194e9",
+      "tool/campaign_social_resilience_test.dart": "68d36618ac0420de40cbc83ecd0f8017f94cc190b0e8be7c81d101d0b4cfd8b9",
+      "tool/campaign_sync_batches_test.dart": "897dcdffe24d21e8b760265f06df4dff92141e10d19e52a46e16d13289a1fd87",
+      "tool/habitat_preview_test.dart": "3664c5c71102b37c9cd8739b11467f7d4a19b7408d38d2d4cb2d151117556450"
+    }
+  },
+  "executor_commits": {
+    "api": "9244e09",
+    "flutter": "53f5601"
+  },
+  "passed": 21,
+  "failed": 0,
+  "skipped": 0,
+  "product_changes": false,
+  "sampling": {
+    "small_cases": "Three fresh SQLite databases per 0/1/40 and history-10/100 dataset.",
+    "large_normal": "Five fresh local databases with 501 dirty rows; shared seeded server replay state and one Flutter desktop process.",
+    "large_failure": "One functional 500+1 recovery trial; not a latency population estimate.",
+    "rationale": "Large pilot cases previously took about 100 seconds. Five normal repetitions expose variability within bounded cost; the additional fault case proves recovery. Five is also the minimum n giving a one-sided >=95% order-statistic bound on the population median under IID assumptions (1-2^-5=96.875%). These temporal/shared-server observations do not establish those assumptions, so bounds are explicitly conditional, not certified coverage.",
+    "json_microbenchmark": "Per actual pull body: 20 warmups plus 100 batches of 10 UTF8/jsonDecode calls after the sync timer stops. Batches are correlated microbenchmarks, not independent HTTP samples.",
+    "p99_reported": false,
+    "gain_claim": false
+  },
+  "variants": [
+    {
+      "name": "n0-h1-failure0",
+      "cycle_with_integrity_readback_ms": {
+        "n": 3,
+        "min": 134.812,
+        "median": 178.734,
+        "max": 243.12,
+        "mean": 185.55533333333335,
+        "sample_sd": 54.475257294787816,
+        "empirical_p95": 243.12,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "production_replace_apply_total_ms": {
+        "n": 3,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "sample_sd": 0.0,
+        "empirical_p95": 0.0,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "production_apply_calls": [
+        0,
+        0,
+        0
+      ],
+      "http_complete_body_ms": {
+        "n": 3,
+        "min": 15.583,
+        "median": 35.771,
+        "max": 90.696,
+        "mean": 47.35,
+        "sample_sd": 38.87217028929565,
+        "empirical_p95": 90.696,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "http_requests": 3,
+      "largest_push_operations": 0,
+      "response_bytes": 90,
+      "decode_profiles": [
+        {
+          "response_bytes": 30,
+          "changes": 0,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 8.813
+        },
+        {
+          "response_bytes": 30,
+          "changes": 0,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 10.587
+        },
+        {
+          "response_bytes": 30,
+          "changes": 0,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 7.79
+        }
+      ],
+      "conditional_median_upper_bound_ms": 243.12,
+      "conditional_one_sided_coverage_if_iid": 0.875,
+      "iid_stationarity_not_certified": true,
+      "successful_final_sync": true
+    },
+    {
+      "name": "n1-h1-failure0",
+      "cycle_with_integrity_readback_ms": {
+        "n": 3,
+        "min": 240.512,
+        "median": 333.761,
+        "max": 512.218,
+        "mean": 362.16366666666664,
+        "sample_sd": 138.06183837083051,
+        "empirical_p95": 512.218,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "production_replace_apply_total_ms": {
+        "n": 3,
+        "min": 78.458,
+        "median": 90.645,
+        "max": 227.488,
+        "mean": 132.197,
+        "sample_sd": 82.74908913698084,
+        "empirical_p95": 227.488,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "production_apply_calls": [
+        1,
+        1,
+        1
+      ],
+      "http_complete_body_ms": {
+        "n": 6,
+        "min": 21.661,
+        "median": 35.807,
+        "max": 85.872,
+        "mean": 41.114666666666665,
+        "sample_sd": 23.197512234432956,
+        "empirical_p95": 85.872,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "http_requests": 6,
+      "largest_push_operations": 1,
+      "response_bytes": 1101,
+      "decode_profiles": [
+        {
+          "response_bytes": 354,
+          "changes": 1,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 5.925
+        },
+        {
+          "response_bytes": 354,
+          "changes": 1,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 8.907
+        },
+        {
+          "response_bytes": 354,
+          "changes": 1,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 4.204
+        }
+      ],
+      "conditional_median_upper_bound_ms": 512.218,
+      "conditional_one_sided_coverage_if_iid": 0.875,
+      "iid_stationarity_not_certified": true,
+      "successful_final_sync": true
+    },
+    {
+      "name": "n40-h1-failure0",
+      "cycle_with_integrity_readback_ms": {
+        "n": 3,
+        "min": 5651.425,
+        "median": 5705.488,
+        "max": 5759.175,
+        "mean": 5705.362666666667,
+        "sample_sd": 53.87510933940954,
+        "empirical_p95": 5759.175,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "production_replace_apply_total_ms": {
+        "n": 3,
+        "min": 4642.393,
+        "median": 4650.308,
+        "max": 4769.298,
+        "mean": 4687.333,
+        "sample_sd": 71.0940062522853,
+        "empirical_p95": 4769.298,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "production_apply_calls": [
+        40,
+        40,
+        40
+      ],
+      "http_complete_body_ms": {
+        "n": 6,
+        "min": 23.732,
+        "median": 332.342,
+        "max": 850.317,
+        "mean": 387.58799999999997,
+        "sample_sd": 400.42640468780274,
+        "empirical_p95": 850.317,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "http_requests": 6,
+      "largest_push_operations": 40,
+      "response_bytes": 39318,
+      "decode_profiles": [
+        {
+          "response_bytes": 13092,
+          "changes": 40,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 231.07
+        },
+        {
+          "response_bytes": 13092,
+          "changes": 40,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 119.541
+        },
+        {
+          "response_bytes": 13092,
+          "changes": 40,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 157.424
+        }
+      ],
+      "conditional_median_upper_bound_ms": 5759.175,
+      "conditional_one_sided_coverage_if_iid": 0.875,
+      "iid_stationarity_not_certified": true,
+      "successful_final_sync": true
+    },
+    {
+      "name": "n5-h10-failure0",
+      "cycle_with_integrity_readback_ms": {
+        "n": 3,
+        "min": 711.465,
+        "median": 713.82,
+        "max": 813.41,
+        "mean": 746.2316666666667,
+        "sample_sd": 58.190058071231796,
+        "empirical_p95": 813.41,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "production_replace_apply_total_ms": {
+        "n": 3,
+        "min": 468.983,
+        "median": 481.497,
+        "max": 567.307,
+        "mean": 505.92900000000003,
+        "sample_sd": 53.52190403937439,
+        "empirical_p95": 567.307,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "production_apply_calls": [
+        5,
+        5,
+        5
+      ],
+      "http_complete_body_ms": {
+        "n": 6,
+        "min": 21.174,
+        "median": 54.2755,
+        "max": 106.431,
+        "mean": 57.243833333333335,
+        "sample_sd": 38.622312439400446,
+        "empirical_p95": 106.431,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "http_requests": 6,
+      "largest_push_operations": 5,
+      "response_bytes": 5037,
+      "decode_profiles": [
+        {
+          "response_bytes": 1666,
+          "changes": 5,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 14.676
+        },
+        {
+          "response_bytes": 1666,
+          "changes": 5,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 14.377
+        },
+        {
+          "response_bytes": 1666,
+          "changes": 5,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 32.94
+        }
+      ],
+      "conditional_median_upper_bound_ms": 813.41,
+      "conditional_one_sided_coverage_if_iid": 0.875,
+      "iid_stationarity_not_certified": true,
+      "successful_final_sync": true
+    },
+    {
+      "name": "n5-h100-failure0",
+      "cycle_with_integrity_readback_ms": {
+        "n": 3,
+        "min": 1117.752,
+        "median": 1234.316,
+        "max": 1278.777,
+        "mean": 1210.2816666666668,
+        "sample_sd": 83.15948256412699,
+        "empirical_p95": 1278.777,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "production_replace_apply_total_ms": {
+        "n": 3,
+        "min": 462.942,
+        "median": 588.327,
+        "max": 638.965,
+        "mean": 563.4113333333333,
+        "sample_sd": 90.61797264523928,
+        "empirical_p95": 638.965,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "production_apply_calls": [
+        5,
+        5,
+        5
+      ],
+      "http_complete_body_ms": {
+        "n": 18,
+        "min": 20.418,
+        "median": 32.1015,
+        "max": 113.576,
+        "mean": 50.260888888888886,
+        "sample_sd": 31.62500007698468,
+        "empirical_p95": 113.576,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "http_requests": 18,
+      "largest_push_operations": 5,
+      "response_bytes": 5307,
+      "decode_profiles": [
+        {
+          "response_bytes": 685,
+          "changes": 2,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 10.633
+        },
+        {
+          "response_bytes": 685,
+          "changes": 2,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 6.145
+        },
+        {
+          "response_bytes": 360,
+          "changes": 1,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 3.3
+        },
+        {
+          "response_bytes": 685,
+          "changes": 2,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 10.498
+        },
+        {
+          "response_bytes": 685,
+          "changes": 2,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 10.928
+        },
+        {
+          "response_bytes": 360,
+          "changes": 1,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 5.363
+        },
+        {
+          "response_bytes": 685,
+          "changes": 2,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 12.179
+        },
+        {
+          "response_bytes": 685,
+          "changes": 2,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 11.094
+        },
+        {
+          "response_bytes": 360,
+          "changes": 1,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 6.111
+        }
+      ],
+      "conditional_median_upper_bound_ms": 1278.777,
+      "conditional_one_sided_coverage_if_iid": 0.875,
+      "iid_stationarity_not_certified": true,
+      "successful_final_sync": true
+    },
+    {
+      "name": "n501-h1-failure0",
+      "cycle_with_integrity_readback_ms": {
+        "n": 5,
+        "min": 82426.468,
+        "median": 93700.758,
+        "max": 98545.496,
+        "mean": 92429.1464,
+        "sample_sd": 6264.034117161466,
+        "empirical_p95": 98545.496,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "production_replace_apply_total_ms": {
+        "n": 5,
+        "min": 66158.937,
+        "median": 68422.404,
+        "max": 77796.482,
+        "mean": 70049.8,
+        "sample_sd": 4813.732657632173,
+        "empirical_p95": 77796.482,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "production_apply_calls": [
+        501,
+        501,
+        501,
+        501,
+        501
+      ],
+      "http_complete_body_ms": {
+        "n": 35,
+        "min": 28.044,
+        "median": 62.105,
+        "max": 22687.656,
+        "mean": 2914.6514,
+        "sample_sd": 4973.015373215526,
+        "empirical_p95": 11377.796,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "http_requests": 35,
+      "largest_push_operations": 500,
+      "response_bytes": 824060,
+      "decode_profiles": [
+        {
+          "response_bytes": 65663,
+          "changes": 200,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 589.464
+        },
+        {
+          "response_bytes": 65831,
+          "changes": 200,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 577.106
+        },
+        {
+          "response_bytes": 33260,
+          "changes": 101,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 301.553
+        },
+        {
+          "response_bytes": 65663,
+          "changes": 200,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 766.247
+        },
+        {
+          "response_bytes": 65831,
+          "changes": 200,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 602.143
+        },
+        {
+          "response_bytes": 33260,
+          "changes": 101,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 287.914
+        },
+        {
+          "response_bytes": 65663,
+          "changes": 200,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 702.483
+        },
+        {
+          "response_bytes": 65831,
+          "changes": 200,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 649.574
+        },
+        {
+          "response_bytes": 33260,
+          "changes": 101,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 445.241
+        },
+        {
+          "response_bytes": 65663,
+          "changes": 200,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 1070.061
+        },
+        {
+          "response_bytes": 65831,
+          "changes": 200,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 1047.643
+        },
+        {
+          "response_bytes": 33260,
+          "changes": 101,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 528.222
+        },
+        {
+          "response_bytes": 65663,
+          "changes": 200,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 551.908
+        },
+        {
+          "response_bytes": 65831,
+          "changes": 200,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 568.993
+        },
+        {
+          "response_bytes": 33260,
+          "changes": 101,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 322.504
+        }
+      ],
+      "conditional_median_upper_bound_ms": 98545.496,
+      "conditional_one_sided_coverage_if_iid": 0.96875,
+      "iid_stationarity_not_certified": true,
+      "successful_final_sync": true
+    },
+    {
+      "name": "n501-h1-failure1",
+      "cycle_with_integrity_readback_ms": {
+        "n": 1,
+        "min": 106409.858,
+        "median": 106409.858,
+        "max": 106409.858,
+        "mean": 106409.858,
+        "sample_sd": null,
+        "empirical_p95": 106409.858,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "production_replace_apply_total_ms": {
+        "n": 1,
+        "min": 77658.047,
+        "median": 77658.047,
+        "max": 77658.047,
+        "mean": 77658.047,
+        "sample_sd": null,
+        "empirical_p95": 77658.047,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "production_apply_calls": [
+        501
+      ],
+      "http_complete_body_ms": {
+        "n": 9,
+        "min": 0.303,
+        "median": 64.477,
+        "max": 12545.043,
+        "mean": 2976.6342222222224,
+        "sample_sd": 4465.404461598433,
+        "empirical_p95": 12545.043,
+        "p95_is_descriptive_not_certified_tail": true
+      },
+      "http_requests": 9,
+      "largest_push_operations": 500,
+      "response_bytes": 308569,
+      "decode_profiles": [
+        {
+          "response_bytes": 123014,
+          "changes": 200,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 1443.193
+        },
+        {
+          "response_bytes": 123232,
+          "changes": 200,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 1442.371
+        },
+        {
+          "response_bytes": 62248,
+          "changes": 101,
+          "warmup_decodes": 20,
+          "measured_decodes": 1000,
+          "mean_utf8_json_us": 898.727
+        }
+      ],
+      "conditional_median_upper_bound_ms": 106409.858,
+      "conditional_one_sided_coverage_if_iid": 0.5,
+      "iid_stationarity_not_certified": true,
+      "successful_final_sync": true
+    }
+  ],
+  "coverage": [
+    "0/1/40/501 dirty rows, empty pull and actual multipage pull",
+    "Growing server histories 10/100; final cursor compared with persisted max revision",
+    "Five large normal trials retain exact IDs/names, zero dirty rows and original file bytes",
+    "Injected second push 503 after the first 500 commit: retry restores all 501 without loss/duplicate",
+    "JSON primitives measured separately from actual production replaceCatFromSync application",
+    "HTTP request/response sizes, operation limit, client cycle and resource observations retained"
+  ],
+  "finding": {
+    "state": "OPEN_PERFORMANCE_OPPORTUNITY",
+    "description": "On this Windows SQLite FFI fixture, the 501-row cycle median is 93.701 seconds and median time in production replaceCatFromSync totals 68.422 seconds. Application/database work is a measured optimization candidate.",
+    "recommendation": "Profile transaction/statement boundaries before proposing batching; preserve queue/cursor/reference atomicity and revalidate existing mutation oracles.",
+    "correction_commit": null,
+    "not_extrapolated_to_android": true
+  },
+  "limitations": [
+    "Desktop Flutter JIT/SQLite FFI plus real loopback API/PostgreSQL; no phone or release-rendering inference.",
+    "Cycle timing includes the fixture integrity readback; model mapping and other SQL/file work outside replaceCatFromSync remain in residual time.",
+    "RSS is the test process observation, captured before decode profiling; it is not product-only peak memory.",
+    "Empirical P95 values from small/heterogeneous HTTP samples describe this run only; no reliable P99 or definitive speedup claimed.",
+    "Conditional median bounds assume IID/stationarity, not proved by serial shared-server trials. Future optimization comparisons require paired independent blocks.",
+    "The assert-rewrite warning was formatting of pytest diagnostics, not skipped assertions; registration was corrected for future runs without repeating this expensive green campaign."
+  ],
+  "evidence_root_private": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential",
+  "evidence": [
+    {
+      "path": "LAT04-20261027-01/candidate.tar",
+      "sha256": "da18fb6ba50aa1dd81e8f7863d4c5d4410b1ec3d05c1c00927d20bc62a36a873",
+      "bytes": 1054720
+    },
+    {
+      "path": "LAT04-20261027-01/candidate_manifest.json",
+      "sha256": "828816dc955eac04aadcf45f53e5ac29948b9fa105a5df3c00f0f98502049289",
+      "bytes": 846
+    },
+    {
+      "path": "LAT04-20261027-01/executors/__pycache__/critical_report.cpython-313.pyc",
+      "sha256": "bc1476ae706698e6c4f256bd0e3316e0b36bb6e876b85e58901b9e7b93c29fc4",
+      "bytes": 16824
+    },
+    {
+      "path": "LAT04-20261027-01/executors/__pycache__/current_offline_cases.cpython-313.pyc",
+      "sha256": "bf4127b68d8c65a23f5bfed750039b9671126c8ccace3f9b9e7700186f790556",
+      "bytes": 15838
+    },
+    {
+      "path": "LAT04-20261027-01/executors/__pycache__/extended_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "c87464f4ea57028487bf2409da6fd09e0301dd64210fd8c5d3eadbc4dc0c4ad9",
+      "bytes": 150068
+    },
+    {
+      "path": "LAT04-20261027-01/executors/__pycache__/fixtures.cpython-313.pyc",
+      "sha256": "7f378245a8926245c92a358ceedc00ce83555bf31c74c5198b092583d44f0684",
+      "bytes": 6506
+    },
+    {
+      "path": "LAT04-20261027-01/executors/__pycache__/image_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "20046715e7fbbd4e2df78382ebf2c04d36efd603cef6a6380872e28a7aabdec5",
+      "bytes": 31634
+    },
+    {
+      "path": "LAT04-20261027-01/executors/__pycache__/security_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "40986740cacdbd8a9e423deedcfb033043c910fb09b3ba83d8d2ec356e3b55c5",
+      "bytes": 84769
+    },
+    {
+      "path": "LAT04-20261027-01/executors/__pycache__/subprocesses.cpython-313.pyc",
+      "sha256": "d60c83c120b80aa41dc7fafe45a8b39e6e283ac6ef75e4b5b34c3c32a09eaa00",
+      "bytes": 1991
+    },
+    {
+      "path": "LAT04-20261027-01/executors/__pycache__/sync_batch_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "10146d1eb98e7b498e618a87aa75f83ce759777b51a3173850d5ca2c73b8035c",
+      "bytes": 16189
+    },
+    {
+      "path": "LAT04-20261027-01/executors/critical_report.py",
+      "sha256": "794293f87f45a616031d5d50265cf01d7dc060b959f2d8cf9208ff35a483bc2b",
+      "bytes": 11717
+    },
+    {
+      "path": "LAT04-20261027-01/executors/current_offline_cases.py",
+      "sha256": "63e9ceaca8b32cd8b0f3f3641527ea78a0b5aef484b7f6afd574f2c299991aa3",
+      "bytes": 9912
+    },
+    {
+      "path": "LAT04-20261027-01/executors/extended_cases.py",
+      "sha256": "43a4aa7b44b7268ac0b5830a5941eff1d1737af8a353ece879e25c35ebce377b",
+      "bytes": 51070
+    },
+    {
+      "path": "LAT04-20261027-01/executors/fixtures.py",
+      "sha256": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+      "bytes": 4230
+    },
+    {
+      "path": "LAT04-20261027-01/executors/image_cases.py",
+      "sha256": "19958fd2cd733ca13231cca626a0c55c4a2f94efd54b793578e9b3e5d1999e6e",
+      "bytes": 12240
+    },
+    {
+      "path": "LAT04-20261027-01/executors/security_cases.py",
+      "sha256": "de35705f692b00f80fe9c37e593bb601f20c5345b524910e2e26c382dfe20178",
+      "bytes": 25796
+    },
+    {
+      "path": "LAT04-20261027-01/executors/subprocesses.py",
+      "sha256": "662914a55c1a282b389111628fd5ceb7bc5327ead4821ce1fd12720c13716274",
+      "bytes": 1200
+    },
+    {
+      "path": "LAT04-20261027-01/executors/sync_batch_cases.py",
+      "sha256": "f73aa3c037c4662e1fae6342c8c359f8e3e9bcdd0a097c35cccb550adebc0685",
+      "bytes": 6732
+    },
+    {
+      "path": "LAT04-20261027-01/junit.xml",
+      "sha256": "62b5489779bdf2c227a8ac318bb2b9f779309d40876a4b985cee277b445971dd",
+      "bytes": 421
+    },
+    {
+      "path": "LAT04-20261027-01/migrations.log",
+      "sha256": "a3b46d2f11f9b6e02caac2d03005d0237af6f6b915efdc0e4805c9d2bcafece2",
+      "bytes": 2168
+    },
+    {
+      "path": "LAT04-20261027-01/observations/LAT04-client-batches.json",
+      "sha256": "2b0b1ae4ed3997da6073c914f716850b6f68d5a2be42a54bcfaaa968f113b921",
+      "bytes": 2955
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/client-source-manifest.json",
+      "sha256": "9678a4c00e9ab6a06ba2041ed58acedf1acadaf454574184c10544e405d15de2",
+      "bytes": 31095
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/fixtures.json",
+      "sha256": "21b8f7f19bba2d92097ac1739bc843c787ccae3ba2856a608adb6c38a6fbbd8a",
+      "bytes": 42954
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/flutter.jsonl",
+      "sha256": "8123b3ed821b685a542f573cdffcbc0dacdd98394f56e5d7cbbe0862384dcc9a",
+      "bytes": 15217
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n0-h1-failure0-0/gatalogo.db",
+      "sha256": "43f96c1a82997252dbf6c32d34024a172f81156dff7d95c2ed2ee3898f5248f4",
+      "bytes": 45056
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n0-h1-failure0-0/metrics.json",
+      "sha256": "5f3b5cdb8726a8f487a29ae463c00e1db8f8b2a6cba4f74780b0bf56b8a514ab",
+      "bytes": 1007
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n0-h1-failure0-0/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n0-h1-failure0-1/gatalogo.db",
+      "sha256": "43f96c1a82997252dbf6c32d34024a172f81156dff7d95c2ed2ee3898f5248f4",
+      "bytes": 45056
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n0-h1-failure0-1/metrics.json",
+      "sha256": "6e460570725e935e92e73a0a30a47c88fb7b55bb62cef3feff8bea0bc0f29701",
+      "bytes": 1012
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n0-h1-failure0-1/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n0-h1-failure0-2/gatalogo.db",
+      "sha256": "43f96c1a82997252dbf6c32d34024a172f81156dff7d95c2ed2ee3898f5248f4",
+      "bytes": 45056
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n0-h1-failure0-2/metrics.json",
+      "sha256": "1d0f76447d359c842e9704769dd88a4792685f58d80aa7e5d2b49b6b856c548f",
+      "bytes": 1007
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n0-h1-failure0-2/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n1-h1-failure0-0/gatalogo.db",
+      "sha256": "706333cbb6ab3b1948e03fbd5d3b903a5024c31408419c58ff763016fed812da",
+      "bytes": 45056
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n1-h1-failure0-0/metrics.json",
+      "sha256": "a4b3a73e398c1a42fa609f7d454435fdf2bf9e1673777be20c140fdebf2ba802",
+      "bytes": 1153
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n1-h1-failure0-0/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n1-h1-failure0-1/gatalogo.db",
+      "sha256": "596af1fee35aa9eacf95fe5502aefd6acd92da149495a378f85e880c0d40da36",
+      "bytes": 45056
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n1-h1-failure0-1/metrics.json",
+      "sha256": "8a6677e863bc32e796ba1fc73d50b44cd531aca8d7fde491f3fbc6f32558eec9",
+      "bytes": 1168
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n1-h1-failure0-1/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n1-h1-failure0-2/gatalogo.db",
+      "sha256": "5efe8ce9cb82ebb3fe14267498acea798680b477e7620b45297aff176bd73a32",
+      "bytes": 45056
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n1-h1-failure0-2/metrics.json",
+      "sha256": "50be82b31c1683996a3a1db0e4a2bee7a51f4cd3200045bf96b8722dec04de7e",
+      "bytes": 1152
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n1-h1-failure0-2/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n40-h1-failure0-0/gatalogo.db",
+      "sha256": "16157eae922e51ff1082e641068f049d9cab9f58173d87503377d6cf383e5660",
+      "bytes": 69632
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n40-h1-failure0-0/metrics.json",
+      "sha256": "4570b2776759a9e2e0b1e22c05c2c091bf96acc82974efa7077f130975da43cd",
+      "bytes": 1625
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n40-h1-failure0-0/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n40-h1-failure0-1/gatalogo.db",
+      "sha256": "a3e7248903aba88a6f565a1296f6a248ec2e8fe400e237cc0ff320a682f61d0e",
+      "bytes": 69632
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n40-h1-failure0-1/metrics.json",
+      "sha256": "bffd6c6975c1094be3d9861a93b6003920a50cea76dda891618cc6949d250736",
+      "bytes": 1620
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n40-h1-failure0-1/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n40-h1-failure0-2/gatalogo.db",
+      "sha256": "f7457f9302bb7a3a4ae4f476e50f28e3130dc6badbcd77d68c7ad6559c77cd10",
+      "bytes": 69632
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n40-h1-failure0-2/metrics.json",
+      "sha256": "800339bb0bfdd3470e614f00e38109f53d24aebb708d12051d1dfa4a0c237b79",
+      "bytes": 1623
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n40-h1-failure0-2/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n5-h10-failure0-0/gatalogo.db",
+      "sha256": "94af9dfab7cbc930c5b566080f460ef4312f2d2b879f04e40da31db1e590da65",
+      "bytes": 45056
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n5-h10-failure0-0/metrics.json",
+      "sha256": "f166b3f6f3252322dabaa3a322be95d70f63e6be00319a345d5008ec5d641563",
+      "bytes": 1282
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n5-h10-failure0-0/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n5-h10-failure0-1/gatalogo.db",
+      "sha256": "808a782629263aca34cb67488975eb33c5ebc9abaa02dd61bfc3efcf78330dd4",
+      "bytes": 45056
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n5-h10-failure0-1/metrics.json",
+      "sha256": "ad661b3955d1c4dd49b159634e2705498ffb33035374d0c7603338cb4678e55f",
+      "bytes": 1283
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n5-h10-failure0-1/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n5-h10-failure0-2/gatalogo.db",
+      "sha256": "1224ef5f867b5a4cee255be59c2dd173191a1fa9b9edadd030b42acc15fed11c",
+      "bytes": 45056
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n5-h10-failure0-2/metrics.json",
+      "sha256": "01aa9d68e2429f70908d2fb904f6a5f617380513727f822922cce379c4471632",
+      "bytes": 1285
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n5-h10-failure0-2/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n5-h100-failure0-0/gatalogo.db",
+      "sha256": "e24d3b8a233bfc40060ad06fe2b631296ae07b2fef40e8f3568d01d83eaf3262",
+      "bytes": 45056
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n5-h100-failure0-0/metrics.json",
+      "sha256": "2f675f6d09012920c6cb0f7f01209bd98a72c57c6ba1f9fdf3ab71374fcf1d69",
+      "bytes": 3138
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n5-h100-failure0-0/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n5-h100-failure0-1/gatalogo.db",
+      "sha256": "ab3594424882496adea9b7cca586c96b0c748d9ad5aec198ed45ea040bc35919",
+      "bytes": 45056
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n5-h100-failure0-1/metrics.json",
+      "sha256": "c64b6b3cb46efef7f14ed22431eb17f2bd31db014775360730e51db00229fc35",
+      "bytes": 3210
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n5-h100-failure0-1/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n5-h100-failure0-2/gatalogo.db",
+      "sha256": "fb46e3857cd4ee263d61eabfa31ebb70f1ce4922eb470e3a2d529f90170c65f5",
+      "bytes": 45056
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n5-h100-failure0-2/metrics.json",
+      "sha256": "8675fcc63c8864984b935846945d73bb61b327a590371cd8dead59f0cf0b38b7",
+      "bytes": 3220
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n5-h100-failure0-2/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n501-h1-failure0-0/gatalogo.db",
+      "sha256": "6121a3b786ca9fb68fbe2c64c58051c76a2d86dca0ed3ab39d01bf46828b7996",
+      "bytes": 303104
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n501-h1-failure0-0/metrics.json",
+      "sha256": "ffbd603823f7a3cf2ea7de4935b8c5affc45c7a9bf0ef485c7e61f31fcd56d8f",
+      "bytes": 7300
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n501-h1-failure0-0/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n501-h1-failure0-1/gatalogo.db",
+      "sha256": "502266c940856d4178dc0e6dcf7ad201e264e16c502a532578637141f3c8cd47",
+      "bytes": 303104
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n501-h1-failure0-1/metrics.json",
+      "sha256": "477a174387d9b7053e6bdaa5b711190133ba4b8921c6a3084d9ac899f9936c0a",
+      "bytes": 7307
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n501-h1-failure0-1/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n501-h1-failure0-2/gatalogo.db",
+      "sha256": "53f8bb8bba4fb941fb15cc92c9e00990d9986a6ac11345c860c66feb52566094",
+      "bytes": 303104
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n501-h1-failure0-2/metrics.json",
+      "sha256": "7f4f03c195ba0089fe76eaa8af98cd3ce9be07085e872012d7d426427411ee0c",
+      "bytes": 7295
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n501-h1-failure0-2/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n501-h1-failure0-3/gatalogo.db",
+      "sha256": "8098583d85c4480e19551520228def9f923830e2b4f9efe99434dc2764be0581",
+      "bytes": 303104
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n501-h1-failure0-3/metrics.json",
+      "sha256": "4f9a5f86be5dc750fda72194c425b57a2a49e9c7267a1fc63cc36289e54f4d4b",
+      "bytes": 7495
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n501-h1-failure0-3/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n501-h1-failure0-4/gatalogo.db",
+      "sha256": "baf8905360131bd44a6539366695f3f600c563e8038802d69b6acc821a842e0f",
+      "bytes": 303104
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n501-h1-failure0-4/metrics.json",
+      "sha256": "c9c98826d626b925f7b28203de9e275f0d98d59261034644839b0b5542132a05",
+      "bytes": 7284
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n501-h1-failure0-4/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n501-h1-failure1-0/gatalogo.db",
+      "sha256": "7421f71bda2222387e626ecaae5203915b32238baa428c656d43bd749dc46fb1",
+      "bytes": 282624
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n501-h1-failure1-0/metrics.json",
+      "sha256": "f1a234bad010cc491071fc98e91a3ce467e101320909c90b4d3ebd947880d4e0",
+      "bytes": 7929
+    },
+    {
+      "path": "LAT04-20261027-01/observations/sync-batches/n501-h1-failure1-0/private.png",
+      "sha256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+      "bytes": 3
+    },
+    {
+      "path": "LAT04-20261027-01/pytest.log",
+      "sha256": "bc319ddf8ebce5190c61e5af1d5a9087b7b9ff554c6173d450d85bc6b013b2eb",
+      "bytes": 631
+    },
+    {
+      "path": "LAT04-20261027-01/source_manifest.json",
+      "sha256": "94be9cf8f000f0f3fa20bb257ceaf0fdcdd7a709e14bdedf0bc2b59962bda40f",
+      "bytes": 25485
+    },
+    {
+      "path": "LAT04-20261027-01/summary.json",
+      "sha256": "781b74950637058820d8a157deae7ace987f498816e8dffcd3b054830db8c382",
+      "bytes": 399
+    }
+  ]
+}
