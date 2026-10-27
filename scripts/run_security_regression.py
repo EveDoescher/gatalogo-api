@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import secrets
 import shutil
 import subprocess
@@ -143,8 +144,11 @@ def selection(scenario, output):
     )
     source = campaign / "sources" / output.name / "api"
     source.mkdir(parents=True, exist_ok=False)
+    requested_ref = os.environ.get("QUALITY_API_SOURCE_REF", "HEAD")
+    if requested_ref != "HEAD" and not re.fullmatch(r"[0-9a-f]{40}", requested_ref):
+        raise ValueError("A frozen API source ref must be an explicit full commit SHA")
     sha = subprocess.check_output(
-        ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
+        ["git", "rev-parse", "--verify", requested_ref + "^{commit}"], cwd=ROOT, text=True
     ).strip()
     archive = output / "candidate.tar"
     subprocess.run(
