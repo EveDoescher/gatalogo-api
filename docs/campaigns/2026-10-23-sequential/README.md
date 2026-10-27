@@ -2,9 +2,11 @@
 
 ## Meta de 85 — continuação autorizada em 27/10/2026
 
-**54 concluídos, 17 parciais, 14 pendentes e 10 bloqueados externos.**
+**55 concluídos, 17 parciais, 13 pendentes e 10 bloqueados externos.**
 
-[LOAD-01 concluído](LOAD01-20261027-results.json): cinco patamares de concorrência (1/5/10/25/50), com 30 segundos de aquecimento e três minutos medidos em cada um; respostas, consultas SQL, recursos e integridade registrados. LOAD-02 e LOAD-06 permanecem em execução e não estão contabilizados como concluídos.
+[LOAD-01 concluído](LOAD01-20261027-results.json): cinco patamares de concorrência (1/5/10/25/50), com 30 segundos de aquecimento e três minutos medidos em cada um; respostas, consultas SQL, recursos e integridade registrados.
+
+[LOAD-02 concluído](LOAD02-20261027-results.json): patamares abertos de 1/5/10/25 req/s. A 25 req/s ocorreram 45 timeouts e 59 descartes pelo teto de segurança do gerador; 1/5/10 req/s sem essas falhas. O teste de estabilidade LOAD-06 usa 8 req/s (80% do maior patamar sem falhas), ainda em execução e sem fechamento antecipado. O host é compartilhado: compilação Flutter e inferência local real começaram após LOAD-02; LOAD-06 deve ser interpretado como estabilidade sob essa atividade concorrente, sem comparação causal de latência ou certificação de capacidade.
 
 O LOAD-01 registrou quatro falhas de transporte nos patamares 25/50 (ReadError, RemoteProtocolError e ReadTimeout). Não houve resposta HTTP de erro nem alteração de integridade. O servidor descartável força keepalive de um segundo; uma corrida de reutilização de conexão é hipótese a confirmar, sem atribuição automática ao produto. Concluir o experimento significa executar suas variantes e registrar também as falhas encontradas.
 

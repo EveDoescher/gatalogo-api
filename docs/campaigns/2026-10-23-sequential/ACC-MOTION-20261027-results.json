@@ -1,0 +1,141 @@
+{
+  "scenarios": [
+    "ACC-05",
+    "ACC-06"
+  ],
+  "state": "PARTIAL_EXECUTED",
+  "date": "2026-10-27",
+  "client_commit": "9936e80fe07a0675bf9ec50afbada750cd19ba80",
+  "executor": "test/campaign_motion_semantics_test.dart",
+  "tests": [
+    {
+      "name": "ACC05/06 yard action reduced=false",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "ACC05/06 disabled yard action reduced=false",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "ACC05/06 hold toggle reduced=false",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "ACC06 celebration preserves content reduced=false",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "ACC05/06 yard action reduced=true",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "ACC05/06 disabled yard action reduced=true",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "ACC05/06 hold toggle reduced=true",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "ACC06 celebration preserves content reduced=true",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "ACC05 inbox action role and unread count illustrated=false count=0",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "ACC05 inbox action role and unread count illustrated=false count=1",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "ACC05 inbox action role and unread count illustrated=false count=18",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "ACC05 inbox action role and unread count illustrated=false count=120",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "ACC05 inbox action role and unread count illustrated=true count=0",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "ACC05 inbox action role and unread count illustrated=true count=1",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "ACC05 inbox action role and unread count illustrated=true count=18",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "ACC05 inbox action role and unread count illustrated=true count=120",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "ACC05 profile avatar has action label framed=false",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "ACC05 profile avatar has action label framed=true",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "same hold/release sequence has the same result at 5, 30 and 60 FPS",
+      "result": "success",
+      "skipped": false
+    },
+    {
+      "name": "cat approach has the same duration across frame rates",
+      "result": "success",
+      "skipped": false
+    }
+  ],
+  "code_sha256": {
+    "test/campaign_motion_semantics_test.dart": "d5cc0fe811c662c77f6cfbd9482859e409ce276c8e6e656920967c675454a7e3",
+    "lib/widgets/quintal_game_action.dart": "9e01beb490cae8535aae37bfa4e99c3642f1db5b313f9e8b0f0b06f23a7c12ff",
+    "lib/widgets/quintal_hold_control.dart": "84af00e5e07efa05b1d89344c8c911327d239469ec28f9e2a740282871108e69",
+    "lib/widgets/milestone_widgets.dart": "30b477f293041b3ce6e2601aa7cdc0f539a91f66904b14e65dc1a6a31006fff4"
+  },
+  "cycle": {
+    "hypothesis": "Accessible labels must occur once, both input paths must activate once, reduced motion preserves feedback and controls.",
+    "observed_before": "Coletar\\nColetar in yard action semantic node, both motion modes. Initial test also disposed SemanticsHandle too late; this harness issue was corrected with try/finally.",
+    "correction": "Parent Semantics owns the same onTap; exclude descendant semantic duplication. Painting, sizes, labels displayed and InkWell remain unchanged.",
+    "fix_commit": "9936e80fe07a0675bf9ec50afbada750cd19ba80",
+    "revalidation": "Eight new widget cases plus ten header regressions and two frame-independent motion tests passed. Enabled semantics/pointer actions invoke once, disabled has no semantic tap; duration 90/1100ms normally and zero with preference; celebration content preserved."
+  },
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/ACC-MOTION-20261027-before/flutter.jsonl",
+      "sha256": "230964c1b15f45e6cf8024d9b20ffd189693924541a0cdef847ae27c898de8b6"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/ACC-MOTION-20261027-after/flutter.jsonl",
+      "sha256": "d0b1db8b7f0ca4e9e1c295e92989a101f0cd563979060f9cf8d174cddb74aa1e"
+    }
+  ],
+  "historical_device_evidence": "ANDROID-USB-20261025-results.json",
+  "limitations": [
+    "No current device execution. Previous human TalkBack confirmations remain preserved, not repeated.",
+    "Local controls and celebration covered; every route transition and live scene effect are not fully certified.",
+    "New semantic correction still lacks device reader revalidation. Full ACC scenarios remain partial; no unsupported closure."
+  ]
+}

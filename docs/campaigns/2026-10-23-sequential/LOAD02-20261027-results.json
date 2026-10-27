@@ -1,0 +1,1590 @@
+{
+  "scenario": "LOAD-02",
+  "state": "COMPLETED",
+  "date": "2026-10-27",
+  "source": {
+    "source_sha": "4356c2c1a7b9a726564c6c20d816decf193a69a7",
+    "executor_sha256": {
+      "security_cases.py": "7c78314a8403b8cded8896bda345ca3e06c5305cc078fe9e42b6d273b8e539c8",
+      "extended_cases.py": "14499f8e9beb0e7ec9e1036824dd247e5dcd876eae209960e800802d76583415",
+      "fixtures.py": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36",
+      "long_load_cases.py": "abd38b320a7d89ab51437bac03f35f1e7f7f4bc0a34bf9c512afde0ada6c7aa4",
+      "current_offline_cases.py": "63e9ceaca8b32cd8b0f3f3641527ea78a0b5aef484b7f6afd574f2c299991aa3",
+      "image_cases.py": "19958fd2cd733ca13231cca626a0c55c4a2f94efd54b793578e9b3e5d1999e6e",
+      "critical_report.py": "794293f87f45a616031d5d50265cf01d7dc060b959f2d8cf9208ff35a483bc2b",
+      "subprocesses.py": "662914a55c1a282b389111628fd5ceb7bc5327ead4821ce1fd12720c13716274",
+      "measurements.py": "6775d688520ffefa3735051fbbacedf20a7e13330be86ddea293e65efe94e23e",
+      "long_load_child.py": "5a4696424caa09d8629b662d98fd687168fa182584b11967a6de304fb3548146"
+    }
+  },
+  "summary": {
+    "scenario": "LOAD-02",
+    "mutation": null,
+    "classification": null,
+    "exit_code": 0,
+    "database": "own random-port PostgreSQL, migrations applied; fixture schema per case",
+    "providers": "generated app JWTs; synthetic analysis/fault injection; no external delivery or inference",
+    "api_lifespan_started": false,
+    "physical_device": false,
+    "evaluated_sources_unchanged": true,
+    "workspace_sources_unchanged": false,
+    "isolation": "Frozen app, executors and migrations; original-workspace edits cannot affect this long run"
+  },
+  "tests": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "seconds": 904.987,
+    "selectors": [
+      "sequential.LOAD02-20261027-full.executors.long_load_cases::test_LOAD_authorized_long_campaign"
+    ]
+  },
+  "observations": {
+    "scenario": "LOAD-02",
+    "pilot_only": false,
+    "phases": [
+      {
+        "mode": "open",
+        "concurrency": 1,
+        "rate": 1,
+        "duration_seconds": 180,
+        "warmup_seconds": 30,
+        "elapsed_including_drain_seconds": 180.00187330000335,
+        "offered": 180,
+        "completed": 180,
+        "offered_rps": 1.0,
+        "completed_rps_including_drain": 0.9999895928860683,
+        "responses": [
+          {
+            "kind": "pull",
+            "status": "200",
+            "valid": true,
+            "count": 72
+          },
+          {
+            "kind": "inbox",
+            "status": "200",
+            "valid": true,
+            "count": 36
+          },
+          {
+            "kind": "feed",
+            "status": "200",
+            "valid": true,
+            "count": 36
+          },
+          {
+            "kind": "yard",
+            "status": "200",
+            "valid": true,
+            "count": 36
+          }
+        ],
+        "errors": {},
+        "refresh_statuses": {},
+        "pending_peak": 1,
+        "resources_before": {
+          "process_cpu_seconds": 1.234375,
+          "pid": 22260,
+          "rss_bytes": 39944192,
+          "peak_rss_bytes": 39948288,
+          "private_commit_bytes": 29204480,
+          "peak_private_commit_bytes": 29204480,
+          "handles": 137
+        },
+        "resources_after": {
+          "process_cpu_seconds": 1.9375,
+          "pid": 22260,
+          "rss_bytes": 39534592,
+          "peak_rss_bytes": 40263680,
+          "private_commit_bytes": 30175232,
+          "peak_private_commit_bytes": 30175232,
+          "handles": 136
+        },
+        "scope": "Local exploratory load; raw client times and generator delay separated; no causal improvement or production-capacity claim",
+        "phase": "open-1",
+        "server_resources_before": {
+          "process_cpu_seconds": 15.4375,
+          "pid": 15836,
+          "rss_bytes": 156815360,
+          "peak_rss_bytes": 156823552,
+          "private_commit_bytes": 237068288,
+          "peak_private_commit_bytes": 237084672,
+          "handles": 230
+        },
+        "server_resources_after": {
+          "process_cpu_seconds": 20.546875,
+          "pid": 15836,
+          "rss_bytes": 154521600,
+          "peak_rss_bytes": 156827648,
+          "private_commit_bytes": 236949504,
+          "peak_private_commit_bytes": 237084672,
+          "handles": 219
+        }
+      },
+      {
+        "mode": "open",
+        "concurrency": 1,
+        "rate": 5,
+        "duration_seconds": 180,
+        "warmup_seconds": 30,
+        "elapsed_including_drain_seconds": 180.48223289998714,
+        "offered": 900,
+        "completed": 900,
+        "offered_rps": 5.0,
+        "completed_rps_including_drain": 4.986640432904707,
+        "responses": [
+          {
+            "kind": "pull",
+            "status": "200",
+            "valid": true,
+            "count": 360
+          },
+          {
+            "kind": "inbox",
+            "status": "200",
+            "valid": true,
+            "count": 180
+          },
+          {
+            "kind": "feed",
+            "status": "200",
+            "valid": true,
+            "count": 180
+          },
+          {
+            "kind": "yard",
+            "status": "200",
+            "valid": true,
+            "count": 180
+          }
+        ],
+        "errors": {},
+        "refresh_statuses": {},
+        "pending_peak": 25,
+        "resources_before": {
+          "process_cpu_seconds": 2.28125,
+          "pid": 23972,
+          "rss_bytes": 40730624,
+          "peak_rss_bytes": 42078208,
+          "private_commit_bytes": 30691328,
+          "peak_private_commit_bytes": 32018432,
+          "handles": 137
+        },
+        "resources_after": {
+          "process_cpu_seconds": 4.953125,
+          "pid": 23972,
+          "rss_bytes": 41320448,
+          "peak_rss_bytes": 42078208,
+          "private_commit_bytes": 31072256,
+          "peak_private_commit_bytes": 32018432,
+          "handles": 137
+        },
+        "scope": "Local exploratory load; raw client times and generator delay separated; no causal improvement or production-capacity claim",
+        "phase": "open-5",
+        "server_resources_before": {
+          "process_cpu_seconds": 27.703125,
+          "pid": 15836,
+          "rss_bytes": 158892032,
+          "peak_rss_bytes": 158912512,
+          "private_commit_bytes": 241672192,
+          "peak_private_commit_bytes": 241995776,
+          "handles": 224
+        },
+        "server_resources_after": {
+          "process_cpu_seconds": 52.515625,
+          "pid": 15836,
+          "rss_bytes": 158953472,
+          "peak_rss_bytes": 158965760,
+          "private_commit_bytes": 241639424,
+          "peak_private_commit_bytes": 241995776,
+          "handles": 221
+        }
+      },
+      {
+        "mode": "open",
+        "concurrency": 1,
+        "rate": 10,
+        "duration_seconds": 180,
+        "warmup_seconds": 30,
+        "elapsed_including_drain_seconds": 180.01733010000316,
+        "offered": 1800,
+        "completed": 1800,
+        "offered_rps": 10.0,
+        "completed_rps_including_drain": 9.999037309352742,
+        "responses": [
+          {
+            "kind": "pull",
+            "status": "200",
+            "valid": true,
+            "count": 720
+          },
+          {
+            "kind": "inbox",
+            "status": "200",
+            "valid": true,
+            "count": 360
+          },
+          {
+            "kind": "feed",
+            "status": "200",
+            "valid": true,
+            "count": 360
+          },
+          {
+            "kind": "yard",
+            "status": "200",
+            "valid": true,
+            "count": 360
+          }
+        ],
+        "errors": {},
+        "refresh_statuses": {},
+        "pending_peak": 45,
+        "resources_before": {
+          "process_cpu_seconds": 3.046875,
+          "pid": 23176,
+          "rss_bytes": 41414656,
+          "peak_rss_bytes": 44167168,
+          "private_commit_bytes": 31088640,
+          "peak_private_commit_bytes": 33259520,
+          "handles": 138
+        },
+        "resources_after": {
+          "process_cpu_seconds": 10.234375,
+          "pid": 23176,
+          "rss_bytes": 41897984,
+          "peak_rss_bytes": 44462080,
+          "private_commit_bytes": 31313920,
+          "peak_private_commit_bytes": 33259520,
+          "handles": 137
+        },
+        "scope": "Local exploratory load; raw client times and generator delay separated; no causal improvement or production-capacity claim",
+        "phase": "open-10",
+        "server_resources_before": {
+          "process_cpu_seconds": 65.375,
+          "pid": 15836,
+          "rss_bytes": 163753984,
+          "peak_rss_bytes": 163811328,
+          "private_commit_bytes": 245686272,
+          "peak_private_commit_bytes": 245850112,
+          "handles": 224
+        },
+        "server_resources_after": {
+          "process_cpu_seconds": 124.046875,
+          "pid": 15836,
+          "rss_bytes": 170213376,
+          "peak_rss_bytes": 170262528,
+          "private_commit_bytes": 252678144,
+          "peak_private_commit_bytes": 252870656,
+          "handles": 221
+        }
+      },
+      {
+        "mode": "open",
+        "concurrency": 1,
+        "rate": 25,
+        "duration_seconds": 180,
+        "warmup_seconds": 30,
+        "elapsed_including_drain_seconds": 190.01826589999837,
+        "offered": 4500,
+        "completed": 4441,
+        "offered_rps": 25.0,
+        "completed_rps_including_drain": 23.371437366643384,
+        "responses": [
+          {
+            "kind": "pull",
+            "status": "200",
+            "valid": true,
+            "count": 1751
+          },
+          {
+            "kind": "inbox",
+            "status": "200",
+            "valid": true,
+            "count": 875
+          },
+          {
+            "kind": "feed",
+            "status": "200",
+            "valid": true,
+            "count": 879
+          },
+          {
+            "kind": "yard",
+            "status": "200",
+            "valid": true,
+            "count": 868
+          },
+          {
+            "kind": "feed",
+            "status": "0",
+            "valid": false,
+            "count": 8
+          },
+          {
+            "kind": "pull",
+            "status": "0",
+            "valid": false,
+            "count": 17
+          },
+          {
+            "kind": "inbox",
+            "status": "0",
+            "valid": false,
+            "count": 7
+          },
+          {
+            "kind": "yard",
+            "status": "0",
+            "valid": false,
+            "count": 13
+          },
+          {
+            "kind": "yard",
+            "status": "401",
+            "valid": false,
+            "count": 5
+          },
+          {
+            "kind": "pull",
+            "status": "401",
+            "valid": false,
+            "count": 11
+          },
+          {
+            "kind": "inbox",
+            "status": "401",
+            "valid": false,
+            "count": 5
+          },
+          {
+            "kind": "feed",
+            "status": "401",
+            "valid": false,
+            "count": 2
+          }
+        ],
+        "errors": {
+          "ReadTimeout": 45,
+          "shed_safety_backlog": 59
+        },
+        "refresh_statuses": {
+          "200": 50
+        },
+        "pending_peak": 500,
+        "resources_before": {
+          "process_cpu_seconds": 5.0625,
+          "pid": 7080,
+          "rss_bytes": 51777536,
+          "peak_rss_bytes": 51781632,
+          "private_commit_bytes": 41492480,
+          "peak_private_commit_bytes": 41492480,
+          "handles": 162
+        },
+        "resources_after": {
+          "process_cpu_seconds": 33.71875,
+          "pid": 7080,
+          "rss_bytes": 52498432,
+          "peak_rss_bytes": 53518336,
+          "private_commit_bytes": 42504192,
+          "peak_private_commit_bytes": 43536384,
+          "handles": 171
+        },
+        "scope": "Local exploratory load; raw client times and generator delay separated; no causal improvement or production-capacity claim",
+        "phase": "open-25",
+        "server_resources_before": {
+          "process_cpu_seconds": 148.796875,
+          "pid": 15836,
+          "rss_bytes": 188399616,
+          "peak_rss_bytes": 188571648,
+          "private_commit_bytes": 271245312,
+          "peak_private_commit_bytes": 272781312,
+          "handles": 247
+        },
+        "server_resources_after": {
+          "process_cpu_seconds": 287.4375,
+          "pid": 15836,
+          "rss_bytes": 197677056,
+          "peak_rss_bytes": 257097728,
+          "private_commit_bytes": 280846336,
+          "peak_private_commit_bytes": 341393408,
+          "handles": 221
+        }
+      }
+    ],
+    "before": {
+      "rows": {
+        "users": 53,
+        "cats": 250,
+        "sync_changes": 250,
+        "conversations": 50,
+        "conversation_members": 100,
+        "conversation_messages": 50,
+        "feed_items": 100,
+        "vision_jobs": 0
+      },
+      "wallets": [
+        [
+          "024b4594-4cfc-5af9-aef1-81d9b8d97a9d",
+          1000000
+        ],
+        [
+          "05677b82-f63a-49f2-80f8-d9995ee69768",
+          100
+        ],
+        [
+          "06a74315-d758-5bfd-90b3-9ed7d94ad4f5",
+          1000000
+        ],
+        [
+          "0b7dc50c-7150-5008-88a8-3b35387b041a",
+          1000000
+        ],
+        [
+          "0be939c5-5896-5a86-ad9f-dc0a8c3c08f6",
+          1000000
+        ],
+        [
+          "0ed71448-5c4c-52ec-8021-83c5bbcb1f52",
+          1000000
+        ],
+        [
+          "1a2d336e-8ad2-5846-bf36-37d141a5c99f",
+          1000000
+        ],
+        [
+          "23c187b9-be36-598b-bad5-203cd6019b33",
+          1000000
+        ],
+        [
+          "24058dfe-9ac6-52fd-a025-86b41c605c2a",
+          1000000
+        ],
+        [
+          "26893a73-38d0-5b97-87ba-88cb352b5d7f",
+          1000000
+        ],
+        [
+          "28c9d6ef-2e50-5bef-90df-17324aade6d4",
+          1000000
+        ],
+        [
+          "316aa5dc-ed48-5e60-a857-3f459c582396",
+          1000000
+        ],
+        [
+          "33a31ba9-d865-5959-b946-a072e9659c69",
+          1000000
+        ],
+        [
+          "3421bbe4-5bf0-5356-bf8f-41edd245ecf5",
+          1000000
+        ],
+        [
+          "34be872c-4bf8-5d6d-aece-963937e9490a",
+          1000000
+        ],
+        [
+          "36b4566e-988c-5bec-a732-44cb9ae1cb5a",
+          1000000
+        ],
+        [
+          "38273a03-5cff-5dec-a361-214d6d89be19",
+          1000000
+        ],
+        [
+          "3896407a-91ab-59e1-9056-0a38e168ed0c",
+          1000000
+        ],
+        [
+          "3a4e8479-3fe5-5afa-9779-7abdd9054ded",
+          1000000
+        ],
+        [
+          "3dd50798-d362-44db-b23b-289b09ce18cb",
+          100
+        ],
+        [
+          "403463d6-facc-5468-b941-1327477e1428",
+          1000000
+        ],
+        [
+          "41cbf525-3a8b-59c3-b9b4-b15ee581aae8",
+          1000000
+        ],
+        [
+          "487ac640-3b93-53fb-b6de-93351d92b3ad",
+          1000000
+        ],
+        [
+          "4e81811b-4fa4-54ba-abc1-57d640cf80ef",
+          1000000
+        ],
+        [
+          "4ede055c-75a2-5595-bd99-ef4087e2bcc3",
+          1000000
+        ],
+        [
+          "5821b3cd-c25a-53a5-ab76-24e8b611c8bb",
+          1000000
+        ],
+        [
+          "58e3bfde-fa2d-567b-bc7b-2e34c151fc1c",
+          1000000
+        ],
+        [
+          "68bed8b7-904d-565e-8bae-196685391e29",
+          1000000
+        ],
+        [
+          "6e6cd10a-3147-5a49-8ae2-3c737a44549b",
+          1000000
+        ],
+        [
+          "76543235-9082-5737-be3b-174a9ca75b6c",
+          1000000
+        ],
+        [
+          "766fbc3b-6058-5ebe-a486-1921b8a5e3ab",
+          1000000
+        ],
+        [
+          "7b94fe80-53dd-5af8-b083-2e3b9cf1d101",
+          1000000
+        ],
+        [
+          "8988dd14-00de-53b3-9c9f-74f81f2509b5",
+          1000000
+        ],
+        [
+          "9184e018-379a-53c6-b060-46573b9eb09c",
+          1000000
+        ],
+        [
+          "9d0f484f-3314-5cf9-a152-5223eb04544f",
+          1000000
+        ],
+        [
+          "a2bec1b5-5be9-5765-9b85-e9520adb0877",
+          1000000
+        ],
+        [
+          "a8233ecf-21a5-53c0-a62f-196b722e753e",
+          1000000
+        ],
+        [
+          "aa0f87ed-3611-56c7-a233-15b6a2c6193b",
+          1000000
+        ],
+        [
+          "ab61d621-c45c-5f90-aef6-208e1e7b764a",
+          1000000
+        ],
+        [
+          "aea8518d-4d56-5ebd-b2fd-c2d315191109",
+          1000000
+        ],
+        [
+          "b708a606-ad31-5419-8ade-30086ec76968",
+          1000000
+        ],
+        [
+          "c1be3410-a884-59be-a635-620d494032ab",
+          1000000
+        ],
+        [
+          "c5fd432a-260a-5222-aabf-57b6f8e4f4da",
+          1000000
+        ],
+        [
+          "c9446860-a988-54a1-b233-91aeb40b4823",
+          1000000
+        ],
+        [
+          "d6b3dbb7-d98f-593e-aed9-2c3b7fc3dede",
+          1000000
+        ],
+        [
+          "d700095b-0810-57fd-b951-b4d07d78e0a7",
+          1000000
+        ],
+        [
+          "da940497-4e8a-5c81-a659-dedb886b6377",
+          1000000
+        ],
+        [
+          "db64b43a-13c8-5101-aa66-4b5fcddfed14",
+          1000000
+        ],
+        [
+          "dbdd112c-5022-55fb-940a-ec7141e40712",
+          1000000
+        ],
+        [
+          "ecd8b67b-ca09-51c2-8ed3-91b87a804e7e",
+          1000000
+        ],
+        [
+          "f712c861-db6d-5f13-abc6-83ae97a7dafb",
+          1000000
+        ],
+        [
+          "fb82357d-4d4d-5dfb-a2ad-853b04785fdc",
+          1000000
+        ]
+      ],
+      "ledger_rows": 0
+    },
+    "after": {
+      "rows": {
+        "users": 53,
+        "cats": 250,
+        "sync_changes": 250,
+        "conversations": 50,
+        "conversation_members": 100,
+        "conversation_messages": 50,
+        "feed_items": 100,
+        "vision_jobs": 0
+      },
+      "wallets": [
+        [
+          "024b4594-4cfc-5af9-aef1-81d9b8d97a9d",
+          1000000
+        ],
+        [
+          "05677b82-f63a-49f2-80f8-d9995ee69768",
+          100
+        ],
+        [
+          "06a74315-d758-5bfd-90b3-9ed7d94ad4f5",
+          1000000
+        ],
+        [
+          "0b7dc50c-7150-5008-88a8-3b35387b041a",
+          1000000
+        ],
+        [
+          "0be939c5-5896-5a86-ad9f-dc0a8c3c08f6",
+          1000000
+        ],
+        [
+          "0ed71448-5c4c-52ec-8021-83c5bbcb1f52",
+          1000000
+        ],
+        [
+          "1a2d336e-8ad2-5846-bf36-37d141a5c99f",
+          1000000
+        ],
+        [
+          "23c187b9-be36-598b-bad5-203cd6019b33",
+          1000000
+        ],
+        [
+          "24058dfe-9ac6-52fd-a025-86b41c605c2a",
+          1000000
+        ],
+        [
+          "26893a73-38d0-5b97-87ba-88cb352b5d7f",
+          1000000
+        ],
+        [
+          "28c9d6ef-2e50-5bef-90df-17324aade6d4",
+          1000000
+        ],
+        [
+          "316aa5dc-ed48-5e60-a857-3f459c582396",
+          1000000
+        ],
+        [
+          "33a31ba9-d865-5959-b946-a072e9659c69",
+          1000000
+        ],
+        [
+          "3421bbe4-5bf0-5356-bf8f-41edd245ecf5",
+          1000000
+        ],
+        [
+          "34be872c-4bf8-5d6d-aece-963937e9490a",
+          1000000
+        ],
+        [
+          "36b4566e-988c-5bec-a732-44cb9ae1cb5a",
+          1000000
+        ],
+        [
+          "38273a03-5cff-5dec-a361-214d6d89be19",
+          1000000
+        ],
+        [
+          "3896407a-91ab-59e1-9056-0a38e168ed0c",
+          1000000
+        ],
+        [
+          "3a4e8479-3fe5-5afa-9779-7abdd9054ded",
+          1000000
+        ],
+        [
+          "3dd50798-d362-44db-b23b-289b09ce18cb",
+          100
+        ],
+        [
+          "403463d6-facc-5468-b941-1327477e1428",
+          1000000
+        ],
+        [
+          "41cbf525-3a8b-59c3-b9b4-b15ee581aae8",
+          1000000
+        ],
+        [
+          "487ac640-3b93-53fb-b6de-93351d92b3ad",
+          1000000
+        ],
+        [
+          "4e81811b-4fa4-54ba-abc1-57d640cf80ef",
+          1000000
+        ],
+        [
+          "4ede055c-75a2-5595-bd99-ef4087e2bcc3",
+          1000000
+        ],
+        [
+          "5821b3cd-c25a-53a5-ab76-24e8b611c8bb",
+          1000000
+        ],
+        [
+          "58e3bfde-fa2d-567b-bc7b-2e34c151fc1c",
+          1000000
+        ],
+        [
+          "68bed8b7-904d-565e-8bae-196685391e29",
+          1000000
+        ],
+        [
+          "6e6cd10a-3147-5a49-8ae2-3c737a44549b",
+          1000000
+        ],
+        [
+          "76543235-9082-5737-be3b-174a9ca75b6c",
+          1000000
+        ],
+        [
+          "766fbc3b-6058-5ebe-a486-1921b8a5e3ab",
+          1000000
+        ],
+        [
+          "7b94fe80-53dd-5af8-b083-2e3b9cf1d101",
+          1000000
+        ],
+        [
+          "8988dd14-00de-53b3-9c9f-74f81f2509b5",
+          1000000
+        ],
+        [
+          "9184e018-379a-53c6-b060-46573b9eb09c",
+          1000000
+        ],
+        [
+          "9d0f484f-3314-5cf9-a152-5223eb04544f",
+          1000000
+        ],
+        [
+          "a2bec1b5-5be9-5765-9b85-e9520adb0877",
+          1000000
+        ],
+        [
+          "a8233ecf-21a5-53c0-a62f-196b722e753e",
+          1000000
+        ],
+        [
+          "aa0f87ed-3611-56c7-a233-15b6a2c6193b",
+          1000000
+        ],
+        [
+          "ab61d621-c45c-5f90-aef6-208e1e7b764a",
+          1000000
+        ],
+        [
+          "aea8518d-4d56-5ebd-b2fd-c2d315191109",
+          1000000
+        ],
+        [
+          "b708a606-ad31-5419-8ade-30086ec76968",
+          1000000
+        ],
+        [
+          "c1be3410-a884-59be-a635-620d494032ab",
+          1000000
+        ],
+        [
+          "c5fd432a-260a-5222-aabf-57b6f8e4f4da",
+          1000000
+        ],
+        [
+          "c9446860-a988-54a1-b233-91aeb40b4823",
+          1000000
+        ],
+        [
+          "d6b3dbb7-d98f-593e-aed9-2c3b7fc3dede",
+          1000000
+        ],
+        [
+          "d700095b-0810-57fd-b951-b4d07d78e0a7",
+          1000000
+        ],
+        [
+          "da940497-4e8a-5c81-a659-dedb886b6377",
+          1000000
+        ],
+        [
+          "db64b43a-13c8-5101-aa66-4b5fcddfed14",
+          1000000
+        ],
+        [
+          "dbdd112c-5022-55fb-940a-ec7141e40712",
+          1000000
+        ],
+        [
+          "ecd8b67b-ca09-51c2-8ed3-91b87a804e7e",
+          1000000
+        ],
+        [
+          "f712c861-db6d-5f13-abc6-83ae97a7dafb",
+          1000000
+        ],
+        [
+          "fb82357d-4d4d-5dfb-a2ad-853b04785fdc",
+          1000000
+        ]
+      ],
+      "ledger_rows": 0
+    },
+    "pool_checkedout_after_rest": 0,
+    "server_http": [
+      {
+        "phase": "setup",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 50
+      },
+      {
+        "phase": "setup",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 50
+      },
+      {
+        "phase": "setup",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 50
+      },
+      {
+        "phase": "setup",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 50
+      },
+      {
+        "phase": "open-1:warmup",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 12
+      },
+      {
+        "phase": "open-1:warmup",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 6
+      },
+      {
+        "phase": "open-1:warmup",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 6
+      },
+      {
+        "phase": "open-1:warmup",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 6
+      },
+      {
+        "phase": "open-1:measured",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 72
+      },
+      {
+        "phase": "open-1:measured",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 36
+      },
+      {
+        "phase": "open-1:measured",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 36
+      },
+      {
+        "phase": "open-1:measured",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 36
+      },
+      {
+        "phase": "open-5:warmup",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 60
+      },
+      {
+        "phase": "open-5:warmup",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 30
+      },
+      {
+        "phase": "open-5:warmup",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 30
+      },
+      {
+        "phase": "open-5:warmup",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 30
+      },
+      {
+        "phase": "open-5:measured",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 360
+      },
+      {
+        "phase": "open-5:measured",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 180
+      },
+      {
+        "phase": "open-5:measured",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 180
+      },
+      {
+        "phase": "open-5:measured",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 180
+      },
+      {
+        "phase": "open-10:warmup",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 120
+      },
+      {
+        "phase": "open-10:warmup",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 60
+      },
+      {
+        "phase": "open-10:warmup",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 60
+      },
+      {
+        "phase": "open-10:warmup",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 60
+      },
+      {
+        "phase": "open-10:measured",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 720
+      },
+      {
+        "phase": "open-10:measured",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 360
+      },
+      {
+        "phase": "open-10:measured",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 360
+      },
+      {
+        "phase": "open-10:measured",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 360
+      },
+      {
+        "phase": "open-25:warmup",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 300
+      },
+      {
+        "phase": "open-25:warmup",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 150
+      },
+      {
+        "phase": "open-25:warmup",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 150
+      },
+      {
+        "phase": "open-25:warmup",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 150
+      },
+      {
+        "phase": "open-25:measured",
+        "route": "/sync/pull",
+        "status": 200,
+        "count": 1767
+      },
+      {
+        "phase": "open-25:measured",
+        "route": "/social/conversations",
+        "status": 200,
+        "count": 882
+      },
+      {
+        "phase": "open-25:measured",
+        "route": "/social/feed",
+        "status": 200,
+        "count": 887
+      },
+      {
+        "phase": "open-25:measured",
+        "route": "/app/quintal",
+        "status": 200,
+        "count": 880
+      },
+      {
+        "phase": "open-25:measured",
+        "route": "/auth/refresh",
+        "status": 200,
+        "count": 50
+      },
+      {
+        "phase": "open-25:measured",
+        "route": "/app/quintal",
+        "status": 401,
+        "count": 6
+      },
+      {
+        "phase": "open-25:measured",
+        "route": "/sync/pull",
+        "status": 401,
+        "count": 12
+      },
+      {
+        "phase": "open-25:measured",
+        "route": "/social/conversations",
+        "status": 401,
+        "count": 5
+      },
+      {
+        "phase": "open-25:measured",
+        "route": "/social/feed",
+        "status": 401,
+        "count": 2
+      }
+    ],
+    "server_sql": [
+      {
+        "phase": "open-1:warmup",
+        "route": "/sync/pull",
+        "verb": "SELECT",
+        "count": 72
+      },
+      {
+        "phase": "open-1:warmup",
+        "route": "/social/conversations",
+        "verb": "SELECT",
+        "count": 42
+      },
+      {
+        "phase": "open-1:warmup",
+        "route": "/social/feed",
+        "verb": "SELECT",
+        "count": 30
+      },
+      {
+        "phase": "open-1:warmup",
+        "route": "/app/quintal",
+        "verb": "SELECT",
+        "count": 228
+      },
+      {
+        "phase": "open-1:measured",
+        "route": "/sync/pull",
+        "verb": "SELECT",
+        "count": 432
+      },
+      {
+        "phase": "open-1:measured",
+        "route": "/social/conversations",
+        "verb": "SELECT",
+        "count": 252
+      },
+      {
+        "phase": "open-1:measured",
+        "route": "/social/feed",
+        "verb": "SELECT",
+        "count": 180
+      },
+      {
+        "phase": "open-1:measured",
+        "route": "/app/quintal",
+        "verb": "SELECT",
+        "count": 1368
+      },
+      {
+        "phase": "open-5:warmup",
+        "route": "/sync/pull",
+        "verb": "SELECT",
+        "count": 360
+      },
+      {
+        "phase": "open-5:warmup",
+        "route": "/social/conversations",
+        "verb": "SELECT",
+        "count": 210
+      },
+      {
+        "phase": "open-5:warmup",
+        "route": "/social/feed",
+        "verb": "SELECT",
+        "count": 150
+      },
+      {
+        "phase": "open-5:warmup",
+        "route": "/app/quintal",
+        "verb": "SELECT",
+        "count": 1140
+      },
+      {
+        "phase": "open-5:measured",
+        "route": "/sync/pull",
+        "verb": "SELECT",
+        "count": 2160
+      },
+      {
+        "phase": "open-5:measured",
+        "route": "/social/conversations",
+        "verb": "SELECT",
+        "count": 1260
+      },
+      {
+        "phase": "open-5:measured",
+        "route": "/social/feed",
+        "verb": "SELECT",
+        "count": 900
+      },
+      {
+        "phase": "open-5:measured",
+        "route": "/app/quintal",
+        "verb": "SELECT",
+        "count": 6840
+      },
+      {
+        "phase": "open-10:warmup",
+        "route": "/sync/pull",
+        "verb": "SELECT",
+        "count": 720
+      },
+      {
+        "phase": "open-10:warmup",
+        "route": "/social/conversations",
+        "verb": "SELECT",
+        "count": 420
+      },
+      {
+        "phase": "open-10:warmup",
+        "route": "/social/feed",
+        "verb": "SELECT",
+        "count": 300
+      },
+      {
+        "phase": "open-10:warmup",
+        "route": "/app/quintal",
+        "verb": "SELECT",
+        "count": 2280
+      },
+      {
+        "phase": "open-10:measured",
+        "route": "/sync/pull",
+        "verb": "SELECT",
+        "count": 4320
+      },
+      {
+        "phase": "open-10:measured",
+        "route": "/social/conversations",
+        "verb": "SELECT",
+        "count": 2520
+      },
+      {
+        "phase": "open-10:measured",
+        "route": "/social/feed",
+        "verb": "SELECT",
+        "count": 1800
+      },
+      {
+        "phase": "open-10:measured",
+        "route": "/app/quintal",
+        "verb": "SELECT",
+        "count": 13680
+      },
+      {
+        "phase": "open-25:warmup",
+        "route": "/sync/pull",
+        "verb": "SELECT",
+        "count": 1800
+      },
+      {
+        "phase": "open-25:warmup",
+        "route": "/social/conversations",
+        "verb": "SELECT",
+        "count": 1050
+      },
+      {
+        "phase": "open-25:warmup",
+        "route": "/social/feed",
+        "verb": "SELECT",
+        "count": 750
+      },
+      {
+        "phase": "open-25:warmup",
+        "route": "/app/quintal",
+        "verb": "SELECT",
+        "count": 5700
+      },
+      {
+        "phase": "open-25:measured",
+        "route": "/sync/pull",
+        "verb": "SELECT",
+        "count": 10614
+      },
+      {
+        "phase": "open-25:measured",
+        "route": "/social/conversations",
+        "verb": "SELECT",
+        "count": 6179
+      },
+      {
+        "phase": "open-25:measured",
+        "route": "/social/feed",
+        "verb": "SELECT",
+        "count": 4437
+      },
+      {
+        "phase": "open-25:measured",
+        "route": "/app/quintal",
+        "verb": "SELECT",
+        "count": 33446
+      },
+      {
+        "phase": "open-25:measured",
+        "route": "/auth/refresh",
+        "verb": "SELECT",
+        "count": 100
+      },
+      {
+        "phase": "open-25:measured",
+        "route": "/auth/refresh",
+        "verb": "UPDATE",
+        "count": 50
+      },
+      {
+        "phase": "open-25:measured",
+        "route": "/auth/refresh",
+        "verb": "INSERT",
+        "count": 50
+      },
+      {
+        "phase": "setup",
+        "route": "none",
+        "verb": "SELECT",
+        "count": 10
+      }
+    ],
+    "peak_active_http": 107,
+    "paid_calls": 0,
+    "scope": "Separate generator PID, own migrated PostgreSQL, real TCP/API, generated accounts. Fixed 30s warmups and planned full durations except explicitly labeled pilot. Shared host, no production capacity or causal speedup claims; percentiles are empirical and require separate uncertainty analysis."
+  },
+  "evidence": [
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/candidate.tar",
+      "sha256": "6479348683cfeaa190fbbd9fa9ba4d916e34c44e68b517ac345ce3fecb465cc0"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/candidate_manifest.json",
+      "sha256": "4c0be2d2b414742173c49cbc3fa13fa74d57a442d0059d9d69351a1a07c3a492"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/executors/__pycache__/critical_report.cpython-313.pyc",
+      "sha256": "257a2b97dddfe9cec3e9850b36bef39f979b2e444da0f4d8ab95074d693cba94"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/executors/__pycache__/current_offline_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "7074bb06207461aadd9396317c7677723a71453c2267e6efbace5bf37f3ca818"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/executors/__pycache__/fixtures.cpython-313.pyc",
+      "sha256": "b4d8cba76dec8db211e5776ed838ff5faf09cc5974fbbdce4a0d13c7fa033674"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/executors/__pycache__/image_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "976c3a3903a0f9808b8e94bac1bd0bfea4688ac40e3ed91c15d9311073a7080b"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/executors/__pycache__/long_load_cases.cpython-313-pytest-9.1.1.pyc",
+      "sha256": "e80da9eb7a48b488e2ba65f213b6e4434a83d2200de997ff6745bb97ecce3aee"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/executors/__pycache__/measurements.cpython-313.pyc",
+      "sha256": "2fc89294d5bfe65e0c42ad384a49ec04f6208c7da05fff71acfddf437e23a4d0"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/executors/__pycache__/security_cases.cpython-313.pyc",
+      "sha256": "722dfe4cb25c0484e643941a2d9e804c5a33dcb5045a57137da88198ca5639cf"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/executors/__pycache__/subprocesses.cpython-313.pyc",
+      "sha256": "5ae22859193d373159b37699f7a556528b191c4f083dec2790f67ccdbc334b01"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/executors/critical_report.py",
+      "sha256": "794293f87f45a616031d5d50265cf01d7dc060b959f2d8cf9208ff35a483bc2b"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/executors/current_offline_cases.py",
+      "sha256": "63e9ceaca8b32cd8b0f3f3641527ea78a0b5aef484b7f6afd574f2c299991aa3"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/executors/extended_cases.py",
+      "sha256": "14499f8e9beb0e7ec9e1036824dd247e5dcd876eae209960e800802d76583415"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/executors/fixtures.py",
+      "sha256": "0e10fc56fb738d38b08f726fd94013f6ce70dba532d33395dee5900ab0b80a36"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/executors/image_cases.py",
+      "sha256": "19958fd2cd733ca13231cca626a0c55c4a2f94efd54b793578e9b3e5d1999e6e"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/executors/long_load_cases.py",
+      "sha256": "abd38b320a7d89ab51437bac03f35f1e7f7f4bc0a34bf9c512afde0ada6c7aa4"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/executors/long_load_child.py",
+      "sha256": "5a4696424caa09d8629b662d98fd687168fa182584b11967a6de304fb3548146"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/executors/measurements.py",
+      "sha256": "6775d688520ffefa3735051fbbacedf20a7e13330be86ddea293e65efe94e23e"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/executors/run_security_regression.snapshot.py",
+      "sha256": "beaa42ed8bdbcf43d5c16e99f3f2384ecdbcf05b4249f90e9daceb9b26f8b2ab"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/executors/security_cases.py",
+      "sha256": "7c78314a8403b8cded8896bda345ca3e06c5305cc078fe9e42b6d273b8e539c8"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/executors/subprocesses.py",
+      "sha256": "662914a55c1a282b389111628fd5ceb7bc5327ead4821ce1fd12720c13716274"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/frozen_execution_manifest.json",
+      "sha256": "e025b4e72998405bdc697ef1d6981df40eed58f0f482fca559db83cea9132395"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/junit.xml",
+      "sha256": "3122a8df6aa1e4a47f895bd43276e76d35858baeb501a987478cbf237de1e64c"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/migrations.log",
+      "sha256": "a3b46d2f11f9b6e02caac2d03005d0237af6f6b915efdc0e4805c9d2bcafece2"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/long-load.json",
+      "sha256": "c03f64e8dfaa23fe4ba5f9b7a248c3d0326e1fd34fb5bc814bdf2b5d3df63563"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-1/generator.log",
+      "sha256": "897a9c35e8c08a67641776ec252083059c7b2e34391ea841438cf9565682b2f2"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-1/measure.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-1/private-accounts.json",
+      "sha256": "62e86ba6cfb424a545365fc2febbb3ce42d69584c82652844a3863c0d3115232"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-1/private-config.json",
+      "sha256": "b883369a74e55ed713af1e30a58e94696decaa46f619189dfd534cbf7041fafe"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-1/requests.csv",
+      "sha256": "85288157c1c6113ab1d55e61be984dd2de7343093d8b95c23fb9efce68ec8814"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-1/result.json",
+      "sha256": "cd483b3767bf1e7e8ee3ae9a87a9afb57c25e5772d4302c5808b55603b4efb4c"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-1/warmed.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-10/generator.log",
+      "sha256": "34abe0b60a8f3016041287ba605bd372895c022eb383f556ce23f1d08bf59b20"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-10/measure.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-10/private-accounts.json",
+      "sha256": "62e86ba6cfb424a545365fc2febbb3ce42d69584c82652844a3863c0d3115232"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-10/private-config.json",
+      "sha256": "68ac194a9f8c04793dcf54a762f7c3b4ca4b15a78a7b45eeb36790000df0eb7f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-10/requests.csv",
+      "sha256": "5dd89b6cd41d776abd51752d912115e813c7ff0b37d656fb37abd738da3ab9aa"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-10/result.json",
+      "sha256": "1d7b7082969876208fd949d333bd5ba651ee5e9ced02b364f9194e4397c47475"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-10/warmed.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-25/generator.log",
+      "sha256": "1efc5c568b714279ec63bfe3a3177edaff489c53dcb099e91925d8756c8e92ce"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-25/measure.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-25/private-accounts.json",
+      "sha256": "fc98097c56e766f6acdd03bed30d802b27c8254ccb30c601c6946931b5aadd35"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-25/private-config.json",
+      "sha256": "c640d37f74015e038e291f6a24c949438dcfb000ccb14f9ad657808c9fbefc51"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-25/requests.csv",
+      "sha256": "406c2f5223c93c67d3f20fd13c75246b1e424a594e990b67bc8f30f07662c0e2"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-25/result.json",
+      "sha256": "1ea00c0c6e6871c0d3fa48cc8a5535651927110a1d07472a82991f4cf6c1e438"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-25/warmed.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-5/generator.log",
+      "sha256": "654d63b3f6e19bd41a0fb0e662892ec4e800f8c016b3796f1383e88128ecbf9f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-5/measure.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-5/private-accounts.json",
+      "sha256": "62e86ba6cfb424a545365fc2febbb3ce42d69584c82652844a3863c0d3115232"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-5/private-config.json",
+      "sha256": "15b4d127b1874cdfc45993b3ed71cbda7bd8a0cec837d8e6dcc16fdde88514cf"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-5/requests.csv",
+      "sha256": "33ffed99480e0d0629e0fd7023676ec942fc7dfcbc8d51adc2dea5ed47048560"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-5/result.json",
+      "sha256": "f31def18184fe94611fbeb13ee4f6f4c16922d886fa32b8f9b84c65d76d06428"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/open-5/warmed.json",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/progress.json",
+      "sha256": "716532b449ef5de926eaeba4405da79ecd5a2d9c54e046d247524257294ad8de"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/observations/server-resources.jsonl",
+      "sha256": "03aab066ec6b7b912dab11a644acfa9d379bca6c9b192e16d3d304e1b76545fc"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/pytest.log",
+      "sha256": "55f5329823946f1f79a0ee1467eac8e781a2c6e25ff49e161991c5f43d16bf0a"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/source_manifest.json",
+      "sha256": "984973545e9cde63b90a406245eeb123b2053db1ca8631cf3739c8f6d955d489"
+    },
+    {
+      "private_path": ".tmp/quality-campaign/20261021T194312Z-953aa74e/sequential/LOAD02-20261027-full/summary.json",
+      "sha256": "117f9fef3afc09bdd4a56caa0a467f46726d694caba2b77817a4cb61b577f1f2"
+    }
+  ],
+  "executor": "scripts/campaign/long_load_cases.py",
+  "report_executor": "scripts/campaign/publish_long_load.py",
+  "limitations": [
+    "One local execution per plateau; no causal branch comparison or production capacity claim.",
+    "Client operation times include token refresh when required; generator queue delay is separate.",
+    "Refresh counts include warmup. Warmup requests are excluded from measured phase totals.",
+    "Shared PC; a small real-provider transport probe ran during LOAD-01. No physical device.",
+    "Raw latency distributions are empirical, without a claim of stable population P99."
+  ],
+  "transport_findings": [
+    {
+      "phase": "open-25",
+      "errors": {
+        "ReadTimeout": 45,
+        "shed_safety_backlog": 59
+      },
+      "offered": 4500,
+      "successful_valid_responses": 4373,
+      "interpretation": "Transport failure observed, not an HTTP error response. Fixture forces 1s server keepalive; client defaults differ. Keepalive reuse race/resource scheduling are hypotheses, not proven product defects. Revalidate with aligned expiry and isolated timing before changing product."
+    }
+  ],
+  "completion_meaning": "Planned experiment variants executed and integrity checked; completion does not mean zero measured transport failures. Findings remain explicit."
+}

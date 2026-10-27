@@ -233,11 +233,16 @@
   },
   {
     "scenario": "LOAD-02",
-    "state": "PENDING",
+    "state": "COMPLETED",
     "scope": "Taxa aberta inicial 1/5/10/25 req/s, 3 min/patamar; mix 40% pull, 20% inbox, 20% feed, 20% Quintal com contas separadas.",
     "previous_report": "../2026-10-23-local-campaign/matrix.json",
     "previous_runs": [],
-    "runs": []
+    "runs": [],
+    "limitation": "Full planned disposable E2 load variants executed; shared-host exploratory measurements, no speedup/production SLA claim.",
+    "executor": "scripts/campaign/long_load_cases.py",
+    "closure_evidence": [
+      "LOAD02-20261027-results.json"
+    ]
   },
   {
     "scenario": "LOAD-03",
@@ -1500,14 +1505,15 @@
       "attempts/accessibility-04/accessibility/tests.jsonl"
     ],
     "findings": true,
-    "limitation": "Shared header labels/roles corrected and revalidated in 10 widget tests and Android native tree; other ACC-05 variants and TalkBack navigation remain pending.",
+    "limitation": "Historical Android/TalkBack evidence preserved. New local control/motion cases passed and duplicated yard label fixed; remaining full scene/route variants and device revalidation of this new correction are not certified. See ACC-MOTION-20261027-results.json.",
     "followup_runs": [
       "attempts/accessibility-flows-01/accessibility_flows/summary.json",
       "attempts/accessibility-flows-02/accessibility_flows/summary.json"
     ],
     "closure_evidence": [
       "ACC05-header-20261024-results.json",
-      "ANDROID-USB-20261025-results.json"
+      "ANDROID-USB-20261025-results.json",
+      "ACC-MOTION-20261027-results.json"
     ]
   },
   {
@@ -1522,9 +1528,10 @@
       "attempts/accessibility-04/accessibility/tests.jsonl"
     ],
     "findings": false,
-    "limitation": "Somente variantes dirigidas registradas na rastreabilidade; falha observada também conta como execução, não como aprovação. Variantes restantes do plano continuam pendentes.",
+    "limitation": "Historical Android/TalkBack evidence preserved. New local control/motion cases passed and duplicated yard label fixed; remaining full scene/route variants and device revalidation of this new correction are not certified. See ACC-MOTION-20261027-results.json.",
     "closure_evidence": [
-      "ANDROID-USB-20261025-results.json"
+      "ANDROID-USB-20261025-results.json",
+      "ACC-MOTION-20261027-results.json"
     ]
   },
   {
