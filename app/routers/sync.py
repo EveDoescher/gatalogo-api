@@ -183,7 +183,7 @@ async def upload_photo(
     suffix = Path(image.filename or "photo.jpg").suffix.lower() or ".jpg"
     old_key = cat.photo_key
     queue_photo_cleanup(cat, [old_key])
-    key, photo_hash = photo_storage.save(user_id=user.id, cat_id=cat.id, data=data, suffix=suffix)
+    key, photo_hash = photo_storage.save(user_id=user.id, cat_id=cat.id, data=data, suffix=suffix, before_write=lambda candidate: queue_photo_cleanup(cat, [candidate]))
     cat.photo_key = key
     cat.photo_hash = photo_hash
     cat.photo_content_type = image.content_type or "image/jpeg"
@@ -249,7 +249,7 @@ async def upload_reference_photo(
     suffix = Path(image.filename or "reference.jpg").suffix.lower() or ".jpg"
     photo = (await session.execute(select(CatPhoto).where(CatPhoto.cat_id == cat.id, CatPhoto.kind == kind).with_for_update())).scalar_one_or_none()
     queue_photo_cleanup(cat, [photo.storage_key if photo else None])
-    key, content_hash = photo_storage.save_reference(user_id=user.id, cat_id=cat.id, kind=kind, data=data, suffix=suffix)
+    key, content_hash = photo_storage.save_reference(user_id=user.id, cat_id=cat.id, kind=kind, data=data, suffix=suffix, before_write=lambda candidate: queue_photo_cleanup(cat, [candidate]))
     if photo is None:
         photo = CatPhoto(cat_id=cat.id, kind=kind, storage_key=key, content_hash=content_hash, content_type=image.content_type or "image/jpeg", status="analyzing")
         session.add(photo)

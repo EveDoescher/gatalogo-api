@@ -171,6 +171,7 @@ async def analyze_cat(
             cat_id=cat.id,
             data=image_bytes,
             suffix=".jpg",
+            before_write=lambda candidate: queue_photo_cleanup(cat, [candidate]),
         )
         cat.photo_key = photo_key
         cat.photo_hash = photo_hash

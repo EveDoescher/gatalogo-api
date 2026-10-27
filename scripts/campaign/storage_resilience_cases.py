@@ -187,7 +187,8 @@ async def test_IMG07_missing_private_file_then_restored(db):
 
 
 @pytest.mark.asyncio
-async def test_RES05_disposable_database_short_outage_and_recovery(live):
+@pytest.mark.parametrize("client_timeout", [False, True])
+async def test_RES05_disposable_database_short_outage_and_recovery(live, client_timeout):
     # Locate by the exact random host port AND runner purpose label before pausing.
     url = make_url(os.environ["RECOGNITION_TEST_DATABASE_URL"])
     assert (
@@ -218,15 +219,26 @@ async def test_RES05_disposable_database_short_outage_and_recovery(live):
     assert (await live.a.get("/sync/pull")).status_code == 200
     paused = False
     request = None
+    started = None
+    timeout_seconds = None
     try:
         subprocess.run(
             ["docker", "pause", ident], check=True, stdout=subprocess.DEVNULL
         )
         paused = True
+        import time
+        started = time.perf_counter()
         request = asyncio.create_task(live.a.get("/sync/pull"))
         await asyncio.sleep(0.5)
         assert not request.done()
         assert (await live.other.get("/health")).status_code == 200
+        if client_timeout:
+            import httpx
+            with pytest.raises(httpx.ReadTimeout):
+                await asyncio.wait_for(request, 14)
+            timeout_seconds = time.perf_counter() - started
+            assert 9 <= timeout_seconds < 14
+            request = None
     finally:
         if paused:
             subprocess.run(
@@ -234,10 +246,12 @@ async def test_RES05_disposable_database_short_outage_and_recovery(live):
             )
         if request is not None:
             resumed = await asyncio.wait_for(request, 20)
-    assert resumed.status_code == 200
+    if not client_timeout:
+        assert resumed.status_code == 200
+    assert (await live.a.get("/sync/pull")).status_code == 200
     assert (await live.a.get("/app/quintal")).status_code == 200
     evidence(
-        "RES05-real-db-pause",
+        "RES05-real-db-pause-" + ("client-timeout" if client_timeout else "short"),
         {
             "scenario": "RES-05",
             "outage": "short pause of exact random-port disposable DB container",
@@ -245,6 +259,7 @@ async def test_RES05_disposable_database_short_outage_and_recovery(live):
             "health_during_pause": 200,
             "after_resume": 200,
             "quintal_integrity_read": 200,
-            "scope": "connection/server stall and recovery, not crash/data-loss or timeout upper-bound certification",
+            "client_timeout_seconds": timeout_seconds,
+            "scope": "Own server stall/recovery and actual 10s HTTP client timeout; no crash/data-loss or API SQL deadline certification",
         },
     )
