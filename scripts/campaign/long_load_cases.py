@@ -174,6 +174,7 @@ async def test_LOAD_authorized_long_campaign(own_api, observe_app, caplog):
         cfg = {"url": own_api.url, "actors": actors, "mode": mode, "output": str(out),
             "duration_seconds": duration, "warmup_seconds": warmup if warmup is not None else 2 if pilot else 30,
             "concurrency": concurrency, "rate": rate, "warmup_rate": warmup_rate or rate}
+        cfg["keepalive_expiry_seconds"] = float(os.environ.get("QUALITY_LOAD_CLIENT_KEEPALIVE_SECONDS", "5"))
         config = out / "private-config.json"
         config.write_text(json.dumps(cfg))
         state["phase"] = name + ":warmup"
@@ -243,6 +244,10 @@ async def test_LOAD_authorized_long_campaign(own_api, observe_app, caplog):
         # Detailed raw latency arrays stay in each phase; keep the top-level index bounded.
         index = [{k: v for k, v in row.items() if k not in ("latencies_ms", "generator_queue_ms")} for row in phases]
         result = {"scenario": scenario, "pilot_only": pilot, "phases": index,
+            "confirmation": os.environ.get("QUALITY_LOAD_CONFIRMATION") == "true",
+            "connection_settings": {"server_keepalive_seconds": int(os.environ.get("QUALITY_API_KEEPALIVE_SECONDS", "1")),
+                "client_keepalive_seconds": float(os.environ.get("QUALITY_LOAD_CLIENT_KEEPALIVE_SECONDS", "5")),
+                "request_timeout_seconds": 15},
             "before": before, "after": after, "pool_checkedout_after_rest": pool.checkedout(),
             "server_http": [{"phase": key[0], "route": key[1], "status": key[2], "count": n} for key, n in state["http"].items()],
             "server_sql": [{"phase": key[0], "route": key[1], "verb": key[2], "count": n} for key, n in state["sql"].items()],

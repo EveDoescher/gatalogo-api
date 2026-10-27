@@ -19,7 +19,7 @@ from uuid import uuid4
 from campaign.subprocesses import run_logged
 
 ROOT = Path(__file__).resolve().parents[1]
-LONG_SCENARIOS = {"LOAD-01", "LOAD-02", "LOAD-06", "LOAD-PILOT", "BR-02-TCP"}
+LONG_SCENARIOS = {"LOAD-01", "LOAD-02", "LOAD-06", "LOAD-06-CONFIRM", "LOAD-PILOT", "BR-02-TCP"}
 MUTATIONS = {
     "MUT-13": (
         "DLV-02",
@@ -202,6 +202,7 @@ def selection(scenario, output):
         "LOAD-01": "long_load_cases.py",
         "LOAD-02": "long_load_cases.py",
         "LOAD-06": "long_load_cases.py",
+        "LOAD-06-CONFIRM": "long_load_cases.py",
         "LOAD-PILOT": "long_load_cases.py",
         "RES-04": "worker_race_cases.py",
         "RES-08": "test_analysis_cache_resilience.py",
@@ -379,7 +380,8 @@ def selection(scenario, output):
         selectors,
         dict(
             QUALITY_LARGE_LOCAL_SYNC="true" if scenario == "LAT-04" else "false",
-            QUALITY_API_KEEPALIVE_SECONDS="120" if scenario == "BR-02-TCP" else "5" if scenario.startswith("RSC-02") else "1",
+            QUALITY_API_KEEPALIVE_SECONDS="120" if scenario == "BR-02-TCP" else "5" if scenario.startswith("RSC-02") or scenario == "LOAD-06-CONFIRM" else "1",
+            QUALITY_LOAD_CLIENT_KEEPALIVE_SECONDS="4" if scenario == "LOAD-06-CONFIRM" else "5",
             QUALITY_LATENCY_HTTP_TIMEOUT_SECONDS="30" if scenario == "BR-02-TCP" else "10",
             QUALITY_LATENCY_CLIENT_KEEPALIVE_SECONDS="15" if scenario == "BR-02-TCP" else "5",
             QUALITY_LATENCY_EXPECT_RELEASED_POOL="false" if scenario == "BR-02-TCP" else "true",
@@ -392,7 +394,8 @@ def selection(scenario, output):
             QUALITY_REAL_REFERENCE_BATCH="true" if scenario == "LOAD-04-REAL" else "false",
             QUALITY_MODEL_PHOTO=str(executors / "chelsea.png"),
             QUALITY_MODEL_CACHE=str(ROOT / ".model-cache"),
-            QUALITY_LONG_SCENARIO=scenario if scenario in LONG_SCENARIOS else "",
+            QUALITY_LONG_SCENARIO="LOAD-06" if scenario == "LOAD-06-CONFIRM" else scenario if scenario in LONG_SCENARIOS else "",
+            QUALITY_LOAD_CONFIRMATION="true" if scenario == "LOAD-06-CONFIRM" else "false",
         ),
     )
 
@@ -725,6 +728,7 @@ if __name__ == "__main__":
             "LOAD-01",
             "LOAD-02",
             "LOAD-06",
+            "LOAD-06-CONFIRM",
             "LOAD-PILOT",
             "RES-04",
             "RES-08",

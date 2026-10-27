@@ -36,7 +36,8 @@ async def run(path):
     semaphore = asyncio.Semaphore(100)
 
     async with httpx.AsyncClient(base_url=cfg["url"], timeout=15,
-        limits=httpx.Limits(max_connections=110, max_keepalive_connections=60)) as client:
+        limits=httpx.Limits(max_connections=110, max_keepalive_connections=60,
+            keepalive_expiry=cfg.get("keepalive_expiry_seconds", 5))) as client:
         async def token(index):
             actor = actors[index]
             async with locks[index]:
