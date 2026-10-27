@@ -188,6 +188,9 @@ async def test_LAT08_tcp_fixed_load_during_controlled_inference(
                     config = {
                         "requests_per_route": count,
                         "warmup_per_route": warmup,
+                        "request_timeout_seconds": int(os.environ.get("QUALITY_LATENCY_HTTP_TIMEOUT_SECONDS", "10")),
+                        "client_keepalive_seconds": float(os.environ.get("QUALITY_LATENCY_CLIENT_KEEPALIVE_SECONDS", "5")),
+                        "server_keepalive_seconds": int(os.environ.get("QUALITY_API_KEEPALIVE_SECONDS", "1")),
                         "generator_affinity_mask": int(os.environ.get("QUALITY_GENERATOR_AFFINITY_MASK", "0")),
                         "url": own_api.url,
                         "token": bundle["access_token"],

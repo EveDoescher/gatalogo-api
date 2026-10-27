@@ -26,8 +26,9 @@ async def run(config):
     async with httpx.AsyncClient(
         base_url=options["url"],
         headers={"Authorization": "Bearer " + options["token"]},
-        timeout=10,
-        limits=httpx.Limits(max_connections=5, max_keepalive_connections=5),
+        timeout=options.get("request_timeout_seconds", 10),
+        limits=httpx.Limits(max_connections=5, max_keepalive_connections=5,
+            keepalive_expiry=options.get("client_keepalive_seconds", 5)),
     ) as client:
 
         async def request(kind, path, record):
@@ -79,6 +80,8 @@ async def run(config):
         )
         result = {
             "warmup_per_route": warmup,
+            "connection_configuration": {key: options.get(key) for key in (
+                "request_timeout_seconds", "client_keepalive_seconds", "server_keepalive_seconds")},
             "samples_per_route": count,
             "concurrency": 5,
             "elapsed_seconds": time.perf_counter() - started,
